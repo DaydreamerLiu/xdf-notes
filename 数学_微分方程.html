@@ -1,0 +1,934 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数学 · 微分方程</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">📐 数学</div><details class="grp" data-k="grp-高数" open><summary>高数<em>10</em></summary><a class="b" href="数学_极限与数列.html">极限与数列</a><a class="c x" href="数学_极限与数列_例题.html">▸ 例题集</a><a class="b" href="数学_导数与微分.html">导数与微分</a><a class="c x" href="数学_导数与微分_例题.html">▸ 例题集</a><a class="b" href="数学_中值定理.html">中值定理</a><a class="c x" href="数学_中值定理_例题.html">▸ 例题集</a><a class="b" href="数学_积分.html">积分</a><a class="c x" href="数学_积分_例题.html">▸ 例题集</a><a class="b on" aria-current="page" href="数学_微分方程.html">微分方程</a><a class="c x" href="数学_微分方程_例题.html">▸ 例题集</a><a class="c" href="数学_微分方程.html#板块总览">板块总览</a><a class="c" href="数学_微分方程.html#一基本概念">一、基本概念</a><a class="d" href="数学_微分方程.html#11微分方程与阶">1.1 微分方程与阶</a><a class="d" href="数学_微分方程.html#12解的分类">1.2 解的分类</a><a class="d" href="数学_微分方程.html#13线性微分方程必考">1.3 线性微分方程 【必考】</a><a class="c" href="数学_微分方程.html#二一阶微分方程">二、一阶微分方程</a><a class="d" href="数学_微分方程.html#21可分离变量的微分方程必考">2.1 可分离变量的微分方程 【必考】</a><a class="d" href="数学_微分方程.html#22齐次方程高频">2.2 齐次方程 【高频】</a><a class="d" href="数学_微分方程.html#23一阶线性微分方程必考">2.3 一阶线性微分方程 【必考】</a><a class="c" href="数学_微分方程.html#三可降阶的高阶微分方程数一数二">三、可降阶的高阶微分方程 (数一、数二)</a><a class="d" href="数学_微分方程.html#31ynfx型">3.1 $y^{(n)}=f(x)$ 型</a><a class="d" href="数学_微分方程.html#32yfxy型缺y">3.2 $y&#x27;&#x27;=f(x,y&#x27;)$ 型 (缺 $y$)</a><a class="d" href="数学_微分方程.html#33yfyy型缺x重点">3.3 $y&#x27;&#x27;=f(y,y&#x27;)$ 型 (缺 $x$) 【重点】</a><a class="c" href="数学_微分方程.html#四二阶常系数线性微分方程必考">四、二阶常系数线性微分方程 【必考】</a><a class="d" href="数学_微分方程.html#41齐次方程ypyqy0">4.1 齐次方程: $y&#x27;&#x27;+py&#x27;+qy=0$</a><a class="d" href="数学_微分方程.html#42n阶常系数齐次线性方程">4.2 $n$ 阶常系数齐次线性方程</a><a class="d" href="数学_微分方程.html#43非齐次方程ypyqyfx必考">4.3 非齐次方程: $y&#x27;&#x27;+py&#x27;+qy=f(x)$ 【必考】</a><a class="c" href="数学_微分方程.html#五线性微分方程解的结构必考">五、线性微分方程解的结构 【必考】</a><a class="d" href="数学_微分方程.html#51齐次线性方程的叠加原理">5.1 齐次线性方程的叠加原理</a><a class="d" href="数学_微分方程.html#52非齐次线性方程的结构">5.2 非齐次线性方程的结构</a><a class="c" href="数学_微分方程.html#六差分方程数三专属必考">六、差分方程 (数三专属) 【必考】</a><a class="d" href="数学_微分方程.html#61一阶常系数差分方程">6.1 一阶常系数差分方程</a><a class="d" href="数学_微分方程.html#62差分的定义">6.2 差分的定义</a><a class="d" href="数学_微分方程.html#63二阶常系数差分方程了解注意">6.3 二阶常系数差分方程(了解) 【注意】</a><a class="c" href="数学_微分方程.html#七微分方程的应用">七、微分方程的应用</a><a class="d" href="数学_微分方程.html#71几何应用高频">7.1 几何应用 【高频】</a><a class="d" href="数学_微分方程.html#72物理应用牛顿冷却定律等">7.2 物理应用 (牛顿冷却定律等)</a><a class="d" href="数学_微分方程.html#73积分方程化为微分方程">7.3 积分方程化为微分方程</a><a class="d" href="数学_微分方程.html#74函数方程型把函数方程翻译成微分方程高频">7.4 函数方程型(把函数方程翻译成微分方程) 【高频】</a><a class="c" href="数学_微分方程.html#知识连接">知识连接</a><a class="b" href="数学_多元与二重.html">多元与二重</a><a class="c x" href="数学_多元与二重_例题.html">▸ 例题集</a><a class="b" href="数学_级数.html">级数</a><a class="c x" href="数学_级数_例题.html">▸ 例题集</a><a class="b" href="数学_曲线曲面积分.html">曲线曲面积分</a><a class="c x" href="数学_曲线曲面积分_例题.html">▸ 例题集</a><a class="b" href="数学_导数应用.html">导数应用</a><a class="c x" href="数学_导数应用_例题.html">▸ 例题集</a><a class="b" href="数学_数三专题.html">数三专题</a></details><details class="grp" data-k="grp-线性代数"><summary>线性代数<em>1</em></summary><a class="b" href="数学_线性代数.html">线性代数</a><a class="c x" href="数学_线性代数_例题.html">▸ 例题集</a><a class="c" href="数学_线性代数.html#板块总览">板块总览</a><a class="c" href="数学_线性代数.html#一行列式">一、行列式</a><a class="c" href="数学_线性代数.html#二矩阵">二、矩阵</a><a class="c" href="数学_线性代数.html#三向量与秩">三、向量与秩</a><a class="c" href="数学_线性代数.html#四线性方程组">四、线性方程组</a><a class="c" href="数学_线性代数.html#五特征值与特征向量">五、特征值与特征向量</a><a class="c" href="数学_线性代数.html#六相似对角化与二次型">六、相似对角化与二次型</a><a class="c" href="数学_线性代数.html#知识连接">知识连接</a></details><details class="grp" data-k="grp-概率论"><summary>概率论<em>1</em></summary><a class="b" href="数学_概率论.html">概率论</a><a class="c x" href="数学_概率论_例题.html">▸ 例题集</a><a class="c" href="数学_概率论.html#板块总览">板块总览</a><a class="c" href="数学_概率论.html#一随机事件与概率">一、随机事件与概率</a><a class="c" href="数学_概率论.html#二一维随机变量及其分布">二、一维随机变量及其分布</a><a class="c" href="数学_概率论.html#三随机变量函数的分布高频">三、随机变量函数的分布 【高频】</a><a class="c" href="数学_概率论.html#四多维随机变量及其分布">四、多维随机变量及其分布</a><a class="c" href="数学_概率论.html#五随机变量的数字特征必考">五、随机变量的数字特征 【必考】</a><a class="c" href="数学_概率论.html#六大数定律与中心极限定理高频">六、大数定律与中心极限定理 【高频】</a><a class="c" href="数学_概率论.html#七数理统计初步高频">七、数理统计初步 【高频】</a><a class="c" href="数学_概率论.html#八知识连接">八、知识连接</a><a class="c" href="数学_概率论.html#核心公式速查">核心公式速查</a></details><a class="b" href="数学_练习与测试.html">练习与测试</a><a class="c x" href="数学_练习与测试_例题.html">▸ 例题集</a><a class="b" href="数学_复习清单.html">复习清单</a><a class="b" href="数学_技巧速查.html">技巧速查</a></nav>
+<div id="progress"></div>
+<main data-subj="math"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>数学 · 微分方程</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>微分方程</h1><div class="board-meta">📐 数学 · <span class="pill">理论笔记</span><span class="pill">9 节</span></div><blockquote>
+<p>阶段: 基础(5月) + 强化(7月) | 覆盖课件 5 份:
+0516（1）、0516（2）、0723（1）、0723（2）、微分方程(1)
+(注: 微分方程(1)前6页为定积分应用/经济学应用错放, DE内容与0723(1)(2)同场次二次OCR, 交叉校验用)
+📖 例题全量见: <a href="数学_微分方程_例题.html">微分方程 · 例题集</a></p>
+</blockquote>
+<h2 id="板块总览">板块总览</h2>
+<p>微分方程是连接导数与应用的桥梁: 给定函数变化率与函数本身的关系, 反推出原函数。考研中平均每年 1-2 题, 核心是 <b>识别类型 → 套对应方法</b>。本板块按 <b>基本概念 → 一阶方程 → 高阶可降阶 → 常系数线性 → 差分方程(数三) → 应用</b> 组织。</p>
+<p><b>为什么线性方程这么重要?</b> 因为叠加原理——齐次解的任意线性组合仍是解, 非齐次通解 = 齐通 + 非奇特。这是整个微分方程理论的主线。</p>
+<hr />
+<h2 id="一基本概念">一、基本概念</h2>
+<h3 id="11微分方程与阶">1.1 微分方程与阶</h3>
+<p><b>定义</b> 含有自变量、未知函数和未知函数导数(或微分)的方程称为微分方程。未知函数是一元的则称<b>常微分方程</b>。</p>
+<p><b>阶</b> 方程中未知函数的最高阶导数的阶数。例如 $y''+3y'+5y=e^x$ 是二阶的。</p>
+<p><b>直觉</b> 阶数 = 需要多少个初始条件才能确定唯一解。一阶需要一个条件(如 $y(x_0)=y_0$), 二阶需要两个(再加 $y'(x_0)=y_0'$)。</p>
+<h3 id="12解的分类">1.2 解的分类</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+<th>记号特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>解</b></td>
+<td>代入方程使等式成立的函数</td>
+<td>—</td>
+</tr>
+<tr>
+<td><b>通解</b></td>
+<td>含任意常数, 且常数个数 = 阶数</td>
+<td>含 $C_1, C_2, \ldots$</td>
+</tr>
+<tr>
+<td><b>特解</b></td>
+<td>不含任意常数, 或常数已由初始条件确定</td>
+<td>无 $C$</td>
+</tr>
+</tbody>
+</table>
+<p><b>初始条件</b>: 要求自变量取某定值时, 函数与各阶导数取指定值。</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> 通解不一定包含所有解。有些方程存在"奇异解", 不能通过取特定常数得到(如 $y'=\sqrt{y}$ 的 $y\equiv0$ 解)。</p>
+<h3 id="13线性微分方程必考">1.3 线性微分方程 <span class="mk biz">必考</span></h3>
+<p><b>定义</b> 未知函数及其各阶导数都是一次项, 且系数只含自变量或常数:
+$$ y^{(n)} + P_1(x)y^{(n-1)} + \cdots + P_{n-1}(x)y' + P_n(x)y = f(x) $$</p>
+<p>当 $f(x)=0$ 称<b>齐次</b>, $f(x)\neq0$ 称<b>非齐次</b>。</p>
+<p><b>判别要点</b>: 看 $y$ 和 $y',y'',\ldots$ 是否有平方、乘积等非线性项。$(y')^2$、$yy'$、$\sin y$ 都是非线性的标志。</p>
+<p><span class="src">【来源: 0516（1）】</span></p>
+<hr />
+<h2 id="二一阶微分方程">二、一阶微分方程</h2>
+<p><b>总体思路</b>: 拿到 $y'=F(x,y)$, 先判断属于哪种类型, 然后套对应解法。三种基本类型的识别特征:</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>标准形式</th>
+<th>识别特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可分离变量</td>
+<td>$g(y)dy=f(x)dx$</td>
+<td>能"把 $x$ 和 $y$ 分到等号两边"</td>
+</tr>
+<tr>
+<td>齐次</td>
+<td>$\frac{dy}{dx}=\varphi(\frac{y}{x})$</td>
+<td>右端是 $\frac{y}{x}$ 的函数, 每一项 $x$ 和 $y$ 的次数和相等</td>
+</tr>
+<tr>
+<td>一阶线性</td>
+<td>$y'+P(x)y=Q(x)$</td>
+<td>$y$ 和 $y'$ 都是一次的</td>
+</tr>
+</tbody>
+</table>
+<h3 id="21可分离变量的微分方程必考">2.1 可分离变量的微分方程 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b> 若方程可写为 $g(y)dy = f(x)dx$, 则两边积分即得通解:
+$$ \int g(y)\,dy = \int f(x)\,dx + C $$</p>
+<p>设 $G(y)$ 和 $F(x)$ 分别为 $g(y)$ 和 $f(x)$ 的原函数, 则通解为 $G(y) = F(x) + C$。</p>
+<p><b>直觉</b> 这是最"自然"的解法——把微分方程变成两个普通积分。物理上, 如果能写成"关于 $y$ 的量的变化率 = 关于 $x$ 的量的变化率", 两部分各自积分就是守恒量。</p>
+<p><b>解题流程</b>: ① 把含 $y$ 的移到左边、含 $x$ 的移到右边 → ② 两边积分 → ③ 有初始条件时代入求 $C$。</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> 分离时可能"除以零"丢失解。例如 $\frac{dy}{dx}=y^2$ 分离得 $\frac{dy}{y^2}=dx$, 丢失了 $y\equiv0$ 这个解。</p>
+<h3 id="22齐次方程高频">2.2 齐次方程 <span class="mk freq">高频</span></h3>
+<p><b>核心结论</b> 若方程可化为 $\displaystyle\frac{dy}{dx} = \varphi\!\left(\frac{y}{x}\right)$, 令 $u=\frac{y}{x}$, 则 $y=ux$, $y'=u+xu'$, 代入得:
+$$ u + x\frac{du}{dx} = \varphi(u) \;\Longrightarrow\; \frac{du}{\varphi(u)-u} = \frac{dx}{x} $$</p>
+<p>即化为了<b>可分离变量</b>方程。解出 $u$ 后代回 $u=\frac{y}{x}$ 即得原方程通解。</p>
+<p><b>直觉</b> 齐次方程的右端对 $x$ 和 $y$ "同比例缩放不变"——如果把 $x$ 和 $y$ 同时放大 $k$ 倍, $\varphi(\frac{ky}{kx})=\varphi(\frac{y}{x})$ 不变。这意味着解曲线经过原点射出去, 引入"角度"变量 $u=y/x$ 自然简化。</p>
+<p><b>识别技巧</b>: 方程右端每一项 $x$ 和 $y$ 的次数之和相等。</p>
+<h3 id="23一阶线性微分方程必考">2.3 一阶线性微分方程 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b>
+$$ y' + P(x)y = Q(x) $$
+通解公式:
+$$ y = e^{-\int P(x)\,dx} \left[ \int Q(x)\, e^{\int P(x)\,dx} \,dx + C \right] $$</p>
+<p><b>推导思路</b> 两边同乘积分因子 $\mu(x)=e^{\int P(x)dx}$:
+$$ \mu y' + \mu P y = \mu Q \;\Longrightarrow\; (\mu y)' = \mu Q $$</p>
+<p>左边成了"求导的产物"——这正是凑积分因子的精髓: 把左边配成全导数, 右边直接积分。</p>
+<p><b>解题流程</b>: ① 化成标准形式 $y'+Py=Q$ (注意: $y'$ 系数必须是 1) → ② 计算 $\int P dx$ → ③ 套通解公式 → ④ 有初始条件时代入求 $C$。</p>
+<p><b>变体</b>: 有时以 $x$ 为未知函数更简单——如果方程是 $\frac{dx}{dy}+P(y)x=Q(y)$ 的形式, 对调 $x$ 和 $y$ 的角色, 公式改为:
+$$ x = e^{-\int P(y)\,dy} \left[ \int Q(y)\, e^{\int P(y)\,dy} \,dy + C \right] $$</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> 公式中的 $P(x)$ 是 $y'$ 的系数, 不是 $y$ 的系数。使用前必须把 $y'$ 的系数化为 1。</p>
+<p><span class="mk info">注意</span> 另有<b>伯努利方程</b> $y'+P(x)y=Q(x)y^n$($n\neq0,1$), 令 $u=y^{1-n}$ 化为一阶线性——数一专属, 数三不考, 认识即可。</p>
+<p><span class="src">【来源: 0516（1）、0723（1）】</span></p>
+<hr />
+<h2 id="三可降阶的高阶微分方程数一数二">三、可降阶的高阶微分方程 (数一、数二)</h2>
+<p><b>核心思路</b>: 通过换元降低阶数, 化为一阶方程求解。</p>
+<h3 id="31ynfx型">3.1 $y^{(n)}=f(x)$ 型</h3>
+<p>直接积分 $n$ 次。每次积分出一个常数, 共 $n$ 个。这是最简单的类型。</p>
+<h3 id="32yfxy型缺y">3.2 $y''=f(x,y')$ 型 (缺 $y$)</h3>
+<p>令 $y'=p$, 则 $y''=p'$。原方程化为 $p'=f(x,p)$——关于 $x$ 和 $p$ 的一阶方程。解出 $p=p(x,C_1)$ 后, 再积分一次得 $y$。</p>
+<h3 id="33yfyy型缺x重点">3.3 $y''=f(y,y')$ 型 (缺 $x$) <span class="mk ok">重点</span></h3>
+<p>令 $y'=p$, 关键一步:
+$$ y'' = \frac{dp}{dx} = \frac{dp}{dy}\cdot\frac{dy}{dx} = p\frac{dp}{dy} $$</p>
+<p>代入原方程得 $p\frac{dp}{dy}=f(y,p)$——关于 $y$ 和 $p$ 的一阶方程。解出 $p=p(y,C_1)$, 再分离变量 $\frac{dy}{p(y,C_1)}=dx$, 积分得通解。</p>
+<p><b>直觉</b> 为什么 $y''=p\frac{dp}{dy}$? 因为把 $p$ 看成 $y$ 的函数(而非 $x$ 的函数), 链式法则自然给出这个形式。缺 $x$ 意味着方程在 $x$ 方向"平移不变", 以 $y$ 为自变量更自然。</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> 三种可降阶类型不能混用换元方式。区分口诀: "缺 $y$, $p$ 对 $x$; 缺 $x$, $p$ 对 $y$"。</p>
+<p><span class="src">【来源: 0516（1）、0723（1）】</span></p>
+<hr />
+<h2 id="四二阶常系数线性微分方程必考">四、二阶常系数线性微分方程 <span class="mk biz">必考</span></h2>
+<p>这是考研微分方程的最核心板块——每年必有。</p>
+<h3 id="41齐次方程ypyqy0">4.1 齐次方程: $y''+py'+qy=0$</h3>
+<p><b>核心结论</b> 特征方程 $r^2+pr+q=0$, 三种情况:</p>
+<table>
+<thead>
+<tr>
+<th>特征根</th>
+<th>通解形式</th>
+<th>口诀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>两不等实根 $r_1\neq r_2$</td>
+<td>$y=C_1e^{r_1x}+C_2e^{r_2x}$</td>
+<td>直接叠加</td>
+</tr>
+<tr>
+<td>重根 $r_1=r_2=r$</td>
+<td>$y=(C_1+C_2 x)e^{rx}$</td>
+<td>多乘个 $x$</td>
+</tr>
+<tr>
+<td>共轭复根 $r=\alpha\pm\beta i$</td>
+<td>$y=e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)$</td>
+<td>欧拉公式</td>
+</tr>
+</tbody>
+</table>
+<p><b>直觉(几何)</b> 特征方程来自"猜"解 $y=e^{rx}$: 代入得 $(r^2+pr+q)e^{rx}=0$, 由于 $e^{rx}\neq0$, 等价于 $r^2+pr+q=0$。解就是指数函数——常系数意味着导数只是"乘 $r$"的操作, 所以指数函数是自然的尝试。</p>
+<p><b>重根为何多乘 $x$?</b> 当 $r$ 是重根时, $e^{rx}$ 只是一个解。用常数变易法可找到第二个解 $xe^{rx}$——可以验证: $(xe^{rx})''+p(xe^{rx})'+q(xe^{rx})=0$ 恰好成立(因为 $r$ 使特征多项式和其导数都为零)。</p>
+<p><b>复根为何出三角函数?</b> 欧拉公式 $e^{(\alpha+\beta i)x}=e^{\alpha x}(\cos\beta x+i\sin\beta x)$, 实部和虚部分别是解。由于方程系数是实数, 实部和虚部各自独立成解。</p>
+<h3 id="42n阶常系数齐次线性方程">4.2 $n$ 阶常系数齐次线性方程</h3>
+<p>推广到 $n$ 阶: $y^{(n)}+P_1y^{(n-1)}+\cdots+P_{n-1}y'+P_ny=0$</p>
+<p>特征方程 $r^n+P_1r^{n-1}+\cdots+P_{n-1}r+P_n=0$, 根据根的形式对应:</p>
+<table>
+<thead>
+<tr>
+<th>特征根</th>
+<th>通解中的对应项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单实根 $r$</td>
+<td>$Ce^{rx}$</td>
+</tr>
+<tr>
+<td>$k$ 重实根 $r$</td>
+<td>$e^{rx}(C_1+C_2x+\cdots+C_kx^{k-1})$</td>
+</tr>
+<tr>
+<td>一对单复根 $\alpha\pm\beta i$</td>
+<td>$e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)$</td>
+</tr>
+<tr>
+<td>一对 $k$ 重复根 $\alpha\pm\beta i$</td>
+<td>$e^{\alpha x}[(C_1+\cdots+C_kx^{k-1})\cos\beta x+(D_1+\cdots+D_kx^{k-1})\sin\beta x]$</td>
+</tr>
+</tbody>
+</table>
+<p><b>规律</b>: 每出现一个重数, 就多乘一个 $x$ 的多项式。复根用欧拉公式拆成三角函数。</p>
+<h3 id="43非齐次方程ypyqyfx必考">4.3 非齐次方程: $y''+py'+qy=f(x)$ <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b> 通解 = 齐次方程的通解 + 非齐次方程的一个特解:
+$$ y = Y + y^* $$</p>
+<p>其中 $Y=C_1y_1+C_2y_2$ 为齐次通解, $y^*$ 为任一个非齐次特解。</p>
+<p><b>求特解方法——待定系数法</b> (适用于 $f(x)$ 为特定形式):</p>
+<p><b>类型一</b>: $f(x)=P_n(x)e^{\lambda x}$</p>
+<p>设 $y^* = x^k \cdot Q_n(x) \cdot e^{\lambda x}$</p>
+<p>其中 $Q_n(x)$ 是与 $P_n(x)$ 同次的<b>一般</b>多项式(系数待定), $k$ 按 $\lambda$ 是否为特征根取值:</p>
+<ul>
+<li>$\lambda$ 不是特征根: $k=0$</li>
+<li>$\lambda$ 是单特征根: $k=1$</li>
+<li>$\lambda$ 是二重特征根: $k=2$</li>
+</ul>
+<p><b>类型二</b>: $f(x)=e^{\lambda x}[P_l(x)\cos\beta x + P_n(x)\sin\beta x]$</p>
+<p>设 $y^* = x^k \cdot e^{\lambda x}[R_m(x)\cos\beta x + S_m(x)\sin\beta x]$</p>
+<p>其中 $m=\max\{l,n\}$, $R_m,S_m$ 是 $m$ 次一般多项式, $k$ 按 $\lambda\pm\beta i$ 是否为特征根取值:</p>
+<ul>
+<li>$\lambda\pm\beta i$ 不是特征根: $k=0$</li>
+<li>$\lambda\pm\beta i$ 是特征根: $k=1$</li>
+</ul>
+<p><b>要点</b>: 即使 $f(x)$ 只含 $\cos$ 或只含 $\sin$, 特解中也<b>必须同时设 $\cos$ 和 $\sin$</b>——因为求导过程中它们会互相转换。</p>
+<p><b>项数补齐</b> <span class="mk warn">易错</span> $Q_n(x)$ 必须设成<b>完整的 $n$ 次一般多项式</b>: $f(x)=x^2$ 要设 $ax^2+bx+c$, 缺的次项($x^1,x^0$)也要设——凑微分后各项系数独立待定, 漏设一项方程就无解。(课件口诀: "①同型 ②项数补齐 ③重复乘 $x$ ④$\sin$/$\cos$ 成对设")</p>
+<p><b>直觉(待定系数法的原理)</b> 常系数方程下, 特定形式的 $f(x)$(指数乘多项式乘三角函数)求导后形式不变, 只是系数改变。所以特解必然也是同样形式的函数, 只是多项式次数可能升高(当 $\lambda$ 撞特征根时)。$x^k$ 就是处理"共振"用的。</p>
+<p><span class="src">【来源: 0516（2）、0723（1）】</span></p>
+<hr />
+<h2 id="五线性微分方程解的结构必考">五、线性微分方程解的结构 <span class="mk biz">必考</span></h2>
+<p>这是理论性最强、但选择题最爱考的部分。</p>
+<h3 id="51齐次线性方程的叠加原理">5.1 齐次线性方程的叠加原理</h3>
+<p>若 $y_1,y_2$ 是齐次线性方程 $y''+P(x)y'+Q(x)y=0$ 的解, 则:</p>
+<ul>
+<li>$y_1+y_2$ 仍是解</li>
+<li>$ky_1$ ($k$ 为任意常数) 仍是解</li>
+<li>$C_1y_1+C_2y_2$ 仍是解</li>
+</ul>
+<p><b>条件</b>: $y_1$ 和 $y_2$ 必须<b>线性无关</b>(即 $\frac{y_1}{y_2}$ 不是常数)。此时 $C_1y_1+C_2y_2$ 就是通解。</p>
+<h3 id="52非齐次线性方程的结构">5.2 非齐次线性方程的结构</h3>
+<p>若 $y^*$ 是非齐次方程的一个特解, $Y$ 是对应齐次方程的通解, 则:
+$$ y = Y + y^* \quad\text{是非齐次方程的通解} $$</p>
+<p><b>推论</b>:</p>
+<ul>
+<li>若 $y_1,y_2$ 是非齐次方程的两个不同的解, 则 <b>$y_1-y_2$ 是齐次方程的解</b>。</li>
+<li>非齐次通解 = 非齐次的一个特解 + 齐次通解</li>
+<li><b>单项叠加性</b> <span class="mk info">注意</span> 齐次解 $Y$ + 非齐次特解 $y^*$ 仍是非齐次方程的解(选择题常考): 因为 $L[Y+y^*]=L[Y]+L[y^*]=0+f(x)=f(x)$。与"两个非齐次解之差是齐次解"互为一对。</li>
+</ul>
+<p><b>直觉(解空间的仿射结构)</b> 非齐次解集 = 一个特解 + 齐次解空间(向量空间), 这在<b>线性代数里同构</b>: $A\mathbf{x}=\mathbf{b}$ 的通解 = $\mathbf{x}_0^*$ + 齐次解空间。微分方程与线性方程组的解结构是同一套理论, 可互相印证。</p>
+<p><b>考法视角</b> 考题典型套路: 给你几个非齐次方程的解, 问你通解是什么。做法: (1) 用两个非齐次特解相减得到齐次解 → (2) 组合出齐通 → (3) 加上任一个非齐特解 → 得非齐通解。</p>
+<p><span class="src">【来源: 0516（1）、0723（1）】</span></p>
+<hr />
+<h2 id="六差分方程数三专属必考">六、差分方程 (数三专属) <span class="mk biz">必考</span></h2>
+<h3 id="61一阶常系数差分方程">6.1 一阶常系数差分方程</h3>
+<p><b>标准形式</b>: $y_{x+1} - Py_x = f(x)$</p>
+<p><b>齐次情况</b> ($f(x)=0$): 特征方程 $r-P=0$, 通解 $y_x = C\cdot P^x$</p>
+<p><b>非齐次情况</b> ($f(x)=\alpha^x P_n(x)$): 设特解 $y_x^* = \alpha^x \cdot x^k \cdot T_n(x)$</p>
+<p>其中 $T_n(x)$ 是与 $P_n(x)$ 同次的 $n$ 次一般多项式, $k$ 取值:</p>
+<ul>
+<li>$\alpha \neq P$ (即 $f(x)$ 的底 $\neq$ 特征根): $k=0$</li>
+<li>$\alpha = P$: $k=1$</li>
+</ul>
+<p>非齐次通解: $y_x = C\cdot P^x + y_x^*$</p>
+<p><b>直觉</b> 差分方程是微分方程的离散版本。$y_{x+1}-y_x$ (即 $\Delta y_x$) 对应 $y'$, $P$ 对应特征根 $r$, $\alpha^x$ 对应 $e^{\lambda x}$。整个理论完全平行。</p>
+<h3 id="62差分的定义">6.2 差分的定义</h3>
+<p>$$ \Delta y_x = y_{x+1} - y_x $$
+$$ \Delta^2 y_x = \Delta(\Delta y_x) = y_{x+2} - 2y_{x+1} + y_x $$</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> $\Delta^2 y_x$ 展开时系数容易写错: $y_{x+2}-2y_{x+1}+y_x$, 不是 $y_{x+2}-y_x$。</p>
+<h3 id="63二阶常系数差分方程了解注意">6.3 二阶常系数差分方程(了解) <span class="mk info">注意</span></h3>
+<p><b>标准形式</b>: $y_{x+2}+ay_{x+1}+by_x=f(x)$, 特征方程 $r^2+ar+b=0$。</p>
+<p><b>齐次通解</b>: 两根 $r_1\neq r_2$: $C_1r_1^x+C_2r_2^x$; 二重根 $r$: $(C_1+C_2x)r^x$; 共轭复根 $\rho e^{\pm i\theta}$: $\rho^x(C_1\cos\theta x+C_2\sin\theta x)$——与二阶常系数微分方程<b>完全平行</b>(微分: $e^{\lambda x}$ 换成差分: $r^x$)。</p>
+<p><b>特解形式</b>: 与一阶同法, 设 $y_x^*=\alpha^x x^k T_n(x)$, $k$ 按 $\alpha$ 是否撞特征根取 0/1/2。</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> <b>零根不产生新解</b>: 特征方程有 $r=0$ 时, 对应的齐次解是 $C\cdot0^x$ 只当 $x=0$ 时是 $C$、其余为 0——不是独立的解形态, 不额外写。例: $y_{x+2}-2y_{x+1}=5$ 的特征方程 $r^2-2r=0$ 得 $r_1=2, r_2=0$, 齐通只是 $C\cdot2^x$, 特解设 $A$(常数)得 $A-2A=5$ ⇒ $A=-5$。</p>
+<p><span class="src">【来源: 0723（1）、0723（2）】</span></p>
+<hr />
+<h2 id="七微分方程的应用">七、微分方程的应用</h2>
+<h3 id="71几何应用高频">7.1 几何应用 <span class="mk freq">高频</span></h3>
+<p><b>切线斜率</b> = $y'$。曲线 $y=y(x)$ 上过 $(x_0,y_0)$ 的切线方程:
+$$ Y - y_0 = y'(x_0)(X - x_0) $$
+切线在 $y$ 轴截距: $Y=y_0-y'(x_0)x_0$</p>
+<p><b>法线</b> 垂直于切线, 斜率 $-\frac{1}{y'}$。</p>
+<p><b>面积条件</b>: "曲线与坐标轴围成的面积等于某值"——写出定积分等式, 两边求导得微分方程。</p>
+<p><b>解题流程</b>: ① 设未知函数 → ② 根据几何条件翻译为方程 → ③ 求解 → ④ 用初始条件定常数。</p>
+<h3 id="72物理应用牛顿冷却定律等">7.2 物理应用 (牛顿冷却定律等)</h3>
+<p><b>温度变化率</b> $\propto$ 温差 → $\frac{dT}{dt}=k(T-T_{\text{环境}})$。这是 $\frac{dT}{dt}+(-k)T=-kT_{\text{环境}}$, 一阶线性的标准型。</p>
+<h3 id="73积分方程化为微分方程">7.3 积分方程化为微分方程</h3>
+<p><b>识别特征</b>: 方程中出现 $\int_a^x f(t)\,dt$ 或 $\int_a^b f(x,t)\,dt$。</p>
+<p><b>方法</b>: 两边对 $x$ 求导, 积分的导数用微积分基本定理, 含参变量的积分用莱布尼茨公式。变为微分方程后求解, 再回代利用原积分条件定常数。</p>
+<p><b>关键</b>: 从原积分方程中提取<b>初始条件</b>——取 $x$ 为下限值时代入, 积分大多为零, 直接给出 $f(0)$ 或 $f'(0)$。</p>
+<h3 id="74函数方程型把函数方程翻译成微分方程高频">7.4 函数方程型(把函数方程翻译成微分方程) <span class="mk freq">高频</span></h3>
+<p><b>识别特征</b>: 题设给"对任意 $x,y$ 成立"的函数等式, 如 $f(x+y)=e^y f(x)+e^x f(y)$。</p>
+<p><b>方法三连</b>:</p>
+<ol>
+<li><b>固定 $x$, 令 $y\to0$ 构造导数</b>: $\lim_{y\to0}\frac{f(x+y)-f(x)}{y}=f'(x)$, 右边也除以 $y$ 后取极限;</li>
+<li>用等价无穷小与初值($f(0)$ 由原式令 $x=0$ 或 $y=0$ 提取)把右边化成一阶线性方程 $y'-y=\text{常数}\cdot e^x$;</li>
+<li>套一阶线性通解公式, 代初值定常数。</li>
+</ol>
+<p><b>例</b>: $f(x+y)=e^y f(x)+e^x f(y)$, $f$ 连续。</p>
+<ul>
+<li>原式令 $y=0$: $f(x)=f(x)+e^x f(0)$ ⇒ $f(0)=0$(初值!)</li>
+<li>$\lim_{y\to0}\frac{f(x+y)-f(x)}{y}=\lim_{y\to0}\left[\frac{e^y-1}{y}f(x)+e^x\frac{f(y)-f(0)}{y}\right]=f(x)+e^x f'(0)$</li>
+<li>得 $f'(x)-f(x)=e^x f'(0)$, 解得 $f(x)=e^x[f'(0)x+C]$, 代 $f(0)=0$ 得 $C=0$, 即 $f(x)=f'(0)\,xe^x$。</li>
+</ul>
+<p><b>直觉</b> 函数方程给的是"整体关系", 微分方程给的是"局部关系"——取极限把整体关系"切片"成局部关系, 这就是翻译的本质。连续性保证极限能取到。</p>
+<p><span class="src">【来源: 0723（1）、0723（2）】</span></p>
+<hr />
+<h2 id="知识连接">知识连接</h2>
+<ol>
+<li><b>微分方程 ↔ 不定积分</b>: 可分离变量 = 两个不定积分; $y^{(n)}=f(x)$ = 连续 $n$ 次积分</li>
+<li><b>微分方程 ↔ 特征值与特征向量</b>(线代): 二阶常系数齐次的 $r^2+pr+q=0$ 本质是矩阵 $\begin{pmatrix}0&1\\-q&-p\end{pmatrix}$ 的特征方程</li>
+<li><b>差分方程 ↔ 数列递推</b>: $y_{x+1}=Py_x+f(x)$ 就是递推公式, 解法思想与微分方程完全平行</li>
+<li><b>积分方程 → 微分方程</b>: 求导消掉积分号, 但务必从原方程提取初始条件</li>
+<li><b>物理建模</b>: 速率正比(冷却、衰减、增长) → 一阶线性; 振动(弹簧、电路) → 二阶常系数</li>
+<li><b>待定系数法 ↔ 多项式恒等</b>: 设出带系数的形式, 代入后比较同次项系数——本质是解线性方程组</li>
+</ol></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_积分_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 积分_例题</b></span></a><a class="next" href="数学_微分方程_例题.html"><span class="pg-t"><small>下一篇</small><b>数学 · 微分方程_例题</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

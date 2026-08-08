@@ -1,0 +1,628 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>向量 · 线代救命 · 成册</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">线</span><span class="bt"><b>线代救命</b><small>BILIBILI · 没咋了</small></span></div>
+<a class="subj" href="线代救命_首页.html">⌂ 封面/目录</a>
+<a class="b" href="01_行列式与矩阵.html">行列式与矩阵</a>
+<a class="c" href="01_行列式与矩阵_例题.html">▸ 行列式与矩阵_例题</a>
+<a class="b" href="02_矩阵的秩与分块矩阵.html">矩阵的秩与分块矩阵</a>
+<a class="c" href="02_矩阵的秩与分块矩阵_例题.html">▸ 矩阵的秩与分块矩阵_例题</a>
+<a class="b on" href="03_向量.html">向量</a>
+<a class="c" href="03_向量_例题.html">▸ 向量_例题</a>
+<a class="b" href="04_线性方程组.html">线性方程组</a>
+<a class="c" href="04_线性方程组_例题.html">▸ 线性方程组_例题</a>
+<a class="b" href="05_矩阵相似.html">矩阵相似</a>
+<a class="c" href="05_矩阵相似_例题.html">▸ 矩阵相似_例题</a>
+<a class="b" href="06_二次型.html">二次型</a>
+<a class="c" href="06_二次型_例题.html">▸ 二次型_例题</a></nav><main><div class="article"><blockquote>
+<p>覆盖: 讲义 2.1-2.4(例 2.1-2.19) | 视频#3 | 手稿 P25-P34
+📖 例题全量见: <a href="03_向量_例题.html">第3讲 · 例题集</a> <span class="src">【来源: 视频#3、讲义 2.1-2.4】</span></p>
+</blockquote>
+<h2 id="本讲定位">本讲定位</h2>
+<p>老师带病开工: 开场先说明前两天没更新是因为阳了在发烧, 录本讲时还在咳嗽, 请大家体谅; 讲义与答案在公众号「没咋了」回复"线代救命"获取。这是系列第 3 讲(老师口称"第二节课"), 完整讲完讲义第 2 章「向量」, 也是他点名"基础好的同学可以只挑一部分听"的一讲——每节课程都加了章节进度条, 他给的选听建议: 基础好的只补 <b>2.4 向量组等价</b> + 第 4 讲线性方程组的同解问题(加起来约一小时), 基础一般的全部听完。</p>
+<p>四个小节的分工:</p>
+<ul>
+<li><b>2.1 向量的概念</b>: 定义、内积、模、正交——全是"地基", 几分钟扫完</li>
+<li><b>2.2 线性相关与线性表出</b>: 本讲的重心, 定义辨析 + 三大定理 + 五大判别手段</li>
+<li><b>2.3 极大线性无关组</b>: 行阶梯求法, 相对死板但必考</li>
+<li><b>2.4 向量组等价</b>: 最难, 老师反复强调"这是很多人学不好的地方"</li>
+</ul>
+<p>贯穿全章的一句话: <b>所有的判断最终都落在"秩"上</b>——相关 = 齐次方程组有非零解 = 列不满秩; 表出 = 非齐次方程组有解 = 系数秩等于增广秩。而"矩阵乘法的分块解读"是把向量语言和矩阵语言接通的钥匙(讲义原话: <b>矩阵乘法是线代精髓, 多看两遍</b>)。</p>
+<hr />
+<h2 id="21向量的概念">2.1 向量的概念</h2>
+<h3 id="定义n个数构成的有序数组">定义: n 个数构成的有序数组</h3>
+<p><b>定义</b> 由 n 个数构成的有序数组 $(a_1, a_2, \dots, a_n)^{\mathrm{T}}$ 或 $(a_1, a_2, \dots, a_n)$, 称为 <b>n 维列向量</b> 或 <b>n 维行向量</b>。</p>
+<p><b>直觉</b> 列向量竖着写不符合书写习惯、还占位置, 所以约定: 把行向量打个转置来表示列向量, 写 $(a_1,\dots,a_n)^{\mathrm{T}}$ 时它是个列向量——<b>右上角的转置记号别丢</b><span class="mk info">注意</span>。向量是"有序"的数组: 顺序不同的数组是两个不同的向量。</p>
+<h3 id="内积模与正交高频">内积、模与正交 <span class="mk freq">高频</span></h3>
+<p><b>定义</b> 设 $\boldsymbol{\alpha} = (a_1, \dots, a_n)^{\mathrm{T}}$, $\boldsymbol{\beta} = (b_1, \dots, b_n)^{\mathrm{T}}$, 则内积</p>
+<p>$$ \boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\beta} = (\boldsymbol{\alpha},\boldsymbol{\beta}) = a_1b_1 + a_2b_2 + \cdots + a_nb_n $$</p>
+<p>是一个<b>数</b>(不是向量)。$\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\beta}$ 与 $\boldsymbol{\beta}^{\mathrm{T}}\boldsymbol{\alpha}$ 是同一个东西(对称性)。</p>
+<p><b>内积的性质</b></p>
+<table>
+<thead>
+<tr>
+<th>性质</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(1) 非负</td>
+<td>$\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\alpha} = \sum a_i^2 \ge 0$</td>
+<td>平方和</td>
+</tr>
+<tr>
+<td>(2) 模</td>
+<td>$\lVert \boldsymbol{\alpha} \rVert = \sqrt{\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\alpha}} = \sqrt{\sum a_i^2}$</td>
+<td>长度</td>
+</tr>
+<tr>
+<td>(3) 零判定</td>
+<td>$\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\alpha} = 0 \iff \boldsymbol{\alpha} = \boldsymbol{0}$</td>
+<td><span class="mk ok">重点</span>见下</td>
+</tr>
+<tr>
+<td>(4) 对称</td>
+<td>$\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\beta} = \boldsymbol{\beta}^{\mathrm{T}}\boldsymbol{\alpha}$</td>
+<td>换序不换值</td>
+</tr>
+</tbody>
+</table>
+<p>性质 (3) 是老师点名要记住的一条<span class="mk ok">重点</span>: 内积是平方和, 平方和等于零 ⟹ 每个分量都等于零 ⟹ 向量是零向量。第 4 讲解同解方程组时会反复用到这个"平方和 = 0 ⟹ 每个分量为 0"的推理。</p>
+<p><b>正交</b> $\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\beta} = 0$ 时称 $\boldsymbol{\alpha}$ 与 $\boldsymbol{\beta}$ <b>正交</b>。两点补充<span class="mk warn">易错</span>:</p>
+<ul>
+<li>零向量与任意向量正交(内积恒为 0);</li>
+<li><b>非零向量两两正交 ⟹ 线性无关</b><span class="mk biz">必考</span>: 设 $\sum c_i\boldsymbol{\beta}_i = \boldsymbol{0}$, 两边左乘 $\boldsymbol{\beta}_j^{\mathrm{T}}$, 除第 j 项外全为 0(正交), 得 $c_j\boldsymbol{\beta}_j^{\mathrm{T}}\boldsymbol{\beta}_j = 0$, 由非零向量模方大于 0 得 $c_j = 0$。前提"非零"不能丢——混进零向量立刻相关(例 2.10 的陷阱)。</li>
+</ul>
+<h2 id="22向量组线性相关与线性表出必考全讲重心">2.2 向量组线性相关与线性表出 【必考 · 全讲重心】</h2>
+<h3 id="定义有一组与任一组易错">定义: "有一组"与"任一组" <span class="mk warn">易错</span></h3>
+<p><b>线性相关</b> 存在一组<b>不全为零</b>的数 $k_1, \dots, k_s$, 使得</p>
+<p>$$ k_1\boldsymbol{\alpha}_1 + k_2\boldsymbol{\alpha}_2 + \cdots + k_s\boldsymbol{\alpha}_s = \boldsymbol{0} $$</p>
+<p><b>线性无关</b> 找不到这样一组不全为零的数——即上式想成立, 只能 $k_1 = \cdots = k_s = 0$。</p>
+<p>老师的话: 相关是"<b>存在一种情况</b>", 无关是"<b>一种情况都找不到</b>"——把相关的可能性全部排除掉才是无关。因此做概念辨析题有个小经验<span class="mk warn">易错</span>: 相关的问题里, 带"任意"字样的选项往往错; 无关的问题里, 带"存在/有一组"字样的选项往往错(例 2.1、2.2 全是这个规律)。这只是辅助判断, 不能直接拿来解题。</p>
+<h3 id="线性表出与相关的区别注意">线性表出: 与相关的区别 <span class="mk info">注意</span></h3>
+<p><b>定义</b> 若存在 $k_1, \dots, k_s$ 使 $\boldsymbol{\beta} = k_1\boldsymbol{\alpha}_1 + \cdots + k_s\boldsymbol{\alpha}_s$, 称 $\boldsymbol{\beta}$ 可由向量组 $\boldsymbol{\alpha}_1, \dots, \boldsymbol{\alpha}_s$ 线性表出。</p>
+<p>与"相关"定义的关键区别: 表出对系数 k <b>没有"不全为零"的要求</b>(全为零也可以)。于是:</p>
+<ul>
+<li><b>零向量可由任意向量组表出</b>(系数全取 0 即可)——所以表出问题一般只讨论 $\boldsymbol{\beta} \ne \boldsymbol{0}$ 的情况, 零向量没有探讨价值;</li>
+<li><b>相关 ⟺ 存在一个向量可由其余向量线性表出</b>(例 2.1 的结论 C, 必考)——这是连接"相关"与"表出"的桥梁。</li>
+</ul>
+<h3 id="判别相关表出的五大手段必考">判别相关/表出的五大手段 <span class="mk biz">必考</span></h3>
+<ol>
+<li><b>定义法</b>——最直接, 按定义凑系数</li>
+<li><b>反证法</b>——老师个人偏爱, 设反面推矛盾</li>
+<li><b>性质</b>(三大定理, 见下)——形式合适时最快</li>
+<li><b>秩的语言</b>——判断相关性的"终极武器"</li>
+<li><b>方程组有解</b>——把向量问题翻译成线性方程组</li>
+</ol>
+<p><b>手段 4、5 的统一语言</b>(矩阵乘法): $\sum k_i\boldsymbol{\alpha}_i$ 写成矩阵乘法</p>
+<p>$$ k_1\boldsymbol{\alpha}_1 + \cdots + k_s\boldsymbol{\alpha}_s = (\boldsymbol{\alpha}_1, \dots, \boldsymbol{\alpha}_s)\begin{pmatrix} k_1 \\ \vdots \\ k_s \end{pmatrix} = A\boldsymbol{k} $$</p>
+<p>设 $A = (\boldsymbol{\alpha}_1, \dots, \boldsymbol{\alpha}_s)$(s 个列向量), 则:</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>方程组语言</th>
+<th>秩的语言</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线性相关</td>
+<td>$A\boldsymbol{k} = \boldsymbol{0}$ 有非零解</td>
+<td>$r(A) < s$(列不满秩)</td>
+</tr>
+<tr>
+<td>线性无关</td>
+<td>$A\boldsymbol{k} = \boldsymbol{0}$ 只有零解</td>
+<td>$r(A) = s$(列满秩)</td>
+</tr>
+<tr>
+<td>$\boldsymbol{\beta}$ 可由 $\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s$ 表出</td>
+<td>$A\boldsymbol{k} = \boldsymbol{\beta}$ 有解</td>
+<td>$r(A) = r(A, \boldsymbol{\beta})$</td>
+</tr>
+</tbody>
+</table>
+<p>老师的态度: 定义和性质"形式特别合适"就用(像算极限用等价无穷小), 不合适就从秩、方程组、反证法下手(像用泰勒)——<b>具体问题具体分析</b>, 别拿着一招无脑套。</p>
+<h3 id="定理1整体与部分必考">定理 1: 整体与部分 <span class="mk biz">必考</span></h3>
+<p><b>部分相关, 整体相关</b>; <b>整体无关, 部分无关</b>。即: 相关向量组加向量仍相关; 无关向量组抽向量仍无关。</p>
+<p>口诀: "部分相关整体相关, 整体无关部分无关"。</p>
+<p>秩视角理解: 相关 = 列不满秩, 加列仍不满秩; 无关 = 列满秩, 抽列仍列满秩——一句话的事。</p>
+<p><span class="mk warn">易错</span>整体相关, 抽掉一部分后<b>相关与否无法判断</b>!(例 2.3(2)): $(1,0),(0,1),(1,1)$ 相关, 去掉 $(1,1)$ 剩 $(1,0),(0,1)$ 无关; 而 $(1,0),(2,0),(0,1)$ 相关, 去掉 $(0,1)$ 剩 $(1,0),(2,0)$ 仍相关。定理只保证"整体无关 ⟹ 部分无关"这一个方向。</p>
+<h3 id="定理2接长与缩短必考">定理 2: 接长与缩短 <span class="mk biz">必考</span></h3>
+<ul>
+<li>无关向量组, 每个向量<b>接长</b>(加分量)后仍无关;</li>
+<li>相关向量组, 每个向量<b>缩短</b>(减分量)后仍相关。</li>
+</ul>
+<p>方程组视角理解: 把向量看成方程的系数行, 接长 = 增加方程 = 增加约束, 原来只有零解, 约束更多仍只有零解; 缩短 = 减少方程 = 解集扩大, 原来有非零解, 解集更大仍有非零解。从"解集随约束单调收缩"看, 这两句是同一件事。</p>
+<p><span class="mk warn">易错</span>反方向都不行: 缩短版相关 ⟹ 接长版相关? 不能保证(例 2.4 ③); 缩短版无关 ⟹ 接长版无关? 也不能保证(加分量可能把向量"掰开")。<b>只有"无关接长"和"相关缩短"两个方向可用</b>。</p>
+<h3 id="定理3以少表多多的相关必考">定理 3: 以少表多, 多的相关 <span class="mk biz">必考</span></h3>
+<p>若向量组 $\boldsymbol{\beta}_1, \dots, \boldsymbol{\beta}_t$ 可由 $\boldsymbol{\alpha}_1, \dots, \boldsymbol{\alpha}_s$ 线性表出, 且 $t > s$, 则 $\boldsymbol{\beta}_1, \dots, \boldsymbol{\beta}_t$ 线性相关。</p>
+<p>口诀: "以少表多, 多的相关"。直觉: s 个向量张出的空间容不下 t 个无关向量——多出来的必然是"废"的。</p>
+<p>证明(反证 + 秩): 设 $\boldsymbol{\beta}$ 组无关 ⟹ $r(\boldsymbol{\beta}_1,\dots,\boldsymbol{\beta}_t) = t$; 能被 $\boldsymbol{\alpha}$ 组表出 ⟹ $r(\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s) \ge t$(能表出别人的, 信息量不小); 但向量组的秩超不过向量个数, $r(\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s) \le s < t$, 矛盾。</p>
+<h3 id="秩的语言三个常用不等式必考">秩的语言: 三个常用不等式 <span class="mk biz">必考</span></h3>
+<ol>
+<li>向量组的秩 ≤ 向量个数("个数 ≥ 秩"——处理"向量个数比较"问题的万能桥梁, 例 2.8 ③④ 全靠它)</li>
+<li>组 I 可由组 II 表出 ⟹ $r(\mathrm{II}) \ge r(\mathrm{I})$——表出方向与秩的大小方向相反</li>
+<li>相关 ⟺ 秩 &lt; 个数; 无关 ⟺ 秩 = 个数</li>
+</ol>
+<h2 id="23极大线性无关组">2.3 极大线性无关组</h2>
+<h3 id="定义全体的代表重点">定义: 全体的"代表" <span class="mk ok">重点</span></h3>
+<p><b>定义</b> 若向量组 $\boldsymbol{\alpha}_1, \dots, \boldsymbol{\alpha}_s$ 中存在 r 个向量 $\boldsymbol{\alpha}_{i_1}, \dots, \boldsymbol{\alpha}_{i_r}$ 线性无关, 且再添加组中任一个向量就变得线性相关, 则称这 r 个向量是原向量组的一个<b>极大线性无关组</b>; 所含向量个数 r 称为<b>向量组的秩</b>, 记 $r(\boldsymbol{\alpha}_1, \dots, \boldsymbol{\alpha}_s)$。</p>
+<p><b>直觉</b> 极大无关组是能"代表"全体向量的班子——组里每个向量都能由它表出, 它自己又保持无关。判定它只需要两条:</p>
+<ol>
+<li>线性无关;</li>
+<li>个数 = 向量组的秩。</li>
+</ol>
+<h3 id="秩为r时的四个提醒易错">秩为 r 时的四个提醒 <span class="mk warn">易错</span></h3>
+<table>
+<thead>
+<tr>
+<th>说法</th>
+<th>对错</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任意 r 个向量都是极大无关组</td>
+<td>错</td>
+<td>那 r 个向量可能相关(例 2.11: {α1,α2,α4} 就不行)</td>
+</tr>
+<tr>
+<td>任意 r 个线性无关的向量都是极大无关组</td>
+<td>对</td>
+<td>无关 + 个数够, 自动能表出其余所有向量</td>
+</tr>
+<tr>
+<td>多于 r 个向量的向量组一定线性相关</td>
+<td>对</td>
+<td>秩超不过 r, 满不了秩</td>
+</tr>
+<tr>
+<td>r 个向量的向量组一定线性无关</td>
+<td>错</td>
+<td>得恰好取到无关的那组</td>
+</tr>
+</tbody>
+</table>
+<h3 id="求法初等行变换行阶梯高频">求法: 初等行变换 → 行阶梯 <span class="mk freq">高频</span></h3>
+<p><b>原理</b> 初等行变换<b>不改变列向量组的线性相关性</b>——可以在变换后的矩阵上找无关组, 结论对原矩阵照样成立。</p>
+<p><b>为什么</b> 列之间的线性关系由一组系数表达: $k_1\boldsymbol{\alpha}_1 + \cdots + k_s\boldsymbol{\alpha}_s = \boldsymbol{0}$ 是齐次方程组, 初等行变换是同解变换, 系数组原封不动(这一条老师在第 1 讲求极大无关组时埋了伏笔, 本讲结尾才点破)。</p>
+<p><b>步骤</b></p>
+<ol>
+<li>把向量按列拼成矩阵</li>
+<li>初等行变换化成行阶梯</li>
+<li>含台阶(主元)的列, 对应原矩阵的列构成一个极大无关组; 主元个数 = 秩</li>
+</ol>
+<p><span class="mk info">注意</span>极大无关组不唯一: 只要取到的列在阶梯里"地位相同"即可(例 2.11: {α1,α2,α3} 与 {α1,α3,α4} 都行, {α1,α2,α4} 不行——后三者在阶梯中相关)。拿不准就算一算对应的子式。</p>
+<h2 id="24向量组等价必考最难">2.4 向量组等价 【必考 · 最难】</h2>
+<h3 id="定义与三个充要条件">定义与三个充要条件</h3>
+<p>同维向量组 $\{\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s\}$ 与 $\{\boldsymbol{\beta}_1,\dots,\boldsymbol{\beta}_t\}$ <b>等价</b>, 等价于以下任一条:</p>
+<ol>
+<li><b>相互线性表出</b>: 两个组可以互相表示;</li>
+<li><b>单方向表出 + 秩相等</b>: 某一个组能表出另一个组, 且 $r(\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s) = r(\boldsymbol{\beta}_1,\dots,\boldsymbol{\beta}_t)$——最常用的判据;</li>
+<li><b>三秩相同</b>: $r(\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s) = r(\boldsymbol{\beta}_1,\dots,\boldsymbol{\beta}_t) = r(\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s, \boldsymbol{\beta}_1,\dots,\boldsymbol{\beta}_t)$——列向量组把两个组<b>横着拼</b>成一个大矩阵。</li>
+</ol>
+<p><span class="mk info">注意</span>行向量组等价时, 三秩相同要<b>竖着拼</b>: $r(\boldsymbol{\alpha}_1;\dots;\boldsymbol{\alpha}_s) = r(\boldsymbol{\beta}_1;\dots;\boldsymbol{\beta}_t) = r(\boldsymbol{\alpha}_1;\dots;\boldsymbol{\alpha}_s;\boldsymbol{\beta}_1;\dots;\boldsymbol{\beta}_t)$。横拼竖拼别搞混。</p>
+<p><b>两条提醒</b></p>
+<ul>
+<li>向量组与自己的极大无关组等价(极大无关组能表出全体, 且秩相等——判据 2 直接验证);</li>
+<li>该向量组的任意两个极大无关组等价(用"都与原组等价"搭桥)。</li>
+</ul>
+<p><b>两个提问(易错)</b></p>
+<ul>
+<li>等价 + 一个无关 ⟹ 另一个也无关? <b>否</b>——等价只要求相互表出, 对个数没要求, 可以往组里添"废向量": $\{\boldsymbol{e}_1,\boldsymbol{e}_2\}$ 与 $\{\boldsymbol{e}_1,\boldsymbol{e}_2,\boldsymbol{0}\}$ 等价, 后者相关;</li>
+<li>等价 ⟹ 个数相同? <b>否</b>——同上, 随便添废向量都还等价。</li>
+</ul>
+<h3 id="矩阵乘法的分块解读线代精髓必考">矩阵乘法的分块解读: 线代精髓 <span class="mk biz">必考</span></h3>
+<p>设 A 是 m×n 矩阵, B 是 n×s 矩阵, C = AB:</p>
+<ul>
+<li><b>列视角</b>: 对 A、C 按列分块, C 的每一列是 A 的列向量的线性组合($\boldsymbol{c}_j = b_{1j}\boldsymbol{\alpha}_1 + \cdots + b_{nj}\boldsymbol{\alpha}_n$), 即 <b>C 的列可由 A 的列线性表出</b>;</li>
+<li><b>行视角</b>: 对 B、C 按行分块, C 的每一行是 B 的行向量的线性组合, 即 <b>C 的行可由 B 的行线性表出</b>;</li>
+<li><b>AB = O 特例</b>: B 的每一列都是齐次方程组 $A\boldsymbol{x} = \boldsymbol{0}$ 的解。</li>
+</ul>
+<p>老师的记忆技巧<span class="mk warn">易错</span>: 很多人总记混成"AB 的列可由 B 的列表出"。用特殊记一般: B 可逆时右乘相当于做列变换, AB 的列与 A 的列等价(显然由 A 的表出); 特殊成立, 一般的 B 就至少能推出"由 A 的列表出"。同理 A 可逆时, AB 的行与 B 的行等价。</p>
+<p>推论(秩不等式): $r(AB) \le \min\{r(A), r(B)\}$; 能拼在一起时 $r(A, AB) = r(A)$。</p>
+<h3 id="初等变换与等价高频">初等变换与等价 <span class="mk freq">高频</span></h3>
+<ul>
+<li>行变换 ⟺ 左乘可逆阵 ⟹ <b>行向量组等价</b>, 且<b>不改变列的相关性</b>(求极大无关组的原理);</li>
+<li>列变换 ⟺ 右乘可逆阵 ⟹ <b>列向量组等价</b>, 且不改变行的相关性;</li>
+<li><span class="mk warn">易错</span>行变换后, 非齐次方程组 $A\boldsymbol{x} = \boldsymbol{b}$ 与 $B\boldsymbol{x} = \boldsymbol{b}$ <b>未必同解</b>(只有齐次方程组同解); 行列式也可能变号(换行)。</li>
+</ul>
+<hr />
+<h2 id="向量重要结论总结讲义总结页必考">向量重要结论总结(讲义总结页) <span class="mk biz">必考</span></h2>
+<p>老师收官时把本讲结论过了一遍(讲义/手稿末尾的「向量重要结论总结」页), 以下条目建议背熟:</p>
+<p><b>AB = C(m×n 乘 n×s)系列</b></p>
+<table>
+<thead>
+<tr>
+<th>结论</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>列视角</td>
+<td>AB 的列可由 A 的列线性表出 ⟹ $r(AB) \le r(A)$; B 的第 i 列是 $A\boldsymbol{x} = \boldsymbol{c}_i$ 的解(C 按列分块)</td>
+</tr>
+<tr>
+<td>行视角</td>
+<td>AB 的行可由 B 的行线性表出 ⟹ $r(AB) \le r(B)$</td>
+</tr>
+<tr>
+<td>合并</td>
+<td>$r(AB) \le \min\{r(A), r(B)\}$; $r(A, AB) = r(A)$(能拼时)</td>
+</tr>
+<tr>
+<td>AB = O 特例</td>
+<td>B 的列都是 $A\boldsymbol{x} = \boldsymbol{0}$ 的解; B ≠ O ⟹ A 的列线性相关; A ≠ O ⟹ B 的行线性相关; $r(A) + r(B) \le n$(由 $n - r(A) \ge r(B)$ 移项)</td>
+</tr>
+<tr>
+<td>可逆特例</td>
+<td>B 可逆: AB 的列与 A 的列等价; A 可逆: AB 的行与 B 的行等价</td>
+</tr>
+</tbody>
+</table>
+<p><b>向量组等价</b>: 三条件——相互表出 / 单方向表出 + 秩相等 / 三秩相同(列组横拼、行组竖拼)。</p>
+<p><b>初等变换</b>: 行变换 ⟹ 行向量组等价 + 列相关性不变; 列变换 ⟹ 列向量组等价 + 行相关性不变。</p>
+<p><b>正交</b>: 非零向量两两正交 ⟹ 线性无关; 零向量与任意向量正交、可由任意向量组表出。</p>
+<p><b>秩的另一方面(易漏)</b>: $r(A) = r$ 意味着<b>存在</b> r 阶子式 ≠ 0 <b>且所有</b> r+1 阶子式 = 0——判"秩等于多少"两半都得查(例 2.4 ① 的坑)。</p>
+<h3 id="知识连接">知识连接</h3>
+<ul>
+<li><b>与第 2 讲(矩阵)</b>: 分块矩阵的转置(大转加小转)、乘法的行/列分块视角, 本讲是主力工具(例 2.9 用分块转置证 $r(A^{\mathrm{T}}) = r(A)$, 例 2.18 用分块矩阵的秩); "矩阵乘法越乘秩越小"($r(AB) \le \min\{r(A), r(B)\}$)就是本讲表出结论的推论。</li>
+<li><b>与第 4 讲(线性方程组)</b>: 相关 ⟺ $A\boldsymbol{x} = \boldsymbol{0}$ 有非零解, 表出 ⟺ 非齐次有解——本讲的秩语言在第 4 讲直接演变成"解的结构"; 老师点名基础好的同学第 4 讲只需听同解问题, 而同解的证明依赖本讲的内积零判定($\boldsymbol{x}^{\mathrm{T}}\boldsymbol{x} = 0 \iff \boldsymbol{x} = \boldsymbol{0}$)与初等变换性质。</li>
+<li><b>与后续(特征值)</b>: "非零正交 ⟹ 无关"与"不同特征值的特征向量无关"是同一个证明套路——左乘消灭其它项, 留下自己的项再证系数为零; 无关性是特征向量理论的地基。</li>
+<li><b>本章主线</b>: 判定相关/无关/表出的手段 = 定义、反证、性质、秩、方程组——老师讲这十几道例题刻意每题换一种方法, 目的就是让你在考场上"看形式挑方法"。</li>
+</ul><div class="pager"><a href="02_矩阵的秩与分块矩阵_例题.html"><small>← 上一篇</small><b>矩阵的秩与分块矩阵_例题</b></a><a class="next" href="03_向量_例题.html"><small>下一篇 →</small><b>向量_例题</b></a></div></div></main></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script></body></html>

@@ -1,0 +1,1359 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>政治 · 无忧0721_测试卷</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">🏛️ 政治</div><a class="b" href="政治_马原.html">马原</a><a class="c x" href="政治_马原_例题.html">▸ 例题集</a><a class="b" href="政治_史纲.html">史纲</a><a class="c x" href="政治_史纲_例题.html">▸ 例题集</a><a class="b" href="政治_毛中特.html">毛中特</a><a class="c x" href="政治_毛中特_例题.html">▸ 例题集</a><a class="b" href="政治_习概.html">习概</a><a class="c x" href="政治_习概_例题.html">▸ 例题集</a><a class="b" href="政治_思修.html">思修</a><a class="b on" aria-current="page" href="政治_无忧0721_测试卷.html">无忧0721_测试卷</a><a class="c" href="政治_无忧0721_测试卷.html#一试卷概览">一、试卷概览</a><a class="d" href="政治_无忧0721_测试卷.html#11题型与分值分布">1.1 题型与分值分布</a><a class="d" href="政治_无忧0721_测试卷.html#12各科题号与分值分布">1.2 各科题号与分值分布</a><a class="c" href="政治_无忧0721_测试卷.html#二单项选择题精析16题">二、单项选择题精析（16 题）</a><a class="d" href="政治_无忧0721_测试卷.html#21马原部分第1-3题">2.1 马原部分（第 1-3 题）</a><a class="d" href="政治_无忧0721_测试卷.html#22毛中特部分第4-6题">2.2 毛中特部分（第 4-6 题）</a><a class="d" href="政治_无忧0721_测试卷.html#23新思想部分第7-10题">2.3 新思想部分（第 7-10 题）</a><a class="d" href="政治_无忧0721_测试卷.html#24史纲部分第11-13题">2.4 史纲部分（第 11-13 题）</a><a class="d" href="政治_无忧0721_测试卷.html#25思修思法部分第14-16题">2.5 思修/思法部分（第 14-16 题）</a><a class="c" href="政治_无忧0721_测试卷.html#三多项选择题精析17题">三、多项选择题精析（17 题）</a><a class="d" href="政治_无忧0721_测试卷.html#31马原部分第17-19题">3.1 马原部分（第 17-19 题）</a><a class="d" href="政治_无忧0721_测试卷.html#32毛中特部分第20-21题">3.2 毛中特部分（第 20-21 题）</a><a class="d" href="政治_无忧0721_测试卷.html#33新思想部分第22-27题">3.3 新思想部分（第 22-27 题）</a><a class="d" href="政治_无忧0721_测试卷.html#34史纲部分第28-30题">3.4 史纲部分（第 28-30 题）</a><a class="d" href="政治_无忧0721_测试卷.html#35思修思法部分第31-33题">3.5 思修/思法部分（第 31-33 题）</a><a class="c" href="政治_无忧0721_测试卷.html#四测试卷命题特点总结">四、测试卷命题特点总结</a><a class="d" href="政治_无忧0721_测试卷.html#41命题风格">4.1 命题风格</a><a class="d" href="政治_无忧0721_测试卷.html#42高频错误类型">4.2 高频错误类型</a><a class="d" href="政治_无忧0721_测试卷.html#43备考建议">4.3 备考建议</a><a class="b" href="政治_暑期0804_马原测试卷.html">暑期0804_马原测试卷</a></nav>
+<div id="progress"></div>
+<main data-subj="zhengzhi"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>政治 · 无忧0721_测试卷</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>无忧0721_测试卷</h1><div class="board-meta">🏛️ 政治 · <span class="pill">理论笔记</span><span class="pill">4 节</span></div><blockquote>
+<p>阶段: 无忧(0721) | 覆盖课件 2 份:
+全科暑期结课政治测试卷、全科暑期政治结课测试-答题卡</p>
+<p>暑期阶段政治结课测试卷，科目覆盖马原/毛中特/新思想/史纲/思法，满分 50 分，33 道选择题，限时 60 分钟。</p>
+</blockquote>
+<hr />
+<h2 id="一试卷概览">一、试卷概览</h2>
+<h3 id="11题型与分值分布">1.1 题型与分值分布</h3>
+<table>
+<thead>
+<tr>
+<th>题型</th>
+<th>题量</th>
+<th>每题分值</th>
+<th>满分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单项选择题</td>
+<td>16 道（第 1-16 题）</td>
+<td>1 分</td>
+<td>16 分</td>
+</tr>
+<tr>
+<td>多项选择题</td>
+<td>17 道（第 17-33 题）</td>
+<td>2 分</td>
+<td>34 分</td>
+</tr>
+<tr>
+<td><b>合计</b></td>
+<td><b>33 道</b></td>
+<td></td>
+<td><b>50 分</b></td>
+</tr>
+</tbody>
+</table>
+<h3 id="12各科题号与分值分布">1.2 各科题号与分值分布</h3>
+<table>
+<thead>
+<tr>
+<th>科目</th>
+<th>单选题号</th>
+<th>多选题号</th>
+<th>估计分值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>马原</td>
+<td>1, 2, 3</td>
+<td>17, 18, 19</td>
+<td>~7 分</td>
+</tr>
+<tr>
+<td>毛中特</td>
+<td>4, 5, 6</td>
+<td>20, 21</td>
+<td>~6 分</td>
+</tr>
+<tr>
+<td>新思想</td>
+<td>7, 8, 9, 10</td>
+<td>22, 23, 24, 25, 26, 27</td>
+<td>~16 分</td>
+</tr>
+<tr>
+<td>史纲</td>
+<td>11, 12, 13</td>
+<td>28, 29, 30</td>
+<td>~8 分</td>
+</tr>
+<tr>
+<td>思修/思法</td>
+<td>14, 15, 16</td>
+<td>31, 32, 33</td>
+<td>~8 分</td>
+</tr>
+</tbody>
+</table>
+<p><b><span class="mk info">注意</span></b> 新思想（习近平新时代中国特色社会主义思想）占比最高，其他四科相对均匀。这和 2026 年新大纲调整后新思想独立成科的命题趋势一致。</p>
+<hr />
+<h2 id="二单项选择题精析16题">二、单项选择题精析（16 题）</h2>
+<h3 id="21马原部分第1-3题">2.1 马原部分（第 1-3 题）</h3>
+<p><b>第 1 题</b> 社会形态划分的依据是</p>
+<blockquote>
+<p>人类社会历史划分为原始社会、奴隶社会、封建社会、资本主义社会和共产主义社会五种社会形态，其依据是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 生产工具的质量和数量 <br><span class="opt">B.</span> 统治集团的阶级和政治属性 <br><span class="opt">C.</span> 经济基础特别是生产关系的性质 <br><span class="opt">D.</span> 人们社会交往和分工的范围和水平</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+五种社会形态的划分依据是<b>经济基础特别是生产关系的性质</b>。社会形态 = 经济基础 + 上层建筑的统一体，其中经济基础（生产关系的总和）是划分不同社会形态的根本标准。
+
+• A 错误：生产工具是生产力的标志，不是社会形态划分的依据
+• B 错误：统治集团的阶级属性是上层建筑层面的表现，不是根本依据
+• D 错误：社会交往和分工范围是社会形态的外部表现而非本质依据
+
+<b>命题思路</b>：考察历史唯物主义基本原理——社会形态划分的客观标准是生产关系（经济基础），属于马原基础概念题。
+
+</div></details>
+
+<hr />
+<p><b>第 2 题</b> 机器人向"化学家"的转变说明</p>
+<blockquote>
+<p>机器人不仅能根据指令进行实验，还会"思考"实验步骤和方案。机器人向"化学家"的转变说明</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 人工智能是由人创造出来的新的实践主体 <br><span class="opt">B.</span> 人工智能不仅具有实践能力，还具有思维能力 <br><span class="opt">C.</span> 人类意识已经发展到延伸意识器官功能的新阶段 <br><span class="opt">D.</span> 人工智能可以作出以知情意统一为基础的整体决策</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+人工智能是人类意识的物化，是对人类智能的模拟和延伸。它标志着人类意识已经发展到可以延伸意识器官功能的新阶段。
+
+• A 错误：人工智能不是实践主体——实践主体只能是<b>人</b>。"新的实践主体"这个表述就是错的
+• B 错误：人工智能不具有真正意义上的"思维能力"，它只是模拟人类的思维过程，没有意识
+• C 正确：人工智能本质上是对人脑功能的模拟和延伸
+• D 错误：人工智能不能作出"知情意统一"的整体决策——知情意统一是人类意识的特征，AI 没有情感和意志
+
+<b>命题思路</b>：考察人工智能与人类意识的关系，这是马原的常规考点——人工智能模拟人类智能但不等同于人类意识，不具有社会性和主观能动性。
+
+</div></details>
+
+<hr />
+<p><b>第 3 题</b> "差之毫厘，谬以千里"表明</p>
+<blockquote>
+<p>罗伦兹教授用计算机模拟天气预报，因输入数据四舍五入小数点后的一个小小数值，导致结果从晴空万里变为倾盆大雨。这一事实表明</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 真理和谬误是截然对立的 <br><span class="opt">B.</span> 真理和谬误的转化是无条件的 <br><span class="opt">C.</span> 真理超出自己的适用范围就会转化为谬误 <br><span class="opt">D.</span> 真理可以转化为谬误，谬误不能转化为真理</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+题干讲的是"蝴蝶效应"——初始条件的微小差异导致结果的巨大差异。这体现的是<b>真理的界限性</b>：真理超出其适用范围就会转化为谬误。天气预报的数学模型在精确输入数据范围内是有效的（真理），但一旦数据精度超出模型的有效范围（四舍五入造成的微小误差），就产生完全错误的结果（谬误）。
+
+• A 错误：真理和谬误是对立统一的，不是"截然对立"——两者在一定条件下可以相互转化
+• B 错误：转化是有条件的而非无条件
+• C 正确：真理超出适用范围则转化为谬误——这是真理的相对性和条件性的体现
+• D 错误：后半句错——谬误也可以转化为真理（在修正错误认识的过程中）
+
+<b>命题思路</b>：考察真理与谬误的辩证关系。易混点在于选项 B 和 C——关键在于"无条件"vs"有范围限制"。
+
+</div></details>
+
+<hr />
+<h3 id="22毛中特部分第4-6题">2.2 毛中特部分（第 4-6 题）</h3>
+<p><b>第 4 题</b> 毛泽东思想的理论精髓是</p>
+<div class="opts"><span class="opt">A.</span> 实事求是 <br><span class="opt">B.</span> 解放思想、实事求是 <br><span class="opt">C.</span> 实事求是、群众路线、独立自主 <br><span class="opt">D.</span> 解放思想、实事求是、与时俱进</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：A（实事求是）</b>
+
+毛泽东思想的理论精髓是<b>实事求是</b>。注意区分：
+
+• 毛泽东思想活的灵魂是：实事求是、群众路线、独立自主（三个）
+• 毛泽东思想的理论精髓（或"精髓"）专指：实事求是
+• 邓小平理论的精髓是：解放思想、实事求是
+• "解放思想、实事求是、与时俱进"是马克思主义中国化理论成果的精髓概括
+
+<b><span class="mk warn">易错</span></b> 考生容易把"活的灵魂"三个词全选上，但题目问的是"理论精髓"，单指"实事求是"。
+
+</div></details>
+
+<hr />
+<p><b>第 5 题</b> 社会主义的根本任务是</p>
+<div class="opts"><span class="opt">A.</span> 发展生产力 <br><span class="opt">B.</span> 实现共同富裕，进而实现人的自由而全面的发展 <br><span class="opt">C.</span> 实现社会主义现代化和中华民族伟大复兴 <br><span class="opt">D.</span> 以经济建设为中心，实现社会主义现代化</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：A（发展生产力）</b>
+
+社会主义的根本任务是<b>发展生产力</b>——这是邓小平理论中对"什么是社会主义、怎样建设社会主义"的核心回答之一。
+
+• B "实现共同富裕"是社会主义的根本目标/本质要求
+• C "实现社会主义现代化和中华民族伟大复兴"是总任务
+• D "以经济建设为中心"是兴国之要/基本路线的核心
+
+<b><span class="mk warn">易错</span></b> 很多考生容易混淆"根本任务"（发展生产力）和"根本目标"（共同富裕）。
+
+</div></details>
+
+<hr />
+<p><b>第 6 题</b> 社会主义市场经济的特色在于</p>
+<div class="opts"><span class="opt">A.</span> 市场在资源配置中起决定作用 <br><span class="opt">B.</span> 经济运行的基础是市场竞争 <br><span class="opt">C.</span> 坚持社会主义制度与市场经济结合 <br><span class="opt">D.</span> 政府实行必要的、有效的宏观调控</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C（坚持社会主义制度与市场经济结合）</b>
+
+社会主义市场经济的特色就在于<b>把社会主义制度与市场经济结合起来</b>——这是社会主义市场经济区别于资本主义市场经济的根本特征。市场经济本身没有"姓社姓资"之分，但社会主义市场经济是社会主义制度下的市场经济，坚持公有制为主体、按劳分配为主体。
+
+• A（市场在资源配置中起决定作用）和 B（经济运行的基础是市场竞争）是市场经济的共性，非特色
+• D（政府宏观调控）也是现代市场经济的普遍特征
+
+</div></details>
+
+<hr />
+<h3 id="23新思想部分第7-10题">2.3 新思想部分（第 7-10 题）</h3>
+<p><b>第 7 题</b> 构建高水平社会主义市场经济的关键是</p>
+<div class="opts"><span class="opt">A.</span> 激发非公有制经济活力和创造力 <br><span class="opt">B.</span> 毫不动摇地坚持公有制和按劳分配 <br><span class="opt">C.</span> 处理好政府和市场关系 <br><span class="opt">D.</span> 坚持社会主义制度与市场经济的结合</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C（处理好政府和市场关系）</b>
+
+构建高水平社会主义市场经济体制的<b>关键</b>是处理好政府和市场的关系。这是经济体制改革的核心问题。
+
+• A 激发非公有制经济活力和创造力——是重要内容但不是"关键"
+• B 毫不动摇地坚持公有制和按劳分配——是社会主义基本经济制度
+• D 坚持社会主义制度与市场经济的结合——这是社会主义市场经济的"特色"（第 6 题答案），不是构建高水平体制的"关键"
+
+<b><span class="mk warn">易错</span></b> 第 6 题和第 7 题容易混淆——第 6 题问"特色"，第 7 题问"关键"，答案不同。
+
+</div></details>
+
+<hr />
+<p><b>第 8 题</b> 新时代新征程中国共产党的中心任务是</p>
+<div class="opts"><span class="opt">A.</span> 以中国式现代化全面推进中华民族伟大复兴 <br><span class="opt">B.</span> 实现从新民主主义到社会主义的转变 <br><span class="opt">C.</span> 解放和发展生产力，使人民尽快摆脱贫困、尽快富起来 <br><span class="opt">D.</span> 争取民族独立、人民解放</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：A（以中国式现代化全面推进中华民族伟大复兴）</b>
+
+这是党的二十大报告明确提出的新时代新征程中国共产党的中心任务。
+
+• B "实现从新民主主义到社会主义的转变"——社会主义改造时期的任务
+• C "解放和发展生产力，使人民尽快摆脱贫困、尽快富起来"——改革开放初期的任务
+• D "争取民族独立、人民解放"——新民主主义革命时期的任务
+
+<b><span class="mk biz">必考</span></b> 党的二十大报告的核心表述，属于必须精准记忆的时政考点。
+
+</div></details>
+
+<hr />
+<p><b>第 9 题</b> 文艺创作生产要紧紧围绕的根本制度是</p>
+<div class="opts"><span class="opt">A.</span> 落实意识形态工作责任制 <br><span class="opt">B.</span> 坚持马克思主义在意识形态领域指导地位 <br><span class="opt">C.</span> 坚持和加强党对宣传文化事业全面领导 <br><span class="opt">D.</span> 加强和改进学校思想政治教育</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：B（坚持马克思主义在意识形态领域指导地位）</b>
+
+坚持马克思主义在意识形态领域指导地位是<b>根本制度</b>。这是党的十九届四中全会明确提出的。
+
+• A "落实意识形态工作责任制"——是工作制度，不是"根本制度"
+• C "坚持和加强党对宣传文化事业全面领导"——是原则要求
+• D "加强和改进学校思想政治教育"——是具体工作
+
+</div></details>
+
+<hr />
+<p><b>第 10 题</b> "一国两制"的根本宗旨是</p>
+<div class="opts"><span class="opt">A.</span> "爱国者治港""爱国者治澳" <br><span class="opt">B.</span> 中央全面管治权和保障特别行政区高度自治权相统一 <br><span class="opt">C.</span> 国家主体实行社会主义制度，个别地区依法实行资本主义制度 <br><span class="opt">D.</span> 维护国家主权、安全、发展利益，保持香港澳门长期繁荣稳定</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：D（维护国家主权、安全、发展利益，保持香港澳门长期繁荣稳定）</b>
+
+"一国两制"的根本宗旨包含两个层面：一是维护国家主权/安全/发展利益，二是保持港澳长期繁荣稳定。
+
+• A "爱国者治港""爱国者治澳"——是原则要求
+• B "中央全面管治权和保障特别行政区高度自治权相统一"——是制度安排
+• C "国家主体实行社会主义制度，个别地区依法实行资本主义制度"——是"一国两制"的具体内容
+
+</div></details>
+
+<hr />
+<h3 id="24史纲部分第11-13题">2.4 史纲部分（第 11-13 题）</h3>
+<p><b>第 11 题</b> 近代中国反侵略战争屡遭失败最重要的原因是</p>
+<div class="opts"><span class="opt">A.</span> 中国半殖民地半封建的社会制度腐败 <br><span class="opt">B.</span> 武器装备落后 <br><span class="opt">C.</span> 封建统治者夜郎自大、闭关锁国 <br><span class="opt">D.</span> 技术创新和工业制造落后</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：A（中国半殖民地半封建的社会制度腐败）</b>
+
+近代中国反侵略战争失败的原因有内外两个方面，但<b>最根本、最重要的原因是社会制度的腐败</b>。封建统治阶级的腐朽无能导致无法有效组织抵抗。
+
+• B 武器装备落后——是重要原因但不是"最重要的"
+• C 封建统治者夜郎自大、闭关锁国——是制度腐败的表现之一
+• D 技术创新和工业制造落后——是经济层面的原因，根源仍是制度问题
+
+<b><span class="mk freq">高频</span></b> 反侵略战争失败原因属于史纲高频考点，关键是区分"根本原因"（制度腐败）和"直接原因"（武器/技术落后等）。
+
+</div></details>
+
+<hr />
+<p><b>第 12 题</b> "八七会议"</p>
+<div class="opts"><span class="opt">A.</span> 批评了大革命后期存在的"左"倾错误 <br><span class="opt">B.</span> 阐明了党的工作重心由城市转移到乡村的必要性 <br><span class="opt">C.</span> 提出了组织湘、鄂、粤、赣四省农民秋收暴动 <br><span class="opt">D.</span> 确定了土地革命和武装起义的方针</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：D（确定了土地革命和武装起义的方针）</b>
+
+八七会议（1927 年 8 月 7 日，汉口）的核心内容：确定了<b>土地革命和武装起义</b>的方针。毛泽东在会议上提出了"枪杆子里出政权"的著名论断。
+
+• A 错误：八七会议批评的是大革命后期以陈独秀为代表的<b>右</b>倾机会主义错误，不是"左"倾——"左"倾错误是后来王明时期才出现的
+• B 错误：阐明党的工作重心由城市转移到乡村的必要性——这是后来井冈山道路的内容
+• C 错误：提出组织湘鄂粤赣四省农民秋收暴动——这确实是八七会议的内容，但不是会议最主要的历史定位。八七会议最核心的意义是确定了土地革命和武装起义的总方针
+
+<b><span class="mk warn">易错</span></b> 选项 A 的"左"和"右"是易混点。
+
+</div></details>
+
+<hr />
+<p><b>第 13 题</b> 卢沟桥事变</p>
+<div class="opts"><span class="opt">A.</span> 标志着中国人民抗日救亡运动新高潮的到来 <br><span class="opt">B.</span> 标志着日本全面侵华战争开始 <br><span class="opt">C.</span> 是中国人民抗日战争的起点 <br><span class="opt">D.</span> 揭开了世界反法西斯战争的序幕</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：B（标志着日本全面侵华战争开始）</b>
+
+卢沟桥事变（七七事变，1937 年 7 月 7 日）标志着日本<b>全面侵华战争</b>的开始。
+
+需要完整记忆抗日战争时期的关键事件定位：
+
+• 九一八事变（1931 年）：中国人民抗日战争的<b>起点</b>，揭开世界反法西斯战争的<b>序幕</b>
+• 一二九运动（1935 年）：标志着中国人民抗日救亡运动<b>新高潮的到来</b>
+• 卢沟桥事变（1937 年）：日本<b>全面侵华战争</b>的开始，中国<b>全民族抗战</b>的开始
+• 西安事变的和平解决（1936 年）：抗日民族统一战线<b>初步形成</b>
+
+</div></details>
+
+<hr />
+<h3 id="25思修思法部分第14-16题">2.5 思修/思法部分（第 14-16 题）</h3>
+<p><b>第 14 题</b> 人的精神世界的核心是</p>
+<div class="opts"><span class="opt">A.</span> 人生观 <br><span class="opt">B.</span> 世界观 <br><span class="opt">C.</span> 理想信念 <br><span class="opt">D.</span> 价值观</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C（理想信念）</b>
+
+理想信念是人的精神世界的<b>核心</b>。理想指引方向，信念决定成败。
+
+• A 人生观——是人们对人生目的、人生态度、人生价值的根本看法，回答"人为什么活着"
+• B 世界观——是人们对整个世界的总的看法和根本观点
+• C 理想信念——<b>精神世界的核心</b>，精神之"钙"
+• D 价值观——是人们对事物有无价值及价值大小的评价标准
+
+<b><span class="mk info">注意</span></b> 四个选项在思修中都有重要地位，但"精神世界的核心"专指理想信念。
+
+</div></details>
+
+<hr />
+<p><b>第 15 题</b> 社会主义核心价值观的根本特性是</p>
+<div class="opts"><span class="opt">A.</span> 先进性 <br><span class="opt">B.</span> 人民性 <br><span class="opt">C.</span> 真实性 <br><span class="opt">D.</span> 超越性</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：B（人民性）</b>
+
+社会主义核心价值观的根本特性是<b>人民性</b>。三大特性的层次需要区分清楚：先进性、人民性、真实性都是社会主义核心价值观的特性，但<b>人民性</b>是其根本特性（体现以人民为中心的价值导向，是区别于其他价值观的根本标准）。
+
+• A 先进性——体现社会主义本质属性
+• B 人民性——<b>根本特性</b>，体现以人民为中心的价值导向
+• C 真实性——与西方"普世价值"对比
+• D 超越性——不存在此提法
+
+</div></details>
+
+<hr />
+<p><b>第 16 题</b> 我们的法治同西方资本主义国家的法治的最大区别是</p>
+<div class="opts"><span class="opt">A.</span> 党的领导 <br><span class="opt">B.</span> 人民当家作主 <br><span class="opt">C.</span> 法律面前人人平等 <br><span class="opt">D.</span> 依法治国和以德治国相结合</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：A（党的领导）</b>
+
+党的领导是中国特色社会主义法治之魂，是我们法治同西方资本主义国家法治的<b>最大区别</b>。
+
+• A 党的领导——中国特色社会主义法治<b>最根本的保证</b>，<b>最大区别</b>
+• B 人民当家作主——社会主义民主政治的本质和核心
+• C 法律面前人人平等——社会主义法律的基本属性
+• D 依法治国和以德治国相结合——中国特色社会主义法治道路的鲜明<b>特点</b>（注意不是"最大区别"）
+
+<b><span class="mk warn">易错</span></b> 选项 D 容易被误选——"依法治国和以德治国相结合"是"鲜明特点"，"党的领导"才是"最大区别"。
+
+</div></details>
+
+<hr />
+<h2 id="三多项选择题精析17题">三、多项选择题精析（17 题）</h2>
+<h3 id="31马原部分第17-19题">3.1 马原部分（第 17-19 题）</h3>
+<p><b>第 17 题</b> 坚果摄入过量增加患病率说明</p>
+<div class="opts"><span class="opt">A.</span> 事物的发展具有连续性 <br><span class="opt">B.</span> 事物的质变是偶然的 <br><span class="opt">C.</span> 认识和处理问题时要掌握适度原则 <br><span class="opt">D.</span> 量变达到一定程度必然引起质变</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：CD</b>
+
+坚果有益健康但摄入过量导致疾病，说明：
+
+• C 正确：认识和处理问题时要掌握<b>适度原则</b>——度是事物保持质的数量界限
+• D 正确：<b>量变达到一定程度必然引起质变</b>——过量摄入（量变）导致患病（质变）
+• A 错误："事物的发展具有连续性"本身正确，但不适用于此处——题干讲的是量变引起质变，不是连续性
+• B 错误：质变不是偶然的，是量变积累到一定程度的必然结果
+
+<b>【命题思路】</b> 考察质量互变规律，用生活化案例（坚果）包装基本哲学原理。
+
+</div></details>
+
+<hr />
+<p><b>第 18 题</b> 私人劳动和社会劳动的矛盾</p>
+<div class="opts"><span class="opt">A.</span> 贯穿人类社会发展的始终 <br><span class="opt">B.</span> 决定了商品经济的交换本质 <br><span class="opt">C.</span> 决定了商品使用价值和价值之间的矛盾 <br><span class="opt">D.</span> 进一步发展成为资本主义的基本矛盾</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BCD</b>
+
+在以私有制为基础的商品经济中，私人劳动和社会劳动的矛盾是<b>基本矛盾</b>。
+
+• A 错误：私人劳动和社会劳动的矛盾只存在于商品经济中，不是"贯穿人类社会发展的始终"——原始社会和未来共产主义社会没有商品经济，不存在这一矛盾
+• B 正确：决定了商品经济的<b>交换本质</b>——私人劳动只有通过交换才能转化为社会劳动
+• C 正确：决定了<b>使用价值和价值的矛盾</b>——具体劳动创造使用价值，抽象劳动创造价值，两者的矛盾根源于私人劳动和社会劳动的矛盾
+• D 正确：进一步发展成为<b>资本主义的基本矛盾</b>（生产社会化与生产资料私人占有之间的矛盾）
+
+</div></details>
+
+<hr />
+<p><b>第 19 题</b> 垄断资本向世界范围扩展的基本形式有</p>
+<div class="opts"><span class="opt">A.</span> 国家资本输出 <br><span class="opt">B.</span> 借贷资本输出 <br><span class="opt">C.</span> 生产资本输出 <br><span class="opt">D.</span> 商品资本输出</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BCD</b>
+
+垄断资本向世界范围扩展的三种基本形式：<b>借贷资本输出、生产资本输出、商品资本输出</b>。
+
+• A "国家资本输出"——不存在这一规范表述。国家垄断资本主义是垄断资本与国家政权结合，但"国家资本输出"不是独立形式
+• BCD 是标准的三类输出形式
+
+</div></details>
+
+<hr />
+<h3 id="32毛中特部分第20-21题">3.2 毛中特部分（第 20-21 题）</h3>
+<p><b>第 20 题</b> 毛泽东思想和中国特色社会主义理论体系的不同之处</p>
+<div class="opts"><span class="opt">A.</span> 前者形成于战争与革命时期，后者形成于和平与发展时期 <br><span class="opt">B.</span> 前者的形成源于中国的革命与建设，后者的形成源于中国的建设与改革 <br><span class="opt">C.</span> 前者是毛泽东的思想，后者是中国共产党集体智慧的结晶 <br><span class="opt">D.</span> 前者是马克思主义中国化第一次历史性飞跃的成果，后者是第二次飞跃的成果</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABD</b>
+
+• A 正确：毛泽东思想形成于战争与革命时期，中国特色社会主义理论体系形成于和平与发展时期——时代背景不同
+• B 正确：前者源于中国的革命与建设，后者源于中国的建设与改革
+• C <b>错误</b>：两者都是中国共产党<b>集体智慧</b>的结晶，不能说"毛泽东思想是毛泽东的思想"——毛泽东思想不等于毛泽东个人的思想
+• D 正确：前者是第一次历史性飞跃，后者是第二次飞跃
+
+</div></details>
+
+<hr />
+<p><b>第 21 题</b> 社会主义初级阶段理论</p>
+<div class="opts"><span class="opt">A.</span> 使我们对社会主义建设的长期性、复杂性、艰巨性有了更加清醒的认识 <br><span class="opt">B.</span> 揭示了当代中国的历史方位，从而明确了建设中国特色社会主义的总依据 <br><span class="opt">C.</span> 是对马克思主义关于社会主义发展阶段理论的重大发展和重大突破 <br><span class="opt">D.</span> 正确回答了邓小平理论的首要的基本的理论问题</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABC</b>
+
+• A 正确：使我们对社会主义建设的长期性、复杂性、艰巨性有了更加清醒的认识
+• B 正确：揭示了当代中国的历史方位，明确了建设中国特色社会主义的总依据
+• C 正确：是对马克思主义关于社会主义发展阶段理论的重大发展和重大突破
+• D 错误：邓小平理论的首要的基本理论问题是"什么是社会主义、怎样建设社会主义"，不是社会主义初级阶段理论
+
+</div></details>
+
+<hr />
+<h3 id="33新思想部分第22-27题">3.3 新思想部分（第 22-27 题）</h3>
+<p><b>第 22 题</b> 建设体现效率、促进公平的收入分配体系</p>
+<div class="opts"><span class="opt">A.</span> 坚持多劳多得，提高劳动报酬在初次分配中的比重 <br><span class="opt">B.</span> 健全以税收、社会保障、转移支付、慈善、捐赠等为主要手段的再分配调节机制 <br><span class="opt">C.</span> 重视发挥第三次分配作用 <br><span class="opt">D.</span> 健全生产要素由市场评价贡献、按贡献决定报酬的机制</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABCD</b>
+
+四个选项均正确：
+
+• A：坚持多劳多得，提高劳动报酬在初次分配中的比重
+• B：健全以税收、社会保障、转移支付等为主要手段的再分配调节机制
+• C：重视发挥第三次分配作用（慈善、捐赠等）
+• D：健全生产要素由市场评价贡献、按贡献决定报酬的机制
+
+<b><span class="mk info">注意</span></b> 区分初次分配（市场机制为主）、再分配（政府调节为主）、第三次分配（社会力量为主）。
+
+</div></details>
+
+<hr />
+<p><b>第 23 题</b> 人民政协</p>
+<div class="opts"><span class="opt">A.</span> 是社会主义协商民主的重要渠道和专门协商机构 <br><span class="opt">B.</span> 以政治协商、民主监督、参政议政为职能 <br><span class="opt">C.</span> 是社会主义民主政治建设的基础 <br><span class="opt">D.</span> 重点监督党和国家重大方针政策和重要决策部署的贯彻落实</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABD</b>
+
+• A 正确：人民政协是社会主义协商民主的重要渠道和专门协商机构
+• B 正确：人民政协的三大职能——政治协商、民主监督、参政议政
+• C <b>错误</b>："社会主义民主政治建设的基础"是<b>基层群众自治制度</b>，不是人民政协
+• D 正确：人民政协重点监督党和国家重大方针政策和重要决策部署的贯彻落实——这是民主监督的核心内容
+
+<b><span class="mk warn">易错</span></b> 选项 C 是关键陷阱——"基础"对应的是基层群众自治，人民政协是"重要形式"而非"基础"。
+
+</div></details>
+
+<hr />
+<p><b>第 24 题</b> 我国全过程人民民主</p>
+<div class="opts"><span class="opt">A.</span> 有完整的制度程序和完整的参与实践 <br><span class="opt">B.</span> 是全链条、全方位、全覆盖的民主 <br><span class="opt">C.</span> 是最广泛、最真实、最管用的社会主义民主 <br><span class="opt">D.</span> 是坚持党的领导、人民当家作主、依法治国有机统一的根本政治制度安排</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABC</b>
+
+• A 正确：全过程人民民主有完整的制度程序和完整的参与实践
+• B 正确：是全链条、全方位、全覆盖的民主
+• C 正确：是最广泛、最真实、最管用的社会主义民主
+• D <b>错误</b>：坚持党的领导、人民当家作主、依法治国有机统一的<b>根本政治制度安排</b>是<b>人民代表大会制度</b>，不是"全过程人民民主"
+
+<b><span class="mk warn">易错</span></b> 选项 D 把"全过程人民民主"和"人民代表大会制度"两个概念混淆——前者是民主理念，后者是制度载体。
+
+</div></details>
+
+<hr />
+<p><b>第 25 题</b> 中国式现代化</p>
+<div class="opts"><span class="opt">A.</span> 工业化、城镇化、农业现代化、信息化顺序发展的现代化 <br><span class="opt">B.</span> 人口规模巨大的现代化 <br><span class="opt">C.</span> 全体人民共同富裕的现代化 <br><span class="opt">D.</span> 物质文明和精神文明相协调的现代化</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BCD</b>
+
+• A <b>错误</b>：中国式现代化不是"顺序发展"的——中国是工业化、城镇化、农业现代化、信息化"并联式""叠加式"发展，西方发达国家才是"串联式/顺序发展"
+• B 正确：人口规模巨大的现代化——中国式现代化的首要特征
+• C 正确：全体人民共同富裕的现代化
+• D 正确：物质文明和精神文明相协调的现代化
+
+</div></details>
+
+<hr />
+<p><b>第 26 题</b> 到二〇三五年我国发展的目标要求</p>
+<div class="opts"><span class="opt">A.</span> 基本公共服务实现均等化 <br><span class="opt">B.</span> 建成法治国家、法治政府、法治社会 <br><span class="opt">C.</span> 实现新型工业化、信息化、城镇化、农业现代化 <br><span class="opt">D.</span> 建成教育强国、科技强国、人才强国、文化强国、体育强国</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABCD</b>
+
+本题考察二〇三五年远景目标。四个选项的辨析：
+
+• A 正确：基本公共服务实现均等化——2035 年目标
+• B 正确：建成法治国家、法治政府、法治社会——2035 年目标
+• C 正确：实现新型工业化、信息化、城镇化、农业现代化——2035 年目标
+• D 正确：建成教育强国、科技强国、人才强国、文化强国、体育强国——2035 年目标
+
+注意与"本世纪中叶"目标区分：2035 年"基本实现"社会主义现代化，本世纪中叶"全面建成"社会主义现代化强国。
+
+</div></details>
+
+<hr />
+<p><b>第 27 题</b> 民营经济</p>
+<div class="opts"><span class="opt">A.</span> 高质量发展的战略基点 <br><span class="opt">B.</span> 推进中国式现代化的生力军 <br><span class="opt">C.</span> 非公有制经济的主要经济组织形式 <br><span class="opt">D.</span> 推动我国全面建成社会主义现代化强国、实现第二个百年奋斗目标的重要力量</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BCD</b>
+
+• A <b>错误</b>："高质量发展的战略基点"是扩大内需，不是民营经济
+• B 正确：民营经济是推进中国式现代化的生力军
+• C 正确：民营经济是非公有制经济的主要经济组织形式
+• D 正确：民营经济是推动我国全面建成社会主义现代化强国、实现第二个百年奋斗目标的重要力量
+
+</div></details>
+
+<hr />
+<h3 id="34史纲部分第28-30题">3.4 史纲部分（第 28-30 题）</h3>
+<p><b>第 28 题</b> 洋务运动的历史作用</p>
+<div class="opts"><span class="opt">A.</span> 促使工商业者的地位上升 <br><span class="opt">B.</span> 促进中国早期工业的发展 <br><span class="opt">C.</span> 促使社会风气和价值观念开始变化 <br><span class="opt">D.</span> 在一定程度上打击了帝国主义侵略势力</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABC</b>
+
+洋务运动（19 世纪 60-90 年代）的历史作用：
+
+• A 正确：促使工商业者的地位上升——官督商办企业的发展提高了商人地位
+• B 正确：促进中国早期工业的发展——兴办了一批近代军事工业和民用工业
+• C 正确：促使社会风气和价值观念开始变化——冲击了传统"重农抑商"观念
+• D <b>错误</b>：洋务运动<b>没有</b>打击帝国主义侵略势力——洋务运动的指导思想是"中体西用"，对外国侵略者抱有幻想，甲午战争的失败就是证明
+
+</div></details>
+
+<hr />
+<p><b>第 29 题</b> 八七会议和遵义会议的相同之处</p>
+<div class="opts"><span class="opt">A.</span> 都从政治上、军事上、思想上彻底纠正了错误 <br><span class="opt">B.</span> 毛泽东都参加了会议并提出了正确主张 <br><span class="opt">C.</span> 在危急关头挽救了党 <br><span class="opt">D.</span> 都是在脱离共产国际的指导下独立自主地解决问题</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BC</b>
+
+• A <b>错误</b>："都从政治上、军事上、思想上彻底纠正了错误"——遵义会议只解决了军事路线和组织路线问题，没有从思想上彻底解决（思想路线问题在延安整风时才解决）。八七会议同样没有彻底解决思想问题
+• B 正确：毛泽东都参加了会议并提出了正确主张
+• C 正确：两次会议都在危急关头挽救了党——八七会议在大革命失败后，遵义会议在第五次反"围剿"失败后
+• D <b>错误</b>：只有遵义会议是中国共产党独立自主地解决问题（脱离了共产国际的指导），八七会议时共产国际仍有较大影响
+
+<b><span class="mk warn">易错</span></b> 选项 A 的"彻底"和 D 的"独立自主"是关键判断点——遵义会议的独立自主性是一个重要历史意义，八七会议不具此特征。
+
+</div></details>
+
+<hr />
+<p><b>第 30 题</b> 新文化运动通过批判孔学</p>
+<div class="opts"><span class="opt">A.</span> 动摇了封建正统思想的统治地位 <br><span class="opt">B.</span> 给中国发展资本主义扫清了障碍 <br><span class="opt">C.</span> 在中国社会掀起一股思想解放潮流 <br><span class="opt">D.</span> 彻底否定了孔学的历史作用</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：AC</b>
+
+• A 正确：动摇了封建正统思想的统治地位——这是新文化运动最重要的历史功绩
+• B <b>错误</b>："给中国发展资本主义扫清了障碍"——新文化运动是思想启蒙运动，不足以扫清资本主义发展障碍，中国后来也没有走上资本主义道路
+• C 正确：在中国社会掀起一股思想解放潮流
+• D <b>错误</b>："彻底否定了孔学的历史作用"——新文化运动对孔学的批判有片面性，但没有"彻底否定"其历史作用。这个表述过于绝对
+
+</div></details>
+
+<hr />
+<h3 id="35思修思法部分第31-33题">3.5 思修/思法部分（第 31-33 题）</h3>
+<p><b>第 31 题</b> 爱国主义</p>
+<div class="opts"><span class="opt">A.</span> 中国共产党的精神之源 <br><span class="opt">B.</span> 中华民族最重要的精神财富 <br><span class="opt">C.</span> 中华民族的民族心、民族魂 <br><span class="opt">D.</span> 中国人民维护民族独立和民族尊严的强大精神动力</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BCD</b>
+
+• A <b>错误</b>："中国共产党的精神之源"是<b>伟大建党精神</b>，不是爱国主义
+• B 正确：爱国主义是中华民族最重要的精神财富
+• C 正确：爱国主义是中华民族的民族心、民族魂
+• D 正确：爱国主义是中国人民维护民族独立和民族尊严的强大精神动力
+
+<b><span class="mk freq">高频</span></b> 爱国主义考点在思修中权重极高，需要准确把握其地位、基本要求和时代特征。
+
+</div></details>
+
+<hr />
+<p><b>第 32 题</b> 下列关于信念表述正确的是</p>
+<div class="opts"><span class="opt">A.</span> 信念具有执着性，一旦形成，就不会改变 <br><span class="opt">B.</span> 信念具有支撑性，是一个人经受实践考验而能始终坚守理想的精神力量 <br><span class="opt">C.</span> 信念具有多样性，同一个人在社会实践中会形成不同类型和层次的信念 <br><span class="opt">D.</span> 信念具有偶然性，没有科学和非科学之分</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BC</b>
+
+• A <b>错误</b>：信念具有执着性，但"一旦形成就不会改变"表述过于绝对。信念可以在实践中调整和深化
+• B 正确：信念具有<b>支撑性</b>——是精神支柱，使人经受实践考验而始终坚守理想
+• C 正确：信念具有<b>多样性</b>——同一个人在社会实践中会形成不同类型和层次的信念（如政治信念、道德信念、生活信念等）
+• D <b>错误</b>：信念当然有科学和非科学之分（科学信念 vs 迷信盲从），信念也不是偶然的——是社会实践的产物
+
+<b><span class="mk warn">易错</span></b> 选项 A 是典型陷阱——执着性不等于"永不改变"。理想的三大特征是超越性/实践性/时代性，信念的三大特征是执着性/支撑性/多样性。
+
+</div></details>
+
+<hr />
+<p><b>第 33 题</b> 我国宪法的基本原则包括</p>
+<div class="opts"><span class="opt">A.</span> 党的领导原则 <br><span class="opt">B.</span> 人民当家作主原则 <br><span class="opt">C.</span> 分权制衡原则 <br><span class="opt">D.</span> 社会主义法治原则</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABD</b>
+
+我国宪法的五大基本原则：党的领导原则、人民当家作主原则、尊重和保障人权原则、社会主义法治原则、民主集中制原则。
+
+• A 正确：党的领导原则
+• B 正确：人民当家作主原则
+• C <b>错误</b>："分权制衡原则"——这是西方资本主义国家的宪法原则（三权分立），中国实行的是<b>民主集中制</b>而非分权制衡。这是区分中西政治制度的根本标志之一
+• D 正确：社会主义法治原则
+
+<b><span class="mk warn">易错</span></b> "分权制衡" vs "民主集中制" 是中国宪法与西方宪法最根本的原则区别，多选题中看到"分权制衡"直接排除。
+
+</div></details>
+
+<hr />
+<h2 id="四测试卷命题特点总结">四、测试卷命题特点总结</h2>
+<h3 id="41命题风格">4.1 命题风格</h3>
+<ol>
+<li><b>生活化包装</b>：如第 2 题（人工智能化学家）、第 17 题（坚果摄入）——用现实案例包装基本原理，考察学生透过现象看本质的能力</li>
+<li><b>绝对词陷阱</b>：如"截然对立""无条件""彻底""就不会改变""偶然的"——在哲学和思修选择题中，看到绝对化表述需高度警惕</li>
+<li><b>概念偷换</b>：如第 24 题把"人民代表大会制度"偷换成"全过程人民民主"、第 33 题把"民主集中制"偷换成"分权制衡"</li>
+<li><b>历史定位混淆</b>：如第 13 题需要精确区分各抗日事件的不同"标志性"定位</li>
+</ol>
+<h3 id="42高频错误类型">4.2 高频错误类型</h3>
+<table>
+<thead>
+<tr>
+<th>错误类型</th>
+<th>典型示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>绝对化表述</td>
+<td>"一旦形成就不会改变""彻底否定了""截然对立""无条件""贯穿始终"</td>
+</tr>
+<tr>
+<td>概念张冠李戴</td>
+<td>"基础工程"说成"主体工程"、"根本特性"说成"先进性"</td>
+</tr>
+<tr>
+<td>中西混淆</td>
+<td>"分权制衡"、"普世价值"</td>
+</tr>
+<tr>
+<td>时期错位</td>
+<td>把社会主义改造时期任务说成新时代任务</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43备考建议">4.3 备考建议</h3>
+<ol>
+<li>对哲学概念必须精准掌握辩证关系（对立统一 vs 截然对立；有条件转化 vs 无条件）</li>
+<li>思修中的"地位/核心/关键/灵魂/根本"类词汇必须一一对应记忆</li>
+<li>史纲的关键历史事件定位需要表格化对比记忆</li>
+<li>多选题优先排除"绝对化表述"和"中西混淆"选项</li>
+</ol>
+<hr />
+<p><span class="src">【来源: ：全科暑期结课政治测试卷、全科暑期政治结课测试-答题卡】</span></p>
+<hr /></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="政治_思修.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>政治 · 思修</b></span></a><a class="next" href="政治_暑期0804_马原测试卷.html"><span class="pg-t"><small>下一篇</small><b>政治 · 暑期0804_马原测试卷</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

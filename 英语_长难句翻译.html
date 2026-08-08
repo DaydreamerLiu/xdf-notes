@@ -1,0 +1,859 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语 · 长难句翻译</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">📖 英语</div><a class="b" href="英语_写作.html">写作</a><a class="c x" href="英语_写作_例题.html">▸ 例题集</a><a class="b" href="英语_阅读.html">阅读</a><a class="c x" href="英语_阅读_暑假_例题.html">▸ 暑假例题集</a><a class="c x" href="英语_阅读_无忧_例题.html">▸ 无忧例题集</a><a class="b" href="英语_翻译.html">翻译</a><a class="c x" href="英语_翻译_例题.html">▸ 例题集</a><a class="b on" aria-current="page" href="英语_长难句翻译.html">长难句翻译</a><a class="c x" href="英语_长难句翻译_例题.html">▸ 例题集</a><a class="c" href="英语_长难句翻译.html#一长难句处理五步法必考">一、长难句处理五步法 【必考】</a><a class="d" href="英语_长难句翻译.html#11第一步找谓语动词">1.1 第一步: 找谓语动词</a><a class="d" href="英语_长难句翻译.html#12第二步找连接词">1.2 第二步: 找连接词</a><a class="d" href="英语_长难句翻译.html#13第三步划分子句">1.3 第三步: 划分子句</a><a class="d" href="英语_长难句翻译.html#14第四步识别修饰成分">1.4 第四步: 识别修饰成分</a><a class="d" href="英语_长难句翻译.html#15第五步调整语序翻译">1.5 第五步: 调整语序翻译</a><a class="c" href="英语_长难句翻译.html#二按结构类型处理">二、按结构类型处理</a><a class="d" href="英语_长难句翻译.html#21定语从句必考高频">2.1 定语从句 【必考】【高频】</a><a class="d" href="英语_长难句翻译.html#22名词性从句必考高频">2.2 名词性从句 【必考】【高频】</a><a class="d" href="英语_长难句翻译.html#23状语从句必考高频">2.3 状语从句 【必考】【高频】</a><a class="d" href="英语_长难句翻译.html#24非谓语动词重点易错">2.4 非谓语动词 【重点】【易错】</a><a class="d" href="英语_长难句翻译.html#25平行结构必考">2.5 平行结构 【必考】</a><a class="d" href="英语_长难句翻译.html#26插入语与分裂结构重点">2.6 插入语与分裂结构 【重点】</a><a class="d" href="英语_长难句翻译.html#27嵌套结构重点">2.7 嵌套结构 【重点】</a><a class="d" href="英语_长难句翻译.html#28强调句高频">2.8 强调句 【高频】</a><a class="d" href="英语_长难句翻译.html#29比较结构">2.9 比较结构</a><a class="c" href="英语_长难句翻译.html#三翻译技巧">三、翻译技巧</a><a class="d" href="英语_长难句翻译.html#31定语从句的处理必考">3.1 定语从句的处理 【必考】</a><a class="d" href="英语_长难句翻译.html#32被动语态的处理高频">3.2 被动语态的处理 【高频】</a><a class="d" href="英语_长难句翻译.html#33非谓语动词的翻译">3.3 非谓语动词的翻译</a><a class="d" href="英语_长难句翻译.html#34代词还原重点">3.4 代词还原 【重点】</a><a class="d" href="英语_长难句翻译.html#35顺译逆译分译">3.5 顺译 / 逆译 / 分译</a><a class="c" href="英语_长难句翻译.html#四易错点易错">四、易错点 【易错】</a><a class="d" href="英语_长难句翻译.html#41误把非谓语当谓语">4.1 误把非谓语当谓语</a><a class="d" href="英语_长难句翻译.html#42嵌套从句层次混乱">4.2 嵌套从句层次混乱</a><a class="d" href="英语_长难句翻译.html#43固定搭配被拆散">4.3 固定搭配被拆散</a><a class="d" href="英语_长难句翻译.html#44并列连词判断失误">4.4 并列连词判断失误</a><a class="d" href="英语_长难句翻译.html#45定语从句后移未识别">4.5 定语从句后移未识别</a><a class="c" href="英语_长难句翻译.html#五知识连接">五、知识连接</a><a class="d" href="英语_长难句翻译.html#51与翻译板块的连接">5.1 与翻译板块的连接</a><a class="d" href="英语_长难句翻译.html#52与阅读板块的连接">5.2 与阅读板块的连接</a><a class="d" href="英语_长难句翻译.html#53与语法板块的连接">5.3 与语法板块的连接</a><a class="d" href="英语_长难句翻译.html#54与写作板块的连接">5.4 与写作板块的连接</a><a class="b" href="英语_语法.html">语法</a><a class="c x" href="英语_语法_例题.html">▸ 例题集</a><a class="b" href="英语_完形.html">完形</a><a class="b" href="英语_无忧0802_测试卷.html">无忧0802_测试卷</a><a class="b" href="英语_词汇.html">词汇</a></nav>
+<div id="progress"></div>
+<main data-subj="english"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>英语 · 长难句翻译</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>长难句翻译</h1><div class="board-meta">📖 英语 · <span class="pill">理论笔记</span><span class="pill">5 节</span></div><blockquote>
+<p>阶段: 无忧 | 覆盖课件 35 份:
+长难句第1-8期、第10期、第13期、第15-39期 (为考研真题每日一句系列，DAY1-DAY39，缺 DAY9/11/12/14)
+📖 例题全量见: <a href="英语_长难句翻译_例题.html">长难句翻译 · 例题集</a></p>
+</blockquote>
+<hr />
+<h2 id="一长难句处理五步法必考">一、长难句处理五步法 <span class="mk biz">必考</span></h2>
+<p>长难句不是"看不懂"，而是"一层一层拆开看"。核心直觉: <b>一个谓语动词 = 一件事 = 一个子句</b>。谓语动词数决定了句子可以被拆成几段。</p>
+<h3 id="11第一步找谓语动词">1.1 第一步: 找谓语动词</h3>
+<p>数句子中出现了多少个谓语动词(时态/语态的动词形式)，就能知道这个句子包含了几件事。</p>
+<blockquote>
+<p>例如 DAY37 句: 包含 expressed / understood / was / helped 四个谓语动词，因此可以断为 4 段。</p>
+</blockquote>
+<p><b><span class="mk info">注意</span></b> 非谓语动词(to do / doing / done)不算谓语，这是初学者最容易踩的坑(见第四节易错点)。</p>
+<h3 id="12第二步找连接词">1.2 第二步: 找连接词</h3>
+<p>连接词是断句的标志。常见连接词包括:</p>
+<ul>
+<li>从属连词: when, while, as, if, because, so that, although/though, before, after, since, until</li>
+<li>关系词: who, whom, whose, which, that, where, when, why</li>
+<li>名词性从句引导词: that, whether, what, how, why</li>
+</ul>
+<p><b>三种断句方法(来自课件反复强调)</b>:</p>
+<ol>
+<li><b>标点符号</b>: 逗号、冒号、破折号、引号往往是句子边界</li>
+<li><b>连接词</b>: 在连接词前断开</li>
+<li><b>分析主谓</b>: 找到新的"主语+谓语"组合就是新的子句</li>
+</ol>
+<h3 id="13第三步划分子句">1.3 第三步: 划分子句</h3>
+<p>把每段标注为对应的从句类型。口诀: <b>"往前看"——从句类型由它前面的词决定</b>。</p>
+<ul>
+<li>that 前面是及物动词 → 宾语从句 (DAY6, DAY27)</li>
+<li>that 前面是系动词(is/was) → 表语从句 (DAY33)</li>
+<li>that 前面是名词 → 定语从句 (DAY10, DAY21)</li>
+<li>that 前面是 it is... → 可能是主语从句(形式主语)或强调句</li>
+<li>when 前面有表示时间的名词 → 定语从句; 否则 → 时间状语从句</li>
+</ul>
+<h3 id="14第四步识别修饰成分">1.4 第四步: 识别修饰成分</h3>
+<p>修饰成分是让句子"变长"的主要原因。识别后可以暂时剥离，先看主干。</p>
+<ul>
+<li><b>非谓语动词词组</b>: to do / doing / done 引导的短语，通常表目的、伴随、被动</li>
+<li><b>介词短语</b>: in/on/at/for/of/with/by... 往往后置修饰前面的名词或动词</li>
+<li><b>插入语(分裂结构)</b> : 两个逗号/破折号/括号中间的内容，跳过先看前后</li>
+</ul>
+<h3 id="15第五步调整语序翻译">1.5 第五步: 调整语序翻译</h3>
+<p>英文的修饰成分多数后置，中文习惯前置或拆分。详见第三节翻译技巧。</p>
+<hr />
+<h2 id="二按结构类型处理">二、按结构类型处理</h2>
+<h3 id="21定语从句必考高频">2.1 定语从句 <span class="mk biz">必考</span><span class="mk freq">高频</span></h3>
+<p><b>识别标志</b>: who / whom / whose / which / that / where / when 前面是一个名词(先行词)</p>
+<p><b>处理要点</b>:</p>
+<ul>
+<li>限定性定语从句: 修饰限定先行词，翻译时短则前置("……的+N")，长则后置(重复先行词或"其")</li>
+<li>非限定性定语从句(有逗号隔开): 补充说明，翻译时通常后置分句处理</li>
+<li>that 定语从句 vs. that 同位语从句: 定语从句中 that 在从句里充当成分(主语/宾语)，同位语从句中 that 不充当成分(从句完整)</li>
+<li><b>定语从句后移(分裂定语从句)</b> : 当定语从句太长而主句太短时，从句会后移到谓语后面以避免头重脚轻，如 DAY35: "Other models exist that are hybrids..." 还原为 "Other models that are hybrids... exist"</li>
+</ul>
+<p><b>【思考】</b> 考研阅读中，定语从句后移是高频考点。看到 "N + V... + that..." 的结构时，要意识到 that 可能修饰的是前面那个 N 而不是紧挨着的词。</p>
+<p>课件例句: 第1/3/6/10/15/16/19/21/22/26/30/34/35/36/37/38/39 期均涉及定语从句。</p>
+<h3 id="22名词性从句必考高频">2.2 名词性从句 <span class="mk biz">必考</span><span class="mk freq">高频</span></h3>
+<p>名词性从句包括主语从句、宾语从句、表语从句、同位语从句。它们在句中充当名词的角色。</p>
+<h4>2.2.1 宾语从句</h4>
+<p><b>识别标志</b>: 及物动词 / 介词 + that/what/how/why...</p>
+<p><b>处理要点</b>:</p>
+<ul>
+<li>that 引导的宾语从句中 that 可以省略(如 DAY20: "That means (that) a higher proportion...")</li>
+<li>what 引导的宾语从句: what 在从句中充当成分(主语/宾语)，翻译为"……的东西/事情"</li>
+<li>嵌套宾语从句: 宾语从句中再套宾语从句(DAY20: means → (that) ... of what is in the sea)</li>
+</ul>
+<h4>2.2.2 主语从句</h4>
+<p><b>识别标志</b>: 句首的 that/what/how 从句作主语，或 it 作形式主语 + that 从句后置</p>
+<p><b>处理要点</b>:</p>
+<ul>
+<li>形式主语 it 结构: "It is + adj. + that..." → 翻译时先翻译 that 从句，再加"这是……的"</li>
+<li>如 DAY10: "it is critical that our nation... base... on..." → "至关重要的是，我们国家……"</li>
+</ul>
+<h4>2.2.3 表语从句</h4>
+<p><b>识别标志</b>: 系动词(be/look/seem/remain) + that/what/how 从句</p>
+<p>如 DAY33: "it's just that they're dealing with so many more things" → "只是她们正在应对如此多的事情"</p>
+<h4>2.2.4 同位语从句</h4>
+<p><b>识别标志</b>: 抽象名词(fact/idea/theory/evidence...) + that 从句(从句完整，that 不充当成分)</p>
+<p>如 DAY19: "large predators (animals that kill and eat other animals)" ——括号内容是 predators 的同位语。</p>
+<p>课件例句: 宾语从句见于第4/5/6/7/16/20/21/22/23/24/27/34/37/38/39 期; 主语从句见于第10/26/32 期; 表语从句见于第33 期; 同位语见于第19/27 期。</p>
+<h3 id="23状语从句必考高频">2.3 状语从句 <span class="mk biz">必考</span><span class="mk freq">高频</span></h3>
+<p><b>识别标志</b>: when / while / as / if / because / so that / although / though / before / after / since / until / where / unless...</p>
+<p><b>处理要点</b>:</p>
+<ul>
+<li><b>when/while/as 的判断</b>: 需要根据上下文判断是"当……时候"(时间)还是"尽管"(让步)。考点: 前后半句意思相反 → while 表让步(DAY13)</li>
+<li><b>状语从句的位置</b>: 英文状语从句可在主句前、中、后; 中文习惯先因后果、先条件后结果、先让步后转折</li>
+<li><b>so...that... 结果状语从句</b>: "如此……以至于……" (DAY33)</li>
+<li><b>省略形式的状语从句</b>: 当状语从句主语与主句一致且有 be 动词时，可省略主语+be。如 DAY36: "Though (they are) typically about two inches taller..."</li>
+</ul>
+<p>课件例句: 时间状语见于第1/4/7/13/16/18/21/25/30/39 期; 条件状语见于第8 期; 目的状语见于第7 期; 原因状语见于第17/21 期; 让步状语见于第13/18/36/37 期; 方式状语见于第23 期; 结果状语见于第33 期。</p>
+<h3 id="24非谓语动词重点易错">2.4 非谓语动词 <span class="mk ok">重点</span><span class="mk warn">易错</span></h3>
+<p><b>识别标志</b>: to do / doing / done 形式，单独出现(前面没有 be/have 等助动词)</p>
+<p><b>为什么重要</b>: 非谓语动词可以携带宾语、状语，形成长长的词组，让一个简单句看起来像长难句。但它们不是谓语，找到真正的谓语动词才能抓住句子主干。</p>
+<p><b>处理要点</b>:</p>
+<ul>
+<li><b>to do</b>: 通常表目的("为了……")或后置定语("要……的")</li>
+<li><b>doing</b>: 表主动/进行/伴随("……着/的同时")</li>
+<li><b>done</b>: 表被动/完成("被……的/已……的")</li>
+<li><b>多个非谓语动词并列</b>: 通过 and/or 连接，词性一致(DAY2: to keep... and (to) gather...)</li>
+<li>非谓语独立结构: 如 DAY24 中 "coupled with later research showing that..." ，整个词组作插入语，核心是 coupled 修饰主语</li>
+</ul>
+<p><b>关键直觉</b>: 看到 to do / doing / done 开头的一长串，先找句子真正的谓语动词——非谓语动词再多也不等于有了新句子。</p>
+<p>课件例句: 第2/18/24/25 期重点涉及非谓语动词处理。</p>
+<h3 id="25平行结构必考">2.5 平行结构 <span class="mk biz">必考</span></h3>
+<p><b>识别标志</b>: and / or / not...but... / either...or... / neither...nor... 连接的并列成分</p>
+<p><b>核心原则</b>: 平行并列的各个成分之间词性相同、形式一致。比如:</p>
+<ul>
+<li>三个 to do 词组并列 (DAY25: to complete..., to envision..., and to deduce...)</li>
+<li>两个 that 从句并列 (DAY22: that their souls were in danger and that they would someday be meat for worms)</li>
+<li>两个谓语动词并列 (DAY30: sorted out... and improved...)</li>
+</ul>
+<p><b>【思考】</b> 平行结构是考研翻译的"送分点"——只要认出了并列关系，翻译时保持并列结构即可。难点在于辨认哪些成分是并列的(尤其当并列项很长时)。</p>
+<p>课件例句: 平行结构几乎每期都有，典型见于第5/6/8/15/22/23/25/28/29/30/32 期。</p>
+<h3 id="26插入语与分裂结构重点">2.6 插入语与分裂结构 <span class="mk ok">重点</span></h3>
+<p><b>定义</b>: 两个逗号、破折号或括号中间的成分，打断了原本连贯的句子主干的正常语序。</p>
+<p><b>常见形式</b>:</p>
+<ul>
+<li>主谓结构作插入语: "..., the RSC contends, ..." (DAY17)</li>
+<li>介词短语/非谓语词组作插入语: "..., coupled with later research..., ..." (DAY24)</li>
+<li>让步从句作插入语: "..., though they come from all over, ..." (DAY18)</li>
+<li>同位语作插入语: "..., that most valuable of economic assets, ..." (DAY32)</li>
+</ul>
+<p><b>处理策略</b>: 先把插入语跳过/括起来，读懂主干; 再回来看插入语补充了什么信息。</p>
+<p>课件例句: 第3/17/18/19/23/24/31/32/34/35/36/38/39 期均涉及分裂结构。</p>
+<h3 id="27嵌套结构重点">2.7 嵌套结构 <span class="mk ok">重点</span></h3>
+<p><b>定义</b>: 从句中再套从句，层层嵌套。</p>
+<p><b>处理策略</b>: 从外到内逐层剥离，每层找到自己的主谓结构。最外层先理解，再逐层深入。</p>
+<p>典型例子 DAY7: 主句 → when 时间状语从句 → so that 目的状语从句 → what 宾语从句(四层嵌套)。</p>
+<p>课件例句: 第7/16/20/21/22/24/34/37/38/39 期涉及嵌套结构。</p>
+<h3 id="28强调句高频">2.8 强调句 <span class="mk freq">高频</span></h3>
+<p><b>识别标志</b>: It is/was... that/who...</p>
+<p><b>判断方法</b>: 去掉 "It is/was... that/who..." 后，句子仍然完整 → 强调句。如果去掉后句子不完整 → 形式主语句。</p>
+<p>如 DAY17: "It is the playgoers... who bring in much of the town's revenue" → 去掉 "It is... who..." → "the playgoers bring in much of the town's revenue" (完整) ✓ 强调句</p>
+<p><b><span class="mk info">注意</span></b> 强调人时可用 who 或 that; 强调非人时只能用 that。</p>
+<h3 id="29比较结构">2.9 比较结构</h3>
+<p><b>识别标志</b>: more/less... than... / as... as... / the more... the more...</p>
+<p><b>处理要点</b>:</p>
+<ul>
+<li>比较对象要对等(DAY20: "the real difference... is likely to be worse than the one recorded by..."</li>
+<li>more of A than B: "更多的是 A 而非 B" (DAY24)</li>
+<li>less like A and more like B: "不太像 A 而更像 B" (DAY28)</li>
+</ul>
+<p>课件例句: 第20/24/28/33 期涉及比较结构。</p>
+<hr />
+<h2 id="三翻译技巧">三、翻译技巧</h2>
+<h3 id="31定语从句的处理必考">3.1 定语从句的处理 <span class="mk biz">必考</span></h3>
+<ul>
+<li><b>前置法</b>: 短的限定性定语从句翻译为"……的+N"，放在名词前</li>
+<li><b>后置法</b>: 长的定语从句(尤其是非限定性)后置，重复先行词或译为"其/这/该"</li>
+<li><b>融合法</b>: there be 句型中的定语从句可以与主句融合翻译</li>
+</ul>
+<h3 id="32被动语态的处理高频">3.2 被动语态的处理 <span class="mk freq">高频</span></h3>
+<p>英文多用被动，中文少用"被"字。策略:</p>
+<ul>
+<li>保留"被": 强调遭受/不利时</li>
+<li>换为"由/受/得到/加以": 中性语境</li>
+<li>转为主动: 补充主语或译为无主语句</li>
+</ul>
+<p>如 DAY19: "the biomass... is reduced... by 80%" → "生物量减少了80%"(不译"被减少")</p>
+<h3 id="33非谓语动词的翻译">3.3 非谓语动词的翻译</h3>
+<ul>
+<li>to do (目的) → "为了……/来……"</li>
+<li>doing (伴随/方式) → "……着/同时……/通过……"</li>
+<li>done (被动/完成) → "被……的/已……的"</li>
+<li>多层级非谓语词组(如 DAY18)→ 按逻辑关系逐层翻译，从外到内</li>
+</ul>
+<h3 id="34代词还原重点">3.4 代词还原 <span class="mk ok">重点</span></h3>
+<p>英文多用代词避免重复，中文有时需要还原。特别是:</p>
+<ul>
+<li>it/they 指代上文概念时，如果直译"它/它们"会让读者困惑，需要还原为具体名词</li>
+<li>those 指代某一类人/事物: 译为"……的人/事物" (DAY1: those who have signed up → "注册其服务的用户")</li>
+</ul>
+<h3 id="35顺译逆译分译">3.5 顺译 / 逆译 / 分译</h3>
+<ul>
+<li><b>顺译</b>: 当英文语序与中文逻辑一致时，基本按原文顺序</li>
+<li><b>逆译</b>: 英文后置修饰多时，中文需要倒过来; 如 of 多层嵌套 "A of B of C" → "C 的 B 的 A" (DAY19)</li>
+<li><b>分译</b>: 当一个长句包含多层意思时，拆成几个中文短句</li>
+</ul>
+<hr />
+<h2 id="四易错点易错">四、易错点 <span class="mk warn">易错</span></h2>
+<h3 id="41误把非谓语当谓语">4.1 误把非谓语当谓语</h3>
+<p>这是最致命的错误。非谓语动词(to do / doing / done)不是谓语，不能独立构成句子。</p>
+<p>如 DAY2: 整个句子只有 use 一个谓语动词，其余 to keep / (to) gather / to arm / negotiating 全部是非谓语。如果误以为有多个谓语，就会错误地断句。</p>
+<h3 id="42嵌套从句层次混乱">4.2 嵌套从句层次混乱</h3>
+<p>多层嵌套时(如 DAY7 四层嵌套、DAY21 五段断句)，容易搞混谁嵌套在谁里面。</p>
+<p><b>解决</b>: 从最外层主句开始，一层层往内剥离。每进入一层，确认该层的主谓。</p>
+<h3 id="43固定搭配被拆散">4.3 固定搭配被拆散</h3>
+<p>如 DAY28: "looks far less like A and a good deal more like B" ——不能只看 "looks"，要找到完整的 "look like" 表语结构，并与比较级结合理解。</p>
+<h3 id="44并列连词判断失误">4.4 并列连词判断失误</h3>
+<p>三种情况不能用来断句:</p>
+<ol>
+<li><b>句首并列连词</b>: And/But 在句首是连接上下句的，不用于断本句 (DAY8, DAY15)</li>
+<li><b>连接的不是句子</b>: and/or 连接的是词或短语而非完整句子 (DAY8 第一个 or)</li>
+<li><b>后面的句子不完整</b>: 并列连词后缺少主语等成分 (DAY8 第二个 or, DAY27 but)</li>
+</ol>
+<h3 id="45定语从句后移未识别">4.5 定语从句后移未识别</h3>
+<p>如 DAY35: "Other models exist that are hybrids..." ——that 从句修饰的是 models 而非 exist。正常语序应为 "Other models that are hybrids... exist"。从句后移是为了避免头重脚轻，阅读时要有"往前找先行词"的意识。</p>
+<hr />
+<h2 id="五知识连接">五、知识连接</h2>
+<h3 id="51与翻译板块的连接">5.1 与翻译板块的连接</h3>
+<p>本板块的五步法直接服务于考研翻译题(英译汉)。翻译题的评分标准就是看能否正确拆分句子、识别从句类型、通顺表达。建议在刷翻译真题时回顾本笔记的对应结构类型。</p>
+<h3 id="52与阅读板块的连接">5.2 与阅读板块的连接</h3>
+<p>长难句处理是阅读理解的基础能力。考研阅读的命题点常设在:</p>
+<ul>
+<li>定语从句中的限定条件</li>
+<li>状语从句的逻辑关系(因果/让步/条件)</li>
+<li>插入语中的态度/观点(作者态度题)</li>
+<li>比较结构中的比较对象(细节题)</li>
+</ul>
+<p>课件中的所有例句均来自历年考研阅读真题(2004-2009年Text 1-4)，本身就证明了长难句 = 阅读命题核心区域。</p>
+<h3 id="53与语法板块的连接">5.3 与语法板块的连接</h3>
+<p>本板块侧重"处理流程"——看到长难句怎么拆。更系统的从句基础(定语从句的类型、名词性从句的引导词辨析等)参考语法板块笔记。</p>
+<h3 id="54与写作板块的连接">5.4 与写作板块的连接</h3>
+<p>长难句的反向应用就是写作: 掌握了句子如何被"拆开"，也就掌握了如何把简单句"组装"成复合句。写作中适当使用非谓语动词、定语从句、状语从句可以提升句式多样性。但要注意: 考研写作以清晰为第一，不要故意堆砌长句。</p>
+<hr />
+<blockquote>
+<p><b>课后反思</b>: 35 天的"每日一句"练下来，最核心的能力其实就一个——<b>看到一句话，能快速找到谓语动词</b>。找到谓语，句子就散架了; 找不到谓语，看再多遍也是糊的。建议复习时遮住解析、先自己断句，练到"一眼看出几个谓语"就到位了。</p>
+</blockquote></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="英语_翻译_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>英语 · 翻译_例题</b></span></a><a class="next" href="英语_长难句翻译_例题.html"><span class="pg-t"><small>下一篇</small><b>英语 · 长难句翻译_例题</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

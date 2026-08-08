@@ -1,0 +1,2339 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>政治 · 习概</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">🏛️ 政治</div><a class="b" href="政治_马原.html">马原</a><a class="c x" href="政治_马原_例题.html">▸ 例题集</a><a class="b" href="政治_史纲.html">史纲</a><a class="c x" href="政治_史纲_例题.html">▸ 例题集</a><a class="b" href="政治_毛中特.html">毛中特</a><a class="c x" href="政治_毛中特_例题.html">▸ 例题集</a><a class="b on" aria-current="page" href="政治_习概.html">习概</a><a class="c x" href="政治_习概_例题.html">▸ 例题集</a><a class="c" href="政治_习概.html#一新时代与新思想">一、新时代与新思想</a><a class="d" href="政治_习概.html#11习近平新时代中国特色社会主义思想的时代背景">1.1 习近平新时代中国特色社会主义思想的时代背景</a><a class="d" href="政治_习概.html#12两个结合的重大成果">1.2 &quot;两个结合&quot;的重大成果</a><a class="d" href="政治_习概.html#13完整的科学体系">1.3 完整的科学体系</a><a class="d" href="政治_习概.html#14六个必须坚持世界观和方法论">1.4 &quot;六个必须坚持&quot;——世界观和方法论</a><a class="d" href="政治_习概.html#15习近平新时代中国特色社会主义思想的历史地位">1.5 习近平新时代中国特色社会主义思想的历史地位</a><a class="d" href="政治_习概.html#16新时代坚持和发展中国特色社会主义">1.6 新时代坚持和发展中国特色社会主义</a><a class="c" href="政治_习概.html#二中国式现代化">二、中国式现代化</a><a class="d" href="政治_习概.html#21中华民族伟大复兴中国梦">2.1 中华民族伟大复兴中国梦</a><a class="d" href="政治_习概.html#22中国式现代化的中国特色">2.2 中国式现代化的中国特色</a><a class="d" href="政治_习概.html#23中国式现代化的本质要求">2.3 中国式现代化的本质要求</a><a class="d" href="政治_习概.html#24中国式现代化创造人类文明新形态">2.4 中国式现代化创造人类文明新形态</a><a class="d" href="政治_习概.html#25中国式现代化的重大原则">2.5 中国式现代化的重大原则</a><a class="d" href="政治_习概.html#26需要正确处理的重大关系">2.6 需要正确处理的重大关系</a><a class="c" href="政治_习概.html#三坚持党的全面领导">三、坚持党的全面领导</a><a class="c" href="政治_习概.html#四坚持以人民为中心">四、坚持以人民为中心</a><a class="d" href="政治_习概.html#41江山就是人民人民就是江山">4.1 江山就是人民，人民就是江山</a><a class="d" href="政治_习概.html#42人民立场是中国共产党的根本政治立场">4.2 人民立场是中国共产党的根本政治立场</a><a class="d" href="政治_习概.html#43坚持人民至上">4.3 坚持人民至上</a><a class="d" href="政治_习概.html#44群众路线">4.4 群众路线</a><a class="d" href="政治_习概.html#45共同富裕">4.5 共同富裕</a><a class="c" href="政治_习概.html#五坚持全面深化改革开放">五、坚持全面深化改革开放</a><a class="d" href="政治_习概.html#51改革开放的定位">5.1 改革开放的定位</a><a class="d" href="政治_习概.html#52全面深化改革的正确方向">5.2 全面深化改革的正确方向</a><a class="d" href="政治_习概.html#53全面深化改革总目标">5.3 全面深化改革总目标</a><a class="d" href="政治_习概.html#54全面深化改革开放的方法论">5.4 全面深化改革开放的方法论</a><a class="d" href="政治_习概.html#55改革开放永无止境的原因">5.5 改革开放永无止境的原因</a><a class="c" href="政治_习概.html#六推动高质量发展">六、推动高质量发展</a><a class="d" href="政治_习概.html#61新发展阶段">6.1 新发展阶段</a><a class="d" href="政治_习概.html#62新发展理念">6.2 新发展理念</a><a class="d" href="政治_习概.html#63高质量发展">6.3 高质量发展</a><a class="d" href="政治_习概.html#64社会主义基本经济制度">6.4 社会主义基本经济制度</a><a class="d" href="政治_习概.html#65新发展格局">6.5 新发展格局</a><a class="d" href="政治_习概.html#66建设现代化经济体系">6.6 建设现代化经济体系</a><a class="d" href="政治_习概.html#67全面乡村振兴">6.7 全面乡村振兴</a><a class="d" href="政治_习概.html#68促进区域协调发展">6.8 促进区域协调发展</a><a class="d" href="政治_习概.html#69教育科技人才">6.9 教育、科技、人才</a><a class="c" href="政治_习概.html#七发展全过程人民民主">七、发展全过程人民民主</a><a class="d" href="政治_习概.html#71人民民主是社会主义的生命">7.1 人民民主是社会主义的生命</a><a class="d" href="政治_习概.html#72中国特色社会主义政治制度体系">7.2 中国特色社会主义政治制度体系</a><a class="d" href="政治_习概.html#73全过程人民民主">7.3 全过程人民民主</a><a class="d" href="政治_习概.html#74协商民主">7.4 协商民主</a><a class="d" href="政治_习概.html#75民族区域自治与基层群众自治">7.5 民族区域自治与基层群众自治</a><a class="d" href="政治_习概.html#76新时代爱国统一战线">7.6 新时代爱国统一战线</a><a class="c" href="政治_习概.html#八其他重点领域速览">八、其他重点领域速览</a><a class="d" href="政治_习概.html#81全面依法治国">8.1 全面依法治国</a><a class="d" href="政治_习概.html#82建设社会主义文化强国">8.2 建设社会主义文化强国</a><a class="d" href="政治_习概.html#83以保障和改善民生为重点加强社会建设">8.3 以保障和改善民生为重点加强社会建设</a><a class="d" href="政治_习概.html#84建设社会主义生态文明">8.4 建设社会主义生态文明</a><a class="d" href="政治_习概.html#85维护和塑造国家安全">8.5 维护和塑造国家安全</a><a class="d" href="政治_习概.html#86建设巩固国防和强大人民军队">8.6 建设巩固国防和强大人民军队</a><a class="d" href="政治_习概.html#87坚持一国两制与推进祖国完全统一">8.7 坚持&quot;一国两制&quot;与推进祖国完全统一</a><a class="d" href="政治_习概.html#88中国特色大国外交">8.8 中国特色大国外交</a><a class="d" href="政治_习概.html#89全面从严治党">8.9 全面从严治党</a><a class="c" href="政治_习概.html#九高频考点与选择题必背表述">九、高频考点与选择题必背表述</a><a class="d" href="政治_习概.html#91最高根本首要核心类">9.1 &quot;最高&quot;&quot;根本&quot;&quot;首要&quot;&quot;核心&quot;类</a><a class="d" href="政治_习概.html#92唯一正确道路类">9.2 &quot;唯一正确道路&quot;类</a><a class="d" href="政治_习概.html#93基础类">9.3 &quot;基础&quot;类</a><a class="d" href="政治_习概.html#94最易错的数字与节点">9.4 最易错的数字与节点</a><a class="c" href="政治_习概.html#十知识连接">十、知识连接</a><a class="d" href="政治_习概.html#101与马原的连接">10.1 与马原的连接</a><a class="d" href="政治_习概.html#102与毛中特的连接">10.2 与毛中特的连接</a><a class="d" href="政治_习概.html#103与史纲的连接">10.3 与史纲的连接</a><a class="b" href="政治_思修.html">思修</a><a class="b" href="政治_无忧0721_测试卷.html">无忧0721_测试卷</a><a class="b" href="政治_暑期0804_马原测试卷.html">暑期0804_马原测试卷</a></nav>
+<div id="progress"></div>
+<main data-subj="zhengzhi"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>政治 · 习概</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>习概</h1><div class="board-meta">🏛️ 政治 · <span class="pill">理论笔记</span><span class="pill">10 节</span></div><blockquote>
+<p>阶段: 无忧 | 覆盖课件 5 份: 习思想--第一章、习思想--第二次课、习思想 ---第三次课、习思想--第四次课、习思想--第五次课
+习概即"习近平新时代中国特色社会主义思想概论"，考研分值约22分（大纲），含4单选+4多选+1分析题（35题），是政治6科中分值最高的科目。
+📖 例题全量见: <a href="政治_习概_例题.html">习概 · 例题集</a></p>
+</blockquote>
+<hr />
+<h2 id="一新时代与新思想">一、新时代与新思想</h2>
+<h3 id="11习近平新时代中国特色社会主义思想的时代背景">1.1 习近平新时代中国特色社会主义思想的时代背景</h3>
+<p><b><span class="mk biz">必考</span></b> 五大背景构成了新思想的历史坐标：</p>
+<table>
+<thead>
+<tr>
+<th>背景</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>世界背景</b></td>
+<td>世界百年未有之大变局加速演进</td>
+</tr>
+<tr>
+<td><b>民族复兴背景</b></td>
+<td>中华民族伟大复兴进入关键时期</td>
+</tr>
+<tr>
+<td><b>现代化背景</b></td>
+<td>中国式现代化全面推进拓展</td>
+</tr>
+<tr>
+<td><b>科学社会主义背景</b></td>
+<td>科学社会主义在21世纪中国焕发新的蓬勃生机</td>
+</tr>
+<tr>
+<td><b>党建背景</b></td>
+<td>中国共产党自我革命开辟新境界</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>思考：</b> 为什么说这是一个"新的历史方位"？这五大背景同时叠加——国际格局深刻调整、民族复兴到了"临门一脚"、现代化找到了中国方案、社会主义重新焕发生机、党在自我革命中锻造得更坚强——这在历史上从未有过。新思想就是在这个"时空交汇点"上应运而生的。</p>
+</blockquote>
+<p><span class="src">【来源: 习思想--第一章】</span></p>
+<h3 id="12两个结合的重大成果">1.2 "两个结合"的重大成果</h3>
+<p><b><span class="mk biz">必考</span></b> 习近平新时代中国特色社会主义思想是坚持"两个结合"的光辉典范。</p>
+<table>
+<thead>
+<tr>
+<th>结合</th>
+<th>提出者</th>
+<th>核心</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一个结合</td>
+<td>毛泽东</td>
+<td>马克思主义基本原理同中国<b>具体实际</b>相结合</td>
+</tr>
+<tr>
+<td>第二个结合</td>
+<td>习近平</td>
+<td>马克思主义基本原理同中华<b>优秀传统文化</b>相结合</td>
+</tr>
+</tbody>
+</table>
+<p><b>两个结合的定位：</b></p>
+<ul>
+<li>是我们党在探索中国特色社会主义道路中得出的<b>规律性认识</b></li>
+<li>是我们取得成功的<b>最大法宝</b></li>
+<li>是对坚持和发展马克思主义作出的<b>重大理论贡献</b></li>
+</ul>
+<blockquote>
+<p><b>思考：</b> 为什么"第二个结合"被称为"又一次思想解放"？因为它回答了"马克思主义何以在中国生根"这一深层问题。马克思主义不是外来嫁接，而是要从五千年中华文明中汲取营养，实现"化学反应"式的融合，而非"物理混合"。</p>
+</blockquote>
+<h3 id="13完整的科学体系">1.3 完整的科学体系</h3>
+<p><b><span class="mk biz">必考</span><span class="mk freq">高频</span></b></p>
+<h4>三大时代课题</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>时代课题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>新时代坚持和发展什么样的中国特色社会主义、怎样坚持和发展中国特色社会主义</td>
+</tr>
+<tr>
+<td>②</td>
+<td>建设什么样的社会主义现代化强国、怎样建设社会主义现代化强国</td>
+</tr>
+<tr>
+<td>③</td>
+<td>建设什么样的长期执政的马克思主义政党、怎样建设长期执政的马克思主义政党</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>思考：</b> 新思想回答的不只是一个问题，而是三个——从国家（中国特色社会主义）、到强国（现代化）、再到执政党（自身建设），构成了一个完整的逻辑闭环。这与邓小平理论（只回答"什么是社会主义、怎样建设社会主义"一个问题）形成了鲜明对比，反映了时代任务的扩展。</p>
+</blockquote>
+<h4>核心内容："十个明确""十四个坚持""十三个方面成就"</h4>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>十个明确</b></td>
+<td>主体内容，起统摄作用</td>
+</tr>
+<tr>
+<td><b>十四个坚持</b></td>
+<td>基本方略</td>
+</tr>
+<tr>
+<td><b>十三个方面成就</b></td>
+<td>理论与实践成果</td>
+</tr>
+</tbody>
+</table>
+<p><b>"十个明确"速记框架：</b></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>核心主题</th>
+<th>关键表述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>党的领导</td>
+<td>中国特色社会主义最本质的特征、最大优势；最高政治领导力量；"四个意识""四个自信""两个维护"</td>
+</tr>
+<tr>
+<td>2</td>
+<td>总任务</td>
+<td>实现社会主义现代化和中华民族伟大复兴</td>
+</tr>
+<tr>
+<td>3</td>
+<td>主要矛盾</td>
+<td>人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾</td>
+</tr>
+<tr>
+<td>4</td>
+<td>总体布局+战略布局</td>
+<td>五位一体、四个全面</td>
+</tr>
+<tr>
+<td>5</td>
+<td>全面深化改革总目标</td>
+<td>完善和发展中国特色社会主义制度，推进国家治理体系和治理能力现代化</td>
+</tr>
+<tr>
+<td>6</td>
+<td>全面依法治国总目标</td>
+<td>建设中国特色社会主义法治体系、建设社会主义法治国家</td>
+</tr>
+<tr>
+<td>7</td>
+<td>基本经济制度</td>
+<td>市场在资源配置中起决定性作用，更好发挥政府作用</td>
+</tr>
+<tr>
+<td>8</td>
+<td>强军目标</td>
+<td>听党指挥、能打胜仗、作风优良，建成世界一流军队</td>
+</tr>
+<tr>
+<td>9</td>
+<td>大国外交</td>
+<td>服务民族复兴、促进人类进步，构建人类命运共同体</td>
+</tr>
+<tr>
+<td>10</td>
+<td>全面从严治党</td>
+<td>政治建设为统领，"5+2"布局，以伟大自我革命引领伟大社会革命</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14六个必须坚持世界观和方法论">1.4 "六个必须坚持"——世界观和方法论</h3>
+<p><b><span class="mk biz">必考</span><span class="mk freq">高频</span></b> 这是新思想分析题的核心考点，同时也是马原分析题的要点。</p>
+<table>
+<thead>
+<tr>
+<th>六个必须坚持</th>
+<th>定位（新思想选择题）</th>
+<th>体现的哲学原理（马原分析题）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>人民至上</b></td>
+<td>根本价值立场</td>
+<td>历史唯物主义群众史观</td>
+</tr>
+<tr>
+<td><b>自信自立</b></td>
+<td>内在精神特质</td>
+<td>客观规律性和主观能动性的有机结合</td>
+</tr>
+<tr>
+<td><b>守正创新</b></td>
+<td>鲜明理论品格</td>
+<td>变与不变、继承与发展的内在联系</td>
+</tr>
+<tr>
+<td><b>问题导向</b></td>
+<td>实践要求</td>
+<td>矛盾的普遍性和客观性</td>
+</tr>
+<tr>
+<td><b>系统观念</b></td>
+<td>思想和工作方法</td>
+<td>辩证唯物主义普遍联系的原理</td>
+</tr>
+<tr>
+<td><b>胸怀天下</b></td>
+<td>中国共产党人的境界格局</td>
+<td>马克思主义追求人类进步和解放的崇高理想</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>思考：</b> 这六条不是平铺的六句话，而是从立场（人民至上）、精神（自信自立）、品格（守正创新）、方法（问题导向+系统观念）、格局（胸怀天下）五个层次递进展开的完整方法论体系。答题时要注意"用哪一条对应的哲学原理"。</p>
+</blockquote>
+<h3 id="15习近平新时代中国特色社会主义思想的历史地位">1.5 习近平新时代中国特色社会主义思想的历史地位</h3>
+<p><b><span class="mk biz">必考</span></b></p>
+<blockquote>
+<p>"是当代中国马克思主义、二十一世纪马克思主义，是中华文化和中国精神的时代精华，实现了马克思主义中国化时代化<b>新的飞跃</b>。"</p>
+</blockquote>
+<p>三层含义：</p>
+<ol>
+<li><b>开辟新境界：</b> 马克思主义在当代中国发展的最新理论成果</li>
+<li><b>"两个结合"的结晶：</b> 中华民族文化主体性最有力的体现，中华文化和中国精神的时代精华</li>
+<li><b>行动指南：</b> 全党全国各族人民实现中华民族伟大复兴的行动指南，新时代党和国家事业发展的根本遵循</li>
+</ol>
+<p><b>核心要义：</b> 坚持和发展中国特色社会主义。</p>
+<p><span class="src">【来源: 习思想--第一章】</span></p>
+<hr />
+<h3 id="16新时代坚持和发展中国特色社会主义">1.6 新时代坚持和发展中国特色社会主义</h3>
+<p><b><span class="mk ok">重点</span></b></p>
+<h4>方向决定道路，道路决定命运</h4>
+<blockquote>
+<p>道路问题是关系党的事业兴衰成败<b>第一位的问题</b>。
+"只有社会主义才能救中国，只有社会主义才能发展中国，只有坚持和发展中国特色社会主义才能实现中华民族伟大复兴。"</p>
+</blockquote>
+<p><b>中国特色社会主义的来源（六个"得来"）：</b></p>
+<ol>
+<li>改革开放40多年的伟大实践</li>
+<li>新中国成立70多年的持续探索</li>
+<li>党领导人民进行伟大社会革命100多年的实践</li>
+<li>近代以来中华民族由衰到盛180多年的历史进程</li>
+<li>世界社会主义500多年的发展历程</li>
+<li>中华文明5000多年的传承发展</li>
+</ol>
+<blockquote>
+<p><b>思考：</b> 这六个"得来"是时间维度的递进——从40年到5000年，说明中国特色社会主义不是突然出现的"飞来峰"，而是有着深厚历史渊源和广泛现实基础的必然选择。</p>
+</blockquote>
+<h4>中国特色社会主义是社会主义，不是其他什么主义</h4>
+<p><b>四个"不是"：</b></p>
+<ul>
+<li>不是简单延续我国历史文化的<b>母版</b></li>
+<li>不是简单套用马克思主义经典作家设想的<b>模板</b></li>
+<li>不是其他国家社会主义实践的<b>再版</b></li>
+<li>不是国外现代化发展的<b>翻版</b></li>
+</ul>
+<blockquote>
+<p>中国特色社会主义是科学社会主义理论逻辑和中国社会发展历史逻辑的辩证统一，写出了科学社会主义的"新版本"。</p>
+</blockquote>
+<h4>"四个自信"</h4>
+<table>
+<thead>
+<tr>
+<th>自信</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>道路自信</td>
+<td>必由之路（实现途径）</td>
+</tr>
+<tr>
+<td>理论自信</td>
+<td>正确理论、与时俱进（行动指南）</td>
+</tr>
+<tr>
+<td>制度自信</td>
+<td>制度优势、自我完善（根本保障）</td>
+</tr>
+<tr>
+<td>文化自信</td>
+<td>精神追求、精神标识、精神力量——<b>更基础、更广泛、更深厚的自信</b></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说到底要坚定<b>文化自信</b>。文化自信是一个国家、一个民族发展中最基本、最深沉、最持久的力量。</p>
+</blockquote>
+<h4>中国特色社会主义进入新时代</h4>
+<p><b><span class="mk biz">必考</span></b> 新时代是我国发展新的历史方位（2012年至今）。</p>
+<p><b>进入新时代的三大依据：</b></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>理论依据</b></td>
+<td>主要矛盾变化：人民日益增长的美好生活需要 ↔ 不平衡不充分的发展</td>
+</tr>
+<tr>
+<td><b>实践依据</b></td>
+<td>主要任务变化：实现第一个百年奋斗目标，开启第二个百年奋斗目标新征程</td>
+</tr>
+<tr>
+<td><b>时代依据</b></td>
+<td>中国与世界关系变化：世界百年未有之大变局与中华民族伟大复兴战略全局相互交织</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>思考：</b> 为什么新时代以"主要矛盾变化"为理论依据？在马克思主义理论中，社会主要矛盾决定历史阶段性质。当"落后的社会生产"不再是中国的主要问题时，当人民需要从"有没有"转向"好不好"时，就意味着历史方位发生了根本性转变。</p>
+</blockquote>
+<p><b>主要矛盾变化的理解要点：</b></p>
+<ol>
+<li>从"有没有"转向"好不好"——经过长期发展，再讲"落后的社会生产"已不符合实际</li>
+<li>发展不平衡不充分成为满足人民美好生活需要的主要制约因素</li>
+<li><b>"两个没有变"：</b> 社会主义初级阶段的基本国情没有变，世界最大发展中国家的国际地位没有变——主要矛盾变化是初级阶段这个大框架内的阶段性变化</li>
+</ol>
+<h4>主要矛盾的历史演变（完整时间线）</h4>
+<table>
+<thead>
+<tr>
+<th>时期</th>
+<th>主要矛盾</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近代中国（1840-1949）</td>
+<td>帝国主义和中华民族、封建主义和人民大众的矛盾</td>
+</tr>
+<tr>
+<td>国民经济恢复（1949-1952）</td>
+<td>人民大众与三座大山残余势力的矛盾</td>
+</tr>
+<tr>
+<td>社会主义改造（1953-1956）</td>
+<td>工人阶级与资产阶级、社会主义道路与资本主义道路的矛盾</td>
+</tr>
+<tr>
+<td>社会主义初步探索（1956-1978）</td>
+<td>【中共八大】人民对于建立先进工业国的要求同落后农业国现实之间的矛盾</td>
+</tr>
+<tr>
+<td>改革开放新时期（1978-2012）</td>
+<td>【十一届六中全会】人民日益增长的物质文化需要同落后的社会生产之间的矛盾</td>
+</tr>
+<tr>
+<td>新时代（2012至今）</td>
+<td>【十九大】人民日益增长的美好生活需要同不平衡不充分的发展之间的矛盾</td>
+</tr>
+</tbody>
+</table>
+<h4>新时代伟大变革的里程碑意义</h4>
+<ol>
+<li>党在革命性锻造中更加坚强有力</li>
+<li>中国人民正信心百倍推进从站起来、富起来到强起来的伟大飞跃——实现中华民族伟大复兴进入<b>不可逆转的历史进程</b></li>
+<li>科学社会主义在21世纪的中国焕发新的蓬勃生机，中国式现代化为人类实现现代化提供了<b>新的选择</b></li>
+</ol>
+<h4>全面贯彻党的基本理论、基本路线、基本方略</h4>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本理论</td>
+<td>马克思主义（政治优势）、习思想（根本遵循）</td>
+</tr>
+<tr>
+<td>基本路线</td>
+<td>生命线、幸福线</td>
+</tr>
+<tr>
+<td>基本方略</td>
+<td>十四个坚持</td>
+</tr>
+</tbody>
+</table>
+<p><b>五位一体 + 四个全面：</b></p>
+<ul>
+<li>五位一体：经济、政治、文化、社会、生态文明协调发展</li>
+<li>四个全面：全面建设社会主义现代化国家（<b>战略目标/引领</b>）+ 全面深化改革、全面依法治国、全面从严治党（<b>三大战略举措</b>）</li>
+</ul>
+<p><span class="src">【来源: 习思想--第一章】</span></p>
+<hr />
+<h2 id="二中国式现代化">二、中国式现代化</h2>
+<h3 id="21中华民族伟大复兴中国梦">2.1 中华民族伟大复兴中国梦</h3>
+<p><b><span class="mk biz">必考</span></b> 习近平在2012年11月参观《复兴之路》展览时首次提出"中国梦"。</p>
+<blockquote>
+<p>"一百年来，中国共产党团结带领中国人民进行的一切奋斗、一切牺牲、一切创造，归结起来就是一个主题：<b>实现中华民族伟大复兴</b>。"</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>中国梦本质</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>国家富强</td>
+<td>基础、保障</td>
+</tr>
+<tr>
+<td>民族振兴</td>
+<td>—</td>
+</tr>
+<tr>
+<td>人民幸福</td>
+<td>出发点、落脚点，题中之意、必然要求</td>
+</tr>
+</tbody>
+</table>
+<p><b>全面建成小康社会：</b> 是关键一步。标志着第一个百年奋斗目标胜利实现，中华民族实现了从大幅落后于时代到大踏步赶上时代的新跨越。</p>
+<p><b>"两步走"战略安排：</b></p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>时间</th>
+<th>目标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一步</td>
+<td>2020→2035</td>
+<td>基本实现社会主义现代化</td>
+</tr>
+<tr>
+<td>第二步</td>
+<td>2035→本世纪中叶</td>
+<td>建成富强民主文明和谐美丽的社会主义现代化强国</td>
+</tr>
+</tbody>
+</table>
+<p><b>2035年目标关键词：</b> 中等发达国家水平、高水平自立自强、生态环境根本好转、美丽中国目标基本实现、全体人民共同富裕取得更为明显的实质性进展。</p>
+<h3 id="22中国式现代化的中国特色">2.2 中国式现代化的中国特色</h3>
+<p><b><span class="mk biz">必考</span><span class="mk freq">高频</span></b> 中国式现代化既有各国现代化的共同特征，更有基于自己国情的<b>中国特色</b>。这是分析题的绝对重点。</p>
+<table>
+<thead>
+<tr>
+<th>中国特色</th>
+<th>核心要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>人口规模巨大的现代化</b></td>
+<td>超过现有发达国家人口总和，难度前所未有</td>
+</tr>
+<tr>
+<td><b>全体人民共同富裕的现代化</b></td>
+<td><b>区别于西方现代化的显著标志</b>——我们坚决防止两极分化</td>
+</tr>
+<tr>
+<td><b>物质文明和精神文明相协调的现代化</b></td>
+<td>物质富足、精神富有是社会主义现代化的根本要求</td>
+</tr>
+<tr>
+<td><b>人与自然和谐共生的现代化</b></td>
+<td>不走"先污染后治理"的老路</td>
+</tr>
+<tr>
+<td><b>走和平发展道路的现代化</b></td>
+<td>不走殖民掠夺的歪路</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23中国式现代化的本质要求">2.3 中国式现代化的本质要求</h3>
+<blockquote>
+<p>坚持中国共产党领导，坚持中国特色社会主义，实现高质量发展，发展全过程人民民主，丰富人民精神世界，实现全体人民共同富裕，促进人与自然和谐共生，推动构建人类命运共同体，创造人类文明新形态。</p>
+</blockquote>
+<h3 id="24中国式现代化创造人类文明新形态">2.4 中国式现代化创造人类文明新形态</h3>
+<p><b><span class="mk freq">高频</span></b></p>
+<ul>
+<li>打破了"<b>现代化 = 西方化</b>"的迷思</li>
+<li>提供了一种<b>全新的现代化模式</b></li>
+<li>是对西方式现代化理论和实践的<b>重大超越</b></li>
+<li>为广大发展中国家提供了<b>全新选择</b></li>
+</ul>
+<blockquote>
+<p><b>注意：</b> 中国式现代化不是"普世性"的——它不向别国输出模式，而是证明了"条条大路通罗马"。</p>
+</blockquote>
+<h3 id="25中国式现代化的重大原则">2.5 中国式现代化的重大原则</h3>
+<ol>
+<li>坚持和加强党的全面领导</li>
+<li>坚持中国特色社会主义道路</li>
+<li>坚持以人民为中心的发展思想</li>
+<li>坚持深化改革开放</li>
+<li>坚持发扬斗争精神</li>
+</ol>
+<h3 id="26需要正确处理的重大关系">2.6 需要正确处理的重大关系</h3>
+<p><b>六对关系：</b> 顶层设计与实践探索、战略与策略、守正与创新、效率与公平、活力与秩序、自立自强与对外开放。</p>
+<p><span class="src">【来源: 习思想--第二次课】</span></p>
+<hr />
+<h2 id="三坚持党的全面领导">三、坚持党的全面领导</h2>
+<p><b><span class="mk ok">重点</span></b></p>
+<blockquote>
+<p><b>中国最大的国情就是中国共产党的领导。</b></p>
+</blockquote>
+<p><b>关于党的重要论断速记：</b></p>
+<ol>
+<li>中国人民和中华民族取得今天成就，<b>最根本</b>的是有中国共产党的坚强领导</li>
+<li>党的领导关系中国特色社会主义的性质、方向和命运</li>
+<li>党的领导是实现中华民族伟大复兴的<b>根本保证</b></li>
+<li>党的领导是中国特色社会主义制度的<b>最大优势</b></li>
+<li>党的领导制度是我国的<b>根本领导制度</b></li>
+<li>政治领导力是马克思主义政党<b>第一位的能力</b></li>
+<li>党中央对重大工作的领导体制是实现党的全面领导的<b>直接体现</b></li>
+</ol>
+<p><span class="src">【来源: 习思想--第二次课】</span></p>
+<hr />
+<h2 id="四坚持以人民为中心">四、坚持以人民为中心</h2>
+<p><b><span class="mk biz">必考</span></b> 这是分析题高频考点（2021.35、2023.35）。</p>
+<h3 id="41江山就是人民人民就是江山">4.1 江山就是人民，人民就是江山</h3>
+<p><b>理论依据（唯物史观）：</b></p>
+<ul>
+<li>人民是历史的创造者，是真正的英雄</li>
+<li>人民是创造历史的真正动力，是历史发展和社会进步的主体力量</li>
+<li>人民群众是社会物质财富的创造者、精神财富的创造者、社会变革的决定力量</li>
+</ul>
+<p><b>实践依据：</b> 党的百年奋斗历史经验——始终同人民在一起，为人民利益而奋斗，紧紧依靠人民创造历史伟业，是党立于不败之地的<b>根本原因</b>。</p>
+<blockquote>
+<p>"打江山、守江山，守的是人民的心。"民心是最大的政治，决定事业兴衰成败。</p>
+</blockquote>
+<h3 id="42人民立场是中国共产党的根本政治立场">4.2 人民立场是中国共产党的根本政治立场</h3>
+<p><b><span class="mk biz">必考</span></b> 人民立场是我们党<b>区别于其他政党的显著标志</b>。</p>
+<p>如何坚持人民立场：</p>
+<ul>
+<li>始终牢记党的初心和使命</li>
+<li>始终保持党同人民群众的血肉联系——<b>最大政治优势</b>是密切联系群众，<b>最大危险</b>是脱离群众</li>
+<li>热爱人民、尊重人民、敬畏人民</li>
+</ul>
+<h3 id="43坚持人民至上">4.3 坚持人民至上</h3>
+<p><b>根本价值取向：</b> 把人民对美好生活的向往作为党的奋斗目标，把人民作为党的工作的最高裁决者和最终评判者。</p>
+<ul>
+<li>人民是党的工作的<b>最高裁决者</b>和<b>最终评判者</b></li>
+<li>把人民满不满意作为检验工作的最终评判标准</li>
+<li>让群众满意是党做好一切工作的<b>价值取向</b>和<b>根本标准</b></li>
+<li>为民办事、为民造福是<b>最重要的政绩</b></li>
+</ul>
+<h3 id="44群众路线">4.4 群众路线</h3>
+<p><b><span class="mk ok">重点</span></b></p>
+<ul>
+<li>群众路线是党的<b>生命线</b>和<b>根本工作路线</b></li>
+<li>是党永葆青春活力和战斗力的<b>重要传家宝</b></li>
+<li>"知"是基础、前提，"行"是重点、关键，必须知行合一</li>
+<li><b>调查研究</b>是获得真知灼见的源头活水，是贯彻群众路线的有效途径</li>
+</ul>
+<h3 id="45共同富裕">4.5 共同富裕</h3>
+<p><b><span class="mk biz">必考</span></b> 共同富裕是中国特色社会主义的<b>本质要求</b>，是中国式现代化的<b>重要特征</b>。</p>
+<p><b>"四正四反"：</b></p>
+<table>
+<thead>
+<tr>
+<th>正确说法</th>
+<th>错误说法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全体人民共同富裕</td>
+<td>少数人的富裕</td>
+</tr>
+<tr>
+<td>物质生活和精神生活都富裕</td>
+<td>整齐划一的平均主义</td>
+</tr>
+<tr>
+<td>一部分人先富带动后富</td>
+<td><b>同时富裕</b></td>
+</tr>
+<tr>
+<td>是一个历史过程</td>
+<td><b>所有地区同时达到一个富裕水准</b></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>易错：</b> "同步富裕""同时富裕""同等富裕"全是错误说法。正确表述是"共同富裕"（有先后、有差异、渐进式的富裕）。</p>
+</blockquote>
+<p><b>推进共同富裕的原则：</b> 鼓励勤劳致富、坚持基本经济制度、尽力而为量力而行、坚持循序渐进。</p>
+<p><b>总体思路：</b> 在高质量发展中促进共同富裕，正确处理效率和公平的关系，构建初次分配、再分配、三次分配协调配套的基础性制度安排，形成中间大、两头小的<b>橄榄型</b>分配结构。</p>
+<table>
+<thead>
+<tr>
+<th>分配层次</th>
+<th>主体</th>
+<th>核心机制</th>
+<th>侧重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初次分配</td>
+<td>企业</td>
+<td>劳动报酬</td>
+<td>效率</td>
+</tr>
+<tr>
+<td>再分配</td>
+<td>政府</td>
+<td>税收、社保、转移支付</td>
+<td>公平</td>
+</tr>
+<tr>
+<td>第三次分配</td>
+<td>社会</td>
+<td>慈善公益事业</td>
+<td>自愿</td>
+</tr>
+</tbody>
+</table>
+<p><span class="src">【来源: 习思想--第二次课】</span></p>
+<hr />
+<h2 id="五坚持全面深化改革开放">五、坚持全面深化改革开放</h2>
+<p><b><span class="mk biz">必考</span></b> 分析题高频考点。</p>
+<h3 id="51改革开放的定位">5.1 改革开放的定位</h3>
+<blockquote>
+<p>改革开放是当代中国<b>最显著的特征、最壮丽的气象</b>。</p>
+</blockquote>
+<ul>
+<li>是党和人民大踏步赶上时代的重要法宝</li>
+<li>是坚持和发展中国特色社会主义的必由之路</li>
+<li>是决定当代中国命运的<b>关键一招</b></li>
+<li>是决定实现"两个一百年"奋斗目标、实现中华民族伟大复兴的<b>关键一招</b></li>
+</ul>
+<p><b>两个划时代的全会：</b></p>
+<table>
+<thead>
+<tr>
+<th>会议</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>十一届三中全会</td>
+<td>开启了改革开放和社会主义现代化建设新时期</td>
+</tr>
+<tr>
+<td>十八届三中全会</td>
+<td>实现改革由局部探索、破冰突围到<b>系统集成、全面深化</b>的转变，开创了我国改革开放新局面</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52全面深化改革的正确方向">5.2 全面深化改革的正确方向</h3>
+<p><b>"三个进一步解放"：</b></p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>解放思想</td>
+<td>思想前提</td>
+</tr>
+<tr>
+<td>解放和发展社会生产力</td>
+<td>鲜明特征和<b>首要任务</b></td>
+</tr>
+<tr>
+<td>解放和增强社会活力</td>
+<td>内在要求和基本目的，<b>关键所在</b></td>
+</tr>
+</tbody>
+</table>
+<h3 id="53全面深化改革总目标">5.3 全面深化改革总目标</h3>
+<p><b><span class="mk biz">必考</span></b></p>
+<ul>
+<li><b>根本方向：</b> 完善和发展中国特色社会主义制度</li>
+<li><b>鲜明指向和时代要求：</b> 推进国家治理体系和治理能力现代化</li>
+</ul>
+<p><b>关系：</b> 国家治理体系（制度体系）和国家治理能力（执行能力）是一个有机整体，相辅相成。</p>
+<h3 id="54全面深化改革开放的方法论">5.4 全面深化改革开放的方法论</h3>
+<ol>
+<li>增强改革的系统性、整体性、协同性</li>
+<li>加强顶层设计和摸着石头过河相结合</li>
+<li>统筹<b>改革（动力）、发展（关键）、稳定（前提）</b>——改善人民生活作为正确处理三者关系的<b>结合点</b></li>
+<li>胆子要大，步子要稳</li>
+<li>坚持重大改革于法有据</li>
+</ol>
+<h3 id="55改革开放永无止境的原因">5.5 改革开放永无止境的原因</h3>
+<ol>
+<li>是社会基本矛盾运动规律的深刻反映——生产力发展永无止境，调整生产关系、完善上层建筑的改革开放也永无止境</li>
+<li>是总结世界社会主义实践经验的重要结论</li>
+<li>是推进党和人民事业发展的必然要求</li>
+</ol>
+<blockquote>
+<p>改革开放只有进行时、没有完成时。新时代坚持和发展中国特色社会主义的<b>根本动力</b>仍然是全面深化改革开放。</p>
+</blockquote>
+<p><span class="src">【来源: 习思想--第二次课】</span></p>
+<hr />
+<h2 id="六推动高质量发展">六、推动高质量发展</h2>
+<p><b><span class="mk biz">必考</span><span class="mk freq">高频</span></b> 这是选择题的第一大命题源。</p>
+<h3 id="61新发展阶段">6.1 新发展阶段</h3>
+<p><b><span class="mk ok">重点</span></b> 全面建成小康社会、实现第一个百年奋斗目标之后，我国进入新发展阶段。</p>
+<ul>
+<li>是社会主义初级阶段中的一个重要阶段</li>
+<li>是迎来从站起来、富起来到强起来历史性跨越的新阶段</li>
+<li>是全面建设社会主义现代化国家、向第二个百年奋斗目标进军的重要阶段</li>
+</ul>
+<p><b>经济新常态（"三期叠加"）：</b> 增长速度换档期 + 结构调整阵痛期 + 前期刺激政策消化期</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>变化方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>增长速度</td>
+<td>高速→中高速</td>
+</tr>
+<tr>
+<td>发展方式</td>
+<td>规模速度型→质量效率型</td>
+</tr>
+<tr>
+<td>经济结构</td>
+<td>增量扩能→调整存量、做优增量并举</td>
+</tr>
+<tr>
+<td>发展动力</td>
+<td>资源和低成本劳动力→创新驱动</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62新发展理念">6.2 新发展理念</h3>
+<p><b><span class="mk biz">必考</span></b> 贯彻新发展理念是新时代我国发展壮大的必由之路，是指挥棒、红绿灯。</p>
+<table>
+<thead>
+<tr>
+<th>理念</th>
+<th>解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>创新</b></td>
+<td>发展动力问题（第一动力）</td>
+</tr>
+<tr>
+<td><b>协调</b></td>
+<td>发展不平衡问题</td>
+</tr>
+<tr>
+<td><b>绿色</b></td>
+<td>人与自然和谐共生问题</td>
+</tr>
+<tr>
+<td><b>开放</b></td>
+<td>发展内外联动问题</td>
+</tr>
+<tr>
+<td><b>共享</b></td>
+<td>社会公平正义问题</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63高质量发展">6.3 高质量发展</h3>
+<p><b><span class="mk biz">必考</span></b> 高质量发展是新时代我国经济社会发展的<b>鲜明主题</b>，是全面建设社会主义现代化国家的<b>首要任务</b>。</p>
+<p><b>核心内涵：</b> 创新成为第一动力、协调成为内生特点、绿色成为普遍形态、开放成为必由之路、共享成为根本目的的发展。</p>
+<p><b>从"有没有"转向"好不好"。</b></p>
+<p><b>意义：</b></p>
+<ol>
+<li>为全面建设社会主义现代化国家提供更坚实的物质基础</li>
+<li>不断满足人民对美好生活需要的重要保证</li>
+<li>维护国家长治久安的必然要求</li>
+</ol>
+<p><b>主线与动力：</b> 以供给侧结构性改革为主线，以改革创新为根本动力。
+<b>具体措施：</b> "三去一降一补"——去产能、去库存、去杠杆、降成本、补短板。</p>
+<h3 id="64社会主义基本经济制度">6.4 社会主义基本经济制度</h3>
+<p><b><span class="mk biz">必考</span></b> 十九届四中全会将三项制度共同作为基本经济制度：</p>
+<table>
+<thead>
+<tr>
+<th>制度</th>
+<th>地位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公有制为主体、多种所有制经济共同发展</td>
+<td><b>基础</b>（决定分配方式和资源配置方式）</td>
+</tr>
+<tr>
+<td>按劳分配为主体、多种分配方式并存</td>
+<td>—</td>
+</tr>
+<tr>
+<td>社会主义市场经济体制</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><b>两个"毫不动摇"：</b> 毫不动摇巩固和发展公有制经济，毫不动摇鼓励、支持、引导非公有制经济发展。</p>
+<p><b>公有制经济主体地位体现：</b></p>
+<ol>
+<li>公有资产在社会总资产中占优势（量的积累+质的提高）</li>
+<li>国有经济控制国民经济命脉，起主导作用（主要体现在<b>控制力</b>上）</li>
+</ol>
+<p><b>民营经济地位：</b> 非公有制经济的主要经济组织形式，推进中国式现代化的<b>生力军</b>，高质量发展的重要基础。</p>
+<p><b>公有制与非公有制关系：</b> 相辅相成、相得益彰。否定任何一个都是错误的。</p>
+<p><b>政府与市场关系：</b></p>
+<ul>
+<li>市场在资源配置中起<b>决定性作用</b></li>
+<li>更好发挥政府作用——管好市场管不了或管不好的事</li>
+<li>推动<b>有效市场</b>和<b>有为政府</b>更好结合</li>
+</ul>
+<h3 id="65新发展格局">6.5 新发展格局</h3>
+<p><b><span class="mk biz">必考</span></b> 构建新发展格局是高质量发展的<b>战略基点</b>。</p>
+<p><b>内涵：</b> 以国内大循环为主体、国内国际双循环相互促进。</p>
+<p><b>澄清：</b></p>
+<ul>
+<li>是开放的国内国际双循环，<b>不是封闭的国内单循环</b></li>
+<li>以全国统一大市场为基础，<b>不是各地都搞自我小循环</b></li>
+</ul>
+<p><b>最本质的特征：</b> 实现高水平的<b>自立自强</b>。</p>
+<p><b>措施：</b></p>
+<ol>
+<li>扩大内需战略同深化供给侧结构性改革有机结合</li>
+<li>着力发展实体经济（一国经济的立身之本、财富之源）</li>
+<li>着力加快科技自立自强（畅通双循环、促进发展大局的<b>关键</b>）</li>
+<li>着力推动产业链供应链优化升级</li>
+</ol>
+<h3 id="66建设现代化经济体系">6.6 建设现代化经济体系</h3>
+<p><b>六个体系一个体制：</b></p>
+<table>
+<thead>
+<tr>
+<th>体系</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产业体系</td>
+<td>创新引领、协同发展</td>
+</tr>
+<tr>
+<td>市场体系</td>
+<td>统一开放、竞争有序</td>
+</tr>
+<tr>
+<td>收入分配体系</td>
+<td>体现效率、促进公平</td>
+</tr>
+<tr>
+<td>城乡区域发展体系</td>
+<td>彰显优势、协调联动</td>
+</tr>
+<tr>
+<td>绿色发展体系</td>
+<td>资源节约、环境友好</td>
+</tr>
+<tr>
+<td>全面开放体系</td>
+<td>多元平衡、安全高效</td>
+</tr>
+<tr>
+<td>经济体制</td>
+<td>充分发挥市场作用、更好发挥政府作用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="67全面乡村振兴">6.7 全面乡村振兴</h3>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关系国计民生的根本问题</td>
+<td>农业农村农民问题</td>
+</tr>
+<tr>
+<td>乡村振兴总目标</td>
+<td>农业农村现代化</td>
+</tr>
+<tr>
+<td>乡村振兴总方针</td>
+<td>农业农村优先发展</td>
+</tr>
+<tr>
+<td>乡村振兴总要求</td>
+<td>产业兴旺、生态宜居、乡风文明、治理有效、生活富裕</td>
+</tr>
+<tr>
+<td>农村改革的主线</td>
+<td>处理好农民和土地的关系</td>
+</tr>
+<tr>
+<td>做好"三农"工作的总抓手</td>
+<td>实施乡村振兴战略</td>
+</tr>
+<tr>
+<td>社会主义现代化强国的根基</td>
+<td><b>农业强国</b></td>
+</tr>
+<tr>
+<td>建设农业强国的头等大事</td>
+<td>保障粮食和重要农产品稳定安全供给</td>
+</tr>
+<tr>
+<td>首要任务（粮食）</td>
+<td>提升粮食产能，关键抓耕地和种子两个要害</td>
+</tr>
+</tbody>
+</table>
+<p><b>重大制度创新：</b> 农村土地所有权、承包权、经营权"三权分置"。</p>
+<h3 id="68促进区域协调发展">6.8 促进区域协调发展</h3>
+<p><b><span class="mk ok">重点</span></b> 不能简单要求各地区在经济发展上达到同一水平，而是要根据各地区条件走合理分工、优化发展的路子。</p>
+<p><b>新型城镇化首要任务：</b> 促进有能力在城镇稳定就业和生活的常住人口有序实现市民化（推进以人为核心的新型城镇化）。</p>
+<h3 id="69教育科技人才">6.9 教育、科技、人才</h3>
+<p><b><span class="mk biz">必考</span></b> 教育、科技、人才是全面建设社会主义现代化国家的基础性、战略性支撑。</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>教育</td>
+<td>根本</td>
+</tr>
+<tr>
+<td>科技</td>
+<td>关键</td>
+</tr>
+<tr>
+<td>人才</td>
+<td>基础</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>"科技是第一生产力、人才是第一资源、创新是第一动力。"</p>
+</blockquote>
+<p><b>科技自立自强：</b> 是国家强盛和民族复兴的战略基石，是国家强盛之基、安全之要，是畅通国内国际双循环、促进发展大局的<b>关键</b>。</p>
+<p><b>关键核心技术：</b> 国之重器，必须掌握在自己手中。发挥新型举国体制优势开展科技攻关。</p>
+<p><b>自主创新：</b> 基础研究是科技创新的源头；国家战略科技力量是世界科技强国竞争的着力点。</p>
+<p><span class="src">【来源: 习思想 ---第三次课】</span></p>
+<hr />
+<h2 id="七发展全过程人民民主">七、发展全过程人民民主</h2>
+<p><b><span class="mk biz">必考</span></b></p>
+<h3 id="71人民民主是社会主义的生命">7.1 人民民主是社会主义的生命</h3>
+<blockquote>
+<p>没有民主就没有社会主义，就没有社会主义的现代化，就没有中华民族伟大复兴。</p>
+</blockquote>
+<p>民主是<b>全人类的共同价值</b>（注意：不是"普世价值"！"普世价值"是西方话语）。</p>
+<h3 id="72中国特色社会主义政治制度体系">7.2 中国特色社会主义政治制度体系</h3>
+<table>
+<thead>
+<tr>
+<th>制度</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>人民代表大会制度</b></td>
+<td>根本政治制度——坚持党的领导、人民当家作主、依法治国有机统一的<b>根本政治制度安排</b></td>
+</tr>
+<tr>
+<td>中国共产党领导的多党合作和政治协商制度</td>
+<td>基本政治制度</td>
+</tr>
+<tr>
+<td>民族区域自治制度</td>
+<td>基本政治制度</td>
+</tr>
+<tr>
+<td>基层群众自治制度</td>
+<td>基本政治制度——社会主义民主政治建设的<b>基础</b></td>
+</tr>
+</tbody>
+</table>
+<p><b>三者有机统一：</b></p>
+<ul>
+<li>党的领导——根本保证</li>
+<li>人民当家作主——<b>本质特征</b></li>
+<li>依法治国——基本方式</li>
+</ul>
+<h3 id="73全过程人民民主">7.3 全过程人民民主</h3>
+<p><b><span class="mk biz">必考</span><span class="mk freq">高频</span></b></p>
+<p><b>四对"统一"：</b></p>
+<ol>
+<li>过程民主和成果民主的统一</li>
+<li>程序民主和实质民主的统一</li>
+<li>直接民主和间接民主的统一</li>
+<li>人民民主和国家意志的统一</li>
+</ol>
+<p><b>"三全"：</b> 全链条（民主选举、协商、决策、管理、监督）、全方位、全覆盖。</p>
+<p><b>"三最"：</b> 最广泛、最真实、最管用的社会主义民主。</p>
+<h3 id="74协商民主">7.4 协商民主</h3>
+<p><b><span class="mk freq">高频</span></b></p>
+<blockquote>
+<p>协商民主是实践全过程人民民主的<b>重要形式</b>。有事好商量，众人的事情由众人商量，是人民民主的<b>真谛</b>。</p>
+</blockquote>
+<p>人民政协的性质：社会主义协商民主的<b>重要渠道和专门协商机构</b>，爱国统一战线组织，国家治理体系的重要组成部分。</p>
+<p>人民政协职能：政治协商、民主监督、参政议政。主题：团结和民主。</p>
+<p><b>新型政党制度"三个新"：</b></p>
+<ol>
+<li>代表最广大人民根本利益，避免旧式政党代表少数人、少数利益集团的弊端</li>
+<li>紧密团结为共同目标奋斗，避免一党缺乏监督或多党恶性竞争的弊端</li>
+<li>通过制度化安排集中意见建议，推动决策科学化民主化，避免囿于党派利益决策撕裂的弊端</li>
+</ol>
+<h3 id="75民族区域自治与基层群众自治">7.5 民族区域自治与基层群众自治</h3>
+<p><b><span class="mk ok">重点</span></b></p>
+<ul>
+<li>民族区域自治核心：保障少数民族当家作主，管理本民族本地方事务的权利</li>
+<li>处理民族问题原则：维护祖国统一，反对民族分裂，坚持民族平等、民族团结、各民族共同繁荣</li>
+<li>基层群众自治：当代中国最直接、最广泛的民主形式（村委会、居委会、职工代表大会）</li>
+</ul>
+<h3 id="76新时代爱国统一战线">7.6 新时代爱国统一战线</h3>
+<blockquote>
+<p>统战工作的本质要求是<b>大团结大联合</b>，解决的是人心和力量问题。</p>
+</blockquote>
+<ul>
+<li>关键：坚持求同存异，找到最大公约数、画出最大同心圆</li>
+<li>最核心最根本的问题：坚持党的领导</li>
+<li>民族团结：我国各族人民的生命线，中华民族共同体意识是民族团结之本</li>
+</ul>
+<p><span class="src">【来源: 习思想--第四次课】</span></p>
+<hr />
+<h2 id="八其他重点领域速览">八、其他重点领域速览</h2>
+<h3 id="81全面依法治国">8.1 全面依法治国</h3>
+<ul>
+<li>总目标：建设中国特色社会主义法治体系、建设社会主义法治国家</li>
+<li>中国特色社会主义法治道路是全面依法治国的<b>唯一正确道路</b></li>
+</ul>
+<h3 id="82建设社会主义文化强国">8.2 建设社会主义文化强国</h3>
+<p><b><span class="mk ok">重点</span></b></p>
+<blockquote>
+<p>文化是一个国家、一个民族的灵魂。</p>
+</blockquote>
+<p><b>文化自信：</b> 更基础、更广泛、更深厚的自信，是一个国家、一个民族发展中最基本、最深沉、最持久的力量。</p>
+<p><b>文化自信来源：</b> 中华优秀传统文化（深厚基础）+ 革命文化和社会主义先进文化（坚强基石）+ 中国特色社会主义伟大实践（现实基础）。</p>
+<p><b>意识形态工作：</b> 为国家立心、为民族立魂。坚持马克思主义在意识形态领域指导地位的<b>根本制度</b>。</p>
+<p><b>中华文明五大突出特性：</b></p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>核心内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>连续性</b></td>
+<td>世界唯一绵延不断且以国家形态发展至今的伟大文明——决定了中华民族必然走自己的路</td>
+</tr>
+<tr>
+<td><b>创新性</b></td>
+<td>守正不守旧、尊古不复古——决定了中华民族不惧新挑战的进取精神</td>
+</tr>
+<tr>
+<td><b>统一性</b></td>
+<td>多元一体——决定了国土不可分、国家不可乱、民族不可散、文明不可断</td>
+</tr>
+<tr>
+<td><b>包容性</b></td>
+<td>无与伦比的包容性和吸纳力——决定了兼收并蓄的开放胸怀</td>
+</tr>
+<tr>
+<td><b>和平性</b></td>
+<td>"和而不同""以和为贵"——决定了中国不搞文化霸权</td>
+</tr>
+</tbody>
+</table>
+<p><b>文化事业 vs 文化产业：</b></p>
+<ul>
+<li>发展文化事业、提升公共文化服务水平——保障人民文化权益的<b>基本途径</b></li>
+<li>文化产业——满足人民<b>多样化</b>文化需求</li>
+<li>健全现代文化产业体系：坚持把<b>社会效益放在首位</b>、社会效益和经济效益相统一</li>
+</ul>
+<p><b>文化软实力：</b> 根本上取决于核心价值观的生命力、凝聚力、感召力。加强国际传播能力建设的重要任务——讲好中国故事，传播好中国声音，展示真实、立体、全面的中国。</p>
+<h3 id="83以保障和改善民生为重点加强社会建设">8.3 以保障和改善民生为重点加强社会建设</h3>
+<p><b><span class="mk ok">重点</span></b></p>
+<p><b>民生关键概念（必背）：</b></p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>民生之源</td>
+<td><b>收入</b>（收入分配是改善民生、实现发展成果由人民共享最重要最直接的方式）</td>
+</tr>
+<tr>
+<td>最大的民生/第一民生工程</td>
+<td><b>就业</b>——劳动者赖以生存和发展的基础、共享经济发展成果的基本条件</td>
+</tr>
+<tr>
+<td>最基本的民生</td>
+<td><b>公共安全</b></td>
+</tr>
+<tr>
+<td>民生之依</td>
+<td><b>社保</b></td>
+</tr>
+<tr>
+<td>老百姓解决温饱后的第一需求</td>
+<td><b>平安</b></td>
+</tr>
+<tr>
+<td>社会建设的基础性工程</td>
+<td><b>教育事业</b></td>
+</tr>
+<tr>
+<td>人民健康</td>
+<td>民族昌盛和国家富强的重要标志</td>
+</tr>
+</tbody>
+</table>
+<p><b>民生工作思路：</b></p>
+<ul>
+<li>重要前提：正确把握民生和发展的关系——发展是解决民生问题的"<b>总钥匙</b>"，民生是发展的"指南针"</li>
+<li>工作思路：坚守底线、突出重点、完善制度、引导预期</li>
+<li>重中之重：解决人民群众<b>最关心最直接最现实</b>的利益问题</li>
+<li>重要方针：坚持尽力而为、量力而行</li>
+<li>重要原则：人人尽责、人人享有</li>
+</ul>
+<p><b>社会保障体系特点：</b> 覆盖全民、统筹城乡、公平统一、安全规范、可持续、多层次。</p>
+<p><b>社会治理：</b></p>
+<ul>
+<li>共建共治共享的社会治理格局</li>
+<li>完善党委领导、政府负责、民主协商、社会协同、公众参与、法治保障、科技支撑的社会治理体系</li>
+<li>基层治理是国家治理的<b>基石</b>，城乡社区是社会治理最基本的单元</li>
+<li>新时代"枫桥经验"最突出特点：<b>最大限度把矛盾风险防范化解在基层</b></li>
+</ul>
+<h3 id="84建设社会主义生态文明">8.4 建设社会主义生态文明</h3>
+<p><b><span class="mk biz">必考</span></b></p>
+<blockquote>
+<p>生态兴则文明兴。自然是生命之母，人与自然是生命共同体。</p>
+</blockquote>
+<p><b>"两山论"：</b> 绿水青山就是金山银山——阐明了经济发展与生态环境保护之间的关系，揭示了<b>保护生态环境就是保护生产力、改善生态环境就是发展生产力</b>的道理。</p>
+<p>生态环境问题归根到底是<b>经济发展方式和生活方式问题</b>。</p>
+<p><b>"双碳"工作：</b> 推进碳达峰碳中和是破解资源环境约束突出问题、实现可持续发展的迫切需要，是一场广泛而深刻的经济社会系统性变革。</p>
+<p><b>四个重大转变：</b></p>
+<ol>
+<li>由重点整治到系统治理</li>
+<li>由被动应对到主动作为</li>
+<li>由全球环境治理参与者到引领者</li>
+<li>由实践探索到科学理论指导</li>
+</ol>
+<p><span class="src">【来源: 习思想--第四次课】</span></p>
+<h3 id="85维护和塑造国家安全">8.5 维护和塑造国家安全</h3>
+<p><b><span class="mk biz">必考</span></b> 2014年4月15日，习近平首次提出总体国家安全观。</p>
+<p><b>总定位：</b> 国家安全是民族复兴的<b>根基</b>，社会稳定是国家强盛的<b>前提</b>。</p>
+<p><b>五大要素：</b></p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人民安全</td>
+<td><b>宗旨</b></td>
+</tr>
+<tr>
+<td>政治安全</td>
+<td><b>根本</b>，放在<b>首要位置</b></td>
+</tr>
+<tr>
+<td>经济安全</td>
+<td><b>基础</b></td>
+</tr>
+<tr>
+<td>军事、科技、文化、社会安全</td>
+<td><b>保障</b></td>
+</tr>
+<tr>
+<td>促进国际安全</td>
+<td><b>依托</b></td>
+</tr>
+</tbody>
+</table>
+<p><b>关键在"总体"，突出的是"大安全"理念。</b></p>
+<p><b>政治安全：</b> 国家安全的根本。维护政权安全（坚持和巩固党的领导）、维护制度安全（坚持和完善中国特色社会主义制度）、维护意识形态安全（坚持马克思主义指导地位）。</p>
+<p><b>发展与安全的关系：</b> 发展解决动力问题，安全解决保障问题。发展是安全的基础和目的，安全是发展的条件和保障。</p>
+<p><b>公共安全治理模式转型：</b> 从事后处置为主转向<b>事前预防为主</b>。</p>
+<h3 id="86建设巩固国防和强大人民军队">8.6 建设巩固国防和强大人民军队</h3>
+<p><b><span class="mk ok">重点</span>（建军100周年）</b></p>
+<p><b>强军目标：</b></p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>听党指挥</td>
+<td><b>灵魂</b>——决定军队建设的政治方向</td>
+</tr>
+<tr>
+<td>能打胜仗</td>
+<td><b>核心</b>——反映军队的根本职能和根本指向</td>
+</tr>
+<tr>
+<td>作风优良</td>
+<td><b>保证</b>——关系军队的性质、宗旨和本色</td>
+</tr>
+</tbody>
+</table>
+<p><b>战略安排：</b> 2027年实现建军一百年奋斗目标 → 2035年基本实现国防和军队现代化 → 本世纪中叶建成世界一流军队。</p>
+<p><b>党对军队的绝对领导：</b></p>
+<ul>
+<li>是建军之本、强军之魂</li>
+<li>军委主席负责制是根本制度和根本实现形式</li>
+<li>发端于南昌起义，奠基于三湾改编，定型于古田会议</li>
+</ul>
+<p><b>"五个强军"：</b> 政治建军（立军之本）、改革强军（关键一招）、科技强军（核心战斗力）、人才强军（要在得人）、依法治军（基本方式）。</p>
+<h3 id="87坚持一国两制与推进祖国完全统一">8.7 坚持"一国两制"与推进祖国完全统一</h3>
+<p><b><span class="mk ok">重点</span></b></p>
+<p><b>"一国两制"科学内涵：</b></p>
+<ul>
+<li><b>根本宗旨：</b> 维护国家主权、安全、发展利益，保持香港、澳门长期繁荣稳定</li>
+<li><b>最高原则：</b> 维护国家主权、安全、发展利益</li>
+<li><b>"一国"与"两制"关系：</b> 一国是前提、基础；两制是从属、派生</li>
+<li><b>权力关系：</b> 中央全面管治权（前提、基础）— 特区高度自治权（体现）</li>
+<li><b>原则：</b> "爱国者治港""爱国者治澳"</li>
+</ul>
+<p><b>三条底线（绝对不能触碰）：</b></p>
+<ol>
+<li>危害国家主权安全</li>
+<li>挑战中央权力和香港特别行政区基本法权威</li>
+<li>利用香港对内地进行渗透破坏</li>
+</ol>
+<p><b>新时代党解决台湾问题的总体方略（十大要点）：</b>
+根本保证（党的领导）→ 历史方位（在民族复兴进程中推进）→ 战略思路（在祖国大陆发展进步基础上解决）→ 大政方针（"和平统一、一国两制"）→ 政治基础（一个中国原则和"九二共识"）→ 实践途径（推动两岸关系和平发展、融合发展）→ 根本动力（团结台湾同胞、争取台湾民心）→ 必然要求（粉碎"台独"分裂图谋）→ 外部条件（反对外部势力干涉）→ 战略支撑（决不承诺放弃使用武力）</p>
+<h3 id="88中国特色大国外交">8.8 中国特色大国外交</h3>
+<p><b><span class="mk ok">重点</span></b></p>
+<p><b>主线：</b> 服务民族复兴、促进人类进步。</p>
+<p><b>新型国际关系：</b> 相互尊重、公平正义、合作共赢。国与国交往新路：对话而不对抗、结伴而不结盟。</p>
+<p><b>外交布局：</b></p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>理念/方针</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大国关系</td>
+<td>和平共处、总体稳定、均衡发展</td>
+</tr>
+<tr>
+<td>周边外交</td>
+<td>理念：亲诚惠容；方针：与邻为善、以邻为伴</td>
+</tr>
+<tr>
+<td>发展中国家</td>
+<td>理念：真实亲诚</td>
+</tr>
+<tr>
+<td>新型政党关系</td>
+<td>求同存异、相互尊重、互学互鉴</td>
+</tr>
+</tbody>
+</table>
+<p><b>人类命运共同体核心：</b> 持久和平、普遍安全、共同繁荣、开放包容、清洁美丽。</p>
+<p><b>"一带一路"：</b> 主线是互联互通，核心理念是共商共建共享，最高目标是构建人类命运共同体。</p>
+<h3 id="89全面从严治党">8.9 全面从严治党</h3>
+<p><b><span class="mk biz">必考</span></b></p>
+<p><b>鲜明主题：</b> 全面从严治党是新时代党的建设的鲜明主题。"全面"是基础，"严"是关键，"治"是要害。</p>
+<p><b>新时代党的建设总要求框架：</b></p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原则</td>
+<td>坚持和加强党的全面领导</td>
+</tr>
+<tr>
+<td>方针</td>
+<td>坚持党要管党、全面从严治党</td>
+</tr>
+<tr>
+<td>主线</td>
+<td>加强党的长期执政能力建设、先进性和纯洁性建设</td>
+</tr>
+<tr>
+<td>统领</td>
+<td><b>党的政治建设</b>（根本性建设，决定党的建设方向和效果）</td>
+</tr>
+<tr>
+<td>根基</td>
+<td>坚定理想信念宗旨</td>
+</tr>
+<tr>
+<td>布局</td>
+<td>政治建设、思想建设、组织建设、作风建设、纪律建设，把<b>制度建设贯穿其中</b>，深入推进反腐败斗争（"5+2"）</td>
+</tr>
+<tr>
+<td>目标</td>
+<td>建设始终走在时代前列、人民衷心拥护、勇于自我革命、经得起各种风浪考验、朝气蓬勃的马克思主义执政党</td>
+</tr>
+</tbody>
+</table>
+<p><b>毛泽东时代 vs 习近平时代党建对比：</b></p>
+<ul>
+<li>毛泽东：思想建设放在首位 + 组织建设 + 作风建设（三大建设）</li>
+<li>习近平：政治建设放首位/统领 + 思想、组织、作风、纪律建设 + 制度贯穿 + 反腐败（"5+2"布局）</li>
+</ul>
+<p><b>政治建设首要任务：</b> 保证全党服从中央，维护党中央权威和集中统一领导。</p>
+<p><b>自我革命：</b></p>
+<ul>
+<li>跳出历史周期率的<b>第一个答案</b>（毛泽东）：让人民来监督政府</li>
+<li>跳出历史周期率的<b>第二个答案</b>（习近平）：<b>勇于自我革命</b></li>
+<li>自我革命是党区别于其他政党的<b>显著标志</b>，是最大的优势、最鲜明的品格</li>
+<li>"四个自我"：自我净化、自我完善、自我革新、自我提高</li>
+</ul>
+<p><b>反腐败：</b> 标本兼治是鲜明特征。"打虎""拍蝇""猎狐"多管齐下。反腐倡廉核心是制度制约和监督权力。</p>
+<p><b>三个务必：</b> 务必不忘初心、牢记使命，务必谦虚谨慎、艰苦奋斗，务必敢于斗争、善于斗争。</p>
+<p><span class="src">【来源: 习思想--第五次课、习思想--第二次课】</span></p>
+<hr />
+<h2 id="九高频考点与选择题必背表述">九、高频考点与选择题必背表述</h2>
+<h3 id="91最高根本首要核心类">9.1 "最高""根本""首要""核心"类</h3>
+<table>
+<thead>
+<tr>
+<th>表述</th>
+<th>答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中国特色社会主义最本质的特征</td>
+<td>中国共产党的领导</td>
+</tr>
+<tr>
+<td>中国特色社会主义制度的最大优势</td>
+<td>中国共产党领导</td>
+</tr>
+<tr>
+<td>最高政治领导力量</td>
+<td>中国共产党</td>
+</tr>
+<tr>
+<td>中国最大的国情</td>
+<td>中国共产党的领导</td>
+</tr>
+<tr>
+<td>我国的根本领导制度</td>
+<td>党的领导制度</td>
+</tr>
+<tr>
+<td>马克思主义政党第一位的能力</td>
+<td>政治领导力</td>
+</tr>
+<tr>
+<td>党的根本性建设</td>
+<td>政治建设</td>
+</tr>
+<tr>
+<td>人民立场是党的</td>
+<td>根本政治立场</td>
+</tr>
+<tr>
+<td>党的生命线和根本工作路线</td>
+<td>群众路线</td>
+</tr>
+<tr>
+<td>党的最大政治优势</td>
+<td>密切联系群众</td>
+</tr>
+<tr>
+<td>党执政后的最大危险</td>
+<td>脱离群众</td>
+</tr>
+<tr>
+<td>党区别于其他政党的显著标志（毛）</td>
+<td>三大作风（特别是批评与自我批评）</td>
+</tr>
+<tr>
+<td>党区别于其他政党的显著标志（习）</td>
+<td>自我革命</td>
+</tr>
+<tr>
+<td>全面建设社会主义现代化国家的首要任务</td>
+<td>高质量发展</td>
+</tr>
+<tr>
+<td>高质量发展的战略基点</td>
+<td>构建新发展格局</td>
+</tr>
+<tr>
+<td>新时代我国经济社会发展的鲜明主题</td>
+<td>高质量发展</td>
+</tr>
+<tr>
+<td>中国式现代化区别于西方现代化的显著标志</td>
+<td>全体人民共同富裕</td>
+</tr>
+<tr>
+<td>社会主义民主政治的本质特征</td>
+<td>人民当家作主</td>
+</tr>
+<tr>
+<td>总体国家安全观的宗旨</td>
+<td>人民安全</td>
+</tr>
+<tr>
+<td>总体国家安全观的根本/首要位置</td>
+<td>政治安全</td>
+</tr>
+<tr>
+<td>强军目标的灵魂</td>
+<td>听党指挥</td>
+</tr>
+<tr>
+<td>强军目标的核心</td>
+<td>能打胜仗</td>
+</tr>
+<tr>
+<td>新时代党的建设的鲜明主题</td>
+<td>全面从严治党</td>
+</tr>
+<tr>
+<td>党的建设的统领</td>
+<td>政治建设</td>
+</tr>
+<tr>
+<td>新思想的核心要义</td>
+<td>坚持和发展中国特色社会主义</td>
+</tr>
+<tr>
+<td>新思想的根本价值立场</td>
+<td>人民至上</td>
+</tr>
+<tr>
+<td>全面深化改革的根本方向</td>
+<td>完善和发展中国特色社会主义制度</td>
+</tr>
+<tr>
+<td>改革开放的鲜明特征和首要任务</td>
+<td>解放和发展社会生产力</td>
+</tr>
+<tr>
+<td>改革开放的根本动力（新时代）</td>
+<td>全面深化改革开放</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92唯一正确道路类">9.2 "唯一正确道路"类</h3>
+<table>
+<thead>
+<tr>
+<th>道路</th>
+<th>领域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中国式现代化是强国建设、民族复兴的</td>
+<td>唯一正确道路</td>
+</tr>
+<tr>
+<td>中国特色社会主义法治道路是全面依法治国的</td>
+<td>唯一正确道路</td>
+</tr>
+<tr>
+<td>中国特色社会主义文化发展道路是推动文化繁荣兴盛的</td>
+<td>唯一正确道路</td>
+</tr>
+</tbody>
+</table>
+<h3 id="93基础类">9.3 "基础"类</h3>
+<table>
+<thead>
+<tr>
+<th>表述</th>
+<th>答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>社会主义民主政治建设的基础</td>
+<td>基层群众自治制度</td>
+</tr>
+<tr>
+<td>总体国家安全观的基础</td>
+<td>经济安全</td>
+</tr>
+<tr>
+<td>全面建设社会主义现代化国家的基础性、战略性支撑</td>
+<td>教育、科技、人才</td>
+</tr>
+<tr>
+<td>分配制度是促进共同富裕的</td>
+<td>基础性制度</td>
+</tr>
+<tr>
+<td>统战工作的基础</td>
+<td>工农联盟（历史）；大团结大联合（本质要求）</td>
+</tr>
+<tr>
+<td>党的基础性建设</td>
+<td>思想建设</td>
+</tr>
+</tbody>
+</table>
+<h3 id="94最易错的数字与节点">9.4 最易错的数字与节点</h3>
+<table>
+<thead>
+<tr>
+<th>时间/数字</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2012.11</td>
+<td>习近平参观《复兴之路》首提"中国梦"</td>
+</tr>
+<tr>
+<td>2014.4.15</td>
+<td>首次提出总体国家安全观</td>
+</tr>
+<tr>
+<td>2020 → 2035</td>
+<td>基本实现社会主义现代化（第一步）</td>
+</tr>
+<tr>
+<td>2035 → 本世纪中叶</td>
+<td>建成富强民主文明和谐美丽的社会主义现代化强国（第二步）</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>建军一百年奋斗目标</td>
+</tr>
+<tr>
+<td>2035的"前列"vs"行列"</td>
+<td>创新型国家<b>前列</b>，不是"行列"</td>
+</tr>
+</tbody>
+</table>
+<p><span class="src">【来源: 综合全部习概课件】</span></p>
+<hr />
+<h2 id="十知识连接">十、知识连接</h2>
+<h3 id="101与马原的连接">10.1 与马原的连接</h3>
+<table>
+<thead>
+<tr>
+<th>习概考点</th>
+<th>马原哲学原理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>六个必须坚持——人民至上</td>
+<td>历史唯物主义群众史观</td>
+</tr>
+<tr>
+<td>六个必须坚持——自信自立</td>
+<td>客观规律性与主观能动性的统一</td>
+</tr>
+<tr>
+<td>六个必须坚持——守正创新</td>
+<td>变与不变、继承与发展的辩证关系</td>
+</tr>
+<tr>
+<td>六个必须坚持——问题导向</td>
+<td>矛盾的普遍性和客观性</td>
+</tr>
+<tr>
+<td>六个必须坚持——系统观念</td>
+<td>辩证唯物主义普遍联系原理</td>
+</tr>
+<tr>
+<td>全面深化改革</td>
+<td>社会基本矛盾运动（生产力与生产关系、经济基础与上层建筑）</td>
+</tr>
+<tr>
+<td>以人民为中心</td>
+<td>人民群众是历史的创造者</td>
+</tr>
+<tr>
+<td>中国式现代化</td>
+<td>矛盾的普遍性与特殊性（现代化共性+中国特色）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="102与毛中特的连接">10.2 与毛中特的连接</h3>
+<table>
+<thead>
+<tr>
+<th>习概考点</th>
+<th>毛中特关联</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"两个结合"</td>
+<td>毛泽东奠定第一个结合，习近平提出第二个结合</td>
+</tr>
+<tr>
+<td>中国式现代化</td>
+<td>毛泽东"四个现代化"→邓小平"三步走"→习近平"两步走"</td>
+</tr>
+<tr>
+<td>党的自我革命</td>
+<td>毛泽东"让人民来监督政府"（第一个答案）→习近平"自我革命"（第二个答案）</td>
+</tr>
+<tr>
+<td>全面深化改革</td>
+<td>毛泽东社会主义社会基本矛盾理论→邓小平"改革是第二次革命"→习近平全面深化改革</td>
+</tr>
+<tr>
+<td>全面从严治党</td>
+<td>毛泽东"思想建党"→邓小平"制度建党"→习近平"思想建党+制度治党"</td>
+</tr>
+<tr>
+<td>共同富裕</td>
+<td>毛泽东"共同富裕"概念首提→邓小平"先富带后富"→习近平实质性推进</td>
+</tr>
+</tbody>
+</table>
+<h3 id="103与史纲的连接">10.3 与史纲的连接</h3>
+<table>
+<thead>
+<tr>
+<th>习概考点</th>
+<th>史纲关联</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中华民族伟大复兴</td>
+<td>180多年民族复兴史：鸦片战争→中国共产党成立→新中国→改革开放→新时代</td>
+</tr>
+<tr>
+<td>中国式现代化</td>
+<td>新民主主义革命（创造根本社会条件）→社会主义革命（奠定制度基础）→改革开放（提供物质条件）→新时代（完善制度保证）</td>
+</tr>
+<tr>
+<td>"两个历史时期"</td>
+<td>改革开放前和改革开放后"本质上都是党领导人民进行社会主义建设的实践探索"</td>
+</tr>
+</tbody>
+</table>
+<p><span class="src">【来源: 综合全部课件】</span></p>
+<hr />
+<blockquote>
+<p>注：课件涵盖17章全部内容，本笔记按考点重要程度重新组织。"五个统筹""两大奇迹"等扩展内容请参考教材。分析题重点分布在：中国式现代化、全过程人民民主、以人民为中心/共同富裕、改革开放、生态文明、党的自我革命。</p>
+</blockquote></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="政治_毛中特_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>政治 · 毛中特_例题</b></span></a><a class="next" href="政治_习概_例题.html"><span class="pg-t"><small>下一篇</small><b>政治 · 习概_例题</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

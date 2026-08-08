@@ -1,0 +1,628 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>二次型_例题 · 线代救命 · 成册</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">线</span><span class="bt"><b>线代救命</b><small>BILIBILI · 没咋了</small></span></div>
+<a class="subj" href="线代救命_首页.html">⌂ 封面/目录</a>
+<a class="b" href="01_行列式与矩阵.html">行列式与矩阵</a>
+<a class="c" href="01_行列式与矩阵_例题.html">▸ 行列式与矩阵_例题</a>
+<a class="b" href="02_矩阵的秩与分块矩阵.html">矩阵的秩与分块矩阵</a>
+<a class="c" href="02_矩阵的秩与分块矩阵_例题.html">▸ 矩阵的秩与分块矩阵_例题</a>
+<a class="b" href="03_向量.html">向量</a>
+<a class="c" href="03_向量_例题.html">▸ 向量_例题</a>
+<a class="b" href="04_线性方程组.html">线性方程组</a>
+<a class="c" href="04_线性方程组_例题.html">▸ 线性方程组_例题</a>
+<a class="b" href="05_矩阵相似.html">矩阵相似</a>
+<a class="c" href="05_矩阵相似_例题.html">▸ 矩阵相似_例题</a>
+<a class="b" href="06_二次型.html">二次型</a>
+<a class="c on" href="06_二次型_例题.html">▸ 二次型_例题</a></nav><main><div class="article"><blockquote>
+<p>全量收录本讲例题(24 题): 讲义 5.1-5.10 的例 5.1-5.24。
+按方法分组。手稿 OCR 不清处标<span class="fill">【AI补全】</span>; 解法以视频讲解为准。
+⬅ 返回 <a href="06_二次型.html">理论笔记</a></p>
+</blockquote>
+<hr />
+<h3 id="方法一书写二次型矩阵例51-55">方法一: 书写二次型矩阵(例 5.1-5.5)</h3>
+<p id="例51" class="prob"><b>例 5.1</b> 二次型 $f(x_1,x_2,x_3)=\sum_{i=1}^{3}\sum_{j=1}^{3}ij\,x_ix_j$, 求二次型矩阵 A。 <span class="src">【来源: 视频#6、讲义 5.1】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 累加和形式直接写 $A=(a_{ij})=(ij)$: $A=\begin{pmatrix}1&2&3\\2&4&6\\3&6&9\end{pmatrix}$。<span class="why">第一行是 $1\times j$, 第二行 $2\times j$, 第三行 $3\times j$。这是数一真题的第一问——写不出矩阵, 后面全没法做。</span></div>
+<div class="step">② 验证对称: $a_{ij}=ij=ji=a_{ji}$, 所以 $A^{\mathrm{T}}=A$, A 实对称, 就是二次型矩阵。<span class="why">只有实对称矩阵才能叫二次型矩阵——这是定义里的硬条件, 哪怕写出 $f=\mathbf{x}^{\mathrm{T}}A\mathbf{x}$ 也要验证。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 累加和形式 $\sum a_{ij}x_ix_j$ 直接抄矩阵 $A=(a_{ij})$, 再验对称; 交叉项系数是 $a_{ij}+a_{ji}$ 的总贡献, 对称化后各占一半。</div>
+</details>
+
+<p id="例52" class="prob"><b>例 5.2</b> 二次型 $f(x_1,x_2,x_3)=\sum_{1\le i\le j\le 3}|i-j|\,x_ix_j$, 求二次型矩阵 A。 <span class="src">【来源: 视频#6、讲义 5.1】</span>【AI补全: 求和式系数按讲解中"上三角取值 1、2、1"重建】</p>
+<details><summary>解答过程</summary>
+<div class="step">① 这个求和下标有耦合($i\le j$), 不等于独立的双重求和。<span class="why">指标独立时 $|i-j|$ 填满全矩阵(对角线 0, 两侧 1、2、1), 但耦合求和只在上三角 $i\le j$ 处取值, 下三角没有定义、按 0 处理——这是出题人藏的坑。</span></div>
+<div class="step">② 先写上三角: $a_{11}=0,\ a_{12}=1,\ a_{13}=2,\ a_{22}=0,\ a_{23}=1,\ a_{33}=0$, 下三角补 0: $\begin{pmatrix}0&1&2\\0&0&1\\0&0&0\end{pmatrix}$。<span class="why">这个矩阵不对称, 还不能叫二次型矩阵。</span></div>
+<div class="step">③ 对称化 $\dfrac{A+A^{\mathrm{T}}}{2}$: $A=\begin{pmatrix}0&\frac12&1\\\frac12&0&\frac12\\1&\frac12&0\end{pmatrix}$。<span class="why">交叉项 $x_ix_j$ 的系数由对称位置平分; 与"展开写"核对: f 中 $x_1x_3$ 系数为 2, 故 $a_{13}=a_{31}=1$ 等。这类题恶心在"先补全再对称化"两步不能省。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 带耦合下标($i\le j$)的求和只给上三角赋值, 补 0 后还要对称化才是二次型矩阵。</div>
+</details>
+
+<p id="例53" class="prob"><b>例 5.3</b> 二次型 $f(x_1,x_2,x_3)=(x_1+x_2)^2+(x_2-x_3)^2+(x_1+x_3)^2$, 求二次型矩阵 A。 <span class="src">【来源: 视频#6、讲义 5.1】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 平方和形式: 令 $y_1=x_1+x_2,\ y_2=x_2-x_3,\ y_3=x_1+x_3$, 系数<b>横着抄</b>成 $B=\begin{pmatrix}1&1&0\\0&1&-1\\1&0&1\end{pmatrix}$, 即 $y=B\mathbf{x}$。<span class="why">口诀"横着抄"——每个线性式按 $x_1,x_2,x_3$ 顺序抄成一行, 不用反解。</span></div>
+<div class="step">② $f=y_1^2+y_2^2+y_3^2=\mathbf{y}^{\mathrm{T}}\mathbf{y}=\mathbf{x}^{\mathrm{T}}B^{\mathrm{T}}B\mathbf{x}$, 二次型矩阵 $A=B^{\mathrm{T}}B$。<span class="why">$B^{\mathrm{T}}B$ 的转置等于自身, 必实对称, 可直接下结论; 二次型矩阵是 $B^{\mathrm{T}}B$ 而不是 B——B 本身不对称没关系。</span></div>
+<div class="step">③ $A=B^{\mathrm{T}}B=\begin{pmatrix}1&0&1\\1&1&0\\0&-1&1\end{pmatrix}\begin{pmatrix}1&1&0\\0&1&-1\\1&0&1\end{pmatrix}=\begin{pmatrix}2&1&1\\1&2&-1\\1&-1&2\end{pmatrix}$。<span class="why">$(B^{\mathrm{T}}B)_{ij}$ = B 的第 i 行与第 j 行点积。核对: 展开 f 得 $2x_1^2+2x_2^2+2x_3^2+2x_1x_2-2x_2x_3+2x_1x_3$, 对角线 2、交叉项一半 1、−1、1, 一致。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 平方和形式写矩阵——横着抄出 B, 二次型矩阵 $=B^{\mathrm{T}}B$, 快且不易错。</div>
+</details>
+
+<p id="例54" class="prob"><b>例 5.4</b> 设实二次型 $f(x_1,x_2,x_3)=(x_1-x_2+x_3)^2+(x_2+x_3)^2+(x_1+ax_3)^2$, 已知二次型矩阵的秩为 2, 求 a。 <span class="src">【来源: 视频#6、讲义 5.1】</span>【AI补全: 括号内系数按讲解中 B 矩阵重建】</p>
+<details><summary>解答过程</summary>
+<div class="step">① 横着抄: $B=\begin{pmatrix}1&-1&1\\0&1&1\\1&0&a\end{pmatrix}$, 二次型矩阵 $A=B^{\mathrm{T}}B$。<span class="why">把秩的问题转到 B 上——括号越复杂, 这个转移越值钱。</span></div>
+<div class="step">② $r(A)=r(B^{\mathrm{T}}B)=r(B)$。<span class="why">用方程组那讲的"四个秩相等": $r(B)=r(B^{\mathrm{T}})=r(B^{\mathrm{T}}B)=r(BB^{\mathrm{T}})$。</span></div>
+<div class="step">③ B 有非零二阶子式 $\begin{vmatrix}1&-1\\0&1\end{vmatrix}=1\ne0$, 故 $r(B)\ge2$; 要 $r(B)=2$ 只需 $|B|=0$。<span class="why">不满秩 ⟺ 行列式为零——先保证至少 2 再排除 3。</span></div>
+<div class="step">④ $|B|=1\cdot(a-0)-(-1)\cdot(0\cdot a-1\cdot1)+1\cdot(0\cdot0-1\cdot1)=a-2=0$, 故 $a=2$。<span class="why">按第一列展开口算。若把括号展开再配方求 a 也能做, 但研究 B 秒杀——这就是平方和形式技巧的意义。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 平方和二次型的秩 $=$ B 的秩; "有不等于 0 的二阶子式 + 行列式为 0"是"秩恰为 2"的标准写法。</div>
+</details>
+
+<p id="例55" class="prob"><b>例 5.5</b> 设 $\boldsymbol{\alpha}_1=(1,2)^{\mathrm{T}}$, $\boldsymbol{\alpha}_2=(a,1)^{\mathrm{T}}$, $\mathbf{x}=(x_1,x_2)^{\mathrm{T}}$, 设实二次型 $f(x_1,x_2)=\sum_{i=1}^{2}(\boldsymbol{\alpha}_i^{\mathrm{T}}\mathbf{x})^2$, 求二次型矩阵 A。 <span class="src">【来源: 视频#6、讲义 5.1】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 用内积可交换: $\boldsymbol{\alpha}_i^{\mathrm{T}}\mathbf{x}=\mathbf{x}^{\mathrm{T}}\boldsymbol{\alpha}_i$, 于是 $f=\mathbf{x}^{\mathrm{T}}\boldsymbol{\alpha}_1\boldsymbol{\alpha}_1^{\mathrm{T}}\mathbf{x}+\mathbf{x}^{\mathrm{T}}\boldsymbol{\alpha}_2\boldsymbol{\alpha}_2^{\mathrm{T}}\mathbf{x}=\mathbf{x}^{\mathrm{T}}(\boldsymbol{\alpha}_1\boldsymbol{\alpha}_1^{\mathrm{T}}+\boldsymbol{\alpha}_2\boldsymbol{\alpha}_2^{\mathrm{T}})\mathbf{x}$。<span class="why">神来之笔: 把内积平方写成 $(\mathbf{x}^{\mathrm{T}}\boldsymbol{\alpha}_i)(\boldsymbol{\alpha}_i^{\mathrm{T}}\mathbf{x})$, 让 $\mathbf{x}^{\mathrm{T}}$ 与 $\mathbf{x}$ 都靠边, 目标就是凑出 $f=\mathbf{x}^{\mathrm{T}}A\mathbf{x}$ 的形式。</span></div>
+<div class="step">② $\boldsymbol{\alpha}_1\boldsymbol{\alpha}_1^{\mathrm{T}}=\begin{pmatrix}1&2\\2&4\end{pmatrix}$, $\boldsymbol{\alpha}_2\boldsymbol{\alpha}_2^{\mathrm{T}}=\begin{pmatrix}a^2&a\\a&1\end{pmatrix}$。<span class="why">$\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 是列乘行, 结果是 $2\times2$ 矩阵。</span></div>
+<div class="step">③ $A=\begin{pmatrix}1+a^2&a+2\\a+2&5\end{pmatrix}$。<span class="why">两矩阵相加, 对称性天然成立。另法: 展开 $(x_1+2x_2)^2+(ax_1+x_2)^2$ 直接写——向量内积形式本质就是平方和形式, 两条路殊途同归。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 向量内积形式 $f=\sum(\boldsymbol{\alpha}_i^{\mathrm{T}}\mathbf{x})^2$ 的矩阵 $A=\sum\boldsymbol{\alpha}_i\boldsymbol{\alpha}_i^{\mathrm{T}}$——记住"$\mathbf{x}$ 赶到两边"的写法。</div>
+</details>
+
+<h3 id="方法二惯性定理与正负惯性指数例56-57">方法二: 惯性定理与正负惯性指数(例 5.6-5.7)</h3>
+<p id="例56" class="prob"><b>例 5.6</b> 二次型 $f(x_1,x_2,x_3)=-2x_1x_2-2x_1x_3+6x_2x_3$ 的正惯性指数为 (　)。 A.3　B.2　C.1　D.0 <span class="src">【来源: 视频#6、讲义 5.2】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 写矩阵: $A=\begin{pmatrix}0&-1&-1\\-1&0&3\\-1&3&0\end{pmatrix}$。<span class="why">只有交叉项, 对角线全 0; 交叉项系数取一半。</span></div>
+<div class="step">② 法一(分析法): $\operatorname{tr}(A)=0$, $|A|=6>0$。<span class="why">特征值无零(有零则行列式为 0); 行列式 $>0$ 说明负特征值成对出现(奇数个负根 ⟹ 行列式为负)。三个特征值, 负的要么 0 个要么 2 个; 若 0 个负则全正, 迹必 $>0$, 与 $\operatorname{tr}=0$ 矛盾 ⟹ 2 负 1 正, $p=1$。</span></div>
+<div class="step">③ 法二(巧用合同变换): 令 $x_1=3y_1,\ x_2=y_2+y_3,\ x_3=y_2-y_3$(取 3 是为了待会配方不出现分数)。$f=-2x_1(x_2+x_3)+6x_2x_3=-12y_1y_2+6y_2^2-6y_3^2=6(y_2-y_1)^2-6y_1^2-6y_3^2$。<span class="why">惯性定理: 可逆变换不改变 p、q——化到平方和直接读: 1 个正、2 个负。</span></div>
+<div class="step">④ 法三(特征值): $|\lambda E-A|=(\lambda+3)(\lambda^2-3\lambda-2)$, 由韦达定理 $\lambda_2+\lambda_3=3$、$\lambda_2\lambda_3=-2$ ⟹ 两根一正一负 ⟹ $p=1$。<span class="why"><b>易错</b>: $\lambda^2-3\lambda-2$ 不能拆成 $(\lambda-1)(\lambda-2)$; 不必解出无理根, 韦达定理判断正负个数即可。</span></div>
+<div class="step">⑤ 法四(配方法): 留作练习, 配成平方和读 p 即可。答案选 C。<span class="why">四种方法总有一款能上手——分析法思维量小, 合同变换零计算量, 特征值最稳。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 求正惯性指数四法: 分析法(迹+行列式推特征值正负)、巧用合同变换、特征值+韦达、配方。</div>
+</details>
+
+<p id="例57" class="prob"><b>例 5.7</b> 二次型 $f(x_1,x_2,x_3)=(x_1+3x_2+ax_3)(x_1+5x_2+bx_3)$ 的正惯性指数 p: A. 与 a 有关, 与 b 无关　B. 与 a 无关, 与 b 有关　C. 与 a、b 均有关　D. 与 a、b 均无关 <span class="src">【来源: 视频#6、讲义 5.2】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 令 $y_1=x_1+3x_2+ax_3$, $y_2=x_1+5x_2+bx_3$, $y_3=x_3$。<span class="why">第三个必须令成 $x_3$——凑阶梯形保证变换可逆, 这是惯性定理的前提。</span></div>
+<div class="step">② 变换矩阵 $C=\begin{pmatrix}1&3&a\\1&5&b\\0&0&1\end{pmatrix}$, $|C|=5-3=2\ne0$, 可逆。<span class="why">可逆性验证是惯性定理用法的固定动作——不可逆时 p 会变。</span></div>
+<div class="step">③ $f=y_1y_2$, 再做标准变换 $y_1=z_1+z_2,\ y_2=z_1-z_2,\ y_3=z_3$, 得 $f=z_1^2-z_2^2$。<span class="why">混合项配平方差 $y_1y_2=z_1^2-z_2^2$ 是配方法里也会用的常规操作。</span></div>
+<div class="step">④ $p=1,\ q=1$, 与 a、b 均无关, 选 D。<span class="why">惯性定理当工具用: 找可逆变换变成容易看的形式, 全程零计算。若展开硬算再研究, 做半天不一定做得出来——这就是"惯性定理既是定理也是工具"的含义。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 乘积型二次型 $(L_1)(L_2)$ 的正负惯性指数: 令 $y_1=L_1,\ y_2=L_2$, 再 $y_1y_2=z_1^2-z_2^2$——与括号内系数无关。</div>
+</details>
+
+<h3 id="方法三配方法例58-510">方法三: 配方法(例 5.8-5.10)</h3>
+<p id="例58" class="prob"><b>例 5.8</b> 将二次型 $f(x_1,x_2,x_3)=2x_1^2+2x_2^2+6x_3^2-2x_1x_2+6x_1x_3$ 化为标准形, 并求所用的可逆线性变换。 <span class="src">【来源: 视频#6、讲义 5.3】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 集中含 $x_1$ 的项: $f=2x_1^2-2x_1x_2+6x_1x_3+2x_2^2+6x_3^2=2\left(x_1-\frac12x_2+\frac32x_3\right)^2-\frac12x_2^2-\frac92x_3^2+3x_2x_3+2x_2^2+6x_3^2$。<span class="why">$x_1$ 与 $x_2$、$x_3$ 都有交叉项, 用三变量平方公式 $(a+b+c)^2$; 交叉项系数取一半($-2$ 取 $-\frac12$, $6$ 取 $\frac32$)。展开核对: $\left(x_1-\frac12x_2+\frac32x_3\right)^2=x_1^2+\frac14x_2^2+\frac94x_3^2-x_1x_2+3x_1x_3-\frac32x_2x_3$——原有项之外多出的要减掉, 恒等变形不能凭空加。</span></div>
+<div class="step">② 合并 $x_2$、$x_3$ 部分: $-\frac12x_2^2+2x_2^2=\frac32x_2^2$, $-\frac92x_3^2+6x_3^2=\frac32x_3^2$, 交叉项 $3x_2x_3$ 保留。<span class="why">一步步来, 别跳步。</span></div>
+<div class="step">③ 凑完全平方: $\frac32x_2^2+\frac32x_3^2+3x_2x_3=\frac32(x_2+x_3)^2$。得 $f=2\left(x_1-\frac12x_2+\frac32x_3\right)^2+\frac32(x_2+x_3)^2$。<span class="why">后三部分正好是 $\frac32$ 倍的 $(x_2+x_3)^2$, 一步到位。</span></div>
+<div class="step">④ 令 $y_1=x_1-\frac12x_2+\frac32x_3$, $y_2=x_2+x_3$, $y_3=x_3$。标准形: $2y_1^2+\frac32y_2^2$。<span class="why">$y_3$ 必须令成 $x_3$ 保证可逆——令成 0 就完蛋。</span></div>
+<div class="step">⑤ 反解(不求逆): $x_3=y_3$; $x_2=y_2-y_3$; $x_1=y_1+\frac12(y_2-y_3)-\frac32y_3=y_1+\frac12y_2-2y_3$。故 $C=\begin{pmatrix}1&\frac12&-2\\0&1&-1\\0&0&1\end{pmatrix}$, $x=Cy$。<span class="why">中学消元法反解比求逆快; 可验证 $C^{\mathrm{T}}AC=\operatorname{diag}(2,\frac32,0)$——配方法配出的变换必可逆。</span></div>
+<div class="step">⑥ 若想一步到规范形: 把系数吸进括号, 令 $z_1=\sqrt2\left(x_1-\frac12x_2+\frac32x_3\right)$, $z_2=\sqrt{\frac32}(x_2+x_3)$ 即得 $z_1^2+z_2^2$。<span class="why">配方法可以一步配到规范形——这是它比正交变换法强的地方。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 标准配方流程——先把 $x_1$ 全部配完(交叉项系数取一半), 展开核对后减掉多出的项, 再配 $x_2$; 自由变量令成对应 $x$ 保可逆, 反解用消元不求逆。</div>
+</details>
+
+<p id="例59" class="prob"><b>例 5.9</b> 将二次型 $f(x_1,x_2,x_3)=x_1x_2+x_1x_3-x_2x_3$ 化为规范形, 并求所用的可逆线性变换。 <span class="src">【来源: 视频#6、讲义 5.3】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 没有平方项, 先构造: 令 $x_1=y_1+y_2,\ x_2=y_1-y_2,\ x_3=y_3$, 即 $C_1=\begin{pmatrix}1&1&0\\1&-1&0\\0&0&1\end{pmatrix}$, $x=C_1y$。<span class="why">约定俗成的构造: 交叉项 $x_1x_2$ 变成 $y_1^2-y_2^2$——从混合项造出平方项。</span></div>
+<div class="step">② $f=(y_1+y_2)(y_1-y_2)+y_3\big[(y_1+y_2)-(y_1-y_2)\big]=y_1^2-y_2^2+2y_2y_3$。<span class="why">第二项把 $x_3$ 提出来, $x_1-x_2=2y_2$。</span></div>
+<div class="step">③ 配方: $y_1^2-y_2^2+2y_2y_3=y_1^2-(y_2-y_3)^2+y_3^2$。<span class="why">$y_2$ 的部分凑 $(y_2-y_3)^2$, 多出的 $y_3^2$ 补回来。</span></div>
+<div class="step">④ 令 $z_1=y_1,\ z_2=y_2-y_3,\ z_3=y_3$, 反解: $y_1=z_1,\ y_2=z_2+z_3,\ y_3=z_3$, 得 $C_2=\begin{pmatrix}1&0&0\\0&1&1\\0&0&1\end{pmatrix}$, $y=C_2z$。<span class="why">这里 $z$ 是目标, 从 $y$ 到 $z$ 是逆方向, 要反解——"顺着变换方向不用反解, 逆着要反解"。</span></div>
+<div class="step">⑤ 总变换: $x=C_1C_2z=\begin{pmatrix}1&1&1\\1&-1&-1\\0&0&1\end{pmatrix}z$。规范形: $z_1^2-z_2^2+z_3^2$。<span class="why">两次变换相乘; 也可直接消元解出 x 与 z 的关系, 殊途同归。惯性指数 p=2、q=1——可逆变换下不变。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 无平方项二次型——先令 $x_1=y_1+y_2,\ x_2=y_1-y_2$ 造平方项, 再配方; 两步变换相乘得总变换。</div>
+</details>
+
+<p id="例510" class="prob"><b>例 5.10</b> 将二次型 $f(x_1,x_2,x_3)=x_1^2+4x_2x_3$ 化为规范形, 并求所用的可逆线性变换。 <span class="src">【来源: 视频#6、讲义 5.3】</span>【AI补全: 题干中 $4x_2x_3$ 一项按讲解中"令 $y_2=x_2+x_3,\ y_3=x_2-x_3$ 后一步到 $y_1^2+y_2^2-y_3^2$"反推】</p>
+<details><summary>解答过程</summary>
+<div class="step">① 构造平方差: $4x_2x_3=(x_2+x_3)^2-(x_2-x_3)^2$。<span class="why">目的还是"从混合项造平方项"; 上一题那套构造在这里不好用, 构造方式要因题而变——看清楚你的原理: 混合项 → 平方差。</span></div>
+<div class="step">② 令 $y_1=x_1,\ y_2=x_2+x_3,\ y_3=x_2-x_3$, 即 $x=\begin{pmatrix}1&0&0\\0&\frac12&\frac12\\0&\frac12&-\frac12\end{pmatrix}y$, 变换可逆($|C|=-\frac12$)。<span class="why">反解 $x_2=\frac12(y_2+y_3)$、$x_3=\frac12(y_2-y_3)$, 代回 $4x_2x_3=y_2^2-y_3^2$。</span></div>
+<div class="step">③ $f=y_1^2+y_2^2-y_3^2$, 一步到规范形。<span class="why">配方法可一步配到规范形; 规范形系数 1、1、−1, 惯性指数 p=2、q=1。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 形如 $x_1^2+4x_2x_3$ 的无平方项二次型——$4x_2x_3=(x_2+x_3)^2-(x_2-x_3)^2$ 一步到规范形。</div>
+</details>
+
+<h3 id="方法四正交变换法例511">方法四: 正交变换法(例 5.11)</h3>
+<p id="例511" class="prob"><b>例 5.11</b> 设二次型 $f(x_1,x_2,x_3)=x_1^2+x_2^2+x_3^2-4x_1x_2-4x_1x_3+2ax_2x_3$ 经过正交变换化为标准形 $3y_1^2+3y_2^2+by_3^2$, 求 a、b 的值及所用的正交变换。 <span class="src">【来源: 视频#6、讲义 5.4】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① $A=\begin{pmatrix}1&-2&-2\\-2&1&a\\-2&a&1\end{pmatrix}$, 目标对角阵 $\Lambda=\operatorname{diag}(3,3,b)$。<span class="why">正交变换下 $Q^{\mathrm{T}}AQ=\Lambda$, 既是合同又是相似——求参数用相似的性质, 因为特征值具体值的信息比正负个数丰富得多。</span></div>
+<div class="step">② 相似必要条件: $\operatorname{tr}(A)=3=6+b\Longrightarrow b=-3$; $|A|=-a^2+8a-7=9b=-27\Longrightarrow a^2-8a-20=0$, 得 $a=10$ 或 $-2$。<span class="why">迹、行列式两式两参; 但解出两个 a, 需要更多信息定夺。</span></div>
+<div class="step">③ 排除: $\lambda=3$ 是二重根, 提供更丰富的信息——$r(3E-A)=3-2=1$。$3E-A=\begin{pmatrix}2&2&2\\2&2&-a\\2&-a&2\end{pmatrix}$ 各行成比例 ⟹ $a=-2$(舍 $a=10$)。<span class="why">重根 ⟹ 两个线性无关特征向量 ⟹ 秩为 1; 参数定不下来时, 重根是你最有力的武器。</span></div>
+<div class="step">④ $\lambda=3$: 解 $x_1+x_2+x_3=0$。$\boldsymbol{\alpha}_1=(1,-1,0)^{\mathrm{T}}$; 写 $\boldsymbol{\alpha}_2$ 时留 k 待定: 取 $(1,1,k)$, 与 $\boldsymbol{\alpha}_1$ 的内积自动为 0(对称位置), 代入方程 $1+1+k=0$ ⟹ $k=-2$, $\boldsymbol{\alpha}_2=(1,1,-2)^{\mathrm{T}}$。<span class="why">写特征向量时就保证天然正交, 省掉施密特正交化的过程——矩阵相似那讲的老技巧。</span></div>
+<div class="step">⑤ $\lambda=-3$: 特征向量直接抄: $\boldsymbol{\alpha}_3=(1,1,1)^{\mathrm{T}}$。<span class="why">不同特征值下实对称矩阵的特征向量自动正交; $\boldsymbol{\alpha}_3$ 与 $\boldsymbol{\alpha}_1$、$\boldsymbol{\alpha}_2$ 都正交, 只能指向行向量 $(1,1,1)$ 方向, 不用解方程。</span></div>
+<div class="step">⑥ 单位化拼 Q: $Q=\begin{pmatrix}\frac1{\sqrt2}&\frac1{\sqrt6}&\frac1{\sqrt3}\\-\frac1{\sqrt2}&\frac1{\sqrt6}&\frac1{\sqrt3}\\0&-\frac2{\sqrt6}&\frac1{\sqrt3}\end{pmatrix}$, $f=3y_1^2+3y_2^2-3y_3^2$。<span class="why"><b>易错</b>: Q 的列与特征值一一对应——前两列对应 3, 第三列对应 −3; 排布错则标准形全错。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 正交变换标准流程 + 三个提速技巧: 重根用秩定参数、特征向量提前正交化、不同特征值的特征向量直接抄行向量。</div>
+</details>
+
+<h3 id="方法五平方和形式二次型例512-514">方法五: 平方和形式二次型(例 5.12-5.14)</h3>
+<p id="例512" class="prob"><b>例 5.12</b> 二次型 $f(x_1,x_2,x_3)=(x_1+x_2)^2+(x_2-x_3)^2+(x_1+x_3)^2$ 的正惯性指数 $p=$ ____。 <span class="src">【来源: 视频#6、讲义 5.5】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 陷阱做法: 令 $y_1=x_1+x_2,\ y_2=x_2-x_3,\ y_3=x_1+x_3$, 得 $f=y_1^2+y_2^2+y_3^2$, 于是 $p=3$——错!<span class="why">变换矩阵 $B=\begin{pmatrix}1&1&0\\0&1&-1\\1&0&1\end{pmatrix}$ 的行向量 $r_1-r_2=r_3$, 线性相关, B 不可逆; 惯性定理不适用于不可逆变换, p 会变——这是出题人挖的坑。</span></div>
+<div class="step">② 正解: 平方和形式性质——$f\ge0$ ⟹ 特征值 $\ge0$ ⟹ 无负惯性指数 $q=0$; $p=r(A)=r(B^{\mathrm{T}}B)=r(B)$。<span class="why">平方和形式的特征值不可能为负: 若有负特征值, 取对应特征方向 $f<0$, 与平方和矛盾。</span></div>
+<div class="step">③ $r(B)=2$(不满秩, 但有二阶子式 $\begin{vmatrix}1&1\\0&1\end{vmatrix}=1\ne0$), 故 $p=2$。<span class="why">拆开配方也能算对但慢; 研究 B 秒杀。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 平方和形式二次型: $p=r(B)$; 用"直接令 y"时必须先验证变换可逆——不可逆就掉进陷阱。</div>
+</details>
+
+<p id="例513" class="prob"><b>例 5.13</b> 设 $f(x_1,x_2,x_3)=(ax_1+2x_2-3x_3)^2+(x_2-2x_3)^2+(x_1+ax_2-x_3)^2$【AI补全: 括号系数按讲解中 B 矩阵重建】是正定二次型, 则 (　)。 A. $a\ne-1$ 且 $a\ne\frac12$　B. $a\ne\frac12$ 且 $a\ne1$　C. $a\ne1$ 且 $a\ne-\frac12$　D. $a\ne\frac12$ 且 $a\ne0$ <span class="src">【来源: 视频#6、讲义 5.5】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 平方和形式正定 ⟺ B 满秩(性质 3: $p=r(B)$, 正定要 $p=n$)。<span class="why">正惯性指数拉满 ⟺ $r(B)=3$ ⟺ $|B|\ne0$——把正定性问题转成行列式问题。</span></div>
+<div class="step">② 横着抄: $B=\begin{pmatrix}a&2&-3\\0&1&-2\\1&a&-1\end{pmatrix}$。<span class="why">按括号内系数依次抄成行。</span></div>
+<div class="step">③ $|B|=a\cdot(1\cdot(-1)-(-2)\cdot a)-2\cdot(0\cdot(-1)-(-2)\cdot1)+(-3)\cdot(0\cdot a-1\cdot1)=2a^2-a-1=(2a+1)(a-1)$。<span class="why">按第一列展开; 展开核对后分解因式。</span></div>
+<div class="step">④ $|B|\ne0\Longleftrightarrow a\ne1$ 且 $a\ne-\frac12$, 选 C。<span class="why">全程零展开——这就是熟练运用平方和结论的好处。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 平方和形式正定 $\Longleftrightarrow$ $|B|\ne0$——记住"B 满秩"这条性质, 正定性判断秒杀。</div>
+</details>
+
+<p id="例514" class="prob"><b>例 5.14</b> 二次型 $f(x_1,x_2,x_3)=(x_1+x_2)^2+(x_2+x_3)^2-(x_3-x_1)^2$ 的正惯性指数和负惯性指数分别为 <strong><em>_、</em></strong>_。 <span class="src">【来源: 视频#6、讲义 5.5】</span>【AI补全: 第三项按讲解中"减去 x3−x1 的平方"重建】</p>
+<details><summary>解答过程</summary>
+<div class="step">① 注意: 第三项是减号, <b>不是</b>平方和形式, 不能套 $p=r(B)$。<span class="why">有减号时 f 可以取负值, 特征值可以有负的——看清楚再动手。</span></div>
+<div class="step">② 巧用合同变换: 令 $y_1=x_1+x_2,\ y_2=x_2+x_3,\ y_3=x_3$(阶梯形, 可逆)。$f=y_1^2+y_2^2-(x_3-x_1)^2$。<span class="why">第三个令成 $x_3$ 保证可逆——直接令 $(x_3-x_1)$ 就中了出题人的陷阱。</span></div>
+<div class="step">③ 由 $x_1=y_1-y_2+y_3$, $x_3=y_3$, 得 $x_3-x_1=y_2-y_1$。于是 $f=y_1^2+y_2^2-(y_2-y_1)^2=2y_1y_2$。<span class="why">平方项恰好抵消——这就是第三项设成减号的效果。</span></div>
+<div class="step">④ 再令 $y_1=z_1+z_2,\ y_2=z_1-z_2,\ y_3=z_3$: $f=2z_1^2-2z_2^2$。<span class="why">混合项配平方差的标准变换。</span></div>
+<div class="step">⑤ $p=1,\ q=1$。<span class="why">惯性定理保证两步变换(都可逆)合法; 比拆开算特征值快得多。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 伪装成平方和的"平方差"形式——用可逆合同变换化到 $2y_1y_2$ 再配平方差, 正负惯性指数各一个。</div>
+</details>
+
+<h3 id="方法六二次型等于零的求解例515">方法六: 二次型等于零的求解(例 5.15)</h3>
+<p id="例515" class="prob"><b>例 5.15</b> 设正交矩阵 $Q=\begin{pmatrix}\frac1{\sqrt2}&-\frac1{\sqrt6}&\frac1{\sqrt3}\\\frac{k_1}{\sqrt2}&\frac1{\sqrt6}&-\frac1{\sqrt3}\\\frac{k_2}{\sqrt2}&\frac2{\sqrt6}&\frac{k_3}{\sqrt3}\end{pmatrix}$【AI补全: 原题矩阵印刷不清, 骨架按讲义重建】满足 $Q^{\mathrm{T}}AQ=\begin{pmatrix}0&0&0\\0&0&0\\0&0&\lambda\end{pmatrix}$, 其中 A 是 3 阶矩阵, $\lambda\ne0$, 且 $A^2=3A$。(1) 求 $k_1,k_2,k_3$ 的值; (2) 求 $\lambda$ 的值及矩阵 A; (3) 设 $\mathbf{x}=(x_1,x_2,x_3)^{\mathrm{T}}$, 求方程 $\mathbf{x}^{\mathrm{T}}A\mathbf{x}=0$ 的全部解。 <span class="src">【来源: 视频#6、讲义 5.6】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 正交矩阵性质: 每行每列都是单位向量, 不同行、不同列两两正交。<span class="why">求 k 参数就用这个; 若用"某行是单位向量"求, 每个 k 会解出正负两个值, 还要排除, 很麻烦。</span></div>
+<div class="step">② "盯零"技巧: 选择做内积的两行(列)时, 让某个 k 恰好乘 0 而消失——先找只含一个未知参数的内积式, 解出 $k_3$; 再依次解出 $k_2$、$k_1$。得 $k_1=1,\ k_2=-1,\ k_3=1$【按视频讲解; 原题矩阵印刷不清, 数值以讲解为准】。<span class="why">一步只解一个参数, 步步为营。老师反复强调"盯着零看"——零是最好用的信息。</span></div>
+<div class="step">③ 求 $\lambda$: 设 $A\boldsymbol{\alpha}=\lambda\boldsymbol{\alpha}$($\boldsymbol{\alpha}\ne\mathbf{0}$), $A^2=3A$ 两边作用 $\boldsymbol{\alpha}$: $\lambda^2\boldsymbol{\alpha}=3\lambda\boldsymbol{\alpha}$, 即 $\lambda(\lambda-3)\boldsymbol{\alpha}=\mathbf{0}$, 故 $\lambda=0$ 或 3; 题设 $\lambda\ne0$, 所以 $\lambda=3$。<span class="why">矩阵多项式 ⟹ 特征值多项式——矩阵相似那讲的核心手法。</span></div>
+<div class="step">④ 求 A: $A=Q\cdot\operatorname{diag}(0,0,3)\cdot Q^{\mathrm{T}}=3\mathbf{q}_3\mathbf{q}_3^{\mathrm{T}}$, 其中 $\mathbf{q}_3$ 是 Q 的第 3 列; 由 $k_3=1$ 及第 3 列形式, $\mathbf{q}_3=\frac1{\sqrt3}(1,1,1)^{\mathrm{T}}$, 故 $A=\begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}$。<span class="why">$Q^{\mathrm{T}}AQ=\Lambda$ 反解 $A=Q\Lambda Q^{\mathrm{T}}$; 秩一矩阵的分解。</span></div>
+<div class="step">⑤ 法一(正交变换法): $x=Qy$ 时 $\mathbf{x}^{\mathrm{T}}A\mathbf{x}=\mathbf{y}^{\mathrm{T}}\operatorname{diag}(0,0,3)\mathbf{y}=3y_3^2$, 故 $\mathbf{x}^{\mathrm{T}}A\mathbf{x}=0\Longleftrightarrow y_3=0$, $y_1,y_2$ 任意, 即 $\mathbf{x}=Q(k_1,k_2,0)^{\mathrm{T}}$。<span class="why">正交变换化成标准形,"平方和等于零"的解一目了然——这就是 f=0 问题的核心思维: 化标准形再看。</span></div>
+<div class="step">⑥ 法二(配方法): $\mathbf{x}^{\mathrm{T}}A\mathbf{x}=x_1^2+x_2^2+x_3^2+2x_1x_2+2x_1x_3+2x_2x_3=(x_1+x_2+x_3)^2$。故 $\mathbf{x}^{\mathrm{T}}A\mathbf{x}=0\Longleftrightarrow x_1+x_2+x_3=0$, 解: $\mathbf{x}=k_1(1,-1,0)^{\mathrm{T}}+k_2(1,0,-1)^{\mathrm{T}}$($k_1,k_2$ 为任意常数)。<span class="why">配方法一步到标准形, 解齐次方程组。</span></div>
+<div class="step">⑦ 法三(内积拆分): $A=\boldsymbol{\beta}\boldsymbol{\beta}^{\mathrm{T}}$($\boldsymbol{\beta}=(1,1,1)^{\mathrm{T}}$), $\mathbf{x}^{\mathrm{T}}A\mathbf{x}=(\mathbf{x}^{\mathrm{T}}\boldsymbol{\beta})(\boldsymbol{\beta}^{\mathrm{T}}\mathbf{x})=(x_1+x_2+x_3)^2$——殊途同归。<span class="why">秩一矩阵拆成列乘行, 两个内积相乘。</span></div>
+<div class="step">⑧ 法四(模长技巧): $3\,\mathbf{x}^{\mathrm{T}}A\mathbf{x}=\mathbf{x}^{\mathrm{T}}A^2\mathbf{x}=\mathbf{x}^{\mathrm{T}}A^{\mathrm{T}}A\mathbf{x}=(A\mathbf{x})^{\mathrm{T}}(A\mathbf{x})=\|A\mathbf{x}\|^2$, 故 $\mathbf{x}^{\mathrm{T}}A\mathbf{x}=0\Longleftrightarrow A\mathbf{x}=\mathbf{0}$。<span class="why">A 实对称(能用正交矩阵相似对角化的必为实对称), 向量的模平方等于 0 当且仅当它是零向量——把二次型方程变成线性方程组。</span></div>
+<div class="step">⑨ 答案: 全部解为 $\mathbf{x}=k_1(1,-1,0)^{\mathrm{T}}+k_2(1,0,-1)^{\mathrm{T}}$, $k_1,k_2$ 任意。<span class="why">四种方法互相印证; 前两种是常规手段务必掌握, 后两种是秩一矩阵的特效。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: f=0 问题的核心思维——用正交变换或配方法化成标准形, "平方和等于零"的解直接读; 最后必须落回 x 并写成基础解系组合。</div>
+</details>
+
+<h3 id="方法七二次型化成另一个二次型线性变换例516-518">方法七: 二次型化成另一个二次型(线性变换)(例 5.16-5.18)</h3>
+<p id="例516" class="prob"><b>例 5.16</b> 设二次型 $f(x_1,x_2)=x_1^2-4x_1x_2+4x_2^2$ 经正交变换 $\begin{pmatrix}x_1\\x_2\end{pmatrix}=Q\begin{pmatrix}y_1\\y_2\end{pmatrix}$ 化为二次型 $g(y_1,y_2)=ay_1^2+4y_1y_2+by_2^2$, 其中 $a\ge b$。求 (1) a、b 的值; (2) 正交矩阵 Q。 <span class="src">【来源: 视频#6、讲义 5.7】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① $A=\begin{pmatrix}1&-2\\-2&4\end{pmatrix}$, $B=\begin{pmatrix}a&2\\2&b\end{pmatrix}$。<span class="why">正交变换 ⟹ $Q^{\mathrm{T}}AQ=B$, 既是合同又是相似——求参数用相似(特征值信息更丰富)。</span></div>
+<div class="step">② 迹相等: $5=a+b$; 行列式相等: $|A|=0\Longrightarrow ab-4=0$。<span class="why">$|A|=1\cdot4-(-2)(-2)=0$; a、b 是方程 $t^2-5t+4=0$ 的两个根: 1 与 4。</span></div>
+<div class="step">③ 由 $a\ge b$: $a=4,\ b=1$。<span class="why">题给条件 $a\ge b$ 就是用来排除一组解的——别算完忘了筛选。</span></div>
+<div class="step">④ 原理: A、B 相似(实对称)⟹ 存在正交 Q 使 $Q^{\mathrm{T}}AQ=B$。做法: 找 $Q_1^{\mathrm{T}}AQ_1=\Lambda$, $Q_2^{\mathrm{T}}BQ_2=\Lambda$(特征值排布相同), 则 $Q=Q_1Q_2^{\mathrm{T}}$。<span class="why">用对角阵当桥梁: A→Λ→B; 等号两边配平后 $B=(Q_1Q_2^{\mathrm{T}})^{\mathrm{T}}A(Q_1Q_2^{\mathrm{T}})$; 正交矩阵的乘积仍是正交矩阵。</span></div>
+<div class="step">⑤ $Q_1$: A 的特征值 5、0(迹 5, 一个特征值必为 0)。$\lambda=5$ 的特征向量 $(1,-2)$, $\lambda=0$ 的 $(2,1)$: $Q_1=\begin{pmatrix}\frac1{\sqrt5}&\frac2{\sqrt5}\\-\frac2{\sqrt5}&\frac1{\sqrt5}\end{pmatrix}$。<span class="why">技巧: 由 $A\mathbf{x}=0$ 解出 $\lambda=0$ 的特征向量 $(2,1)$, 它与行向量 $(1,-2)$ 正交, 所以 $(1,-2)$ 就是 $\lambda=5$ 的特征向量——直接写。</span></div>
+<div class="step">⑥ $Q_2$: B 的特征值同样是 5、0(相似), 对应特征向量 $(2,1)$、$(1,-2)$: $Q_2=\begin{pmatrix}\frac2{\sqrt5}&\frac1{\sqrt5}\\\frac1{\sqrt5}&-\frac2{\sqrt5}\end{pmatrix}$。<span class="why">注意与 $Q_1$ 保持特征值排列顺序一致, 免得最后错位。</span></div>
+<div class="step">⑦ $Q=Q_1Q_2^{\mathrm{T}}=\frac15\begin{pmatrix}4&-3\\-3&-4\end{pmatrix}$。<span class="why">正交矩阵乘积仍正交, 验证无压力。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 正交变换化 f 为 g ⟹ A~B: 迹+行列式求参数, $Q=Q_1Q_2^{\mathrm{T}}$ 用对角阵搭桥——"为什么相似的两个实对称矩阵能用正交矩阵互化"的完整证明就在这一题。</div>
+</details>
+
+<p id="例517" class="prob"><b>例 5.17</b> 设二次型 $f(x_1,x_2,x_3)=x_1^2+x_2^2+x_3^2+2ax_1x_2+2ax_1x_3+2ax_2x_3$ 经可逆线性变换 $x=Py$ 得 $g(y_1,y_2,y_3)=y_1^2+y_2^2+4y_3^2+2y_1y_2$。求 (1) a 的值; (2) 可逆矩阵 P。 <span class="src">【来源: 视频#6、讲义 5.7】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① $A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}$; $g=(y_1+y_2)^2+4y_3^2$, 正惯性指数 $p=2,\ q=0$, 故 $r(B)=2$(B 是 g 的矩阵)。<span class="why">可逆变换 ⟹ 合同 ⟹ 正负惯性指数、秩都相同——合同只提供这个信息, 用足它。</span></div>
+<div class="step">② 角度一: $r(A)=2\Longrightarrow|A|=0$。$|A|=2a^3-3a^2+1=(a-1)^2(2a+1)$, 得 $a=1$ 或 $-\frac12$。<span class="why">p+q=2 ⟹ 秩 2 ⟹ 行列式为零。</span></div>
+<div class="step">③ 排除 $a=1$: 此时 A 是全 1 矩阵, $r(A)=1\ne2=r(B)$。<span class="why">合同必须秩相等——必要条件排除。这个角度只用了"秩"的部分信息, 所以要多一步排除。</span></div>
+<div class="step">④ 角度二(更精确): $|\lambda E-A|=(\lambda-1+a)^2(\lambda-1-2a)$; 由 $p=2$: 重根 $\lambda_{1,2}=1-a$ 必须为正, $\lambda_3=1+2a$ 必须为 0 ⟹ $a=-\frac12$。<span class="why">特征值角度一步到位, 无需排除; 计算上可用秩一矩阵拆法: $A=a\cdot$(全 1 矩阵)$+(1-a)E$, 全 1 矩阵特征值 $3,0,0$, 平移后即 $1+2a,\ 1-a,\ 1-a$——口算。</span></div>
+<div class="step">⑤ 思路: 把 f、g 都化到<b>同一个规范形</b>, 用规范形当桥梁。<span class="why">一般可逆变换只有合同关系, 标准形不唯一不能当桥梁; 规范形唯一, 是合同问题的标准桥。</span></div>
+<div class="step">⑥ 配 f(取 $a=-\frac12$): $f=(x_1-\frac12x_2-\frac12x_3)^2+\frac34(x_2-x_3)^2$。令 $z_1=x_1-\frac12x_2-\frac12x_3$, $z_2=\frac{\sqrt3}{2}(x_2-x_3)$, $z_3=x_3$。<span class="why">令 $z_2$ 时把 $\frac34$ 的系数吸进括号, 一步到规范形 $z_1^2+z_2^2$。</span></div>
+<div class="step">⑦ 反解: $x_3=z_3$, $x_2=\frac2{\sqrt3}z_2+z_3$, $x_1=z_1+\frac1{\sqrt3}z_2+z_3$。$P_1=\begin{pmatrix}1&\frac1{\sqrt3}&1\\0&\frac2{\sqrt3}&1\\0&0&1\end{pmatrix}$, $x=P_1z$。<span class="why">从 x 出发反解, 解出 x 与 z 的关系。</span></div>
+<div class="step">⑧ 配 g: $g=(y_1+y_2)^2+4y_3^2$。令 $z_1=y_1+y_2$, $z_2=2y_3$, $z_3=y_1$(保证可逆), 得 $P_2^{-1}=\begin{pmatrix}1&1&0\\0&0&2\\1&0&0\end{pmatrix}$, 反解 $y=P_2z$, $P_2=\begin{pmatrix}0&0&1\\1&0&-1\\0&\frac12&0\end{pmatrix}$。<span class="why">目标是同一个规范形 $z_1^2+z_2^2$; $z_3$ 随便令一个可逆的。注意这里不需要反解($z$ 到 $y$ 顺方向), 直接填矩阵。</span></div>
+<div class="step">⑨ $P=P_1P_2=\begin{pmatrix}\frac1{\sqrt3}&\frac12&1-\frac1{\sqrt3}\\\frac2{\sqrt3}&\frac12&-\frac2{\sqrt3}\\0&\frac12&0\end{pmatrix}$【AI补全: 最后一步矩阵乘法】。<span class="why">从坐标变换的角度: x→z 用 $P_1$, z→y 用 $P_2$, 相乘即 x→y——不必背 $P_1P_2^{-1}$ 的矩阵推导, 思路更清晰。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 合同问题(一般可逆变换)用规范形当桥梁: 分别配到同一个规范形, $P=P_1P_2$; 求参数先用合同信息(秩/惯性指数), 必要时上特征值一步到位。</div>
+</details>
+
+<p id="例518" class="prob"><b>例 5.18</b> 若可逆线性变换 $x=Py$ 可将二次型 $f(x_1,x_2)=x_1^2+2x_2^2+2x_1x_2$ 化为规范形 $y_1^2+y_2^2$, 同时将二次型 $g(x_1,x_2)=-x_1^2+2x_2^2+2x_1x_2$ 化为标准形 $k_1y_1^2+k_2y_2^2$, 求可逆矩阵 P 及 $k_1,k_2$ 的值。 <span class="src">【来源: 视频#6、讲义 5.7】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 先配 f: $f=x_1^2+2x_1x_2+2x_2^2=(x_1+x_2)^2+x_2^2$。令 $y_1=x_1+x_2,\ y_2=x_2$, 反解 $x=Cy$, $C=\begin{pmatrix}1&-1\\0&1\end{pmatrix}$。<span class="why">化规范形用配方法快; 此时 $C^{\mathrm{T}}AC=E$(A 是 f 的矩阵)——这就是出题人搭的梯子。</span></div>
+<div class="step">② 同一个变换作用到 g: $B=\begin{pmatrix}-1&1\\1&2\end{pmatrix}$(g 的矩阵), $B_1=C^{\mathrm{T}}BC=\begin{pmatrix}-1&2\\2&-1\end{pmatrix}$。<span class="why">核心: 变换必须相同, 先把同一个 C 作用到 g 上, 看看剩下什么。</span></div>
+<div class="step">③ 对 $B_1$ 做正交变换: $|\lambda E-B_1|=(\lambda+1)^2-4=0$, 特征值 $\lambda=1,-3$。对应特征向量 $(1,1)$、$(1,-1)$, 单位化得 $Q=\frac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}$, $Q^{\mathrm{T}}B_1Q=\operatorname{diag}(1,-3)$。<span class="why">为什么这里用正交变换不用配方? 因为下一步要利用 E 的特殊性(见 ④)——配方出来的变换没有这个性质。</span></div>
+<div class="step">④ E 不受影响: $Q^{\mathrm{T}}EQ=E$。<span class="why">单位阵特征值全是 1, 任意正交矩阵都能"对角化"它; 正交矩阵的特征值只能是 ±1, 单位阵一步到规范形。所以同一个 Q 作用上去, 上面保持 $y_1^2+y_2^2$ 不动, 下面变成标准形——这正是构造能成立的机关。</span></div>
+<div class="step">⑤ $P=CQ=\begin{pmatrix}1&-1\\0&1\end{pmatrix}\cdot\frac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}=\begin{pmatrix}0&\sqrt2\\\frac1{\sqrt2}&-\frac1{\sqrt2}\end{pmatrix}$。<span class="why">变换流程: 先 C 后 Q, 相乘即 P。</span></div>
+<div class="step">⑥ 对应关系: Q 第一列是 $\lambda=1$ 的特征向量 ⟹ 标准形第一项系数 $k_1=1$; 第二列对应 $\lambda=-3$ ⟹ $k_2=-3$。<span class="why"><b>易错</b>: k 必须与 Q 的列一一对应, 排错即错。</span></div>
+<div class="step">⑦ 答案: $P=\begin{pmatrix}0&\sqrt2\\\frac1{\sqrt2}&-\frac1{\sqrt2}\end{pmatrix}$, $k_1=1,\ k_2=-3$。<span class="why">双二次型问题套路: 配 f 到规范形得 C ⟹ 对 g 的"残留矩阵" $C^{\mathrm{T}}BC$ 做正交变换 ⟹ 单位阵保持不动——一题打通两条线。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 同一变换同时处理两个二次型——f 配方到规范形得 C, g 的残留矩阵正交对角化, $Q^{\mathrm{T}}EQ=E$ 是关键机关。</div>
+</details>
+
+<h3 id="方法八二次型最值问题例519">方法八: 二次型最值问题(例 5.19)</h3>
+<p id="例519" class="prob"><b>例 5.19</b> 已知二次型 $f(x_1,x_2,x_3)=x_1^2+2x_2^2+ax_3^2+2x_1x_3$ 经可逆线性变换 $X=PY$ 化为 $y_1^2+y_3^2$。(I) 求 a 的值及可逆矩阵 P; (II) 当 $X=(x_1,x_2,x_3)^{\mathrm{T}}$ 且 $X^{\mathrm{T}}X=1$ 时, 求 $f(x_1,x_2,x_3)$ 的最大值, 并求满足 $x_1=x_2>0$ 的最大值点。 <span class="src">【来源: 视频#6、讲义 5.8】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① $A=\begin{pmatrix}1&0&1\\0&2&0\\1&0&a\end{pmatrix}$。<span class="why">可逆变换 ⟹ 合同; 化成 $y_1^2+y_3^2$ ⟹ 规范形系数 1、1、0 ⟹ $p=2$ ⟹ $r(A)=2$ ⟹ $|A|=0$。</span></div>
+<div class="step">② $|A|=2(a-1)=0$, 故 $a=1$。<span class="why">按第 2 行展开最快: $2\cdot(1\cdot a-1\cdot1)$。</span></div>
+<div class="step">③ 配方: $f=(x_1+x_3)^2+2x_2^2$。令 $y_1=x_1+x_3$, $y_3=\sqrt2\,x_2$, $y_2=x_3$(保证可逆), 反解: $P=\begin{pmatrix}1&-1&0\\0&0&\frac1{\sqrt2}\\0&1&0\end{pmatrix}$。<span class="why"><b>易错</b>: 目标是 $y_1^2+y_3^2$(不是 $y_1^2+y_2^2$!), 所以 $\sqrt2\,x_2$ 必须放在 $y_3$ 上, $y_2$ 留给自由变量——别惯性思维。</span></div>
+<div class="step">④ 原理: $f=\mathbf{x}^{\mathrm{T}}A\mathbf{x}$, 正交变换 $x=Qz$ 后 $f=\lambda_1z_1^2+\lambda_2z_2^2+\lambda_3z_3^2$, 且 $\mathbf{x}^{\mathrm{T}}\mathbf{x}=\mathbf{z}^{\mathrm{T}}\mathbf{z}$(正交变换不改变模长)。于是 $\lambda_1\mathbf{x}^{\mathrm{T}}\mathbf{x}\le f\le\lambda_3\mathbf{x}^{\mathrm{T}}\mathbf{x}$。<span class="why">放缩: 把每个系数都换成最大/最小的特征值; 模长不变把不等式落回 x——最值就是特征值最值。</span></div>
+<div class="step">⑤ $A$($a=1$)的特征值: $|\lambda E-A|=(\lambda-2)\big[(\lambda-1)^2-1\big]=\lambda(\lambda-2)^2$ ⟹ $\lambda=0,2,2$。<span class="why">最大特征值 2。</span></div>
+<div class="step">⑥ $f=2z_1^2+2z_2^2\le2(z_1^2+z_2^2+z_3^2)=2$, 最大值 $=2$, 取到时 $z_3=0$, $z_1^2+z_2^2=1$。<span class="why">$\lambda=2$ 是二重根, 最大值点在 z 平面里有一整个圆, 无数个。</span></div>
+<div class="step">⑦ 特征向量: $\lambda=2$: $(1,0,1)^{\mathrm{T}}$, $(0,1,0)^{\mathrm{T}}$; $\lambda=0$: $(1,0,-1)^{\mathrm{T}}$。$Q=\begin{pmatrix}\frac1{\sqrt2}&0&\frac1{\sqrt2}\\0&1&0\\\frac1{\sqrt2}&0&-\frac1{\sqrt2}\end{pmatrix}$。<span class="why">解 $(2E-A)\mathbf{x}=0$ 得 $x_1=x_3$; 由 $(0E-A)\mathbf{x}=0$ 得 $x_1=-x_3$。</span></div>
+<div class="step">⑧ 由 $x=Qz$, $z_3=0$: $x_1=\frac{z_1}{\sqrt2}$, $x_2=z_2$, $x_3=\frac{z_1}{\sqrt2}$, 故 $x_1=x_3$; 再加条件 $x_1=x_2>0$: $x_1^2+x_2^2+x_3^2=1$ ⟹ $3x_1^2=1$ ⟹ $x_1=x_2=x_3=\frac1{\sqrt3}$。<span class="why">约束把无数个最大值点唯一确定下来——把 x 的约束翻译成 z 的约束(方程变多, 解集变小), 三个约束方程锁定唯一解。</span></div>
+<div class="step">⑨ 答案: 最大值 $2$, 最大值点 $\left(\frac1{\sqrt3},\frac1{\sqrt3},\frac1{\sqrt3}\right)^{\mathrm{T}}$。<span class="why">取等号的条件永远回 y(z) 上看, 但最终答案要落回 x。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 最值 = 特征值最值($\lambda_{\min}\mathbf{x}^{\mathrm{T}}\mathbf{x}\le f\le\lambda_{\max}\mathbf{x}^{\mathrm{T}}\mathbf{x}$); 取最值条件回 y 看, 附加约束把点唯一化。</div>
+</details>
+
+<h3 id="方法九正定二次型例520-521">方法九: 正定二次型(例 5.20-5.21)</h3>
+<p id="例520" class="prob"><b>例 5.20</b> 设 A 是 n 阶正定矩阵, 证明: (1) 存在 n 阶可逆矩阵 D, 使得 $A=D^{\mathrm{T}}D$; (2) 存在 n 阶正定矩阵 B, 使得 $A=B^2$。 <span class="src">【来源: 视频#6、讲义 5.9】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 法一: $f=\mathbf{x}^{\mathrm{T}}A\mathbf{x}$ 正定 ⟹ 规范形全为正号, 配方法把 f 化成 $z_1^2+\cdots+z_n^2$, 对应 $C^{\mathrm{T}}AC=E$(C 可逆)。<span class="why">正定 ⟹ 正惯性指数 n ⟹ 规范形是单位阵的二次型。</span></div>
+<div class="step">② 变形: $A=(C^{\mathrm{T}})^{-1}EC^{-1}=(C^{-1})^{\mathrm{T}}C^{-1}$, 取 $D=C^{-1}$ 即得 $A=D^{\mathrm{T}}D$。<span class="why">把 $C^{\mathrm{T}}AC=E$ 解出 A; D 就是那个化规范形变换的逆矩阵——"要找的 D 就是变换过程的逆"。</span></div>
+<div class="step">③ 法二: 正交对角化 $A=Q\Lambda Q^{\mathrm{T}}$, $\Lambda=\operatorname{diag}(\lambda_1,\dots,\lambda_n)$, $\lambda_i>0$。$A=(Q\sqrt{\Lambda})\,(\sqrt{\Lambda}\,Q^{\mathrm{T}})=(\sqrt{\Lambda}\,Q^{\mathrm{T}})^{\mathrm{T}}(\sqrt{\Lambda}\,Q^{\mathrm{T}})$, 取 $D=\sqrt{\Lambda}\,Q^{\mathrm{T}}$。<span class="why">特征值开根号——"一四九 = 一二三 × 一二三"的矩阵版; D 不唯一, 两种取法都对。</span></div>
+<div class="step">④ (2) 令 $B=Q\sqrt{\Lambda}Q^{\mathrm{T}}$: B 实对称, 特征值 $\sqrt{\lambda_i}>0$ ⟹ B 正定; 且 $B^2=(Q\sqrt{\Lambda}Q^{\mathrm{T}})(Q\sqrt{\Lambda}Q^{\mathrm{T}})=Q\Lambda Q^{\mathrm{T}}=A$。<span class="why">中间插一个 $Q^{\mathrm{T}}Q=E$, 恰好把 $Q\Lambda Q^{\mathrm{T}}$ 拆成两个相同因子的乘积。</span></div>
+<div class="step">⑤ 补充: $B^2=B\cdot B=B^{\mathrm{T}}B$, 所以 (2) 中的 B 也可作 (1) 中的 D。<span class="why">三条路(配方法 / $\sqrt{\Lambda}Q^{\mathrm{T}}$ / $Q\sqrt{\Lambda}Q^{\mathrm{T}}$)互相印证——D 的形式多种多样, 都满足 $A=D^{\mathrm{T}}D$。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 正定 ⟹ $A=D^{\mathrm{T}}D$ ⟹ 存在正定平方根: 配方法化规范形取 $D=C^{-1}$, 或正交对角化开根号; 大题两条结论常连考。</div>
+</details>
+
+<p id="例521" class="prob"><b>例 5.21</b> 设 3 阶实对称矩阵 $A=(a_{ij})$ 有二重特征值 1, 且每列元素和 $\sum_{i=1}^{3}a_{ij}=0\ (j=1,2,3)$。(I) 求正交矩阵 Q, 使 $Q^{\mathrm{T}}AQ=\Lambda$; (II) 求可逆矩阵 P, 使 $2E-A=P^{\mathrm{T}}P$。 <span class="src">【来源: 视频#6、讲义 5.9】</span>【AI补全: 第(II)问按讲解确认为 $2E-A$(而非 $A-2E$): 讲解中特征值取"二减 a 的特征值, 对应 2、1、1"】</p>
+<details><summary>解答过程</summary>
+<div class="step">① 列和全为 0 ⟹ 行和也全为 0(A 实对称)。<span class="why">实对称矩阵行和 = 列和; 行和相等的矩阵, $(1,1,\dots,1)^{\mathrm{T}}$ 就是特征向量, 特征值 = 行和(矩阵相似那讲的结论)。</span></div>
+<div class="step">② $\lambda_1=0$, 特征向量 $\boldsymbol{\alpha}_1=(1,1,1)^{\mathrm{T}}$; 另有二重特征值 $\lambda_2=\lambda_3=1$。<span class="why">特征值 0、1、1, 共 3 个。</span></div>
+<div class="step">③ 写 $\lambda=1$ 的特征向量: 与 $\boldsymbol{\alpha}_1$ 正交取 $\boldsymbol{\alpha}_2=(1,-1,0)^{\mathrm{T}}$; 再取 $(1,1,k)$——与 $\boldsymbol{\alpha}_1$ 正交 ⟹ $2+k=0$ ⟹ $k=-2$, $\boldsymbol{\alpha}_3=(1,1,-2)^{\mathrm{T}}$。<span class="why">"留 k 待定"技巧: 两个正交条件逐个套, 一步写到位, 天然正交。</span></div>
+<div class="step">④ 单位化: $Q=\begin{pmatrix}\frac1{\sqrt3}&\frac1{\sqrt2}&\frac1{\sqrt6}\\\frac1{\sqrt3}&-\frac1{\sqrt2}&\frac1{\sqrt6}\\\frac1{\sqrt3}&0&-\frac2{\sqrt6}\end{pmatrix}$, $Q^{\mathrm{T}}AQ=\operatorname{diag}(0,1,1)$。<span class="why">特征值排布与列对应: 第一列是 0 的特征向量。</span></div>
+<div class="step">⑤ $2E-A$ 的特征值 $=2-\lambda_i(A)=2,1,1$, 且与 A 特征向量共用。<span class="why">$A+kE$ 只平移特征值, 特征向量不变——多项式矩阵的性质。</span></div>
+<div class="step">⑥ $Q^{\mathrm{T}}(2E-A)Q=\operatorname{diag}(2,1,1)$, 故 $2E-A=Q\cdot\operatorname{diag}(2,1,1)\cdot Q^{\mathrm{T}}$。<span class="why">反解回 A 的形式。</span></div>
+<div class="step">⑦ 拆: $\operatorname{diag}(2,1,1)=\operatorname{diag}(\sqrt2,1,1)\cdot\operatorname{diag}(\sqrt2,1,1)$, 故 $2E-A=\big(\operatorname{diag}(\sqrt2,1,1)Q^{\mathrm{T}}\big)^{\mathrm{T}}\big(\operatorname{diag}(\sqrt2,1,1)Q^{\mathrm{T}}\big)$, 取 $P=\operatorname{diag}(\sqrt2,1,1)Q^{\mathrm{T}}$。<span class="why">用上题结论 $A=D^{\mathrm{T}}D$ 的反向——特征值拆成两个根号相乘, 中间不插 $Q^{\mathrm{T}}Q$ 也能拆(因为对角阵。</span></div>
+<div class="step">⑧ $P=\begin{pmatrix}\sqrt{\frac23}&\sqrt{\frac23}&\sqrt{\frac23}\\\frac1{\sqrt2}&-\frac1{\sqrt2}&0\\\frac1{\sqrt6}&\frac1{\sqrt6}&-\frac2{\sqrt6}\end{pmatrix}$。<span class="why">另一个思路: 先把 A 具体求出来再配方——但 A 的元素含分数, 计算量大; 特征值路线(不求出 A)简单得多。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: "列和(行和)为 0 ⟹ $(1,\dots,1)^{\mathrm{T}}$ 是特征值 0 的特征向量"; $P^{\mathrm{T}}P$ 型分解 = 特征值开根号 $\times Q^{\mathrm{T}}$, 与 A 共用特征向量。</div>
+</details>
+
+<h3 id="方法十矩阵相似与合同例522-524">方法十: 矩阵相似与合同(例 5.22-5.24)</h3>
+<p id="例522" class="prob"><b>例 5.22</b> 设 $A=\begin{pmatrix}2&-1&-1\\-1&2&-1\\-1&-1&2\end{pmatrix}$, $B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&0\end{pmatrix}$, 则 A 与 B (　)。 A. 合同且相似　B. 合同但不相似　C. 不合同但相似　D. 既不合同也不相似 <span class="src">【来源: 视频#6、讲义 5.10】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 先看相似: $\operatorname{tr}(A)=6\ne2=\operatorname{tr}(B)$, 不相似。<span class="why">相似必要条件——迹不相等, 直接排除; 选择题第一步先扫必要条件。</span></div>
+<div class="step">② 再看合同: A 的特征值。拆法: $A=3E-J$(J 为全 1 矩阵), J 的特征值 $3,0,0$, 故 A 的特征值 $0,3,3$: 两正一零, $p=2,\ q=0$。<span class="why">秩一矩阵拆法口算特征值; $|\lambda E-A|=\lambda(\lambda-3)^2$。</span></div>
+<div class="step">③ B 的特征值 $1,1,0$: $p=2,\ q=0$。惯性指数相同 ⟹ 合同。选 B。<span class="why">合同看惯性指数, 相似看特征值——正负个数相同但具体值不同, 正好是"合同而不相似"。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 判相似先扫必要条件(迹/行列式/秩/特征值), 判合同比较正负惯性指数——两条线分开走。</div>
+</details>
+
+<p id="例523" class="prob"><b>例 5.23</b> 设 $A=\begin{pmatrix}1&2\\2&1\end{pmatrix}$, $B=\begin{pmatrix}1&4\\1&1\end{pmatrix}$, 则正确的是 (　)。 A. 必存在正交矩阵 Q, 使得 $Q^{-1}AQ=B$　B. 必存在可逆矩阵 P, 使得 $P^{-1}AP=B$　C. 必存在可逆矩阵 P, 使得 $P^{\mathrm{T}}AP=B$　D. 必存在可逆矩阵 P, 使得 $A=P^{\mathrm{T}}P$ <span class="src">【来源: 视频#6、讲义 5.10】</span>【AI补全: B 矩阵按讲解中"特征多项式为 $(\lambda-1)^2-4$、B 非对称"重建】</p>
+<details><summary>解答过程</summary>
+<div class="step">① 先发现: A 是实对称矩阵。<span class="why">对数字的敏感度——很多结论都依赖实对称(正交对角化、相似必合同等), 看到就要识别出来。</span></div>
+<div class="step">② A 选项: 若 $Q^{-1}AQ=B$, 则 $B^{\mathrm{T}}=(Q^{-1}AQ)^{\mathrm{T}}=Q^{\mathrm{T}}AQ=Q^{-1}AQ=B$(用 $Q^{\mathrm{T}}=Q^{-1}$ 与 $A^{\mathrm{T}}=A$)。但 B 不是对称阵, 矛盾, 错。<span class="why">"存在正交 Q"这个条件一写出来就要求 B 实对称——这是隐藏的硬条件, 反证一步。</span></div>
+<div class="step">③ B 选项: $|\lambda E-A|=(\lambda-1)^2-4=(\lambda-3)(\lambda+1)$; $|\lambda E-B|=(\lambda-1)^2-4\cdot1=(\lambda-3)(\lambda+1)$。<span class="why">特征值都是 3 和 −1; 特征值互异 ⟹ 都可对角化, 都相似于 $\operatorname{diag}(3,-1)$ ⟹ 由传递性 A~B。B 对。</span></div>
+<div class="step">④ C 选项: 若 $P^{\mathrm{T}}AP=B$, 则 $B^{\mathrm{T}}=(P^{\mathrm{T}}AP)^{\mathrm{T}}=P^{\mathrm{T}}AP=B$, 矛盾, 错。<span class="why">结论: 实对称矩阵只能与实对称矩阵合同——"像有生殖隔离一样"; 这个结论记住了, C 秒杀。</span></div>
+<div class="step">⑤ D 选项: 若 $A=P^{\mathrm{T}}P$, 则 A 正定(P 可逆, 对任意 $\mathbf{x}\ne\mathbf{0}$, $\mathbf{x}^{\mathrm{T}}A\mathbf{x}=\|P\mathbf{x}\|^2>0$)。但 A 有负特征值 −1(或 $|A|=-3<0$), 错。<span class="why">$A=P^{\mathrm{T}}P$ ⟹ 正定, 这是正定充要条件第五条的反向使用。</span></div>
+<div class="step">⑥ 选 B。<span class="why">四个选项分别考: 正交矩阵 ⟹ B 对称、特征值判相似、实对称只能合同于实对称、$P^{\mathrm{T}}P$ 正定——一道题串起大半章。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 相似与合同的"生殖隔离"结论——实对称只能合同于实对称; 相似判特征值, 合同判惯性指数。</div>
+</details>
+
+<p id="例524" class="prob"><b>例 5.24</b> 设 A 为 n 阶实对称矩阵, 先交换 A 的第 i 列与第 j 列, 然后交换第 i 行和第 j 行, 得到的矩阵记为 B, 则下列五个关系: ① $|A|=|B|$; ② $r(A)=r(B)$; ③ A 与 B 等价; ④ A 与 B 相似; ⑤ A 与 B 合同。成立的个数为 (　)。 A.2　B.3　C.4　D.5 <span class="src">【来源: 视频#6、讲义 5.10】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 用初等矩阵描述: 右乘 $E_{ij}$ 交换 i、j 两列, 左乘 $E_{ij}$ 交换 i、j 两行: $B=E_{ij}\cdot A\cdot E_{ij}$。<span class="why">初等变换的矩阵语言——后面所有结论都从这一个式子推。</span></div>
+<div class="step">② ①: 两边取行列式, $|B|=|E_{ij}|\cdot|A|\cdot|E_{ij}|=(-1)\cdot|A|\cdot(-1)=|A|$ ✓。<span class="why">交换型初等矩阵的行列式是 −1, 两个负号抵消。</span></div>
+<div class="step">③ ②③: 初等变换不改变秩, $r(B)=r(A)$ ✓; 秩相等 ⟺ 等价 ✓。<span class="why">等价只问秩, 最简单。</span></div>
+<div class="step">④ 交换矩阵的性质: 换两次换回来 ⟹ $E_{ij}^{-1}=E_{ij}$; 于是 $B=E_{ij}^{-1}AE_{ij}$, 满足相似定义 ✓。<span class="why">这是关键性质——交换阵的逆等于它自己。</span></div>
+<div class="step">⑤ $E_{ij}^{\mathrm{T}}=E_{ij}$, 于是 $B=E_{ij}^{\mathrm{T}}AE_{ij}$, 满足合同定义 ✓(也可由 ④ + 实对称相似必合同)。<span class="why">交换阵的转置也等于它自己——一个性质吃两家。</span></div>
+<div class="step">⑥ 五个全部成立, 选 D。<span class="why">收官题的钥匙: $E_{ij}$ 的行列式、逆、转置三个性质——从矩阵相似到合同的一串结论都在里面。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 行+列同序交换 ⟹ $|A|$ 不变、秩不变、等价、相似、合同全成立; 记住 $E_{ij}^{-1}=E_{ij}^{\mathrm{T}}=E_{ij}$。</div>
+</details>
+
+<hr />
+<p>至此, 第 6 讲 24 题全部收录完毕。系列收官, 顶峰相见!</p><div class="pager"><a href="06_二次型.html"><small>← 上一篇</small><b>二次型</b></a><span></span></div></div></main></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script></body></html>

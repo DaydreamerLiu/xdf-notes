@@ -1,0 +1,1352 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>政治 · 暑期0804_马原测试卷</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">🏛️ 政治</div><a class="b" href="政治_马原.html">马原</a><a class="c x" href="政治_马原_例题.html">▸ 例题集</a><a class="b" href="政治_史纲.html">史纲</a><a class="c x" href="政治_史纲_例题.html">▸ 例题集</a><a class="b" href="政治_毛中特.html">毛中特</a><a class="c x" href="政治_毛中特_例题.html">▸ 例题集</a><a class="b" href="政治_习概.html">习概</a><a class="c x" href="政治_习概_例题.html">▸ 例题集</a><a class="b" href="政治_思修.html">思修</a><a class="b" href="政治_无忧0721_测试卷.html">无忧0721_测试卷</a><a class="b on" aria-current="page" href="政治_暑期0804_马原测试卷.html">暑期0804_马原测试卷</a><a class="c" href="政治_暑期0804_马原测试卷.html#1试卷概览">1. 试卷概览</a><a class="c" href="政治_暑期0804_马原测试卷.html#2单项选择题精析16题">2. 单项选择题精析（16 题）</a><a class="c" href="政治_暑期0804_马原测试卷.html#3多项选择题精析17题">3. 多项选择题精析（17 题）</a><a class="c" href="政治_暑期0804_马原测试卷.html#4命题特点小结">4. 命题特点小结</a></nav>
+<div id="progress"></div>
+<main data-subj="zhengzhi"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>政治 · 暑期0804_马原测试卷</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>暑期0804_马原测试卷</h1><div class="board-meta">🏛️ 政治 · <span class="pill">理论笔记</span><span class="pill">4 节</span></div><blockquote>
+<p>阶段: 暑期(0804) | 覆盖课件 1 份:
+马原结课测试卷（newLesson/政治/，2026-08-05 更新，扫描件 OCR 整理）</p>
+<p>马原单科结课测试卷，满分 50 分，33 道选择题（单选 16 × 1 分 + 多选 17 × 2 分），限时 60 分钟。</p>
+<p><span class="mk info">注意</span>官方标准答案尚未发布，33 题答案与解析为<b>自做版</b>（依据教材与历年真题考点推断），官方答案发布后需逐题校对更新。</p>
+</blockquote>
+<h2 id="1试卷概览">1. 试卷概览</h2>
+<table>
+<thead>
+<tr>
+<th>题型</th>
+<th>题量</th>
+<th>每题分值</th>
+<th>满分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单项选择题</td>
+<td>16 道（第 1-16 题）</td>
+<td>1 分</td>
+<td>16 分</td>
+</tr>
+<tr>
+<td>多项选择题</td>
+<td>17 道（第 17-33 题）</td>
+<td>2 分</td>
+<td>34 分</td>
+</tr>
+<tr>
+<td><b>合计</b></td>
+<td><b>33 道</b></td>
+<td></td>
+<td><b>50 分</b></td>
+</tr>
+</tbody>
+</table>
+<p>全卷为马原题目：哲学（唯物论/辩证法/认识论/唯物史观）约占三分之二，政治经济学（商品货币/剩余价值/垄断/经济全球化）约占三分之一，含 1 道计算题（第 14 题剩余价值率）。</p>
+<h2 id="2单项选择题精析16题">2. 单项选择题精析（16 题）</h2>
+<p><b>第 1 题</b> 1848 年革命失败后马克思政治经济学研究的代表作</p>
+<blockquote>
+<p>1848 年，席卷欧洲的资产阶级民主革命爆发，马克思积极投入并指导这场革命斗争。革命失败后，马克思深刻总结革命教训，力求通过系统研究政治经济学，揭示资本主义的本质和规律。这一时期，马克思进行了全面深入的政治经济学研究，撰写的揭示资本主义生产关系的秘密的著作是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 《〈政治经济学批判〉序言》 <br><span class="opt">B.</span> 《资本论》 <br><span class="opt">C.</span> 《家庭、私有制和国家的起源》 <br><span class="opt">D.</span> 《1844 年经济学哲学手稿》</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：B</b>
+
+1848 年革命失败后马克思流亡伦敦，重新投入政治经济学研究，写下《1857—1858 年经济学手稿》等大量手稿，最终于 1867 年出版《资本论》第一卷，系统揭示了资本主义生产关系的秘密（剩余价值理论）。
+
+• A 错误：《〈政治经济学批判〉序言》（1859 年）主要阐述历史唯物主义基本原理（"生产力决定生产关系"的经典表述即出自其中），不是以揭示资本主义生产关系秘密为核心
+• B 正确：《资本论》是"工人阶级的圣经"，揭示了资本主义生产方式的本质和规律
+• C 错误：《家庭、私有制和国家的起源》是<b>恩格斯</b>晚年著作，研究家庭、私有制与国家的起源
+• D 错误：《1844 年经济学哲学手稿》作于 1844 年，早于革命失败，属早期研究
+
+<b>命题思路</b>：考马克思主义的创立过程，关键线索是"革命失败后"（1848 年后）这个时间点。
+
+</div></details>
+
+<hr />
+<p><b>第 2 题</b> 列宁的物质定义</p>
+<blockquote>
+<p>20 世纪初列宁对物质概念作了全面的科学规定，认为物质是客观实在的哲学范畴。下列关于物质范畴的说法正确的是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 物质的根本属性是客观实在性 <br><span class="opt">B.</span> 物质是人能通过感觉感知的有形事物 <br><span class="opt">C.</span> 物质是不依赖于人的意识而存在，并能为人的意识所反映的客观实在 <br><span class="opt">D.</span> 自然科学中具体的物质形态与哲学物质概念之间是共性与个性的关系</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+• A 错误：物质的<b>根本属性是运动</b>；"客观实在性"是物质的<b>唯一特性</b>（本质规定）——两个定位不能混
+• B 错误：物质是标志客观实在的哲学范畴，不等于"能感知的有形事物"（如电磁场就不能直接感知）
+• C 正确：列宁物质定义的规范表述——物质"不依赖于人的意识而存在，并能为人的意识所反映"
+• D 待校对：具体物质形态是<b>个性</b>，哲学物质概念是从一切具体形态中概括出的<b>共性</b>——若选项意为"具体形态是共性、物质概念是个性"则说反了；若意为两者构成共性个性关系则教材亦认可，故 D 是否为正选需以官方答案为准
+
+<b>命题思路</b>：物质概念核心题，A 的"根本属性/唯一特性"定位是经典易混点。
+
+</div></details>
+
+<hr />
+<p><b>第 3 题</b> "暮从碧山下，山月随人归"体现的运动观</p>
+<blockquote>
+<p>"暮从碧山下，山月随人归"，这句诗文形象地描述了月亮的相对静止。人在行走时，近处可见物换景移，而月亮离我们极远，它与人的相对位置几无变化，因此我们看到月亮仿佛没有移动，一直在与人同行。月亮的运动体现出</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 物质的运动是相对的，一物的运动以另一物为参照 <br><span class="opt">B.</span> 月亮在运动过程中的根本性质暂时不变 <br><span class="opt">C.</span> 具体物质形态的时空是无限的 <br><span class="opt">D.</span> 月亮的相对静止是指其在太空中的静止</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：A</b>
+
+• A 正确：人以自己为参照物观察月亮，月亮与人相对位置几乎不变，说明运动的描述是相对的、离不开参照物——"一物的运动以另一物为参照"
+• B 错误：相对静止主要表现为位置的相对稳定和质的规定性暂时不变，但题干情境讲的是<b>位置</b>的相对稳定（参照系问题），且"根本性质暂时不变"不是本题考点
+• C 错误：具体物质形态的时空是<b>有限的</b>，时空的无限性属于整个物质世界
+• D 错误：相对静止不是"在太空中静止"——地球月亮都在运动，相对静止永远是相对于某一参照物而言
+
+<b>命题思路</b>：经典真题（2019 年单选第 1 题），考运动的绝对性与静止的相对性、参照系问题。
+
+</div></details>
+
+<hr />
+<p><b>第 4 题</b> 港珠澳大桥建成通车的过程表明</p>
+<blockquote>
+<p>港珠澳大桥是中国境内一座连接香港、广东珠海和澳门的桥隧工程，2020 年 8 月 16 日，港珠澳大桥口岸珠澳货运通道正式启用。香港、珠海、澳门三地濒临大海，要建成横跨三地的大桥必须采用沉管隧道技术。建设之初，西方有专家断言，中国技术储备不足，不可能建成港珠澳大桥。但是，中国专家技术团队历时十多年，攻破技术难题，终于建成大桥。港珠澳大桥建成通车的过程表明</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 只要充分发挥主观能动性，就能将可能变为现实 <br><span class="opt">B.</span> 要敢于突破规律、改变规律，将不利条件变为有利条件 <br><span class="opt">C.</span> 发挥主观能动性是认识和掌握客观规律的必要条件 <br><span class="opt">D.</span> 凡是在现实中具有可能性的事物，都要努力实现它</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+• A 错误："只要……就能"绝对化——发挥主观能动性必须以尊重客观规律为前提
+• B 错误：规律是客观的，不能"突破"和"改变"，只能认识和利用
+• C 正确：正确发挥主观能动性是认识和掌握客观规律的必要条件（尊重规律是前提，但认识规律离不开能动性的发挥）
+• D 错误：可能性要具体分析，只有符合规律、有利于社会发展的可能才应当努力实现
+
+<b>命题思路</b>：经典真题（2019 年单选第 2 题），考主观能动性与客观规律性的辩证关系——"改变规律""只要…就"是标志性错误表述。
+
+</div></details>
+
+<hr />
+<p><b>第 5 题</b> 人工智能产品的出现表明</p>
+<blockquote>
+<p>近年来，随着人工智能技术的不断成熟，人工智能产品渗透到现实生活的方方面面，改变着人们的生活。智能机器人可以帮助人类做家务、照顾老人和孩子，许多企业也开始引入智能机器人以提高生产效率。人工智能产品的出现表明</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 人工智能是人类意识能动性的高级表现 <br><span class="opt">B.</span> 人工智能具有丰富的心理内涵和实践智慧 <br><span class="opt">C.</span> 人工智能是人的本质力量的对象化、现实化 <br><span class="opt">D.</span> 人工智能可以超越或取代人类智能</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+• A 错误：人工智能不是意识，不具有主观能动性——它只是对人脑功能的模拟和延伸
+• B 错误：人工智能没有"心理内涵"（无情感意志），也不能从事真正的实践，谈不上"实践智慧"
+• C 正确：人工智能是人的智能的物化，是人的本质力量对象化、现实化的产物
+• D 错误：人工智能无法超越和取代人类智能——人的意识具有社会性、实践性，AI 只是工具
+
+<b>命题思路</b>：人工智能与人类意识的关系是高频考点——核心定位是"人的本质力量的对象化"，同时牢记实践主体只能是<b>人</b>。
+
+</div></details>
+
+<hr />
+<p><b>第 6 题</b> 关于历史规律的正确说法</p>
+<blockquote>
+<p>"明镜所以照形，古事所以知今。"今天，我们回顾历史，不是为了从成功中寻求慰藉，更不是为了躺在功劳簿上、为回避今天面临的困难和问题寻找借口，而是为了总结历史经验、把握历史规律，增强开拓前进的勇气和力量。历史规律</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 作为一种盲目的无意识的力量起作用 <br><span class="opt">B.</span> 在不同的社会、国家、民族以及不同的历史阶段都有不同的表现形式 <br><span class="opt">C.</span> 在认识世界和改造世界过程中，比自然规律更重要 <br><span class="opt">D.</span> 只要具备了同样的客观物质条件就可以以完全相同的形式反复出现</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：B</b>
+
+• A 错误：作为"盲目的无意识的力量"起作用的是<b>自然规律</b>；社会规律是通过人的有意识、有目的的活动实现的
+• B 正确：社会规律具有特殊性，在不同社会形态、国家民族和不同历史阶段的表现形式不同
+• C 错误：不能比较谁"更重要"，二者各有特点、相互区别又相互联系
+• D 错误：历史条件不可能完全重演，历史规律不会以完全相同的形式反复出现
+
+<b>命题思路</b>：社会规律与自然规律的异同——"自觉性 vs 盲目性"是核心区分；D 是绝对化陷阱。
+
+</div></details>
+
+<hr />
+<p><b>第 7 题</b> 水在不同温度下的形态变化体现</p>
+<blockquote>
+<p>水在不同温度下有不同的存在形式，当气温下降到 0℃ 以下，水会结成冰，当温度达到 100℃ 以上，水会变为汽，但在 1—100℃ 却都可以保持液态水的形式，水能够在一定温度下保持液态，体现了</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 不同事物的内在区别体现为量变 <br><span class="opt">B.</span> 量变是质变的必要准备和必然结果 <br><span class="opt">C.</span> 度是保持事物质的稳定性的数量界限 <br><span class="opt">D.</span> 物质内部组成要素排列次序的变动是质变</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+• A 错误：不同事物的区别是<b>质</b>的区别，不是量变
+• B 错误：量变是质变的必要准备，质变是量变的必然结果——选项把因果说反了
+• C 正确：0—100℃ 是水保持液态（质不变）的温度范围，这正是"度"——保持事物质稳定性的数量界限，度内的量变不会引起质变
+• D 错误：排列次序变动引起质变（如金刚石与石墨）属于量变引起质变的特殊形式，但"排列次序的变动"本身是量变，不能说它是质变
+
+<b>命题思路</b>：质量互变规律基础题，"度是质和量的统一"是核心概念。
+
+</div></details>
+
+<hr />
+<p><b>第 8 题</b> 人类社会进步离不开想象力的原因</p>
+<blockquote>
+<p>科幻作家刘慈欣指出"想象力是人类拥有的一项既关键又特殊的能力。人类社会的进步离不开想象力"。人类社会的进步离不开想象力，是因为</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 必然要通过偶然表现出来，并为自已开辟道路 <br><span class="opt">B.</span> 适合内容的形式，对内容的发展起到积极的推动作用 <br><span class="opt">C.</span> 非理性因素对人的认识能力和认识活动具有激活、驱动和控制 <br><span class="opt">D.</span> 不可能包含着发展成为现实的因素和根据，一旦条件成熟会转化为可能</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+• A 错误：讲的是必然与偶然的关系，与想象力无关
+• B 错误：讲的是内容与形式的关系，想象力不是"形式"
+• C 正确：想象力、联想、直觉、顿悟等属于<b>非理性因素</b>，对人的认识能力和认识活动起激活、驱动和控制作用——教材关于非理性因素的规范表述
+• D 错误：表述自相矛盾（"不可能包含……会转化为可能"），与题意无关
+
+<b>命题思路</b>：非理性因素在认识过程中的作用——想象、灵感属于非理性因素。
+
+</div></details>
+
+<hr />
+<p><b>第 9 题</b> 气候预测的进步与问题表明</p>
+<blockquote>
+<p>大气运动本身就是一个复杂的、非线性的混沌系统。我国经过近半个世纪的研究和探索，目前对未来月、季尺度的气候预测有了长足的进步，但与天气预报相比，准确率和可靠性相对依然较低。未来要继续加强对气候的基础研究，继续拓展对整个气候系统的信息探测和认知。气候预测的进步与问题表明</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 人类无法正确认识自然运动的规律 <br><span class="opt">B.</span> 获取真理性认识是一切科研活动的目的和最终归宿 <br><span class="opt">C.</span> 人们对复杂事物的认识是反复性和无限性的过程 <br><span class="opt">D.</span> 理性认识的本质是对客观事物及其规律的正确反映</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+• A 错误：不可知论观点——认识是不断发展的
+• B 错误：科研活动的<b>最终归宿是实践</b>（认识世界是为了改造世界），获取真理不是目的本身
+• C 正确：复杂事物的本质暴露需要一个过程，认识具有反复性和无限性——预测既有进步又有不足，正是这一过程的体现
+• D 错误：概念偷换——"对客观事物及其规律的正确反映"是<b>真理</b>的定义；理性认识是对事物本质、内部联系的反映，未必"正确"
+
+<b>命题思路</b>：认识的反复性无限性考点，D 是"理性认识≠真理"的偷换陷阱。
+
+</div></details>
+
+<hr />
+<p><b>第 10 题</b> 导盲犬价值晚被发现说明</p>
+<blockquote>
+<p>导盲犬的历史可以追溯到 19 世纪初。1819 年一个叫海尔·约翰的人在维也纳创办了世界上第一所导盲犬训练学校，训练出来的导盲犬能够帮助盲人出行。当时这个项目并没有被世人广泛知晓。大约在 100 年之后，人们才开始重视导盲犬的价值，原因是在第一次世界大战后，很多德国士兵失去了视力。导盲犬的价值经历了漫长的时间才得到重视，这说明</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 价值依赖于主体的意识，不具有客观性 <br><span class="opt">B.</span> 主客体之间的价值关系是一种自然的现成关系 <br><span class="opt">C.</span> 价值具有社会历史性，这是由主客体的不断变化决定的 <br><span class="opt">D.</span> 具有经济价值的事物才具有哲学价值</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+• A 错误：价值具有<b>客观性</b>，不依赖于主体的意识而存在
+• B 错误：价值关系不是"自然的现成关系"，而是通过实践建立起来的
+• C 正确：价值具有<b>社会历史性</b>——价值随主体需要和客体属性的发展变化而变化；一战后的特殊条件使导盲犬的价值被重新发掘
+• D 错误：哲学价值（客体对主体的意义）与经济学价值不是一回事，没有经济价值的事物也可以有哲学价值
+
+<b>命题思路</b>：价值的特性——客观性、主体性、社会历史性、多维性，B 的"现成关系"与 C 的"实践关系"是关键对比。
+
+</div></details>
+
+<hr />
+<p><b>第 11 题</b> 属于意识形态的是</p>
+<blockquote>
+<p>社会意识形式中有意识形态和非意识形态之分，下列属于意识形态的是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 自然科学 <br><span class="opt">B.</span> 社会风俗 <br><span class="opt">C.</span> 艺术 <br><span class="opt">D.</span> 形式逻辑</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+• A 错误：自然科学反映人与自然的关系，不直接反映阶级利益，属于非意识形态
+• B 错误：社会风俗属于<b>社会心理</b>层面，不是系统化的思想体系，不属意识形态
+• C 正确：艺术属于意识形态（观念上层建筑）——政治法律思想、道德、艺术、宗教、哲学都属于意识形态
+• D 错误：形式逻辑是思维工具，没有阶级性，属于非意识形态
+
+<b>命题思路</b>：意识形态与非意识形态的区分——核心标准是"是否直接反映一定社会集团的利益、是否属于上层建筑"。
+
+</div></details>
+
+<hr />
+<p><b>第 12 题</b> 资本主义所有制的本质</p>
+<blockquote>
+<p>在资本主义社会发展过程中，生产资料由资本家占有，劳动者失去土地及生产工具，变得一无所有，只剩下自己的劳动力。随着大机器生产时代的到来，劳动者纷纷进入工厂为资本家打工，这一过程中所反映的资本主义所有制的本质是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 雇佣工人对资本家的人身依附 <br><span class="opt">B.</span> 资本与劳动之间的相互转化 <br><span class="opt">C.</span> 资产阶级意识形态的集中体现 <br><span class="opt">D.</span> 资本家在等价交换原则的掩盖下，无偿占有工人的剩余价值</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：D</b>
+
+• A 错误：资本主义雇佣劳动是<b>自由的</b>——劳动者有人身自由，可以自由出卖劳动力；人身依附是封建社会的特征
+• B 错误：资本与劳动不存在"相互转化"，是劳动创造的剩余价值被资本无偿占有
+• C 错误：所有制属于经济基础范畴，不是意识形态
+• D 正确：资本家凭借生产资料所有权，在"等价交换"的形式下无偿占有雇佣工人创造的剩余价值——这就是资本主义所有制的本质
+
+<b>命题思路</b>：剩余价值理论基础题——形式上的平等（等价交换）掩盖实质上的不平等（无偿占有），"形式平等掩盖实质剥削"是核心。
+
+</div></details>
+
+<hr />
+<p><b>第 13 题</b> 资本主义生产过程的两重性</p>
+<blockquote>
+<p>资本主义生产的直接目的和决定性动机，就是无休止地获取尽可能多的剩余价值。马克思指出："生产剩余价值或赚钱，是这个生产方式的绝对规律。"剩余价值是在资本主义的生产过程中生产出来的，而资本主义的生产过程具有两重性。资本主义生产过程的两重性是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 劳动过程和价值增殖过程的统一 <br><span class="opt">B.</span> 物质资料再生产和资本主义生产关系再生产的统一 <br><span class="opt">C.</span> 抽象劳动和具体劳动的统一 <br><span class="opt">D.</span> 劳动者和生产资料的统一</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：A</b>
+
+• A 正确：资本主义生产过程是<b>劳动过程</b>（具体劳动创造使用价值）与<b>价值增殖过程</b>（超过劳动力价值的价值形成剩余价值）的统一——这是"生产过程的两重性"
+• B 错误：这是资本主义<b>再生产</b>的两重性（物质资料再生产 + 生产关系再生产）
+• C 错误：这是生产商品的<b>劳动的二重性</b>（具体劳动与抽象劳动）
+• D 错误：这是生产的基本要素（劳动者 + 生产资料）
+
+<b>命题思路</b>：易混概念辨析——"生产过程两重性"（劳动过程+价值增殖过程）、"劳动二重性"（具体+抽象）、"再生产两重性"（物质资料+生产关系）要成对记忆。
+
+</div></details>
+
+<hr />
+<p><b>第 14 题</b> 剩余价值率计算</p>
+<blockquote>
+<p>某资本家投入预付总资本 200 万元，其中资本的价值构成为 4:1，每次获得利润 40 万元。则该工厂的剩余价值率为</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 75% <br><span class="opt">B.</span> 50% <br><span class="opt">C.</span> 100% <br><span class="opt">D.</span> 40%</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+• 价值构成 c:v = 4:1，总资本 200 万 → c = 160 万，v = 40 万
+• 利润即剩余价值（利润是剩余价值的转化形式）→ m = 40 万
+• 剩余价值率 $m'=\dfrac{m}{v}=\dfrac{40}{200\times\dfrac{1}{5}}=\dfrac{40}{40}=100\%$
+
+<b><span class="mk warn">易错</span></b> 剩余价值率的分母是<b>可变资本 v</b>，不是总资本——先用 c:v 拆出 v，再除；"利润"与"剩余价值"在量上相等（本题正是用利润给 m 赋值）。
+
+<b>命题思路</b>：政经计算题套路——先由资本构成拆出 c、v，再算 m′ = m/v。
+
+</div></details>
+
+<hr />
+<p><b>第 15 题</b> 关于垄断价格的说法</p>
+<blockquote>
+<p>垄断价格是垄断组织在销售或购买商品时，凭借其垄断地位规定的、旨在保证获取最大限度利润的市场价格，主要有垄断高价和垄断低价两种形式。垄断价格</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 增加了整个社会生产的价值总量 <br><span class="opt">B.</span> 促进了利润平均化趋势 <br><span class="opt">C.</span> 否定了价值规律 <br><span class="opt">D.</span> 保证了垄断利润的获得</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：D</b>
+
+• A 错误：垄断价格不创造价值，只是对社会价值总量的再分配，不增加价值总量
+• B 错误：垄断价格<b>阻碍</b>利润平均化——垄断部门凭借垄断地位攫取高额利润，资本难以自由转移
+• C 错误：垄断价格没有否定价值规律——垄断价格仍以价值为基础、受价值规律支配，全社会垄断价格总额 = 价值总额
+• D 正确：垄断价格的目的和功能就是保证垄断组织获得垄断利润
+
+<b>命题思路</b>：垄断与价值规律的关系——垄断价格"不否定、不脱离"价值规律，只改变价值的实现与分配方式。
+
+</div></details>
+
+<hr />
+<p><b>第 16 题</b> 共产主义社会的根本特征</p>
+<blockquote>
+<p>（引文首句 OCR 缺失，按恩格斯《反杜林论》补全）"一旦社会占有了生产资料……人们第一次成为自然界的自觉的和真正的主人，因为他们已经成为自身的社会结合的主人了。至今一直统治着历史的客观的异己的力量，现在处在人们自己的控制之下了。"这段话揭示出共产主义社会的根本特征是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 社会生产力高度发展 <br><span class="opt">B.</span> 社会关系高度和谐 <br><span class="opt">C.</span> 人实现自由而全面的发展 <br><span class="opt">D.</span> 人从客观规律的制约中解放出来</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：C</b>
+
+• A 错误：生产力高度发展是共产主义的<b>物质基础</b>（前提），不是根本特征
+• B 错误：社会关系高度和谐是共产主义社会的特征之一，但不是"根本特征"
+• C 正确：人成为自然与社会的主人，从异己力量的支配下解放出来，实现<b>自由而全面的发展</b>——这是共产主义社会的根本特征和最高价值追求
+• D 错误：规律是客观的，人只能认识、利用规律，不可能"从规律的制约中解放出来"——恩格斯讲的是从<b>异己力量</b>的统治下解放
+
+<b>命题思路</b>：共产主义社会特征——区分"物质前提"（生产力）与"根本特征"（人的自由全面发展），D 是偷换概念陷阱。
+
+</div></details>
+
+<hr />
+<h2 id="3多项选择题精析17题">3. 多项选择题精析（17 题）</h2>
+<p><b>第 17 题</b> 马克思主义的当代价值</p>
+<blockquote>
+<p>一种理论的当代价值决定于它的真理性含量，决定于它是否蕴涵与时俱进的理论张力，特别是决定于它的本质特性和内容是否符合时代的需要。在马克思诞辰 200 周年时，习近平总书记指出，"尽管时代在变化，社会在发展，但马克思的名字依然在世界各地受到人们的尊敬，马克思的学说依然闪烁着耀眼的真理光芒。"马克思主义</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 是引领当代中国实践的行动指南 <br><span class="opt">B.</span> 给予我们展望未来世界的长远眼光和战略定力 <br><span class="opt">C.</span> 是随着时代发展而发生根本性变化的普遍真理 <br><span class="opt">D.</span> 是人类走向未来社会的价值引领</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABD</b>
+
+• A 正确：马克思主义指导当代中国实践，是行动指南
+• B 正确：马克思主义提供科学的世界观方法论，使我们把握历史方向、保持战略定力
+• C 错误："发生根本性变化"错——马克思主义既一脉相承又与时俱进，基本原理没有、也不会发生根本性变化
+• D 正确：马克思主义以人类解放为价值追求，是走向未来社会的价值引领
+
+<b>命题思路</b>：马克思主义"变与不变"——与时俱进 ≠ 根本性变化。
+
+</div></details>
+
+<hr />
+<p><b>第 18 题</b> 思韦茨冰川融化事例说明</p>
+<blockquote>
+<p>2021 年 12 月 13 日，美国地球物理联盟的科学家警告说，南极洲西部最大的冰川之一——思韦茨冰川正在融化，支撑其的关键冰架可能会在三到五年内崩塌。自工业革命爆发以来，由于气候变化，思韦茨冰川一直在融化，气候变暖致其更加不稳定。冰川东段崩塌后的连锁反应可能威胁到世界各地的沿海居民。这一事例说明</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 要合理调节人类与自然界的物质交换 <br><span class="opt">B.</span> 生态环境保护程度已成为衡量社会进步的根本尺度 <br><span class="opt">C.</span> 生态环境的恶化是人类改变自然规律的结果 <br><span class="opt">D.</span> 生态环境已日益成为人类反思自身活动的重要前提</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：AD</b>
+
+• A 正确：人类必须合理调节与自然的物质交换，实现人与自然和谐共生
+• B 错误：衡量社会进步的根本尺度是<b>生产力发展水平</b>，不是生态环境保护程度
+• C 错误：规律不能"改变"，生态恶化是<b>违背</b>自然规律的结果
+• D 正确：生态环境问题日益成为人类反思自身活动、推动生态文明建设的重要前提
+
+<b>命题思路</b>：人与自然关系考点——"改变规律"是经典错误表述，"根本尺度=生产力"定位要记牢。
+
+</div></details>
+
+<hr />
+<p><b>第 19 题</b> 人类命运共同体理念的哲学道理</p>
+<blockquote>
+<p>人类只有一个地球，一个世界，国际社会日益成为一个你中有我、我中有你的"命运共同体"，面对世界经济的复杂形势和全球性问题，任何国家都不可能独善其身。此次全球新冠肺炎疫情及其连带效应，给世界人民和各国政府带来多重危机。有效应对危机，更加凸显了构建人类命运共同体的迫切性。人类命运共同体理念所蕴含的哲学道理有</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 事物的联系是事物本身所固有的 <br><span class="opt">B.</span> 任何事物都是统一的联系之网上的一个网结 <br><span class="opt">C.</span> 任何事物之间都是相互影响、相互制约、相互作用的 <br><span class="opt">D.</span> 只要经过努力，阻碍人类发展的一切不利条件都能转化为有利条件</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：AB</b>
+
+• A 正确：联系的<b>客观性</b>——联系是事物本身固有的，不以人的意志为转移
+• B 正确：联系的<b>普遍性</b>——整个世界是普遍联系之网，每个事物都是网上的纽结
+• C 错误：联系是<b>具体的、有条件的</b>，"任何事物之间"都相互影响，违背了联系的条件性（只有有条件地相联系的事物才相互作用）
+• D 错误："一切不利条件都能转化"绝对化——矛盾转化需要条件
+
+<b>命题思路</b>：联系的特点（客观性/普遍性/多样性/条件性）——C 是"普遍联系"的绝对化误读。
+
+</div></details>
+
+<hr />
+<p><b>第 20 题</b> 照相机的发展史说明</p>
+<blockquote>
+<p>照相机的发展历经了一个漫长的过程，在公元前 400 年，墨子所著《墨经》中已有针孔成像的记载，13 世纪欧洲出现了利用针孔成像原理制成的映像暗箱。1550 年，意大利的卡尔达诺将双凸透镜置于原来的针孔位置上，映像的效果比暗箱更为明亮清晰……而到了今天生活中的照相机越来越智能，出现了数码照相机，连那些使用胶卷的照相机也已经被淘汰。照相机的发展史说明</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 随着科技的发展，新事物总会变成旧事物 <br><span class="opt">B.</span> 新事物的出现是对旧事物的完全否定 <br><span class="opt">C.</span> 新事物的发展符合人们的利益和要求 <br><span class="opt">D.</span> 事物的发展是一个过程</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：CD</b>
+
+• A 错误：新事物具有强大生命力和远大前途，是不可战胜的；说新事物"总会变成旧事物"抹杀了新事物的本质规定，否定了发展总趋势的上升性
+• B 错误：辩证否定是<b>扬弃</b>（既克服又保留），"完全否定"是形而上学的否定观
+• C 正确：新事物符合事物发展规律、符合人民群众的根本利益和要求，因此必然战胜旧事物
+• D 正确：事物的发展是一个过程——从针孔成像到数码相机正是过程性的体现
+
+<b>命题思路</b>：经典真题（2019 年多选），考新事物与辩证否定观——注意 A 的表述方向：新事物是"战胜"旧事物，不是"变成"旧事物。
+
+</div></details>
+
+<hr />
+<p><b>第 21 题</b> 关于感性认识与理性认识的正确说法</p>
+<blockquote>
+<p>列宁认为，"从生动的直观到抽象的思维，并从抽象的思维到实践，这是认识真理、认识客观实在的辩证的途径。"（引文 OCR 缺字已补全）关于这两种认识形式的看法正确的是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 感性认识是对于事物内部联系的部分认识 <br><span class="opt">B.</span> 理性认识具有抽象性，形式上超越了客观事物 <br><span class="opt">C.</span> 理性认识是感性认识的深化，比感性认识更重要 <br><span class="opt">D.</span> 感性认识是理性认识的基础</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BD</b>
+
+• A 错误：感性认识是对事物<b>外部联系</b>（现象）的认识；对<b>内部联系</b>（本质）的认识是理性认识
+• B 正确：理性认识通过概念、判断、推理把握事物的本质，具有抽象性和间接性，形式上超越了直接感知的客观事物
+• C 错误：后半句错——感性认识与理性认识相互依赖、相互促进，不存在谁"更重要"（"深化"的说法本身正确，但"更重要"是错误结论）
+• D 正确：感性认识是认识的起点，是理性认识的基础（理性认识依赖于感性认识）
+
+<b>命题思路</b>：认识过程的两次飞跃——感性认识是基础、理性认识是深化；"谁更重要"式比较是常见错误命题。
+
+</div></details>
+
+<hr />
+<p><b>第 22 题</b> 对固氮作用的认识与研究表明</p>
+<blockquote>
+<p>对于所有的生命体而言，固氮作用是不可或缺的自然过程，植物固氮离不开一种叫做"根瘤菌"的细菌，这种细菌与植物的关系是谁也离不开谁的共生关系。一直以来，我们都认为只有配备了根瘤这种独特装备的植物才能从细菌—植物共生关系中获益，固氮植物一般是豆科植物。但美国华盛顿大学科学家团队研究发现，生长在贫瘠岩石地面上的杨树也可以利用那些寄生在其树枝内细菌提供的养分维持生长。也就是说，固氮作用同样可以发生在树枝上，这一过程并不需要根瘤的参与。对固氮作用的认识与研究表明</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 认识具有上升性，真理总在不断被推翻中向前发展 <br><span class="opt">B.</span> 认识的发展是一个不断继承和超越已有认识的过程 <br><span class="opt">C.</span> 人们在一定条件下的正确认识总是有限度的 <br><span class="opt">D.</span> 任何真理都只能是对客观事物近似正确的反映</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BCD</b>
+
+• A 错误：前半句对（认识具有上升性），后半句错——真理是在<b>不断超越、丰富和发展</b>中前进的，不是"被推翻"（被推翻的只能是错误认识）
+• B 正确：新认识既继承旧认识的合理成分又超越其局限——"固氮依赖根瘤"被"树枝固氮"拓展，正是继承与超越的体现
+• C 正确：认识受主客观条件制约，一定条件下的正确认识总是有限的（有待拓展）
+• D 正确：真理具有相对性，任何真理都是对客观事物近似正确的反映
+
+<b>命题思路</b>：真理观——"真理被推翻"是经典错误表述（真理是相对与绝对的统一，是超越而非推翻）。
+
+</div></details>
+
+<hr />
+<p><b>第 23 题</b> "三角形内角和等于 180°"的启示</p>
+<blockquote>
+<p>在数学上有一个大家熟知的命题："三角形的内角和等于一百八十度。"其实，这个在我们看来是真理的命题却是错误的，因为它少了一个前提条件——在平面上。只有在平面上，三角形的内角和才等于一百八十度。如果将限定条件改为在曲面上，这个结论就不成立了。这启示我们</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 真理与谬误在一定条件下可以相互转化 <br><span class="opt">B.</span> 真理中总是包含着谬误的因素 <br><span class="opt">C.</span> 真理与谬误的界限往往是不明确的 <br><span class="opt">D.</span> 真理和谬误在一定范围内的对立是绝对的</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：AD</b>
+
+• A 正确：真理超出其适用条件（平面→曲面）就转化为谬误——真理与谬误在一定条件下相互转化
+• B 错误：真理与谬误有原则界限，真理中不包含谬误因素
+• C 错误：在同一条件、同一范围内，真理与谬误的界限是<b>明确</b>的
+• D 正确：只有在超出适用范围时才发生转化；<b>在特定范围内</b>，真理与谬误的对立是绝对的
+
+<b>命题思路</b>：真理的条件性——"真理超出范围变谬误"与"范围内界限绝对"两个层面同时掌握，B、C 是"混淆界限"的错误命题。
+
+</div></details>
+
+<hr />
+<p><b>第 24 题</b> 关于必然与自由的理解</p>
+<blockquote>
+<p>认识世界和改造世界、改造客观世界和改造主观世界的过程，也就是从必然走向自由的过程。关于必然与自由的理解正确的是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 自由与必然的永恒矛盾是人类存在和发展的永恒动力 <br><span class="opt">B.</span> 自由与必然的矛盾决定，一方终将消灭另一方 <br><span class="opt">C.</span> 否定"必然"存在的意义容易引发唯意志论的错误倾向 <br><span class="opt">D.</span> 必然是不依赖人的意识而存在的</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：CD</b>
+
+• A 错误：人类存在和发展的永恒动力是<b>实践</b>（或社会基本矛盾运动），"自由与必然的矛盾"表述拔高失当
+• B 错误：自由与必然相互依存、相互转化（自由是对必然的认识和对客观世界的改造），不是谁消灭谁
+• C 正确：否定必然（客观规律）→ 唯意志论；夸大必然、否定自由 → 宿命论——两种错误倾向
+• D 正确：必然是客观规律性，不依赖于人的意识而存在
+
+<b>命题思路</b>：必然与自由的辩证关系——"自由是对必然的认识和对客观世界的改造"；两种错误倾向（否定必然→唯意志论；否定自由→宿命论）要分清。
+
+</div></details>
+
+<hr />
+<p><b>第 25 题</b> 鲁迅名言蕴含的哲理</p>
+<blockquote>
+<p>"穷人绝无开交易所折本的烦恼，煤油大王哪会知道北京拣煤渣老婆子的辛酸，饥区的灾民，大约总不会去种兰花，像阔老太爷一样……"鲁迅这句话蕴含的哲理是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 人们的社会意识反映人们的社会存在状况 <br><span class="opt">B.</span> 人们的社会意识的差异根源于其社会存在状况的差异 <br><span class="opt">C.</span> 人们的社会意识可以预见社会存在的发展方向 <br><span class="opt">D.</span> 人们的社会意识对社会存在具有相对独立性</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABD</b>
+
+• A 正确：社会存在决定社会意识——不同社会地位的人有不同的思想状况（穷人、煤油大王、饥民各有各的"烦恼"与"辛酸"）
+• B 正确：社会意识的差异根源于社会存在（物质生活条件）的差异
+• C 错误：预见性只是<b>先进的社会意识</b>才具有的特性，把"人们的社会意识"一律说成能预见发展方向，是普遍化错误
+• D 正确：社会意识一旦形成就具有相对独立性（与社会存在不完全同步、有自身发展规律等）
+
+<b>命题思路</b>：社会存在与社会意识关系——"根源"是关键字；C 的"普遍化"是绝对化陷阱。
+
+</div></details>
+
+<hr />
+<p><b>第 26 题</b> 大力发展科学技术的原因</p>
+<blockquote>
+<p>习近平强调"科学技术从来没有像今天这样深刻影响着国家前途命运，从来没有像今天这样深刻影响着人民生活福祉。中国要强盛、要复兴，就一定要大力发展科学技术，努力成为世界主要科学中心和创新高地。"之所以要大力发展科学技术，是因为</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 科学技术是人类社会生存和发展的永恒的、必要的条件 <br><span class="opt">B.</span> 科学技术是先进生产力的集中体现和主要标志 <br><span class="opt">C.</span> 科学技术对生产方式、生活方式和思维方式有积极影响 <br><span class="opt">D.</span> 科学技术决定社会形态从低级向高级的更替和发展</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BC</b>
+
+• A 错误：<b>自然地理环境</b>才是人类社会生存和发展的永恒的、必要的条件——选项把地理环境的定位安到科学技术头上（定位张冠李戴）
+• B 正确：教材原话——科学技术是第一生产力，是先进生产力的集中体现和主要标志
+• C 正确：科学技术革命深刻影响着生产方式、生活方式和思维方式
+• D 错误：社会形态更替的根本动力是<b>社会基本矛盾</b>（生产力与生产关系、经济基础与上层建筑），科学技术不"决定"社会形态更替
+
+<b>命题思路</b>：科学技术在社会发展中的作用——"第一生产力"定位，同时<b>不决定</b>社会形态；A 的"永恒的、必要的条件"对应地理环境，是经典干扰项。
+
+</div></details>
+
+<hr />
+<p><b>第 27 题</b> 关于人民群众的正确说法</p>
+<blockquote>
+<p>毛泽东鲜明地提出，"人民，只有人民，才是创造世界历史的动力"。人民群众是社会历史的主体，关于人民群众的说法正确的是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 人民群众是指一切对社会历史发展起推动作用的人 <br><span class="opt">B.</span> 人民群众是社会人口中的绝大多数 <br><span class="opt">C.</span> 在任何历史阶段人民群众都不包括剥削阶级 <br><span class="opt">D.</span> 人民群众中最稳定的主体是无产阶级</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：AB</b>
+
+• A 正确：人民群众是一个<b>历史范畴</b>，指一切对社会历史发展起推动作用的人们
+• B 正确：人民群众是人口中的大多数
+• C 错误：人民群众的内容随历史发展而变化——上升时期的剥削阶级（如早期资产阶级）也曾起推动作用，属于人民群众；"任何历史阶段都不包括"绝对化
+• D 错误：人民群众中<b>最稳定的主体部分是从事物质资料生产的劳动群众</b>（及其知识分子），不是"无产阶级"——无产阶级只是特定历史阶段的主体
+
+<b>命题思路</b>：人民群众的"历史范畴"性质是关键——C 是绝对化、D 是主体定位张冠李戴。
+
+</div></details>
+
+<hr />
+<p><b>第 28 题</b> 关于商品使用价值的说法</p>
+<blockquote>
+<p>商品是用来交换的能满足人们某种需要的劳动产品，具有使用价值和价值两个因素或两种属性，是使用价值和价值的矛盾统一体。关于商品的使用价值，下列说法正确的是</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 使用价值是一切劳动产品的共有属性 <br><span class="opt">B.</span> 使用价值构成社会财富的物质内容 <br><span class="opt">C.</span> 使用价值在本质上体现了生产者之间的一定社会关系 <br><span class="opt">D.</span> 使用价值反映人与自然之间的物质关系</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABD</b>
+
+• A 正确：使用价值即物的有用性，一切劳动产品（包括非商品）都具有使用价值
+• B 正确：教材原话——使用价值构成社会财富的物质内容
+• C 错误：体现生产者之间社会关系的是<b>价值</b>（无差别人类劳动的凝结），不是使用价值
+• D 正确：使用价值是人与自然之间的物质关系（人对物的有用性的利用）
+
+<b>命题思路</b>：商品二因素——"价值体现社会关系、使用价值体现自然关系"是核心区分。
+
+</div></details>
+
+<hr />
+<p><b>第 29 题</b> 买苹果过程中的货币职能</p>
+<blockquote>
+<p>小明到超市买苹果，有 5 元一斤的和 10 元一斤的两种。最终，小明花费 20 元，购买了 2 斤苹果。在这一过程中，货币承担的职能有</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 支付手段 <br><span class="opt">B.</span> 流通手段 <br><span class="opt">C.</span> 贮藏手段 <br><span class="opt">D.</span> 价值尺度</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：BD</b>
+
+• A 错误：支付手段用于<b>赊购赊销</b>、清偿债务、支付工资税金等——本题是一手交钱一手交货，无赊欠
+• B 正确：货币充当商品交换的媒介，执行流通手段职能——小明用 20 元现场购买苹果
+• C 错误：贮藏手段是货币退出流通领域作为财富保存，题干无体现
+• D 正确：标价"5 元一斤""10 元一斤"是货币作为<b>价值尺度</b>衡量商品价值（观念上的货币）
+
+<b>命题思路</b>：货币五大职能区分——"标价"=价值尺度（观念货币），"现场购买"=流通手段（现实货币），"赊购赊销"=支付手段。
+
+</div></details>
+
+<hr />
+<p><b>第 30 题</b> 企业资本构成的变动</p>
+<blockquote>
+<p>某食品加工厂引进了一套新的智能化生产设备，使得工厂购置资产的成本提高，同时工厂的用工需求减少，进行了一定规模的裁员，降低了劳动力成本。该企业资本构成变动包括</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 资本技术构成变动 <br><span class="opt">B.</span> 资本价值构成变动 <br><span class="opt">C.</span> 资本有机构成变动 <br><span class="opt">D.</span> 可变资本投入增加</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABC</b>
+
+• A 正确：技术构成 = 生产资料与劳动力的<b>数量比例</b>——设备增加、用工减少，技术构成提高
+• B 正确：价值构成 = c:v——购置资产成本提高（c 增大）+ 劳动力成本降低（v 减少），价值构成变化
+• C 正确：有机构成 = 由技术构成决定并反映技术构成变化的资本价值构成——技术构成与价值构成同步变化，有机构成提高
+• D 错误：裁员降低了劳动力成本，即可变资本（购买劳动力的资本）投入<b>减少</b>而非增加
+
+<b>命题思路</b>：资本三种构成的关系链——技术构成（实物比例）→ 价值构成（c:v）→ 有机构成（技术构成变化的反映）。判断"有机构成"必须先确认技术构成是否变化。
+
+</div></details>
+
+<hr />
+<p><b>第 31 题</b> 关于利润平均化的说法</p>
+<blockquote>
+<p>为了获得尽可能高的利润率和尽可能多的利润，大量资本必然从利润率低的部门转投到利润率高的部门，从而导致利润率平均化。利润平均化</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 使商品价值转化为生产价格 <br><span class="opt">B.</span> 体现了各部门资本家在对工人的剥削上有共同利益 <br><span class="opt">C.</span> 使全社会的商品生产价格总额等于价值总额 <br><span class="opt">D.</span> 使资本家获得等量利润</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABC</b>
+
+• A 正确：利润率平均化后，商品按<b>生产价格</b>（成本价格 + 平均利润）出售，价值转化为生产价格
+• B 正确：平均利润表明剩余价值在各部门资本家之间重新分配——工人受整个资本家阶级的剥削，各部门资本家在剥削工人上有共同利益
+• C 正确：全社会生产价格总额 = 价值总额，平均利润总额 = 剩余价值总额
+• D 错误：是<b>等量资本获得等量利润</b>，不是"资本家获得等量利润"——资本量不同，利润量也不同
+
+<b>命题思路</b>：平均利润与生产价格——D 的"等量利润" vs "等量资本获得等量利润"是文字陷阱。
+
+</div></details>
+
+<hr />
+<p><b>第 32 题</b> 经济全球化推动世界经济增长的具体表现</p>
+<blockquote>
+<p>（题干首句 OCR 缺失，按上下文补全）经济全球化是社会生产力发展的客观要求和必然结果，不是哪些人、哪些国家人为造出来的。经济全球化为世界经济增长提供了强劲动力，促进了商品和资本流动、科技和文明进步、各国人民交往。经济全球化为世界经济增长提供了强劲动力，具体表现为</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 使生产要素在全球范围内自由流动和优化配置 <br><span class="opt">B.</span> 推动世界市场深化，以对外贸易拉动本国经济发展 <br><span class="opt">C.</span> 极大地缓解经济发展的不稳定性和风险 <br><span class="opt">D.</span> 极大缩小了发展中国家与发达国家之间的差距</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：AB</b>
+
+• A 正确：经济全球化使资本、技术、劳动力等生产要素在全球范围内流动和优化配置
+• B 正确：世界市场不断深化，对外贸易成为拉动各国经济增长的重要动力
+• C 错误：经济全球化在促进发展的同时<b>加剧</b>了不稳定性和风险（金融危机传导、外部冲击放大），不是"缓解"
+• D 错误：经济全球化没有"极大缩小"南北差距——发展中国家在竞争中面临更大挑战，差距可能拉大（"双刃剑"的另一面）
+
+<b>命题思路</b>：经济全球化的双重影响——积极作用（A、B）与消极影响（风险、差距）并存，C、D 是"只讲好处"的绝对化选项。
+
+</div></details>
+
+<hr />
+<p><b>第 33 题</b> 预见未来社会的科学方法论原则</p>
+<blockquote>
+<p>英国伦敦，大英博物馆，1516 年出版的托马斯·莫尔的《乌托邦》一书静静躺在展柜里。同时留在这座博物馆图书阅览室地板上的，是一位伟人厚重的足印。正是这位为人类解放事业奋斗终身的马克思，将社会主义从空想变为科学，提出了预见未来的科学的方法论原则，从而广泛而深刻地影响了世界。预见未来社会的科学的方法论原则有</p>
+</blockquote>
+<div class="opts"><span class="opt">A.</span> 在揭示人类社会发展一般规律的基础上指明社会发展的方向 <br><span class="opt">B.</span> 在剖析资本主义社会旧世界中阐发未来新世界的特点 <br><span class="opt">C.</span> 对未来社会的特征作细节性描绘 <br><span class="opt">D.</span> 在社会主义社会发展中不断深化对未来共产主义社会的认识</div>
+
+<details><summary>解析</summary><div class="step">
+
+<b>答案：ABD</b>
+
+• A 正确：马克思在唯物史观揭示人类社会发展一般规律的基础上，指明共产主义的发展方向——这是预见未来的首要原则
+• B 正确：通过剖析资本主义旧世界（揭示其内在矛盾）来阐发未来新世界的特点——"在批判旧世界中发现新世界"
+• C 错误：对未来的预见只作<b>方向性和原则性</b>的把握，不作细节性描绘——"细节描绘"正是空想社会主义的缺陷
+• D 正确：对未来社会的认识在社会主义的实践发展中不断深化
+
+<b>命题思路</b>：预见未来社会的方法论——方向原则 + 批判旧世界发现新世界 + 实践深化，明确反对"细节描绘"。
+
+</div></details>
+
+<hr />
+<h2 id="4命题特点小结">4. 命题特点小结</h2>
+<ol>
+<li><b>真题改编多</b>：第 3、4、20 题直接来自 2019 年考研真题，第 2、21、22、23 等题与历年真题高度同源——刷真题对这套卷有直接帮助</li>
+<li><b>政经占比高</b>：33 题中约 10 题考政治经济学（第 12-15、28-32 题），含 1 道计算题（第 14 题剩余价值率）——马原单科卷里政经是重头</li>
+<li><b>引文与案例包装</b>：诗词（"暮从碧山下"）、名言（"明镜所以照形"）、人物言论（鲁迅、列宁）、新闻案例（港珠澳大桥、思韦茨冰川、导盲犬）包装基本原理</li>
+<li><b>绝对化陷阱多</b>："只要…就""一切不利条件都能转化""任何事物之间""任何历史阶段""以完全相同的形式反复出现"——多选中见绝对化表述优先排除</li>
+<li><b>易混概念成对出现</b>：运动属性 vs 唯一特性、理性认识 vs 真理、生产过程两重性 vs 劳动二重性、使用价值 vs 价值、等量资本 vs 等量利润、地理环境定位 vs 科技定位——建议成对对比记忆</li>
+</ol>
+<hr />
+<p><span class="src">【来源: ：马原结课测试卷.pdf（newLesson/政治/）】</span></p></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="政治_无忧0721_测试卷.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>政治 · 无忧0721_测试卷</b></span></a><span></span></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

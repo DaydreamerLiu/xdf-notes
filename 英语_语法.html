@@ -1,0 +1,1233 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语 · 语法</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">📖 英语</div><a class="b" href="英语_写作.html">写作</a><a class="c x" href="英语_写作_例题.html">▸ 例题集</a><a class="b" href="英语_阅读.html">阅读</a><a class="c x" href="英语_阅读_暑假_例题.html">▸ 暑假例题集</a><a class="c x" href="英语_阅读_无忧_例题.html">▸ 无忧例题集</a><a class="b" href="英语_翻译.html">翻译</a><a class="c x" href="英语_翻译_例题.html">▸ 例题集</a><a class="b" href="英语_长难句翻译.html">长难句翻译</a><a class="c x" href="英语_长难句翻译_例题.html">▸ 例题集</a><a class="b on" aria-current="page" href="英语_语法.html">语法</a><a class="c x" href="英语_语法_例题.html">▸ 例题集</a><a class="c" href="英语_语法.html#一句子成分与五大基本句型">一、句子成分与五大基本句型</a><a class="d" href="英语_语法.html#11句子成分速览">1.1 句子成分速览</a><a class="d" href="英语_语法.html#12五大基本句型必考">1.2 五大基本句型 【必考】</a><a class="c" href="英语_语法.html#二状语成分与状语从句必考">二、状语成分与状语从句 【必考】</a><a class="d" href="英语_语法.html#21状语的表现形式">2.1 状语的表现形式</a><a class="d" href="英语_语法.html#22状语从句十大类型一览">2.2 状语从句十大类型一览</a><a class="d" href="英语_语法.html#23状语从句难点详解">2.3 状语从句难点详解</a><a class="c" href="英语_语法.html#三特殊结构必考">三、特殊结构 【必考】</a><a class="d" href="英语_语法.html#31虚拟语气">3.1 虚拟语气</a><a class="d" href="英语_语法.html#32倒装句">3.2 倒装句</a><a class="d" href="英语_语法.html#33强调句">3.3 强调句</a><a class="d" href="英语_语法.html#34否定结构注意">3.4 否定结构 【注意】</a><a class="d" href="英语_语法.html#35省略与插入语">3.5 省略与插入语</a><a class="d" href="英语_语法.html#36比较结构">3.6 比较结构</a><a class="c" href="英语_语法.html#四三大从句概述">四、三大从句概述</a><a class="d" href="英语_语法.html#41从句识别的核心方法">4.1 从句识别的核心方法</a><a class="d" href="英语_语法.html#42名词性从句引导词总结">4.2 名词性从句引导词总结</a><a class="d" href="英语_语法.html#43定语从句核心要点">4.3 定语从句核心要点</a><a class="c" href="英语_语法.html#五长难句分析方法重点">五、长难句分析方法 【重点】</a><a class="d" href="英语_语法.html#51分析四步法">5.1 分析四步法</a><a class="d" href="英语_语法.html#52实战示例">5.2 实战示例</a><a class="d" href="英语_语法.html#53介词短语与分词作定语状语的判断易错">5.3 介词短语与分词作定语/状语的判断 【易错】</a><a class="c" href="英语_语法.html#六易错点与考点">六、易错点与考点</a><a class="d" href="英语_语法.html#61whenwhereas从句类型混淆">6.1 when/where/as 从句类型混淆</a><a class="d" href="英语_语法.html#62分词逻辑主语不一致">6.2 分词逻辑主语不一致</a><a class="d" href="英语_语法.html#63定语从句与同位语从句的that区分">6.3 定语从句与同位语从句的 that 区分</a><a class="d" href="英语_语法.html#64否定转移的陷阱">6.4 否定转移的陷阱</a><a class="c" href="英语_语法.html#七知识连接">七、知识连接</a><a class="b" href="英语_完形.html">完形</a><a class="b" href="英语_无忧0802_测试卷.html">无忧0802_测试卷</a><a class="b" href="英语_词汇.html">词汇</a></nav>
+<div id="progress"></div>
+<main data-subj="english"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>英语 · 语法</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>语法</h1><div class="board-meta">📖 英语 · <span class="pill">理论笔记</span><span class="pill">7 节</span></div><blockquote>
+<p>阶段: 无忧 | 覆盖课件 3 份: 状语从句(1)、状语从句 5.31、大学事业部-27考季学员5月份月考知识点复习清单
+📖 例题全量见: <a href="英语_语法_例题.html">语法 · 例题集</a></p>
+</blockquote>
+<hr />
+<h2 id="一句子成分与五大基本句型">一、句子成分与五大基本句型</h2>
+<h3 id="11句子成分速览">1.1 句子成分速览</h3>
+<p>理解语法(尤其是长难句)的起点是识别句子成分。考研英语中, 几乎所有长难句分析都可以归结为: 找到主干(主谓宾/主系表), 然后识别修饰(定语、状语、补语、同位语)。</p>
+<p><b>主干成分</b>(缺了句子就不完整):</p>
+<ul>
+<li><b>主语(S)</b>: 动作的执行者或被描述的对象</li>
+<li><b>谓语(V)</b>: 主语的动作或状态</li>
+<li><b>宾语(O)</b>: 动作的承受者</li>
+<li><b>表语(P)</b>: 系动词后的补充说明</li>
+<li><b>补语(C)</b>: 补充说明宾语或主语</li>
+</ul>
+<p><b>修饰成分</b>(去掉句子仍完整):</p>
+<ul>
+<li><b>定语</b>: 修饰名词, 回答"什么样的/谁的/多少"</li>
+<li><b>状语</b>: 修饰动词/形容词/副词/整个句子, 说明时间、地点、原因、结果、目的、条件、方式、让步、程度等</li>
+<li><b>同位语</b>: 对名词的复指或解释</li>
+</ul>
+<p><span class="src">【来源: 大学事业部-27考季学员5月份月考知识点复习清单】</span></p>
+<h3 id="12五大基本句型必考">1.2 五大基本句型 <span class="mk biz">必考</span></h3>
+<p>英语中一切句子都可以归为五种基本句型。长难句不过是这五种句型的扩展与嵌套。</p>
+<table>
+<thead>
+<tr>
+<th>句型</th>
+<th>结构</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主谓(S+V)</td>
+<td>主语 + 不及物动词</td>
+<td>Birds fly.</td>
+</tr>
+<tr>
+<td>主谓宾(S+V+O)</td>
+<td>主语 + 及物动词 + 宾语</td>
+<td>I love you.</td>
+</tr>
+<tr>
+<td>主系表(S+V+P)</td>
+<td>主语 + 系动词 + 表语</td>
+<td>She is happy.</td>
+</tr>
+<tr>
+<td>主谓双宾(S+V+O+O)</td>
+<td>主语 + 动词 + 间接宾语 + 直接宾语</td>
+<td>He gave me a book.</td>
+</tr>
+<tr>
+<td>主谓宾补(S+V+O+C)</td>
+<td>主语 + 动词 + 宾语 + 补语</td>
+<td>They made him king.</td>
+</tr>
+</tbody>
+</table>
+<p><b>为什么必须掌握基本句型?</b> 面对长难句时, 所有修饰成分(定语从句、状语从句、介词短语、分词结构)都是附加在基本句型上的"枝叶"。如果找不到主干(主谓宾是谁), 整句话就理解不了。分析长句的第一步永远是: 这个句子的主语是谁? 谓语动词是哪个? 宾语/表语是什么?</p>
+<p><span class="src">【来源: 大学事业部-27考季学员5月份月考知识点复习清单】</span></p>
+<hr />
+<h2 id="二状语成分与状语从句必考">二、状语成分与状语从句 <span class="mk biz">必考</span></h2>
+<p>状语从句是考研英语三大从句之一, 也是课件覆盖最全面的板块。状语从句的本质: 用不同的连词将几个分句连接起来, 以表达分句之间特定的逻辑语义关系。</p>
+<p><b>核心方法</b>: 记住连接词就能识别是哪种状语从句, 分析并理解句子。翻译时重点在于判断从句与主句之间的逻辑关系, 并选择恰当的中文连接词。</p>
+<h3 id="21状语的表现形式">2.1 状语的表现形式</h3>
+<p>在讲状语从句之前, 先理清"状语"的四种表现形式:</p>
+<p><b>1. 副词作状语</b>: 修饰动词/形容词/副词/全句</p>
+<ul>
+<li>He runs <b>fast</b>.(修饰动词)</li>
+</ul>
+<p><b>2. 介词短语作状语</b>: 说明时间、地点、原因等</p>
+<ul>
+<li>She was born <b>in Hangzhou</b>.(地点)</li>
+<li>The boy was praised <b>for his bravery</b>.(原因)</li>
+</ul>
+<p><b>3. 分词作状语</b>: doing(主动/进行)或 done(被动/完成)引导的状语</p>
+<ul>
+<li><b>Having had a quarrel with his wife</b>, he left home in a bad temper.(原因)</li>
+<li><b>Discussed many times</b>, the problems were settled at last.(时间/条件)</li>
+<li><b>Finding the door unlocked</b>, I went into the kitchen.(= When I found the door unlocked, ...)(时间)</li>
+</ul>
+<p><b>分词作状语的关键规则</b>: 分词的逻辑主语必须与主句主语一致。不一致则构成"悬垂分词", 是语法错误。</p>
+<ul>
+<li>正确: Having had a quarrel with his wife, <b>he</b> left home.(he 既是 Having 的逻辑主语, 也是主句主语)</li>
+<li>错误: Having had a quarrel, <b>the door</b> was slammed.(门不会吵架)</li>
+</ul>
+<p><b>4. 不定式作状语</b>: 表目的</p>
+<ul>
+<li>He jumps <b>to catch the ball</b>.</li>
+</ul>
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<h3 id="22状语从句十大类型一览">2.2 状语从句十大类型一览</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>核心连接词</th>
+<th>关键用法提示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>时间</td>
+<td>when, as, since, after, before, while, until</td>
+<td>until 有两种译法:"直到......才"/"在......之前"</td>
+</tr>
+<tr>
+<td>地点</td>
+<td>where</td>
+<td>where 引导状从时译为"在......的地方"</td>
+</tr>
+<tr>
+<td>方式</td>
+<td>as</td>
+<td>as 在状从中不充当成分, 译为"按照/像......一样"</td>
+</tr>
+<tr>
+<td>原因</td>
+<td>because, as, since, for</td>
+<td>because 语气最强; for 不能放句首</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>so...that, such...that</td>
+<td>so 修饰 adj/adv; such 修饰 n</td>
+</tr>
+<tr>
+<td>目的</td>
+<td>so that, in order that, lest, in case</td>
+<td>lest=唯恐/以免; in case=以免/以防万一</td>
+</tr>
+<tr>
+<td>让步</td>
+<td>although, even if/though, while</td>
+<td>不与 but 连用; while=虽然</td>
+</tr>
+<tr>
+<td>对比</td>
+<td>while, whereas</td>
+<td>"而"(前后对比)</td>
+</tr>
+<tr>
+<td>条件</td>
+<td>if, unless</td>
+<td>if 可引导真实条件或虚拟条件</td>
+</tr>
+<tr>
+<td>比较</td>
+<td>than, as...as</td>
+<td>比较状语从句常有省略</td>
+</tr>
+</tbody>
+</table>
+<p><span class="src">【来源: 状语从句(1)、状语从句 5.31】</span></p>
+<h3 id="23状语从句难点详解">2.3 状语从句难点详解</h3>
+<h4>2.3.1 when 引导从句的四种区分 <span class="mk warn">易错</span></h4>
+<p>when 不一定是状语从句。区分方法: 看 when 在从句中是否充当成分以及整个从句在句中的功能。</p>
+<ul>
+<li><b>名词性从句</b>(主语从句): <b>When Laowang will fall in love with Mary</b> is unknown.<ul>
+<li>when 在从句中作时间状语, 整个从句作主语。</li>
+</ul>
+</li>
+<li><b>名词性从句</b>(表语从句): The best moment was <b>when he scored the winning goal</b>.<ul>
+<li>when 表肯定义("......的时刻"), 整个从句在系动词后作表语。</li>
+</ul>
+</li>
+<li><b>定语从句</b>: I still remember the day <b>(when) Laowang fell in love with Mary</b>.<ul>
+<li>when 可省略, 前面有表时间的先行词(the day)。</li>
+</ul>
+</li>
+<li><b>状语从句</b>: <b>When Laowang kissed Mary</b>, I was crying my eyes out.<ul>
+<li>修主句的动词(was crying), 表时间。</li>
+</ul>
+</li>
+</ul>
+<p><b>判断口诀</b>: </p>
+<ul>
+<li>前面有名词且修饰该名词 → 定语从句</li>
+<li>在主/宾/表位置 → 名词性从句  </li>
+<li>修饰主句谓语 → 状语从句</li>
+</ul>
+<h4>2.3.2 where 引导从句的三种区分 <span class="mk warn">易错</span></h4>
+<p>同理, where 也可能是名词性从句或定语从句。</p>
+<ul>
+<li><b>定语从句</b>: This is the house <b>where Lu Xun was born</b>.<ul>
+<li>前面有表地点的名词 house, where 修饰它。</li>
+</ul>
+</li>
+<li><b>状语从句</b>: The teacher started <b>where she stopped yesterday</b>.<ul>
+<li>前面没有表地点的名词, 整个从句修饰 started(说明从哪儿开始), 译为"在......的地方"。</li>
+</ul>
+</li>
+<li><b>名词性从句</b>: <b>Where we will hold the final exam</b> is still unknown. / This is <b>where you are wrong</b>.<ul>
+<li>在整个从句在主/宾/表位置; where 译为"哪里"或"的地方"(表肯定时)。</li>
+</ul>
+</li>
+</ul>
+<h4>2.3.3 as 的多重身份 <span class="mk ok">重点</span></h4>
+<p>as 是考研中最灵活的词之一, 四种主要用法:</p>
+<table>
+<thead>
+<tr>
+<th>用法</th>
+<th>判断标准</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>时间状语从句</td>
+<td>"当......时候/随着"</td>
+<td>As I walked, I thought about it.</td>
+</tr>
+<tr>
+<td>方式状语从句</td>
+<td>"按照/像......一样"; 从句中不充当成分</td>
+<td>She arranged the flowers as her mother had taught her.</td>
+</tr>
+<tr>
+<td>原因状语从句</td>
+<td>"因为/由于"</td>
+<td>As it was raining, we stayed indoors.</td>
+</tr>
+<tr>
+<td>定语从句</td>
+<td>从句中充当主语/宾语; 能用 which 替换</td>
+<td>As is known to all, the earth is round.</td>
+</tr>
+</tbody>
+</table>
+<p><b>区分定从与状从的 as</b>: </p>
+<ul>
+<li>定语从句的 as 在从句中充当成分(主语/宾语), 如 As is known to all(As 作主语)。</li>
+<li>状语从句的 as 在从句中不充当成分, 只起连接作用。</li>
+</ul>
+<h4>2.3.4 until 的两种翻译策略 <span class="mk warn">易错</span></h4>
+<p>until 译为"直到......才"还是"在......之前", 取决于主句动词的性质:</p>
+<p><b>方案 1: "直到......才"</b>(延续性动作一直持续到临界点)</p>
+<ul>
+<li>She slept until 10 o'clock. → 她一直睡到十点(才醒)。/ 十点之前她一直在睡。</li>
+<li>A technology of behavior will continue to be rejected until these issues are resolved. → 研究行为的技术手段就会继续受到排斥, 直到这些问题得以解决。</li>
+</ul>
+<p><b>方案 2: "在......之前"</b>(否定/负向语义更自然时)</p>
+<ul>
+<li>在这些问题得到解决之前, 研究行为的技术手段就会继续受到排斥。</li>
+</ul>
+<p>两种译法均正确, 选择更符合中文表达习惯的即可。</p>
+<h4>2.3.5 while 的让步 vs 对比区分</h4>
+<ul>
+<li><b>while = 虽然</b>(让步): <b>While</b> I am willing to help, I do not have much time available. → 尽管我愿意帮忙, 但是没有多少时间。</li>
+<li><b>while = 而</b>(对比): The handsome are awake, <b>while</b> the ugly are asleep. → 帅的人已经醒来, 而丑的人还在沉睡。</li>
+</ul>
+<p>判断依据: 让步的 while 出现在主句前, 且前后有"虽然......但是......"的让步关系; 对比的 while 前后是平行对比关系。</p>
+<h4>2.3.6 结果 vs 目的状语从句的区分</h4>
+<ul>
+<li><b>so...that</b>(结果): I'm <b>so</b> nervous <b>that</b> I can't speak. → 我太紧张了, 以至于说不出话。<ul>
+<li>so 修饰 adj/adv, 表"如此......以至于"。</li>
+</ul>
+</li>
+<li><b>so that</b>(目的): I got up early <b>so that</b> I could catch the bus. → 我早起以便能赶上公交。<ul>
+<li>so that 后通常跟情态动词(can/could/will/would), 表"以便/为了"。</li>
+</ul>
+</li>
+</ul>
+<p>此外还有 lest(唯恐/以免)和 in case(以免/以防万一):</p>
+<ul>
+<li>They spoke in whispers <b>lest</b> they should be heard. → 他们低声交谈, 唯恐被人听到。</li>
+<li>The celebrity doesn't dare to leave the house <b>in case</b> he should be recognized. → 这位名人不敢出门, 以免被认出来。</li>
+</ul>
+<p><span class="src">【来源: 状语从句(1)、状语从句 5.31】</span></p>
+<hr />
+<h2 id="三特殊结构必考">三、特殊结构 <span class="mk biz">必考</span></h2>
+<h3 id="31虚拟语气">3.1 虚拟语气</h3>
+<p>虚拟语气表示与事实相反或不太可能实现的情况。考研英语中最常见的虚拟语气出现在条件状语从句中。</p>
+<p><b>虚拟语气核心规则: 时态倒推</b></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>条件从句(if)</th>
+<th>主句</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>与现在事实相反</td>
+<td>did/were</td>
+<td>would/could/might/should + do</td>
+<td>If I <b>were</b> you, I <b>would go</b>.</td>
+</tr>
+<tr>
+<td>与过去事实相反</td>
+<td>had done</td>
+<td>would/could/might/should + have done</td>
+<td>If I <b>had studied</b>, I <b>could have passed</b>.</td>
+</tr>
+<tr>
+<td>与将来可能相反</td>
+<td>did/were; should do; were to do</td>
+<td>would/could/might/should + do</td>
+<td>If he <b>should go</b> to Harvard, he <b>would make</b> full use of his time.</td>
+</tr>
+</tbody>
+</table>
+<p><b>为什么叫"时态倒推"?</b> 正常时间线: 现在→将来, 过去→现在。虚拟语气中: 与现在相反→用过去时(did); 与过去相反→用过去完成时(had done)。这就是"向过去退一步"的逻辑。</p>
+<p><b>写作应用</b>: 考研写作中, 虚拟语气常用于表达假设或建议——"If it had not been for your help, I could not have adapted to the life there so quickly."</p>
+<p><span class="src">【来源: 状语从句 5.31、大学事业部-27考季学员5月份月考知识点复习清单】</span></p>
+<h3 id="32倒装句">3.2 倒装句</h3>
+<p>倒装是改变主语和谓语正常语序的语法现象, 考研中常出现在翻译和长难句分析中。</p>
+<h4>3.2.1 全部倒装(整个谓语在主语前)</h4>
+<p>触发条件: 地点副词(here/there)、时间副词(now/then)、表运动方向的副词(below/under 等)位于句首。</p>
+<ul>
+<li>Laowang comes here. → <b>Here comes</b> Laowang.</li>
+<li>The bell goes there. → <b>There goes</b> the bell.</li>
+</ul>
+<p><b>注意</b>: 主语是人称代词时不倒装——<b>Here he comes.</b>(不倒装) vs <b>Here comes Laowang.</b>(倒装)</p>
+<h4>3.2.2 部分倒装(助动词/情态动词移到主语前) <span class="mk freq">高频</span></h4>
+<p>触发条件一: 否定词或否定短语位于句首(never, by no means, hardly, scarcely, not until 等)</p>
+<ul>
+<li>I have <b>never</b> seen such a handsome man. → <b>Never have</b> I seen such a handsome man.</li>
+<li>She will <b>by no means</b> give up. → <b>By no means will</b> she give up.</li>
+</ul>
+<p>触发条件二: only + 状语(副词/介词短语/状语从句)位于句首</p>
+<ul>
+<li>She realized the importance of learning English <b>only then</b>. → <b>Only then did</b> she realize the importance of learning English.</li>
+<li><b>Only in this way can</b> you solve this problem.(only + 介词短语)</li>
+<li><b>Only after we left school did</b> I realize the importance of study.(only + 状语从句)</li>
+</ul>
+<p><b>写作应用</b>: </p>
+<ul>
+<li>全部倒装: Below the picture <b>is</b> a caption, which reads "On the way".(图画下面是标题)</li>
+<li>部分倒装: Only through continuing efforts <b>can</b> individuals progress steadily and the Chinese nation achieve great rejuvenation.(只有不断努力, 才能取得进步)</li>
+</ul>
+<p><span class="src">【来源: 状语从句 5.31、大学事业部-27考季学员5月份月考知识点复习清单】</span></p>
+<h3 id="33强调句">3.3 强调句</h3>
+<p>强调句型: <b>It is/was + 被强调部分 + that/who + 其余部分</b></p>
+<p>可强调: 主语、宾语、状语(含状语从句)</p>
+<ul>
+<li>原句: I met him in the park yesterday.</li>
+<li>强调主语: <b>It was I that/who</b> met him in the park yesterday.</li>
+<li>强调宾语: <b>It was him that</b> I met in the park yesterday.</li>
+<li>强调状语: <b>It was in the park that</b> I met him yesterday.</li>
+<li>强调时间: <b>It was yesterday that</b> I met him in the park.</li>
+</ul>
+<p><b>not until 的强调句</b>: </p>
+<ul>
+<li>原句: I didn't realize my mistake until then.</li>
+<li>强调: <b>It was not until then that</b> I realized my mistake.</li>
+</ul>
+<p><b>区分强调句与定语从句</b>: 去掉 It is/was... that... 后, 如果句子仍然完整, 就是强调句; 如果不完整(缺少成分), 则可能是定语从句或其他结构。</p>
+<p><b>强调句的否定</b>: It is not... that... / It is... that... not...</p>
+<p><b>强调状语从句</b>: 被强调部分可以是一个状语从句(时间/原因/目的等)。</p>
+<ul>
+<li>It was <b>because the traffic was heavy</b> that I was late. → 正是因为交通拥堵, 我才迟到。</li>
+</ul>
+<p><b>疑问句的强调句型</b>: 把强调句的 be 提前构成一般疑问句。</p>
+<ul>
+<li><b>Was it you that</b> broke the window? → 是你打碎的窗户吗?</li>
+<li>判断方法: 去掉 It was... that... 后还原为一般疑问句 Was it you... → Did you break the window?</li>
+</ul>
+<p><span class="src">【来源: 大学事业部-27考季学员5月份月考知识点复习清单】</span></p>
+<h3 id="34否定结构注意">3.4 否定结构 <span class="mk info">注意</span></h3>
+<p>考研英语中否定结构种类繁多, 易造成理解偏误:</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完全否定</td>
+<td>no, never, nothing, none, neither</td>
+<td>全部否定</td>
+</tr>
+<tr>
+<td>部分否定</td>
+<td>not all, not every, not both</td>
+<td>"不全都", 不是"全都不"</td>
+</tr>
+<tr>
+<td>半否定</td>
+<td>hardly, scarcely, barely, seldom, little, few</td>
+<td>几乎不</td>
+</tr>
+<tr>
+<td>双重否定</td>
+<td>not... without, no... not, cannot... too</td>
+<td>两个否定等于肯定</td>
+</tr>
+<tr>
+<td>否定转移</td>
+<td>I don't think he is right.</td>
+<td>形式上否定主句, 实际否定从句(我认为他不对, 不是"我不认为他对")</td>
+</tr>
+</tbody>
+</table>
+<p><span class="src">【来源: 大学事业部-27考季学员5月份月考知识点复习清单】</span></p>
+<h3 id="35省略与插入语">3.5 省略与插入语</h3>
+<p><b>省略</b>: 英语并列结构中常省略重复成分, 分析时要补全。省略分五类:</p>
+<table>
+<thead>
+<tr>
+<th>省略类型</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>省略主语</td>
+<td>(You) Come in, please. / (I) Hope to see you soon.</td>
+<td>祈使句/口语</td>
+</tr>
+<tr>
+<td>省略谓语</td>
+<td>Laowang is coming to China, and with him possibly his wife.</td>
+<td>补出省略的 is coming</td>
+</tr>
+<tr>
+<td>同时省略主谓</td>
+<td>(I am) Sorry to hear that. / (It is) No wonder he failed.</td>
+<td>常见于口语短句</td>
+</tr>
+<tr>
+<td>省略前文重复内容</td>
+<td>Some students study English, others (study) French.</td>
+<td>并列结构共享动词</td>
+</tr>
+<tr>
+<td><b>不定式省略 to</b></td>
+<td>I heard him (to) sing in the next room.</td>
+<td>feel/hear/see/watch 等感官动词 + 省略 to 的不定式; help 后 to 可省可留</td>
+</tr>
+</tbody>
+</table>
+<p><b>插入语</b>: 穿插在主谓之间的修饰性成分, 分析时可以先跳过插入语(两个破折号/逗号之间的内容), 抓住主干。</p>
+<ul>
+<li>When women do break through to the summit of corporate power—<b>as, for example, Sheryl Sandberg recently did at Facebook</b>—they attract massive attention. (跳过破折号内的插入内容, 主干: 当女性登上企业权力顶峰时, 她们吸引了大量关注。)</li>
+</ul>
+<p><b>分隔结构</b>: 考研长难句中常见主谓被修饰语隔开的现象(主谓分隔、修饰语与中心词分隔、动宾分隔)。找主干时需要"跳过"这些插入成分。</p>
+<p><span class="src">【来源: 状语从句 5.31、大学事业部-27考季学员5月份月考知识点复习清单】</span></p>
+<h3 id="36比较结构">3.6 比较结构</h3>
+<p>比较状语从句由 than 或 as...as 引导, 常伴随省略:</p>
+<ul>
+<li>Mary is more beautiful than her mother (is).</li>
+<li>Laowang earns more money than Tom (does).</li>
+<li>Far more Japanese workers expressed dissatisfaction with their jobs <b>than did</b> their counterparts in the 10 other countries surveyed.<ul>
+<li>than 后的倒装(did their counterparts)是常见结构, 正常语序: than their counterparts did。</li>
+</ul>
+</li>
+</ul>
+<p><span class="src">【来源: 状语从句 5.31】</span></p>
+<hr />
+<h2 id="四三大从句概述">四、三大从句概述</h2>
+<h3 id="41从句识别的核心方法">4.1 从句识别的核心方法</h3>
+<p>考研三大从句(名词性从句、定语从句、状语从句)的区分标准: <b>看整个从句在句子中充当什么成分</b>。</p>
+<ul>
+<li><b>名词性从句</b>: 从句在整个句子中充当主语、宾语、表语或同位语(即从句=一个名词)</li>
+<li><b>定语从句</b>: 从句修饰一个名词(先行词), 相当于一个形容词</li>
+<li><b>状语从句</b>: 从句修饰整个主句的谓语或全句, 表示时间、原因、条件等逻辑关系, 相当于一个副词</li>
+</ul>
+<p><b>引导词辨析思路</b>:</p>
+<ul>
+<li>that 可引导名词性从句(主/宾/表/同位从)和定语从句, 不能引导状语从句(除了 so...that 中的 that, 但那是结果状语从句的固定搭配)</li>
+<li>which 引导定语从句, 不引导名词性从句(除了少数如 which is seen as... 这种作宾从)</li>
+<li>what 只引导名词性从句, 不引导定语从句</li>
+<li>as 可引导方式/时间/原因状语从句和定语从句</li>
+<li>where/when 既可以是名词性从句也可以是定语从句也可以是状语从句(见上文区分方法)</li>
+</ul>
+<h3 id="42名词性从句引导词总结">4.2 名词性从句引导词总结</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>引导词</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>连词</td>
+<td>that, whether</td>
+<td>在从句中不充当成分, 只起连接作用</td>
+</tr>
+<tr>
+<td>连接代词</td>
+<td>what, who, which</td>
+<td>在从句中充当主/宾/表/定</td>
+</tr>
+<tr>
+<td>连接副词</td>
+<td>when, where, how, why</td>
+<td>在从句中作状语</td>
+</tr>
+</tbody>
+</table>
+<p><span class="src">【来源: 考研翻译7.17(名词性从句部分)】</span></p>
+<h3 id="43定语从句核心要点">4.3 定语从句核心要点</h3>
+<p>定语从句的核心在于"先行词 + 关系词 + 从句"的关系:</p>
+<ul>
+<li>先行词: 被定语从句修饰的名词/代词</li>
+<li>关系词: 替代先行词在从句中充当成分。关系代词(who/whom/which/that)充当主/宾; 关系副词(when/where/why)充当状语</li>
+</ul>
+<p>定语从句和翻译板块高度重叠(详见翻译笔记"定语的处理"部分)。语法学习阶段重在识别和分析, 翻译阶段重在转换。</p>
+<p><span class="src">【来源: 考研翻译7.16(定语部分), 结合已有翻译笔记】</span></p>
+<hr />
+<h2 id="五长难句分析方法重点">五、长难句分析方法 <span class="mk ok">重点</span></h2>
+<h3 id="51分析四步法">5.1 分析四步法</h3>
+<p>长难句分析的实质是"去枝叶、留主干"。按照优先级顺序:</p>
+<p><b>第一步: 找标点断句</b> —— 逗号、分号、破折号、冒号是天然断句点, 可以帮助初步划分句子层次。</p>
+<p><b>第二步: 找连词断句</b> —— 所有从句的入口都是连接词(that/which/who/when/where/if/because 等)。先圈出所有连接词, 再判断每个从句的"管辖范围"(从句到哪里结束)。</p>
+<p><b>第三步: 识别简单句核心成分</b> —— 在每个被断开的片段中, 找到主语和谓语动词。这是最关键的一步。一个句子可能只有一个主谓结构(简单句), 也可能有多个并列的主谓结构(并列句)或多个嵌套的主谓结构(复合句)。</p>
+<p><b>第四步: 剥离非核心成分</b> —— 将定语从句、状语从句、分词短语、介词短语、插入语等从主干上剥离, 剩下的就是句子的核心主谓宾。</p>
+<p><span class="src">【来源: 大学事业部-27考季学员5月份月考知识点复习清单】</span></p>
+<h3 id="52实战示例">5.2 实战示例</h3>
+<p>以一道典型的考研长难句为例, 展示四步法的实际应用:</p>
+<p><b>(2001 完形填空)</b>
+Publication of the letter came two days after Lord Irvine caused a storm of media protest when he said (that) the interpretation of privacy controls contained in European legislation would be left to judges rather than to Parliament.</p>
+<p><b>第一步-找标点</b>: 整句只有句号, 无逗号/破折号, 跳至下一步。</p>
+<p><b>第二步-找连词</b>: after, when, that(省略但可从 said 后内容推断)</p>
+<ul>
+<li>连词 1: after → 时间状语从句</li>
+<li>连词 2: when → 时间状语从句  </li>
+<li>连词 3: (that) → 宾语从句(said 的宾语)</li>
+</ul>
+<p><b>第三步-识别核心</b>: 主句主干 = Publication <b>came</b> (主语+谓语)。其余为时间修饰。</p>
+<p><b>第四步-剥离结构</b>: </p>
+<ul>
+<li>主句: Publication of the letter came</li>
+<li>时间状语 1: two days <b>after</b> Lord Irvine caused a storm of media protest</li>
+<li>时间状语 2: <b>when</b> he said (that)...</li>
+<li>宾语从句: the interpretation of privacy controls... would be left to judges rather than to Parliament</li>
+<li>宾从中后置定语: (which were) <b>contained</b> in European legislation</li>
+</ul>
+<p><b>时间关系图</b>(先记住这个顺序):</p>
+<ol>
+<li>(最早) Lord 发表言论 → 引发媒体抗议</li>
+<li>(过了两天后) 信件发表</li>
+</ol>
+<p><b>参考译文</b>: 欧文勋爵说, 包含在欧洲法律中的隐私控制权解释将留给法官而不是议会——此言一出便引起了媒体的一片抗议。两天后, 这封信件便发表了。</p>
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<h3 id="53介词短语与分词作定语状语的判断易错">5.3 介词短语与分词作定语/状语的判断 <span class="mk warn">易错</span></h3>
+<p>分析长句时, 最常被"忽略"的修饰成分是介词短语和分词。它们可能作定语(修饰名词), 也可能作状语(修饰动词/全句)。判断依据:</p>
+<ul>
+<li>跟在名词后面 → 大概率是定语</li>
+<li>放在句首或用逗号与主句分开 → 大概率是状语</li>
+<li>位于动词附近 → 可能是状语(修饰动作的方式/时间/地点等)</li>
+</ul>
+<p><span class="src">【来源: 大学事业部-27考季学员5月份月考知识点复习清单】</span></p>
+<hr />
+<h2 id="六易错点与考点">六、易错点与考点</h2>
+<h3 id="61whenwhereas从句类型混淆">6.1 when/where/as 从句类型混淆</h3>
+<p>这是最常见的误判——看到一个 when 就以为是时间状语从句。如:</p>
+<ul>
+<li>When reports came into London Zoo, they were not taken seriously. → 状语从句(when=当......时)</li>
+<li>I still remember the day when Laowang fell in love. → 定语从句(when=在那一天)</li>
+</ul>
+<p><b>判断方法</b>: when/where 前是否有名词? 若有且修饰该名词 → 定从; 若无 → 状从或名从。</p>
+<h3 id="62分词逻辑主语不一致">6.2 分词逻辑主语不一致</h3>
+<p>分词作状语时, 其逻辑主语必须与主句主语一致。不一致会构成悬垂修饰(dangling modifier):</p>
+<ul>
+<li>错误: <b>Walking down the street</b>, the buildings were beautiful.(建筑物不会走路)</li>
+<li>正确: <b>Walking down the street</b>, I saw beautiful buildings.</li>
+</ul>
+<h3 id="63定语从句与同位语从句的that区分">6.3 定语从句与同位语从句的 that 区分</h3>
+<ul>
+<li>定语从句的 that: 在从句中充当成分(主语/宾语), 去掉 that 后从句不完整。<ul>
+<li>The idea <b>that</b> he proposed was good. (that 作 proposed 的宾语)</li>
+</ul>
+</li>
+<li>同位语从句的 that: 在从句中不充当成分, 只起连接作用, 去掉 that 后从句仍然完整。<ul>
+<li>The idea <b>that</b> the earth is round is accepted. (that 不充当成分, 从句 the earth is round 本身完整)</li>
+</ul>
+</li>
+</ul>
+<h3 id="64否定转移的陷阱">6.4 否定转移的陷阱</h3>
+<p>"I don't think he is right." 不要译为"我不认为他是对的"——这在考研阅读和翻译中常常导致理解偏误。应译为"我认为他不对"。否定词虽然在主句, 但语义上实际否定的是从句。</p>
+<p>类似的动词: think, believe, suppose, expect, imagine 等。</p>
+<hr />
+<h2 id="七知识连接">七、知识连接</h2>
+<ul>
+<li><b>语法是长难句翻译的地基</b>: 翻译板块中的"断句→逐层理解→调整语序→成文"完全依赖语法分析。没有语法底子, 长难句翻译就只能"凭感觉"——而考研翻译考的就是精确度, 不能凭感觉。</li>
+<li><b>定语从句与翻译</b>: 定语从句的分析(判断先行词、识别从句范围)是翻译中定语处理的先决条件。详见翻译笔记"定语的处理"。</li>
+<li><b>名词性从句与翻译</b>: 名词性从句的翻译方法(顺译/分译/回指)同样以语法识别为前提。</li>
+<li><b>状语从句是阅读理解的逻辑骨架</b>: 考研阅读中, 段落的逻辑关系(因果、转折、条件、让步)大量依赖状语从句的连接词来表达。抓住连接词=抓住文章逻辑。</li>
+<li><b>倒装/强调/虚拟是翻译中的"陷阱句"</b>: 这些特殊结构打乱了正常语序, 翻译前必须先"还原"为正常语序再译。识别不出倒装或强调, 就会把主语当宾语、把宾语当主语。</li>
+</ul></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="英语_长难句翻译_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>英语 · 长难句翻译_例题</b></span></a><a class="next" href="英语_语法_例题.html"><span class="pg-t"><small>下一篇</small><b>英语 · 语法_例题</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

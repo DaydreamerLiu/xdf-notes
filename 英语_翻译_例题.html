@@ -1,0 +1,1742 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语 · 翻译_例题</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">📖 英语</div><a class="b" href="英语_写作.html">写作</a><a class="c x" href="英语_写作_例题.html">▸ 例题集</a><a class="b" href="英语_阅读.html">阅读</a><a class="c x" href="英语_阅读_暑假_例题.html">▸ 暑假例题集</a><a class="c x" href="英语_阅读_无忧_例题.html">▸ 无忧例题集</a><a class="b" href="英语_翻译.html">翻译</a><a class="c x on" href="英语_翻译_例题.html">▸ 例题集</a><a class="c" href="英语_翻译_例题.html#一词义选择与搭配">一、词义选择与搭配</a><a class="d" href="英语_翻译_例题.html#1一词多义判断">1. 一词多义判断</a><a class="d" href="英语_翻译_例题.html#2中文搭配">2. 中文搭配</a><a class="d" href="英语_翻译_例题.html#3上下文语境">3. 上下文语境</a><a class="c" href="英语_翻译_例题.html#二增词">二、增词</a><a class="c" href="英语_翻译_例题.html#三词性转换">三、词性转换</a><a class="c" href="英语_翻译_例题.html#四被动语态">四、被动语态</a><a class="c" href="英语_翻译_例题.html#五定语翻译">五、定语翻译</a><a class="c" href="英语_翻译_例题.html#六状语翻译">六、状语翻译</a><a class="c" href="英语_翻译_例题.html#七名词性从句翻译">七、名词性从句翻译</a><a class="c" href="英语_翻译_例题.html#八英二篇章翻译全文">八、英二篇章翻译(全文)</a><a class="c" href="英语_翻译_例题.html#九英一单句翻译真题">九、英一单句翻译(真题)</a><a class="b" href="英语_长难句翻译.html">长难句翻译</a><a class="c x" href="英语_长难句翻译_例题.html">▸ 例题集</a><a class="b" href="英语_语法.html">语法</a><a class="c x" href="英语_语法_例题.html">▸ 例题集</a><a class="b" href="英语_完形.html">完形</a><a class="b" href="英语_无忧0802_测试卷.html">无忧0802_测试卷</a><a class="b" href="英语_词汇.html">词汇</a></nav>
+<div id="progress"></div>
+<main data-subj="english"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>英语 · 翻译_例题</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>翻译_例题</h1><div class="board-meta">📖 英语 · <span class="pill">例题集</span><span class="pill">0 道例题</span></div><blockquote>
+<p>全量收录本板块课件例题, 含: 翻译讲义、考研翻译7.16、考研翻译7.17、考研翻译7.31(按考点分组)。
+⬅ 返回 <a href="英语_翻译.html">理论笔记</a></p>
+</blockquote>
+<hr />
+<h2 id="一词义选择与搭配">一、词义选择与搭配</h2>
+<h3 id="1一词多义判断">1. 一词多义判断</h3>
+<p><b>题干</b>: A light flashed in the distance. The box is too light for him. We can light the fire for warmth.</p>
+<details><summary>解析</summary><div class="step">
+
+light 在三个句子中词性不同, 含义不同:
+
+1. A <b>light</b> flashed in the distance. — 名词, 译为"光": 远处闪过一道光。
+2. The box is too <b>light</b> for him. — 形容词, 译为"轻": 这盒子对他来说太轻了。
+3. We can <b>light</b> the fire for warmth. — 动词, 译为"点燃": 我们可以生火取暖。
+
+<b>方法</b>: 翻译一词多义的词时, 先通过它在句中的位置和功能确定词性, 再选对应的中文释义。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: We are hoping for better weather tomorrow. He had dedicated his life to bettering the lot of the oppressed people of South Africa.</p>
+<details><summary>解析</summary><div class="step">
+
+1. We are hoping for <b>better</b> weather tomorrow. — 形容词, 译为"更好的": 我们希望明天天气更好。
+2. He had dedicated his life to <b>bettering</b> the lot of the oppressed people of South Africa. — 动词, 译为"改善": 他毕生致力于改善南非受压迫人民的命运。
+
+better 一词, 形容词义"更好"和动词义"改善"不同。判断依据: 第二个句子中 bettering 前面是 to(不定式), 后面带宾语 the lot, 显然作动词。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: The public speech last year was a degrading experience for me.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 去年的公共演讲对我来说是一次<b>丢人的</b>经历。
+
+degrading 在这里修饰 experience, 含"有损尊严/令人难堪"之意。不能直译为"降解的"或"下降的"——那是 degrade 在科技语境中的含义。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<h3 id="2中文搭配">2. 中文搭配</h3>
+<p><b>题干</b>: 翻译下列 strong 的搭配: strong muscles / a strong supporter / a strong argument / a strong chair / strong coffee / a strong accent</p>
+<details><summary>解析</summary><div class="step">
+
+同一个 strong, 在中文中因搭配不同而翻译不同:
+
+• strong muscles: 强壮的肌肉
+• a strong supporter: 坚定的支持者
+• a strong argument: 有说服力的论据
+• a strong chair: 结实的椅子
+• strong coffee: 浓咖啡
+• a strong accent: 浓厚的口音
+
+<b>为什么这样翻译?</b> 英文 strong 的核心语义是"力量强", 但中文用哪个形容词取决于被修饰名词的特质——肌肉讲"强壮", 支持者讲"坚定", 论据讲"有说服力", 椅子讲"结实", 咖啡讲"浓", 口音讲"浓厚"。这是中英搭配习惯的差异。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: 翻译下列 deep 的搭配: a deep well / a deep red / a deep mystery / be deep in study / a deep outrage</p>
+<details><summary>解析</summary><div class="step">
+
+• a deep well: 深井
+• a deep red: 深红
+• a deep mystery: 深奥的奥秘
+• be deep in study: 深入研究
+• a deep outrage: 强烈的愤怒
+
+最后一个 `deep outrage` 译为"强烈的愤怒"而非"深深的愤怒", 因为中文里"深深的"一般不与"愤怒"搭配, 更自然的是"强烈的"。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: 翻译并分析 move 在不同语境中的含义: Share prices moved ahead today. / The story of their sufferings moved us deeply. / Work on the new building is moving quickly. / They have moved into a bigger office in London.</p>
+<details><summary>解析</summary><div class="step">
+
+• Share prices <b>moved</b> ahead today. → 今日股价<b>上涨</b>。(描述市场走势)
+• The story of their sufferings <b>moved</b> us deeply. → 他们的苦难经历深深<b>打动</b>了我们。(情感义)
+• Work on the new building is <b>moving</b> quickly. → 新大楼的施工正在快速<b>推进/取得进展</b>。(进展义)
+• They have <b>moved</b> into a bigger office in London. → 他们已经<b>搬</b>进伦敦一间更大的办公室。(位置变化义)
+
+move 的核心语义是"移动", 但引申到不同领域后: 市场→涨跌, 情感→打动, 工程→进展, 空间→搬迁。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: 翻译 deal with: deal with aspects / deal with challenges / deal with adults</p>
+<details><summary>解析</summary><div class="step">
+
+• deal with aspects: 解决(问题的)各个方面
+• deal with challenges: 应对挑战
+• deal with adults: 与成年人打交道
+
+同一个 deal with, 宾语不同则翻译不同: 抽象→"解决", 困难→"应对", 人→"打交道"。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<h3 id="3上下文语境">3. 上下文语境</h3>
+<p><b>题干</b>: 翻译 challenge 在不同语境中的含义: Parents should challenge kids to think about difficult questions. / Environmentalists strongly challenge the act of killing endangered species. / The security guard challenged us at the gate.</p>
+<details><summary>解析</summary><div class="step">
+
+• Parents should <b>challenge</b> kids to think about difficult questions. → 父母应该<b>激励</b>孩子思考难题。(积极语境)
+• Environmentalists strongly <b>challenge</b> the act of killing endangered species. → 环保人士强烈<b>反对/谴责</b>杀害濒危物种的行为。(对抗语境)
+• The security guard <b>challenged</b> us at the gate. → 保安在大门口<b>盘问/盘查</b>了我们。(检查语境)
+
+challenge 的核心义是"挑战", 但这个"挑战"在不同语境中表现为: 激励、反对、盘问——差别很大。判断依据不在这个词本身, 而在上下文的场景。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2003, 62)...study humans... in the same reasoned, orderly, systematic and dispassioned manner...</p>
+<details><summary>解析</summary><div class="step">
+
+dispassioned 在这个语境中译为"客观/冷静/理性", 而非字面的"不热情"。
+
+<b>为什么?</b> 前文与 reasoned(理性的)、orderly(有序的)、systematic(系统的)并列, 修饰研究方式(manner), 所以 dispassioned 应理解为"不带个人情感的、冷静客观的", 而非简单的"不热情"。
+
+全文译为: 用同样理性、有序、系统且<b>客观</b>的方式研究人类......
+
+<b>翻译技巧</b>: 生僻词遇到并列结构时, 可根据并列词的方向推断其含义。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: (2000-71) Pollution monitors will disable cars when they offend.</p>
+<details><summary>解析</summary><div class="step">
+
+offend 常见义为"冒犯", 但在这个句子中, 主语是 pollution monitors(污染监测器), 宾语是 cars(汽车)。汽车不会"冒犯"监测器——offend 在此处指"污染超标/违规排放"。
+
+译为: 污染监测器会在汽车<b>污染超标</b>时使它们停下来。
+
+如果直译为"当汽车冒犯时"则完全不通。这个词义推断的关键是: 找到句子逻辑——监测器=检测污染, 发现超标→ 让汽车停止。offend 的语义由此被语境"限定"在"违规/超标"这个方向上。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2008-50) ...more probably to the moral character.</p>
+<details><summary>解析</summary><div class="step">
+
+moral character 直译是"道德特征", 但在中文的搭配习惯中, 更自然的说法是"道德品质"或"品德"。
+
+• The moral of the story is simple. → 这个故事的寓意很简单。(moral 此处是名词, 意为"寓意", 与 moral character 中的 moral(道德)不同。)
+
+译为: 更有可能是<b>道德品质</b>。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: (2006-47) ...must accept the obligation.</p>
+<details><summary>解析</summary><div class="step">
+
+accept the obligation 直译是"接受义务"。但分析中文搭配习惯后: "接受义务"在中文里不通——义务就是应该做的事, 不是"接受"的。更自然的译法是 <b>"承担责任/履行义务"</b>。
+
+这体现了中文搭配的重要性: accept(接受) + obligation(义务) 的组合, 中文不说"接受义务"而说"承担责任"。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: (2009, 46) ...its effect in enlarging and improving experience...</p>
+<details><summary>解析</summary><div class="step">
+
+直译: "扩大并提升经验"。
+改译: <b>"丰富并提升经验"</b> 或 <b>"积累并提升经验"</b>。
+
+<b>为什么不直译?</b> "扩大经验"在中文里不通。enlarge 在此语境中与 experience 搭配, 中文更自然的说法是"丰富经验"或"积累经验"。这是词义选择+中文搭配的典型应用。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<h2 id="二增词">二、增词</h2>
+<p><b>题干</b>: They wanted to ease the tension in the Middle East.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 他们想缓解中东的紧张<b>局势</b>。
+
+增加范畴词"局势"。tension 是抽象名词, 中文里"缓解紧张"听起来话没说完——缓解什么的紧张? 加上"局势"后表达完整。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: While comment and reaction from lawyers may enhance stories. (2007-50)</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 虽然来自律师的评论和反应可能会提高报道的<b>质量</b>。
+
+增加范畴词"质量"。enhance stories=提高报道? 中文不通。补"质量"(提高报道质量)则通顺自然。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: These two countries vary not only in natural conditions but also in culture.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 这两个国家不但在自然条件中<b>存在不同</b>, 而且在文化中<b>也存在差异</b>。
+
+英语中 vary 只出现了一次, 但隐含了"两者都在......方面不同"的意思。but also in culture 后省略了 vary, 翻译时需补出"也存在差异"使结构完整。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: (2008-40) ...might possibly be injurious to the intellect, and more probably to the moral character.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 可能损害智力, 甚至可能<b>损害</b>道德品质。
+
+and more probably to the moral character 中省略了 injurious(损害), 翻译时补出"损害"使句子完整。同时将 more probably 处理为"甚至"以增强语气递进。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: (2006-48) I have excluded him because...</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 我<b>之所以</b>将他排除在外, 是因为......
+
+增加"之所以", 让因果关系在中文中更明确。英文的 because 已经表达因果, 但中文"之所以......是因为......"是更自然、更完整的因果句式。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<h2 id="三词性转换">三、词性转换</h2>
+<p><b>题干</b>: I give you my support.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 我<b>支持</b>你。(名词 support → 动词"支持")
+
+直译"我给你我的支持"不符合中文习惯。将名词转为动词后, 译文更简洁自然。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: while his accomplishments may contribute to the solution of moral problems,</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 虽然他的成就可能有助于<b>解决</b>道德问题。
+
+名词 solution → 动词"解决"。英文静态(多用名词), 中文动态(多用动词)——这是词性转换的核心逻辑。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: Those small factories are also lavish consumer and waster of raw materials.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 那些小工厂还在极大地<b>消耗和浪费</b>原材料。
+
+lavish(adj. 奢华的/大量的) + consumer(n. 消费者) + waster(n. 浪费者) ——三个词分别转换为:
+
+• lavish → "极大地"(形容词→副词)
+• consumer → "消耗"(名词→动词)
+• waster → "浪费"(名词→动词)
+
+这是词性转换的经典案例: 一句英文中多个名词全部转为中文动词, 使译文动态而简洁。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: In China, there is a lot of emphasis on politeness.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 在中国, 人们很<b>注重</b>礼仪。
+
+emphasis(名词) → "注重"(动词), 同时 there is a lot of 这种 there be 句型在中文里一般处理为主谓结构。增加泛指主语"人们"使表达完整。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<h2 id="四被动语态">四、被动语态</h2>
+<p><b>题干</b>: He was praised by his teacher. / He had been fired for refusing to obey orders from the head office.</p>
+<details><summary>解析</summary><div class="step">
+
+1. He was praised by his teacher. → 他<b>得到了</b>老师的表扬。
+• "好事"不用"被", 用"得到"替代。
+2. He had been fired for refusing to obey orders from the head office. → 他因为拒绝服从总公司的命令而<b>被</b>解雇了。
+• "坏事"可以用"被", 翻译为"被解雇"自然。
+
+两句话的翻译对比体现了中文被动语态使用的一条重要规律: 正面或中性事件回避"被"字, 负面事件可以使用"被"。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: She was seen to enter the building.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: <b>有人</b>看见她进入了那栋楼。
+
+英文被动, 动作发出者未出现。翻译时加泛指主语"有人", 转为主动句。常见泛指主语: 有人、人们、我们。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: Measures have been taken to prevent the epidemic from spreading quickly.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: (有人)已经采取了一些方法来预防流行病快速蔓延。
+
+此处体出现者不明确且不重要, 可以直接省略主语, 保持被动含义但不用"被"字。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: (2012-1-47) Cultural diversity could also be traced to more constrained beginnings.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 文化多样性也可以<b>追溯</b>到更有限的起源。
+
+主动表被动的译法: 去掉"被"字, 用"追溯"直接翻译。中文中"追溯到"本身就隐含被动义——"可以被追溯"去掉"被"后中文仍然通顺、自然。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: (1999-translation) During this transfer, traditional historical methods were augmented by additional methodologies designed to interpret the new forms of evidence in the historical study.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>断句</b>: During this transfer, // traditional historical methods were augmented by additional methodologies // designed to interpret the new forms of evidence // in the historical study.
+
+<b>四步翻译过程</b>:
+
+1. 断句(如上, 按介词/by/分词/介词分别断开)
+2. 逐个翻译:
+• During this transfer → 在这一转变(过程)中
+• traditional historical methods were augmented by additional methodologies → 额外的方法论<b>补充了</b>传统的历史研究方法(主宾颠倒, 被动转主动)
+• designed to interpret the new forms of evidence → 旨在解释新的证据形式
+• in the historical study → 在历史研究(过程)中
+3. 组合调整: 在这一转变中, 历史学家研究历史时, 额外的方论补充了传统的历史研究方法, 这些方法旨在解释新的证据形式。
+
+<b>技巧要点</b>: were augmented by → 不译"被补充", 而是主宾颠倒译为"补充了"(主动)。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2007-46) Traditionally, legal learning has been viewed in such institutions as the special preserve of lawyers, rather than a necessary part of the intellectual equipment of an educated person.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>断句</b>: Traditionally, legal learning has been viewed in such institutions as // the special preserve of lawyers, // rather than a necessary part of the intellectual equipment of an educated person.
+
+<b>生词提示</b>: institution(机构/学校), preserve(n. 专属领域), intellectual(智力的/知识的)
+
+译为: 传统上, 这些学校把法律学习看作是律师们所专有的, 而不是一个受过教育的人知识储备的必要组成部分。
+
+被动 `has been viewed` 转为主动"把......看作是", 主语 these institutions 由被动句的状语变为主动句的主语。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2002-63) The role of natural selection in evolution was formulated only a little more than a hundred years ago, and the selective role of the environment in shaping and maintaining the behavior of the individual is only beginning to be recognized and studied.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>断句</b>: The role of natural selection in evolution // was formulated only a little more than a hundred years ago, // and the selective role of the environment in shaping and maintaining the behavior of the individual // is only beginning to be recognized and studied.
+
+译为: 自然选择在进化中的作用仅在一百多年前<b>得以阐明</b>, 而环境在塑造和保持个体行为时的选择作用, 则刚刚开始<b>(被)</b>认识和研究。
+
+• was formulated → 得以阐明(用"得以"替代"被")
+• be recognized and studied → 认识和研究(此处可保留"被"或省略; 省略后仍通顺)
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2018-1-49) A native literary drama had been created, its alliance with the public playhouses established, and at least some of its great traditions had been begun.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 一种本土文学戏剧产生了, 其与公共剧院的联系也<b>得以确立</b>, 至少一些伟大传统也(就此)<b>出现了</b>。
+
+三个被动结构分别处理:
+
+• had been created → "产生了"(主动表被动)
+• its alliance... established → "得以确立"
+• had been begun → "出现了"(不译"被开始")
+
+技巧: 被动句的谓语全换为主动词, 同时保持原意不丢失。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2019-48) Attempts have been made to curb this tendency, for example, by trying to incorporate some measure of quality as well as quantity into the assessment of an applicant's papers.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>断句</b>: Attempts have been made to curb this tendency, // for example, by trying to incorporate some measure of quality as well as quantity into the assessment of an applicant's papers.
+
+译为: (我们)已经做了一些尝试去遏制这种趋势, 比如, 通过将<b>某种程度</b>的质量和数量纳入申请人论文的评定中。
+
+<b>注意</b>: some measure 在此处不是"一些措施", 而是"某种程度", 这是一个易错点。measure 有"措施"和"程度"两个核心义, 需根据上下文判断。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<h2 id="五定语翻译">五、定语翻译</h2>
+<p><b>题干</b>: Happiness is linked to the kind of longer-term thinking necessary for making investments for the future.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>定语识别</b>: `necessary for making investments for the future` 是后置定语, 修饰 `the kind of longer-term thinking`。
+
+<b>前置译法</b>(8 词以内): 幸福与那种对未来的投资所必要的长期思考方式有关。
+<b>后置译法</b>(推荐): 幸福与那种长期的思考方式有关, <b>这种思考方式</b>对于未来的投资有必要。
+
+后置译法更通顺——将长定语拆成独立短句, 用"这种思考方式"衔接。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16】</span></p>
+<hr />
+<p><b>题干</b>: All these steps will make the political life of the next president more difficult.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 所有这些步骤都会让下任总统的政治生涯变得更为严峻。
+
+`the political life of the next president` = A of B → 译为"B 的 A":"下任总统的政治生涯"(of 结构常规译法)。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: the advantage of forcing him to think about every sentence, and enabling him to detect errors in reasoning and in his own observations.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>直译</b>(不通): 迫使他思考每一个句子以及让他能够发现在推理和自己观察中的错误的优势。
+<b>改译</b>(通顺): 优势是使他可以思考每一个句子, 并让他能够发现在推理和自己观察中的错误。
+
+<b>处理方法</b>: of 后的定语太长, 不处理为"......的+核心名词", 而是将核心名词 `advantage` 变为主句谓语("优势是"), 定语转为后续说明。这本质上是"后置译法"在 of 结构中的应用。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2014-1-48) Beethoven's habit of increasing the volume with an extreme intensity and then abruptly following it with a sudden soft passage was only rarely used by composers before him.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>结构分析</b>: 主语很长: `Beethoven's habit [of increasing... and then abruptly following...]`。核心主语是 habit, of 后跟两个并列的动名词短语作后置定语。
+
+<b>处理方法</b>: 将 of 后的长定语独立成句, 核心名词 habit 转为动词"习惯于":
+贝多芬习惯于先把乐曲的音量增到最大, 然后再突然衔接一段轻柔的段落; 在他之前, 鲜有作曲家运用这样的手段。
+
+<b>关键技巧</b>: 后置定语过长时, 不要强行前置("贝多芬的把音量增到最大然后突然衔接......的习惯"), 而是把核心名词变谓语动词, 定语顺译为后续分句。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义、考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: Limited road networks connect populations living in Peru's Andes highlands to equipment and resources concentrated in city hospitals.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 有限的公路网将<b>居住在秘鲁安第斯高地上的</b>百姓与<b>聚集在市医院的</b>医疗设备和资源联系在一起。
+
+两个现在分词/过去分词作后置定语(`living in...` 和 `concentrated in...`), 均在 8 词以内, 采用前置译法。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: Astrophysicists working with ground-based detectors at the South Pole and balloon-borne instruments are closing in on such structures.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 天体物理学家<b>使用南极陆基探测器及球载仪器</b>, (他们)正越来越近地(观测)这些云系。
+
+定语 `working with... instruments` 较长, 采用后置译法(融合法): 将被修饰名词(天体物理学家)与定语融合为一个主谓分句, 顺译而下。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: Countries that still think foreign investment is an invasion of their sovereignty might well study the history.</p>
+<details><summary>解析</summary><div class="step">
+
+译为(方案一): 还有国家认为外商投资是对主权的侵犯, <b>这些国家</b>或许该好好研究历史。
+译为(方案二): 还有国家认为外商投资是对主权的侵犯, <b>他们</b>或许该好好研究历史。
+
+定语从句 `that still think... sovereignty` 较长, 采用切分法: 将定语从句断开为独立分句, 用"这些国家"或"他们"回指, 实现衔接。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2017-50) It gives a basis to all organisations which seek to promote the learning and use of English, a basis for planning to meet the possibilities of what could be a very different operating environment.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>断句</b>: It gives a basis to all organisations // which seek to promote the learning and use of English, // a basis for planning to meet the possibilities of // what could be a very different operating environment.
+
+译为: 它为所有寻求推动英语学习和使用的机构提供了一个基础(标准), 借此基础可以做出规划, 来应对截然不同的运营环境里(所带来的)可能。
+
+<b>关键技巧</b>:
+
+1. 定语从句 `which seek to...` 较短, 前置处理为"寻求......的机构"。
+2. `a basis for planning...` 是同位语(basis 的复指), 用"借此基础"自然衔接。
+3. `what could be...` 译为"截然不同的运营环境里(所带来的)可能", what 的处理用了增词具体化。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.16、考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: (2018-47) No boy who went to a grammar school could be ignorant that the drama was a form of literature which gave glory to Greece and Rome and might yet bring honor to England.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>断句</b>: No boy // who went to a grammar school // could be ignorant // that the drama was a form of literature // which gave glory to Greece and Rome and might yet bring honor to England.
+
+译为: 任何去过文法学校的男孩都了解, 戏剧是一种文学形式, 它(这种文学形式)曾为希腊和罗马带来荣誉, 也有可能为英格兰带来荣耀。
+
+<b>分析</b>:
+
+• `No boy... could be ignorant` = 所有男孩都了解(双重否定转肯定)
+• `who went to a grammar school` = 前置翻译"去过文法学校的"
+• `which gave glory...` = 后置译法, 用"它"指代"这种文学形式"衔接
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: (2019-46) There is a great deal of this kind of nonsense in the medical journals which, when taken up by broadcasters and the lay press, generates both health scares and short-lived dietary enthusiasms.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 在医学期刊中, 存在大量诸如此类的无稽之谈, 通过广播公司和非专业媒体报道后, 就会引发大众对健康方面的恐慌, 还有对某种饮食的短暂追捧。
+
+<b>分析</b>:
+
+• `which... generates` 的 which 指代的是前面的 nonsense("无稽之谈")
+• `when taken up by...` 是插入的状语, 省略了 it was(taken up=nonsense), 译为"通过......报道后"
+• `there be` 句型处理为"在......中存在", 不需要硬译"有"
+• lay press 中的 lay=外行的/非专业的
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: (2020-48) Despite attempts by the Church to suppress this new generation of logicians and rationalists, more explorations for how the universe functioned were being made at a rate that the people could no longer ignore.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 尽管(天主)教堂尝试压制新一代的逻辑学家和理性主义者, 但是更多对于宇宙是如何运作的探索正在进行, <b>其速度之快, 人们已经无法忽视</b>。
+
+<b>分析</b>:
+
+• `at a rate that...` 中的定语从句 `that the people could no longer ignore` 采用后置成句, 且将 rate 转为"速度之快"(增加形容词"快")
+• `Despite...` 让步状语照常处理
+• 另一种译法(更紧凑): 正在以人们难以忽视的速度进行着。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: (1990-64) Behaviorists suggest that the child who is raised in an environment where there are many stimuli which develop his or her capacity for appropriate responses will experience greater intellectual development.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>断句</b>: Behaviorists suggest // that the child who is raised in an environment // where there are many stimuli // which develop his or her capacity for appropriate responses // will experience greater intellectual development.
+
+<b>主干</b>: 行为学家认为, 一个孩子将经历一个更高的智力发展阶段。
+
+<b>定语部分</b>: 孩子在一个有许多刺激因素的环境中成长, 这些刺激能够培养他们做出适当反应的能力。
+
+<b>组合</b>: 行为学家认为, 如果一个孩子在一个有许多刺激因素的环境中成长, 这些刺激因素能够培养他们做出适当反应的能力, 那么他将经历一个更高的智力发展阶段。
+
+<b>多层定语嵌套的处理</b>: 此句有三层嵌套定语(who 定 child, where 定 environment, which 定 stimuli), 全部拆开, 顺译成多个短句。组合时用"如果......那么"的逻辑连接来表明条件关系(定语从句隐含了条件语义)。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17、翻译讲义】</span></p>
+<hr />
+<h2 id="六状语翻译">六、状语翻译</h2>
+<p><b>题干</b>: (1998, 75) ...cosmic inflation is a scientifically plausible consequence...</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 从科学的角度来说, 宇宙膨胀是一个貌似可信的结果。
+
+副词 `scientifically` 独立成句(从科学的角度来说), 而非直接放在形容词前译为"科学地貌似可信"(中文不通)。
+
+<b>技巧</b>: 修饰整个命题的副词(如 scientifically, broadly, generally)可独立成句, 放在句首。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: (2005, 47) multi-media groups have been increasingly successful...</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 多媒体集团已经越来越成功。
+
+副词 `increasingly` 译为"越来越", 放在动词/形容词前, 符合中文语序, 不需要调整位置。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: Being tired after work, he still insists on studying French. / Once exposed to light, the film will be damaged.</p>
+<details><summary>解析</summary><div class="step">
+
+1. <b>尽管</b>他下班后感觉很累, 但是他依旧坚持学习法语。
+• Being tired 是非谓语(分词)作状语, 与主句 he still insists... 形成让步关系。翻译时补出"尽管"明确逻辑。
+
+2. <b>一旦</b>胶片暴露于光线之下, 它就会损坏。
+• Once exposed 是非谓语(过去分词)作条件状语, 翻译时补出"一旦"。
+
+<b>总结</b>: 非谓语作状语时, 需要判断它与主句的逻辑关系(让步? 原因? 条件? 伴随?), 然后用对应的中文连接词显化。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2010-2-Translation) Ning recalls spending a confusing year in the late 1990s selling insurance.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 宁回忆起20世纪90年代后期<b>卖保险度日的</b>那困惑的一年。
+
+`sell insurance` 是 spending a confusing year 的伴随状语(通过卖保险来度过这一年), 翻译时前置处理为"卖保险度日的"。时间状语 `in the late 1990s` 按中文习惯移至动词前。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: (2012-2-Translation) A big survey of Indian households in 2004 found that nearly 40% of emigrants had more than a high-school education, compared with around 3.3% of all Indians over the age of 25.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 2004年, 对印度家庭的一项大规模调查表明, 将近40%移居国外的人受过高中以上的教育, 而<b>与之形成对比的是</b>, 全印度25岁以上受过高中以上教育的人约为3.3%。
+
+`compared with...` 是过去分词作比较状语, 翻译为"与之形成对比的是"(增加了过渡词使对比更自然)。同时注意数字处理: `around 3.3%` 译为"约为3.3%"。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: (2016-1-Translation) Although mental health is the cure-all for living our lives, it is perfectly ordinary as you will see that it has been there to direct you through all your difficult decisions.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 尽管拥有健康的心理是我们生活中的灵丹妙药, 但它却非常普通; 你会发现, 它一直都在, 在你面临所有艰难抉择之时指引你。
+
+<b>分析</b>:
+
+• Although... 让步状语从句, 连接词直译"尽管...但是"
+• as you will see... 原因/方式状语从句, 译为"你会发现"顺接
+• cure-all 译为"灵丹妙药"(成语增色)
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: (2020-1-Translation) As many took on the duty of trying to integrate reasoning and scientific philosophies into the world, the Renaissance was over and it was time for a new era—the Age of Reason.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 当许多人承担起责任, 试图将推理和科学哲学融入这个世界时, 文艺复兴时期就已经结束, 一个新的纪元——理性时代——就要到了。
+
+<b>分析</b>:
+
+• `As many took on the duty...` 时间/原因状语从句, 译为"当......时"(时间义)
+• `integrate A into B`: 将 A(推理和科学哲学)融入 B(这个世界)
+• `the Renaissance was over` 注意 was over 的时态——"已经结束"(完成义)
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: (2017-1-Translation) His analysis should therefore end any self-contentedness among those who may believe that the global position of English is so stable that the young generations of the United Kingdom do not need additional language capabilities.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 因此, 他的分析应该会终结一些人的自满情绪, 这些人或许认为, 英语的全球地位很稳定, 所以英国的年轻人不需要额外的语言能力。
+
+<b>结构嵌套</b>: 主句 + who 定语从句(内含 that 宾语从句(内含 so...that 结果状语从句))。翻译时将嵌套结构逐层拆开:
+
+1. 主句: 他的分析应该会终结一些人的自满情绪
+2. who 定从: 这些人或许认为......
+3. that 宾从: 英语的全球地位很稳定
+4. so...that 状从: 所以英国的年轻人不需要额外的语言能力
+
+拆开后顺译, 用"这些人"衔接。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17】</span></p>
+<hr />
+<h2 id="七名词性从句翻译">七、名词性从句翻译</h2>
+<p><b>题干</b>: (2020-47) Before each of their revelations many thinkers at the time had sustained more ancient ways of thinking, including the geo-centric view that the Earth was at the centre of our universe.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 在每个(发现)揭示之前, 当时的许多思想家都坚持更古老的思维方式, 其中包括地心说思想, <b>即</b>地球是宇宙的中心。
+
+同位语从句 `that the Earth was at the centre of our universe` 解释 view(观点)的内容, 用"即"来翻译 that。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2018-1-Translation) To realize how great was the dramatic activity, we must remember further that hosts of plays have been lost, and that probably there is no author of note whose entire work has survived.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 要领略戏剧活动多么伟大, 我们就必须要进一步认识到, 很多戏剧已经不复存在, 并且有可能没有一位知名作家的所有作品都保留了下来。
+
+<b>结构分析</b>:
+
+• `To realize how great was the dramatic activity` 目的状语
+• `we must remember further` 主句
+• `that hosts of plays have been lost` 宾从 1
+• `that probably there is no author of note whose entire work has survived` 宾从 2
+
+两个并列的 that 宾从, 直接用"并且/且"连接顺译即可。`author of note` = 知名作家(of note = 著名的/有影响力的)。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (1990-1-Translation) That our environment has little, if anything, to do with our abilities, characteristics and behavior is central to this theory.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 如果我们的环境与我们的能力、性格特征和行为有一些的联系的话, 这种联系也是微不足道的, <b>这一点</b>是这一理论的核心。
+
+<b>分析</b>:
+
+• `That our environment has little, if anything, to do with...` 主语从句, 太长, 不能前置为一个词。处理为独立句子 + "这一点"回指。
+• `little, if anything` = "如果有的话, 也很少/微不足道"——翻译时拆为两个部分: "如果......有一些联系的话" + "这种联系也微不足道"。
+
+<b>替代译法</b>: 这一理论的核心是, 如果我们的环境与我们的能力、性格特征和行为有一些的联系的话, 这种联系也是微不足道的。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (1994-1-Translation) Galileo's greatest glory was that in 1609 he was the first person to turn the newly invented telescope on the heavens to prove that the planets revolve around the sun rather than around the Earth.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 伽利略最伟大的成就在于, 在1609年, 他是第一个用新发明的望远镜来对准天空的人, 以证实行星是绕着太阳转的, 而不是绕着地球转的。
+
+<b>嵌套结构</b>: `that...` 表语从句内含 `to prove that...` 目的状语(内含第二个 that 宾从)。翻译策略: 全部顺译, 表从的 that 译为"在于"; 目的状语用"以"/"来"连接; 第二个 that 宾从顺译。
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (1994-1-Translation) Whether the Government should increase the financing of pure science at the expense of technology or vice versa often depends on the issue of which is seen as the driving force.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 政府究竟是以减少对技术的经费来增加纯理论科学的经费投入, 还是相反, 这常常取决于人们把哪一种看做驱动力量。
+
+<b>分析</b>:
+
+• `Whether... or...` 主语从句, 处理为"究竟是......还是......" + "这"回指
+• `at the expense of` = 以牺牲......为代价(此处意译为"以减少")
+• `vice versa` = 反之亦然(此处译为"还是相反")
+• `which is seen as...` = 哪一种被看作......(被动转主动: "人们把哪一种看做......")
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (1995-1-Translation) In general, the tests work most effectively when the qualities to be measured can be most precisely defined and least effectively when what is to be measured or predicted cannot be well defined.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 一般来说, 当所要测定的特征(事物)能够最为精准地界定时, 测试最为有效; 而当所要测定或预测的特征(事物)不能明确地界定时, 测试的效果最差。
+
+<b>并列结构</b>: `work most effectively when... and (work) least effectively when...`
+
+<b>翻译技巧</b>:
+
+• 两个 when 引导的条件状语从句, 用"当......时"来翻译并前置
+• `what is to be measured` 译为"所要测定的事物/特征"(what 具体化为"事物")
+• `least effectively` 译为"效果最差", 与前文"最为有效"形成对比
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2007-1-Translation) But the idea that the journalist must understand the law more profoundly than an ordinary citizen rests on an understanding of the established conventions and special responsibilities of the news media.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 但是, 记者必须比普通市民更加深刻地理解法律, <b>这一观念</b>取决于对新闻媒体的既定习俗和特殊责任的理解。
+
+<b>分析</b>:
+
+• `that the journalist... citizen` 是同位语从句, 解释 idea 的内容
+• 同位从贴近主语(idea), 采用"先译从句+回指"的译法: 先翻译从句内容, 再用"这一观念"连接主干句
+• rests on = 取决于/依赖于
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17、翻译讲义】</span></p>
+<hr />
+<h2 id="八英二篇章翻译全文">八、英二篇章翻译(全文)</h2>
+<p><b>题干</b>: (2010 英二) "Sustainability" has become a popular word these days, but to Ted Ning, the concept will always have personal meaning. Having endured a painful period of unsustainability in his own life made it clear to him that sustainability-oriented values must be expressed through everyday action and choice.</p>
+<p>Ning recalls spending a confusing year in the late 1990s selling insurance. He'd been through the dot-com boom and burst and, desperate for a job, signed on with a Boulder agency.</p>
+<p>It didn't go well. "It was a really bad move because that's not my passion," says Ning, whose dilemma about the job translated, predictably, into a lack of sales. "I was miserable, I had so much anxiety that I would wake up in the middle of the night and stare at the ceiling. I had no money and needed the job. Everyone said, 'Just wait, you'll turn the corner, give it some time.'"</p>
+<details><summary>解析</summary><div class="step">
+
+<b>全文参考译文</b>:
+
+如今, "承受力"成为了一个流行词, 但是对于泰德宁来说, 这个含义对他来说深有体会。在经历了一段无法忍受的痛苦时期之后, 他清楚地认识到旨在提高承受力的价值观必须通过每日的行为和选择来体现。
+
+宁回忆起20世纪90年代后期销售保险度过的那困惑的一年。在经历了互联网繁荣与破灭之后, 他急需一份工作, 因此与博尔德公司签约了。但是情况进展并不顺利。宁说: "这的确是糟糕的一步, 因为那不是我的激情所在。"不出所料, 他工作上的困境变成了缺乏销售业绩。
+
+我很痛苦。我太焦虑了所以我会在半夜醒来盯着天花板发呆。我没有钱, 所以需要这份工作。大家都说: 等等看, 再过一段时间你会渡过难关的。
+
+<b>翻译要点</b>:
+
+1. Sustainability → 在文中被理解为"承受力"(个人层面), 而非字面的"可持续性"。这是根据全文上下文做的词义选择。但首句直接译"sustainability"为"承受力"需要上下文的铺垫。
+2. `Having endured... made it clear to him that...` → 形式宾语, 处理为"经历了......之后, 他清楚地认识到......"
+3. `whose dilemma... translated... into a lack of sales` → "工作上的困境转化为缺乏销售业绩"/"销售业绩不佳"
+4. `turn the corner` → "渡过难关"(习语)
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.17、考研翻译7.31、翻译讲义】</span></p>
+<hr />
+<p><b>题干</b>: (2012 英二) When people in developing countries worry about migration, they are usually concerned at the prospect of their best and brightest departure to Silicon Valley or to hospitals and universities in the developed world. These are the kind of workers that countries like Britain, Canada and Australia try to attract by using immigration rules that privilege college graduates.</p>
+<p>Lots of studies have found that well-educated people from developing countries are particularly likely to emigrate. A big survey of Indian households in 2004 found that nearly 40% of emigrants had more than a high-school education, compared with around 3.3% of all Indians over the age of 25. This "brain drain" has long bothered policymakers in poor countries. They fear that it hurts their economies, depriving them of much-needed skilled workers who could have taught at their universities, worked in their hospitals and come up with clever new products for their factories to make.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>全文参考译文</b>:
+
+当发展中国家的人们担心移民问题时, 他们通常忧虑的是这样的情景, 那就是(即), 自己国家最优秀最聪明的人离开, 去了硅谷或者发达国家的医院和大学工作。这些人正是英国, 加拿大, 澳大利亚这样的国家通过使用优待大学毕业生的移民政策想要吸引来的人才。
+
+很多的研究已经发现, 发展中国家的受到良好教育的人尤其可能会移居国外。在2004年进行的一次对印度家庭的大规模调查发现, 大约40%的移民受过高中以上的教育, 相比之下, 全印度超过25岁以上受过高中以上教育的人只有3.3%。这种人才流失的现象长期困扰着贫穷国家的政策制定者。他们担心, 这会损害本国的经济, 致使他们失去大量急需的技术工人。这些人本应该在国内的大学任教, 在国内的医院工作, 研发出新颖灵巧的产品供国内工厂生产。
+
+<b>翻译要点</b>:
+
+1. `brain drain` → "人才流失"(约定俗成译法)
+2. `depriving them of...` → "致使他们失去......"(现在分词作伴随状语, 表结果)
+3. `who could have taught... worked... come up with...` → 长定语从句, 拆开成独立句, 用"这些人"指代
+4. `privilege` 作动词 → "优待/给予特权"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31、翻译讲义、考研翻译7.17】</span></p>
+<hr />
+<p><b>题干</b>: (2013 英二) I can pick a date from the past 53 years and know instantly where I was, what happened in the news and even the day of the week. I've been able to do this since I was four.</p>
+<p>I never feel overwhelmed with the amount of information my brain absorbs. My mind seems to be able to cope and the information is stored away neatly. When I think of a sad memory, I do what everyone does—try to put it to one side. I don't think it's harder for me just because my memory is clearer. Powerful memory doesn't make my emotions any more acute or vivid. I can recall the day my grandfather died and the sadness I felt when we went to the hospital the day before. I also remember that the musical play Hair opened on Broadway on the same day—they both just pop into my mind in the same way.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>全文参考译文</b>:
+
+我能从过去的53年中挑个日子, 然后立刻想起那天自己在哪儿, 当天有什么新闻, 甚至是星期几。从四岁起, 我就有了这种能力。
+
+我从来不会因为自己大脑吸收的信息量太庞大而感到难以承受。我的大脑似乎有能力应对, 而信息的储存也有条有理。我想起伤心往事的时候, 也和大家一样——尽量搁到一边不管。我不觉得记得越清就越难忘记。惊人的记忆力并没有使我的情绪变得更为敏感或者鲜明。我能够记得祖父去世那天的情景以及前一天我们去医院时我有多么难过。我也记得音乐剧《毛发》就是在那天首登百老汇的——这两件事情就这样以相同的方式迅速跳进我的脑海。
+
+<b>翻译要点</b>:
+
+1. `pop into my mind` → "迅速跳进我的脑海"(保留原文生动感)
+2. `I don't think it's harder for me just because my memory is clearer.` → 否定转移: 不是"我不认为......", 而是译为"我不觉得记得越清就越难忘记"(将否定词从主句移到从句, 汉语习惯)
+3. `feel overwhelmed with` → "难以承受"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2014 英二) Most people would define optimism as being endlessly happy, with a glass that's perpetually half full. But that's exactly the kind of false cheerfulness that positive psychologists wouldn't recommend. "Healthy optimism means being in touch with reality," says Tal Ben-Shahar, a Harvard professor. According to Ben-Shahar, realistic optimists are those who make the best of things that happen, but not those who believe everything happens for the best.</p>
+<p>Ben-Shahar uses three optimistic exercises. When he feels down—say, after giving a bad lecture—he grants himself permission to be human. He reminds himself that not every lecture can be a Nobel winner; some will be less effective than others. Next is reconstruction. He analyzes the weak lecture, learning lessons for the future about what works and what doesn't. Finally, there is perspective, which involves acknowledging that in the grand scheme of life, one lecture really doesn't matter.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>全文参考译文</b>:
+
+大多数人将乐观定义为永远快乐, 总觉得杯子里的水还有一半。但积极心理学家恰恰并不提倡这种虚假的快乐。"健康的乐观是与现实联系在一起的。"哈佛大学教授泰·本-沙哈说道。根据他的观点, 现实的乐观主义者是不管发生什么事情都力求取得最大收获, 而不是相信事事都有圆满的结局。
+
+本-沙哈提出了乐观训练的三个阶段。当他心情低落时——比如, 在发表完一个糟糕的演讲之后——他宽慰自己这是人之常情。他提醒自己不是每一次演讲都有获诺贝尔奖的水准, 有些演讲的效果会不如其他。下一个阶段是复盘。他会分析这次失败的演讲, 哪些地方可取, 哪些不可取, 为将来的演讲积累经验。最后一个阶段是用前瞻的眼光认识到在生命的宏伟蓝图中, 一次演讲根本算不上什么。
+
+<b>翻译要点</b>:
+
+1. `with a glass that's perpetually half full` → "总觉得杯子里的水还有一半"(英文习语, 选择意译而非直译"永远有半杯水的杯子")
+2. `grants himself permission to be human` → "宽慰自己这是人之常情"(意译)
+3. `reconstruction` 和 `perspective` → 没有直译为"重建"和"视角", 而根据上下文处理为"复盘"和"前瞻"
+4. `make the best of things that happen` → "力求取得最大收获"(调整语序使中文通顺)
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<h2 id="九英一单句翻译真题">九、英一单句翻译(真题)</h2>
+<p><b>题干</b>: (2013 英一-46) yet when one looks at the photographs of the garden created by the homeless, it strikes one that, for all their diversity of styles, these gardens speak of various other fundamental urges, beyond that of decoration and creative expression.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 然而, 当我们看到那些无家可归者所创建的花园的照片时, 我们感到了深深的震撼: 尽管它们风格多样, 这些花园除了用来装饰和表达创造力之外, 还道出了(表达了)人类其他的一些根本需求。
+
+<b>要点</b>:
+
+• `it strikes one that...` → "感到了深深的震撼"(strike 的引申义"给......留下印象")
+• `for all their diversity of styles` → "尽管它们风格多样"(for all = 尽管)
+• `speak of` → "道出/表达了"(不是"说到")
+• `beyond that of decoration...` → "除了用来装饰和表达创造力之外......还......"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2013 英一-47) A sacred place of peace, however crude it may be, is a distinctly human need, as opposed to shelter, which is a distinctly animal need.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 那是一片宁静的圣土, 不管多么简陋, 都是人类特有的需求, 它不同于遮风挡雨的地方, 那明显是动物的需求。
+
+<b>要点</b>:
+
+• `however crude it may be` → "不管多么简陋"(让步)
+• `as opposed to` → "不同于"(不是"反对")
+• `distinctly human/animal need` → "人类/动物特有的需求"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2013 英一-48) The gardens of the homeless, which are in effect homeless gardens, introduce form into an urban environment where it either didn't exist or was not discernible as such.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 无家可归者的花园实际上是无人问津的花园, 它们是被引入城市环境中的一种建筑类型。在城市环境下, 这种建筑风格要么本来就不存在, 要么人们注意不到它的存在。
+
+<b>要点</b>:
+
+• `in effect` → "实际上"
+• `homeless gardens` → "无人问津的花园"(与前面的"无家可归者的花园"语义双关)
+• `form` → 根据上下文处理为"建筑类型/建筑形式"
+• `discernible as such` → "作为这种形式被人识别/注意到"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2013 英一-49) most of us give in to a demoralization of spirit which we usually blame on some psychological conditions, until one day we find ourselves in a garden and feel the oppression vanish as if by magic.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 多数人会陷入精神萎靡, 我们通常把这种萎靡归咎于某种心理状态, 直到有一天, 我们发现自己身处花园, 竟奇迹般地感到压力全无。
+
+<b>要点</b>:
+
+• `give in to` → "陷入/屈服于"
+• `demoralization of spirit` → "精神萎靡"
+• `blame A on B` → "把 A 归咎于 B"
+• `as if by magic` → "竟奇迹般地"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2013 英一-50) It is this implicit or explicit reference to nature that fully justifies the use of the word garden, though in a "liberated" sense, to describe these synthetic constructions.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 正是这种对大自然或明或暗的参照(引用), 使花园这个词, 虽然指的是"广义"上的花园, 恰如其分地形容了这些人造建筑。
+
+<b>要点</b>:
+
+• 强调句型 `It is... that...` → "正是......"
+• `implicit or explicit reference` → "或明或暗的参照"
+• `in a "liberated" sense` → "在广义上"或"在不拘一格的意义上"
+• `synthetic constructions` → "人造建筑"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2014 英一-46) It is also the reason why when we try to describe music with words, all we can do is articulate our reactions to it, and not grasp music itself.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 这也是为什么我们在试图用语言来描述音乐时, 只能说清楚对音乐的感受, 而不能理解音乐本身。
+
+<b>要点</b>:
+
+• `articulate our reactions` → "说清楚对音乐的感受"(articulate = 清晰表达)
+• `grasp music itself` → "理解音乐本身"(grasp 不是"抓住", 而是"理解/把握")
+• why 从句 + when 从句嵌套, 顺译即可
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2014 英一-47) By all accounts he was a freethinking person, and a courageous one, and I find courage an essential quality for the understanding, let alone the performance, of his works.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 人们普遍认为, 他是个思想自由的人, 是个勇敢无畏的人, 我发现勇敢这一特征是理解他作品的关键, 更不必说是演奏其作品的关键了。
+
+<b>要点</b>:
+
+• `By all accounts` → "人们普遍认为/据大家所说"(习惯用法)
+• `let alone` → "更不必说/更别提"
+• `essential quality for the understanding... of his works` → "理解他作品的关键(品质)"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2014 英一-49) Especially significant was his view of freedom, which, for him, was associated with the rights and responsibilities of the individual: he advocated freedom of thought and of personal expression.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 尤为重要的是他对自由的观点, 对他而言, 自由是与个人的权利和责任联系在一起的: 他倡导思想自由和个人言论自由。
+
+<b>要点</b>:
+
+• 倒装句 `Especially significant was his view...` → 恢复为正常语序: "他对自由的观点尤为重要的是......" → 译为"尤为重要的是他对自由的观点"
+• `was associated with` → "与......联系在一起"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2014 英一-50) One could interpret much of the work of Beethoven by saying that suffering is inevitable, but the courage to fight it renders life worth living.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 我们可以这样来解读贝多芬的大多数作品: 痛苦是难以避免的, 但是与之相抗争的勇气使得生命值得继续。
+
+<b>要点</b>:
+
+• `One could interpret... by saying that...` → "我们可以这样来解读......"(起关联作用的 by saying that 转为冒号)
+• `render life worth living` → "使生命值得继续/使生命值得活下去"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2015 英一-46) This movement, driven by powerful and diverse motivations, built a nation out of a wilderness and, by its nature, shaped the character and destiny of an uncharted continent.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 受到各种强大的动机所驱使, 这场迁移(运动)在荒野中创建了一个国家; 本质使然, 它也塑造了这片未知大陆的性格和命运。
+
+<b>要点</b>:
+
+• `driven by powerful and diverse motivations` → 过去分词作后置定语, 单独成句"受到各种强大的动机所驱使"
+• `by its nature` → "本质使然/就其本质而言"
+• `uncharted continent` → "未知大陆"(uncharted = 未经勘探的/地图上未标明的)
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2015 英一-47) The United States is the product of two principal forces—the immigration of European peoples with their varied ideas, customs, and national characteristics and the impact of a new country which modified these traits.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 有两股主要力量形成了美国: 一是具有不同思想、风俗和民族特点的欧洲各民族的迁入, 二是这个新国家改变了上述特征所带来的影响。
+
+<b>要点</b>:
+
+• 破折号后的两个并列成分很长, 用"一是......二是......"来分析列举
+• `the impact of a new country which modified these traits` → "这个新国家改变了上述特征所带来的影响"(定语从句前置)
+• is the product of → "是......的产物" → 意译为"有两股力量形成了"(更符合中文叙事习惯)
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2015 英一-48) But the force of geographic conditions peculiar to America, the interplay of the varied national groups upon one another, and the sheer difficulty of maintaining old-world ways in a raw, new continent caused significant changes.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 但是, 美国特有的地理条件、不同民族间的相互影响以及在这片原始的新大陆上维持旧秩序的艰难, 都(给美国)带来了巨大的变化。
+
+<b>要点</b>:
+
+• 三个并列主语(A, B, and C) → 用顿号和"以及"并列, 加"都"总结
+• `peculiar to America` → "美国特有的"(后置定语前置)
+• `the force of geographic conditions` → "地理条件的力量/影响" 意译为"地理条件"
+• `sheer difficulty` → "完全的困难" → "艰难"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2015 英一-49) The first shiploads of immigrants bound for the territory which is now the United States crossed the Atlantic more than a hundred years after the 15th-and-16th-century explorations of North America.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 在十五世纪和十六世纪人们对北美洲进行了持续的探索后, 又过了一百多年, 第一艘满载移民的航船跨过大西洋驶向这片土地, 即现在的美国。
+
+<b>要点</b>:
+
+• 时间状语 `more than a hundred years after...` 放在句首处理(中文语序: 先发生先说)
+• `bound for` → "驶向/开往"
+• `which is now the United States` → "即现在的美国"(which 引导定从, 切分后用"即"衔接)
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p>
+<hr />
+<p><b>题干</b>: (2015 英一-50) The virgin forest with its richness and variety of trees was a real treasure-house which extended from Maine all the way down to Georgia.</p>
+<details><summary>解析</summary><div class="step">
+
+译为: 枝繁叶茂、树种繁多的原始森林, 从缅因州往南一直绵延到乔治亚州, 是一座天然宝库。
+
+<b>要点</b>:
+
+• `with its richness and variety of trees` → 介词短语作定语, 前置处理为"枝繁叶茂、树种繁多的"
+• `which extended from... to...` → 定语从句后置成句, 插入主谓之间(汉语可接受插入)
+• `treasure-house` → "天然宝库"(加"天然"增强表达)
+• `virgin forest` → "原始森林"
+
+</div></details>
+
+<p><span class="src">【来源: 考研翻译7.31】</span></p></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="英语_翻译.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>英语 · 翻译</b></span></a><a class="next" href="英语_长难句翻译.html"><span class="pg-t"><small>下一篇</small><b>英语 · 长难句翻译</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

@@ -1,0 +1,1304 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语 · 语法_例题</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">📖 英语</div><a class="b" href="英语_写作.html">写作</a><a class="c x" href="英语_写作_例题.html">▸ 例题集</a><a class="b" href="英语_阅读.html">阅读</a><a class="c x" href="英语_阅读_暑假_例题.html">▸ 暑假例题集</a><a class="c x" href="英语_阅读_无忧_例题.html">▸ 无忧例题集</a><a class="b" href="英语_翻译.html">翻译</a><a class="c x" href="英语_翻译_例题.html">▸ 例题集</a><a class="b" href="英语_长难句翻译.html">长难句翻译</a><a class="c x" href="英语_长难句翻译_例题.html">▸ 例题集</a><a class="b" href="英语_语法.html">语法</a><a class="c x on" href="英语_语法_例题.html">▸ 例题集</a><a class="c" href="英语_语法_例题.html#一状语从句分类练习">一、状语从句分类练习</a><a class="d" href="英语_语法_例题.html#11时间状语从句">1.1 时间状语从句</a><a class="d" href="英语_语法_例题.html#12地点状语从句">1.2 地点状语从句</a><a class="d" href="英语_语法_例题.html#13方式状语从句">1.3 方式状语从句</a><a class="d" href="英语_语法_例题.html#14原因状语从句">1.4 原因状语从句</a><a class="d" href="英语_语法_例题.html#15结果状语从句">1.5 结果状语从句</a><a class="d" href="英语_语法_例题.html#16目的状语从句">1.6 目的状语从句</a><a class="d" href="英语_语法_例题.html#17让步状语从句">1.7 让步状语从句</a><a class="d" href="英语_语法_例题.html#18对比状语从句">1.8 对比状语从句</a><a class="d" href="英语_语法_例题.html#19条件状语从句含虚拟语气">1.9 条件状语从句(含虚拟语气)</a><a class="d" href="英语_语法_例题.html#110比较状语从句">1.10 比较状语从句</a><a class="c" href="英语_语法_例题.html#二长难句分析综合">二、长难句分析综合</a><a class="c" href="英语_语法_例题.html#三特殊结构练习">三、特殊结构练习</a><a class="d" href="英语_语法_例题.html#31倒装句">3.1 倒装句</a><a class="d" href="英语_语法_例题.html#32省略结构">3.2 省略结构</a><a class="d" href="英语_语法_例题.html#33写作应用">3.3 写作应用</a><a class="c" href="英语_语法_例题.html#四知识点速查来自月考复习清单">四、知识点速查(来自月考复习清单)</a><a class="d" href="英语_语法_例题.html#41副词性结构状语">4.1 副词性结构(状语)</a><a class="d" href="英语_语法_例题.html#42固定结构">4.2 固定结构</a><a class="b" href="英语_完形.html">完形</a><a class="b" href="英语_无忧0802_测试卷.html">无忧0802_测试卷</a><a class="b" href="英语_词汇.html">词汇</a></nav>
+<div id="progress"></div>
+<main data-subj="english"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>英语 · 语法_例题</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>语法_例题</h1><div class="board-meta">📖 英语 · <span class="pill">例题集</span><span class="pill">0 道例题</span></div><blockquote>
+<p>全量收录本板块课件例题, 含: 状语从句(1)、状语从句 5.31、大学事业部-27考季学员5月份月考知识点复习清单(按语法专题分组)。
+⬅ 返回 <a href="英语_语法.html">理论笔记</a></p>
+</blockquote>
+<hr />
+<h2 id="一状语从句分类练习">一、状语从句分类练习</h2>
+<h3 id="11时间状语从句">1.1 时间状语从句</h3>
+<p><b>题干</b>: When reports came into London Zoo, they were not taken seriously.</p>
+<details><summary>解析</summary><div class="step">
+
+when 引导时间状语从句, 修饰主句谓语 were not taken seriously。
+
+译为: 当报告送到伦敦动物园时, 它们并没有被认真对待。
+
+注意: were not taken seriously 是被动语态, 译为"没有被认真对待"(此处可保留"被", 因为是"不重视"这种负面语义)。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<p><b>题干</b>: People become quite illogical as they try to decide what can be eaten and what cannot be eaten.</p>
+<details><summary>解析</summary><div class="step">
+
+as 引导时间状语从句, 表示"当......时"。
+
+译为: 当人们试图决定什么可以吃、什么不可以吃时, 他们会变得相当不合逻辑。
+
+本句中 as 也可以理解为"因为"(原因状语), 但从上下文看, as 更偏向"同时发生"的时间义。as 的双关性是这句话的难点——两种解读都不影响句子整体含义。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<p><b>题干</b>: The big clock struck thirteen times before it stopped.</p>
+<details><summary>解析</summary><div class="step">
+
+before 引导时间状语从句。译为: 大钟敲了十三下才停下来。
+
+before 在翻译时不一定译为"在......之前", 有时译为"才/然后"更符合中文叙事顺序。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<p><b>题干</b>: (2002-65) Until these issues are resolved, a technology of behavior will continue to be rejected, and with it possibly the only way to solve our problems.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>结构分析</b>: 这个句子有一个"省略+并列"的陷阱。
+
+原句还原:
+Until these issues are resolved, a technology of behavior (and with it possibly the only way to solve our problems) will continue to be rejected.
+
+或者理解为:
+= A technology of behavior will continue to be rejected, and with it possibly the only way to solve our problems (will continue to be rejected).
+
+`with it possibly...` 中的 it 指代 a technology of behavior, 整句意为"解决问题的唯一方法可能也随之(继续受到排斥)"。
+
+<b>until 的三种译法</b>:
+
+1. 直到这些问题得以解决, 研究行为的技术手段才会停止被排斥, 解决问题的唯一方法可能也随之停止被排斥。
+2. 在这些问题得到解决之前, 研究行为的技术手段就会继续受到排斥, 解决问题的唯一方法可能也随之继续受到排斥。
+3. (如果)这些问题得不到解决, 研究行为的技术手段就会继续受到排斥, 解决问题的唯一方法可能也随之继续受到排斥。
+
+三种译法都正确, 方案2(译为"在......之前")是最常见的考场译法。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h3 id="12地点状语从句">1.2 地点状语从句</h3>
+<p><b>题干</b>: The teacher started where she stopped yesterday.</p>
+<details><summary>解析</summary><div class="step">
+
+where 引导地点状语从句, 前面没有表地点的名词, 所以不是定语从句。where 译为"在......的地方"。
+
+译为: 老师从她昨天停下的地方开始(讲)。
+
+区分练习:
+
+• This is the house <b>where</b> Lu Xun was born. → 定从(前面有 house, where 修饰 house)
+• The teacher started <b>where</b> she stopped yesterday. → 状从(前面无表地点的名词)
+• <b>Where</b> we will hold the exam is still unknown. → 名从(整个从句作主语)
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<p><b>题干</b>: (2012-2 Text 2) And one of the easiest ways to segment a market is to magnify gender differences—or invent them where they did not previously exist.</p>
+<details><summary>解析</summary><div class="step">
+
+where 引导地点状语从句, 修饰 invent(在不存在的地方发明它们)。
+
+译为: 细分市场最简单的方法之一就是放大性别差异——或者在它们以前不存在的地方将它们创造出来。
+
+注意: invent them 中的 them 指代 gender differences, 翻译时还原为"它们"(指性别差异)。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h3 id="13方式状语从句">1.3 方式状语从句</h3>
+<p><b>题干</b>: When in Rome, do as the Romans do.</p>
+<details><summary>解析</summary><div class="step">
+
+as 引导方式状语从句, 译为"按照/像......一样"。谚语"入乡随俗"。
+
+分析: as 在从句中不充当成分(the Romans do 的主干是"罗马人做", do 是实义动词替代前面 do 的行为)。因此是状从而非定从。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<p><b>题干</b>: She arranged the flowers as her mother had taught her.</p>
+<details><summary>解析</summary><div class="step">
+
+as 引导方式状语从句。译为: 她按照母亲教她的方式插花。
+
+对比: As is known to all, the earth is round. → As 引导<b>定语从句</b>, 因为 As 在从句中充当主语, 可用 which 替换。方式状从的 as 不充当成分。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<p><b>题干</b>: (2008 完形填空) This group generally do well in IQ test, scoring 12-15 points above the mean value of 100, and have contributed disproportionately to the intellectual and cultural life of the West, as the careers of their elites, including several world-renowned scientists, affirm.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>结构分析</b>:
+
+• 主句: This group generally do well in IQ test... and have contributed disproportionately to...
+• 分词状语: scoring 12-15 points above the mean value of 100(补充说明"表现好"的具体数据)
+• 方式状语从句: as the careers of their elites... affirm
+
+as 在此引导方式状语从句, 译为"正如/就像......所证实的那样"。
+
+<b>参考译文</b>: 这一人群在智商测试中普遍得分较高, (得分)比平均值 100 分高出 12 至 15 分; 就像他们中的一些精英人士(包括一些享誉世界的科学家)的事业所证实的那样, 这一群人对于西方学术和文化生活做出了(同他们人口数量)极不成比例的贡献。
+
+<b>重点词汇</b>:
+
+• mean value: 平均值(mean 在此是形容词)
+• disproportionately: 不成比例地
+• affirm: 证实, 断言
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h3 id="14原因状语从句">1.4 原因状语从句</h3>
+<p><b>题干</b>: (2013-2 Text 2) When women do break through to the summit of corporate power—as, for example, Sheryl Sandberg recently did at Facebook—they attract massive attention precisely because they remain the exception to the rule.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>结构分析</b>:
+
+• 时间状从: When women do break through to the summit of corporate power
+• 插入语(as 方式状从): as, for example, Sheryl Sandberg recently did at Facebook
+• 主句: they attract massive attention
+• 原因状从: precisely because they remain the exception to the rule
+
+<b>翻译</b>: 当女性确实登上企业权力的顶峰——例如, 就像谢丽尔·桑德伯格最近在脸书网所做的那样——她们吸引了大量的关注, 正是因为她们仍旧是这项规则的例外。
+
+<b>注意</b>: do break through 中的 do 是强调用法(表"确实"), 不是助动词疑问句。
+
+<b>precisely</b> 在此修饰 because, 表"正是/恰恰因为", 起强调作用而非"精确地"。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h3 id="15结果状语从句">1.5 结果状语从句</h3>
+<p><b>题干</b>: I'm so nervous that I can't speak.</p>
+<details><summary>解析</summary><div class="step">
+
+so...that 引导结果状语从句。so 修饰形容词 nervous, that 引导结果从句。
+
+译为: 我太紧张了, 以至于说不出话。/ 我紧张得说不出话。
+
+中文表达时可以不译"以至于", 用"得"字结构更简洁。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<p><b>题干</b>: (2013-2 Text 1) In the 10 years ending in 2009, US factories shed workers so fast that they erased almost all the gains of the previous 70 years; roughly one out of every three manufacturing jobs—about 6 million in total—disappeared.</p>
+<details><summary>解析</summary><div class="step">
+
+so...that 引导结果状语从句。so 修饰副词 fast, that 引导结果从句。
+
+译为: 2009 年之前的 10 年内, 美国工厂裁撤工人速度之快, 基本上等于过去 70 年新增工人数量; 大约每三个制造业的工作岗位就有一个岗位消失了, 共有约 600 万之多。
+
+<b>翻译技巧</b>: so fast that they erased... 没有直译为"如此之快以至于抹去了", 而是处理为"速度之快, 基本上等于......", 中文更流畅。
+
+<b>词汇</b>: shed(摆脱/裁撤), erase(抹去/删去), roughly(大体上)。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h3 id="16目的状语从句">1.6 目的状语从句</h3>
+<p><b>题干</b>: I got up early so that I could catch the bus.</p>
+<details><summary>解析</summary><div class="step">
+
+so that 引导目的状语从句, 译为: 我早起以便能赶上公交。
+
+区分: so(adv.)...that(conj.) 是结果状从(表"如此......以至于"), so that 连用是目的状从(表"以便/为了")。
+
+判断技巧: 目的状从的 that 后通常有情态动词(can/could/will/would); 结果状从没有这个特征。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<p><b>题干</b>: (2003 Text 1) Former Colorado governor Richard Lamm has been quoted as saying that the old and infirm "have a duty to die and get out of the way," so that younger, healthier people can realize their potential.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>结构分析</b>:
+
+• 主句: sb has quoted Former Colorado governor Richard Lamm as saying that...(被动: has been quoted as saying)
+• 宾从: that the old and infirm "have a duty to die and get out of the way"
+• 目的状从: so that younger, healthier people can realize their potential
+
+译为: 有人引用科罗拉多州前州长理查德·拉姆曾的话说, 年迈体弱者"有义务死去和让位", 以便更年轻、更健康的人去发挥他们的潜力。
+
+<b>quote sb as saying</b>: 引用某人的话说(这是一个固定搭配)
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h3 id="17让步状语从句">1.7 让步状语从句</h3>
+<p><b>题干</b>: Although the sun was shining, it wasn't very warm.</p>
+<details><summary>解析</summary><div class="step">
+
+although 引导让步状语从句, 译为: 尽管太阳高照, 却不很暖和。
+
+<b>注意</b>: 英文中用了 although 就不能用 but; 中文中"尽管"和"但是"可以配对使用(甚至更自然)。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<p><b>题干</b>: (2007) While comment and reaction from lawyers may enhance stories, it is preferable for journalists to rely on their own notions of significance and make their own judgments.</p>
+<details><summary>解析</summary><div class="step">
+
+while 引导让步状语从句(= although), 译为: 尽管律师的见解和反应会提高报道的质量, 但新闻记者最好凭借他们自己对重要性的理解自行做出判断。
+
+<b>词汇</b>:
+
+• preferable: 更好的, 更可取的
+• notions of significance: 对重要性的理解(notion = 观念/理解)
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h3 id="18对比状语从句">1.8 对比状语从句</h3>
+<p><b>题干</b>: (2000) In the early industrialized countries of Europe the process of industrialization—with all the far-reaching changes in social patterns that followed—was spread over nearly a century, whereas nowadays a developing nation may undergo the same process in a decade or so.</p>
+<details><summary>解析</summary><div class="step">
+
+whereas 引导对比状语从句, 前后对比欧洲早期工业化国家和当今发展中国家的工业化速度。
+
+<b>结构拆解</b>:
+
+• 主句: the process of industrialization was spread over nearly a century
+• 插入语: with all the far-reaching changes in social patterns that followed
+• 对比状从: whereas nowadays a developing nation may undergo the same process in a decade or so
+
+译为: 在先期实现工业化的欧洲国家中, 其工业化进程以及随之而来的社会结构的各种深刻变革, 持续了大约一个世纪之久, 而如今一个发展中国家在十年左右就可能完成这个过程。
+
+<b>词汇</b>: far-reaching(影响深远的), undergo(经历)。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h3 id="19条件状语从句含虚拟语气">1.9 条件状语从句(含虚拟语气)</h3>
+<p><b>题干</b>: If I were a boy even just for a day, I'd roll out of bed in the morning and throw on what I wanted and go.</p>
+<details><summary>解析</summary><div class="step">
+
+If 引导虚拟条件句(与现在事实相反): 从句用 were(虚拟语气, 不用 was), 主句用 would + do。
+
+译为: 假如我是一个男孩, 哪怕只有一天, 我会早上从床上滚下来, 随便穿件衣服就出门。
+
+这是 Beyonce 的歌词实例, 用来说明虚拟语气的日常应用。考研中虚拟语气常见于阅读和翻译。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句 5.31】</span></p>
+<hr />
+<p><b>题干</b>: If I had stayed up to study, I could have passed the exam.</p>
+<details><summary>解析</summary><div class="step">
+
+虚拟条件句(与过去事实相反): 从句用 had done(过去完成时), 主句用 could/would + have done。
+
+译为: 如果我之前熬夜学习了, 我本可以通过考试的。(事实: 没有熬夜, 没有通过)
+
+<b>虚拟语气公式记忆法</b>: 
+
+• 与现在相反 → 从句用 did/were, 主句用 would + do(向过去退一步)
+• 与过去相反 → 从句用 had done, 主句用 would + have done(再向过去退一步)
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句 5.31】</span></p>
+<hr />
+<p><b>题干</b>: If he should go to Harvard University, he would make full use of his time.</p>
+<details><summary>解析</summary><div class="step">
+
+虚拟条件句(与将来可能相反): 从句用 should do, 主句用 would + do。
+
+译为: 如果他(将来)能上哈佛大学, 他会充分利用时间的。(说话者认为可能性不大)
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句 5.31】</span></p>
+<hr />
+<h3 id="110比较状语从句">1.10 比较状语从句</h3>
+<p><b>题干</b>: (2000 Text 4) In addition, far more Japanese workers expressed dissatisfaction with their jobs than did their counterparts in the 10 other countries surveyed.</p>
+<details><summary>解析</summary><div class="step">
+
+than 引导比较状语从句。than did their counterparts 是倒装结构, 正常语序是 than their counterparts did(did 替代 expressed dissatisfaction)。
+
+译为: 此外, 与接受调查的其他 10 个国家的工人相比, 对自身工作表示不满的日本工人人数要多得多。
+
+<b>语法分析</b>: `than did their counterparts` 中 did 倒装到主语前, 这是比较状语从句中常见的部分倒装(特别是当主语较长时)。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句 5.31】</span></p>
+<hr />
+<h2 id="二长难句分析综合">二、长难句分析综合</h2>
+<p><b>题干</b>: (2007 Text 4) Meanwhile, the theft of information about some 40 million credit-card accounts in America, disclosed on June 17th, overshadowed a hugely important decision a day earlier by America's Federal Trade Commission (FTC) that puts corporate America on notice that regulators will act if firms fail to provide adequate data security.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>四步分析法</b>:
+
+<b>第一步-找标点</b>: 逗号 separating 主谓之间的插入语(disclosed on June 17th), 句号结束。
+
+<b>第二步-找连词</b>: that(引导定语从句修饰 decision), that(引导同位语从句解释 notice), if(引导条件状语从句)。
+
+<b>第三步-识别核心</b>: 主干: the theft... overshadowed a hugely important decision...
+
+主语: the theft (of information (about some 40 million credit-card accounts (in America)))(三层介词嵌套)
+谓语: overshadowed
+宾语: a hugely important decision
+定语(修饰 theft): disclosed on June 17th
+定语(修饰 decision): a day earlier by America's FTC
+定语从句(修饰 decision): that puts corporate America on notice
+同位语从句(解释 notice): that regulators will act
+条件状从: if firms fail to provide adequate data security
+
+<b>第四步-剥离</b>: 去掉所有修饰后, 主干 = "盗取事件给重要决定蒙上阴影"。这层含义抓住了, 其余修饰层层叠加即可。
+
+<b>参考译文</b>: 同时, 6 月 17 日披露的盗取美国大约 4000 万信用卡账号信息的事件也给一天前联邦贸易委员会做出的重要决定蒙上了阴影, 该决定向美国商界发出公告, 如果企业不能充分保障数据安全, 监管者将采取行动。
+
+<b>核心词汇</b>: disclose(披露), overshadow(使失色/蒙上阴影), put sb. on notice(给某人以警告), corporate America(美国企业), adequate(足够的)。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句 5.31】</span></p>
+<hr />
+<p><b>题干</b>: (2001 完形填空) Publication of the letter came two days after Lord Irvine caused a storm of media protest when he said (that) the interpretation of privacy controls contained in European legislation would be left to judges rather than to Parliament.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>结构层次</b>:
+
+<pre><code>Publication of the letter came                   [主句]
+  two days after                                 [时间状语]
+    Lord Irvine caused a storm of media protest  [after 的宾从? 实际上是 after 引导的时间状从]
+      when he said (that)...                     [when 引导的时间状从, 修饰 caused]
+        the interpretation... would be left...    [(that)引导的宾语从句, 作 said 的宾语]
+          contained in European legislation       [过去分词短语作后置定语, 修饰 controls]
+</code></pre>
+
+
+<b>时间逻辑</b>:
+
+1. (最早) Lord 发表言论 → 引发媒体抗议
+2. (两天后) 信件发表
+
+<b>参考译文</b>: 欧文勋爵声称, 欧洲法律中包含的隐私控制解释权应留给法官而非议会——此言一出便引起了媒体的一片抗议。两天后, 这封信件便发表了。
+
+<b>语法重点</b>:
+
+• `two days after...` 中 after 引导时间状语从句, 表示主句动作发生在从句动作之后。
+• `contained in European legislation` 是过去分词作后置定语(= which were contained in...), 修饰 privacy controls。
+• `rather than`("而不是")连接 judges 和 Parliament, 表示对比选项。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h2 id="三特殊结构练习">三、特殊结构练习</h2>
+<h3 id="31倒装句">3.1 倒装句</h3>
+<p><b>题干</b>: Here comes Laowang. / There goes the bell.</p>
+<details><summary>解析</summary><div class="step">
+
+全部倒装: 地点副词 Here/There 放在句首 → 整个谓语移到主语前。
+
+正常语序: Laowang comes here. / The bell goes there.
+
+译为: 老王来了。/ 铃响了。
+
+<b>注意</b>: 主语是人称代词时不倒装: Here he comes. (不倒装, 不能说 Here comes he.)
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句 5.31】</span></p>
+<hr />
+<p><b>题干</b>: Never have I seen such a handsome man. / By no means will she give up chasing Laowang.</p>
+<details><summary>解析</summary><div class="step">
+
+部分倒装: 否定词 Never / By no means 放在句首 → 助动词/情态动词移到主语前。
+
+正常语序: I have never seen such a handsome man. / She will by no means give up chasing Laowang.
+
+译为: 我从未见过如此英俊的男人。/ 她绝不会放弃追求老王。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句 5.31】</span></p>
+<hr />
+<p><b>题干</b>: Only then did she realize the importance of learning English. / Only in this way can you solve this problem. / Only after we left school did I realize the importance of study.</p>
+<details><summary>解析</summary><div class="step">
+
+only + 状语(副词/介词短语/状语从句)放在句首 → 部分倒装。
+
+三句的 only + 状语分别为: 
+
+• Only then(only + 副词)
+• Only in this way(only + 介词短语)
+• Only after we left school(only + 状语从句)
+
+正常语序:
+
+• She realized the importance of learning English only then.
+• You can solve this problem only in this way.
+• I realized the importance of study only after we left school.
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句 5.31】</span></p>
+<hr />
+<h3 id="32省略结构">3.2 省略结构</h3>
+<p><b>题干</b>: Laowang is coming to China, and with him possibly his wife.</p>
+<details><summary>解析</summary><div class="step">
+
+省略: and with him possibly his wife (is coming).
+
+补全后: Laowang (and with him possibly his wife) is coming to China.
+
+译为: 老王要来中国了, 和他一起来的可能还有他的老婆。
+
+`with him possibly his wife` 本质上是省略了重复的谓语 is coming, 理解时需要补出。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h3 id="33写作应用">3.3 写作应用</h3>
+<p><b>题干</b>: 将下列中文译为英文(写作训练):</p>
+<ol>
+<li>图画下面是一个标题, 上面写着: "途中"。</li>
+<li>只有不断努力, 个人才能取得稳定进步, 中华民族才能实现伟大复兴。</li>
+</ol>
+<details><summary>解析</summary><div class="step">
+
+<b>参考译文</b>:
+
+1. Below the picture is a caption, which reads "On the way".
+• 全部倒装: Below the picture is a caption.
+• which reads... 是定语从句修饰 caption。
+
+2. Only through continuing efforts can individuals progress steadily and the Chinese nation achieve great rejuvenation.
+• Only + 介词短语(through continuing efforts)位于句首 → 部分倒装 can individuals progress。
+• 两个并列结果: individuals progress... and the Chinese nation achieve...
+
+<b>写作启示</b>: 考研英语写作(尤其是大作文)中, 倒装句是提高语言丰富度的有效手段——在描述图表/图画时用全部倒装; 在论述"只有......才能......"时用 only + 部分倒装。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句 5.31】</span></p>
+<hr />
+<p><b>题干</b>: 将下列中文译为英文(写作训练):</p>
+<ol>
+<li>了解我们的人可以有效地给我们提出建议, 因为他们知道我们的长处和短处。</li>
+<li>由于没有足够的监管, 有些学生认为抄袭是一件可以接受的事。</li>
+<li>我们必须从现在开始垃圾分类, 因为城市周围的垃圾数量已经达到了令人无法承受的程度。</li>
+</ol>
+<details><summary>解析</summary><div class="step">
+
+<b>参考译文</b>:
+
+1. People who know us can effectively give us advice because they know our strengths and weaknesses.
+• who 定语从句修饰 People
+• because 原因状语从句
+
+2. Since we do not have enough supervision, some students think that plagiarism is something acceptable.
+• Since 原因状语从句(语气比 because 弱)
+• that 宾语从句
+
+3. We must start to sort garbage from now on, as the amount of garbage around the city has reached an unbearable level.
+• as 原因状语从句(语气最弱)
+
+<b>because / since / as 的语气强弱</b>: because > since > as > for
+
+• because 表直接原因, 语气最强
+• since 表已知原因, "既然"
+• as 表附带原因, "由于"
+• for 表推断的原因, 不放句首
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<p><b>题干</b>: 将下列中文译为英文(写作训练):</p>
+<ol>
+<li>如果我们压力过大, 那么我们可能会变得很焦虑以至于无法做出任何理性决策。</li>
+<li>如果不是你的帮助, 我不能这么快地适应那里的生活, 也不能对美国文化有如此深刻的理解。</li>
+</ol>
+<details><summary>解析</summary><div class="step">
+
+<b>参考译文</b>:
+
+1. If we are under too much pressure, we may become so anxious that we are unable to make any rational decisions.
+• If 引导真实条件句
+• so...that 结果状语从句
+• 替换写法: ...we may become too anxious to make any rational decisions.(too...to 结构)
+
+2. If it had not been for your assistance, I could not have been able to adapt to the life there so quickly and to have such a profound understanding of American culture.
+• If it had not been for... 虚拟语气(与过去事实相反), "要不是......"
+• 主句 could not have been able to... (与过去事实相反)
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)、状语从句 5.31】</span></p>
+<hr />
+<p><b>题干</b>: 将下列中文译为英文(写作训练):</p>
+<ol>
+<li>不屈不挠者从他人失败的地方获取成功。</li>
+<li>可以从柱状图中看出, 国内品牌的市场占有率从 2008 年到 2009 年大幅上涨。</li>
+<li>可以看出, 国内品牌的市场份额有所增加, 而日本品牌的市场份额有所下降。</li>
+</ol>
+<details><summary>解析</summary><div class="step">
+
+<b>参考译文</b>:
+
+1. Unyielding people succeed where others have failed.
+• where 引导<b>地点状语从句</b>(不是定语从句, 因为前面没有表地点的名词)。
+• 替换: Persistent people begin their success where others have failed.
+
+2. As we can see from the bar chart, the market share of domestic brands increased dramatically from 2008 to 2009.
+• As 引导<b>定语从句</b>(As 作 see 的宾语), 不是状语从句。
+• 替换: As can be seen from the bar chart, ...
+
+3. As can be seen, the market share of domestic brands showed an upward trend, while that of Japanese ones saw an opposite tendency.
+• while 引导<b>对比状语从句</b>("而")。
+• that 指代 the market share(避免重复)。
+
+</div></details>
+
+<p><span class="src">【来源: 状语从句(1)】</span></p>
+<hr />
+<h2 id="四知识点速查来自月考复习清单">四、知识点速查(来自月考复习清单)</h2>
+<h3 id="41副词性结构状语">4.1 副词性结构(状语)</h3>
+<p>副词可以修饰: 动词、形容词、副词、整个句子。</p>
+<p>常用状语连接词:</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>连接词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>时间</td>
+<td>when, as, since, after, before, while, until, once, as soon as</td>
+</tr>
+<tr>
+<td>地点</td>
+<td>where, wherever</td>
+</tr>
+<tr>
+<td>条件</td>
+<td>if, unless, provided that, as long as</td>
+</tr>
+<tr>
+<td>原因</td>
+<td>because, as, since, for, now that</td>
+</tr>
+<tr>
+<td>让步</td>
+<td>although, though, even if/though, while, however, whatever</td>
+</tr>
+<tr>
+<td>目的</td>
+<td>so that, in order that, lest, in case</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>so...that, such...that, so that</td>
+</tr>
+<tr>
+<td>方式</td>
+<td>as, as if, as though</td>
+</tr>
+<tr>
+<td>比较</td>
+<td>than, as...as, the more...the more</td>
+</tr>
+</tbody>
+</table>
+<p>不定式(to do)和分词(doing/done)也可作状语, 分别表示目的和伴随/原因/时间等。</p>
+<h3 id="42固定结构">4.2 固定结构</h3>
+<table>
+<thead>
+<tr>
+<th>结构类型</th>
+<th>核心用法</th>
+<th>关键词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>虚拟语气</td>
+<td>时态倒推: now→did, past→had done</td>
+<td>if, wish, as if, would rather</td>
+</tr>
+<tr>
+<td>条件句 if 省略</td>
+<td>were/had/should 提至句首</td>
+<td>Were I you... / Had I known...</td>
+</tr>
+<tr>
+<td>强调句</td>
+<td>It is/was... that/who...</td>
+<td>可强调主/宾/状语</td>
+</tr>
+<tr>
+<td>not until 强调</td>
+<td>It was not until... that...</td>
+<td>until 的强调版本</td>
+</tr>
+<tr>
+<td>完全倒装</td>
+<td>地点副词+全部谓语+主语</td>
+<td>Here comes... / There goes...</td>
+</tr>
+<tr>
+<td>部分倒装</td>
+<td>否定词/only+状语 + 助动+主+动原</td>
+<td>Never have I... / Only then did...</td>
+</tr>
+<tr>
+<td>否定转移</td>
+<td>I don't think he is right. = I think he is not right.</td>
+<td>think, believe, suppose, expect</td>
+</tr>
+<tr>
+<td>双重否定</td>
+<td>not... without / no... not / cannot... too</td>
+<td>两个否定=肯定</td>
+</tr>
+</tbody>
+</table>
+<p><span class="src">【来源: 大学事业部-27考季学员5月份月考知识点复习清单】</span></p></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="英语_语法.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>英语 · 语法</b></span></a><a class="next" href="英语_完形.html"><span class="pg-t"><small>下一篇</small><b>英语 · 完形</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

@@ -1,0 +1,1556 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语 · 阅读_无忧_例题</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">📖 英语</div><a class="b" href="英语_写作.html">写作</a><a class="c x" href="英语_写作_例题.html">▸ 例题集</a><a class="b" href="英语_阅读.html">阅读</a><a class="c x" href="英语_阅读_暑假_例题.html">▸ 暑假例题集</a><a class="c x on" href="英语_阅读_无忧_例题.html">▸ 无忧例题集</a><a class="c" href="英语_阅读_无忧_例题.html#一态度题例题">一、态度题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1公众对当前经济形势的态度2004英一Text3">例1. 公众对当前经济形势的态度 (2004 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例2Donahue对公共部门系统的态度2012英一Text4">例2. Donahue 对公共部门系统的态度 (2012 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例3作者对AAAS报告的态度2014英一Text4">例3. 作者对 AAAS 报告的态度 (2014 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例4作者对英国政府体育政策的态度2017英二Text1">例4. 作者对英国政府体育政策的态度 (2017 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例5作者对米尔顿弗里德曼关于CSR观点的态度2016英一Text3">例5. 作者对米尔顿·弗里德曼关于 CSR 观点的态度 (2016 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例6作者对BrendonLynch博客言论的态度2013英一Text2">例6. 作者对 Brendon Lynch 博客言论的态度 (2013 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例7作者对逆转高速趋势的态度2013英二Text3">例7. 作者对逆转高速趋势的态度 (2013 英二 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例8作者对美国看电视行为的态度2014英二Text1">例8. 作者对美国看电视行为的态度 (2014 英二 Text1)</a><a class="c" href="英语_阅读_无忧_例题.html#二例证题例题">二、例证题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1EgyptAir空难例子的论证目的2017英一Text1">例1. EgyptAir 空难例子的论证目的 (2017 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例2自行车链条例子的论证目的2018英二Text1">例2. 自行车链条例子的论证目的 (2018 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例3OrinKerr比较的引用目的2015英一Text2">例3. Orin Kerr 比较的引用目的 (2015 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例4祖先例子说明教育的起源2009英一Text3">例4. 祖先例子说明教育的起源 (2009 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例5McRib例子的论证目的2014英二Text1">例5. McRib 例子的论证目的 (2014 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例6WiltChamberlain例子的论证目的2008英一Text3">例6. Wilt Chamberlain 例子的论证目的 (2008 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例7RobertFKennedy引用的论证目的2017英一Text3">例7. Robert F. Kennedy 引用的论证目的 (2017 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例8GeorgeWashington拔牙故事的引用目的2008英一Text4">例8. George Washington 拔牙故事的引用目的 (2008 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例9Donovan故事的开篇功能2003英一Text1">例9. Donovan 故事的开篇功能 (2003 英一 Text1)</a><a class="c" href="英语_阅读_无忧_例题.html#三语义题例题">三、语义题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1homogenizing的含义2006英一Text1">例1. &quot;homogenizing&quot; 的含义 (2006 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例2moola的含义2015英二Text1">例2. &quot;moola&quot; 的含义 (2015 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例3tipservice的含义2004英一Text1">例3. &quot;tip service&quot; 的含义 (2004 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例4plummeting的含义2018英二Text2">例4. &quot;plummeting&quot; 的含义 (2018 英二 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例5gizmos的含义2002英一Text2">例5. &quot;gizmos&quot; 的含义 (2002 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例6bummer的含义2006英一Text4">例6. &quot;bummer&quot; 的含义 (2006 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例7paralysisbyanalysis的含义2005英一Text2">例7. &quot;paralysis by analysis&quot; 的含义 (2005 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例8Birdsofpassage指谁2013英二Text2">例8. &quot;Birds of passage&quot; 指谁 (2013 英二 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例9arbiters指谁2003英一Text3">例9. &quot;arbiters&quot; 指谁 (2003 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例10holdingitsnose的隐含态度2017英一Text4">例10. &quot;holding its nose&quot; 的隐含态度 (2017 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例11chroniclingtheirowndoom的含义2011英二Text2">例11. &quot;chronicling their own doom&quot; 的含义 (2011 英二 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例12livedfrompaychecktopaycheck的含义2008英一Text1">例12. &quot;lived from paycheck to paycheck&quot; 的含义 (2008 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例13coax的含义2016英二Text1">例13. &quot;coax&quot; 的含义 (2016 英二 Text1)</a><a class="c" href="英语_阅读_无忧_例题.html#四细节题例题精选代表">四、细节题例题（精选代表）</a><a class="d" href="英语_阅读_无忧_例题.html#焦点明确型问原因">焦点明确型 —— 问原因</a><a class="d" href="英语_阅读_无忧_例题.html#焦点明确型问特点">焦点明确型 —— 问特点</a><a class="d" href="英语_阅读_无忧_例题.html#焦点模糊型">焦点模糊型</a><a class="d" href="英语_阅读_无忧_例题.html#是非判断型">是非判断型</a><a class="c" href="英语_阅读_无忧_例题.html#五推断题例题精选代表">五、推断题例题（精选代表）</a><a class="d" href="英语_阅读_无忧_例题.html#焦点明确型">焦点明确型</a><a class="d" href="英语_阅读_无忧_例题.html#焦点模糊型-2">焦点模糊型</a><a class="d" href="英语_阅读_无忧_例题.html#线索全无型">线索全无型</a><a class="c" href="英语_阅读_无忧_例题.html#六主旨题例题">六、主旨题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1全文主旨2004英二Text2字母排序歧视">例1. 全文主旨 (2004 英二 Text2) —— 字母排序歧视</a><a class="c" href="英语_阅读_无忧_例题.html#七篇章精读">七、篇章精读</a><a class="d" href="英语_阅读_无忧_例题.html#篇章1报纸公信力危机2001Passage3">篇章1. 报纸公信力危机 (2001 Passage 3)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章2反智主义在美国2004Text4">篇章2. 反智主义在美国 (2004 Text 4)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章3IQ测试的局限性2007Text2">篇章3. IQ 测试的局限性 (2007 Text 2)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章4学术期刊出版的变革2008Text2">篇章4. 学术期刊出版的变革 (2008 Text 2)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章5科学奖项的反思2014英一Text3">篇章5. 科学奖项的反思 (2014 英一 Text 3)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章6人机赛跑2014英二Text3">篇章6. 人机赛跑 (2014 英二 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章72011英语一Text4育儿与幸福感">篇章7. 2011 英语一 Text 4 · 育儿与幸福感</a><a class="d" href="英语_阅读_无忧_例题.html#篇章82011英语二Text4欧盟危机与德法之争">篇章8. 2011 英语二 Text 4 · 欧盟危机与德法之争</a><a class="b" href="英语_翻译.html">翻译</a><a class="c x" href="英语_翻译_例题.html">▸ 例题集</a><a class="b" href="英语_长难句翻译.html">长难句翻译</a><a class="c x" href="英语_长难句翻译_例题.html">▸ 例题集</a><a class="b" href="英语_语法.html">语法</a><a class="c x" href="英语_语法_例题.html">▸ 例题集</a><a class="b" href="英语_完形.html">完形</a><a class="b" href="英语_无忧0802_测试卷.html">无忧0802_测试卷</a><a class="b" href="英语_词汇.html">词汇</a></nav>
+<div id="progress"></div>
+<main data-subj="english"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>英语 · 阅读_无忧_例题</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>阅读_无忧_例题</h1><div class="board-meta">📖 英语 · <span class="pill">例题集</span><span class="pill">0 道例题</span></div><blockquote>
+<p>全量收录无忧阶段阅读课件例题, 分"题型例题"与"篇章精读"两节。
+来源课件: 考研阅读-7.22~7.30、真题精读 4.25、真题精读 4.26、真题精读 5.31
+暑假阶段对应内容见 <a href="英语_阅读_暑假_例题.html">阅读 · 暑假例题</a>
+⬅ 返回 <a href="英语_阅读.html">理论笔记</a></p>
+</blockquote>
+<hr />
+<h2 id="一态度题例题">一、态度题例题</h2>
+<h3 id="例1公众对当前经济形势的态度2004英一Text3">例1. 公众对当前经济形势的态度 (2004 英一 Text3)</h3>
+<div class="q"><b>Q</b> 32. How do the public feel about the current economic situation?</div>
+<div class="opts"><span class="opt">A.</span> Optimistic. <br><span class="opt">B.</span> Confused. <br><span class="opt">C.</span> Carefree. <br><span class="opt">D.</span> Panicked.</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Even before Alan Greenspan's admission that America's red-hot economy is cooling, lots of working folks had already seen signs of the slowdown themselves. ②From car dealerships to Gap outlets, sales have been lagging for months as shoppers temper their spending. ③For retailers, who last year took in 24 percent of their revenue between Thanksgiving and Christmas, the cautious approach is coming at a crucial time. ④Already, experts say, holiday sales are off 7 percent from last year's pace. ⑤But don't sound any alarms just yet. ⑥Consumers seem only <b class="kw">mildly concerned, not panicked</b>, and many say they <b class="kw">remain optimistic</b> about the economy's long-term prospects, even as they do some modest belt-tightening.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 原文第二段最后一句 —— Consumers seem only mildly concerned, not panicked, and many say they remain optimistic about the economy's long-term prospects.</div>
+<div class="step">② 解题思路: 原文直接给出"<b class="kw">remain optimistic</b>"（保持乐观），态度词与选项 A 直接对应。注意: "<b class="kw">mildly concerned, not panicked</b>" 排除了 D（恐慌），而 confused 和 carefree 在原文中均未出现。</div>
+<div class="step">③ 排除干扰项: B. Confused — 原文未提及困惑；C. Carefree — 漠不关心；D. Panicked — 原文明确说"<b class="kw">not panicked</b>"。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.22】</span></p>
+<hr />
+<h3 id="例2Donahue对公共部门系统的态度2012英一Text4">例2. Donahue 对公共部门系统的态度 (2012 英一 Text4)</h3>
+<div class="q"><b>Q</b> 40. John Donahue's attitude towards the public-sector system is one of _____.</div>
+<div class="opts"><span class="opt">A.</span> disapproval <br><span class="opt">B.</span> appreciation <br><span class="opt">C.</span> tolerance <br><span class="opt">D.</span> indifference</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①John Donahue at Harvard's Kennedy School points out that the norms of culture in Western civil services suit those who want to stay put but is <b class="kw">bad for high achievers</b>. ②The only American public-sector workers who earn well above \$\150,000 a year are university sports coaches and the president of the United States. ③Bankers' fat pay packets have attracted much criticism, but a public-sector system that <b class="kw">does not reward high achievers</b> may be <b class="kw">a much bigger problem</b> for America.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第七段 —— 整段都是 Donahue 对公共部门制度的评价。</div>
+<div class="step">② 解题思路: 关键词 "<b class="kw">bad for high achievers</b>", "<b class="kw">does not reward high achievers</b>", "<b class="kw">a much bigger problem</b>" 均为负面态度标记。Donahue 批评该制度不奖励高成就者，态度为否定/反对。</div>
+<div class="step">③ 排除干扰项: B. appreciation — 与负面态度相反；C. tolerance — 容忍（弱于"不满"）；D. indifference —— 作者写文章讨论该话题，不可能 indifferent。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.22】</span></p>
+<hr />
+<h3 id="例3作者对AAAS报告的态度2014英一Text4">例3. 作者对 AAAS 报告的态度 (2014 英一 Text4)</h3>
+<div class="q"><b>Q</b> 36. According to Paragraph 1, what is the author's attitude toward the AAAS's report?</div>
+<div class="opts"><span class="opt">A.</span> Critical. <br><span class="opt">B.</span> Appreciative. <br><span class="opt">C.</span> Contemptuous. <br><span class="opt">D.</span> Tolerant.</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①"The Heart of the Matter", the just-released report by the American Academy of Arts and Sciences (AAAS), <b class="kw">deserves praise</b> for affirming the importance of the humanities and social sciences to the prosperity and security of liberal democracy in America. ②<b class="kw">Regrettably, however</b>, the report's failure to address the true nature of the crisis facing liberal education <b class="kw">may cause more harm than good</b>.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段。</div>
+<div class="step">② 解题思路: 关键逻辑链: "<b class="kw">deserves praise</b>"（值得赞扬）→ "<b class="kw">Regrettably, however</b>"（然而，遗憾的是）→ "failure" + "<b class="kw">may cause more harm than good</b>"（弊大于利）。先肯定后转折批评，整体态度是"批判性的"。注意: contemptuous（轻蔑的）程度过重，原文是理性批评而非轻蔑。</div>
+<div class="step">③ 排除干扰项: B. Appreciative — 只有前半句肯定，忽略了 however 后的主观点；C. Contemptuous — 程度过重；D. Tolerant — 容忍，原文是主动批判。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.22】</span></p>
+<hr />
+<h3 id="例4作者对英国政府体育政策的态度2017英二Text1">例4. 作者对英国政府体育政策的态度 (2017 英二 Text1)</h3>
+<div class="q"><b>Q</b> 25. The author's attitude to what UK governments have done for sports is _____.</div>
+<div class="opts"><span class="opt">A.</span> tolerant <br><span class="opt">B.</span> critical <br><span class="opt">C.</span> uncertain <br><span class="opt">D.</span> sympathetic</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Indeed, there is something a little absurd in the state getting involved in the planning of such a fundamentally "grassroots" concept as community sports associations. ②If there is a role for government, it should really be getting involved in providing common goods — making sure there is space for playing fields and the money to pave tennis and netball courts, and encouraging the provision of all these activities in schools. ③<b class="kw">But successive governments have presided over selling green spaces, squeezing money from local authorities and declining attention on sport in education</b>. ④Instead of wordy, worthy strategies, future governments need to do more to provide the conditions for sport to thrive. ⑤Or at least not make them worse.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段 —— "<b class="kw">But successive governments have presided over selling green spaces, squeezing money from local authorities and declining attention on sport in education.</b>"</div>
+<div class="step">② 解题思路: "<b class="kw">selling green spaces</b>"（出售绿地）、"<b class="kw">squeezing money</b>"（挤出资金）、"<b class="kw">declining attention</b>"（减少关注）——一连串负面动作。"<b class="kw">Instead of...need to do more</b>"（不应......而应......）是典型的批评性建议句。态度为 critical。</div>
+<div class="step">③ 排除干扰项: A. tolerant — 容忍；C. uncertain — 不确定；D. sympathetic — 同情。均与原文的批判性措辞不符。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.22】</span></p>
+<hr />
+<h3 id="例5作者对米尔顿弗里德曼关于CSR观点的态度2016英一Text3">例5. 作者对米尔顿·弗里德曼关于 CSR 观点的态度 (2016 英一 Text3)</h3>
+<div class="q"><b>Q</b> 31. The author views Milton Friedman's statement about CSR with _____.</div>
+<div class="opts"><span class="opt">A.</span> tolerance <br><span class="opt">B.</span> skepticism <br><span class="opt">C.</span> uncertainty <br><span class="opt">D.</span> approval</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①"There is one and only one social responsibility of business", wrote Milton Friedman, a Nobel Prize-winning economist, "That is, to use its resources and engage in activities designed to increase its profits." But even if you accept Friedman's premise and regard corporate social responsibility (CSR) policies as a waste of shareholders' money, things may not be absolutely clear-cut. ②New research suggests that CSR may create monetary value for companies — at least when they are prosecuted for corruption.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段。</div>
+<div class="step">② 解题思路: 先引 Friedman 观点（企业唯一的社会责任是增加利润），然后"<b class="kw">But even if you accept Friedman's premise... things may not be absolutely clear-cut</b>"表明作者不完全认同。紧接着"<b class="kw">New research suggests CSR may create monetary value</b>"用新研究质疑 Friedman。这种"先引再质疑"的结构 = 怀疑态度(skepticism)。</div>
+<div class="step">③ 排除干扰项: A. tolerance — 容忍（不够主动）；C. uncertainty — 不确定（作者有明确立场倾向）；D. approval — 赞同（与 but 转折矛盾）。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.22】</span></p>
+<hr />
+<h3 id="例6作者对BrendonLynch博客言论的态度2013英一Text2">例6. 作者对 Brendon Lynch 博客言论的态度 (2013 英一 Text2)</h3>
+<div class="q"><b>Q</b> 30. The author's attitude towards what Brendon Lynch said in his blog is one of _____.</div>
+<div class="opts"><span class="opt">A.</span> indulgence <br><span class="opt">B.</span> understanding <br><span class="opt">C.</span> appreciation <br><span class="opt">D.</span> skepticism</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Also unclear is why Microsoft has gone it alone. ②After all, it has an ad business too, which it says will comply with DNT requests, though it is still working out how. ③If it is trying to upset Google, which relies almost wholly on advertising, it has chosen an indirect method: There is no guarantee that DNT by default will become the norm. ④DNT does not seem an obviously huge selling point for Windows 8—though the firm has compared some of its other products favorably with Google's on that count before. ⑤Brendon Lynch, Microsoft's chief privacy officer, blogged: "We believe consumers should have more control." <b class="kw">Could it really be that simple</b>?
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第七段最后 —— Lynch 说"消费者应拥有更多控制权"，作者反问"<b class="kw">Could it really be that simple?</b>"（真的就这么简单？）</div>
+<div class="step">② 解题思路: 反问句"<b class="kw">Could it really be that simple?</b>"直接表达质疑——这是态度题中"问号=怀疑"的经典范例。skepticism 对应该语气。</div>
+<div class="step">③ 排除干扰项: A. indulgence — 纵容；B. understanding — 理解（积极态度，与反问矛盾）；C. appreciation — 欣赏（与反问矛盾）。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.22】</span></p>
+<hr />
+<h3 id="例7作者对逆转高速趋势的态度2013英二Text3">例7. 作者对逆转高速趋势的态度 (2013 英二 Text3)</h3>
+<div class="q"><b>Q</b> 35. The author's attitude toward reversing the high-speed trend is _____.</div>
+<div class="opts"><span class="opt">A.</span> tolerant <br><span class="opt">B.</span> uncertain <br><span class="opt">C.</span> optimistic <br><span class="opt">D.</span> doubtful</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Our ability to mute our hard-wired reactions by pausing is what differentiates us from animals: dogs can think about the future only intermittently or for a few minutes. ②But historically we have spent about 12 percent of our days contemplating the longer term. ③Although technology might change the way we react, it hasn't changed our nature. ④<b class="kw">We still have the imaginative capacity to rise above temptation and reverse the high-speed trend</b>.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第六段 —— "<b class="kw">We still have the imaginative capacity to rise above temptation and reverse the high-speed trend.</b>"</div>
+<div class="step">② 解题思路: "<b class="kw">We still have the imaginative capacity to...</b>" 是非常肯定的语气，表明作者相信人类有能力逆转趋势。optimistic 对应此积极判断。</div>
+<div class="step">③ 排除干扰项: A. tolerant — 容忍（不主动）；C. uncertain — 不确定（原文态度明确）；D. doubtful — 怀疑（与肯定语气矛盾）。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.22】</span></p>
+<hr />
+<h3 id="例8作者对美国看电视行为的态度2014英二Text1">例8. 作者对美国看电视行为的态度 (2014 英二 Text1)</h3>
+<div class="q"><b>Q</b> 22. The author's attitude toward Americans' watching TV is _____.</div>
+<div class="opts"><span class="opt">A.</span> critical <br><span class="opt">B.</span> supportive <br><span class="opt">C.</span> sympathetic <br><span class="opt">D.</span> ambiguous</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第三段 ②③句 —— "It seems most people would be better off if they could shorten their commutes to work, spend more time with friends and family and <b class="kw">less of it watching television</b> (something the average American spends <b class="kw">a whopping two months a year doing, and is hardly jollier for it</b>)."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第三段 ②句 —— 与 McRib 例同段的"看电视"评论。</div>
+<div class="step">② 解题思路: 态度词判断。作者认为美国人一年花两个月看电视"hardly jollier"（并没更快乐）、应该"less of it"（少看点）→ 批评态度。对应 A: critical。</div>
+<div class="step">③ 排除干扰项: B. supportive — 与"少看点"矛盾；C. sympathetic — 同情与本文无关；D. ambiguous — 作者态度明确。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.22】</span></p>
+<hr />
+<h2 id="二例证题例题">二、例证题例题</h2>
+<h3 id="例1EgyptAir空难例子的论证目的2017英一Text1">例1. EgyptAir 空难例子的论证目的 (2017 英一 Text1)</h3>
+<div class="q"><b>Q</b> 21. The crash of EgyptAir Flight 804 is mentioned to _____.</div>
+<p>[A] explain American's tolerance of current security checks
+[B] stress the urgency to strengthen security worldwide
+[C] highlight the necessity of upgrading major U.S. airports
+[D] emphasize the importance of privacy protection</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①<b class="kw">Americans are willing to tolerate time-consuming security procedures in return for increased safety</b>. ②The crash of Egypt Air Flight 804, which terrorists may have downed over the Mediterranean Sea, provides another <b class="kw">tragic reminder of why</b>. ③But demanding too much of air travelers or providing too little security in return undermines public support for the process. ④And it should: Wasted time is a drag on Americans' economic and private lives, not to mention infuriating.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第二段 —— 例子位于第二句，观点在前一句。</div>
+<div class="step">② 解题思路: 例子出现在中间段，向前找观点。前一句: "<b class="kw">Americans are willing to tolerate time-consuming security procedures in return for increased safety.</b>" = 美国人情愿容忍耗时安检以换取安全。EgyptAir 空难被用作"<b class="kw">tragic reminder of why</b>"即解释为什么美国人容忍安检。对应 A: explain American's tolerance of current security checks。</div>
+<div class="step">③ 排除干扰项: B — "全球"范围扩大；C — "升级主要美国机场"原文未提；D — "隐私保护"是无关概念。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例2自行车链条例子的论证目的2018英二Text1">例2. 自行车链条例子的论证目的 (2018 英二 Text1)</h3>
+<div class="q"><b>Q</b> 21. A broken bike chain is mentioned to show student's lack of _____.</div>
+<div class="opts"><span class="opt">A.</span> academic training <br><span class="opt">B.</span> practical ability <br><span class="opt">C.</span> pioneering spirit <br><span class="opt">D.</span> mechanical memorization</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Mr. Koziatek is part of something pioneering. ②He is a teacher at a New Hampshire high school where <b class="kw">learning is not something of books and tests and mechanical memorization, but practical</b>. ③When did it become accepted wisdom that students should be able to name the 13th president of the United States but be utterly overwhelmed by a broken bike chain?
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第二段 —— "<b class="kw">learning is not something of books and tests and mechanical memorization, but practical.</b>" 这是观点 (观点在前)，自行车链条是例子。</div>
+<div class="step">② 解题思路: 观点: 学习应该是 practical 而不是 mechanical memorization。broken bike chain 作为例子说明学生缺乏实践能力 (practical ability)，对应 B。</div>
+<div class="step">③ 排除干扰项: A — "学术训练"不是焦点；C — "开创精神"原文未涉及；D — "机械记忆"是文章批评的对象，不是学生的缺陷。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例3OrinKerr比较的引用目的2015英一Text2">例3. Orin Kerr 比较的引用目的 (2015 英一 Text2)</h3>
+<div class="q"><b>Q</b> 30. Orin Kerr's comparison is quoted to indicate that _____.</div>
+<p>[A] the Constitution should be implemented flexibly
+[B] new technology requires reinterpretation of the Constitution
+[C] California's argument violates principles of the Constitution
+[D] principles of the Constitution should never be altered</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①But the justices should not swallow California's argument whole. ②<b class="kw">New, disruptive technology sometimes demands novel applications of the Constitution's protections</b>. ③Orin Kerr, a law professor, compares the explosion and accessibility of digital information in the 21st century with the establishment of automobile use as a virtual necessity of life in the 20th: The justices had to specify novel rules for the new personal domain of the passenger car then; they must sort out how the Fourth Amendment applies to digital information now.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第七段 —— Orin Kerr 的对比 = 例子，向前找观点: "<b class="kw">New, disruptive technology sometimes demands novel applications of the Constitution's protections.</b>"</div>
+<div class="step">② 解题思路: Kerr 用 "汽车时代→新规则" 类比"数字时代→新规则"，论证观点"新技术需要宪法保护的新应用"。对应 B: new technology requires reinterpretation of the Constitution。</div>
+<div class="step">③ 排除干扰项: A — "灵活实施"太模糊；C — "违反宪法原则"程度不对；D — "绝不应改变"与观点相反。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例4祖先例子说明教育的起源2009英一Text3">例4. 祖先例子说明教育的起源 (2009 英一 Text3)</h3>
+<div class="q"><b>Q</b> 34. The author quotes the example of our ancestors to show that education emerged _____.</div>
+<p>[A] when people had enough time
+[B] prior to better ways of finding food
+[C] when people no longer went hungry
+[D] as a result of pressure on government</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①What is the real relationship between education and economic development? ②<b class="kw">We have to suspect that continuing economic growth promotes the development of education</b> even when governments don't force it. ③After all, that's how education got started. ④When our ancestors were hunters and gatherers 10,000 years ago, they didn't have time to wonder much about anything besides finding food. ⑤Only when humanity began to get its food in a more productive way was there time for other things.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段 —— 观点在前: "<b class="kw">We have to suspect that continuing economic growth promotes the development of education.</b>" 即经济增长 → 教育发展。</div>
+<div class="step">② 解题思路: 祖先例子: 打猎采集时没时间 → 食物获取方式改进后才有时间做其他事（教育）。例子说明"当人们有足够时间时，教育出现了"，对应 A。</div>
+<div class="step">③ 排除干扰项: B — "先于更好的觅食方式"颠倒因果关系；C — "不再饥饿"太窄；D — "政府压力"原文未提。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例5McRib例子的论证目的2014英二Text1">例5. McRib 例子的论证目的 (2014 英二 Text1)</h3>
+<div class="q"><b>Q</b> 22. McRib is mentioned in paragraph 3 to show that _____.</div>
+<p>[A] consumers are sometimes irrational
+[B] popularity usually comes after quality
+[C] marketing tricks are often effective
+[D] rarity generally increases pleasure</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①This slim volume is packed with tips to help wage slaves as well as lottery winners get the most "happiness bang for your buck." It seems most people would be better off if they could shorten their commutes to work, spend more time with friends and family and less of it watching television (something the average American spends a whopping two months a year doing, and is hardly jollier for it). ②Buying gifts or giving to charity is often more pleasurable than purchasing things for oneself, and <b class="kw">luxuries are most enjoyable when they are consumed sparingly</b>. ③<b class="kw">This is apparently the reason</b> MacDonald's restricts the availability of its popular McRib—a marketing trick that has turned the pork sandwich into an object of obsession.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第三段 —— 观点在前: "<b class="kw">luxuries are most enjoyable when they are consumed sparingly</b>"（稀缺增加愉悦）。McRib 是例子。</div>
+<div class="step">② 解题思路: "<b class="kw">This is apparently the reason...</b>" 明确标志"this"指代前句内容，McRib 是前面观点的例证。奢侈品限量 → 更愉悦，对应 D: rarity generally increases pleasure（稀缺增加愉悦）。</div>
+<div class="step">③ 排除干扰项: A — "消费者不理性"无中生有；B — "品质带来流行"未讨论；C — "营销手段有效"是例子本身的描述而非观点。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23（本篇的看电视态度题见本册态度题例8）】</span></p>
+<hr />
+<h3 id="例6WiltChamberlain例子的论证目的2008英一Text3">例6. Wilt Chamberlain 例子的论证目的 (2008 英一 Text3)</h3>
+<div class="q"><b>Q</b> 31. Wilt Chamberlain is cited as an example to _____.</div>
+<p>[A] illustrate the change of height of NBA players
+[B] show the popularity of NBA players in the U.S.
+[C] compare different generations of NBA players
+[D] assess the achievements of famous NBA players</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①In the early 1960s Wilt Chamberlain was one of only three players in the National Basketball Association (NBA) listed at over seven feet. ②If he had played last season, however, he would have been one of 42. ③<b class="kw">The bodies playing major professional sports have changed dramatically over the years</b>, and managers have been more than willing to adjust team uniforms to fit the growing numbers of bigger, longer frames.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 —— 例子在第一段，观点在例子之后: "<b class="kw">The bodies playing major professional sports have changed dramatically over the years.</b>"</div>
+<div class="step">② 解题思路: Chamberlain 的数据对比（1960s 身高超7尺仅3人 → 现在42人）用来引出观点: 运动员体型发生了巨大变化。对应 A: illustrate the change of height of NBA players。</div>
+<div class="step">③ 排除干扰项: B — "NBA球员的受欢迎程度"未讨论；C — "比较不同代NBA球员"范围扩大；D — "评估成就"无关。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例7RobertFKennedy引用的论证目的2017英一Text3">例7. Robert F. Kennedy 引用的论证目的 (2017 英一 Text3)</h3>
+<div class="q"><b>Q</b> 31. Robert F. Kennedy is cited because he _____.</div>
+<p>[A] praised the UK for its GDP
+[B] identified GDP with happiness
+[C] misinterpreted the role of GDP
+[D] had a low opinion of GDP</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Robert F. Kennedy once said that a country's GDP measures "everything except that which makes life worthwhile." With Britain voting to leave the European Union, and GDP already predicted to slow as a result, it is now a timely moment to assess what he was referring to.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 —— 例子在文章开头（第一段），观点在第二段: "<b class="kw">Many argue that it is a flawed concept.</b>"</div>
+<div class="step">② 解题思路: Kennedy 的话（GDP 衡量了一切除了让生命有价值的东西）表达了对 GDP 的负面评价。"<b class="kw">had a low opinion of GDP</b>" 准确概括。</div>
+<div class="step">③ 排除干扰项: A — "赞扬英国GDP"与引文相反；B — "等同于幸福"胡乱联系；C — "误读GDP的作用"不是作者引用他的目的——作者用他来支持"GDP有问题"的观点。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例8GeorgeWashington拔牙故事的引用目的2008英一Text4">例8. George Washington 拔牙故事的引用目的 (2008 英一 Text4)</h3>
+<div class="q"><b>Q</b> 36. George Washington's dental surgery is mentioned to _____.</div>
+<p>[A] show the primitive medical practice in the past
+[B] demonstrate the cruelty of slavery in his days
+[C] stress the role of slaves in the U.S. history
+[D] reveal some unknown aspect of his life</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①<b class="kw">That's a far different image from the cherry-tree-chopping George most people remember</b> from their history books. ②But recently, many historians have begun to focus on the roles slavery played in the lives of the founding generation. ③They have been spurred in part by DNA evidence made available in 1998, which almost certainly proved Thomas Jefferson had fathered at least one child with his slave Sally Hemings. ④And only over the past 30 years have scholars examined history from the bottom up. ⑤Works of several historians reveal the moral compromises made by the nation's early leaders and the fragile nature of the country's infancy. ⑥More significantly, they argue that many of the Founding Fathers knew slavery was wrong and yet most did little to fight it.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 例子在第一段，观点在第二段开头: "<b class="kw">That's a far different image from the cherry-tree-chopping George most people remember.</b>" = 这不同于人们从历史书中记得的华盛顿形象。</div>
+<div class="step">② 解题思路: 例子在文章开头，向后找观点。例子用以引出"华盛顿不为人知的另一面"（reveal some unknown aspect），为后文讨论奴隶制在建国先贤生活中的作用做引子。</div>
+<div class="step">③ 排除干扰项: A — "原始医疗实践"是例子本身的细节；B — "展示奴隶制的残忍"范围不对；C — "强调奴隶在美国历史中的角色"范围过大。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例9Donovan故事的开篇功能2003英一Text1">例9. Donovan 故事的开篇功能 (2003 英一 Text1)</h3>
+<div class="q"><b>Q</b> 22. Donovan's story is mentioned in the text to _____.</div>
+<p>[A] introduce the topic of online spying
+[B] show how he fought for the US
+[C] give an episode of the information war
+[D] honor his unique services to the CIA</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Wild Bill Donovan would have loved the Internet. ②The American spymaster who built the Office of Strategic Services in the World War II and later laid the roots for the CIA was fascinated with information. ③Donovan believed in using whatever tools came to hand in the "great game" of espionage — spying as a "profession". ④These days the Net, which has already re-made such everyday pastimes as buying books and sending mail, is <b class="kw">reshaping Donovan's vocation</b> as well.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 例子在第一段（文章开头），观点在例子之后（第一段末句 + 后文）。</div>
+<div class="step">② 解题思路: 文章开头以知名人物引出话题。Donovan 代表"情报工作"，网络时代"<b class="kw">reshaping Donovan's vocation</b>"引出真正主题是"网络间谍"。对应 A: introduce the topic of online spying。</div>
+<div class="step">③ 排除干扰项: B — "他如何为美国而战"是例子本身内容；C — "信息战的片段"同样太具体；D — "表彰他对CIA的独特贡献"不是作者意图。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h2 id="三语义题例题">三、语义题例题</h2>
+<h3 id="例1homogenizing的含义2006英一Text1">例1. "homogenizing" 的含义 (2006 英一 Text1)</h3>
+<div class="q"><b>Q</b> 21. The word "homogenizing" (Line 2, Paragraph 1) most probably means _____.</div>
+<div class="opts"><span class="opt">A.</span> identifying <br><span class="opt">B.</span> associating <br><span class="opt">C.</span> assimilating <br><span class="opt">D.</span> monopolizing</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①In spite of "endless talk of difference", American society is an amazing machine for homogenizing people. ②There is "the democratizing uniformity of dress and discourse, and the casualness and absence of deference" characteristic of popular culture. ③People are absorbed into "a culture of consumption" launched by the 19th- century department stores that offered "vast arrays of goods in an elegant atmosphere. ④Instead of intimate shops catering to a knowledgeable elite" these were stores "anyone could enter, regardless of class or background. ⑤This turned shopping into a public and democratic act." The mass media, advertising and sports are other forces for homogenization.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 —— "<b class="kw">In spite of 'endless talk of difference'</b>"——尽管人们不停谈论差异。这是让步，说明后面的情况与"差异"相反。</div>
+<div class="step">② 解题思路: 反向逻辑: "in spite of + difference"（尽管有差异）→ 后面说美国社会是 homogenizing 的机器。"uniformity"(一致性)、"People are absorbed into"(人们被融入)——这些都指向"同质化"。因此 homogenizing = assimilating（同化、使一致）。</div>
+<div class="step">③ 排除干扰项: A — identifying 识别（不匹配"使一致"的语境）；B — associating 联想；D — monopolizing 垄断（望文生义: homo-前缀 ≠ 垄断）。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例2moola的含义2015英二Text1">例2. "moola" 的含义 (2015 英二 Text1)</h3>
+<div class="q"><b>Q</b> 24. The word "moola" (Line 3, Para 4) most probably means _____.</div>
+<div class="opts"><span class="opt">A.</span> energy <br><span class="opt">B.</span> skills <br><span class="opt">C.</span> earnings <br><span class="opt">D.</span> nutrition</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①But it's not just a gender thing. ②At work, people pretty much know what they're supposed to be doing: working, making money, doing the tasks they have to do in order to draw an income. ③The bargain is very pure: <b class="kw">Employee puts in hours of physical or mental labor and employee draws out life-sustaining moola</b>.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段 —— "<b class="kw">Employee puts in hours of physical or mental labor and employee draws out life-sustaining moola.</b>"</div>
+<div class="step">② 解题思路: 同向逻辑——上下文对应。"<b class="kw">puts in...labor ... draws out...moola</b>"（投入劳动，取出moola）→ 前后是对等关系。前文反复出现 "<b class="kw">making money, draw an income</b>"，moola = earnings（收入、报酬）。</div>
+<div class="step">③ 排除干扰项: A — energy（能量）；B — skills（技能）；D — nutrition（营养）。均不能与"劳动换来的"形成对应。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例3tipservice的含义2004英一Text1">例3. "tip service" 的含义 (2004 英一 Text1)</h3>
+<div class="q"><b>Q</b> 43. The expression "tip service" (Line 4, Paragraph 3) most probably means _____.</div>
+<div class="opts"><span class="opt">A.</span> advisory <br><span class="opt">B.</span> compensation <br><span class="opt">C.</span> interaction <br><span class="opt">D.</span> reminder</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①For any job search, you should start with a narrow concept—what you think you want to do—then broaden it. ②"None of these programs do that," says another expert. ③"There's no career counseling implicit in all of this." Instead, the best strategy is to use the agent as a kind of <b class="kw">tip service</b> to keep abreast of jobs in a particular database; when you get E-mail, <b class="kw">consider it a reminder to check the database again</b>. ④"I would not rely on agents for finding everything that is added to a database that might interest me," says the author of a job-searching guide.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第三段 —— 分号是关键信号。分号前后表达相关的两个意思。</div>
+<div class="step">② 解题思路: 同向逻辑——分号顺承。分号后: "<b class="kw">consider it a reminder to check the database again</b>"（把它当作一个提醒来再次检查数据库）。分号前的 "<b class="kw">tip service</b>" 功能与之对应。tip service = reminder（提醒工具）。</div>
+<div class="step">③ 排除干扰项: A — advisory（顾问性的）偏离"提醒"功能；B — compensation（补偿）无关；C — interaction（互动）不精确。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例4plummeting的含义2018英二Text2">例4. "plummeting" 的含义 (2018 英二 Text2)</h3>
+<div class="q"><b>Q</b> 26. The word "plummeting" (Line 2, Para. 2) is closest in meaning to _____.</div>
+<div class="opts"><span class="opt">A.</span> stabilizing <br><span class="opt">B.</span> changing <br><span class="opt">C.</span> falling <br><span class="opt">D.</span> rising</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Some growth stems from a commitment by governments and farsighted businesses to fund cleaner energy sources. ②But increasingly the story is about the plummeting prices of renewables, especially wind and solar. ③The cost of solar panels has <b class="kw">dropped by 80 percent</b> and the cost of wind turbines by close to one-third in the past eight years.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第二段 —— plummeting prices。下一句: "<b class="kw">dropped by 80 percent</b>"。</div>
+<div class="step">② 解题思路: 同向逻辑——下句用具体数据解释上句。"<b class="kw">dropped by 80 percent</b>" = 下降了80%，plummeting = 急剧下降 = falling。</div>
+<div class="step">③ 排除干扰项: A — stabilizing 稳定；B — changing 变化（太笼统）；D — rising 上升（方向相反）。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例5gizmos的含义2002英一Text2">例5. "gizmos" 的含义 (2002 英一 Text2)</h3>
+<div class="q"><b>Q</b> 47. The word "gizmos" (line1, paragraph2) most probably means _____.</div>
+<div class="opts"><span class="opt">A.</span> programs <br><span class="opt">B.</span> experts <br><span class="opt">C.</span> devices <br><span class="opt">D.</span> creatures</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①As a result, the modern world is increasingly populated by intelligent gizmos whose presence we barely notice but whose universal existence has <b class="kw">removed much human labor</b>. ②Our factories hum to the rhythm of robot assembly arms. ③Our banking is done at automated teller terminals that thank us with mechanical politeness for the transaction. ④Our subway trains are controlled by tireless robot-drivers. ⑤And thanks to the continual miniaturization of electronics and micro-mechanics, there are already robot systems that can perform some kinds of brain and bone surgery with submillimeter accuracy—far greater precision than highly skilled physicians can achieve with their hands alone.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第二段 —— gizmos 的特征: "intelligent"(智能的)、"<b class="kw">removed much human labor</b>"(替代人力)、后文列举: robot assembly arms, automated teller terminals, robot-drivers, robot systems。</div>
+<div class="step">② 解题思路: 同向逻辑——后文连续列举同类事物。这些例子的共同特征: 机器/设备。因此 gizmos = devices（设备、装置）。</div>
+<div class="step">③ 排除干扰项: A — programs（程序）范围太窄；B — experts（专家）与"替代人力"矛盾；D — creatures（生物）与 robot 语境不符。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.23】</span></p>
+<hr />
+<h3 id="例6bummer的含义2006英一Text4">例6. "bummer" 的含义 (2006 英一 Text4)</h3>
+<div class="q"><b>Q</b> 37. The word "bummer" (Line 5, Paragraph 5) most probably means something _____.</div>
+<div class="opts"><span class="opt">A.</span> religious <br><span class="opt">B.</span> unpleasant <br><span class="opt">C.</span> entertaining <br><span class="opt">D.</span> commercial</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①People in earlier eras were surrounded by reminders of misery. ②They worked until exhausted, lived with few protections and died young. ③In the West, before mass communication and literacy, the most powerful mass medium was the church, which reminded worshippers that their souls were in peril and that they would someday be meat for worms. ④<b class="kw">Given all this, they did not exactly need their art to be a bummer too</b>.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第五段 —— 前文全部在描述 misery, exhausted, died young。Given all this = 鉴于这一切。</div>
+<div class="step">② 解题思路: 同向逻辑——前文氛围: 痛苦(misery)、疲惫(exhausted)、早逝(died young)。"<b class="kw">Given all this, they did not exactly need their art to be a bummer TOO.</b>" 太(too)说明 bummer 和前面的 misery 同类——负面、不愉快。因此 bummer = unpleasant。</div>
+<div class="step">③ 排除干扰项: A — religious（宗教的）；C — entertaining（娱乐性的）；D — commercial（商业的）。均与 misery 语境不匹配。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.24】</span></p>
+<hr />
+<h3 id="例7paralysisbyanalysis的含义2005英一Text2">例7. "paralysis by analysis" 的含义 (2005 英一 Text2)</h3>
+<div class="q"><b>Q</b> 28. What does the author mean by "paralysis by analysis" (Last line, Paragraph 4)?</div>
+<p>[A] Endless studies kill action.
+[B] Careful investigation reveals truth.
+[C] Prudent planning hinders progress.
+[D] Extensive research helps decision-making.</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Fortunately, the White House is starting to pay attention. ②But it's obvious that a majority of the president's advisers still don't take global warming seriously. ③<b class="kw">Instead of a plan of action, they continue to press for more research</b>—a classic case of "<b class="kw">paralysis by analysis</b>".
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段 —— "<b class="kw">Instead of a plan of action, they continue to press for more research</b>"（不愿制定行动计划，只是不断要求更多研究）。</div>
+<div class="step">② 解题思路: 反向逻辑: instead of + 行动 → 只有分析 → 导致瘫痪。字面逻辑: analysis 导致 paralysis。对应 A: Endless studies kill action（无尽的研究扼杀行动）。</div>
+<div class="step">③ 排除干扰项: B — 正面评价研究与原文批评语气相反；C — "prudent"（审慎的）将负面评价正面化了；D — 与原文对研究的批评态度相反。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.24】</span></p>
+<hr />
+<h3 id="例8Birdsofpassage指谁2013英二Text2">例8. "Birds of passage" 指谁 (2013 英二 Text2)</h3>
+<div class="q"><b>Q</b> 26. "Birds of passage" refers to those who _____.</div>
+<p>[A] immigrate across the Atlantic
+[B] leave their home countries for good
+[C] stay in a foreign country temporarily
+[D] find permanent jobs overseas</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①A century ago, the immigrants from across the Atlantic included settlers and sojourners. ②Along with the many folks looking to make a permanent home in the United States came <b class="kw">those who had no intention to stay, and who would make some money and then go home</b>. ③Between 1908 and 1915, 7 million people arrived while about 2 million departed. ④About a quarter of all Italian immigrants, for example, eventually returned to Italy for good. ⑤They even had an affectionate nickname, "uccelli di passaggio", <b class="kw">birds of passage</b>.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 —— "<b class="kw">those who had no intention to stay, and who would make some money and then go home</b>" → 然后说这些人被昵称为"birds of passage"。</div>
+<div class="step">② 解题思路: 同向逻辑——指代。紧接在前面的描述直接定义了这个群体的特征: 不打算长留、赚钱后回家。对应 C: stay in a foreign country temporarily（临时逗留）。</div>
+<div class="step">③ 排除干扰项: A — "跨越大西洋移民"太宽泛；B — "永久离开祖国"与"temporarily"相反；D — "找永久工作"与"不打算留下"矛盾。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.24】</span></p>
+<hr />
+<h3 id="例9arbiters指谁2003英一Text3">例9. "arbiters" 指谁 (2003 英一 Text3)</h3>
+<div class="q"><b>Q</b> 54. The word "arbiters" (Line 7, Paragraph 4) most probably refers to those _____.</div>
+<p>[A] who work as coordinators
+[B] who function as judges
+[C] who supervise transactions
+[D] who determine the price</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Railroads justify rate discrimination against captive shippers on the grounds that in the long run it reduces everyone's cost. ②If railroads charged all customers the same average rate, they argue, shippers who have the option of switching to trucks or other forms of transportation would do so, leaving remaining customers to shoulder the cost of keeping up the line. ③It's a theory to which many economists subscribe, but in practice it often leaves railroads in the position of <b class="kw">determining which companies will flourish and which will fail</b>. ④"Do we really want railroads to be the <b class="kw">arbiters of who wins and who loses</b> in the marketplace?" asks Martin Bercovici, a Washington lawyer who frequently represents shipper.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段 —— "<b class="kw">determining which companies will flourish and which will fail</b>" → "<b class="kw">arbiters of who wins and who loses</b>"。</div>
+<div class="step">② 解题思路: 同向逻辑——同义复现。"determining" = "<b class="kw">arbiters of</b>" = 做裁决的人。决定谁胜谁负 → judges（裁判、裁决者）。对应 B: who function as judges。</div>
+<div class="step">③ 排除干扰项: A — coordinators（协调者）不承担"裁决"功能；C — supervise transactions（监督交易）太窄；D — determine the price（决定价格）缩小范围。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.24】</span></p>
+<hr />
+<h3 id="例10holdingitsnose的隐含态度2017英一Text4">例10. "holding its nose" 的隐含态度 (2017 英一 Text4)</h3>
+<div class="q"><b>Q</b> 36. The underlined sentence (Para. 1) most probably shows that the court ______.</div>
+<p>[A] avoided defining the extent of McDonnell's duties
+[B] made no compromise in convicting McDonnell
+[C] was contemptuous of McDonnell's conduct
+[D] refused to comment on McDonnell's ethics</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第一段 ①②句 —— "In a rare unanimous ruling, the US Supreme Court has overturned the corruption conviction of a former Virginia governor, Robert McDonnell. ②But it did so <b class="kw">while holding its nose at the ethics of his conduct</b>, which included accepting gifts such as a Rolex watch and a Ferrari automobile from a company seeking access to government."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 ②句。</div>
+<div class="step">② 解题思路: 语义题+态度推断。holding its nose（捂着鼻子）= 表示嫌恶的肢体语言 → 法庭虽在法理上推翻定罪，但对 McDonnell 的操守感到厌恶。对应 C: was contemptuous of McDonnell's conduct。</div>
+<div class="step">③ 排除干扰项: A — "回避定义职责范围"无依据；B — "定罪毫不妥协"与"overturned the conviction"（推翻定罪）矛盾；D — "拒绝评论操守"与"holding its nose at the ethics"（正在评价操守）矛盾。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.24】</span></p>
+<hr />
+<h3 id="例11chroniclingtheirowndoom的含义2011英二Text2">例11. "chronicling their own doom" 的含义 (2011 英二 Text2)</h3>
+<div class="q"><b>Q</b> 26. By saying "Newspapers like ... their own doom" (Lines 3-4, Para. 1), the author indicates that newspaper ______.</div>
+<p>[A] neglected the sign of crisis
+[B] failed to get state subsidies
+[C] were not charitable corporations
+[D] were in a desperate situation</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第一段 ③④句 —— "The recession threatened to remove the advertising and readers that had not already fled to the Internet. ④Newspapers like the San Francisco Chronicle were <b class="kw">chronicling their own doom</b>."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 ③④句。</div>
+<div class="step">② 解题思路: 语义题。chronicle = 记录、记载（作动词），chronicling their own doom = 报纸们正在记录自己的末日 → 处境绝望。对应 D: were in a desperate situation。</div>
+<div class="step">③ 排除干扰项: A — "忽视危机信号"与"正在记录末日"（说明意识到了）相反；B — "未能获得国家补贴"未提及；C — "不是慈善机构"无关。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.24】</span></p>
+<hr />
+<h3 id="例12livedfrompaychecktopaycheck的含义2008英一Text1">例12. "lived from paycheck to paycheck" 的含义 (2008 英一 Text1)</h3>
+<div class="q"><b>Q</b> 24. The sentence "I lived from paycheck to paycheck." (Line 5, Para. 5) shows that ____.</div>
+<p>[A] Alvarez cared about nothing but making money
+[B] Alvarez's salary barely covered her household expenses
+[C] Alvarez got paychecks from different jobs
+[D] Alvarez paid practically everything by check</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第五段 ①③④句 —— "Adeline Alvarez married at 18 and gave birth to a son, but was determined to finish college. ③Later her marriage ended and she became a single mother. ④'<b class="kw">I lived from paycheck to paycheck</b>.'"
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第五段 ④句 —— 单身母亲 Alvarez 的自述。</div>
+<div class="step">② 解题思路: 语义题。live from paycheck to paycheck（每个发薪日之间勉强过活）= 收入仅够覆盖开支、月月光。对应 B: Alvarez's salary barely covered her household expenses。</div>
+<div class="step">③ 排除干扰项: A — "只在乎赚钱"无依据（她努力读书）；C — "从不同工作领薪水"望文生义；D — "用支票付款"把 paycheck 当支票字面理解。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.24】</span></p>
+<hr />
+<h3 id="例13coax的含义2016英二Text1">例13. "coax" 的含义 (2016 英二 Text1)</h3>
+<div class="q"><b>Q</b> 25. The word "coax" (Line 4, Para. 6) is closest in meaning to _____.</div>
+<div class="opts"><span class="opt">A.</span> persuade <br><span class="opt">B.</span> frighten <br><span class="opt">C.</span> misguide <br><span class="opt">D.</span> challenge</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第六段 ④句 —— "The younger they learn how computers think, how to <b class="kw">coax the machine into producing what they want</b> — the earlier they learn that they have the power to do that — the better."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第六段 ④句。</div>
+<div class="step">② 解题思路: 语义题。coax...into producing what they want（哄骗/诱导机器产出想要的东西）= 说服、引导。coax = persuade（说服、诱导）。对应 A。</div>
+<div class="step">③ 排除干扰项: B — frighten（吓唬）对象不对；C — misguide（误导）带贬义；D — challenge（挑战）与"producing what they want"的协作语境不符。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.24】</span></p>
+<hr />
+<h2 id="四细节题例题精选代表">四、细节题例题（精选代表）</h2>
+<h3 id="焦点明确型问原因">焦点明确型 —— 问原因</h3>
+<p><b>例: Priestly 批评她的助理是因为什么</b> (2013 英一 Text1)</p>
+<div class="q"><b>Q</b> 21. Priestly criticizes her assistant for her _____.</div>
+<div class="opts"><span class="opt">A.</span> poor bargaining skill <br><span class="opt">B.</span> insensitivity to fashion <br><span class="opt">C.</span> obsession with high fashion <br><span class="opt">D.</span> lack of imagination</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①In the 2006 film version of The Devil Wears Prada, Miranda Priestly, played by Meryl Streep, scolds her unattractive assistant <b class="kw">for imagining that high fashion doesn't affect her</b>. ②Priestly explains how the deep blue color of the assistant's sweater descended over the years from fashion shows to departments stores and to the bargain bin in which the poor girl doubtless found her garment.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 —— "<b class="kw">scolds her assistant for imagining that high fashion doesn't affect her</b>"。</div>
+<div class="step">② 解题思路: 问原因，找 for 后的内容。"<b class="kw">for imagining that high fashion doesn't affect her</b>" = 因为助理以为高级时装与她无关 → 对时尚不敏感。对应 B: insensitivity to fashion。</div>
+<div class="step">③ 排除干扰项: A — 讨价还价能力差（bargain bin 误导）；C — 痴迷高级时装（与想象相反）；D — 缺乏想象力（imagination 与 imagining 偷换概念）。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.25】</span></p>
+<hr />
+<h3 id="焦点明确型问特点">焦点明确型 —— 问特点</h3>
+<p><b>例: 科学发现过程的特征</b> (2012 英一 Text3)</p>
+<div class="q"><b>Q</b> 31. According to the first paragraph, the process of discovery is characterized by its _____.</div>
+<div class="opts"><span class="opt">A.</span> uncertainty and complexity <br><span class="opt">B.</span> misconception and deceptiveness <br><span class="opt">C.</span> logicality and objectivity <br><span class="opt">D.</span> systematicness and regularity</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①In the <b class="kw">idealized version</b> of how science is done, facts about the world are waiting to be observed and collected by objective researchers who use the scientific method to carry out their work. ②<b class="kw">But in the everyday practice of science, discovery frequently follows an ambiguous and complicated route</b>. ③We aim to be objective, but we cannot escape the context of our unique life experience. ④Prior knowledge and interest influence what we experience, what we think our experiences mean, and the subsequent actions we take. ⑤Opportunities for misinterpretation, error, and self-deception abound.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 —— "<b class="kw">But in the everyday practice of science, discovery frequently follows an ambiguous and complicated route.</b>"</div>
+<div class="step">② 解题思路: But 后是作者真实观点。"<b class="kw">ambiguous and complicated</b>" 的同义替换: ambiguous = uncertain（不确定）, complicated = complex（复杂）。对应 A: uncertainty and complexity。</div>
+<div class="step">③ 排除干扰项: B — misconception（错误观念）程度不对；C — logicality and objectivity 是"<b class="kw">idealized version</b>"的特征，被 but 否定了；D — systematicness and regularity 同样是被否定的理想化版本。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.25】</span></p>
+<hr />
+<h3 id="焦点模糊型">焦点模糊型</h3>
+<p><b>例: Mies 认为建筑设计的优雅</b> (2011 英二 Text3)</p>
+<div class="q"><b>Q</b> 33. Mies held that elegance of architectural design _____.</div>
+<div class="opts"><span class="opt">A.</span> was related to large space <br><span class="opt">B.</span> was identified with emptiness <br><span class="opt">C.</span> was not reliant on abundant decoration <br><span class="opt">D.</span> was not associated with efficiency</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Mies's signature phrase means that less decoration, properly organized, has more impact than a lot. ②Elegance, he believed, did not derive from abundance. ③Like other modern architects, he employed metal, glass and laminated wood—materials that we take for granted today but that in the 1940s symbolized the future. ④Mies's sophisticated presentation masked the fact that the spaces he designed <b class="kw">were small and efficient</b>, <b class="kw">rather than big and often empty</b>.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段 —— "<b class="kw">less decoration...has more impact than a lot</b>" + "<b class="kw">Elegance did not derive from abundance.</b>"</div>
+<div class="step">② 解题思路: 焦点模糊型——借助选项逐一验证。"<b class="kw">less decoration...more impact</b>" = 少装饰反而效果更好 → "优雅不依赖于大量装饰"。对应 C: was not reliant on abundant decoration。</div>
+<div class="step">③ 排除干扰项: A — "大空间"与后文"<b class="kw">spaces were small...rather than big</b>"矛盾；B — 后文说"<b class="kw">rather than big and often empty</b>"否定空荡；D — 后文说"<b class="kw">were small and efficient</b>"表明关联效率。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.27】</span></p>
+<hr />
+<h3 id="是非判断型">是非判断型</h3>
+<p><b>例: 关于 Mies 建的公寓，哪个正确</b> (2011 英二 Text3)</p>
+<div class="q"><b>Q</b> 34. What is true about the apartments Mies built on Chicago's Lake Shore Drive?</div>
+<div class="opts"><span class="opt">A.</span> They ignored details and proportions. <br><span class="opt">B.</span> They were built with materials popular at that time. <br><span class="opt">C.</span> They were more spacious than neighboring buildings. <br><span class="opt">D.</span> They shared some characteristics of abstract art.</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①The apartments in the elegant towers Mies built on Chicago's Lake Shore Drive, for example, <b class="kw">were smaller</b>—two-bedroom units under 1,000 square feet—than those in their older neighbors along the city's Gold Coast. ②But they were popular because of their airy glass walls, the views they afforded and the elegance of the buildings' details and proportions, <b class="kw">the architectural equivalent of the abstract art so popular</b> at the time.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第五段 —— 逐一核对选项与原文。</div>
+<div class="step">② 解题思路: 是非判断型需逐项验证。"<b class="kw">the architectural equivalent of the abstract art</b>" = 建筑上的抽象艺术等价物 → 与抽象艺术有共同特征。对应 D。</div>
+<div class="step">③ 排除干扰项: A — 原文强调"<b class="kw">elegance of details and proportions</b>"而非忽略；B — "<b class="kw">built with materials popular</b>"错，原文是"<b class="kw">abstract art so popular</b>"；C — "<b class="kw">more spacious</b>"与原文"<b class="kw">were smaller</b>"相反。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.27】</span></p>
+<hr />
+<p><b>例: fast fashion 让大众品牌敦促消费者做什么</b> (2013 英一 Text1)</p>
+<div class="q"><b>Q</b> 22. According to Cline, mass-market labels urge consumers to _____.</div>
+<p>[A] combat unnecessary waste
+[B] shut out the feverish fashion world
+[C] resist the influence of advertisements
+[D] shop for their garments more frequently</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第二段 ①②③句 —— "This top-down conception of the fashion business couldn't be more out of date or at odds with the feverish world described in Overdressed, Elizabeth Cline's three-year indictment of 'fast fashion'. ②In the last decade or so, advances in technology have allowed mass-market labels such as Zara, H&amp;M, and Uniqlo to react to trends more quickly and anticipate demand more precisely. ③Quicker turnarounds mean less wasted inventory, more frequent releases, and..."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第二段 —— Cline 对快时尚的批评（indictment）。</div>
+<div class="step">② 解题思路: 细节题。技术让 Zara/H&M/优衣库能"react to trends more quickly"、"more frequent releases"（更频繁上新）→ 实际上是敦促消费者更频繁购物。对应 D: shop for their garments more frequently。</div>
+<div class="step">③ 排除干扰项: A — "对抗浪费"与"less wasted inventory"（库存浪费少了）都是品牌方的说辞，不是敦促消费者的内容；B — "shut out the feverish fashion world"（拒斥狂热时尚界）与"urge consumers to"相反；C — "抵制广告影响"无中生有。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.25】</span></p>
+<hr />
+<p><b>例: 如今的家庭作业受到更多批评</b> (2012 英二 Text1)</p>
+<div class="q"><b>Q</b> 21. It is implied in paragraph 1 that nowadays homework _____.</div>
+<p>[A] is receiving more criticism
+[B] is no longer an educational ritual
+[C] is not required for advanced courses
+[D] is gaining more preferences</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第一段 ①②③句 —— "Homework has never been terribly popular with students and even many parents, but in recent years it has been <b class="kw">particularly scorned</b>. ②School districts across the country, most recently Los Angeles Unified, are revising their thinking on this educational ritual. ③Unfortunately, L.A. Unified has produced an inflexible policy..."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 ①句。</div>
+<div class="step">② 解题思路: 推断题。particularly scorned（尤其被鄙视）→ nowadays homework is receiving more criticism。对应 A。</div>
+<div class="step">③ 排除干扰项: B — "不再是教育惯例"与②句"this educational ritual"（仍称其为惯例）矛盾；C — "高级课程不要求作业"是第三段政策细节（10% 规则的例外），非本段隐含；D — "获得更多偏好"与 scorned 相反。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.28（本文标题题精讲见暑假册主旨题例3）】</span></p>
+<hr />
+<h2 id="五推断题例题精选代表">五、推断题例题（精选代表）</h2>
+<h3 id="焦点明确型">焦点明确型</h3>
+<p><b>例: Facebook 是自我提升者的天堂因为可以做什么</b> (2014 英二 Text2)</p>
+<div class="q"><b>Q</b> 30. It can be inferred that Facebook is self-enhancer's paradise because people can _____.</div>
+<div class="opts"><span class="opt">A.</span> present their dishonest profiles <br><span class="opt">B.</span> define their traditional life styles <br><span class="opt">C.</span> share their intellectual pursuits <br><span class="opt">D.</span> withhold their unflattering sides</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Knowing the results of Epley's study, it makes sense that why people hate photographs of themselves viscerally—on one level, they don't even recognize the person in the picture as themselves. ②Facebook, therefore, is a self-enhancer's paradise, where people can <b class="kw">share only the most flattering photos</b>, the cream of their wit, style, beauty, intellect and lifestyle. ③"It's not that people's profiles are dishonest", says Catalina Toma of Wisconsin- Madison University, "but they portray an idealized version of themselves".
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第五段 —— "<b class="kw">share only the most flattering photos</b>"（只分享最讨喜的照片）。</div>
+<div class="step">② 解题思路: 推断题的逻辑推演: 只分享最 flattering 的 → 隐藏/不分享不 flattering 的 → "<b class="kw">withhold their unflattering sides</b>"（隐藏不好的一面）。这是 paraphrase 的标准演绎。</div>
+<div class="step">③ 排除干扰项: A — "dishonest"在原文被明确否定；B — "traditional"无中生有；C — "<b class="kw">intellectual pursuits</b>"仅是一个方面，不等于全部。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.27】</span></p>
+<hr />
+<h3 id="焦点模糊型-2">焦点模糊型</h3>
+<p><b>例: 从第三段可推断出 Bauhaus</b> (2011 英二 Text3)</p>
+<div class="q"><b>Q</b> 32. Which of the following can be inferred from Paragraph 3 about Bauhaus?</div>
+<div class="opts"><span class="opt">A.</span> It was founded by Ludwig Mies van der Rohe. <br><span class="opt">B.</span> Its designing concept was affected by World War II. <br><span class="opt">C.</span> Most American architects used to be associated with it. <br><span class="opt">D.</span> It had a great influence upon American architecture.</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Economic condition was only a stimulus for the trend toward efficient living. ②The phrase "less is more" was actually first popularized by a German, the architect Ludwig Mies van der Rohe, who like other people <b class="kw">associated with the Bauhaus</b>, a school of design, emigrated to the United States before World War II and took up posts at American architecture schools. ③<b class="kw">These designers came to exert enormous influence on the course of American architecture</b>, but none more so than Mies.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第三段 —— "<b class="kw">These designers came to exert enormous influence on the course of American architecture.</b>"</div>
+<div class="step">② 解题思路: "<b class="kw">exert enormous influence on American architecture</b>"——这些设计师对美国建筑产生了巨大影响。Mies 和这些人都"<b class="kw">associated with the Bauhaus</b>"，所以 Bauhaus 对美国建筑有巨大影响。对应 D。</div>
+<div class="step">③ 排除干扰项: A — Mies 是"<b class="kw">associated with</b>" Bauhaus，不是"founded"；B — WWII 只是时间线（before），未说影响其理念；C — "Most"夸大范围，原文只说"<b class="kw">these designers</b>"。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.28】</span></p>
+<hr />
+<h3 id="线索全无型">线索全无型</h3>
+<p><b>例: 从最后一段可推断出什么</b> (2007 英一 Text3)</p>
+<div class="q"><b>Q</b> 34. It can be inferred from the last paragraph that _____.</div>
+<p>[A] financial risks tend to outweigh political risks
+[B] the middle class may face greater political challenges
+[C] financial problems may bring about political problems
+[D] financial responsibility is an indicator of political status</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①From the <b class="kw">middle-class</b> family perspective, much of this, understandably, looks far less like an opportunity to exercise more financial responsibility, and a good deal more like a frightening acceleration of the wholesale shift of financial risk onto their already overburdened shoulders. ②<b class="kw">The financial fallout has begun, and the political fallout may not be far behind</b>.
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 最后一段末句 —— "<b class="kw">The financial fallout has begun, and the political fallout may not be far behind.</b>"</div>
+<div class="step">② 解题思路: "<b class="kw">financial fallout...political fallout may not be far behind</b>"（金融影响已开始，政治影响可能不远了）→ 金融问题可能带来政治问题。对应 C。</div>
+<div class="step">③ 排除干扰项: A — "outweigh"（压倒）比较关系原文未提及；B — 范围缩小("<b class="kw">middle class</b>")，原文未限定；D — "<b class="kw">financial responsibility is an indicator</b>"无依据。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.27、考研阅读-7.28（本篇全文见暑假测试卷与 7.29 课件）】</span></p>
+<hr />
+<h2 id="六主旨题例题">六、主旨题例题</h2>
+<h3 id="例1全文主旨2004英二Text2字母排序歧视">例1. 全文主旨 (2004 英二 Text2) —— 字母排序歧视</h3>
+<div class="q"><b>Q</b> Which of the following is true according to the text?</div>
+<p>[A] People with surnames beginning with N to Z are often ill-treated.
+[B] VIPs in the Western world gain a great deal from alphabetism.
+[C] The campaign to eliminate alphabetism still has a long way to go.
+[D] Putting things alphabetically may lead to unintentional bias.</p>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 ①Over the past century, all kinds of unfairness and discrimination have been condemned or made illegal. ②But one insidious form continues to thrive: alphabetism. ③This, for those as yet unaware of such a disadvantage, refers to discrimination against those whose surnames begin with a letter in the lower half of the alphabet.
+<p>第二段 ①s es advantage over Zodiac cars when customers thumb through their phone directories. ②Less well known is the advantage that Adam Abbott has in life over Zoe Zysman. ③English names are fairly evenly spread between the halves of the alphabet. ④Yet a suspiciously large number of top people have surnames beginning with letters between A and K.</p>
+<p>第三段 ①Thus the American president and vice-president have surnames starting with B and C respectively; and 26 of George Bush's predecessors (including his father) had surnames in the first half of the alphabet against just 16 in the second half. ②Even more striking, six of the seven heads of government of the G7 rich countries are alphabetically advantaged (Berlusconi, Blair, Bush, Chirac, Chrétien and Koizumi). ③The world's three top central bankers (Greenspan, Duisenberg and Hayami) are all close to the top of the alphabet, even if one of them really uses Japanese characters. ④As are the world's five richest men (Gates, Buffett, Allen, Ellison and Albrecht).</p>
+<p>第四段 ① So short-sighted Zysman junior gets stuck in the back row, and is rarely asked the improving questions posed by those insensitive teachers.</p>
+<p>第五段 ①The humiliation continues. ②At university graduation ceremonies, the ABCs proudly get their awards first; by the time they reach the Zysmans most people are literally having a ZZZ. Shortlists for job interviews, election ballot papers, lists of conference speakers and attendees: all tend to be drawn up alphabetically, and their recipients lose interest as they plough through them.</p>
+</div></div>
+<p><b>篇章主旨</b>: 全文揭示了一种隐蔽的歧视——按字母排序可能带来无意识的偏见，深入分析了其从儿童时期到成年后的持续影响。</p>
+<details><summary>解析</summary>
+<div class="step">① 定位: 全文章主旨: "字母排序歧视作为一种隐蔽的、无意识偏见的揭示"。</div>
+<div class="step">② 解题思路: 串线各段: P1: 揭示字母排序歧视这一隐蔽歧视 → P2: 姓氏字母排序歧视不为人知 → P3: 举例证明精英姓氏多在字母表前半 → P4: 歧视从儿童时期产生 → P5: 成年后持续存在。D: "按字母排序可能导致无意识的偏见"最精确地概括了全文。</div>
+<div class="step">③ 排除干扰项: A — "<b class="kw">often ill-treated</b>"夸大（原文说的是微妙的不利影响）；B — "<b class="kw">VIPs gain a great deal</b>"过于肯定和片面；C — "<b class="kw">eliminate alphabetism</b>"原文未提消除运动。</div>
+</details>
+
+<p><span class="src">【来源: 真题精读 4.25】</span></p>
+<hr />
+<h2 id="七篇章精读">七、篇章精读</h2>
+<blockquote>
+<p>无忧阶段精读讲解过的完整真题文章。真题精读 4.25/4.26/5.31 三册 + 7.30 两篇。
+7.29 课件中的 2007英一T3 / 2009英一T2 / 2010英二T4 / 2013英二T4 四篇待后续补录。</p>
+</blockquote>
+<h3 id="篇章1报纸公信力危机2001Passage3">篇章1. 报纸公信力危机 (2001 Passage 3)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 ①Why do so many Americans distrust what they read in their newspapers? ②The American Society of Newspaper Editors is trying to answer this painful question. ③The organization is deep into a long self-analysis known as the journalism credibility project.
+<p>原文: 第二段 ①Sad to say, this project has turned out to be mostly low-level findings about factual errors and spelling and grammar mistakes, combined with lots of head-scratching puzzlement about what in the world those readers really want.</p>
+<p>原文: 第三段 ①But the sources of distrust go way deeper. ②Most journalists learn to see the world through a set of standard templates (patterns) into which they plug each day's events. ③In other words, there is a conventional story line in the newsroom culture that provides a backbone and a ready-made narrative structure for otherwise confusing news.</p>
+<p>原文: 第四段 ①There exists a social and cultural disconnect between journalists and their readers. ②In a recent survey, questionnaires were sent to reporters in five middle size cities around the country, plus one large metropolitan area. ③Then residents in these communities were phoned at random and asked the same questions.</p>
+<p>原文: 第六段 ①Reporters tend to be part of a broadly defined social and cultural elite, so their work tends to reflect the conventional values of this elite. ②The astonishing distrust of the news media isn't rooted in inaccuracy or poor reportorial skills but in the daily clash of world views between reporters and their readers.</p>
+<p>原文: 第七段 ①If it did, it would open up its diversity program, now focused narrowly on race and gender, and look for reporters who differ broadly by outlook, values, education, and class.</p>
+</div></div>
+<p><b>文章结构</b>: 提出问题（读者为什么不信任报纸）→ 自查结果（只找到低级错误）→ 深层原因（模板化、文化差异、世界观冲突）→ 解决建议（多元化记者招聘）。</p>
+<div class="q"><b>Q</b> 29. What is the passage mainly about?</div>
+<p>[A] needs of the readers all over the world
+[B] causes of the public disappointment about newspapers
+[C] origins of the declining newspaper industry
+[D] aims of a journalism credibility project</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 全文各段主旨句串线。
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 全文主旨。</div>
+<div class="step">② 解题思路: 文章脉络: 提出问题(不信任)→分析问题(模板化、文化差异、世界观冲突)→解决建议。核心: "causes"——分析公众对报纸失望的原因。对应 B。</div>
+<div class="step">③ 排除干扰项: A — "worldwide"范围过大；C — "declining"降级（原文是信任危机，非行业衰退）；D — "aims"仅涉及前两段。</div>
+</details>
+
+<p><span class="src">【来源: 真题精读 4.25】</span></p>
+<hr />
+<h3 id="篇章2反智主义在美国2004Text4">篇章2. 反智主义在美国 (2004 Text 4)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 ①Americans today don't place a very high value on intellect. ②Our heroes are athletes, entertainers, and entrepreneurs, not scholars. ③Even our schools are where we send our children to get a practical education—not to pursue knowledge for the sake of knowledge. ④Symptoms of pervasive anti-intellectualism in our schools aren't difficult to find.
+<p>原文: 第二段 ①"Schools have always been in a society where practical is more important than intellectual," says education writer Diane Ravitch. ②"Schools could be a counterbalance." ③Ravitch's latest book, Left Back: A Century of Failed School Reforms, traces the roots of anti-intellectualism in our schools, concluding they are anything but a counterbalance to the American distaste for intellectual pursuits.</p>
+<p>原文: 第三段 ①But they (schools) could and should be. ②Encouraging kids to reject the life of the mind leaves them vulnerable to exploitation and control. ③Without the ability to think critically, to defend their ideas and understand the ideas of others, they cannot fully participate in our democracy. ④Continuing along this path, says writer Earl Shorris, "We will become a second-rate country. ⑤We will have a less civil society."</p>
+</div></div>
+<p><b>文章结构</b>: P1: 美国人不重视才智 → P2: 学校本该是制衡力却不是 → P3: 学校反智的危害 → P4: 才智被视为权力/特权的象征 → P5: 反智主义的文化支持 → P6: 才智 vs 天资的区分 → P7: 学校依旧不认可才智。</p>
+<div class="q"><b>Q</b> 37. We can learn from the text that Americans have a history of _____.</div>
+<p>[A] undervaluing intellect
+[B] favoring intellectualism
+[C] supporting school reform
+[D] suppressing native intelligence</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第四段 —— "<b class="kw">From the beginning of our history, our democratic and populist urges have driven us to reject anything that smells of elitism.</b>"
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段 —— "<b class="kw">From the beginning of our history, our democratic and populist urges have driven us to reject anything that smells of elitism.</b>"</div>
+<div class="step">② 解题思路: 美国人"<b class="kw">from the beginning of our history</b>"拒绝精英主义(才智被视为精英主义)。"<b class="kw">Practicality, common sense, and native intelligence have been considered more noble qualities than anything you could learn from a book.</b>" → 有低估才智的历史。对应 A: undervaluing intellect。</div>
+<div class="step">③ 排除干扰项: B — 与全文论调相反；C — "<b class="kw">supporting school reform</b>"未涉及；D — "<b class="kw">suppressing native intelligence</b>"相反——原文说 native intelligence 被重视。</div>
+</details>
+
+<p><span class="src">【来源: 真题精读 4.25】</span></p>
+<hr />
+<h3 id="篇章3IQ测试的局限性2007Text2">篇章3. IQ 测试的局限性 (2007 Text 2)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 ①For the past several years, the Sunday newspaper supplement Parade has featured a column called "Ask Marilyn." People are invited to query Marilyn vos Savant, who at age 10 had tested at a mental level of someone about 23 years old; that gave her an IQ of 228—the highest score ever recorded. ②IQ tests ask you to complete verbal and visual analogies, to envision paper after it has been folded and cut, and to deduce numerical sequences, among other similar tasks. ③So it is a bit confusing when vos Savant fields such queries from the average Joe (whose IQ is 100) as, What's the difference between love and fondness? ④Or what is the nature of luck and coincidence? ⑤It's not obvious how the capacity to visualize objects and to figure out numerical patterns suits one to answer questions that have eluded some of the best poets and philosophers.
+<p>原文: 第三段 ①The defining term of intelligence in humans still seems to be the IQ score, even though IQ tests are not given as often as they used to be. ②The test comes primarily in two forms: the Stanford-Binet Intelligence Scale and the Wechsler Intelligence Scales (both come in adult and children's version). ③Generally costing several hundred dollars, they are usually given only by psychologists, although variations of them populate bookstores and the World Wide Web. ④Superhigh scores like vos Savant's are no longer possible, because scoring is now based on a statistical population distribution among age peers, rather than simply dividing the mental age by the chronological age and multiplying by 100. ⑤Other standardized tests, such as the Scholastic Assessment Test (SAT) and the Graduate Record Exam (GRE), capture the main aspects of IQ tests.</p>
+<p>原文: 第四段 ①Such standardized tests may not assess all the important elements necessary to succeed in school and in life, argues Robert J. Sternberg. ②In his article "How Intelligent Is Intelligence Testing?", Sternberg notes that traditional tests best assess analytical and verbal skills but fail to measure creativity and practical knowledge, components also critical to problem solving and life success. ③Moreover, IQ tests do not necessarily predict so well once populations or situations change. ④Research has found that IQ predicted leadership skills when the tests were given under low-stress conditions, but under high-stress conditions, IQ was negatively correlated with leadership—that is, it predicted the opposite. ⑤Anyone who has toiled through SAT will testify that test-taking skill also matters, whether it's knowing when to guess.</p>
+</div></div>
+<p><b>文章结构</b>: P1: 通过 Marilyn 例子引出对 IQ 测试的质疑 → P2: 智力不止是测试分数 → P3: IQ 的定义方式和测试形式 → P4: 标准化测试的三大局限。</p>
+<div class="q"><b>Q</b> 29. We can conclude from the last paragraph that _____.</div>
+<p>[A] test scores may not be reliable indicators of one's ability
+[B] IQ scores and SAT results are highly correlated
+[C] testing involves a lot of guesswork
+[D] traditional tests are out of date</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第四段全文结论。
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段全文结论。</div>
+<div class="step">② 解题思路: Sternberg 的三点: ①测试不全面(缺失创造力和实践知识) ②结果不稳定(压力环境影响) ③应试技巧影响。总结: 测试分数可能不是可靠的能力指标。对应 A。</div>
+<div class="step">③ 排除干扰项: B — "<b class="kw">highly correlated</b>"原文未提及（只提 SAT 体现了 IQ 的主要方面）；C — "<b class="kw">a lot of guesswork</b>"以偏概全；D — "<b class="kw">out of date</b>"太极端。</div>
+</details>
+
+<p><span class="src">【来源: 真题精读 4.26】</span></p>
+<hr />
+<h3 id="篇章4学术期刊出版的变革2008Text2">篇章4. 学术期刊出版的变革 (2008 Text 2)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 ①It used to be so straightforward. ②A team of researchers working together in the laboratory would submit the results of their research to a journal. ③A journal editor would then remove the author's names and affiliations from the paper and send it to their peers for review. ④Depending on the comments received, the editor would accept the paper for publication or decline it. ⑤Copyright rested with the journal publisher, and researchers seeking knowledge of the results would have to subscribe to the journal.
+<p>原文: 第二段 ①No longer. || The Internet — and pressure from funding agencies, who are questioning why commercial publishers are making money from government–funded research by restricting access to it — is making access to scientific results a reality. || The Organization for Economic Co-operation and Development (OECD) has just issued a report describing the far-reaching consequences of this. ②The report, by John Houghton of Victoria University in Australia and Graham Vickery of the OECD, makes heavy reading for publishers who have, so far, made handsome profits. || But it goes further than that. ③It signals a change in what has, until now, been a key element of scientific endeavor.</p>
+<p>原文: 第三段 ①The value of knowledge and the return on the public investment in research depends, in part, upon wide distribution and ready access. ②It is big business. ③In America, the core scientific publishing market is estimated at between \$7 billion and \$11 billion. ④The International Association of Scientific, Technical and Medical Publishers says that there are more than 2,000 publishers worldwide specializing in these subjects. ⑤They publish more than 1.2 million articles each year in some 16,000 journals.</p>
+</div></div>
+<p><b>文章结构</b>: P1: 过去期刊出版的传统流程 → P2: 互联网改变了获取科研成果的方式 → P3: 学术出版是巨大的商业市场。</p>
+<div class="q"><b>Q</b> 26. In the first paragraph, the author discusses _____.</div>
+<p>[A] the background information of journal editing
+[B] the publication routine of laboratory reports
+[C] the relations of authors with journal publishers
+[D] the traditional process of journal publication</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第一段全文。
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段全文。</div>
+<div class="step">② 解题思路: "<b class="kw">It used to be so straightforward</b>" → "<b class="kw">would submit...would remove...would accept...Copyright rested with...</b>"——整段用 would 描述过去的常规流程。D: traditional process of journal publication 精准概括。used to be = traditional。</div>
+<div class="step">③ 排除干扰项: A — "editing"仅是流程的一步；B — "<b class="kw">laboratory reports</b>"缩小范围(原文是 research results)；C — "<b class="kw">relations of authors with publishers</b>"片面。</div>
+</details>
+
+<p><span class="src">【来源: 真题精读 4.26】</span></p>
+<hr />
+<h3 id="篇章5科学奖项的反思2014英一Text3">篇章5. 科学奖项的反思 (2014 英一 Text 3)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 ①The US\$3-million Fundamental Physics Prize is indeed an interesting experiment, as Alexander Polyakov said when he accepted this year's award in March. ②And it is far from the only one of its type. ③As a News Feature article in Nature discusses, a string of lucrative awards for researchers have joined the Nobel Prizes in recent years. ④Many, like the Fundamental Physics Prize, are funded from the telephone-number-sized bank accounts of Internet entrepreneurs. ⑤These benefactors have succeeded in their chosen fields, they say, and they want to use their wealth to draw attention to those who have succeeded in science.
+<p>原文: 第二段 ①What's not to like? ②Quite a lot, according to a handful of scientists quoted in the News Feature. ③You cannot buy class, as the old saying goes, and these upstart entrepreneurs cannot buy their prizes the prestige of the Nobels. ④The new awards are an exercise in self-promotion for those behind them, say scientists. ⑤They could distort the achievement-based system of peer-review-led research. ⑥They could cement the status quo of peer-reviewed research. ⑦They do not fund peer-reviewed research. ⑧They perpetuate the myth of the lone genius.</p>
+<p>原文: 第三段 ①The goals of the prize-givers seem as scattered as the criticism. ②Some want to shock, others to draw people into science, or to better reward those who have made their careers in research.</p>
+<p>原文: 第四段 ①As Nature has pointed out before, there are some legitimate concerns about how science prizes — both new and old — are distributed. ②The Breakthrough Prize in Life Sciences, launched this year, takes an unrepresentative view of what the life sciences include. ③But the Nobel Foundation's limit of three recipients per prize, each of whom must still be living, has long been outgrown by the collaborative nature of modern research — as will be demonstrated by the inevitable row over who is ignored when it comes to acknowledging the discovery of the Higgs boson. ④The Nobels were, of course, themselves set up by a very rich individual who had decided what he wanted to do with his own money. ⑤Time, rather than intention, has given them legitimacy.</p>
+<p>原文: 第五段 ①As much as some scientists may complain about the new awards, two things seem clear. ②First, most researchers would accept such a prize if they were offered one. ③Second, it is surely a good thing that the money and attention come to science rather than go elsewhere. ④It is fair to criticize and question the mechanism — that is the culture of research, after all — but it is the prize-givers' money to do with as they please. ⑤It is wise to take such gifts with gratitude and grace.</p>
+</div></div>
+<p><b>文章结构</b>: P1: 新科学奖项涌现（富豪资助、吸引关注）→ P2: 介绍质疑声音（买不来威望、自我推销、扭曲同行评议体系）→ P3: 奖项设立者的目的各异 → P4: 新旧奖项的共同局限（分配不尽合理，希格斯玻色子案例）→ P5: 明确态度——虽有批评但值得接受。</p>
+<div class="q"><b>Q</b> 33. The discovery of the Higgs boson is a typical case which involves _____.</div>
+<p>[A] the joint effort of modern researchers
+[B] controversies over the recipients' status
+[C] the demonstration of research findings
+[D] legitimate concerns over the new prizes</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第四段 ③句 —— "the Nobel Foundation's limit of three recipients per prize... has long been <b class="kw">outgrown by the collaborative nature of modern research</b> — as will be demonstrated by the inevitable row over who is ignored when it comes to acknowledging the discovery of the Higgs boson."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段 ③句。</div>
+<div class="step">② 解题思路: 例证题。希格斯玻色子案例证明"现代科研的协作性"——该发现由全球数千名科学家多年协作完成，而诺贝尔奖至多三人（2013 年仅授予恩格勒与希格斯两人），必然引发"谁被忽视"的争论。对应 A: the joint effort of modern researchers。</div>
+<div class="step">③ 排除干扰项: B — "获奖者身份的争议"是结果而非案例本身的性质；C — "研究发现的展示"太泛；D — "对奖项的合理担忧"是第四段主题，但题干问的是案例"涉及"什么。</div>
+</details>
+
+<div class="q"><b>Q</b> 35. The author believes that the new awards are _____.</div>
+<p>[A] harmful to the culture of research
+[B] acceptable despite the criticism
+[C] subject to undesirable changes
+[D] unworthy of public attention</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第五段 ①②③句 —— "<b class="kw">As much as some scientists may complain about the new awards, two things seem clear</b>. ②First, most researchers would accept such a prize if they were offered one. ③Second, it is surely a good thing that the money and attention come to science rather than go elsewhere."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第五段 —— 作者最终态度。</div>
+<div class="step">② 解题思路: "<b class="kw">As much as some scientists may complain...most researchers would accept such a prize...it is surely a good thing...it is wise to take such gifts with gratitude and grace.</b>" → 虽有批评，但总体可以接受。对应 B: acceptable despite the criticism。</div>
+<div class="step">③ 排除干扰项: A — 与"<b class="kw">good thing</b>"矛盾；C — "<b class="kw">subject to undesirable changes</b>"无依据；D — 全文在肯定其价值。</div>
+</details>
+
+<p><span class="src">【来源: 真题精读 5.31】</span></p>
+<hr />
+<h3 id="篇章6人机赛跑2014英二Text3">篇章6. 人机赛跑 (2014 英二 Text3)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 ①The concept of man versus machine is at least as old as the industrial revolution, but this phenomenon tends to be most acutely felt during economic downturns and fragile recoveries. ②And yet, it would be a mistake to think we are right now simply experiencing the painful side of a boom and bust cycle. ③Certain jobs have gone away for good, outmoded by machines. ④Since technology has such an insatiable appetite for eating up human jobs, this phenomenon will continue to restructure our economy in ways we cannot immediately foresee.
+<p>原文: 第四段 ①Hagel says we have designed jobs in the U.S. that tend to be "tightly scripted" and "highly standardized" ones that leave no room for "individual initiative or creativity". ②In short, these are the types of jobs that machines can perform much better at than human beings. ③That is how we have put a giant target sign on the backs of American workers, Hagel says.</p>
+<p>原文: 第五段 ①It's time to reinvent the formula for how work is conducted, since we are still relying on a very 20th century notion of work, Hagel says. ②In our rapidly changing economy, we more than ever need people in the workplace who can take initiative and exercise their imagination "to respond to unexpected events." That is not something machines are good at. ③They are designed to perform very predictable activities.</p>
+<p>原文: 第六段 ①As Hagel notes, Brynjolfsson and McAfee indeed touched on this point in their book. ②We need to reframe race against the machine as race with the machine. ③In other words, we need to look at the ways in which machines can augment human labor rather than replace it. ④So then the problem is not really about technology, but rather, "how do we innovate our institutions and our work practices?"</p>
+</div></div>
+<p><b>篇章主旨</b>: 文章讨论人机矛盾，指出根本问题在于工作模式而非技术本身，最终呼吁变"人机赛跑"为"人机同跑"。</p>
+<div class="q"><b>Q</b> Which of the following could be the most appropriate title for the text?</div>
+<p>[A] How to Innovate Our Work Practices
+[B] Machines Will Replace Human Labor
+[C] Can We Win the Race Against Machines
+[D] Economic Downturns Stimulate Innovations</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 各段主旨串线。
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 串线: P1: 人机矛盾加剧 → P2: 技术淘汰工作 → P3: 上述观点有缺陷 → P4: 根本原因是工作模式问题 → P5: 应重新设计工作模式 → P6: 从"与机器竞争"转为"与机器协作"。</div>
+<div class="step">② 解题思路: 文章的核心结论: "<b class="kw">how do we innovate our institutions and our work practices?</b>" 对应 A。</div>
+<div class="step">③ 排除干扰项: B — "机器将替代人类劳动"只是文章讨论的起点而非结论；C — 问句"我们能赢吗"太窄；D — "经济衰退刺激创新"不是文章核心。</div>
+</details>
+
+<p><span class="src">【来源: 真题精读 5.31】</span></p>
+<hr />
+<h3 id="篇章72011英语一Text4育儿与幸福感">篇章7. 2011 英语一 Text 4 · 育儿与幸福感</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 ①It's no surprise that Jennifer Senior's insightful, provocative magazine cover story, "I love My Children, I Hate My Life," is arousing much chatter—nothing gets people talking like the suggestion that child rearing is anything less than a completely fulfilling, life-enriching experience. ②Rather than concluding that children make parents either happy or miserable, Senior suggests we need to redefine happiness: instead of thinking of it as something that can be measured by moment-to-moment joy, we should consider being happy as a past-tense condition. ③Even though the day-to-day experience of raising kids can be soul-crushingly hard, Senior writes that "the very things that in the moment dampen our moods can later be sources of intense gratification and delight."
+<p>原文: 第二段 ①The magazine cover showing an attractive mother holding a cute baby is hardly the only Madonna-and-child image on newsstands this week. ②There are also stories about newly adoptive—and newly single—mom Sandra Bullock, as well as the usual "Jennifer Aniston is pregnant" news. ③Practically every week features at least one celebrity mom, or mom-to-be, smiling on the newsstands.</p>
+<p>原文: 第三段 ①In a society that so persistently celebrates procreation, is it any wonder that admitting you regret having children is equivalent to admitting you support kitten-killing? ②It doesn't seem quite fair, then, to compare the regrets of parents to the regrets of the childless. ③Unhappy parents rarely are provoked to wonder if they shouldn't have had kids, but unhappy childless folks are bothered with the message that children are the single most important thing in the world: obviously their misery must be a direct result of the gaping baby-size holes in their lives.</p>
+<p>原文: 第四段 ①Of course, the image of parenthood that celebrity magazines like Us Weekly and People present is hugely unrealistic, especially when the parents are single mothers like Bullock. ②According to several studies concluding that parents are less happy than childless couples, single parents are the least happy of all. ③No shock there, considering how much work it is to raise a kid without a partner to lean on; yet to hear Sandra and Britney tell it, raising a kid on their "own" (read: with round-the-clock help) is a piece of cake.</p>
+<p>原文: 第五段 ①It's hard to imagine that many people are dumb enough to want children just because Reese and Angelina make it look so glamorous: most adults understand that a baby is not a haircut. ②But it's interesting to wonder if the images we see every week of stress-free, happiness-enhancing parenthood aren't in some small, subconscious way contributing to our own dissatisfactions with the actual experience, in the same way that a small part of us hoped getting "the Rachel" might make us look just a little bit like Jennifer Aniston.</p>
+</div></div>
+<p><b>文章结构</b>: P1: 引出 Senior 观点——幸福是"过去时"的回顾式幸福 → P2: 名人妈妈报道泛滥 → P3: 社会赞美生育，无子女者被舆论绑架 → P4: 名人形象极不真实（单亲最不幸福）→ P5: 完美育儿形象在悄悄加深我们对真实体验的不满。</p>
+<div class="q"><b>Q</b> 36. Jennifer Senior suggests in her article that raising a child can bring ______.</div>
+<div class="opts"><span class="opt">A.</span> temporary delight <br><span class="opt">B.</span> enjoyment in progress <br><span class="opt">C.</span> happiness in retrospect <br><span class="opt">D.</span> lasting reward</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第一段 ②③句 —— "we should consider being happy as a <b class="kw">past-tense condition</b>"；"the very things that in the moment dampen our moods can later be sources of intense gratification and delight."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 ②③句。</div>
+<div class="step">② 解题思路: 同义改写。幸福不是 moment-to-moment joy → 而是 past-tense condition → 育儿时痛苦的事日后成为快乐源泉。in retrospect = 回顾式的。对应 C: happiness in retrospect。</div>
+<div class="step">③ 排除干扰项: A — temporary delight 是当下感受；B — enjoyment in progress 也是当下；D — lasting reward 偷换"回顾式幸福"。</div>
+</details>
+
+<div class="q"><b>Q</b> 37. We learn from Paragraph 2 that ______.</div>
+<p>[A] celebrity moms are a permanent source for gossip
+[B] single mothers with babies deserve greater attention
+[C] news about pregnant celebrities is entertaining
+[D] having children is highly valued by the public</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第二段 ①③句 —— "hardly the only Madonna-and-child image on newsstands this week"；"<b class="kw">Practically every week features at least one celebrity mom, or mom-to-be, smiling on the newsstands</b>."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第二段。</div>
+<div class="step">② 解题思路: 每周都有名人妈妈上封面 → 社会"celebrates procreation"（赞美生育，第三段呼应）→ having children is highly valued by the public。对应 D。</div>
+<div class="step">③ 排除干扰项: A — "gossip 的永久来源"无依据；B — "deserve greater attention"是主观判断；C — "entertaining"原文未评论。</div>
+</details>
+
+<div class="q"><b>Q</b> 38. It is suggested in Paragraph 3 that childless folks ______.</div>
+<p>[A] are constantly exposed to criticism
+[B] are largely ignored by the media
+[C] fail to fulfill their social responsibilities
+[D] are less likely to be satisfied with their life</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第三段 ①③句 —— "admitting you regret having children is equivalent to admitting you support kitten-killing"；"<b class="kw">unhappy childless folks are bothered with the message that children are the single most important thing in the world</b>."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第三段。</div>
+<div class="step">② 解题思路: 无子女者的不幸被归因为"生活中的空洞"——社会用"孩子最重要"的信息轰炸他们。对应 A: are constantly exposed to criticism。</div>
+<div class="step">③ 排除干扰项: B — 与"媒体充满名人孕照"相反；C — "社会责任感"无中生有；D — "对生活满意度低"是处境描述而非社会强加的评价。</div>
+</details>
+
+<div class="q"><b>Q</b> 39. According to Paragraph 4, the message conveyed by celebrity magazines is _____.</div>
+<div class="opts"><span class="opt">A.</span> soothing <br><span class="opt">B.</span> ambiguous <br><span class="opt">C.</span> compensatory <br><span class="opt">D.</span> misleading</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第四段 ①句 —— "the image of parenthood that celebrity magazines present is <b class="kw">hugely unrealistic</b>."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段 ①句。</div>
+<div class="step">② 解题思路: 同义替换。unrealistic = misleading（误导性的）。名人宣称独自带娃 is a piece of cake，实际上有全天候帮手。对应 D。</div>
+<div class="step">③ 排除干扰项: A — soothing 与批评语气相反；B — ambiguous 原文态度明确；C — compensatory 无依据。</div>
+</details>
+
+<div class="q"><b>Q</b> 40. Which of the following can be inferred from the last paragraph?</div>
+<p>[A] Having children contributes little to the glamour of celebrity moms.
+[B] Celebrity moms have influenced our attitude towards child rearing.
+[C] Having children intensifies our dissatisfaction with life.
+[D] We sometimes neglect the happiness from child rearing.</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第五段 ②句 —— "the images we see every week of stress-free, happiness-enhancing parenthood aren't in some small, subconscious way <b class="kw">contributing to our own dissatisfactions with the actual experience</b>."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第五段 ②句。</div>
+<div class="step">② 解题思路: 每周看到的完美育儿形象 → 潜意识加深我们对真实体验的不满 → 隐含: 名人妈妈影响了我们的育儿观。对应 B。</div>
+<div class="step">③ 排除干扰项: A — 与"want children just because Reese and Angelina make it look so glamorous"矛盾；C — 是"形象"加剧不满，不是孩子本身；D — 与"不满真实体验"相反。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.30（8月4日暑假课又精讲此篇，见暑假册篇章1，含课堂讲解）】</span></p>
+<hr />
+<h3 id="篇章82011英语二Text4欧盟危机与德法之争">篇章8. 2011 英语二 Text 4 · 欧盟危机与德法之争</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 ①Will the European Union make it? ②The question would have sounded strange not long ago. ③Now even the project's greatest cheerleaders talk of a continent facing a "Bermuda triangle" of debt, population decline and lower growth.
+<p>原文: 第二段 ①As well as those chronic problems, the EU faces an acute crisis in its economic core, the 16 countries that use the single currency. ②Markets have lost faith that the euro zone's economies, weaker or stronger, will one day converge thanks to the discipline of sharing a single currency, which denies uncompetitive members the quick fix of devaluation.</p>
+<p>原文: 第三段 ①Yet the debate about how to save Europe's single currency from disintegration is stuck. ②It is stuck because the euro zone's dominant powers, France and Germany, agree on the need for greater harmonization within the euro zone, but disagree about what to harmonise.</p>
+<p>原文: 第四段 ①Germany thinks the euro must be saved by stricter rules on borrowing, spending and competitiveness, backed by quasi-automatic sanctions for governments that do not obey. ②These might include threats to freeze EU funds for poorer regions and EU mega-projects and even the suspension of a country's voting rights in EU ministerial councils. ③It insists that economic co-ordination should involve all 27 members of the EU club, among whom there is a small majority for free-market liberalism and economic rigour; in the inner core alone, Germany fears, a small majority favour French interference.</p>
+<p>原文: 第五段 ①A "southern" camp headed by France wants something different. ②"European economic government" within an inner core of euro-zone members. ③Translated, that means politicians intervening in monetary policy and a system of redistribution from richer to poorer members, via cheaper borrowing for governments through common Eurobonds or complete fiscal transfers. ④Finally, figures close to the France government have murmured, euro-zone members should agree to some fiscal and social harmonization: e.g., curbing competition in corporate-tax rates or labour costs.</p>
+<p>原文: 第六段 ①It is too soon to write off the EU. ②It remains the world's largest trading block. ③At its best, the European project is remarkably liberal: built around a single market of 27 rich and poor countries, its internal borders are far more open to goods, capital and labour than any comparable trading area. ④It is an ambitious attempt to blunt the sharpest edges of globalization, and make capitalism benign.</p>
+</div></div>
+<p><b>文章结构</b>: P1: 欧盟陷入"百慕大三角"困境 → P2: 核心区急性危机 → P3: 拯救欧元的争论卡壳（德法原则一致、具体分歧）→ P4: 德国方案（严规+制裁+27国协调）→ P5: 法国南欧阵营方案（核心内"经济政府"+转移支付）→ P6: 作者表态——不要过早看衰欧盟。</p>
+<div class="q"><b>Q</b> 36. The EU is faced with so many problems that_______.</div>
+<p>[A] it has more or less lost faith in markets
+[B] even its supporters begin to feel concerned
+[C] some of its member countries plan to abandon euro
+[D] it intends to deny the possibility of devaluation</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第一段 ③句 —— "<b class="kw">Now even the project's greatest cheerleaders talk of a continent facing a 'Bermuda triangle'</b> of debt, population decline and lower growth."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第一段 ③句。</div>
+<div class="step">② 解题思路: 同义改写。greatest cheerleaders（最狂热的支持者）= supporters；连支持者都开始谈论困境。对应 B: even its supporters begin to feel concerned。</div>
+<div class="step">③ 排除干扰项: A — "lost faith in markets"是第二段主语为 Markets 的内容；C — "abandon euro"未提及；D — "deny devaluation"是机制描述，非问题本身。</div>
+</details>
+
+<div class="q"><b>Q</b> 37. The debate over the EU's single currency is stuck because the dominant powers_______ .</div>
+<p>[A] are competing for the leading position
+[B] are busy handling their own crises
+[C] fail to reach an agreement on harmonization
+[D] disagree on the steps towards disintegration</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第三段 ②句 —— "<b class="kw">agree on the need for greater harmonization within the euro zone, but disagree about what to harmonise</b>."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第三段 ②句。</div>
+<div class="step">② 解题思路: 原因题。都同意需要进一步协调，但对协调什么有分歧 → 未达成一致。对应 C。</div>
+<div class="step">③ 排除干扰项: A — "竞争领导地位"未提及；B — "忙于处理自身危机"无依据；D — "解体步骤"偷换概念。</div>
+</details>
+
+<div class="q"><b>Q</b> 38. To solve the euro problem, Germany proposed that_______ .</div>
+<p>[A] EU funds for poor regions be increased
+[B] stricter regulations be imposed
+[C] only core members be involved in economic co-ordination
+[D] voting rights of the EU members be guaranteed</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第四段 ①②③句 —— "the euro must be saved by <b class="kw">stricter rules</b>... backed by quasi-automatic sanctions"；"economic co-ordination should involve <b class="kw">all 27 members</b>".
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第四段。</div>
+<div class="step">② 解题思路: 德国方案三要素: ①stricter rules ②quasi-automatic sanctions ③27国全部参与。对应 B: stricter regulations be imposed。</div>
+<div class="step">③ 排除干扰项: A — "增加对穷国资金"与"威胁冻结资金"相反；C — "仅核心成员"与"all 27 members"相反；D — "投票权受保障"与"threats to suspension of voting rights"相反。</div>
+</details>
+
+<div class="q"><b>Q</b> 39. The French proposal of handling the crisis implies that _______.</div>
+<p>[A] poor countries are more likely to get funds
+[B] strict monetary policy will be applied to poor countries
+[C] loans will be readily available to rich countries
+[D] rich countries will basically control Eurobonds</p>
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第五段 ③句 —— "a system of <b class="kw">redistribution from richer to poorer members</b>, via cheaper borrowing for governments through common Eurobonds or complete fiscal transfers."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第五段 ③句。</div>
+<div class="step">② 解题思路: 推断题。法国方案 = "从富国向穷国再分配" → 穷国更容易获得资金。对应 A。</div>
+<div class="step">③ 排除干扰项: B — "对穷国紧缩货币"混搭臆造；C — "富国轻易获贷"方向相反；D — "富国控制 Eurobonds"无依据。</div>
+</details>
+
+<div class="q"><b>Q</b> 40. Regarding the future of the EU, the author seems to feel _______.</div>
+<div class="opts"><span class="opt">A.</span> pessimistic <br><span class="opt">B.</span> desperate <br><span class="opt">C.</span> conceited <br><span class="opt">D.</span> hopeful</div>
+
+<div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第六段 ①④句 —— "<b class="kw">It is too soon to write off the EU</b>."；"an ambitious attempt to <b class="kw">blunt the sharpest edges of globalization, and make capitalism benign</b>."
+</div></div>
+<details><summary>解析</summary>
+<div class="step">① 定位: 第六段。</div>
+<div class="step">② 解题思路: 态度题。"too soon to write off" + "ambitious attempt...make capitalism benign" → 整体肯定、抱有希望。对应 D: hopeful。</div>
+<div class="step">③ 排除干扰项: A — pessimistic 与前文肯定评价矛盾；B — desperate 程度过重且相反；C — conceited 是评价对象，不是作者态度。</div>
+</details>
+
+<p><span class="src">【来源: 考研阅读-7.30（8月4日暑假课又精讲此篇，见暑假册篇章2，含课堂讲解）】</span></p>
+<hr />
+<p><em>无忧册完 —— 例题与篇章全部收录。</em></p></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="英语_阅读_暑假_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>英语 · 阅读_暑假_例题</b></span></a><a class="next" href="英语_翻译.html"><span class="pg-t"><small>下一篇</small><b>英语 · 翻译</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

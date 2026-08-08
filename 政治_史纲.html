@@ -1,0 +1,2527 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>政治 · 史纲</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">🏛️ 政治</div><a class="b" href="政治_马原.html">马原</a><a class="c x" href="政治_马原_例题.html">▸ 例题集</a><a class="b on" aria-current="page" href="政治_史纲.html">史纲</a><a class="c x" href="政治_史纲_例题.html">▸ 例题集</a><a class="c" href="政治_史纲.html#一近代中国国情与两大历史任务">一、近代中国国情与两大历史任务</a><a class="d" href="政治_史纲.html#11鸦片战争前的中国与世界">1.1 鸦片战争前的中国与世界</a><a class="d" href="政治_史纲.html#12半殖民地半封建社会的性质">1.2 半殖民地半封建社会的性质</a><a class="d" href="政治_史纲.html#13阶级关系的变动">1.3 阶级关系的变动</a><a class="d" href="政治_史纲.html#14两大主要矛盾与两大历史任务">1.4 两大主要矛盾与两大历史任务</a><a class="c" href="政治_史纲.html#二西方列强的侵略与中国人民的反抗">二、西方列强的侵略与中国人民的反抗</a><a class="d" href="政治_史纲.html#21列强侵略的四种方式">2.1 列强侵略的四种方式</a><a class="d" href="政治_史纲.html#22不平等条约体系">2.2 不平等条约体系</a><a class="d" href="政治_史纲.html#23中国人民的反侵略斗争">2.3 中国人民的反侵略斗争</a><a class="d" href="政治_史纲.html#24反侵略战争失败的原因">2.4 反侵略战争失败的原因</a><a class="d" href="政治_史纲.html#25列强瓜分中国图谋的破产">2.5 列强瓜分中国图谋的破产</a><a class="d" href="政治_史纲.html#26民族意识的觉醒">2.6 民族意识的觉醒</a><a class="c" href="政治_史纲.html#三旧民主主义革命时期1840-1919">三、旧民主主义革命时期 (1840-1919)</a><a class="d" href="政治_史纲.html#31农民阶级的探索太平天国运动1851-1864">3.1 农民阶级的探索: 太平天国运动 (1851-1864)</a><a class="d" href="政治_史纲.html#32地主阶级的自救洋务运动19世纪60-90年代">3.2 地主阶级的自救: 洋务运动 (19 世纪 60-90 年代)</a><a class="d" href="政治_史纲.html#33维新变法戊戌变法与辛亥革命">3.3 维新变法(戊戌变法)与辛亥革命</a><a class="c" href="政治_史纲.html#四新民主主义革命时期1919-1949">四、新民主主义革命时期 (1919-1949)</a><a class="d" href="政治_史纲.html#41新文化运动与五四运动">4.1 新文化运动与五四运动</a><a class="d" href="政治_史纲.html#42中国共产党的成立">4.2 中国共产党的成立</a><a class="d" href="政治_史纲.html#43国共合作与大革命1924-1927">4.3 国共合作与大革命 (1924-1927)</a><a class="d" href="政治_史纲.html#44土地革命战争与新道路1927-1937">4.4 土地革命战争与新道路 (1927-1937)</a><a class="d" href="政治_史纲.html#45抗日战争1931-1945">4.5 抗日战争 (1931-1945)</a><a class="d" href="政治_史纲.html#46解放战争1945-1949">4.6 解放战争 (1945-1949)</a><a class="c" href="政治_史纲.html#五社会主义革命与建设1949-1978">五、社会主义革命与建设 (1949-1978)</a><a class="d" href="政治_史纲.html#51新中国成立与政权巩固">5.1 新中国成立与政权巩固</a><a class="d" href="政治_史纲.html#52过渡时期总路线与三大改造">5.2 过渡时期总路线与三大改造</a><a class="d" href="政治_史纲.html#53社会主义基本制度的确立">5.3 社会主义基本制度的确立</a><a class="d" href="政治_史纲.html#54社会主义建设探索">5.4 社会主义建设探索</a><a class="c" href="政治_史纲.html#六改革开放与新时代1978-至今">六、改革开放与新时代 (1978-至今)</a><a class="d" href="政治_史纲.html#61历史性的伟大转折">6.1 历史性的伟大转折</a><a class="d" href="政治_史纲.html#62中国特色社会主义的开创与发展">6.2 中国特色社会主义的开创与发展</a><a class="c" href="政治_史纲.html#七高频专题">七、高频专题</a><a class="d" href="政治_史纲.html#71重要会议时间轴">7.1 重要会议时间轴</a><a class="d" href="政治_史纲.html#72统一战线演变">7.2 统一战线演变</a><a class="d" href="政治_史纲.html#73土地政策演变">7.3 土地政策演变</a><a class="d" href="政治_史纲.html#74重要著作与文章">7.4 重要著作与文章</a><a class="c" href="政治_史纲.html#八易错点">八、易错点</a><a class="d" href="政治_史纲.html#81时间线混淆">8.1 时间线混淆</a><a class="d" href="政治_史纲.html#82会议政策张冠李戴">8.2 会议/政策张冠李戴</a><a class="d" href="政治_史纲.html#83著作归属">8.3 著作归属</a><a class="d" href="政治_史纲.html#84性质判断">8.4 性质判断</a><a class="d" href="政治_史纲.html#85重要区分">8.5 重要区分</a><a class="c" href="政治_史纲.html#九知识连接">九、知识连接</a><a class="d" href="政治_史纲.html#91与马原的连接">9.1 与马原的连接</a><a class="d" href="政治_史纲.html#92与毛中特的连接">9.2 与毛中特的连接</a><a class="d" href="政治_史纲.html#93分析题素材历史和人民为什么选择了马克思主义中国共产党社会主义">9.3 分析题素材: &quot;历史和人民为什么选择了马克思主义/中国共产党/社会主义?&quot;</a><a class="b" href="政治_毛中特.html">毛中特</a><a class="c x" href="政治_毛中特_例题.html">▸ 例题集</a><a class="b" href="政治_习概.html">习概</a><a class="c x" href="政治_习概_例题.html">▸ 例题集</a><a class="b" href="政治_思修.html">思修</a><a class="b" href="政治_无忧0721_测试卷.html">无忧0721_测试卷</a><a class="b" href="政治_暑期0804_马原测试卷.html">暑期0804_马原测试卷</a></nav>
+<div id="progress"></div>
+<main data-subj="zhengzhi"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>政治 · 史纲</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>史纲</h1><div class="board-meta">🏛️ 政治 · <span class="pill">理论笔记</span><span class="pill">9 节</span></div><blockquote>
+<p>阶段: 无忧 | 覆盖课件 8 份:
+史纲--第一次课、史纲--第二次课、史纲-第二次课、史纲-第三次课、史纲--第四次课、史纲--第五次课、史纲-结课测试卷、史纲结课测试-答题卡
+📖 例题全量见: <a href="政治_史纲_例题.html">史纲 · 例题集</a></p>
+</blockquote>
+<hr />
+<h2 id="一近代中国国情与两大历史任务">一、近代中国国情与两大历史任务</h2>
+<blockquote>
+<p>为什么学史纲要先理解"半殖民地半封建社会"这个国情? 因为这是近代一切问题的总根源——不理解社会性质, 就看不懂为什么各路救国方案都失败了, 也看不懂为什么最后是中国共产党走出来。</p>
+</blockquote>
+<h3 id="11鸦片战争前的中国与世界">1.1 鸦片战争前的中国与世界</h3>
+<p><b><span class="mk biz">必考</span></b> 鸦片战争是中国近代史的起点, 但战争前的中西对比才是理解"为什么挨打"的关键。</p>
+<p><b>中国封建社会的基本特征</b> (围绕"地主"展开):</p>
+<table>
+<thead>
+<tr>
+<th>领域</th>
+<th>特征</th>
+<th>核心</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>经济</td>
+<td>封建地主土地所有制经济占主导</td>
+<td>地主占有土地</td>
+</tr>
+<tr>
+<td>政治</td>
+<td>高度中央集权的封建君主专制制度</td>
+<td>皇权至上</td>
+</tr>
+<tr>
+<td>社会</td>
+<td>族权+政权结合的宗法等级制, 核心是宗族家长制, 突出君权、父权、夫权</td>
+<td>宗法制</td>
+</tr>
+<tr>
+<td>文化</td>
+<td>以儒家思想为核心, 融入释道法各家; 实行文化专制</td>
+<td>儒家正统</td>
+</tr>
+</tbody>
+</table>
+<p>总特征: <b>封建衰败, 闭关锁国</b>。</p>
+<p><b>同时期的西方</b>: 1640 年英国资产阶级革命 -&gt; 17-18 世纪英法美建立资产阶级政权 -&gt; 18 世纪中叶至 19 世纪中叶工业革命(自由资本主义) -&gt; 19 世纪末第二次工业革命(帝国主义, 资本输出+殖民扩张)。</p>
+<p><b>关键逻辑</b>: 西方在上升, 中国在衰落。西方需要原料和市场 -&gt; 殖民扩张 -&gt; 中国成为目标。鸦片战争的爆发不是偶然, 是资本主义全球扩张的必然结果。</p>
+<p><b>【真题指向】</b> 2023 年第 9 题直接问"中国错失工业革命机遇、落后于时代的原因"——答案是 A (封建统治者夜郎自大、闭关锁国)。注意区分: 资本输出是甲午以后的事, 不是鸦片战争前落后的原因。</p>
+<h3 id="12半殖民地半封建社会的性质">1.2 半殖民地半封建社会的性质</h3>
+<p><b><span class="mk biz">必考</span><span class="mk freq">高频</span></b> 从 1840 年鸦片战争到 1949 年新中国成立, 中国社会的性质始终是<b>半殖民地半封建社会</b>。这是认识近代中国一切问题的"最基本的依据"。</p>
+<h4>为什么是"半殖民地"而不是完全殖民地?</h4>
+<ul>
+<li>不是独立国家: 主权被破坏(领土、领海、司法、关税四大主权丧失)</li>
+<li>不是完全殖民地: 仍然维持着独立国家和政府的名义</li>
+<li><b>中国为什么没被完全殖民?</b> 三个原因: ①中国一直是统一大国; ②中国人民持续反抗; ③帝国主义国家之间在中国争夺的矛盾相互制约</li>
+</ul>
+<h4>为什么是"半封建"而不是完全资本主义?</h4>
+<ul>
+<li>不是完全封建社会: 被卷入世界经济体系, 自然经济被破坏, 城乡商品经济发展, 客观上给资本主义产生创造了条件</li>
+<li>不是完全资本主义社会: 帝国主义不让(要控制)、地主阶级不让(要维护封建剥削)、资产阶级不行(力量软弱)</li>
+</ul>
+<p><b><span class="mk warn">易错</span></b> 2024 年第 10 题: "半封建"是指什么? 正确选项是 B (中国出现了资本主义生产关系), 不是 A (封建经济占一半)。"半"不是数学上的 50%, 而是"既有封建, 又出现了资本主义因素"的混合状态。</p>
+<h4>半殖民地半封建社会的六大基本特征</h4>
+<ol>
+<li><b>政治(外部)</b>: 帝国主义侵略势力操纵中国经济命脉、控制政治, 成为支配中国的决定性力量</li>
+<li><b>政治(内部)</b>: 封建势力与外国侵略者勾结, 成为帝国主义压迫中国人民的社会基础</li>
+<li><b>经济(农村)</b>: 封建地主的土地所有制依然保持, 是走向现代化的严重障碍</li>
+<li><b>经济(城市)</b>: 民族资本主义有所发展, 但在帝国主义和封建主义压迫下, 力量很弱, 且大多与两者有联系</li>
+<li><b>社会(不平衡)</b>: 列强争夺+地域广大+地方割据 -&gt; 经济、政治、文化发展极不平衡</li>
+<li><b>社会(人民)</b>: 在双重压迫(后来加上官僚资本主义)下, 广大人民尤其是农民日益贫困破产</li>
+</ol>
+<blockquote>
+<p><b>思考链</b>: 特征①+②说明反帝反封建是必然任务; 特征③+④揭示了两大阶级(农民+民族资产阶级)的命运; 特征⑤+⑥说明了革命的长期性和不平衡性。这些特征共同决定了: 中国必须走新民主主义革命的道路。</p>
+</blockquote>
+<h3 id="13阶级关系的变动">1.3 阶级关系的变动</h3>
+<p><b>【补充知识】理解各阶级的来历, 才能理解后来各阶级在革命中的立场。</b></p>
+<p><b>旧阶级的变化</b>:</p>
+<ul>
+<li><b>地主阶级</b>: 部分迁入城市(城居地主), 部分投资工商业转化为资本家; 但大多数仍靠地租剥削</li>
+<li><b>农民阶级</b>: 自耕农 -&gt; 贫农/雇农(留在农村); 破产农民 -&gt; 产业工人后备军(流入城市)。定性: <b>中国民主革命的主力军</b>, 但作为小生产者, 单凭自身力量不可能把革命引向胜利</li>
+</ul>
+<p><b>新阶级的产生</b>:</p>
+<ul>
+<li><b>工人阶级</b>: 最早出现在 19 世纪 40-50 年代外国在华企业中, <b>先于中国资产阶级产生</b>。特点: 受三重压迫(帝国主义、封建势力、资产阶级), 革命性最强, 组织纪律性强, 与农民有天然联系 -&gt; <b>近代中国最革命的阶级</b></li>
+<li><b>资产阶级</b>: 由买办、商人、地主、官僚投资新式企业转化。分两部分:<ul>
+<li>官僚买办资本家: 利用政治特权和外国资本联系, 挤压民族资本</li>
+<li>民族资本家: <b>两面性</b>——与帝国主义和封建主义有矛盾(革命性), 又有依赖和妥协(软弱性)。不能引导民主革命走向胜利</li>
+</ul>
+</li>
+</ul>
+<p><b>【高频选择题】</b> 民族资产阶级的"两面性"是高频考点: 既有革命要求, 又有妥协倾向。</p>
+<h3 id="14两大主要矛盾与两大历史任务">1.4 两大主要矛盾与两大历史任务</h3>
+<p><b><span class="mk biz">必考</span>两对主要矛盾贯穿整个半殖民地半封建社会始终</b>:</p>
+<ol>
+<li><b>帝国主义和中华民族的矛盾</b>(民族矛盾)——<b>最主要的矛盾</b></li>
+<li><b>封建主义和人民大众的矛盾</b>(阶级矛盾)</li>
+</ol>
+<blockquote>
+<p><b>为什么"民族矛盾"是最主要的?</b> 因为帝国主义是封建势力的靠山, 不解决民族矛盾(反帝), 阶级矛盾(反封建)也难以彻底解决。两对矛盾交织, 但民族矛盾居首位。这也解释了为什么抗日战争时期, 阶级矛盾会暂时让位于民族矛盾。</p>
+</blockquote>
+<p><b>两大历史任务</b>:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>任务一</th>
+<th>任务二</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内容</td>
+<td>争得民族独立和人民解放</td>
+<td>实现国家富强和人民富裕</td>
+</tr>
+<tr>
+<td>性质</td>
+<td>推翻半殖民地半封建统治秩序, 改变生产关系和上层建筑</td>
+<td>改变经济技术落后面貌, 发展生产力, 实现现代化</td>
+</tr>
+<tr>
+<td>关系</td>
+<td><b>前一个任务为后一个任务扫除障碍, 创造必要前提</b></td>
+<td><b>后一个任务是前一个任务的最终目的和必然要求</b></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>核心逻辑</b>: 不完成第一个任务(革命), 就没有条件完成第二个任务(建设)。所以"工业救国""教育救国""科技救国"等主张在半殖民地半封建社会行不通——必须先革命, 后建设。2015 年第 9 题考的正是这个逻辑。</p>
+</blockquote>
+<p><b><span class="src">【来源: 史纲--第一次课、史纲-第二次课】</span></b></p>
+<hr />
+<h2 id="二西方列强的侵略与中国人民的反抗">二、西方列强的侵略与中国人民的反抗</h2>
+<h3 id="21列强侵略的四种方式">2.1 列强侵略的四种方式</h3>
+<p><b><span class="mk ok">重点</span>侵略首先和主要的是军事侵略</b>, 但最终形成军事+政治+经济+文化的全方位侵略体系。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>具体表现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>军事侵略</b></td>
+<td>发动战争、屠杀人民、侵占领土、划分势力范围、勒索赔款</td>
+</tr>
+<tr>
+<td><b>政治控制</b></td>
+<td>控制内政外交、镇压反抗、扶植收买代理人</td>
+</tr>
+<tr>
+<td><b>经济掠夺</b></td>
+<td>控制通商口岸、剥夺关税自主权、商品倾销+资本输出、操纵经济命脉</td>
+</tr>
+<tr>
+<td><b>文化渗透</b></td>
+<td>披宗教外衣侵略、为侵略制造舆论</td>
+</tr>
+</tbody>
+</table>
+<p><b>【2017.27 多选】</b> 列强控制中国经济的方式: 设立银行、控制关税和盐税、控制交通运输业。注意排除"设立出版机构宣传西学"(这是文化渗透, 不是经济控制)。</p>
+<h3 id="22不平等条约体系">2.2 不平等条约体系</h3>
+<p><b><span class="mk freq">高频</span><span class="mk biz">必考</span>五个关键条约按时间排列</b>:</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>条约</th>
+<th>核心内容</th>
+<th>标志性意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1842</td>
+<td>中英《南京条约》</td>
+<td>割香港岛、五口通商、丧失关税自主权等</td>
+<td><b>中国近代史上第一个不平等条约</b>, 开始沦为半殖民地半封建社会</td>
+</tr>
+<tr>
+<td>1843</td>
+<td>中英《虎门条约》</td>
+<td>领事裁判权、片面最惠国待遇、租赁土地(后变租界)</td>
+<td>丧失司法主权</td>
+</tr>
+<tr>
+<td>1858</td>
+<td>《天津条约》</td>
+<td>外国公使常驻北京</td>
+<td>逐渐控制中国内政外交</td>
+</tr>
+<tr>
+<td>1895</td>
+<td>中日《马关条约》</td>
+<td>割台湾/澎湖、允许在华设厂、资本输出</td>
+<td>掀起瓜分中国狂潮; 民族意识普遍觉醒</td>
+</tr>
+<tr>
+<td>1901</td>
+<td>《辛丑条约》</td>
+<td>赔款最多、驻军特权</td>
+<td><b>中国完全沦为半殖民地半封建社会</b></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>历史逻辑链</b>: 南京条约(开始沦为) -&gt; 马关条约(瓜分狂潮) -&gt; 辛丑条约(完全沦为)。这是一个步步深陷的过程。</p>
+</blockquote>
+<p><b><span class="mk warn">易错</span></b> 《南京条约》是"开始沦为"的标志, 《辛丑条约》是"完全沦为"的标志, 两者不要混淆。</p>
+<h3 id="23中国人民的反侵略斗争">2.3 中国人民的反侵略斗争</h3>
+<table>
+<thead>
+<tr>
+<th>时期</th>
+<th>斗争</th>
+<th>地位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>鸦片战争时期(1841)</td>
+<td>广州三元里人民抗英斗争</td>
+<td><b>中国近代史上第一次大规模反侵略武装斗争</b></td>
+</tr>
+<tr>
+<td>中法战争时期(1885)</td>
+<td>镇南关大捷、谅山大捷(冯子材)</td>
+<td>"中国不败而败, 法国不胜而胜"</td>
+</tr>
+<tr>
+<td>甲午战争时期(1894)</td>
+<td>北洋海军全军覆没</td>
+<td>标志着洋务运动失败; 民族意识开始普遍觉醒</td>
+</tr>
+<tr>
+<td>八国联军时期(1900)</td>
+<td>义和团运动</td>
+<td>打击帝国主义瓜分野心, 但有笼统排外的局限性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24反侵略战争失败的原因">2.4 反侵略战争失败的原因</h3>
+<p>从 1840-1919 的 80 年间, 历次反侵略战争都以中国失败告终。两个原因:</p>
+<ol>
+<li><b>社会制度的腐败</b>(<b>更根本的原因</b>): 正是因为制度腐败, 才使得经济技术落后的状况长期得不到改变</li>
+<li><b>经济技术的落后</b></li>
+</ol>
+<blockquote>
+<p><b>深层逻辑</b>: 腐败的制度无法动员全国力量、无法形成有效抵抗 -&gt; 技术落后长期无法改变 -&gt; 挨打的循环无法打破。这也解释了为什么洋务运动的"买船买炮"不能真正解决问题——因为根子在制度, 不在技术。</p>
+</blockquote>
+<h3 id="25列强瓜分中国图谋的破产">2.5 列强瓜分中国图谋的破产</h3>
+<p><b><span class="mk freq">高频</span>为什么帝国主义没能瓜分中国?</b></p>
+<ul>
+<li><b>重要原因</b>: 帝国主义列强之间的矛盾和互相制约</li>
+<li><b>根本原因</b>: 中华民族进行的不屈不挠的反侵略斗争</li>
+</ul>
+<blockquote>
+<p>义和团运动的意义就在这里: 虽然它有种种局限, 但让帝国主义者认识到中国"民气尚存", 不敢贸然瓜分。2012 年第 9 题考的就是这个根本原因。</p>
+</blockquote>
+<h3 id="26民族意识的觉醒">2.6 民族意识的觉醒</h3>
+<p><b><span class="mk ok">重点</span><span class="mk freq">高频</span></b> 这是一个逐步加深的过程:</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>人物/事件</th>
+<th>贡献</th>
+<th>关键词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>鸦片战争后</td>
+<td>林则徐</td>
+<td>组织编成《四洲志》</td>
+<td><b>近代中国睁眼看世界的第一人</b></td>
+</tr>
+<tr>
+<td>鸦片战争后</td>
+<td>魏源</td>
+<td>《海国图志》, "师夷长技以制夷"</td>
+<td>学习西方军事和科学技术</td>
+</tr>
+<tr>
+<td>19 世纪 70 年代后</td>
+<td>早期维新派(王韬、薛福成、马建忠、郑观应)</td>
+<td>郑观应《盛世危言》: 发展民族工商业、"商战"、设议院、"君民共主"</td>
+<td>从技术学习扩展到政治制度学习</td>
+</tr>
+<tr>
+<td><b>甲午战争后</b></td>
+<td>—</td>
+<td>—</td>
+<td><b>中国人民族意识开始普遍觉醒</b></td>
+</tr>
+<tr>
+<td>甲午战争后</td>
+<td>严复</td>
+<td>翻译《天演论》, "物竞天择、适者生存"</td>
+<td>为危机意识提供理论根据; 喊出"救亡"口号</td>
+</tr>
+<tr>
+<td>甲午战争后</td>
+<td>孙中山</td>
+<td>创立兴中会, 喊出"振兴中华"</td>
+<td>时代最强音</td>
+</tr>
+</tbody>
+</table>
+<p><b><span class="mk warn">易错</span>注意区分</b>: 林则徐是"睁眼看世界第一人", 魏源是"师夷长技以制夷"的提出者。严复翻译的是《天演论》(不是《天演论》的作者, 原著是赫胥黎)。民族意识"普遍"觉醒是在甲午战争之后, 鸦片战争后只是少数人有"朦胧"觉醒。</p>
+<p><b><span class="src">【来源: 史纲--第一次课、史纲-第二次课】</span></b></p>
+<hr />
+<h2 id="三旧民主主义革命时期1840-1919">三、旧民主主义革命时期 (1840-1919)</h2>
+<blockquote>
+<p><b>为什么叫"旧民主主义革命"</b>? 因为这个阶段的革命由资产阶级领导(或由农民阶级发起但带有旧式革命的特点), 目标是建立资本主义社会。与后来的"新民主主义革命"(无产阶级领导)相对。这段历史的核心问题是: <b>为什么各阶层的救国尝试都失败了?</b></p>
+</blockquote>
+<h3 id="31农民阶级的探索太平天国运动1851-1864">3.1 农民阶级的探索: 太平天国运动 (1851-1864)</h3>
+<p><b><span class="mk freq">高频</span>中国旧式农民战争的最高峰, 也是中国近代史上第一次反对国内封建势力和外国侵略势力的斗争。</b></p>
+<h4>兴起与衰落</h4>
+<ul>
+<li>1843: 洪秀全创立拜上帝教</li>
+<li>1851.1: 金田起义, 建号太平天国</li>
+<li>1853.3: 定都天京(南京)</li>
+<li>1856 上半年: 军事全盛时期</li>
+<li>1856.9: <b>天京事变</b>(由盛转衰的分水岭)——东王杨秀清、北王韦昌辉被杀, 翼王石达开出走</li>
+<li>1864.7: 天京被湘军攻破, 起义失败</li>
+</ul>
+<h4>两大纲领性文件</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>《天朝田亩制度》(前期)</th>
+<th>《资政新篇》(后期, 洪仁玕)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地位</td>
+<td>最能体现太平天国社会理想</td>
+<td>后期纲领性文件</td>
+</tr>
+<tr>
+<td>核心</td>
+<td>以解决土地问题为中心的社会改革方案</td>
+<td>发展资本主义的方案</td>
+</tr>
+<tr>
+<td>内容</td>
+<td>"凡天下田, 天下人同耕", 平均分配土地</td>
+<td>涉及政治/经济/文化/外交多方面</td>
+</tr>
+<tr>
+<td>进步性</td>
+<td>从根本上否定封建地主土地所有制</td>
+<td><b>中国近代第一个比较系统的发展资本主义的方案</b>; 提倡资本主义雇佣劳动制</td>
+</tr>
+<tr>
+<td>局限性</td>
+<td>没有超出小生产者的狭隘眼界, 不切实际的空想; 未付诸实施</td>
+<td>未涉及农民和土地问题; 缺乏阶级基础和社会条件; 未付诸实施</td>
+</tr>
+</tbody>
+</table>
+<h4>历史意义</h4>
+<ol>
+<li>沉重打击封建统治阶级, 强烈撼动清政府统治根基</li>
+<li><b>中国旧式农民战争的最高峰</b></li>
+<li>冲击孔子和儒家经典的正统权威</li>
+<li>有力打击外国侵略势力</li>
+<li>19 世纪中叶亚洲民族解放运动中时间最久、规模最大、影响最深的一次</li>
+</ol>
+<h4>失败原因与教训</h4>
+<p><b>客观原因</b>: 中外反动势力勾结, 联合镇压。</p>
+<p><b>主观原因(根本: 农民阶级的局限性)</b>:</p>
+<ul>
+<li>无法提出完整的、正确的政治纲领和社会改革方案</li>
+<li>无法制止和克服领导集团自身腐败</li>
+<li>无法长期保持领导集团的团结</li>
+<li>没有科学理论指导(拜上帝教不是科学理论)</li>
+<li>未能正确对待儒学</li>
+<li>对西方资本主义侵略者缺乏理性认识(笼统视西方人为"洋兄弟")</li>
+</ul>
+<p><b>教训</b>: 农民具有伟大的革命潜力, 但不能担负起领导反帝反封建斗争的重任。<b>单纯的农民战争不可能完成民族独立和人民解放的历史任务。</b></p>
+<blockquote>
+<p><b>为什么农民不能?</b> 因为农民阶级不是新的生产力和生产关系的代表。在封建社会里, 农民革命推翻旧王朝后, 建立的还是封建王朝(如刘邦、朱元璋)。在半殖民地半封建社会, 要打破的不仅是封建制度, 还有帝国主义, 这超出了农民阶级的能力范围。</p>
+</blockquote>
+<h3 id="32地主阶级的自救洋务运动19世纪60-90年代">3.2 地主阶级的自救: 洋务运动 (19 世纪 60-90 年代)</h3>
+<p><b><span class="mk freq">高频</span>中国近代化的起点, 但"中体西用"是死穴。</b></p>
+<h4>基本要素</h4>
+<ul>
+<li><b>背景</b>: 内忧(太平天国运动) + 外患(第二次鸦片战争)</li>
+<li><b>代表人物</b>: 奕䜣、曾国藩、李鸿章、左宗棠、张之洞</li>
+<li><b>指导思想</b>: "中学为体, 西学为用"(冯桂芬《校邠庐抗议》最先表述, 张之洞《劝学篇》概括)</li>
+<li><b>口号</b>: (早期)自强, (后期)求富</li>
+<li><b>主要目的</b>: 维护封建统治(不是发展资本主义!)</li>
+<li><b>首要目的</b>: 镇压农民起义</li>
+<li><b>性质</b>: 封建统治阶级的自救改革运动</li>
+</ul>
+<h4>洋务事业</h4>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>内容</th>
+<th>代表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>军用工业(官办)</td>
+<td>最早: 1861 安庆军械所; 最大兵工厂: 江南制造总局(李鸿章); 最大造船厂: 福州船政局(左宗棠)</td>
+<td>金陵机器局、天津机器局、湖北枪炮厂</td>
+</tr>
+<tr>
+<td>民用企业(多数官督商办)</td>
+<td><b>基本上是资本主义性质的近代企业</b></td>
+<td>轮船招商局、开平矿务局、天津电报局、上海机器织布局</td>
+</tr>
+<tr>
+<td>新式海陆军</td>
+<td>北洋水师(海军主力, 号称"亚洲第一舰队", 李鸿章管辖)</td>
+<td></td>
+</tr>
+<tr>
+<td>新式学堂</td>
+<td>翻译学堂(京师同文馆)、工艺学堂、军事学堂(船政学堂)</td>
+<td>派遣留美幼童及官费赴欧留学生 200 多人</td>
+</tr>
+</tbody>
+</table>
+<p><b><span class="mk warn">易错</span></b> 官督商办的民用企业的性质是<b>资本主义性质</b>的(不是封建性质), 这是 2021 年第 9 题的考点。</p>
+<h4>失败</h4>
+<ul>
+<li><b>失败标志</b>: 甲午战争北洋海军全军覆没</li>
+<li><b>失败原因</b>:<ol>
+<li><b>封建性</b>(根本): "中体西用"——在维护封建上层建筑的前提下发展近代企业, 新的生产力与封建生产关系不相容</li>
+<li><b>对外依赖性</b>: 一切仰赖外国, "与虎谋皮"</li>
+<li><b>管理的腐朽性</b>: 封建衙门式管理, 不懂生产技术和经营管理</li>
+</ol>
+</li>
+<li><b>教训</b>: 在维持封建上层建筑的前提下 "自强""求富", 这条路走不通。</li>
+</ul>
+<blockquote>
+<p><b>深层矛盾</b>: 洋务派想在不改变封建制度的前提下引进西方技术——但近代生产力需要近代生产关系与之匹配。这就像在旧瓶子里装新酒, 瓶子迟早要裂。甲午战争就是这个"旧瓶子"碎裂的时刻。</p>
+</blockquote>
+<h3 id="33维新变法戊戌变法与辛亥革命">3.3 维新变法(戊戌变法)与辛亥革命</h3>
+<p><b><span class="mk info">注意</span>本板块详细内容在课件 OCR 中缺失(第三章), 以下根据课件其他部分及测试卷内容整理核心要点, 建议结合教材补充完整。</b></p>
+<h4>维新变法(1898)</h4>
+<ul>
+<li><b>维新派与守旧派论战</b>围绕: ①要不要变法; ②要不要废八股、改科举和兴西学; ③要不要兴民权、设议院, 实行君主立宪</li>
+<li><b>意义</b>: 资产阶级维新派试图通过改良的方式在中国建立君主立宪制, 是中国民族资产阶级登上政治舞台的第一次表演</li>
+<li><b>失败原因</b>: 资产阶级维新派力量弱小, 依靠没有实权的皇帝; 封建守旧势力强大</li>
+</ul>
+<h4>辛亥革命(1911)</h4>
+<ul>
+<li><b>孙中山创立兴中会</b>(1894.11, 檀香山): 喊出"振兴中华"</li>
+<li><b>同盟会成立</b>(1905, 东京): 机关报《民报》</li>
+<li><b>三民主义</b>(民族、民权、民生): 民族主义=驱除鞑虏, 恢复中华; 民权主义=创立民国; 民生主义=平均地权</li>
+<li><b>武昌起义</b>(1911.10.10): 拉开中国完全意义上的近代民族民主革命的序幕; 掀起辛亥革命高潮; 打开清王朝统治缺口</li>
+<li><b>中华民国成立</b>(1912.1.1, 南京): 孙中山任临时大总统</li>
+<li><b>北洋军阀政权</b>(1912.3, 袁世凯): 代表<b>大地主和买办资产阶级</b>利益</li>
+<li><b>历史意义</b>: 推翻了两千多年的封建君主专制制度(但没有改变半殖民地半封建的社会性质)</li>
+<li><b>失败原因</b>: ①资产阶级革命派力量弱小; ②没有提出彻底的反帝反封建纲领; ③没有发动广大农民群众</li>
+</ul>
+<blockquote>
+<p><b>关键总结</b>: 旧民主主义革命的 80 年(1840-1919), 农民阶级、地主阶级改革派、资产阶级维新派、资产阶级革命派依次登场, 但都没能完成反帝反封建的任务。<b>根本原因在于: 这些阶级都不是先进生产力的代表, 都存在着各自的阶级局限性。</b> 这为无产阶级登上历史舞台做了历史铺垫。</p>
+</blockquote>
+<p><b><span class="src">【来源: 史纲--第一次课、史纲-第二次课、史纲-结课测试卷】</span></b></p>
+<hr />
+<h2 id="四新民主主义革命时期1919-1949">四、新民主主义革命时期 (1919-1949)</h2>
+<blockquote>
+<p><b>为什么中国必须走新民主主义革命的道路?</b> 旧民主主义革命的失败证明: 农民阶级不行、资产阶级也不行。十月革命送来了马克思主义, 工人阶级壮大成熟, 中国共产党诞生——新的领导力量 + 新的指导思想 + 新的革命方法, 才使中国革命焕然一新。</p>
+</blockquote>
+<h3 id="41新文化运动与五四运动">4.1 新文化运动与五四运动</h3>
+<h4>新文化运动(1915 年开始)</h4>
+<p><b><span class="mk freq">高频</span>新文化运动是辛亥革命失败后的思想补课——制度变革不能只靠政治革命, 必须先改造国民的思想。</b></p>
+<p><b>基本要素</b>:</p>
+<ul>
+<li>开始标志: 1915 年 9 月, 陈独秀在上海创办《青年》杂志(后改名《新青年》)</li>
+<li>旗手: 陈独秀; 其他: 李大钊、鲁迅、胡适</li>
+<li>主要阵地: 《新青年》杂志和北京大学</li>
+<li>基本口号: <b>民主(Democracy)和科学(Science)</b>——"德先生"和"赛先生"</li>
+<li>基本内容: ①提倡民主和科学, 反对专制和迷信; ②提倡个性解放, 反对封建礼教; ③提倡新文学, 反对旧文学(文学革命)</li>
+</ul>
+<p><b>两个阶段</b>:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>前期(1915.9-1919.5)</th>
+<th>后期(1919.5-1920)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要内容</td>
+<td>宣传资产阶级思想</td>
+<td>宣传马克思主义</td>
+</tr>
+<tr>
+<td>性质</td>
+<td>资产阶级民主主义的新文化反对封建主义的旧文化</td>
+<td>马克思主义开始逐步在思想文化领域发挥指导作用</td>
+</tr>
+</tbody>
+</table>
+<p><b>批判孔学的态度(易混淆)</b>: 新文化运动批判孔学, <b>并没有否定中国的全部传统文化</b>。他们指出孔学不等于全部国学; 没有否定孔学的历史作用; 批判的是它在根本上已不适合现代生活, 是为了动摇其绝对权威。</p>
+<p><b>历史意义</b>: ①提倡民主科学切中时弊; ②掀起思想解放潮流; ③生动活泼、前进的、革命的; ④<b>为马克思主义的传播提供了思想文化条件</b>。</p>
+<p><b>局限性</b>: ①方向错了(提倡资产阶级民主主义不能有效改造中国); ②方法错了(改造国民性优先, 但没有触及社会制度); ③方式错了(没有马克思主义的批判精神, 用一般资产阶级方法)。</p>
+<blockquote>
+<p><b>为什么方向错了?</b> 因为此时(1915 年前后)资本主义制度的弊端已充分暴露——一战以极端形式展现了资本主义的不可克服的矛盾。中国人学西方屡遭失败, 对资产阶级共和国方案产生了极大怀疑。新文化运动后来分化: 一部分走向马克思主义, 一部分沿资产阶级道路走下去。</p>
+</blockquote>
+<h4>十月革命对中国的影响</h4>
+<p><b><span class="mk freq">高频</span>十月革命为什么能推动中国先进分子转向社会主义?</b></p>
+<ol>
+<li><b>革命方向</b>: 经济文化落后的俄国也可以走社会主义道路 —— 对中国知识分子有特殊吸引力</li>
+<li><b>革命思想</b>: 社会主义俄国号召反对帝国主义, 以平等态度对待中国 —— 推动社会主义思想传播</li>
+<li><b>革命方法</b>: 俄国工人、农民和士兵群众广泛发动 —— 给予中国先进分子"群众路线"的启示</li>
+</ol>
+<blockquote>
+<p>十月革命回答了"经济落后的国家能不能走社会主义"的问题。对在半殖民地半封建社会苦寻出路的中国知识分子来说, 这无异于黑暗中的一道光。</p>
+</blockquote>
+<p><b>李大钊——在中国率先举起马克思主义旗帜</b>:</p>
+<ul>
+<li>1918.7《法俄革命之比较观》: 认定资本主义文明 "当入盛极而衰之运"</li>
+<li>1918.11-12《庶民的胜利》《Bolshevism 的胜利》: 讴歌十月革命, "将来的环球, 必是赤旗的世界"</li>
+<li>1919.9-11《我的马克思主义观》: 比较系统地介绍马克思主义理论 —— <b>标志着马克思主义在中国进入比较系统的传播阶段</b>; 李大钊成为中国的第一个马克思主义者</li>
+</ul>
+<h4>五四运动(1919)</h4>
+<p><b><span class="mk biz">必考</span>五四运动是中国新民主主义革命的开端。</b></p>
+<p><b>爆发原因</b>:</p>
+<ul>
+<li>阶级基础(根本): 一战期间中国资本主义经济发展, 工人阶级壮大(五四前夕产业工人达 200 余万)</li>
+<li>思想条件: 新文化运动的思想解放潮流</li>
+<li>时代条件: 俄国十月革命的影响</li>
+<li><b>直接导火线: 巴黎和会上中国外交的失败</b></li>
+</ul>
+<p><b>过程</b>:</p>
+<ul>
+<li>1919.5.4: 北京学生三千余人天安门前集会、示威游行</li>
+<li>口号: "外争主权, 内除国贼""废除二十一条""还我青岛"</li>
+<li><b>转折</b>: 从 6 月 5 日起, 斗争主力由学生转向工人, 运动中心由北京转到上海。上海六七万工人罢工——<b>工人阶级开始以独立的姿态登上历史舞台</b></li>
+<li>结果: ①北洋政府释放被捕学生, 罢免曹汝霖/章宗祥/陆宗舆; ②中国代表没有出席巴黎和约签字仪式</li>
+</ul>
+<p><b>历史特点和意义</b>:</p>
+<ol>
+<li>以先进青年知识分子为先锋、广大人民群众参加的<b>彻底反帝反封建的伟大爱国革命运动</b></li>
+<li>一场伟大社会革命运动、伟大的思想启蒙运动和新文化运动</li>
+<li><b>中国旧民主主义革命走向新民主主义革命的转折点</b>(里程碑意义)</li>
+<li>孕育了以<b>爱国、进步、民主、科学</b>为主要内容的五四精神(核心是爱国主义)</li>
+<li>实现了中国人民和中华民族自鸦片战争以来的<b>第一次全面觉醒</b></li>
+<li>改变了以往只有觉悟的革命者而缺少觉醒的人民大众的斗争状况</li>
+</ol>
+<p><b><span class="src">【来源: 史纲--第二次课、史纲-第三次课】</span></b></p>
+<h3 id="42中国共产党的成立">4.2 中国共产党的成立</h3>
+<h4>早期马克思主义者的队伍(三种类型)</h4>
+<ol>
+<li><b>新文化运动的精神领袖</b>(先驱者和擎旗人): 李大钊、陈独秀</li>
+<li><b>五四爱国运动的左翼骨干</b>(主体部分): 毛泽东、周恩来等</li>
+<li><b>原中国同盟会会员、辛亥革命时期的活动家</b>: 董必武、林祖涵、吴玉章等</li>
+</ol>
+<h4>早期马克思主义思想运动的特点</h4>
+<ol>
+<li>重视对马克思主义基本理论的学习, 明确同第二国际的社会民主主义划清界限</li>
+<li>注意从中国的实际出发学习、运用马克思主义理论</li>
+<li>开始提出知识分子应当同劳动群众相结合的思想</li>
+</ol>
+<blockquote>
+<p><b>补充知识</b>: 共产国际发展简史——第一共产国际(1864 伦敦, 马克思创立, 巴黎公社失败后解散); 第二共产国际(1889 法国, 恩格斯创立, 后来抛弃革命精神, 搞议会斗争); 第三共产国际(1919 莫斯科, 列宁创立, 帮助亚洲工人阶级筹备共产党)。中共早期与第三国际有密切联系。</p>
+</blockquote>
+<h4>中国共产党的早期组织</h4>
+<ul>
+<li>1920.3: 李大钊在北京大学组织<b>马克思学说研究会</b>(中国最早学习和研究马克思主义的团体)</li>
+<li>1920.8: <b>第一个共产党早期组织在上海成立</b>(陈独秀)——实际上是各地共产主义者进行建党活动的联络中心</li>
+<li>1920.10: 李大钊等在北京成立共产党早期组织(中国共产党北京支部)</li>
+<li>1920 秋至 1921 春: 武汉、长沙、济南、广州、日本、法国相继成立早期组织</li>
+</ul>
+<p><b>早期组织的活动</b>: ①研究和宣传马克思主义; ②到工人中宣传组织; ③关于建党问题的讨论和实际组织工作; ④建立社会主义青年团。</p>
+<h4>中共一大(1921.7.23)</h4>
+<p><b><span class="mk biz">必考</span>开天辟地的大事变。</b></p>
+<ul>
+<li>地点: 上海法租界望志路 106 号 -&gt; 最后一天转移到嘉兴南湖游船("红船")</li>
+<li>内容: ①确定党的名称为中国共产党; ②纲领: 以无产阶级革命军队推翻资产阶级, 采用无产阶级专政, 消灭阶级, 废除资本私有制; ③决定首先集中精力组织工人; ④选举陈独秀、张国焘、李达组成中央局, 陈独秀为书记</li>
+</ul>
+<h4>中国共产党成立的意义</h4>
+<p><b><span class="mk biz">必考</span>"四个新"</b>:</p>
+<ul>
+<li>新的领导力量(坚强的领导核心)</li>
+<li>新的指导思想(马克思主义)</li>
+<li>新的纲领和奋斗目标(代表无产阶级和最广大人民的根本利益)</li>
+<li>新的革命方法(群众路线)</li>
+</ul>
+<p><b>一个领导核心 + 两大任务 + 三个深刻改变</b>: 深刻改变了近代以后中华民族发展的方向和进程, 深刻改变了中国人民和中华民族的前途和命运, 深刻改变了世界发展的趋势和格局。</p>
+<h4>中共二大(1922.7)</h4>
+<p><b><span class="mk ok">重点</span>二大解决的是"革命首先要干什么"的问题。</b></p>
+<ul>
+<li><b>第一次提出了反帝反封建的民主革命的纲领</b>(分清敌友是革命的首要问题)</li>
+<li>开始采取<b>群众路线的方法</b>(民族资产阶级、小资产阶级的政党没有采取过、也不可能采取的革命方法)</li>
+<li>作出建立民主联合战线的决议</li>
+</ul>
+<p><b>【对比记忆】</b>:</p>
+<ul>
+<li>中国革命首要问题: 分清敌友</li>
+<li>中国革命中心问题: 领导权问题</li>
+<li>中国革命基本问题: 农民问题</li>
+<li>中国革命中心内容: 土地革命</li>
+<li>中国革命的实质: 中国共产党领导的农民革命</li>
+</ul>
+<p><b><span class="src">【来源: 史纲-第三次课】</span></b></p>
+<h3 id="43国共合作与大革命1924-1927">4.3 国共合作与大革命 (1924-1927)</h3>
+<h4>第一次国共合作</h4>
+<p><b>合作背景</b>:</p>
+<ul>
+<li>全国人民: "打倒列强, 除军阀"成为强烈愿望</li>
+<li>共产党方面: 京汉铁路罢工失败(二七惨案) -&gt; 认识到单凭一个阶级的力量不能取胜, 必须团结一切可能的革命的阶级 -&gt; 中共三大提出建立国共合作革命统一战线</li>
+<li>国民党方面: 孙中山在苏俄、共产国际和中共帮助下, 晚年实现伟大思想转变, 欢迎共产党人同他合作</li>
+</ul>
+<p><b>正式形成</b>:</p>
+<ul>
+<li>1924 年, <b>国民党一大</b>在广州召开</li>
+<li><b>新三民主义</b>(民族: 突出反帝; 民权: 民主权利"为一般平民所共有"; 民生: "平均地权"+"节制资本", 后提出"耕者有其田")</li>
+<li>新三民主义的政纲<b>同中共在民主革命阶段的纲领基本一致</b>, 成为国共合作的政治基础</li>
+<li>大会实际上确定了<b>联俄、联共、扶助农工</b>三大革命政策</li>
+<li>国民党一大的成功召开, <b>标志着第一次国共合作的正式形成</b></li>
+</ul>
+<p><b><span class="mk freq">高频</span>新旧三民主义对比</b>:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>旧三民主义</th>
+<th>新三民主义</th>
+<th>质的飞跃</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>民族主义</td>
+<td>驱除鞑虏, 恢复中华</td>
+<td>对外反帝、中国民族自求解放; 对内各民族一律平等</td>
+<td><b>明确反帝</b></td>
+</tr>
+<tr>
+<td>民权主义</td>
+<td>创立民国</td>
+<td>民权为一般平民所共有</td>
+<td><b>强调普遍平等的民权</b></td>
+</tr>
+<tr>
+<td>民生主义</td>
+<td>平均地权</td>
+<td>平均地权+节制资本, "耕者有其田"</td>
+<td><b>更关注农工群众</b></td>
+</tr>
+</tbody>
+</table>
+<h4>大革命的进行</h4>
+<ul>
+<li>1924: 国共合作创办<b>黄埔陆军军官学校</b></li>
+<li>1925.1: 中共四大提出<b>无产阶级在民主革命中的领导权和工农联盟</b>问题</li>
+<li>1925.5: 以<b>五卅运动</b>为起点, 掀起全国范围的大革命高潮</li>
+<li>1926.7: <b>北伐战争</b>开始, 口号"打倒列强, 除军阀", 对象: 直系吴佩孚、皖系孙传芳、奉系张作霖</li>
+<li>1926.9: 毛泽东发表《国民革命与农民运动》, 指出"农民问题乃国民革命的中心问题"</li>
+</ul>
+<p><b>大革命的内涵</b>: 1925-1927 年反帝反封建革命, 群众动员更为广泛, 斗争规模更加宏伟, 革命社会内涵更深刻。</p>
+<h4>大革命的失败</h4>
+<p><b>失败标志</b>: ①1927.4.12 蒋介石发动"四一二"政变; ②1927.7.15 汪精卫发动"七一五"政变, <b>国共合作全面破裂</b>。</p>
+<blockquote>
+<p><b>"大革命的失败"具体是指什么?</b> 不是国共合作破裂本身, 而是<b>反帝反封建的革命任务没有完成</b>。北洋军阀的统治基本被推翻了, 但半殖民地半封建的社会性质没有改变。</p>
+</blockquote>
+<p><b>失败原因</b>:</p>
+<p>客观: ①反革命力量大大超过革命力量; ②蒋/汪先后被帝国主义和地主/买办资产阶级拉进反革命营垒。</p>
+<p>主观: ①<b>陈独秀右倾机会主义错误</b>: 放弃了无产阶级对农民、城市小资产阶级和民族资产阶级的领导权; ②<b>根本原因: 中共处于幼年时期</b>, 不善于将马列主义与中国实际相结合; ③共产国际不切实际的指导。</p>
+<p><b>经验教训</b>: ①建立广泛统一战线; ②满足农民土地要求, 建立巩固工农联盟; ③中国革命的斗争主要形式是<b>武装斗争</b>; ④必须把马克思主义基本原理与中国革命具体实践相结合。</p>
+<p><b>历史意义</b>: ①沉重打击帝国主义在华势力, 基本推翻北洋军阀统治; ②教育和锻炼各革命阶级; ③提高中国共产党在全国人民中的政治威望。</p>
+<blockquote>
+<p><b>思考: 大革命失败与中共的觉醒</b>——大革命惨痛的失败直接催生了八七会议的"枪杆子里出政权"、催生了武装起义、催生了土地革命。没有大革命的失败, 就不会有对新道路的探索。失败是最好的老师。</p>
+</blockquote>
+<p><b><span class="src">【来源: 史纲-第三次课】</span></b></p>
+<h3 id="44土地革命战争与新道路1927-1937">4.4 土地革命战争与新道路 (1927-1937)</h3>
+<p><b><span class="mk biz">必考</span>这是中国共产党从幼年走向成熟的十年。</b></p>
+<h4>八七会议(1927.8.7) —— "生死攸关、救命会议"</h4>
+<ul>
+<li>彻底清算了陈独秀右倾机会主义错误</li>
+<li>确定了<b>土地革命和武装反抗国民党反动统治</b>的总方针</li>
+<li>毛泽东提出"须知政权是由枪杆子中取得的"</li>
+<li>选出以瞿秋白为首的中央临时政治局</li>
+<li><b>意义</b>: 给正处于思想混乱和组织涣散中的中国共产党指明了新道路; 开始了从大革命失败到土地革命战争兴起的历史性转折</li>
+</ul>
+<h4>三大起义: 攻打城市 -&gt; 失败 -&gt; 转向农村</h4>
+<table>
+<thead>
+<tr>
+<th>起义</th>
+<th>时间</th>
+<th>领导人</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>南昌起义</b></td>
+<td>1927.8.1</td>
+<td>周恩来、贺龙、叶挺、朱德、刘伯承</td>
+<td><b>打响了武装反抗国民党反动统治的第一枪; 中共独立领导革命战争、创建人民军队和武装夺取政权的开端</b></td>
+</tr>
+<tr>
+<td><b>秋收起义</b></td>
+<td>1927.9.9</td>
+<td>毛泽东</td>
+<td>打出"工农革命军"旗帜; 三湾改编(支部建在连上); 创建第一个农村革命根据地——井冈山</td>
+</tr>
+<tr>
+<td><b>广州起义</b></td>
+<td>1927.12.11</td>
+<td>张太雷、叶挺、叶剑英</td>
+<td>失败</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>三次起义的共同逻辑</b>: 最初目的都是攻打和占领城市 -&gt; 最终结果都失败了 -&gt; 结论: 必须走<b>农村包围城市、武装夺取政权</b>的道路。</p>
+</blockquote>
+<h4>农村包围城市道路的理论探索(四篇著作)</h4>
+<table>
+<thead>
+<tr>
+<th>著作</th>
+<th>时间</th>
+<th>核心贡献</th>
+<th>回答的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>《中国的红色政权为什么能够存在?》</td>
+<td>1928.10</td>
+<td>论证红色政权能够长期存在的主客观条件, 提出"工农武装割据"</td>
+<td><b>为什么能活下来</b></td>
+</tr>
+<tr>
+<td>《井冈山的斗争》</td>
+<td>1928.11</td>
+<td>把土地革命、武装斗争与根据地建设三者结合</td>
+<td><b>怎么活下来</b></td>
+</tr>
+<tr>
+<td>《星星之火, 可以燎原》</td>
+<td>1930.1</td>
+<td>初步形成以乡村为中心的思想; 回答"红旗能打多久"的疑问</td>
+<td><b>能活多久</b></td>
+</tr>
+<tr>
+<td>《反对本本主义》</td>
+<td>1930.5</td>
+<td>"没有调查, 没有发言权"; "中国革命斗争的胜利要靠中国同志了解中国情况"</td>
+<td>思想路线</td>
+</tr>
+</tbody>
+</table>
+<p><b>意义</b>: 农村包围城市、武装夺取政权道路理论的提出, 指明了中国革命胜利的唯一正确道路, <b>标志着中国化的马克思主义即毛泽东思想的初步形成</b>。</p>
+<h4>古田会议(1929.12)</h4>
+<ul>
+<li>中心思想: 用无产阶级思想进行军队和党的建设</li>
+<li>确立了<b>思想建党、政治建军</b>原则</li>
+<li>规定红军必须绝对服从共产党的领导</li>
+<li>红军必须担负打仗、筹款和做群众工作的任务</li>
+<li>对于中国革命新道路的开辟和坚持具有重要意义</li>
+</ul>
+<h4>土地革命时期的土地政策</h4>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>时间</th>
+<th>内容</th>
+<th>评价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>《井冈山土地法》</td>
+<td>1928.12</td>
+<td>没收一切土地归苏维埃政府所有、禁止土地买卖</td>
+<td><b>中共历史上第一个土地法</b>, 但不适合中国农村实际</td>
+</tr>
+<tr>
+<td>《兴国土地法》</td>
+<td>1929.4</td>
+<td>将"没收一切土地"改为"没收一切公共土地及地主阶级的土地"</td>
+<td><b>原则性的改正, 保护了中农利益</b>; 第一个可以付诸实施的比较完整的土地革命纲领</td>
+</tr>
+</tbody>
+</table>
+<p><b>阶级路线(依联限保消)</b>: 坚定地依靠贫农/雇农, 联合中农, 限制富农, 保护中小工商业者, 消灭地主阶级。</p>
+<p><b>土地分配方法</b>: 以乡为单位, 按人口平分土地, 在原耕地基础上, 抽多补少、抽肥补瘦。</p>
+<h4>中华苏维埃第一次全国代表大会(1931.11, 瑞金)</h4>
+<ul>
+<li>通过《中华苏维埃共和国宪法大纲》</li>
+<li>成立中华苏维埃共和国临时中央政府, 毛泽东当选主席</li>
+<li>实行工农兵代表大会制度</li>
+<li>地位: <b>中国历史上第一个全国性的工农民主政权</b></li>
+</ul>
+<h4>三次"左"倾错误</h4>
+<table>
+<thead>
+<tr>
+<th>次序</th>
+<th>时间</th>
+<th>代表人物</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一次</td>
+<td>1927.11-1928.4</td>
+<td>瞿秋白</td>
+<td>"左"倾盲动错误</td>
+</tr>
+<tr>
+<td>第二次</td>
+<td>1930.6-9</td>
+<td>李立三</td>
+<td>"左"倾冒险主义</td>
+</tr>
+<tr>
+<td>第三次</td>
+<td>1931.1-1935.1</td>
+<td>王明(陈绍禹)</td>
+<td><b>"左"倾教条主义</b>(持续时间最长, 危害最大)</td>
+</tr>
+</tbody>
+</table>
+<p><b>王明"左"倾教条主义的表现</b>:</p>
+<ul>
+<li>革命性质和统一战线: 混淆民主革命与社会主义革命界限, 将反帝反封建与反资产阶级并列, 将民族资产阶级视为最危险的敌人</li>
+<li>革命道路: 继续坚持以城市为中心</li>
+<li>土地革命: "地主不分田, 富农分坏田"</li>
+<li>军事斗争: 进攻中的冒险主义、防御中的保守主义、退却中的逃跑主义</li>
+<li>党内斗争: 宗派主义和"残酷斗争, 无情打击"</li>
+</ul>
+<p><b>屡次出现"左"倾错误的原因</b>: ①八七会议后党内"左"倾情绪未认真清理; ②共产国际错误干预和瞎指挥; ③马克思主义理论准备不足, 革命经验缺乏; ④不善于把马列主义与中国实际正确地结合。</p>
+<p><b>最大恶果</b>: 红军第五次反"围剿"失败, 被迫长征(1934.10)。</p>
+<h4>遵义会议(1935.1.15-17)</h4>
+<p><b><span class="mk biz">必考</span>党的历史上一个生死攸关的转折点。</b></p>
+<ul>
+<li>解决了<b>军事问题和组织问题</b>(不是政治问题和思想问题!)</li>
+<li>增选毛泽东为中央政治局常务委员, 确立了毛泽东的实际领导地位</li>
+<li>成立由毛泽东、周恩来、王稼祥组成的三人团, 全权负责红军军事行动</li>
+<li><b>意义</b>: ①开始确立以毛泽东为主要代表的马克思主义正确路线在党中央的领导地位; ②挽救了中国共产党、中国工农红军、中国革命; ③<b>开启了中国共产党独立自主解决中国革命实际问题的新阶段</b></li>
+</ul>
+<p><b><span class="mk warn">易错</span>遵义会议解决的是"军事问题和组织问题", 不是"政治问题"或"思想问题"。政治路线问题是在瓦窑堡会议解决的, 思想路线问题是在延安整风解决的。</b></p>
+<h4>红军长征的胜利</h4>
+<ul>
+<li>1935.10: 中央红军到达陕北吴起镇, 二万五千里长征胜利结束</li>
+<li>1936.10: 红二、四方面军同红一方面军在甘肃会宁、静宁将台堡会师, <b>三大主力红军长征胜利结束</b></li>
+</ul>
+<p><b>长征意义</b>: ①宣告国民党消灭中共与红军的图谋彻底失败; ②宣告中共与红军实现了北上抗日的战略转移; ③实现了中国革命事业从挫折走向胜利的伟大转折; ④铸就了伟大的长征精神。</p>
+<h4>总结历史经验, 迎接抗战(三方面)</h4>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>著作/会议</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>政治</b></td>
+<td>1935 瓦窑堡会议 + 《论反对日本帝国主义的策略》</td>
+<td>阐明抗日民族统一战线新政策, 批判关门主义, 解决政治路线问题</td>
+</tr>
+<tr>
+<td><b>军事</b></td>
+<td>1936.12《中国革命战争的战略问题》</td>
+<td>总结军事问题上的大争论, 系统说明中国革命战争战略</td>
+</tr>
+<tr>
+<td><b>思想</b></td>
+<td>1937《实践论》《矛盾论》</td>
+<td>从马克思主义认识论高度总结历史经验, 揭露批评主观主义尤其是教条主义, <b>科学阐明党的马克思主义思想路线</b></td>
+</tr>
+</tbody>
+</table>
+<p><b><span class="src">【来源: 史纲-第三次课、史纲--第四次课】</span></b></p>
+<h3 id="45抗日战争1931-1945">4.5 抗日战争 (1931-1945)</h3>
+<p><b><span class="mk biz">必考</span><span class="mk freq">高频</span>史纲最重头的板块, 年均近 3 分。</b></p>
+<h4>日本侵华的关键节点</h4>
+<ul>
+<li><b>九一八事变</b>(1931.9.18): 日本变中国为其独占殖民地的阶段由此开始; <b>揭开世界反法西斯战争的序幕</b></li>
+<li><b>卢沟桥事变</b>(1937.7.7): 日本全面侵华战争的开端; <b>中国进入全国性抗战新时期; 中国在东方开辟世界第一个大规模反法西斯战场</b></li>
+</ul>
+<h4>抗日民族统一战线的建立</h4>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>事件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1935.8.1</td>
+<td>《为抗日救国告全体同胞书》(八一宣言)</td>
+</tr>
+<tr>
+<td>1935.12</td>
+<td>瓦窑堡会议: 抗日民族统一战线新政策</td>
+</tr>
+<tr>
+<td>1936.5</td>
+<td>毛泽东、朱德发布《停战议和一致抗日通电》, 放弃"反蒋"口号(联蒋抗日)</td>
+</tr>
+<tr>
+<td>1936.9</td>
+<td>中共中央提出总方针"逼蒋抗日"</td>
+</tr>
+<tr>
+<td>1936.12</td>
+<td>西安事变 -&gt; 和平解决</td>
+</tr>
+<tr>
+<td>1937.2</td>
+<td>国民党五届三中全会; 中共提出停止内战、一致对外等五项要求 + 四项保证</td>
+</tr>
+<tr>
+<td>1937.9</td>
+<td><b>以国共第二次合作为基础的抗日民族统一战线正式形成</b></td>
+</tr>
+</tbody>
+</table>
+<p><b>第二次国共合作的特点</b>(与第一次对比):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>第一次国共合作</th>
+<th>第二次国共合作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>阶级构成</td>
+<td>工、农、小资、民族资产阶级</td>
+<td>工、农、小资、民族资产阶级 + 大地主大资产阶级</td>
+</tr>
+<tr>
+<td>政权</td>
+<td>共产党无政权、无军队</td>
+<td><b>有政权、有军队</b></td>
+</tr>
+<tr>
+<td>合作形式</td>
+<td>党内合作</td>
+<td><b>党外合作</b></td>
+</tr>
+<tr>
+<td>共同纲领</td>
+<td>有(新三民主义)</td>
+<td><b>无(临时协商)</b></td>
+</tr>
+</tbody>
+</table>
+<h4>正面战场(国民党)</h4>
+<p><b>战略防御阶段(1937.7-1938.10)</b>: 国民党正面战场发挥了较好作用。</p>
+<table>
+<thead>
+<tr>
+<th>战役</th>
+<th>时间</th>
+<th>地位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淞沪会战</td>
+<td>1937.8.13</td>
+<td>粉碎日本三个月灭亡中国的企图</td>
+</tr>
+<tr>
+<td><b>忻口会战(太原会战)</b></td>
+<td>1937.11</td>
+<td><b>抗战初期华北战场规模最大、最激烈; 国共配合最好的一次战役</b></td>
+</tr>
+<tr>
+<td>台儿庄战役(徐州会战)</td>
+<td>1938.3-4</td>
+<td><b>抗战以来国民党正面战场取得的最重大的胜利</b></td>
+</tr>
+<tr>
+<td>武汉会战</td>
+<td>1938.6-10</td>
+<td>抗战以来规模最大的一次战役; 此后转入战略相持阶段</td>
+</tr>
+</tbody>
+</table>
+<p><b>败退原因</b>: 客观——敌我力量悬殊; 主观——国民党实行<b>片面抗战路线</b>(不发动群众, 消极被动阵地战)。</p>
+<p><b>战略相持阶段</b>:</p>
+<ul>
+<li>日本: 以政治诱降为主、军事打击为辅</li>
+<li>国民党: 由片面抗战逐步转为消极抗战, 制造反共摩擦(包括 1941.1 <b>皖南事变</b>)</li>
+<li>1944 豫湘桂战役: 大溃败成为大后方人心变动的重要转折点</li>
+</ul>
+<h4>敌后战场(共产党)——抗日战争的中流砥柱</h4>
+<table>
+<thead>
+<tr>
+<th>战役</th>
+<th>时间</th>
+<th>地位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>平型关大捷</b></td>
+<td>1937.9</td>
+<td>全民族抗战以来中国军队取得的<b>第一次重大胜利</b>, 粉碎了日军不可战胜的神话</td>
+</tr>
+<tr>
+<td>雁门关大捷</td>
+<td></td>
+<td>配合正面战场, 抗战期间国共合作最好的一次</td>
+</tr>
+<tr>
+<td><b>百团大战</b></td>
+<td>1940.8-12</td>
+<td>相持阶段八路军在华北发动的规模最大、持续时间最长的战役</td>
+</tr>
+</tbody>
+</table>
+<p><b>游击战争的战略地位</b>: 抗战初期/中期, 游击战被提到战略地位, 具有全局意义; 战略相持阶段, 游击战成为<b>主要的抗日作战方式</b>。</p>
+<h4>洛川会议(1937.8)</h4>
+<ul>
+<li>制定抗日救国十大纲领</li>
+<li>强调要打倒日本帝国主义, <b>关键在于使已经发动的抗战成为全面的全民族的抗战</b></li>
+<li>必须坚持统一战线中无产阶级的领导权</li>
+<li>在敌后放手发动独立自主的山地游击战争</li>
+</ul>
+<h4>《论持久战》(1938.5-6)</h4>
+<p>毛泽东系统阐明了持久抗战的总方针, 科学预测了抗战的三个阶段(防御、相持、反攻), 驳斥了"亡国论"和"速胜论"。</p>
+<h4>巩固抗日民族统一战线的策略总方针</h4>
+<p><b>"发展进步势力, 争取中间势力, 孤立顽固势力"</b>:</p>
+<table>
+<thead>
+<tr>
+<th>势力</th>
+<th>构成</th>
+<th>策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>进步势力</td>
+<td>工人、农民、城市小资产阶级</td>
+<td>发展(统一战线的基础, 抗战的主要依靠力量)</td>
+</tr>
+<tr>
+<td>中间势力</td>
+<td>民族资产阶级、开明绅士、地方实力派</td>
+<td>争取(条件: 共产党有充足力量 + 尊重其利益 + 同顽固派作坚决斗争并取胜)</td>
+</tr>
+<tr>
+<td>顽固势力</td>
+<td>大地主大资产阶级的抗日派(以蒋介石集团为代表)</td>
+<td>孤立(又联合又斗争; 有理、有利、有节)</td>
+</tr>
+</tbody>
+</table>
+<p><b>三大口号</b>(1939.7): 坚持抗战到底——反对中途妥协; 巩固国内团结——反对内部分裂; 力求全国进步——反对向后倒退。</p>
+<h4>抗日民主根据地的建设</h4>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>政治(三三制)</b></td>
+<td>政权是共产党领导的抗日民族统一战线性质的政权; 工作人员分配: 共产党员、非党的左派进步分子、不左不右的中间派各 1/3; 普遍采取民主集中制; 少数民族聚居地区试行<b>民族区域自治</b></td>
+</tr>
+<tr>
+<td><b>经济</b></td>
+<td><b>减租减息</b>(地主减租减息, 农民交租交息——与土地革命时期"没收地主土地"不同, 也与解放战争时期"耕者有其田"不同)</td>
+</tr>
+<tr>
+<td>文化</td>
+<td>文化建设与干部教育</td>
+</tr>
+</tbody>
+</table>
+<h4>马克思主义中国化</h4>
+<ul>
+<li><b>命题提出</b>: 1938 年, 中共六届六中全会, 毛泽东明确提出了"马克思主义中国化"的命题。纠正了王明的右倾错误("一切经过统一战线""一切服从统一战线")</li>
+<li><b>理论阐明</b>: 《〈共产党人〉发刊词》《中国革命和中国共产党》《新民主主义论》——系统阐明新民主主义理论, <b>标志着毛泽东思想达到成熟</b>。三大法宝: 统一战线、武装斗争、党的建设</li>
+</ul>
+<h4>延安整风运动</h4>
+<ul>
+<li>1941.5: 毛泽东《改造我们的学习》, 整风运动首先在党的高级干部中进行</li>
+<li>1942.2: 毛泽东《整顿党的作风》《反对党八股》, 整风运动在全党范围普遍展开</li>
+<li><b>最主要的任务: 反对主观主义</b>(教条主义+经验主义), <b>教条主义是整风运动的重点</b></li>
+<li>主观主义的实质: 理论脱离实际, 实际工作中的唯心主义</li>
+<li>克服方法: 坚持理论联系实际, 一切从实际出发, 实事求是</li>
+<li>第一个重要问题: <b>学风问题</b></li>
+<li>结束: 1945 年六届七中全会通过《关于若干历史问题的决议》</li>
+<li>意义: 一场伟大的思想解放运动; 实事求是的马克思主义思想路线在全党范围确立</li>
+</ul>
+<h4>中共七大(1945.4-6, 延安)</h4>
+<p><b><span class="mk biz">必考</span>确立毛泽东思想为党的指导思想。</b></p>
+<ul>
+<li>毛泽东《论联合政府》政治报告、朱德《论解放区战场》军事报告、刘少奇《关于修改党章的报告》</li>
+<li>政治路线: "放手发动群众, 壮大人民力量, 在我党的领导下, 打败日本侵略者, 解放全国人民, 建立一个新民主主义的中国"</li>
+<li><b>三大优良作风</b>: 理论和实践相结合的作风, 和人民群众紧密地联系在一起的作风, 自我批评的作风</li>
+<li><b>毛泽东思想正式命名为党的指导思想并写入党章</b></li>
+</ul>
+<p><b><span class="src">【来源: 史纲--第四次课】</span></b></p>
+<h3 id="46解放战争1945-1949">4.6 解放战争 (1945-1949)</h3>
+<p><b><span class="mk freq">高频</span>"两个命运、两个前途"的决战。</b></p>
+<h4>争取和平民主的斗争</h4>
+<p><b>重庆谈判(1945.8)</b>: ①中共提出"和平、民主、团结"三大口号; ②蒋介石: 假和谈, 真备战(目的: 敷衍舆论 + 诱使中共交出军队/政权 + 转嫁内战责任于中共); ③中共方针: 积极争取和平民主。</p>
+<p><b>重庆政治协商会议(旧政协, 1946.1)</b>:</p>
+<ul>
+<li>中心议题: 政治民主化、军队国家化</li>
+<li>通过五项协议(政府组织案、国民大会案、和平建国纲领、军事问题案、宪法草案案)</li>
+<li>性质: <b>不是新民主主义性质的</b>, 但总体上有利于冲破蒋介石独裁统治和实行民主政治</li>
+<li>中共决心严格履行协议, 国民党从未准备履行</li>
+</ul>
+<h4>全面内战</h4>
+<ul>
+<li><b>爆发标志</b>: 1946 年 6 月底, 国民党以进攻<b>中原解放区</b>为起点, 挑起全国性内战</li>
+<li><b>"必须打败蒋介石, 而且能够打败他"</b>: 必须——因为这是反对民族独立和人民解放的反革命战争; 能够——军事优势和美国援助只是临时因素, <b>人心向背是经常起作用的因素</b>; 解放战争具有爱国的正义的革命的性质, 是战胜蒋介石的政治基础</li>
+<li>政治上: 建立最广泛的<b>人民民主统一战线</b></li>
+<li>军事上: 集中优势兵力、各个歼灭</li>
+</ul>
+<h4>转入战略进攻</h4>
+<ul>
+<li>1947.6: 刘邓野战军千里跃进大别山</li>
+<li>意义: ①中国革命发展到了一个历史转折点; ②蒋介石二十年反革命统治由发展到消灭的转折点; ③一百多年来帝国主义在中国的统治由发展到消灭的转折点</li>
+</ul>
+<h4>土地改革</h4>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>时间</th>
+<th>内容</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>《五四指示》</b></td>
+<td>1946.5.4</td>
+<td>将减租减息改为"耕者有其田"; 没收地主土地分给农民; 不可侵犯中农土地; 一般不变动富农土地</td>
+<td>标志着由削弱封建剥削向<b>废除封建剥削制度过渡</b></td>
+</tr>
+<tr>
+<td><b>《中国土地法大纲》</b></td>
+<td>1947</td>
+<td>明确规定"废除封建性及半封建性剥削的土地制度, 实行耕者有其田的土地制度"</td>
+<td>从根本上摧毁中国封建制度根基的社会大变革</td>
+</tr>
+</tbody>
+</table>
+<p><b>土地改革的意义</b>: 农民政治觉悟和组织程度空前提高, 农村生产力解放, 工农联盟进一步巩固, 为打败蒋介石、建立新中国奠定了深厚的群众基础。</p>
+<h4>第二条战线</h4>
+<p>在国民党统治区, 以学生运动为先导的人民民主运动, 成为配合人民解放战争的<b>第二条战线</b>。</p>
+<p>成因: ①国民党专制独裁+贪污腐败; ②执行反人民的内战政策(主要原因); ③工农业生产萎缩, 国民经济深刻危机。</p>
+<h4>多党合作格局的形成</h4>
+<ul>
+<li><b>民主党派的社会基础</b>: 民族资产阶级、城市小资产阶级以及同这些阶级相联系的知识分子和其他爱国分子</li>
+<li><b>性质</b>: 阶级联盟性质的政党</li>
+<li><b>"第三条道路"(资产阶级共和国方案)</b>: 政治上英美式民主政治, 经济上改良资本主义, 通过和平改良实现——幻灭。1947 年 10 月, 国民党宣布民盟为非法团体, 标志着第三条道路的破产</li>
+<li><b>"五一口号"(1948)</b>: 中共中央号召召开政协会议, 成立民主联合政府</li>
+<li>1949.1 民主党派《对时局的意见》: 自愿接受中国共产党领导, 拥护建立人民民主的新中国</li>
+<li>1949 春毛泽东谈话: 民主党派参加新政协标志着其地位的根本变化——由在野党转变为中国人民民主专政的参加者</li>
+</ul>
+<blockquote>
+<p><b>为什么"第三条道路"走不通?</b> ①帝国主义不允许(要把中国当殖民地); ②国民党大地主大资产阶级不允许(要一党专政); ③民族资产阶级力量弱小, 具有软弱性和妥协性。历史和人民最终选择了社会主义。</p>
+</blockquote>
+<h4>筹建新中国</h4>
+<p><b>中共七届二中全会(1949.3, 西柏坡)</b>:</p>
+<ul>
+<li>提出工作重心从<b>农村转向城市</b></li>
+<li>提出"两个务必": 务必使同志们继续地保持谦虚、谨慎、不骄、不躁的作风; 务必使同志们继续地保持艰苦奋斗的作风</li>
+<li>指出了中国由农业国转变为工业国、由新民主主义社会转变为社会主义社会的发展方向</li>
+</ul>
+<p><b><span class="mk warn">易错</span></b> 七届二中全会是<b>提出</b>工作重心转移, 但工作重心转移的<b>实现</b>(标志)是 3 月 25 日中共中央进驻北平香山。不是同一个时间点!</p>
+<p><b>《论人民民主专政》(1949.6.30, 毛泽东)</b>:</p>
+<ul>
+<li>国体: 人民民主专政需要工人阶级的领导</li>
+<li>人民民主专政的基础: 工人阶级、农民阶级和城市小资产阶级的联盟; 要团结民族资产阶级</li>
+<li>七届二中全会决议和《论人民民主专政》构成了《共同纲领》的基础</li>
+</ul>
+<p><b>中国人民政治协商会议第一届全体会议(1949.9.21, 北平)</b>:</p>
+<ul>
+<li>三大历史性文件: 《共同纲领》《中国人民政治协商会议组织法》《中华人民共和国中央人民政府组织法》</li>
+<li>《共同纲领》内容: ①国体(人民民主专政)和政体(人民代表大会制度, 民主集中制); ②民族区域自治; ③经济工作(公私兼顾、劳资两利、城乡互助、内外交流); ④外交工作原则</li>
+<li>《共同纲领》<b>在当时起着临时宪法的作用</b></li>
+<li><b>人民政协的召开标志着中国新型政党制度——中国共产党领导的多党合作和政治协商制度的确立</b></li>
+</ul>
+<h4>中国革命胜利的意义和基本经验</h4>
+<p><b>意义</b>: ①国家: 结束了 100 多年来的屈辱历史, 实现了民族独立和人民解放; ②民族: 从根本上改变了中国社会发展方向; ③世界: 极大改变世界政治格局, 壮大世界和平民主和社会主义力量。</p>
+<p><b>三大法宝(基本经验)</b>: ①建立广泛的统一战线; ②坚持革命的武装斗争(实质: <b>工人阶级领导的农民战争</b>——2018.11); ③加强共产党自身的建设。</p>
+<p><b><span class="src">【来源: 史纲--第五次课】</span></b></p>
+<hr />
+<h2 id="五社会主义革命与建设1949-1978">五、社会主义革命与建设 (1949-1978)</h2>
+<h3 id="51新中国成立与政权巩固">5.1 新中国成立与政权巩固</h3>
+<h4>新中国成立的意义</h4>
+<ul>
+<li>彻底结束了旧中国半殖民地半封建社会的历史</li>
+<li>彻底结束了极少数剥削者统治广大劳动人民的历史</li>
+<li>彻底结束了旧中国一盘散沙的局面</li>
+<li>彻底废除了列强强加给中国的不平等条约和帝国主义在中国的一切特权</li>
+<li>实现了中国从几千年封建专制政治向人民民主的伟大飞跃</li>
+<li><b>冲破了帝国主义的东方战线</b>, 具有世界意义</li>
+</ul>
+<h4>新中国成立初期的四大考验</h4>
+<ol>
+<li>能否保卫革命胜利成果, 巩固新生人民政权(民主革命遗留任务)</li>
+<li>能否战胜严重经济困难, 迅速恢复发展国民经济</li>
+<li>能否巩固民族独立, 维护国家主权和安全</li>
+<li>能否经受住全国执政的新考验</li>
+</ol>
+<h4>巩固政权的措施</h4>
+<ul>
+<li>军事: 继续追剿残余敌人, 基本完成祖国大陆统一</li>
+<li>政治: 摧毁旧政权, 普遍召开各级各届人民代表会议</li>
+<li>经济: 进行土地改革</li>
+<li>社会: 颁布婚姻法, 废除封建婚姻制度</li>
+</ul>
+<p><b>《中华人民共和国土地改革法》(1950)</b>: 废除地主阶级封建剥削的土地所有制, 实行农民的土地所有制; <b>保存富农经济</b>; 规模最大、效果最好的一次土地改革。</p>
+<p><b><span class="mk info">注意</span>各时期对待富农政策的区别</b>: 土地革命时期(限制富农) -&gt; 王明"左"倾(打击富农) -&gt; 解放战争五四指示(一般不变动富农) -&gt; 1950 年土改(保存富农经济)。这是逐步务实的过程。</p>
+<h4>外交方针</h4>
+<p>"<b>另起炉灶</b>"、"<b>打扫干净屋子再请客</b>"、"<b>一边倒</b>"(倒向社会主义阵营)。</p>
+<h4>抗美援朝(1950-1953)</h4>
+<p><b>意义</b>: ①打破了美军不可战胜的神话, 打出了国威军威; ②中国人民站起来后屹立于世界东方的宣言书; ③中华民族走向伟大复兴的重要里程碑; ④新中国真正站稳了脚跟。</p>
+<h4>恢复国民经济</h4>
+<p><b>中共七届三中全会(1950.6)</b>: 中心任务——争取国家财政经济状况的基本好转。</p>
+<p>新中国成立后最初三年, 社会主义革命任务也已开始:</p>
+<ol>
+<li>没收官僚资本(双重性质: 民主革命任务 + 社会主义革命开端)</li>
+<li>开始将资本主义纳入国家资本主义轨道</li>
+<li>引导个体农民走上互助合作道路</li>
+</ol>
+<h4>加强自身建设</h4>
+<ul>
+<li><b>"三反"(党政军机关)</b>: 反贪污、反浪费、反官僚主义</li>
+<li><b>"五反"(不法资本家)</b>: 打击行贿、偷税漏税、盗窃国家财产、偷工减料、盗窃经济情报</li>
+</ul>
+<h3 id="52过渡时期总路线与三大改造">5.2 过渡时期总路线与三大改造</h3>
+<h4>过渡时期总路线</h4>
+<p><b>"一化三改"</b>(一体两翼): 实现国家的社会主义工业化 + 对农业、手工业、资本主义工商业的社会主义改造。</p>
+<p>由"先化后改"转变为"边化边改"的原因: ①民主革命遗留任务完成, 主要矛盾变化; ②国民经济恢复发展; ③为工业化指明社会主义方向。</p>
+<p><b>历史的必然性</b>: ①社会主义工业化是国家独立富强的首要条件; ②资本主义经济力量弱小, 不可能成为中国工业起飞的基础; ③对个体农业进行社会主义改造是保证工业发展的必要条件; ④当时的国际环境促使中国选择社会主义。</p>
+<h4>"一五"计划(1953-1956)</h4>
+<p>为我国建立独立完整的工业体系奠定了基础。</p>
+<h4>农业合作化</h4>
+<p>基本原则: ①先合作化, 后机械化; ②充分利用农民两种积极性(个体经济+劳动互助), 由低到高逐步过渡; ③自愿互利, 典型示范, 逐步推广; ④始终以是否增产作为衡量标准; ⑤社会改造与技术改造相结合。</p>
+<h4>资本主义工商业的和平赎买</h4>
+<p><b>为什么可以和平赎买?</b> 因为民族资产阶级有<b>两面性</b>: 既有剥削工人取得利润的一面, 又有拥护宪法、愿意接受社会主义改造的一面。</p>
+<p><b>三阶段</b>:</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>表现形式</th>
+<th>分利方式</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初级国家资本主义</td>
+<td>委托加工、计划订货、统购包销、经销代销</td>
+<td>"四马分肥"</td>
+<td>社会主义萌芽</td>
+</tr>
+<tr>
+<td>个别企业公私合营</td>
+<td>国家投资入股, 生产资料国家和资本家共同所有</td>
+<td>"四马分肥"</td>
+<td>半社会主义</td>
+</tr>
+<tr>
+<td>全行业公私合营</td>
+<td>清产核资, 生产资料归国家所有</td>
+<td>定股定息</td>
+<td><b>社会主义</b></td>
+</tr>
+</tbody>
+</table>
+<h3 id="53社会主义基本制度的确立">5.3 社会主义基本制度的确立</h3>
+<p><b><span class="mk biz">必考</span>社会主义改造完成 = 中国进入社会主义社会。</b></p>
+<ul>
+<li><b>社会主义经济制度的确立</b>(最主要标志): 生产资料公有制 + 按劳分配 + 计划经济体制</li>
+<li><b>社会主义政治制度的确立</b>: 1954 年第一届全国人民代表大会通过《中华人民共和国宪法》</li>
+<li><b>伟大意义</b>: 中华民族有史以来最为广泛而深刻的社会变革, 为当代中国一切发展进步奠定了根本政治前提和制度基础</li>
+</ul>
+<p><b><span class="mk warn">易错</span>2023.12</b>: 中国进入社会主义社会最主要的标志是<b>社会主义经济制度的确立</b>(即三大改造完成), 不是政治制度的确立, 也不是民主革命遗留任务的完成。</p>
+<h3 id="54社会主义建设探索">5.4 社会主义建设探索</h3>
+<h4>马克思主义同中国实际的"第二次结合"</h4>
+<p>1956 年, 生产资料所有制改造完成, 中国进入全面建设社会主义阶段。毛泽东提出<b>第二次结合</b>的任务: 独立自主探索适合中国国情的社会主义建设道路。</p>
+<h4>《论十大关系》(1956.4)</h4>
+<ul>
+<li>总结经济建设初步经验, 借鉴苏联建设经验教训</li>
+<li>基本方针: <b>调动国内外一切积极因素, 为社会主义服务</b></li>
+<li>核心内容: 处理好<b>农轻重比例关系</b></li>
+<li>地位: <b>开始探索中国自己的社会主义建设道路的标志</b></li>
+</ul>
+<h4>中共八大(1956.9)</h4>
+<p><b><span class="mk freq">高频</span>路线正确, 但后来未能坚持。</b></p>
+<ul>
+<li><b>主要矛盾</b>: 不再是阶级矛盾, 而是<b>人民对于经济文化迅速发展的需要同当前经济文化不能满足人民需要的状况之间的矛盾</b></li>
+<li><b>主要任务</b>: 集中力量发展社会生产力, 实现国家工业化</li>
+<li><b>经济方针</b>: 既反保守又反冒进, 在综合平衡中稳步前进</li>
+<li>陈云提出"三个主体, 三个补充"</li>
+<li><b>八大路线是正确的</b>, 为社会主义事业发展和党的建设指明了方向</li>
+</ul>
+<h4>《关于正确处理人民内部矛盾的问题》(1957)</h4>
+<ul>
+<li>区分两类不同性质的矛盾: 敌我矛盾和<b>人民内部矛盾</b></li>
+<li><b>把正确处理人民内部矛盾作为国家政治生活的主题</b></li>
+<li>社会主义社会基本矛盾: 仍然是生产关系与生产力、经济基础与上层建筑之间的矛盾; 但<b>非对抗性</b>, 可以通过社会主义制度的自我调整和自我完善不断得到解决</li>
+<li>评价: 创造性地阐述了社会主义社会矛盾学说, 对科学社会主义理论的重要发展</li>
+</ul>
+<h4>全面建设社会主义的成就</h4>
+<p>独立的、比较完整的工业体系和国民经济体系的建立; 人民生活水平提高; 文化教育医疗事业发展; 一批重要科技成果; 国际地位提高。</p>
+<p><b><span class="src">【来源: 史纲--第五次课】</span></b></p>
+<hr />
+<h2 id="六改革开放与新时代1978-至今">六、改革开放与新时代 (1978-至今)</h2>
+<blockquote>
+<p>课件第十章"中国特色社会主义进入新时代"在 OCR 材料中标注为"略", 以下为基础框架, 需结合教材深化。</p>
+</blockquote>
+<h3 id="61历史性的伟大转折">6.1 历史性的伟大转折</h3>
+<h4>关于真理标准问题的讨论(1978.5)</h4>
+<p><b>《实践是检验真理的唯一标准》</b>: 重申了实践是检验真理的唯一标准这个马克思主义认识论基本原理, 从根本理论上<b>否定了"两个凡是"</b>。实质在于是否坚持马列主义、毛泽东思想。为历史性转折做了思想理论准备。</p>
+<h4>十一届三中全会(1978.12)</h4>
+<p><b><span class="mk biz">必考</span>新中国成立以来党的历史上具有深远意义的伟大转折。</b></p>
+<p><b>内容</b>:</p>
+<ul>
+<li>彻底否定"两个凡是"的错误方针</li>
+<li>高度评价了关于真理标准问题的讨论</li>
+<li>断然否定"以阶级斗争为纲"的指导思想</li>
+<li><b>作出把工作重点转移到社会主义现代化建设上来和实行改革开放的历史性决策</b></li>
+<li>重新确立了马克思主义的思想路线、政治路线和组织路线</li>
+</ul>
+<p><b>意义</b>: ①揭开了社会主义改革开放的序幕; ②形成了以邓小平为核心的党的中央领导集体; ③中国进入了改革开放和社会主义现代化建设的历史新时期。</p>
+<h4>十一届六中全会(1981)</h4>
+<p><b>《关于建国以来党的若干历史问题的决议》</b>: ①科学地评价了毛泽东和毛泽东思想的历史地位; ②标志着党在指导思想上<b>拨乱反正的胜利完成</b>。</p>
+<h4>农村改革</h4>
+<p>以包产到户、包干到户为主要形式的<b>家庭联产承包责任制</b>迅速推广。</p>
+<h3 id="62中国特色社会主义的开创与发展">6.2 中国特色社会主义的开创与发展</h3>
+<table>
+<thead>
+<tr>
+<th>会议</th>
+<th>时间</th>
+<th>核心内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>十二大</b></td>
+<td>1982</td>
+<td><b>"建设有中国特色的社会主义"命题的提出</b></td>
+</tr>
+<tr>
+<td><b>十三大</b></td>
+<td>1987</td>
+<td>系统阐述社会主义初级阶段理论; 概括党的基本路线; 制定"三步走"发展战略</td>
+</tr>
+<tr>
+<td><b>十四大</b></td>
+<td>1992</td>
+<td>确立社会主义市场经济体制的改革目标</td>
+</tr>
+<tr>
+<td><b>十五大</b></td>
+<td>1997</td>
+<td>邓小平理论写入党章</td>
+</tr>
+<tr>
+<td><b>十六大</b></td>
+<td>2002</td>
+<td>"三个代表"重要思想写入党章</td>
+</tr>
+<tr>
+<td><b>十七大</b></td>
+<td>2007</td>
+<td>科学发展观写入党章</td>
+</tr>
+</tbody>
+</table>
+<h4>邓小平南方谈话(1992)</h4>
+<ul>
+<li>计划和市场都是经济手段(不是社会主义与资本主义的本质区别)</li>
+<li>阐明了社会主义本质</li>
+<li>"发展才是硬道理"</li>
+<li>判断改革开放和各项工作成败得失的<b>"三个有利于"</b>标准</li>
+<li><b>标志着邓小平理论逐步走向成熟</b></li>
+</ul>
+<p><b><span class="src">【来源: 史纲--第五次课、史纲-结课测试卷】</span></b></p>
+<hr />
+<h2 id="七高频专题">七、高频专题</h2>
+<h3 id="71重要会议时间轴">7.1 重要会议时间轴</h3>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>会议</th>
+<th>核心内容</th>
+<th>标签</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1921.7</td>
+<td>中共一大</td>
+<td>党成立</td>
+<td><span class="mk biz">必考</span></td>
+</tr>
+<tr>
+<td>1922.7</td>
+<td>中共二大</td>
+<td>提出反帝反封建民主革命纲领; 群众路线</td>
+<td><span class="mk freq">高频</span></td>
+</tr>
+<tr>
+<td>1923.6</td>
+<td>中共三大</td>
+<td>建立国共合作革命统一战线</td>
+<td></td>
+</tr>
+<tr>
+<td>1924.1</td>
+<td>国民党一大</td>
+<td>新三民主义; 第一次国共合作正式形成</td>
+<td><span class="mk biz">必考</span></td>
+</tr>
+<tr>
+<td>1925.1</td>
+<td>中共四大</td>
+<td>提出无产阶级领导权和工农联盟</td>
+<td></td>
+</tr>
+<tr>
+<td>1927.8.7</td>
+<td>八七会议</td>
+<td>土地革命+武装反抗; "枪杆子里出政权"</td>
+<td><span class="mk biz">必考</span></td>
+</tr>
+<tr>
+<td>1929.12</td>
+<td>古田会议</td>
+<td>思想建党、政治建军</td>
+<td><span class="mk ok">重点</span></td>
+</tr>
+<tr>
+<td>1931.11</td>
+<td>中华苏维埃一大</td>
+<td>第一个全国性工农民主政权</td>
+<td></td>
+</tr>
+<tr>
+<td>1935.1</td>
+<td>遵义会议</td>
+<td>解决军事+组织问题; 生死攸关转折点</td>
+<td><span class="mk biz">必考</span></td>
+</tr>
+<tr>
+<td>1935.12</td>
+<td>瓦窑堡会议</td>
+<td>抗日民族统一战线新政策</td>
+<td><span class="mk freq">高频</span></td>
+</tr>
+<tr>
+<td>1937.8</td>
+<td>洛川会议</td>
+<td>抗日救国十大纲领; 全面抗战路线</td>
+<td></td>
+</tr>
+<tr>
+<td>1938.9-11</td>
+<td>六届六中全会</td>
+<td>"马克思主义中国化"命题</td>
+<td><span class="mk ok">重点</span></td>
+</tr>
+<tr>
+<td>1945.4-6</td>
+<td>中共七大</td>
+<td>毛泽东思想写入党章; 三大优良作风</td>
+<td><span class="mk biz">必考</span></td>
+</tr>
+<tr>
+<td>1949.3</td>
+<td>七届二中全会</td>
+<td>工作重心农村-&gt;城市; "两个务必"</td>
+<td><span class="mk biz">必考</span></td>
+</tr>
+<tr>
+<td>1949.9</td>
+<td>人民政协第一届</td>
+<td>《共同纲领》; 多党合作制度确立</td>
+<td><span class="mk freq">高频</span></td>
+</tr>
+<tr>
+<td>1950.6</td>
+<td>七届三中全会</td>
+<td>争取财政经济基本好转</td>
+<td></td>
+</tr>
+<tr>
+<td>1954.9</td>
+<td>一届全国人大</td>
+<td>通过《中华人民共和国宪法》</td>
+<td></td>
+</tr>
+<tr>
+<td>1956.4</td>
+<td>《论十大关系》</td>
+<td>开始探索中国自己的建设道路</td>
+<td><span class="mk ok">重点</span></td>
+</tr>
+<tr>
+<td>1956.9</td>
+<td>中共八大</td>
+<td>主要矛盾变化; 综合平衡中稳步前进</td>
+<td><span class="mk freq">高频</span></td>
+</tr>
+<tr>
+<td>1978.5</td>
+<td>真理标准讨论</td>
+<td>否定"两个凡是"; 思想理论准备</td>
+<td><span class="mk ok">重点</span></td>
+</tr>
+<tr>
+<td>1978.12</td>
+<td>十一届三中全会</td>
+<td>改革开放; 伟大转折</td>
+<td><span class="mk biz">必考</span></td>
+</tr>
+<tr>
+<td>1981.6</td>
+<td>十一届六中全会</td>
+<td>《关于建国以来若干历史问题的决议》; 拨乱反正完成</td>
+<td></td>
+</tr>
+<tr>
+<td>1982</td>
+<td>十二大</td>
+<td>"建设有中国特色的社会主义"</td>
+<td></td>
+</tr>
+<tr>
+<td>1992</td>
+<td>南方谈话</td>
+<td>计划与市场都是手段; 发展是硬道理</td>
+<td><span class="mk ok">重点</span></td>
+</tr>
+</tbody>
+</table>
+<p><b><span class="mk warn">易错</span>特别容易混淆的会议</b>:</p>
+<ul>
+<li>遵义会议 vs 八七会议: 遵义会议解决"军事+组织", 八七会议确定"总方针+枪杆子"</li>
+<li>六届六中全会 vs 七大: 六届六中全会<b>提出</b>"马克思主义中国化"命题, 七大<b>确立</b>毛泽东思想为指导思想</li>
+<li>七届二中全会 vs 人民政协: 七届二中全会是<b>党内准备</b>(提出工作重心转移), 人民政协是<b>建国实现</b></li>
+</ul>
+<h3 id="72统一战线演变">7.2 统一战线演变</h3>
+<table>
+<thead>
+<tr>
+<th>时期</th>
+<th>统一战线名称</th>
+<th>阶级构成</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1925-1927 大革命时期</td>
+<td><b>国共统一战线</b>(民主联合战线)</td>
+<td>工、农、小资、民族资产阶级</td>
+</tr>
+<tr>
+<td>1927-1937 土地革命时期</td>
+<td><b>工农民主统一战线</b></td>
+<td>工、农、小资</td>
+</tr>
+<tr>
+<td>1937-1945 抗日战争时期</td>
+<td><b>抗日民族统一战线</b></td>
+<td>工、农、小资、民族资产阶级 + 大地主大资产阶级(抗日派)</td>
+</tr>
+<tr>
+<td>1945-1949 解放战争时期</td>
+<td><b>人民民主统一战线</b></td>
+<td>一切爱好和平、认同中共纲领的社会人士</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>逻辑</b>: 统一战线范围逐步扩大——土地革命时期最窄(国民党背叛革命后只能依靠工农), 抗战时期最广(民族矛盾上升为主要矛盾, 连大地主大资产阶级抗日派都要团结), 解放战争时期扩展到一切反对国民党独裁的力量。</p>
+</blockquote>
+<h3 id="73土地政策演变">7.3 土地政策演变</h3>
+<table>
+<thead>
+<tr>
+<th>时期</th>
+<th>政策</th>
+<th>对待地主</th>
+<th>对待富农</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>土地革命时期(1928-1937)</td>
+<td>没收地主土地分给农民</td>
+<td>消灭</td>
+<td>限制</td>
+</tr>
+<tr>
+<td>抗战时期(1937-1945)</td>
+<td><b>减租减息</b>(削弱封建剥削)</td>
+<td>不消灭(减租)</td>
+<td>不限制</td>
+</tr>
+<tr>
+<td>解放战争时期(1946-1949)</td>
+<td><b>耕者有其田</b></td>
+<td>没收土地</td>
+<td>一般不变动</td>
+</tr>
+<tr>
+<td>建国初期(1950-1952)</td>
+<td>农民土地所有制</td>
+<td>废除封建剥削</td>
+<td><b>保存富农经济</b></td>
+</tr>
+<tr>
+<td>社会主义改造(1953-1956)</td>
+<td>合作化(集体所有制)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>逻辑</b>: 土地政策是随着主要矛盾和革命任务变化的。抗战时期主要矛盾是中日民族矛盾, 需要团结一切可以团结的力量(包括地主中赞成抗日的), 所以由"没收土地"变为"减租减息"。解放战争时期阶级矛盾上升, 又回到"耕者有其田"。建国初期"保存富农经济"则是为了尽快恢复生产。</p>
+</blockquote>
+<h3 id="74重要著作与文章">7.4 重要著作与文章</h3>
+<table>
+<thead>
+<tr>
+<th>著作</th>
+<th>作者/主体</th>
+<th>时间</th>
+<th>核心贡献</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>《四洲志》</td>
+<td>林则徐组织</td>
+<td>鸦片战争后</td>
+<td>睁眼看世界第一人</td>
+</tr>
+<tr>
+<td>《海国图志》</td>
+<td>魏源</td>
+<td>1843</td>
+<td>"师夷长技以制夷"</td>
+</tr>
+<tr>
+<td>《盛世危言》</td>
+<td>郑观应</td>
+<td></td>
+<td>发展工商业、"商战"、设议院、"君民共主"</td>
+</tr>
+<tr>
+<td>《天演论》</td>
+<td>严复翻译</td>
+<td>甲午战后</td>
+<td>"物竞天择, 适者生存", 为民族危机意识提供理论根据</td>
+</tr>
+<tr>
+<td>《校邠庐抗议》</td>
+<td>冯桂芬</td>
+<td></td>
+<td>最先表述"中体西用"</td>
+</tr>
+<tr>
+<td>《劝学篇》</td>
+<td>张之洞</td>
+<td></td>
+<td>概括"中学为体, 西学为用"</td>
+</tr>
+<tr>
+<td>《法俄革命之比较观》</td>
+<td>李大钊</td>
+<td>1918.7</td>
+<td>十月革命后最早介绍</td>
+</tr>
+<tr>
+<td>《庶民的胜利》《Bolshevism 的胜利》</td>
+<td>李大钊</td>
+<td>1918.11-12</td>
+<td>讴歌十月革命</td>
+</tr>
+<tr>
+<td>《我的马克思主义观》</td>
+<td>李大钊</td>
+<td>1919.9-11</td>
+<td>系统介绍马克思主义, <b>标志系统传播阶段</b></td>
+</tr>
+<tr>
+<td>《中国的红色政权为什么能够存在?》</td>
+<td>毛泽东</td>
+<td>1928.10</td>
+<td>论证红色政权存在条件</td>
+</tr>
+<tr>
+<td>《井冈山的斗争》</td>
+<td>毛泽东</td>
+<td>1928.11</td>
+<td>工农武装割据</td>
+</tr>
+<tr>
+<td>《星星之火, 可以燎原》</td>
+<td>毛泽东</td>
+<td>1930.1</td>
+<td>初步形成以乡村为中心</td>
+</tr>
+<tr>
+<td>《反对本本主义》</td>
+<td>毛泽东</td>
+<td>1930.5</td>
+<td>"没有调查就没有发言权"</td>
+</tr>
+<tr>
+<td>《实践论》《矛盾论》</td>
+<td>毛泽东</td>
+<td>1937</td>
+<td><b>科学阐明党的马克思主义思想路线</b></td>
+</tr>
+<tr>
+<td>《论反对日本帝国主义的策略》</td>
+<td>毛泽东</td>
+<td>1935.12</td>
+<td>解决政治路线</td>
+</tr>
+<tr>
+<td>《论持久战》</td>
+<td>毛泽东</td>
+<td>1938.5-6</td>
+<td>持久抗战总方针</td>
+</tr>
+<tr>
+<td>《〈共产党人〉发刊词》等三篇</td>
+<td>毛泽东</td>
+<td>1939-1940</td>
+<td><b>新民主主义理论系统阐明; 毛泽东思想达到成熟</b></td>
+</tr>
+<tr>
+<td>《改造我们的学习》</td>
+<td>毛泽东</td>
+<td>1941.5</td>
+<td>整风运动开始</td>
+</tr>
+<tr>
+<td>《论联合政府》</td>
+<td>毛泽东</td>
+<td>1945.4</td>
+<td>中共七大政治报告</td>
+</tr>
+<tr>
+<td>《论人民民主专政》</td>
+<td>毛泽东</td>
+<td>1949.6</td>
+<td>国体论述; 构成《共同纲领》基础</td>
+</tr>
+<tr>
+<td>《论十大关系》</td>
+<td>毛泽东</td>
+<td>1956.4</td>
+<td>开始探索中国自己的建设道路</td>
+</tr>
+<tr>
+<td>《关于正确处理人民内部矛盾的问题》</td>
+<td>毛泽东</td>
+<td>1957</td>
+<td>社会主义社会矛盾学说</td>
+</tr>
+</tbody>
+</table>
+<p><b><span class="src">【来源: 史纲全部课件】</span></b></p>
+<hr />
+<h2 id="八易错点">八、易错点</h2>
+<h3 id="81时间线混淆">8.1 时间线混淆</h3>
+<ol>
+<li><b>民族意识觉醒</b>: 鸦片战争后——朦胧; <b>甲午战争后——普遍</b>。</li>
+<li><b>马克思主义传播</b>: 十月革命后开始传播; 李大钊《我的马克思主义观》(1919.9)——<b>进入比较系统的传播阶段</b>。</li>
+<li><b>毛泽东思想</b>: 农村包围城市道路理论——<b>初步形成</b>(1930); 新民主主义理论系统阐明——<b>达到成熟</b>(1939-1940); 七大写入党章——<b>正式确立</b>(1945)。</li>
+</ol>
+<h3 id="82会议政策张冠李戴">8.2 会议/政策张冠李戴</h3>
+<ol>
+<li><b>八七会议</b>确定了土地革命+武装反抗总方针、"枪杆子里出政权"; <b>遵义会议</b>解决了军事+组织问题、确立毛泽东实际领导地位。</li>
+<li><b>六届六中全会</b>提出"马克思主义中国化"命题; <b>七大</b>确立毛泽东思想为指导思想。</li>
+<li><b>七届二中全会</b>提出工作重心从农村转向城市; <b>人民政协</b>通过《共同纲领》。</li>
+<li><b>洛川会议</b>提出全面抗战路线; <b>瓦窑堡会议</b>提出抗日民族统一战线新政策。</li>
+</ol>
+<h3 id="83著作归属">8.3 著作归属</h3>
+<ol>
+<li><b>"师夷长技以制夷"</b>——魏源(不是林则徐)</li>
+<li><b>《海国图志》</b>——魏源; <b>《四洲志》</b>——林则徐</li>
+<li><b>"中体西用"</b>——冯桂芬最先表述, 张之洞概括</li>
+<li><b>《天演论》</b>——严复翻译(不是写作), 原著作者是赫胥黎</li>
+<li><b>"枪杆子里出政权"</b>——毛泽东在八七会议提出</li>
+<li><b>《星星之火, 可以燎原》</b>——回答"红旗能打多久"(不是《中国的红色政权为什么能够存在?》)</li>
+</ol>
+<h3 id="84性质判断">8.4 性质判断</h3>
+<ol>
+<li><b>"半封建"</b>——指出现了资本主义生产关系, 不是"封建经济占一半"</li>
+<li><b>洋务派官督商办民用企业</b>——<b>资本主义性质</b>(不是封建性质)</li>
+<li><b>旧政协协议</b>——<b>不是新民主主义性质的</b></li>
+<li><b>《共同纲领》</b>——新民主主义性质的, 起临时宪法作用</li>
+<li><b>社会主义基本制度确立的标志</b>——社会主义经济制度(三大改造完成), 不是政治制度</li>
+<li><b>国民党政权性质</b>——代表<b>地主阶级和买办性的大资产阶级</b>利益</li>
+</ol>
+<h3 id="85重要区分">8.5 重要区分</h3>
+<ol>
+<li><b>遵义会议</b>解决: 军事+组织(不是政治+思想)  vs  <b>瓦窑堡会议</b>解决: 政治路线  vs  <b>延安整风</b>解决: 思想路线</li>
+<li><b>中共一大</b>: 中国共产党成立  vs  <b>中共二大</b>: 提出反帝反封建民主革命纲领</li>
+<li><b>北伐对象</b>: 吴佩孚(直系)、孙传芳(皖系)、张作霖(奉系)</li>
+<li><b>九一八事变</b>: 揭开世界反法西斯战争序幕  vs  <b>卢沟桥事变</b>: 中国全面抗战开始</li>
+</ol>
+<p><b><span class="src">【来源: 史纲全部课件】</span></b></p>
+<hr />
+<h2 id="九知识连接">九、知识连接</h2>
+<blockquote>
+<p>史纲与马原、毛中特的交叉考点, 适合分析题素材积累。</p>
+</blockquote>
+<h3 id="91与马原的连接">9.1 与马原的连接</h3>
+<ul>
+<li><b>社会主要矛盾决定历史任务</b>: 半殖民地半封建社会的两对主要矛盾 -&gt; 两大历史任务 -&gt; 各个阶段的革命策略</li>
+<li><b>生产关系要适应生产力发展</b>: 洋务运动的失败(新的生产力与封建生产关系不相容); 土地改革的意义(解放农村生产力)</li>
+<li><b>经济基础决定上层建筑</b>: 半殖民地半封建社会的经济结构 -&gt; 阶级结构 -&gt; 政治格局</li>
+<li><b>社会存在决定社会意识</b>: 为什么是十月革命后而不是更早接受马克思主义? 因为工人阶级还没有壮大、资本主义矛盾还没有充分暴露</li>
+</ul>
+<h3 id="92与毛中特的连接">9.2 与毛中特的连接</h3>
+<ul>
+<li><b>新民主主义革命理论</b>: 史纲是整个新民主主义革命理论的历史呈现; 统一战线、武装斗争、党的建设(三大法宝)在史纲中都有具体历史体现</li>
+<li><b>毛泽东思想的发展脉络</b>: 史纲提供了"初步形成 -&gt; 达到成熟 -&gt; 确立为指导思想"的完整时间线</li>
+<li><b>社会主义改造理论</b>: 过渡时期总路线、和平赎买政策的理论依据和具体操作</li>
+<li><b>中国特色社会主义</b>: 改革开放的历史背景和逻辑</li>
+</ul>
+<h3 id="93分析题素材历史和人民为什么选择了马克思主义中国共产党社会主义">9.3 分析题素材: "历史和人民为什么选择了马克思主义/中国共产党/社会主义?"</h3>
+<p><b>为什么选择马克思主义?</b></p>
+<ul>
+<li>旧民主主义革命屡战屡败 -&gt; 资产阶级共和国方案在中国行不通</li>
+<li>十月革命: 经济文化落后的国家也可以走社会主义(方向启示)</li>
+<li>一战暴露资本主义制度弊端 -&gt; 对西方民主主义的怀疑</li>
+<li>李大钊等先进分子的选择和传播</li>
+<li>马克思主义的科学性和革命性</li>
+</ul>
+<p><b>为什么选择中国共产党?</b></p>
+<ul>
+<li>农民阶级不行: 小生产者的局限性(太平天国)</li>
+<li>地主阶级改革派不行: "中体西用"不改制度(洋务运动)</li>
+<li>资产阶级维新派不行: 力量弱小, 依靠无实权的皇帝</li>
+<li>资产阶级革命派不行: 没有彻底反帝反封建纲领, 没有发动农民</li>
+<li>中国共产党: 新的领导力量 + 新的指导思想 + 新的革命方法 + 新的纲领目标</li>
+</ul>
+<p><b>为什么选择社会主义?</b></p>
+<ul>
+<li>第三条道路(资产阶级共和国)的破产</li>
+<li>社会主义工业化是国家独立富强的首要条件</li>
+<li>资本主义经济力量弱小, 不可能成为中国工业起飞的基础</li>
+<li>国际环境促使中国选择社会主义</li>
+</ul>
+<hr />
+<blockquote>
+<p>📖 例题全量见: <a href="政治_史纲_例题.html">史纲 · 例题集</a></p>
+</blockquote></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="政治_马原_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>政治 · 马原_例题</b></span></a><a class="next" href="政治_史纲_例题.html"><span class="pg-t"><small>下一篇</small><b>政治 · 史纲_例题</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

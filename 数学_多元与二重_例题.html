@@ -1,0 +1,1618 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数学 · 多元与二重_例题</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">📐 数学</div><details class="grp" data-k="grp-高数" open><summary>高数<em>10</em></summary><a class="b" href="数学_极限与数列.html">极限与数列</a><a class="c x" href="数学_极限与数列_例题.html">▸ 例题集</a><a class="b" href="数学_导数与微分.html">导数与微分</a><a class="c x" href="数学_导数与微分_例题.html">▸ 例题集</a><a class="b" href="数学_中值定理.html">中值定理</a><a class="c x" href="数学_中值定理_例题.html">▸ 例题集</a><a class="b" href="数学_积分.html">积分</a><a class="c x" href="数学_积分_例题.html">▸ 例题集</a><a class="b" href="数学_微分方程.html">微分方程</a><a class="c x" href="数学_微分方程_例题.html">▸ 例题集</a><a class="b" href="数学_多元与二重.html">多元与二重</a><a class="c x on" href="数学_多元与二重_例题.html">▸ 例题集</a><a class="c" href="数学_多元与二重_例题.html#一二元极限与连续性判定">一、二元极限与连续性判定</a><a class="d" href="数学_多元与二重_例题.html#例11">例 1.1</a><a class="d" href="数学_多元与二重_例题.html#例12">例 1.2</a><a class="d" href="数学_多元与二重_例题.html#例13">例 1.3</a><a class="d" href="数学_多元与二重_例题.html#例14">例 1.4</a><a class="c" href="数学_多元与二重_例题.html#二偏导存在可微性判定理论型">二、偏导存在、可微性判定(理论型)</a><a class="d" href="数学_多元与二重_例题.html#例21">例 2.1</a><a class="d" href="数学_多元与二重_例题.html#例22">例 2.2</a><a class="d" href="数学_多元与二重_例题.html#例23">例 2.3</a><a class="d" href="数学_多元与二重_例题.html#例24">例 2.4</a><a class="d" href="数学_多元与二重_例题.html#例25">例 2.5</a><a class="d" href="数学_多元与二重_例题.html#例26">例 2.6</a><a class="d" href="数学_多元与二重_例题.html#例27">例 2.7</a><a class="d" href="数学_多元与二重_例题.html#例28">例 2.8</a><a class="d" href="数学_多元与二重_例题.html#例29">例 2.9</a><a class="c" href="数学_多元与二重_例题.html#三复合函数求偏导">三、复合函数求偏导</a><a class="d" href="数学_多元与二重_例题.html#例31">例 3.1</a><a class="d" href="数学_多元与二重_例题.html#例32">例 3.2</a><a class="d" href="数学_多元与二重_例题.html#例33">例 3.3</a><a class="d" href="数学_多元与二重_例题.html#例34">例 3.4</a><a class="d" href="数学_多元与二重_例题.html#例35">例 3.5</a><a class="d" href="数学_多元与二重_例题.html#例36">例 3.6</a><a class="d" href="数学_多元与二重_例题.html#例37">例 3.7</a><a class="d" href="数学_多元与二重_例题.html#例38">例 3.8</a><a class="c" href="数学_多元与二重_例题.html#四隐函数求偏导">四、隐函数求偏导</a><a class="d" href="数学_多元与二重_例题.html#例41">例 4.1</a><a class="d" href="数学_多元与二重_例题.html#例42">例 4.2</a><a class="d" href="数学_多元与二重_例题.html#例43">例 4.3</a><a class="d" href="数学_多元与二重_例题.html#例44">例 4.4</a><a class="d" href="数学_多元与二重_例题.html#例45">例 4.5</a><a class="d" href="数学_多元与二重_例题.html#例46">例 4.6</a><a class="d" href="数学_多元与二重_例题.html#例47">例 4.7</a><a class="d" href="数学_多元与二重_例题.html#例48">例 4.8</a><a class="d" href="数学_多元与二重_例题.html#例49">例 4.9</a><a class="c" href="数学_多元与二重_例题.html#五多元函数极值与最值">五、多元函数极值与最值</a><a class="d" href="数学_多元与二重_例题.html#例51">例 5.1</a><a class="d" href="数学_多元与二重_例题.html#例52">例 5.2</a><a class="d" href="数学_多元与二重_例题.html#例53">例 5.3</a><a class="d" href="数学_多元与二重_例题.html#例54">例 5.4</a><a class="d" href="数学_多元与二重_例题.html#例55">例 5.5</a><a class="d" href="数学_多元与二重_例题.html#例56">例 5.6</a><a class="d" href="数学_多元与二重_例题.html#例57">例 5.7</a><a class="d" href="数学_多元与二重_例题.html#例58">例 5.8</a><a class="d" href="数学_多元与二重_例题.html#例59">例 5.9</a><a class="d" href="数学_多元与二重_例题.html#例510">例 5.10</a><a class="d" href="数学_多元与二重_例题.html#例511">例 5.11</a><a class="c" href="数学_多元与二重_例题.html#六二重积分比较大小与对称性判定">六、二重积分: 比较大小与对称性判定</a><a class="d" href="数学_多元与二重_例题.html#例61">例 6.1</a><a class="d" href="数学_多元与二重_例题.html#例62">例 6.2</a><a class="d" href="数学_多元与二重_例题.html#例63">例 6.3</a><a class="d" href="数学_多元与二重_例题.html#例64">例 6.4</a><a class="d" href="数学_多元与二重_例题.html#例65">例 6.5</a><a class="d" href="数学_多元与二重_例题.html#例66">例 6.6</a><a class="d" href="数学_多元与二重_例题.html#例67">例 6.7</a><a class="c" href="数学_多元与二重_例题.html#七二重积分直角坐标计算">七、二重积分: 直角坐标计算</a><a class="d" href="数学_多元与二重_例题.html#例71">例 7.1</a><a class="d" href="数学_多元与二重_例题.html#例72">例 7.2</a><a class="d" href="数学_多元与二重_例题.html#例73">例 7.3</a><a class="c" href="数学_多元与二重_例题.html#八二重积分极坐标计算">八、二重积分: 极坐标计算</a><a class="d" href="数学_多元与二重_例题.html#例81">例 8.1</a><a class="d" href="数学_多元与二重_例题.html#例82">例 8.2</a><a class="d" href="数学_多元与二重_例题.html#例83">例 8.3</a><a class="d" href="数学_多元与二重_例题.html#例84">例 8.4</a><a class="d" href="数学_多元与二重_例题.html#例85">例 8.5</a><a class="d" href="数学_多元与二重_例题.html#例86">例 8.6</a><a class="d" href="数学_多元与二重_例题.html#例87">例 8.7</a><a class="d" href="数学_多元与二重_例题.html#例88">例 8.8</a><a class="d" href="数学_多元与二重_例题.html#例89">例 8.9</a><a class="d" href="数学_多元与二重_例题.html#例810">例 8.10</a><a class="c" href="数学_多元与二重_例题.html#九二重积分分段函数与绝对值">九、二重积分: 分段函数与绝对值</a><a class="d" href="数学_多元与二重_例题.html#例91">例 9.1</a><a class="d" href="数学_多元与二重_例题.html#例92">例 9.2</a><a class="c" href="数学_多元与二重_例题.html#十交换积分次序与变限二重积分">十、交换积分次序与变限二重积分</a><a class="d" href="数学_多元与二重_例题.html#例101">例 10.1</a><a class="d" href="数学_多元与二重_例题.html#例102">例 10.2</a><a class="d" href="数学_多元与二重_例题.html#例103">例 10.3</a><a class="d" href="数学_多元与二重_例题.html#例104">例 10.4</a><a class="d" href="数学_多元与二重_例题.html#例105">例 10.5</a><a class="c" href="数学_多元与二重_例题.html#十一无界区域二重积分">十一、无界区域二重积分</a><a class="d" href="数学_多元与二重_例题.html#例111">例 11.1</a><a class="d" href="数学_多元与二重_例题.html#例112">例 11.2</a><a class="d" href="数学_多元与二重_例题.html#例113">例 11.3</a><a class="b" href="数学_级数.html">级数</a><a class="c x" href="数学_级数_例题.html">▸ 例题集</a><a class="b" href="数学_曲线曲面积分.html">曲线曲面积分</a><a class="c x" href="数学_曲线曲面积分_例题.html">▸ 例题集</a><a class="b" href="数学_导数应用.html">导数应用</a><a class="c x" href="数学_导数应用_例题.html">▸ 例题集</a><a class="b" href="数学_数三专题.html">数三专题</a></details><details class="grp" data-k="grp-线性代数"><summary>线性代数<em>1</em></summary><a class="b" href="数学_线性代数.html">线性代数</a><a class="c x" href="数学_线性代数_例题.html">▸ 例题集</a><a class="c" href="数学_线性代数.html#板块总览">板块总览</a><a class="c" href="数学_线性代数.html#一行列式">一、行列式</a><a class="c" href="数学_线性代数.html#二矩阵">二、矩阵</a><a class="c" href="数学_线性代数.html#三向量与秩">三、向量与秩</a><a class="c" href="数学_线性代数.html#四线性方程组">四、线性方程组</a><a class="c" href="数学_线性代数.html#五特征值与特征向量">五、特征值与特征向量</a><a class="c" href="数学_线性代数.html#六相似对角化与二次型">六、相似对角化与二次型</a><a class="c" href="数学_线性代数.html#知识连接">知识连接</a></details><details class="grp" data-k="grp-概率论"><summary>概率论<em>1</em></summary><a class="b" href="数学_概率论.html">概率论</a><a class="c x" href="数学_概率论_例题.html">▸ 例题集</a><a class="c" href="数学_概率论.html#板块总览">板块总览</a><a class="c" href="数学_概率论.html#一随机事件与概率">一、随机事件与概率</a><a class="c" href="数学_概率论.html#二一维随机变量及其分布">二、一维随机变量及其分布</a><a class="c" href="数学_概率论.html#三随机变量函数的分布高频">三、随机变量函数的分布 【高频】</a><a class="c" href="数学_概率论.html#四多维随机变量及其分布">四、多维随机变量及其分布</a><a class="c" href="数学_概率论.html#五随机变量的数字特征必考">五、随机变量的数字特征 【必考】</a><a class="c" href="数学_概率论.html#六大数定律与中心极限定理高频">六、大数定律与中心极限定理 【高频】</a><a class="c" href="数学_概率论.html#七数理统计初步高频">七、数理统计初步 【高频】</a><a class="c" href="数学_概率论.html#八知识连接">八、知识连接</a><a class="c" href="数学_概率论.html#核心公式速查">核心公式速查</a></details><a class="b" href="数学_练习与测试.html">练习与测试</a><a class="c x" href="数学_练习与测试_例题.html">▸ 例题集</a><a class="b" href="数学_复习清单.html">复习清单</a><a class="b" href="数学_技巧速查.html">技巧速查</a></nav>
+<div id="progress"></div>
+<main data-subj="math"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>数学 · 多元与二重_例题</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>多元与二重_例题</h1><div class="board-meta">📐 数学 · <span class="pill">例题集</span><span class="pill">71 道例题</span></div><blockquote>
+<p>全量收录本板块课件例题(0516（3）、0523（1-3）、0530（1）、多元函数微分学、二重积分、0724（1-2）、0725（1-2）), 按方法分组。
+手写 OCR 部分数值模糊处标<span class="mk warn">数值不清</span>; 重建解答标<span class="fill">【AI补全】</span>。⬅ 返回 <a href="数学_多元与二重.html">理论笔记</a></p>
+</blockquote>
+<hr />
+<h2 id="一二元极限与连续性判定">一、二元极限与连续性判定</h2>
+<p id="例11" class="prob"><b>例 1.1</b> 求下列二元函数极限 【0516（3）】(1)(2)(4)(5) 题面按视觉转写定稿</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#12二元函数的极限必考">二元函数极限</a> · <a href="数学_多元与二重.html#13二元函数的连续性">二元函数连续性</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例12">例 1.2</a> 本题各小题用因式分解、等价无穷小、夹逼验证极限存在, 例 1.2 用路径法证极限不存在</li>
+</ul>
+<p>(1) $\displaystyle\lim_{(x,y)\to(1,1)}\frac{x^2-y^2}{x-y}$ 【题面按视觉转写定稿】</p>
+<details><summary>解答</summary>
+<div class="step">① 分子 $x^2-y^2=(x-y)(x+y)$<span class="why">平方差公式: 分子含因子 $(x-y)$ 恰与分母约分, 这是极限能算出的唯一原因</span></div>
+<div class="step">② 原式 $=\lim_{(x,y)\to(1,1)}(x+y)=2$<span class="why">约分后是连续函数, 极限等于代值 $1+1=2$; 约分在 $(x,y)\to(1,1)$ 且 $x\neq y$ 的逼近过程中合法。原笔记误读为 $\frac{x^2+y^2-2xy}{x-y}$(约分后 $x-y\to0$), 视觉稿核实为 $x^2-y^2$, 答案是 2</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 二元极限先试因式分解约分, 约不掉再想路径法或夹逼; 平方差是最常见可约结构。</div>
+</details>
+
+<p>(2) $\displaystyle\lim_{(x,y)\to(0,0)}\frac{1-\cos(xy)}{x^2y^2}$ 【题面按视觉转写定稿】</p>
+<details><summary>解答</summary>
+<div class="step">① $1-\cos(xy) \sim \frac{(xy)^2}{2}$<span class="why">等价无穷小 $1-\cos t\sim\frac{t^2}{2}$ ($t\to0$), 这里 $t=xy\to0$, 分子换成主项 $(xy)^2/2$</span></div>
+<div class="step">② 原式 $=\lim_{(x,y)\to(0,0)}\frac{(xy)^2/2}{x^2y^2}=\frac12$<span class="why">分子分母同为 $x^2y^2$, 直接约分得常数 $\frac12$; 原笔记误读分母为 $x^2+y^2$ 才要走路径/夹逼, 视觉稿分母是 $x^2y^2$, 一约即得</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 等价无穷小先行后直接约分, 分子分母同构是设计好的"白送"题; 约不掉再想路径法。</div>
+</details>
+
+<p>(3) $\displaystyle\lim_{(x,y)\to(0,0)}(x^2+y^2)\sin\frac{1}{x^2+y^2}$</p>
+<details><summary>解答</summary>
+<div class="step">① 无穷小 $\times$ 有界量: $x^2+y^2\to0$, $|\sin\frac{1}{x^2+y^2}|\le1$<span class="why">正弦自变量趋于无穷大, 函数值仍有界, 恰好构成"无穷小乘有界"的标准情形</span></div>
+<div class="step">② 原式 $=0$<span class="why">无穷小与有界量之积仍为无穷小</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 振荡型因子 (正弦、余弦) 一律按有界量处理, 配上一个无穷小因子即得极限 0。</div>
+</details>
+
+<p>(4) $\displaystyle\lim_{(x,y)\to(0,0)}\frac{x^2y^2}{x^2+y^2}$ 【题面按视觉转写定稿】</p>
+<details><summary>解答</summary>
+<div class="step">① 夹逼: $0\le\frac{x^2y^2}{x^2+y^2}\le\frac{x^2y^2}{2|xy|}=\frac{|xy|}{2}\to0$<span class="why">放大用不等式 $x^2+y^2\ge2|xy|$, 夹逼定理直接证明极限为 0</span></div>
+<div class="step">② 或极坐标: $=\lim_{\rho\to0}\rho^2\cos^2\theta\sin^2\theta=0$<span class="why">$x^2y^2=\rho^4\cos^2\theta\sin^2\theta$, 除以 $\rho^2$ 得 $\rho^2\cos^2\theta\sin^2\theta\to0$, 与 $\theta$ 无关</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 分子 4 次、分母 2 次, 极限必为 0: 先看阶数预判, 夹逼或极坐标收尾。原笔记误读为 $\frac{xy}{x^2+y^2}$(路径极限随 $k$ 变、不存在), 视觉稿核实为 $x^2y^2$, 结论方向相反。</div>
+</details>
+
+<p>(5) $\displaystyle\lim_{(x,y)\to(0,0)}\frac{x^2|y|^{3/2}}{x^4+y^2}$ 【题面按视觉转写定稿】</p>
+<details><summary>解答</summary>
+<div class="step">① 令 $u=x^2$: $\frac{x^2|y|^{3/2}}{x^4+y^2}=\frac{u|y|^{3/2}}{u^2+y^2}$<span class="why">分子 $x^2$ 恰是 $x^4$ 的开方, 换元后分子分母齐次结构更清晰</span></div>
+<div class="step">② 夹逼: $0\le\frac{u|y|^{3/2}}{u^2+y^2}\le\frac{u|y|^{3/2}}{2u|y|}=\frac{\sqrt{|y|}}{2}\to0$<span class="why">$u^2+y^2\ge2|u||y|$ 放掉分母, 分子分母约去 $u|y|$ 剩 $\sqrt{|y|}/2\to0$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 阶数参差的极限先试放缩夹逼: 用 $a^2+b^2\ge2ab$ 把高次项配平; 原笔记误读为 $\frac{xy^2}{x^2+y^4}$ 且标"AI补全", 视觉稿核实为 $\frac{x^2|y|^{3/2}}{x^4+y^2}$, 极限存在且为 0。</div>
+</details>
+
+<hr />
+<p id="例12" class="prob"><b>例 1.2</b> 判断极限 $\displaystyle\lim_{(x,y)\to(0,0)}\frac{xy}{x^2+y^2}$ 是否存在 【0516（3）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#12二元函数的极限必考">二元函数极限</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例11">例 1.1</a> 同用 $y=kx$ 路径法, 本题路径极限随 $k$ 变故判不存在 <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例26">例 2.6</a> 同一反例 $\frac{xy}{x^2+y^2}$ 复用于"偏导存在推不出连续"</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 取 $y=kx$: $\lim_{x\to0}\frac{kx^2}{x^2(1+k^2)} = \frac{k}{1+k^2}$<span class="why">直线路径下分子分母同时提出 $x^2$ 约掉, 路径极限只由斜率 $k$ 决定</span></div>
+<div class="step">② 极限值与 $k$ 有关(随 $k$ 变化), 故二重极限不存在<span class="why">二重极限存在要求沿所有路径趋于同一值; $k=1$ 时极限 $\frac12$, $k=0$ 时极限 $0$, 已矛盾</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $\frac{xy}{x^2+y^2}$ 是最经典的"路径极限随 $k$ 变"反例, 连续性与可微性判定中反复出现。</div>
+</details>
+
+<hr />
+<p id="例13" class="prob"><b>例 1.3</b> 设 $f(x,y)=\begin{cases} y\arctan\frac{1}{\sqrt{x^2+y^2}}, & (x,y)\neq(0,0) \\ 0, & (x,y)=(0,0) \end{cases}$, 判断在 $(0,0)$ 是否连续 【0516（3）】【题面按视觉转写定稿】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#13二元函数的连续性">二元函数连续性</a> · <a href="数学_多元与二重.html#12二元函数的极限必考">二元函数极限</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例14">例 1.4</a> 同为分段函数判定连续性</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $\displaystyle\lim_{(x,y)\to(0,0)} y\arctan\frac{1}{\sqrt{x^2+y^2}}$: $y\to0$, $|\arctan\frac{1}{\sqrt{x^2+y^2}}|\le\frac{\pi}{2}$, 无穷小$\times$有界 $=0$<span class="why">反正切的值域是 $(-\frac\pi2,\frac\pi2)$, 无论内部 $1/\sqrt{x^2+y^2}$ 多大函数值都有界, 与无穷小因子 $y$ 相乘趋于 0。原笔记误读为 $y\arctan\frac{x}{y}$, 视觉稿为 $y\arctan\frac{1}{\sqrt{x^2+y^2}}$, 放缩依据不变</span></div>
+<div class="step">② $\lim f = 0 = f(0,0)$, 故在 $(0,0)$ 连续<span class="why">分段函数连续性的定义: 极限值等于该点函数值 (分段定义处补的 $0$)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 分段函数判定连续: 先求极限, 再与定义值比较; 反正切"值域有界"是常用放缩依据。</div>
+</details>
+
+<hr />
+<p id="例14" class="prob"><b>例 1.4</b> (强化) 已知 $f(x,y)=\begin{cases} \frac{\sin(xy)}{\sqrt{x^2+y^2}}, & (x,y)\neq(0,0) \\ 0, & (x,y)=(0,0) \end{cases}$, 判断在 $(0,0)$ 处的性质 【0724（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#13二元函数的连续性">二元函数连续性</a> · <a href="数学_多元与二重.html#14偏导数必考">偏导数</a> · <a href="数学_多元与二重.html#15全微分必考">全微分</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例23">例 2.3</a> 同为"连续+偏导存在+不可微"反例结构, 定义式检验路径相同</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 连续性: $|\sin(xy)|\le|xy|$, $\left|\frac{\sin(xy)}{\sqrt{x^2+y^2}}\right|\le\frac{|xy|}{\sqrt{x^2+y^2}}\le\frac{x^2+y^2}{2\sqrt{x^2+y^2}}=\frac{\sqrt{x^2+y^2}}{2}\to0$; 故 $\lim f=0=f(0,0)$, 连续<span class="why">两级放缩: 先放掉正弦, 再用 $|xy|\le\frac{x^2+y^2}{2}$, 最终以 $\rho/2$ 为界趋于 0</span></div>
+<div class="step">② 偏导: $f_x(0,0)=\lim_{x\to0}\frac{f(x,0)-f(0,0)}{x}=0$, 同理 $f_y(0,0)=0$, 偏导均存在<span class="why">沿坐标轴方向函数恒为 0, 差商恒为 0, 偏导存在且为 0</span></div>
+<div class="step">③ 可微: 取 $y=kx$, 验证定义极限 $\lim\frac{|f(x,kx)-0-0-0|}{\sqrt{x^2+k^2x^2}}=\lim\frac{|\sin(kx^2)|}{|x|\sqrt{1+k^2}\sqrt{1+k^2}}=\frac{|k|}{1+k^2}\neq0$, 故不可微<span class="why">可微要求 $\Delta z-dz$ 比 $\rho$ 高阶; 沿 $y=kx$ 该比值趋于 $\frac{|k|}{1+k^2}\neq0$, 破坏可微定义 (这里 $\sin(kx^2)\sim kx^2$ 是关键)</span></div>
+<div class="step">④ 选(C): 连续, 偏导数均存在但不可微<span class="why">连续、偏导存在都是可微的必要条件, 两者同时成立仍推不出可微, 本题即反例</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 连续+偏导存在+不可微三者同框的综合题, 可微性判定的定义式与路径检验要能独立复述。</div>
+</details>
+
+<hr />
+<h2 id="二偏导存在可微性判定理论型">二、偏导存在、可微性判定(理论型)</h2>
+<p id="例21" class="prob"><b>例 2.1</b> 已知 $f(x,y)=e^{\sqrt{x^2+y^4}}$, 判断 $f_x(0,0)$, $f_y(0,0)$ 是否存在 【0523（1）】【题面按视觉转写定稿】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#14偏导数必考">偏导数</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例24">例 2.4</a> 同用偏导定义式求原点处偏导</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $f_x(0,0)=\lim_{x\to0}\frac{e^{|x|}-1}{x}$<span class="why">偏导定义: $f(x,0)=e^{|x|}$, $f(0,0)=e^0=1$, 差商即 $\frac{e^{|x|}-1}{x}$</span></div>
+<div class="step">② $x\to0^+$: $\frac{e^x-1}{x}\to1$; $x\to0^-$: $\frac{e^{-x}-1}{x}=-\frac{e^{-x}-1}{-x}\to-1$<span class="why"><b>易错</b> $x<0$ 时 $|x|=-x$: 令 $t=-x\to0^+$, 则 $\frac{e^{-x}-1}{x}=-\frac{e^t-1}{t}\to-1$, 即左侧极限为 $-1$ (原 OCR 该步残缺, 已补全)</span></div>
+<div class="step">③ 左右极限不等, $f_x(0,0)$ 不存在<span class="why">左极限 $-1$、右极限 $1$ 不一致, 差商极限不存在; $e^{|x|}$ 在原点呈"尖点"</span></div>
+<div class="step">④ $f_y(0,0)=\lim_{y\to0}\frac{f(0,y)-f(0,0)}{y}=\lim_{y\to0}\frac{e^{y^2}-1}{y}=0$, $f_y(0,0)$ 存在且为 0<span class="why">$f(0,y)=e^{\sqrt{y^4}}=e^{y^2}$, $e^{y^2}-1\sim y^2$, 差商 $\sim y\to0$。原笔记误判"$f_y$ 也不存在"——那是 $e^{\sqrt{x^2+y^2}}$ 题面下的结论; 视觉稿 $y^4$ 使 $f_y$ 光滑存在</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 带绝对值的函数在分段点求偏导, 必须分左右; 同一函数 $x$ 方向"尖点"不可导、$y$ 方向光滑可导, 偏导存在性随方向而变。</div>
+</details>
+
+<hr />
+<p id="例22" class="prob"><b>例 2.2</b> 已知 $f_x>0$, $f_y<0$, 则使 $f(x_1,y_1)<f(x_2,y_2)$ 成立的充分条件是? 【0523（1）】【题面按视觉转写定稿】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#14偏导数必考">偏导数</a></li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $f_x>0$ 说明 $f$ 关于 $x$ 单调递增: $x_1<x_2$ 时 $f(x_1,y)<f(x_2,y)$<span class="why">偏导符号决定一元方向的单调性: $f_x>0$ 表示固定 $y$ 时 $f$ 随 $x$ 增大而增大</span></div>
+<div class="step">② $f_y<0$ 说明 $f$ 关于 $y$ 单调递减: $y_1>y_2$ 时 $f(x,y_1)<f(x,y_2)$<span class="why">同理, $f_y<0$ 表示固定 $x$ 时 $f$ 随 $y$ 增大而减小</span></div>
+<div class="step">③ 综合: $x_1<x_2$ 且 $y_1>y_2$, 选 (D)<span class="why">两步串接: $f(x_1,y_1)<f(x_2,y_1)<f(x_2,y_2)$ (先小 $x$ 再大 $y$), 两个方向的条件缺一不可; 原笔记把偏导符号与选项方向都写反, 视觉稿核实为 $f_x>0, f_y<0$, 答案 D</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 偏导符号与单调性的转化: 需要哪个变量变大, 先看该方向偏导的正负, 再逐步传递不等式。</div>
+</details>
+
+<hr />
+<p id="例23" class="prob"><b>例 2.3</b> 判断 $f(x,y)=\begin{cases} \frac{xy}{\sqrt{x^2+y^2}}, & (x,y)\neq(0,0) \\ 0, & (x,y)=(0,0) \end{cases}$ 在 $(0,0)$ 是否可微 【0523（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#15全微分必考">全微分</a> · <a href="数学_多元与二重.html#14偏导数必考">偏导数</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例14">例 1.4</a> 同为"连续+偏导存在+不可微"综合判定 <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例24">例 2.4</a> 同为定义式检验不可微</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 连续性: $\lim_{(x,y)\to(0,0)}\frac{xy}{\sqrt{x^2+y^2}}=0$ (无穷小$\times$有界), 连续<span class="why">放缩 $|xy|\le\frac{x^2+y^2}{2}$ 后以 $\frac{\rho}{2}$ 为界, 或直接看 $x=\rho\cos\theta$: $\frac{xy}{\rho}=\rho\cos\theta\sin\theta\to0$</span></div>
+<div class="step">② 偏导: $f_x(0,0)=0$, $f_y(0,0)=0$<span class="why">沿坐标轴 $f\equiv0$, 差商恒为 0</span></div>
+<div class="step">③ 可微判定: $\lim\frac{f(\Delta x,\Delta y)-0-0-0}{\sqrt{(\Delta x)^2+(\Delta y)^2}} = \lim\frac{\Delta x\Delta y}{(\Delta x)^2+(\Delta y)^2}$<span class="why">偏导都是 0, 定义式分子只剩 $f$ 本身; 若可微, 此极限必须是 0</span></div>
+<div class="step">④ 取 $\Delta y=k\Delta x$: 极限 $=\frac{k}{1+k^2}\neq0$, 故不可微<span class="why">分子分母同阶 (都是 2 次), 路径极限依赖 $k$ 且非零, 直接违反可微定义</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $f=\frac{xy}{\sqrt{x^2+y^2}}$ 连续、偏导存在但不可微: 关键在 $\Delta x\Delta y$ 与 $\rho^2$ 同阶, 比值下不来。</div>
+</details>
+
+<hr />
+<p id="例24" class="prob"><b>例 2.4</b> 讨论 $z=\sqrt{|xy|}$ 在 $(0,0)$ 的连续性、偏导存在性、可微性 【0523（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#15全微分必考">全微分</a> · <a href="数学_多元与二重.html#14偏导数必考">偏导数</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例23">例 2.3</a> 同为"连续+偏导存在+不可微"反例, 本题增量为半次幂更隐蔽</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 连续性: $\lim_{(x,y)\to(0,0)}\sqrt{|xy|}=0=f(0,0)$, 连续<span class="why">$|xy|\to0$, 根号下连续</span></div>
+<div class="step">② 偏导: $f_x(0,0)=\lim_{x\to0}\frac{0-0}{x}=0$, 同理 $f_y(0,0)=0$, 偏导存在<span class="why">注意 $f(x,0)=\sqrt{|x\cdot0|}=0$ 恒成立, 差商为 0; 但离开坐标轴函数并非常数</span></div>
+<div class="step">③ 全增量: $f(\Delta x,\Delta y)-f(0,0)=\sqrt{|\Delta x\Delta y|}$<span class="why">全增量就是函数本身减去原点的定义值 $0$</span></div>
+<div class="step">④ 可微判定: $\lim\frac{\sqrt{|\Delta x\Delta y|}}{\sqrt{(\Delta x)^2+(\Delta y)^2}}$, 取 $\Delta y=k\Delta x$: $=\frac{\sqrt{|k|}}{\sqrt{1+k^2}}\neq0$, 不可微<span class="why">增量 $\sqrt{|\Delta x\Delta y|}$ 与 $\rho$ 同阶 ($\Delta x\Delta y$ 是 2 次而开根后是 1 次), 比值非零, 不满足 $\Delta z=o(\rho)$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 连续+偏导存在+不可微的又一反例; 判定口诀: 全增量是 $\sqrt{\Delta x\Delta y}$ 时"半次幂"必不可微。</div>
+</details>
+
+<hr />
+<p id="例25" class="prob"><b>例 2.5</b> 二元函数 $f(x,y)$ 的 4 条性质排序: (1)连续 (2)偏导连续 (3)可微 (4)偏导存在, 则正确的推导关系是? 【0523（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#15全微分必考">全微分</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例26">例 2.6</a> 同为"连续/偏导/可微"关系链判断 <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例14">例 1.4</a> 该题正是"连续+偏导存在但不可微"的关系链实例</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 偏导连续 ⇒ 可微 ⇒ 连续 且 可微 ⇒ 偏导存在<span class="why">四条性质的核心链条: 偏导连续是最强条件, 可微居中, 连续与偏导存在并列为其弱化结论</span></div>
+<div class="step">② 用箭头表示: (2) → (3) → (1); (3) → (4)<span class="why">箭头只指向一边: 连续推不出偏导存在, 偏导存在也推不出连续, 这两条反向都不成立</span></div>
+<div class="step">③ 选 (A): (2)⇒(3)⇒(1), (2)⇒(3)⇒(4)<span class="why">四个选项中只有 (A) 同时保留两条正确推导</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 关系图 (2)⇒(3)⇒(1) 且 (3)⇒(4) 必须背熟, 反例: $\frac{xy}{x^2+y^2}$ 偏导在而不连续, $|x|+|y|$ 连续而偏导不在。</div>
+</details>
+
+<hr />
+<p id="例26" class="prob"><b>例 2.6</b> 偏导 $f_x(x_0,y_0)$, $f_y(x_0,y_0)$ 存在是 $f$ 在 $(x_0,y_0)$ 连续的什么条件? 【0523（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#15全微分必考">全微分</a> · <a href="数学_多元与二重.html#14偏导数必考">偏导数</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例12">例 1.2</a> 反例 $\frac{xy}{x^2+y^2}$ 的出处 <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例25">例 2.5</a> 同为关系链判断题</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 偏导存在推不出连续(反例: $\frac{xy}{x^2+y^2}$)<span class="why">该函数在原点沿坐标轴恒为 0 故偏导存在, 但沿 $y=kx$ 极限随 $k$ 变, 不连续</span></div>
+<div class="step">② 连续也推不出偏导存在(反例: $|x|+|y|$)<span class="why">$|x|+|y|$ 在原点连续, 但沿 $x$ 轴方向差商 $\frac{|x|}{x}$ 左右极限为 $\pm1$, 偏导不存在</span></div>
+<div class="step">③ 选 (D): 既非充分也非必要<span class="why">两条方向都有反例, 故两者互不蕴含</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: "偏导存在"与"连续"相互独立, 两个反例 ($\frac{xy}{x^2+y^2}$ 与 $|x|+|y|$) 要能随手写出。</div>
+</details>
+
+<hr />
+<p id="例27" class="prob"><b>例 2.7</b> (强化) 二元函数 $f(x,y)$ 在 $(0,0)$ 可微的一个充分条件是? 【0724（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#15全微分必考">全微分</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例29">例 2.9</a> 同为"极限式⇔可微定义"的充分条件题</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① (A) $\lim[f(x,y)-f(0,0)]=0$ 只是连续, 不够<span class="why">连续性是可微的必要条件, 连续函数的可微性还差得远</span></div>
+<div class="step">② (B) $\lim\frac{f(x,0)-f(0,0)}{x}=0$ 且 $\lim\frac{f(0,y)-f(0,0)}{y}=0$ 只是偏导存在 $=0$, 不够<span class="why">只保证两个坐标方向的差商为 0, 没有覆盖其他逼近方向</span></div>
+<div class="step">③ (C) $\lim\frac{f(x,y)-f(0,0)}{\sqrt{x^2+y^2}}=0$ 意味着 $f(x,y)-f(0,0)=o(\rho)$, 偏导为 $0$ 且可微条件满足<span class="why">这正是可微定义式 (取 $A=B=0$): 分子比 $\rho$ 高阶小, 故 $f$ 在原点可微且 $f_x=f_y=0$</span></div>
+<div class="step">④ (D) 偏导连续条件表述有误。选 (C)<span class="why">偏导连续也是充分条件, 但 (D) 的表述不成立; 可微性充分条件按强度排序: 定义式 (C) 最直接</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $\lim\frac{f-f(0,0)}{\rho}=0$ 本身就是"偏导为 0 的可微定义", 见到直接下结论, 不用再绕道偏导。</div>
+</details>
+
+<hr />
+<p id="例28" class="prob"><b>例 2.8</b> (强化) 连续函数 $z=f(x,y)$ 满足 $\displaystyle\lim_{x\to0, y\to1}\frac{f(x,y)-2x+y-2}{\sqrt{x^2+(y-1)^2}}=0$, 求 $dz|_{(0,1)}$ 【0724（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#15全微分必考">全微分</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例32">例 3.2</a> 同为求 $dz$: 本题从定义式读系数, 例 3.2 直接求偏导代点</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 由极限为 0 知: $f(x,y)-2x+y-2 = o(\sqrt{x^2+(y-1)^2})$<span class="why">题给极限式与可微定义同构: 分子是 $o(\rho)$, 只是线性部分先写成了 $2x-y+2$</span></div>
+<div class="step">② 令 $x\to0,y\to1$: $f(0,1)+0+1-2=0$, 故 $f(0,1)=1$<span class="why">$o(\rho)$ 项趋于 0, 取极限得 $f(0,1)-1=0$, 函数值定出</span></div>
+<div class="step">③ 又由 $f(x,y)\approx f(0,1)+f_x(0,1)x+f_y(0,1)(y-1)=1+f_x x+f_y(y-1)$<span class="why">可微函数在 $(0,1)$ 处的线性逼近: 常数项是函数值, 一阶项系数是偏导</span></div>
+<div class="step">④ 与 $2x-y+2=2x-(y-1)+1$ 对比: $1+f_x x+f_y(y-1)\approx 1+2x-(y-1)$<span class="why"><b>易错</b> 把 $-y$ 写成 $-(y-1)-1$: 常数项 $2-1=1$ 与 $f(0,1)=1$ 吻合, 线性部分 $2x-(y-1)$ 与 $f_x x+f_y(y-1)$ 逐项对照</span></div>
+<div class="step">⑤ $f_x(0,1)=2$, $f_y(0,1)=-1$, 故 $dz|_{(0,1)}=2dx-dy$<span class="why">全微分公式 $dz=f_x dx+f_y dy$ 代入系数</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 给"可微定义式"求 $dz$: 先读出函数值 (令 $x\to0,y\to1$), 再对照线性部分定偏导。</div>
+</details>
+
+<hr />
+<p id="例29" class="prob"><b>例 2.9</b> (强化) 函数 $f(x,y)$ 在 $(0,0)$ 连续, 下列命题正确的是? 【0724（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#15全微分必考">全微分</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例27">例 2.7</a> 同为可微性充分条件判断题</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 若 $f$ 在 $(0,0)$ 可微, 则 $f(x,y)\approx f(0,0)+Ax+By$, 验证 (D): $\lim\frac{f(x,y)}{x^2+y^2}$ 未必存在(若 $f(0,0)\neq0$ 则为 $\infty$)<span class="why">可微只保证线性逼近: 除以 $\rho^2$ 后 $f(0,0)/\rho^2$ 发散 (除非 $f(0,0)=0$), $\frac{Ax+By}{\rho^2}$ 也发散 (除非 $A=B=0$), 故可微推不出该极限存在</span></div>
+<div class="step">② (B) 正确: 若 $\lim\frac{f(x,y)}{x^2+y^2}$ 存在, 则 $f(0,0)=0$ 且偏导存在, 可微条件满足<span class="why">极限有限必有 $f(0,0)=0$; 此时 $\frac{f(x,y)-0-0\cdot x-0\cdot y}{\rho}=\rho\cdot\frac{f(x,y)}{\rho^2}\to0$, 恰为 $A=B=0$ 的可微定义式</span></div>
+<div class="step">③ 选 (B)<span class="why">方向性对比: 可微 ⇒ 该极限未必存在; 该极限存在 ⇒ 可微 (且偏导为 0)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $\lim\frac{f}{\rho^2}$ 存在是比"可微"更强的条件: 多一个 $f(0,0)=0$ 且 $A=B=0$ 的要求。</div>
+</details>
+
+<hr />
+<h2 id="三复合函数求偏导">三、复合函数求偏导</h2>
+<p id="例31" class="prob"><b>例 3.1</b> 求 $z=x\sin(x+y)$ 的所有一阶、二阶偏导; 另附 $z=x^y$ 的一阶、二阶偏导 【0523（1）】【题面按视觉转写定稿】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例33">例 3.3</a> 同为求二阶偏导, 本题是乘积法则+三角链式, 例 3.3 是一元内层的干净版</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $z_x=\sin(x+y)+x\cos(x+y)$<span class="why">乘积法则: 前因子 $x$ 求导得 $\sin(x+y)$, 后因子 $\sin(x+y)$ 链式求导得 $\cos(x+y)$ 乘 $x$</span></div>
+<div class="step">② $z_y=x\cos(x+y)$<span class="why">对 $y$ 求导时 $x$ 是常数, 只有 $\sin(x+y)$ 求导得 $\cos(x+y)$</span></div>
+<div class="step">③ $z_{xx}=\cos(x+y)+[\cos(x+y)-x\sin(x+y)]=2\cos(x+y)-x\sin(x+y)$<span class="why">对 $z_x$ 再对 $x$ 求导: $\sin(x+y)$ 项得 $\cos(x+y)$; $x\cos(x+y)$ 项是乘积法则, 得 $\cos(x+y)-x\sin(x+y)$</span></div>
+<div class="step">④ $z_{xy}=z_{yx}=\cos(x+y)-x\sin(x+y)$<span class="why">$z_x$ 对 $y$ 求导: $\cos(x+y)$ 得 $-\sin(x+y)$, $x\cos(x+y)$ 的 $\cos$ 部分对 $y$ 得 $-\sin(x+y)$; 混合偏导相等 ($z_{xy}=z_{yx}$) 可互相验证</span></div>
+<div class="step">⑤ $z_{yy}=-x\sin(x+y)$<span class="why">$z_y=x\cos(x+y)$ 对 $y$ 求导, 链式得 $-x\sin(x+y)$</span></div>
+<div class="step">⑥ 附: $z=x^y$: $z_x=yx^{y-1}$, $z_y=x^y\ln x$, $z_{xx}=y(y-1)x^{y-2}$, $z_{xy}=z_{yx}=x^{y-1}+yx^{y-1}\ln x$<span class="why">幂指函数的四偏导: 视 $y$ 为常数按幂函数求 $x$, 视 $x$ 为常数按指数函数求 $y$; 混合偏导的乘积法则别漏 $x^{y-1}$ 项</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $x\sin(x+y)$ 是乘积法则+三角链式的基础模板, 配合 $x^y$ 幂指四偏导一起记; 原笔记误读为 $x^{\sin(x+y)}$(幂指化指数版), 视觉稿为 $x\sin(x+y)$。</div>
+</details>
+
+<hr />
+<p id="例32" class="prob"><b>例 3.2</b> 已知 $z=xye^{x/y}$, 求 $dz|_{(2,1)}$ 【0523（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> · <a href="数学_多元与二重.html#15全微分必考">全微分</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例28">例 2.8</a> 同为求 $dz$: 本题显函数直接求偏导, 例 2.8 由定义式读系数</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $z_x = ye^{x/y} + xy\cdot\frac{1}{y}e^{x/y} = ye^{x/y}(1+\frac{x}{y})$<span class="why">乘积法则: 前因子 $xy$ 对 $x$ 求导得 $y$, 指数 $\frac{x}{y}$ 对 $x$ 求导得 $\frac1y$, 两项相加</span></div>
+<div class="step">② $z_x(2,1) = 1\cdot e^2(1+2)=3e^2$<span class="why">代入 $x=2,y=1$: $\frac{x}{y}=2$, $e^{x/y}=e^2$</span></div>
+<div class="step">③ $z_y = xe^{x/y} + xy\cdot(-\frac{x}{y^2})e^{x/y} = e^{x/y}(x-\frac{x^2}{y})$<span class="why">对 $y$ 求导: $\partial_y(xy)=x$, $\partial_y(\frac{x}{y})=-\frac{x}{y^2}$ (把 $x$ 当常数)</span></div>
+<div class="step">④ $z_y(2,1) = e^2(2-4)=-2e^2$<span class="why">代入: $x-\frac{x^2}{y}=2-4=-2$</span></div>
+<div class="step">⑤ $dz|_{(2,1)} = 3e^2dx - 2e^2dy$<span class="why">全微分公式 $dz=z_x dx+z_y dy$ 代入两点处的偏导值</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 具体函数求 $dz$ 的模板: 求两个一阶偏导 → 代点 → 写 $z_x dx+z_y dy$; 指数函数的链式内层别漏。</div>
+</details>
+
+<hr />
+<p id="例33" class="prob"><b>例 3.3</b> 设 $z=f(u)$, $u=x^2y^3$, 求 $\frac{\partial^2 z}{\partial x^2}$ 【0523（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例31">例 3.1</a> 同为二阶链式, 本题是"一元内层"的干净版本</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $z_x = f'(u)\cdot 2xy^3$<span class="why">链式法则: 外层 $f$ 对 $u$ 求导得 $f'(u)$, 再乘内层 $u_x=2xy^3$</span></div>
+<div class="step">② $z_{xx} = f''(u)\cdot (2xy^3)^2 + f'(u)\cdot 2y^3 = 4x^2y^6 f''(u) + 2y^3 f'(u)$<span class="why">乘积法则: 对 $f'(u)$ 部分再求导得 $f''(u)\cdot u_x=f''\cdot2xy^3$, 乘回原因子 $2xy^3$; 另一项 $f'(u)$ 乘 $\partial_x(2xy^3)=2y^3$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 一元复合 $f(u(x,y))$ 的二阶偏导: 外层出现 $f''$ 时千万别忘再乘一个 $u_x$, 这是最常见的漏项点。</div>
+</details>
+
+<hr />
+<p id="例34" class="prob"><b>例 3.4</b> 设 $z=f(u,v)$, $u=x+y$, $v=xy$, 求 $\frac{\partial z}{\partial y}$ 和 $\frac{\partial^2 z}{\partial x\partial y}$ 【0523（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例35">例 3.5</a> 同为 $f(u,v)$ 型二阶混合偏导, 本题中间变量更简单</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $z_y = f_u'\cdot 1 + f_v'\cdot x = f_u' + xf_v'$<span class="why">链式: 中间变量 $u=x+y$ 对 $y$ 的偏导是 $1$, $v=xy$ 对 $y$ 的偏导是 $x$</span></div>
+<div class="step">② $z_{xy} = \frac{\partial}{\partial x}(z_y) = \frac{\partial}{\partial x}(f_u' + xf_v')$<span class="why">交叉偏导: 对一阶结果再对 $x$ 求一次</span></div>
+<div class="step">③ $= (f_{uu}''\cdot 1 + f_{uv}''\cdot y) + f_v' + x(f_{vu}''\cdot 1 + f_{vv}''\cdot y)$<span class="why">关键: $f_u', f_v'$ 仍是 $(u,v)$ 的函数, 对 $x$ 求导要再走链式 ($u_x=1, v_x=y$); 其中 $xf_v'$ 是乘积: 先导 $x$ 得 $f_v'$, 再导 $f_v'$ 乘 $x$</span></div>
+<div class="step">④ 整理: $f_{uu}'' + (x+y)f_{uv}'' + xy f_{vv}'' + f_v'$<span class="why">合并同类项并利用混合偏导相等 $f_{uv}''=f_{vu}''$ (二阶连续可偏导时成立)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $f(u,v)$ 型复合的二阶混合偏导: 一阶导后的 $f_u',f_v'$ 还要对中间变量继续链式, 且 $xf_v'$ 必须用乘积法则。</div>
+</details>
+
+<hr />
+<p id="例35" class="prob"><b>例 3.5</b> 设 $z=f(e^{xy}, x^2+y^2)$, 求 $\frac{\partial^2 z}{\partial x^2}\big|_{(1,1)}$ 【0523（1）】【题面按视觉转写定稿】(0523(1) 页19 例7.15, 原笔记误读为 $e^x y$ 且求 $z_{xy}$)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例34">例 3.4</a> 同为 $f(u,v)$ 型复合求二阶偏导, 本题中间变量复杂且需代点</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 记 $u=e^{xy}$, $v=x^2+y^2$<span class="why">备内层偏导: $u_x=ye^{xy}$, $u_{xx}=y^2e^{xy}$, $v_x=2x$, $v_{xx}=2$</span></div>
+<div class="step">② $z_x = f_u'\cdot ye^{xy} + f_v'\cdot 2x$<span class="why">链式: 两个通道分别乘内层对 $x$ 的偏导</span></div>
+<div class="step">③ $z_{xx} = y^2e^{xy}f_1' + ye^{xy}(f_{11}''\cdot ye^{xy} + f_{12}''\cdot 2x) + 2f_2' + 2x(f_{21}''\cdot ye^{xy} + f_{22}''\cdot 2x)$<span class="why">两项都是乘积法则: $ye^{xy}f_1'$ 对 $x$ 求导时 $ye^{xy}$ 得 $y^2e^{xy}$, $f_1'$ 走链式 ($f_{11}''u_x+f_{12}''v_x$); $2xf_2'$ 同理</span></div>
+<div class="step">④ 代入 $(1,1)$: $u=e$, $v=2$: $z_{xx}(1,1)=ef_1'(e,2)+e^2f_{11}''(e,2)+4ef_{12}''(e,2)+2f_2'(e,2)+4f_{22}''(e,2)$<span class="why">逐项代入 ($x=1,y=1$): $y^2e^{xy}=e$, $ye^{xy}\cdot ye^{xy}=e^2$, $ye^{xy}\cdot2x=2e$ 与 $2x\cdot ye^{xy}=2e$ 合并为 $4ef_{12}''$ (二阶连续可偏导 $f_{12}''=f_{21}''$), $2x\cdot2x=4$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $f(u,v)$ 型复合求 $z_{xx}$: 一阶后的 $f_1',f_2'$ 还要对中间变量继续链式, 系数务必逐项乘回再代点。</div>
+</details>
+
+<hr />
+<p id="例36" class="prob"><b>例 3.6</b> (强化) 设 $z(x,y)=f(x+y)+g(x^2y^2, xe^y)$, $f,g$ 二阶连续可导/可偏导, 求 $\frac{\partial^2 z}{\partial x^2}$ 和 $\frac{\partial^2 z}{\partial x\partial y}$ 【0724（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例35">例 3.5</a> 同为多通道复合的二阶偏导, 本题另含一元 $f$ 项</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 记 $u=x^2y^2$, $v=xe^y$<span class="why">先写中间变量: $u_x=2xy^2$, $u_y=2x^2y$, $v_x=e^y$, $v_y=xe^y$</span></div>
+<div class="step">② $z_x = f'(x+y) + g_u'\cdot 2xy^2 + g_v'\cdot e^y$<span class="why">三部分各自链式: 一元 $f$ 直接求导, $g$ 按 $u,v$ 两通道展开</span></div>
+<div class="step">③ $z_{xx}=f''(x+y)+g_{uu}''(2xy^2)^2+2g_{uv}''(2xy^2)e^y+g_{vv}''(e^y)^2+g_u'\cdot 2y^2$<span class="why">乘积法则: $g_u'\cdot2xy^2$ 求导 = $(g_{uu}''u_x+g_{uv}''v_x)\cdot2xy^2 + g_u'\cdot2y^2$; $g_v'\cdot e^y$ 部分同法 ($v_x=e^y$ 对 $x$ 求导为 0, 故无 $g_v'$ 项以外多余项… 注意 $e^y$ 是常数, 系数不再变)</span></div>
+<div class="step">④ $z_{xy}=f''(x+y)+g_{uu}''(2xy^2)(2x^2y)+g_{uv}''(2xy^2\cdot xe^y+2x^2y\cdot e^y)+g_{vv}''(e^y\cdot xe^y)+g_u'\cdot 4xy+g_v'\cdot e^y$<span class="why">对 $y$ 求导: $g_u'$ 走链式 ($u_y=2x^2y$, $v_y=xe^y$) 分别乘回系数 $2xy^2$ 与 $e^y$; $g_u'\cdot2xy^2$ 的系数本身再导得 $4xy$, $g_v'\cdot e^y$ 的系数再导得 $e^y$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 二通道复合加一元函数的混合结构, 一阶链式 + 二阶乘积法则, 系数务必逐项乘回, 熟练后直接"图上求导"。</div>
+</details>
+
+<hr />
+<p id="例37" class="prob"><b>例 3.7</b> (强化) 已知 $f(u,v)$ 二阶连续可偏导, $f(1,1)=2$ 是 $f(u,v)$ 的极值, $z=f[x+y, f(x,y)]$, 求 $\frac{\partial^2 z}{\partial x\partial y}\big|_{(1,1)}$ 【0724（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> · <a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例36">例 3.6</a> 同为嵌套复合求偏导, 本题用极值条件提供驻点信息</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $f(1,1)=2$ 是极值, 故 $f_u(1,1)=0$, $f_v(1,1)=0$<span class="why">可微函数在极值点处两个一阶偏导均为 0 (驻点必要条件)</span></div>
+<div class="step">② $z_x = f_1'(u,v) + f_2'(u,v)\cdot f_1'(x,y)$, 其中 $u=x+y$, $v=f(x,y)$<span class="why">链式: 第一通道 $u$ 对 $x$ 偏导为 1; 第二通道乘内层 $f(x,y)$ 对 $x$ 的偏导</span></div>
+<div class="step">③ $z_{xy} = f_{11}''(u,v) + f_{12}''(u,v)f_2'(x,y) + [f_{21}''(u,v)+f_{22}''(u,v)f_2'(x,y)]\cdot f_1'(x,y) + f_2'(u,v)\cdot f_{12}''(x,y)$<span class="why">对 $y$ 求导: $f_1'(u,v)$ 走链式 ($u_y=1$, $v_y=f_2'(x,y)$); $f_2'(u,v)f_1'(x,y)$ 是乘积法则, 两部分各走各的链式</span></div>
+<div class="step">④ 代入 $x=1,y=1$: $u=2$, $v=f(1,1)=2$, 且 $f_1'(1,1)=f_2'(1,1)=0$: 原式 $=f_{11}''(2,2)+f_{12}''(1,1)\cdot f_2'(2,2)$<span class="why"><b>易错</b> 外层 $f$ 在 $(2,2)$ 取值, 驻点条件只消掉含 $f_1'(x,y), f_2'(x,y)$ 的项; $f_2'(2,2)$ 非零保留。原笔记误判"信息不足无法完成"而标偏题, 视觉稿给出完整表达式答案</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 嵌套复合 $f[x+y,f(x,y)]$ 的二阶混合偏导: 极值条件给出内层驻点信息, 结果保留抽象导数记号, 这类题答案就是表达式。</div>
+</details>
+
+<hr />
+<p id="例38" class="prob"><b>例 3.8</b> (强化) 设 $f(x,y)=\int_0^{xy}e^{xt^2}dt$, 求 $\frac{\partial^2 f}{\partial x\partial y}\big|_{(1,1)}$ 【0724（1）】【题面按视觉转写定稿】(0724(1) 页10 例6.6)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#14偏导数必考">偏导数</a> · <a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例102">例 10.2</a> 同为变上限积分求导, 例 10.2 是一元累次版</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $f_y = e^{x(xy)^2}\cdot x = xe^{x^3y^2}$ (变上限求导)<span class="why">莱布尼茨公式: 上限 $xy$ 代入被积函数 ($t=xy$ 时 $xt^2=x^3y^2$) 乘内层导数 $(xy)'_y=x$; 下限 0 代入为 0</span></div>
+<div class="step">② $f_{xy} = \frac{\partial}{\partial x}(xe^{x^3y^2}) = e^{x^3y^2} + x\cdot 3x^2y^2e^{x^3y^2} = (1+3x^3y^2)e^{x^3y^2}$<span class="why">乘积法则: 前因子 $x$ 求导得 $e^{x^3y^2}$, 指数 $x^3y^2$ 对 $x$ 求导得 $3x^2y^2$</span></div>
+<div class="step">③ $f_{xy}(1,1) = (1+3)e = 4e$<span class="why">代入 $x^3y^2=1$: 括号内 $1+3=4$。原笔记误读为 $\int_{xy}^{x^2}e^{t^2}dt$(答 $-3e$ 并反注"OCR 显示 4e 有误"), 视觉稿为 $\int_0^{xy}e^{xt^2}dt$, 答案就是 $4e$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 变上限积分求偏导: 上限代入乘内层导数, 再对另一变量求导时别忘乘积法则与链式。</div>
+</details>
+
+<hr />
+<h2 id="四隐函数求偏导">四、隐函数求偏导</h2>
+<p id="例41" class="prob"><b>例 4.1</b> 设 $z=z(x,y)$ 由 $xz+x^2y=\sin(yz)$ 确定, 求 $\frac{\partial z}{\partial x}$, $\frac{\partial z}{\partial y}$ 【0523（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#17隐函数求偏导">隐函数求偏导</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例42">例 4.2</a> 同为公式法求 $z_x,z_y$</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 化 $F(x,y,z)=xz+x^2y-\sin(yz)=0$<span class="why">隐函数求导第一式: 把方程移项为 $F=0$, 然后对 $F$ 的三个变量分别求偏导</span></div>
+<div class="step">② $F_x = z + 2xy$<span class="why">视 $y,z$ 为常数: $\partial_x(xz)=z$, $\partial_x(x^2y)=2xy$</span></div>
+<div class="step">③ $F_y = x^2 - z\cos(yz)$<span class="why">$\partial_y\sin(yz)=z\cos(yz)$ (链式: 内层对 $y$ 求导得 $z$)</span></div>
+<div class="step">④ $F_z = x - y\cos(yz)$<span class="why">$\partial_z\sin(yz)=y\cos(yz)$, 注意与 $F_y$ 的因子互换 ($z$ 换成 $y$)</span></div>
+<div class="step">⑤ $\frac{\partial z}{\partial x} = -\frac{F_x}{F_z} = -\frac{z+2xy}{x-y\cos(yz)}$, $\frac{\partial z}{\partial y} = -\frac{F_y}{F_z} = -\frac{x^2-z\cos(yz)}{x-y\cos(yz)}$<span class="why">隐函数求导公式 $z_x=-F_x/F_z$, $z_y=-F_y/F_z$; 分母 $F_z$ 是同一个, 解存在处非零</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 隐函数一阶偏导标准流程: 构造 $F$ → 求 $F_x,F_y,F_z$ → 套公式 $z_x=-F_x/F_z$; 三角函数内层的链式因子是最易漏点。</div>
+</details>
+
+<hr />
+<p id="例42" class="prob"><b>例 4.2</b> 设 $x^2+z^2 = y\varphi(\frac{z}{y})$, $\varphi$ 可微, 求 $\frac{\partial z}{\partial x}$ 【0523（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#17隐函数求偏导">隐函数求偏导</a> · <a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例41">例 4.1</a> 同为"构造 $F$ 套公式", 本题含抽象 $\varphi$ 需注意链式约分</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 化 $F(x,y,z)=x^2+z^2-y\varphi(z/y)=0$<span class="why">题目已写成 $=$ 的形式, 移项构造 $F$, 其中 $\varphi$ 是已知函数</span></div>
+<div class="step">② $F_x = 2x$<span class="why">含 $x$ 的只有 $x^2$ 一项, 其余视为常数</span></div>
+<div class="step">③ $F_z = 2z - y\cdot\varphi'(z/y)\cdot\frac{1}{y} = 2z - \varphi'(z/y)$<span class="why">链式: $\partial_z\varphi(z/y)=\varphi'(z/y)\cdot\frac1y$, 前面的系数 $y$ 恰好约掉 —— 出题人设计好的, 别提前约错</span></div>
+<div class="step">④ $\frac{\partial z}{\partial x} = -\frac{2x}{2z-\varphi'(z/y)}$<span class="why">套公式 $z_x=-F_x/F_z$; 注意 $\varphi'$ 的取值点仍是 $\frac{z}{y}$, 不能丢掉</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 抽象函数 $\varphi$ 参与的隐函数: 链式求导时 $\varphi'(z/y)$ 的"乘 $\frac1y$"与外围系数约分是本题考点。</div>
+</details>
+
+<hr />
+<p id="例43" class="prob"><b>例 4.3</b> 设 $z=z(x,y)$ 由 $e^{2yz}+x+y^2+z=\frac{7}{4}$ 确定, 求 $dz|_{(\frac12,\frac12,0)}$ 【0523（1）】【题面按视觉转写定稿】(0523(1) 页24 例7.18)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#17隐函数求偏导">隐函数求偏导</a> · <a href="数学_多元与二重.html#15全微分必考">全微分</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例32">例 3.2</a> 同为求 $dz$: 本题走隐函数公式 $z_x=-F_x/F_z$, 例 3.2 显函数直接求偏导</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $F(x,y,z)=e^{2yz}+x+y^2+z-\frac74=0$<span class="why">隐函数求导公式法: 构造 $F$</span></div>
+<div class="step">② $F_x=1$, $F_y=e^{2yz}\cdot 2z+2y$, $F_z=e^{2yz}\cdot 2y+1$<span class="why">分别对 $x,y,z$ 求偏导: $e^{2yz}$ 对 $y$ 链式得 $2ze^{2yz}$, 对 $z$ 链式得 $2ye^{2yz}$</span></div>
+<div class="step">③ 在 $(\frac12,\frac12,0)$: $F_x=1$, $F_y=1$, $F_z=2$<span class="why">代入 $y=\frac12, z=0$: $e^0=1$, $F_y=0+1=1$, $F_z=1+1=2$; 顺带验证 $e^0+\frac12+\frac14+0=\frac74$ ✓ 点在曲面上</span></div>
+<div class="step">④ $z_x=-\frac{F_x}{F_z}=-\frac12$, $z_y=-\frac{F_y}{F_z}=-\frac12$, 故 $dz|_{(\frac12,\frac12,0)}=-\frac12 dx-\frac12 dy$<span class="why">$z_x=-F_x/F_z$, $z_y=-F_y/F_z$; 全微分 $dz=z_xdx+z_ydy$。原笔记误读为 $e^z+\cdots=\frac54$ 且点 $(2,1,0)$(验证不符、曾疑常数 OCR 有误), 视觉稿为 $e^{2yz}$ 与 $(\frac12,\frac12,0)$, 完全自洽</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 求 $dz$ 的机械流程: $F_x,F_y,F_z$ 代点 → $z_x,z_y$ → 写微分; 顺带验证点是否在曲面上更严谨。</div>
+</details>
+
+<hr />
+<p id="例44" class="prob"><b>例 4.4</b> 已知 $dz=(axy^3-y^2\cos x)dx+(1+by\sin x+3x^2y^2)dy$, 求 $a,b$ 【0523（1）】【题面按视觉转写定稿】(0523(1) 页25 例7.19)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#15全微分必考">全微分</a> · <a href="数学_多元与二重.html#14偏导数必考">偏导数</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例49">例 4.9</a> 同以"混合偏导相等"为核心: 本题求参数, 例 4.9 由全微分反求函数</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 由全微分: $z_x=axy^3-y^2\cos x$, $z_y=1+by\sin x+3x^2y^2$<span class="why">全微分 $dz=z_xdx+z_ydy$, 两个系数直接读出偏导</span></div>
+<div class="step">② 混合偏导相等: $z_{xy}=z_{yx}$<span class="why">二阶混合偏导连续时与求导次序无关, 这是"给出全微分反求参数"的必备方程</span></div>
+<div class="step">③ $z_{xy}=3axy^2-2y\cos x$; $z_{yx}=by\cos x+6xy^2$<span class="why">$z_{xy}$: 对 $y$ 求导 ($axy^3$ 得 $3axy^2$, $\cos x$ 视为常数); $z_{yx}$: 对 $x$ 求导, $3x^2y^2$ 对 $x$ 得 $6xy^2$</span></div>
+<div class="step">④ 比较系数: $3a=6 \Rightarrow a=2$; $-2=b \Rightarrow b=-2$<span class="why">对任意 $(x,y)$ 恒等: $xy^2$ 项系数 $3a$ 对 $6$, $y\cos x$ 项系数 $-2$ 对 $b$</span></div>
+<div class="step">⑤ $a=2, b=-2$<span class="why">代入验证: $a=2$ 时 $z_{xy}=6xy^2-2y\cos x=z_{yx}$ ✓ 自洽。原笔记基于误读题面 $axy^2$ 推出 $a=3$ 并反注"OCR 显示 $a=2$ 有误", 视觉稿为 $axy^3$, 答案就是 $a=2$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 全微分反求参数: 混合偏导相等是唯一依据, 逐项比系数时注意每项的"函数形态"要对上。</div>
+</details>
+
+<hr />
+<p id="例45" class="prob"><b>例 4.5</b> 三元方程 $xy-z\ln y+e^{xz}=1$, 在 $(0,1,1)$ 邻域内可确定哪些隐函数? 【0523（1）】【题面按视觉转写定稿】(0523(1) 页26 例7.20)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#17隐函数求偏导">隐函数求偏导</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例41">例 4.1</a> 同为"构造 $F$ 求三偏导", 本题用存在定理判可解性</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $F(x,y,z)=xy-z\ln y+e^{xz}-1=0$<span class="why">判断能确定哪些隐函数, 用隐函数存在定理: 检查 $F$ 对"被解变量"的偏导是否非零</span></div>
+<div class="step">② $F_x(0,1,1)=(y+ze^{xz})|_{(0,1,1)}=2\neq0$ ⇒ 可确定 $x=x(y,z)$<span class="why">想解出 $x$ 要求 $F_x\neq0$: $F_x=y+e^{xz}\cdot z$, 代入 $y=1,z=1,x=0$ 得 $1+1=2$</span></div>
+<div class="step">③ $F_y(0,1,1)=(x-z/y)|_{(0,1,1)}=-1\neq0$ ⇒ 可确定 $y=y(x,z)$<span class="why">$F_y=x-\frac{z}{y}$: 链式 $\partial_y(-z\ln y)=-\frac{z}{y}$</span></div>
+<div class="step">④ $F_z(0,1,1)=(-\ln y+xe^{xz})|_{(0,1,1)}=0$ ⇒ 不能确定 $z=z(x,y)$<span class="why">$F_z=-\ln y+e^{xz}\cdot x$, 代入 $y=1,x=0$ 得 $0+0\cdot e^0=0$——存在定理条件 $F_z\neq0$ 不满足, 这是本题陷阱</span></div>
+<div class="step">⑤ 只能确定 $x=x(y,z)$ 与 $y=y(x,z)$ 两个, 选 (D)<span class="why">选项 D 恰为"可确定两个: $x=x(y,z)$ 和 $y=y(x,z)$"。验证点: $xy-z\ln y+e^{xz}=0-0+1=1$ ✓ 完全自洽(原笔记误读 $e^z$ 得"三个都可确定"并疑常数, 视觉稿 $e^{xz}$ 下 $F_z=0$, 结论修正为两个)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 隐函数存在定理: 想解出哪个变量, 就看 $F$ 对那个变量的偏导是否非零; $F_z=0$ 时 $z$ 解不出来, 逐变量排查即可。</div>
+</details>
+
+<hr />
+<p id="例46" class="prob"><b>例 4.6</b> (强化) 设 $f(u,v)$ 可微, $z=z(x,y)$ 由 $(x+1)z-y^2=x^2f(x-z,y)$ 确定, 求 $dz|_{(0,1)}$ 【0724（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#17隐函数求偏导">隐函数求偏导</a> · <a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例43">例 4.3</a> 同为隐函数求 $dz$, 本题含抽象 $f$ 且需先解隐函数值</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 代入 $x=0,y=1$: $1\cdot z-1=0$, 故 $z=1$<span class="why">先解出该点处的隐函数值: $f$ 项系数 $x^2=0$ 消失, 方程只剩 $(0+1)z-1=0$</span></div>
+<div class="step">② 化 $F=(x+1)z-y^2-x^2f(x-z,y)=0$<span class="why">移项构造 $F$; 注意 $f$ 的两个自变量是 $x-z$ 与 $y$</span></div>
+<div class="step">③ $F_x=z-2xf(x-z,y)-x^2f_1'(x-z,y)$; 在 $(0,1,1)$: $F_x=1$<span class="why">对 $x$ 求偏导 (视 $z$ 为独立变量): $z$ 项得 $z$; $-x^2f$ 是乘积法则, 其中 $\partial_x(x-z)=1$</span></div>
+<div class="step">④ $F_y=-2y-x^2f_2'(x-z,y)$; 在 $(0,1,1)$: $F_y=-2$<span class="why">对 $y$: 只动 $-y^2$ 与 $f$ 的第二自变量</span></div>
+<div class="step">⑤ $F_z=(x+1)+x^2f_1'(x-z,y)$; 在 $(0,1,1)$: $F_z=1$<span class="why">对 $z$: $(x+1)z$ 得 $x+1$; $f(x-z,y)$ 对 $z$ 求导得 $f_1'\cdot(-1)$, 前面是 $-x^2$, 负负得正</span></div>
+<div class="step">⑥ $z_x=-1$, $z_y=2$, $dz|_{(0,1)}=-dx+2dy$<span class="why">$z_x=-F_x/F_z=-1$, $z_y=-F_y/F_z=2$, 写全微分</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 带抽象函数 $f$ 的隐函数求 $dz$: 先解函数值, 再求三个 $F$ 偏导 (链式+乘积法则), 最后套公式。</div>
+</details>
+
+<hr />
+<p id="例47" class="prob"><b>例 4.7</b> (强化) 已知 $z=z(x,y)$ 由 $e^z+xz=2x-y$ 确定, 求 $\frac{\partial^2 z}{\partial x^2}\big|_{(1,1)}$ 【0724（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#17隐函数求偏导">隐函数求偏导</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例57">例 5.7</a> 同为"一阶方程再求导"取二阶偏导</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $x=1,y=1$: $e^z+z=1$, 故 $z=0$<span class="why">解隐函数值: $e^z+z$ 严格递增且 $z=0$ 时等于 1, 唯一解</span></div>
+<div class="step">② 对 $x$ 求偏导: $e^z z_x + z + xz_x = 2$<span class="why">方程两边对 $x$ 求导 ($z=z(x,y)$): $e^z$ 链式得 $e^zz_x$, $xz$ 用乘积法则, 右端 $2x-y$ 对 $x$ 得 $2$</span></div>
+<div class="step">③ 在 $(1,1,0)$: $1\cdot z_x+0+z_x=2$, $z_x=1$<span class="why">代入 $z=0$ ($e^z=1$) 与 $x=1$: $2z_x=2$</span></div>
+<div class="step">④ 再对 $x$ 求: $e^z z_x^2 + e^z z_{xx} + z_x + z_x + x z_{xx} = 0$<span class="why">逐项再导: $e^zz_x$ 是乘积 ($e^z$ 对 $x$ 得 $e^zz_x$, $z_x$ 对 $x$ 得 $z_{xx}$); $z$ 得 $z_x$; $xz_x$ 是乘积得 $z_x+xz_{xx}$</span></div>
+<div class="step">⑤ 在 $(1,1,0)$: $1+ z_{xx}+1+1+z_{xx}=0$, $2z_{xx}=-3$, $z_{xx}=-\frac32$<span class="why">代入 $e^z=1$, $z_x=1$, $x=1$: $1+z_{xx}+1+1+z_{xx}=0$, 解得 $-\frac32$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 隐函数二阶偏导: 一阶方程再求一次导, 逐项用乘积法则+链式, 最后统一代点; $e^zz_x^2$ 这类交叉项别漏。</div>
+</details>
+
+<hr />
+<p id="例48" class="prob"><b>例 4.8</b> (强化) 确定 $a,b$ 使 $4\frac{\partial^2 u}{\partial x^2}+12\frac{\partial^2 u}{\partial x\partial y}+5\frac{\partial^2 u}{\partial y^2}=0$ 在变换 $\xi=x+ay$, $\eta=x+by$ 下化为 $\frac{\partial^2 u}{\partial\xi\partial\eta}=0$ 【0724（2）】【题面按视觉转写定稿】(0724(2) 页3 例6.11)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#16复合函数求偏导链式法则高频">链式法则</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例34">例 3.4</a> 同为复合二阶偏导展开, 本题用于线性变换化简方程</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 复合求导: $u_x=u_\xi+u_\eta$, $u_y=au_\xi+bu_\eta$<span class="why">链式: $\xi_x=\eta_x=1$, $\xi_y=a$, $\eta_y=b$, 一阶导按两通道展开</span></div>
+<div class="step">② 二阶: $u_{xx}=u_{\xi\xi}+2u_{\xi\eta}+u_{\eta\eta}$, $u_{xy}=au_{\xi\xi}+(a+b)u_{\xi\eta}+bu_{\eta\eta}$, $u_{yy}=a^2u_{\xi\xi}+2ab u_{\xi\eta}+b^2u_{\eta\eta}$<span class="why">混合项出现两次所以系数带 2; 例如 $u_{xy}=\partial_y(u_\xi+u_\eta)=au_{\xi\xi}+(a+b)u_{\xi\eta}+bu_{\eta\eta}$</span></div>
+<div class="step">③ 代入原方程, 收集各系数: $(4+12a+5a^2)u_{\xi\xi}+(8+12(a+b)+10ab)u_{\xi\eta}+(4+12b+5b^2)u_{\eta\eta}=0$<span class="why">目标方程只含 $u_{\xi\eta}$, 所以 $u_{\xi\xi}$ 与 $u_{\eta\eta}$ 的系数必须同时为 0, 且 $u_{\xi\eta}$ 系数非零</span></div>
+<div class="step">④ $u_{\xi\xi}$ 系数: $4+12a+5a^2=0$ ⇒ $a=-\frac25$ 或 $-2$<span class="why">解一元二次方程 $5a^2+12a+4=(5a+2)(a+2)=0$, 两个整根</span></div>
+<div class="step">⑤ $u_{\eta\eta}$ 系数: $4+12b+5b^2=0$ ⇒ $b=-\frac25$ 或 $-2$, 且 $a\neq b$<span class="why">$a,b$ 须取两根中的不同者, 否则变换退化</span></div>
+<div class="step">⑥ $u_{\xi\eta}$ 系数: 取 $a=-\frac25, b=-2$: $8+12(a+b)+10ab=8-\frac{144}{5}+8=-\frac{64}{5}\neq0$, 满足要求<span class="why">$a+b=-\frac{12}{5}$, $ab=\frac45$ (两根和积), 交叉项非零说明 $u_{\xi\eta}$ 保留, 方程两边除以它即化 $u_{\xi\eta}=0$</span></div>
+<div class="step">⑦ 答: $a=-\frac25, b=-2$ 或 $a=-2, b=-\frac25$<span class="why">两根任取其一给 $a$、另一给 $b$ 均可。原笔记题面漏系数 4 且给出无理根, 视觉稿为 $4u_{xx}$ 与整根 $-\frac25, -2$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 线性变换化简 PDE: 复合求导表 (带 2 的混合项) + 收集系数 + 两根取异, 属于特征线法的前置技巧。</div>
+</details>
+
+<hr />
+<p id="例49" class="prob"><b>例 4.9</b> (强化) 已知 $df(x,y)=ye^y dx+x(1+y)e^y dy$, $f(0,0)=0$, 求 $f(x,y)$ 【0724（2）】【题面按视觉转写定稿】(0724(2) 页5 例6.12)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#15全微分必考">全微分</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例44">例 4.4</a> 同用混合偏导相等作判据: 例 4.4 求参数, 本题由全微分反求函数</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $f_x=ye^y$, 对 $x$ 积分: $f=\int ye^y dx = xye^y + \varphi(y)$<span class="why">对 $x$ 部分积分 ($ye^y$ 与 $x$ 无关), 积分"常数"是 $y$ 的任意函数 $\varphi(y)$, 待定</span></div>
+<div class="step">② $f_y = xe^y + xye^y + \varphi'(y) = x(1+y)e^y + \varphi'(y)$, 与题给 $f_y=x(1+y)e^y$ 对照: $\varphi'(y)=0$, $\varphi(y)=C$<span class="why">对 $y$ 求导后再与题给 $f_y$ 对照, 这是"由微分求函数"的标准程序</span></div>
+<div class="step">③ 由 $f(0,0)=0$: $0\cdot e^0+C=0$, 故 $C=0$, $f(x,y)=xye^y$<span class="why">待定常数用初值定出</span></div>
+<div class="step">④ 自洽检验: $f_{xy}=(1+y)e^y$, $f_{yx}=(1+y)e^y$, 混合偏导相等 ✓, 题给 $df$ 确是 $xye^y$ 的全微分<span class="why"><b>易错</b> 原笔记误读指数为 $e^x$, 才判"非全微分/偏题"; 视觉稿为 $e^y$, 全程自洽无矛盾</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 由全微分反求函数: 分部积分 + 待定 $\varphi(y)$ + 初值定常数; 以混合偏导相等作自洽检验。</div>
+</details>
+
+<hr />
+<h2 id="五多元函数极值与最值">五、多元函数极值与最值</h2>
+<p id="例51" class="prob"><b>例 5.1</b> 求 $f(x,y)=x^3-y^3+3x^2+3y^2-9x$ 的极值 【0523（1）】【题面按视觉转写定稿】(0523(1) 页30 例7.21, 原标 0523(2) 更正)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例54">例 5.4</a> 同为"驻点+$AC-B^2$"判定流程</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $f_x=3x^2+6x-9=3(x+3)(x-1)=0$ ⇒ $x=-3$ 或 $1$; $f_y=-3y^2+6y=-3y(y-2)=0$ ⇒ $y=0$ 或 $2$<span class="why">驻点条件: 两个一阶偏导同时为 0, 各自因式分解</span></div>
+<div class="step">② 驻点: $(-3,0)$, $(1,2)$, $(1,0)$, $(-3,2)$<span class="why">$x$ 两个候选 $\times$ $y$ 两个候选, 共 4 个驻点</span></div>
+<div class="step">③ $A=f_{xx}=6x+6$, $B=f_{xy}=0$, $C=f_{yy}=-6y+6$, $\Delta=AC-B^2$<span class="why">二阶偏导: 交叉项 $f_{xy}=0$ 使 $\Delta=AC$ 简化</span></div>
+<div class="step">④ 逐点判定: $(-3,0)$: $A=-12, C=6$, $\Delta=-72<0$ 非极值; $(1,2)$: $A=12, C=-6$, $\Delta=-72<0$ 非极值; $(1,0)$: $A=12, C=6$, $\Delta=72>0$ 且 $A>0$ ⇒ 极小值 $f(1,0)=1+3-9=-5$; $(-3,2)$: $A=-12, C=-6$, $\Delta=72>0$ 且 $A<0$ ⇒ 极大值 $f(-3,2)=-27-8+27+12+27=31$<span class="why">$\Delta>0$ 且 $A>0$ 为极小, $\Delta>0$ 且 $A<0$ 为极大, $\Delta<0$ 非极值</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 驻点 + $AC-B^2$ 全流程判定; 原笔记误读 $x^4-y^4$ 导致驻点数值矛盾而标"偏题", 视觉稿 $x^3-y^3$ 下 4 驻点与极值 $f(1,0)=-5$, $f(-3,2)=31$ 完全自洽。</div>
+</details>
+
+<hr />
+<p id="例52" class="prob"><b>例 5.2</b> 求 $u=xyz$ 在 $\frac1x+\frac1y+\frac1z=\frac1a$ ($x,y,z>0,a>0$) 下的最小值 【0523（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例53">例 5.3</a> 同为拉格朗日乘数法, 本题靠完全对称直接得 $x=y=z$</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 构造 $L=xyz+\lambda(\frac1x+\frac1y+\frac1z-\frac1a)$<span class="why">拉格朗日乘数法: 目标函数加 $\lambda$ 乘约束条件</span></div>
+<div class="step">② $L_x=yz-\frac{\lambda}{x^2}=0$, $L_y=xz-\frac{\lambda}{y^2}=0$, $L_z=xy-\frac{\lambda}{z^2}=0$<span class="why">三个一阶条件结构完全相同, 只有字母轮换</span></div>
+<div class="step">③ 由对称性可得 $x=y=z$, 代入约束: $\frac3x=\frac1a$ ⇒ $x=3a$<span class="why">目标与约束对三个变量完全对称 ⇒ 驻点满足 $x=y=z$ (用前两式相除: $\frac{y}{x}=\frac{y^2}{x^2}$ 得 $x=y$, 同理 $y=z$)</span></div>
+<div class="step">④ $u_{\min}=27a^3$<span class="why">$u=xyz=(3a)^3$; 边界上 $x\to0$ 或 $x\to\infty$ 均无可行解, 故内部驻点即最小值点</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 完全对称的约束极值: 一阶条件轮换对称, 直接得 $x=y=z$, 省去解方程组。</div>
+</details>
+
+<hr />
+<p id="例53" class="prob"><b>例 5.3</b> 求 $u=x^2+y^2+z^2$ 在 $z=x^2+y^2$ 和 $x+y+z=4$ 下的最值 【0523（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例52">例 5.2</a> 同为拉格朗日乘数法, 本题是双约束版</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $L=x^2+y^2+z^2+\lambda(z-x^2-y^2)+\mu(x+y+z-4)$<span class="why">两个约束条件配两个乘子 $\lambda,\mu$</span></div>
+<div class="step">② $L_x=2x-2\lambda x+\mu=0$, $L_y=2y-2\lambda y+\mu=0$, $L_z=2z+\lambda+\mu=0$<span class="why">逐变量求偏导; 前两式只差 $x,y$ 的轮换</span></div>
+<div class="step">③ 由对称性 $x=y$: 代入约束 $z=2x^2$, $2x+2x^2=4$ ⇒ $x=1$ 或 $x=-2$<span class="why">$L_x-L_y=(2-2\lambda)(x-y)=0$, $\lambda\neq1$ 时得 $x=y$; 再解 $x^2+x-2=0$</span></div>
+<div class="step">④ $x=1$: $y=1$, $z=2$, $u=6$; $x=-2$: $y=-2$, $z=8$, $u=72$<span class="why">由 $z=x^2+y^2=2x^2$ 与 $x+y+z=4$ 逐步回代</span></div>
+<div class="step">⑤ $u_{\min}=6$, $u_{\max}=72$<span class="why">约束集 $z=x^2+y^2$ 与平面 $x+y+z=4$ 交成有界闭曲线, 最值必达, 两个候选点直接比较</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 双约束极值: 先看结构对称性简化 ($x=y$), 再代入约束消元, 最后用有界闭集保证最值存在。</div>
+</details>
+
+<hr />
+<p id="例54" class="prob"><b>例 5.4</b> (强化) 求 $f(x,y)=(y-x^2)(y-x^3)$ 的极值 【0724（2）】【题面按视觉转写定稿】(0724(2) 页8 例6.15)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例51">例 5.1</a> 同为驻点+$AC-B^2$ 流程, 本题三驻点分别落在三种情形且 $(0,0)$ 处 $\Delta=0$ 需转用定义</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 展开复核: $f=y^2-x^2y-x^3y+x^5$; $f_x=-2xy-3x^2y+5x^4=0$, $f_y=2y-x^2-x^3=0$<span class="why">展开后求导不易漏: 对 $x$ 求导视 $y$ 为常数, 三个幂次项逐一处理</span></div>
+<div class="step">② 由 $f_y=0$: $y=\frac{x^2+x^3}{2}$; 代入 $f_x=0$: $(1+x)(2+3x)=10x$ ⇒ $3x^2-5x+2=0$ ⇒ $x=0,1,\frac23$<span class="why">$x=0$ 时 $f_y=0$ 自动成立; $x\neq0$ 时两边同除 $x^2$ 化一元二次方程</span></div>
+<div class="step">③ 驻点: $(0,0)$, $(1,1)$, $(\frac23,\frac{10}{27})$<span class="why">回代 $y=\frac{x^2+x^3}{2}$: $x=1$ 得 $y=1$, $x=\frac23$ 得 $y=\frac{\frac49+\frac8{27}}2=\frac{20}{54}=\frac{10}{27}$</span></div>
+<div class="step">④ $A=f_{xx}=-2y-6xy+20x^3$, $B=f_{xy}=-2x-3x^2$, $C=f_{yy}=2$<span class="why">对 $f_x$ 再求导: $-2xy$ 与 $-3x^2y$ 对 $x$ 求导分别得 $-2y$ 与 $-6xy$, $5x^4$ 得 $20x^3$</span></div>
+<div class="step">⑤ $(0,0)$: $A=0,B=0,C=2$, $\Delta=0$ 无法判断, 用定义: 沿 $y=0$: $f(x,0)=x^5$, $x<0$ 时 $f<0$、$x>0$ 时 $f>0$, 任意小邻域内符号不定 ⇒ 非极值<span class="why">$x^5$ 是奇函数, 原点两侧变号, 直接否掉极值 (若 $f(x,0)=2x^4$ 则反而判别出极小——这正是新旧题面的差异)</span></div>
+<div class="step">⑥ $(1,1)$: $A=12$, $B=-5$, $C=2$, $\Delta=24-25=-1<0$ ⇒ 非极值(鞍点)<span class="why">判别式负, 驻点只是鞍点</span></div>
+<div class="step">⑦ $(\frac23,\frac{10}{27})$: $A=\frac{100}{27}>0$, $B=-\frac83$, $C=2$, $\Delta=\frac{200}{27}-\frac{64}{9}=\frac{8}{27}>0$ ⇒ 极小值 $f=-\frac{4}{729}$<span class="why">$y-x^2=-\frac{2}{27}$, $y-x^3=\frac{2}{27}$, 乘积 $=-\frac4{729}$; 原笔记误读 $(y-x^2)(y-2x^2)$ 致驻点矛盾, 视觉稿 $(y-x^3)$ 下三驻点结论如上</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 展开式求导 + 逐驻点 $AC-B^2$, $\Delta=0$ 转定义沿 $y=0$ 看符号; 三驻点分别落在"非极值/鞍点/极小"三种情形。</div>
+</details>
+
+<hr />
+<p id="例55" class="prob"><b>例 5.5</b> (强化) 函数 $f(x,y)$ 满足 $f_{xy}''(x,y)=2(y+1)e^x$, $f_x'(x,0)=(x+1)e^x$, $f(0,y)=y^2+2y$, 求极值 【0724（2）】【题面按视觉转写定稿】(0724(2) 页6 例6.13)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例49">例 4.9</a> 同为"由偏导信息重建函数": 例 4.9 由全微分反求, 本题由混合偏导+初值拼回</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 对 $y$ 积分 $f_{xy}''$: $f_x'=\int 2(y+1)e^x\,dy = e^x(y^2+2y)+C_1(x)$<span class="why">$e^x$ 对 $y$ 是常数提出去; 积分常数是 $x$ 的函数 $C_1(x)$</span></div>
+<div class="step">② 令 $y=0$: $f_x'(x,0)=C_1(x)=(x+1)e^x$, 故 $f_x'=e^x(y^2+2y)+(x+1)e^x$<span class="why">用题干给的 $f_x'(x,0)$ 定出 $C_1(x)$</span></div>
+<div class="step">③ 对 $x$ 积分: $f=e^x(y^2+2y)+xe^x+C_2(y)$; 由 $f(0,y)=y^2+2y+C_2(y)=y^2+2y$: $C_2(y)=0$, $f(x,y)=e^x(y^2+2y)+xe^x$<span class="why">$\int(x+1)e^xdx=xe^x$ (凑微分/分部积分); 第二次待定用 $f(0,y)$ 定出</span></div>
+<div class="step">④ 驻点: $f_y'=2e^x(y+1)=0$ ⇒ $y=-1$; 代入 $f_x'=0$: $e^x(-1)+(x+1)e^x=xe^x=0$ ⇒ $x=0$; 驻点 $(0,-1)$<span class="why">$y=-1$ 时 $y^2+2y=-1$, 括号内 $-1+x+1=x$</span></div>
+<div class="step">⑤ $A=f_{xx}''=e^x(y^2+2y+x+2)|_{(0,-1)}=1>0$, $B=f_{xy}''=2(y+1)e^x|_{(0,-1)}=0$, $C=f_{yy}''=2e^x=2$; $\Delta=AC-B^2=2>0$, $A>0$ ⇒ $f(0,-1)=-1$ 为极小值<span class="why">$f_{xx}$: 对 $f_x'=e^x(y^2+2y+x+1)$ 再求导得 $e^x(y^2+2y+x+2)$; 原笔记把题面误读为 $f_y=2(y+1)e^x$ 且 $f(x,0)$ 条件, 视觉稿为 $f_{xy}''$ 与 $f_x'(x,0)$, 驻点是 $(0,-1)$ 且原"常数差 1"的疑点消失</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 由混合偏导拼回函数: 先积 $f_{xy}$ 得 $f_x$, 两次待定函数定常数, 再走标准 $AC-B^2$ 流程。</div>
+</details>
+
+<hr />
+<p id="例56" class="prob"><b>例 5.6</b> (强化) $f(x),g(x)$ 有二阶连续导数, $f(0)>0,g(0)<0$, $f'(0)=g'(0)=0$, $z=f(x)g(y)$ 在 $(0,0)$ 取得极小值的充分条件是? 【0724（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例51">例 5.1</a> 同为 $AC-B^2$ 判别, 本题交叉项 $B$ 自动为 0, 退化为符号分析</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $z_x=f'(x)g(y)$, $z_y=f(x)g'(y)$; 在 $(0,0)$: $z_x(0,0)=0$, $z_y(0,0)=0$<span class="why">乘积函数偏导; 用 $f'(0)=g'(0)=0$ 得驻点条件成立</span></div>
+<div class="step">② $A=z_{xx}=f''(0)g(0)$, $B=z_{xy}=f'(0)g'(0)=0$, $C=z_{yy}=f(0)g''(0)$<span class="why">二阶偏导在 $(0,0)$ 的取值: 交叉项因 $f'(0)=g'(0)=0$ 消失</span></div>
+<div class="step">③ 极小需 $A>0$ 且 $AC-B^2>0$: $f''(0)g(0)>0$ 且 $f''(0)g(0)\cdot f(0)g''(0)>0$<span class="why">$AC-B^2=AC>0$ 且 $A>0$ 等价于 $C>0$, 即两式均正</span></div>
+<div class="step">④ 已知 $f(0)>0$, $g(0)<0$, 故 $f''(0)<0$ (使 $f''(0)g(0)>0$) 且 $g''(0)>0$ (使 $f(0)g''(0)>0$)<span class="why">符号逐项分析: 负 $\times$ 负为正, 正 $\times$ 正为正, 两条同时成立</span></div>
+<div class="step">⑤ 选 (A): $f''(0)<0$, $g''(0)>0$<span class="why">对照选项确认 (A) 为唯一同时满足的组合</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 乘积型二元函数的极值判别: 交叉项 $B$ 自动为 0, 条件退化为"$f$ 与 $g$ 各自二阶导符号相反"。</div>
+</details>
+
+<hr />
+<p id="例57" class="prob"><b>例 5.7</b> (强化) 已知 $z=z(x,y)$ 由 $(x^2+y^2)z+\ln z+2(x+y+1)=0$ 确定, 求极值 【0724（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> · <a href="数学_多元与二重.html#17隐函数求偏导">隐函数求偏导</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例47">例 4.7</a> 同为"一阶方程再求导"求隐函数二阶偏导</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 对方程两边求偏导: 对 $x$: $2xz+(x^2+y^2)z_x+\frac{z_x}{z}+2=0$<span class="why">隐函数求导: 三项含 $z$: $2xz$ 用乘积法则 ($2z+2xz_x$), $(x^2+y^2)z$ 用乘积法则, $\ln z$ 链式得 $\frac{z_x}{z}$, 常数项 $2(x+y+1)$ 对 $x$ 得 2</span></div>
+<div class="step">② 对 $y$: $2yz+(x^2+y^2)z_y+\frac{z_y}{z}+2=0$<span class="why">与对 $x$ 完全对称, 轮换 $x\leftrightarrow y$</span></div>
+<div class="step">③ 令 $z_x=z_y=0$: $2xz+2=0 \Rightarrow x=-\frac{1}{z}$; $2yz+2=0 \Rightarrow y=-\frac{1}{z}$<span class="why">极值点处一阶偏导为 0, 代入后方程退化为只含 $xz$ 与 $yz$ 的项</span></div>
+<div class="step">④ 得 $x=y$, 代入原方程: $2x^2z+\ln z+2(2x+1)=0$, 联立 $x=-1/z$ 解得 $x=y=-1$, $z=1$<span class="why">把 $x=-1/z$ 代入得 $\ln z-\frac2z+2=0$; 验证 $z=1$ 是解, 原方程化为 $2-2=0$ 吻合</span></div>
+<div class="step">⑤ 二阶偏导判定: 对一阶方程再求导, 在 $(-1,-1,1)$ 处得 $z_{xx}=z_{yy}=-\frac23$, $z_{xy}=0$; 故 $A=-\frac23$, $AC-B^2=\frac49>0$ 且 $A<0$, $z(-1,-1)=1$ 为极大值<span class="why"><b>修正</b> $AC-B^2>0$ 且 $A<0$ 才是极大 (原解写 $<0$ 有误); 如 $z_{xx}$: 对第①式再对 $x$ 求导后代入 $z_x=0$ 得 $2z+(x^2+y^2)z_{xx}+z_{xx}/z=0$, 即 $2+2z_{xx}+z_{xx}=0$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 隐函数极值: 一阶条件求驻点, 对"一阶方程"再求导求二阶偏导, 别忘 $\Delta>0$ 与 $A<0$ 的方向。</div>
+</details>
+
+<hr />
+<p id="例58" class="prob"><b>例 5.8</b> (强化) 求 $u=xy+2yz$ 在 $x^2+y^2+z^2=10$ 下的最值 【0724（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例52">例 5.2</a> 同为球面型拉格朗日, 本题注意 $\lambda=0$ 退化分支别丢</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $L=xy+2yz+\lambda(x^2+y^2+z^2-10)$<span class="why">拉格朗日函数: 目标 $xy+2yz$ 加 $\lambda$ 乘约束</span></div>
+<div class="step">② $L_x=y+2\lambda x=0$, $L_y=x+2z+2\lambda y=0$, $L_z=2y+2\lambda z=0$, $L_\lambda=x^2+y^2+z^2-10=0$<span class="why">四个一阶条件 (含对乘子的求导即约束本身)</span></div>
+<div class="step">③ 由 $L_z=0$: $y=-\lambda z$; 代 $L_x$: $-\lambda z+2\lambda x=0 \Rightarrow x=z/2$ (或 $\lambda=0$)<span class="why">$\lambda\neq0$ 时约掉 $\lambda$ 得 $x=\frac z2$; $\lambda=0$ 是退化分支, 单独讨论</span></div>
+<div class="step">④ <span class="fill">【AI补全】</span>$\lambda=0$: $y=0$, $x=-2z$, 约束得 $z=\pm\sqrt2$, 点 $(\pm2\sqrt2,0,\mp\sqrt2)$, $u=0$; $\lambda^2=\frac54$, $z=\pm2$: 四个驻点 $(1,\pm\sqrt5,2)$、$(-1,\mp\sqrt5,-2)$, 其中 $u(1,\sqrt5,2)=u(-1,-\sqrt5,-2)=5\sqrt5$, $u(1,-\sqrt5,2)=u(-1,\sqrt5,-2)=-5\sqrt5$<span class="why">由 $L_y=0$: $\frac z2+2z+2\lambda(-\lambda z)=0$ 得 $\lambda^2=\frac54$; 回代 $x=z/2, y=-\lambda z$ 进约束即可 (原解所列个别驻点坐标有误, 已修正)</span></div>
+<div class="step">⑤ $u_{\max}=5\sqrt5$, $u_{\min}=-5\sqrt5$<span class="why">球面有界闭, 最值在驻点中取; 三个候选值 $0, \pm5\sqrt5$ 比较即得</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 球面约束极值: 注意 $\lambda=0$ 的退化分支别丢; 参数回代消元后逐点代回目标函数比较。</div>
+</details>
+
+<hr />
+<p id="例59" class="prob"><b>例 5.9</b> (强化) 求曲线 $x^3-xy+y^3=1$ ($x\ge0$, $y\ge0$) 上的点到原点最长/最短距离 【0724（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例53">例 5.3</a> 同为拉格朗日消元, 本题需结合定义域排除多余分支</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 目标: $d^2=x^2+y^2$, 约束: $x^3-xy+y^3=1$<span class="why">距离与距离平方同时取最值 (平方单调), 用 $d^2$ 免去根号求导</span></div>
+<div class="step">② $L=x^2+y^2+\lambda(x^3-xy+y^3-1)$<span class="why">拉格朗日函数</span></div>
+<div class="step">③ $L_x=2x+\lambda(3x^2-y)=0$, $L_y=2y+\lambda(3y^2-x)=0$<span class="why">一阶条件; 交叉项 $-xy$ 对 $x$ 得 $-y$, 对 $y$ 得 $-x$</span></div>
+<div class="step">④ 两式消去 $\lambda$: 得 $x=y$ 或 $3xy+x+y=0$<span class="why">由 $x(3y^2-x)=y(3x^2-y)$ 整理成 $(y-x)(3xy+x+y)=0$; 第二因子在 $x,y\ge0$ 下为 0 仅当 $x=y=0$, 不在曲线上, 故只剩 $x=y$</span></div>
+<div class="step">⑤ $x=y$ 时: $2x^3-x^2=1$, 解得 $x=y=1$, $d=\sqrt2$; 端点 $(0,1)$: $d=1$<span class="why">$x=1$ 代入 $2-1=1$ 成立 (另一根不满足非负); 端点: 令 $x=0$ 得 $y^3=1$, 对称地还有 $(1,0)$, 均 $d=1$</span></div>
+<div class="step">⑥ 最长距离 $\sqrt2$, 最短距离 $1$<span class="why">曲线在第一象限有界闭 (沿 $y=kx$ 方向无解), 比较候选值 $\sqrt2$ 与 $1$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 曲线到原点距离: 消 $\lambda$ 时作差因式分解, 结合定义域 ($x,y\ge0$) 排除另一支, 端点不遗漏。</div>
+</details>
+
+<hr />
+<p id="例510" class="prob"><b>例 5.10</b> (强化) 设 $u(x,y)$ 在有界闭区域 $D$ 内 $\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}\neq0$ 且 $\frac{\partial^2 u}{\partial x^2}\frac{\partial^2 u}{\partial y^2}-\left(\frac{\partial^2 u}{\partial x\partial y}\right)^2<0$, 则 $u$ 的最值在何处取得? 【0724（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例511">例 5.11</a> 同为"最值必在边界"结论, 例 5.11 是边界取最值的实操版本</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $AC-B^2<0$ 说明 $D$ 内部处处不是极值(都是鞍点特征)<span class="why">判别式 $\Delta<0$ 在每个内点都成立 ⇒ 内点即使驻点也是鞍点, 不可能取到局部极值</span></div>
+<div class="step">② 无极值 ⇒ 最值必在边界上取得<span class="why">有界闭区域上连续函数最值必达; 若最值在内点, 该点必为局部极值, 与①矛盾</span></div>
+<div class="step">③ 选 (A): 最大值和最小值都在 $D$ 的边界上取得<span class="why">大前提: $u$ 在有界闭域上连续 (题面隐含), 才能保证最值存在</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 内点处处 $\Delta<0$ 时"最值上边界"是秒杀结论: 内部既无峰也无谷, 最值只能挂在边界。</div>
+</details>
+
+<hr />
+<p id="例511" class="prob"><b>例 5.11</b> 求 $f(x,y)=x^2+2y^2-x^2y^2$ 在 $D=\{(x,y)\mid x^2+y^2\le4, y\ge0\}$ 上的最值 【0530（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例510">例 5.10</a> 内部驻点+边界代入化一元函数, 正是例 5.10 结论的展开</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $D$ 内部 ($x^2+y^2<4, y>0$): $f_x=2x-2xy^2=0$, $f_y=4y-2yx^2=0$<span class="why">内部区域不含边界, 用 $f_x=f_y=0$ 找驻点</span></div>
+<div class="step">② 解得驻点 $(\pm\sqrt2,1)$, $f=2+2-2=2$<span class="why">$f_x=2x(1-y^2)=0$ 且 $f_y=2y(2-x^2)=0$: $x=0$ 分支与 $y>0$ 内部冲突, 只剩 $x^2=2,y=1$; 检查 $2+1=3<4$ 确在内部</span></div>
+<div class="step">③ 边界 $y=0$, $-2\le x\le2$: $f(x,0)=x^2$, 最小值 $0$ (at $x=0$), 最大值 $4$ (at $x=\pm2$)<span class="why">直径上的函数就是 $x^2$</span></div>
+<div class="step">④ 边界 $x^2+y^2=4$: 代入 $f=x^4-5x^2+8$; 令 $t=x^2\in[0,4]$, $g(t)=t^2-5t+8$: 顶点 $t=\frac52$ 处 $g=\frac74$, 端点 $g(0)=8$, $g(4)=4$<span class="why">把二元的圆边界化为一元二次函数: $y^2=4-x^2$ 代入消元; 注意 $g$ 在 $t=\frac52\in[0,4]$ 内取最小</span></div>
+<div class="step">⑤ 综合: $f_{\max}=8$, $f_{\min}=0$<span class="why">候选值: 内部 $2$, 直径边界 $[0,4]$, 圆弧边界 $[\frac74,8]$; 取最大最小 (原 OCR 该步残缺, 已补全)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 闭域最值三件套: 内部驻点 + 各段边界 (直线段代值, 曲线段消元化一元函数) + 逐项比较。</div>
+</details>
+
+<hr />
+<h2 id="六二重积分比较大小与对称性判定">六、二重积分: 比较大小与对称性判定</h2>
+<p id="例61" class="prob"><b>例 6.1</b> 设 $D=\{(x,y)\mid x^2+y^2\le1\}$, 比较 $I_1=\iint_D\sqrt{x^2+y^2}\,d\sigma$, $I_2=\iint_D(x^2+y^2)\,d\sigma$, $I_3=\iint_D(x^2+y^2)^2\,d\sigma$ 的大小 【0523（3）】【题面按视觉转写定稿】(0523(3) 页5 例8.1, 原标【二重积分】更正)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> · <a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例62">例 6.2</a> 同为同区域比积分大小</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 三个被积函数都只依赖 $t=x^2+y^2$, 且在单位圆内 $0\le t\le1$<span class="why">化单变量: 三个被积函数 $\sqrt t$, $t$, $t^2$ 逐点比较</span></div>
+<div class="step">② $0\le t\le1$ 时 $\sqrt t \ge t \ge t^2$<span class="why">幂函数在 $(0,1)$ 内指数越大值越小: $t^{1/2}>t^1>t^2$ (等号仅在 $t=0$ 或 $1$ 处)</span></div>
+<div class="step">③ 积分保序性: $I_1>I_2>I_3$<span class="why">被积函数逐点大的, 同一区域上积分也大。原笔记误读为 $(x+y),(x+y)^2,(x+y)^3$ 的对称性题, 视觉稿为 $\sqrt{x^2+y^2},(x^2+y^2),(x^2+y^2)^2$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 同区域比积分大小: 把被积函数化成同一变量逐点比较, 再按保序性排序; 单位圆内 $t<1$ 的幂次排序是机关。</div>
+</details>
+
+<hr />
+<p id="例62" class="prob"><b>例 6.2</b> 强化 设 $D=\{(x,y)\mid |x|+|y|\le\frac{\pi}{2}\}$, $I_1=\iint_D\sqrt{x^2+y^2}dxdy$, $I_2=\iint_D\sin\sqrt{x^2+y^2}dxdy$, $I_3=\iint_D(1-\cos\sqrt{x^2+y^2})dxdy$, 比较大小 【0725（1）】【题面按视觉转写定稿】(0725(1) 页1 例7.1)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例61">例 6.1</a> 同为"同区域比大小", 本题化成单变量逐点比较</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 令 $t=\sqrt{x^2+y^2}$, 在 $[0,\frac{\pi}{2}]$ 上比较三个被积函数<span class="why">三个被积函数都只依赖 $t$ (径向), 菱形 $|x|+|y|\le\frac\pi2$ 内 $t$ 的最大值在顶点 $(\frac\pi2,0)$: $\frac\pi2$</span></div>
+<div class="step">② $t\ge\sin t$ ($t\ge0$); $\sin t-(1-\cos t)=2\sin\frac{t}{2}(\cos\frac{t}{2}-\sin\frac{t}{2})\ge0$ 当 $t\le\frac\pi2$<span class="why">对同一 $t$ 逐点比较; $t\in[0,\frac\pi2]$ 时 $\frac t2\le\frac\pi4$, $\cos\frac t2\ge\sin\frac t2$ 恒成立, 等号仅在端点</span></div>
+<div class="step">③ 在 $[0,\frac\pi2]$ 区间: $t>\sin t>1-\cos t$; 故 $I_1>I_2>I_3$, 选 (A)<span class="why">积分保序性: 被积函数逐点大的, 同一区域上积分也大</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 同区域比积分大小: 把被积函数化成同一变量逐点比较 ($t>\sin t>1-\cos t$ 三角链), 再按保序性排序。</div>
+</details>
+
+<hr />
+<p id="例63" class="prob"><b>例 6.3</b> 强化 设 $D_k$ 是圆域 $D=\{(x,y)\mid x^2+y^2\le1\}$ 在第 $k$ 象限的部分, $I_k=\iint_{D_k}(y-x)dxdy$, 则? 【0725（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例66">例 6.6</a> 同为"$x\leftrightarrow y$ 轮换"操作, 本题被积函数轮换变号故归零</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $y-x>0$ 在 $y>x$ 区域(第 I 象限中 $y>x$ 部分, 第 II 象限几乎全部)<span class="why">$y-x$ 的符号由直线 $y=x$ 划分: 线上方为正</span></div>
+<div class="step">② 第 II 象限: $x<0,y>0$, $y-x>0$ 恒成立, 故 $I_2>0$<span class="why">第 II 象限整体都在 $y=x$ 上方, 被积函数处处为正</span></div>
+<div class="step">③ 第 I、III 象限区域关于 $y=x$ 对称, $y-x$ 关于 $x\leftrightarrow y$ 反对称 ⇒ $I_1=I_3=0$; 第 IV 象限 $y-x<0$ 为主 ⇒ $I_4<0$; 故选 (B): $I_2$ 最大<span class="why">完整排序为 $I_2>I_1=I_3>I_4$; 对称性 (轮换后变号) 是这类题的通用工具 (原解只给了部分推理, 已补全)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 象限对称性: 区域关于 $y=x$ 对称时, 被积函数 $y-x$ 轮换变号, 积分自动为 0。</div>
+</details>
+
+<hr />
+<p id="例64" class="prob"><b>例 6.4</b> 强化 使 $I(D)=\iint_D(4-x^2-y^2)dxdy$ 取得最大值的 $D_1$, 求 $I(D_1)$ 【0725（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> · <a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例83">例 8.3</a> 同为"先做区域/对称性判断, 再极坐标收尾"</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 被积函数 $4-x^2-y^2$ 在 $x^2+y^2\le4$ 时为正, 之外为负<span class="why">$4-x^2-y^2>0\iff x^2+y^2<4$: 半径为 2 的圆盘内正外负</span></div>
+<div class="step">② 要使积分最大, $D$ 应取被积函数为正的区域: $D_1=\{(x,y)\mid x^2+y^2\le4\}$<span class="why">多取负值区只会减小积分: 最优区域就是被积函数的正区域 (取满正区域, 不取负区域)</span></div>
+<div class="step">③ $I(D_1)=\iint_{x^2+y^2\le4}(4-x^2-y^2)dxdy$<span class="why">把最优区域代回积分</span></div>
+<div class="step">④ 极坐标: $\int_0^{2\pi}d\theta\int_0^2(4-r^2)r\,dr=2\pi[2r^2-\frac{r^4}{4}]_0^2=2\pi(8-4)=8\pi$<span class="why">圆域用极坐标, $dxdy=rdrd\theta$; 内层 $\int_0^2(4r-r^3)dr=8-4=4$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: "选区域使积分最大": 取被积函数为正的整个区域即可, 之后按标准圆域极坐标计算。</div>
+</details>
+
+<hr />
+<p id="例65" class="prob"><b>例 6.5</b> 用奇偶对称性计算: (1) 计算 $\iint_D e^x\sin y\,dxdy$ ($D=\{(x,y)\mid y\ge-x, y\le x, x\le1\}$); (2) 计算 $\iint_D x^3y^2dxdy$ ($D=\{(x,y)\mid x^2+y^2\le2y\}$) 【0523（3）】【题面按视觉转写定稿】(0523(3) 页12 例8.9, 原标【二重积分】更正; (2) 原笔记误写 $xy^2$, 视觉稿为 $x^3y^2$)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例83">例 8.3</a> 同为"对称性消项"后再积分 <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例67">例 6.7</a> 同判奇偶对称性, 例 6.7 是"区域不对称"的反向提醒</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① (1) 区域 $|y|\le x\le1$ 关于 $x$ 轴对称 (反射 $(x,y)\mapsto(x,-y)$ 不变), $e^x\sin y$ 关于 $y$ 为奇函数, 积分为 0<span class="why"><b>易错</b> $\sin y$ 关于 $y$ 是奇函数 ($\sin(-y)=-\sin y$), $e^x$ 与 $y$ 无关, 两者相乘仍为奇; 奇函数在对称区域上积分为 0</span></div>
+<div class="step">② (2) $D$ 是整圆盘 $x^2+(y-1)^2\le1$ (圆心 $(0,1)$), 关于 $y$ 轴对称; $x^3y^2$ 关于 $x$ 为奇函数, 积分为 0<span class="why">反射 $(x,y)\mapsto(-x,y)$ 保持圆盘不变, 被积函数 $x^3y^2$ 变号, 对称相消 (原笔记误写 $xy^2$, 视觉稿为 $x^3y^2$, 结论同为 0)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 对称性选轴: 区域对称于哪条轴, 被积函数对那个变量为奇则积分为 0; 先确认区域, 再确认奇偶性。</div>
+</details>
+
+<hr />
+<p id="例66" class="prob"><b>例 6.6</b> 强化 区域 $D=\{(x,y)\mid x^2+y^2\le4, x\ge0, y\ge0\}$, $f(x)$ 为 $D$ 上正值连续函数, $a,b$ 为常数, 求 $\iint_D\frac{a\sqrt{f(x)}+b\sqrt{f(y)}}{\sqrt{f(x)}+\sqrt{f(y)}}d\sigma$ 【0725（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例63">例 6.3</a> 同为轮换对称, 本题两式相加约分得 $\frac{a+b}{2}S_D$</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 令 $I=\iint_D\frac{a\sqrt{f(x)}+b\sqrt{f(y)}}{\sqrt{f(x)}+\sqrt{f(y)}}d\sigma$<span class="why">目标式含 $f(x),f(y)$ 交叉结构, 提示用轮换对称</span></div>
+<div class="step">② $D$ 关于 $y=x$ 对称, 轮换 $x\leftrightarrow y$: $I=\iint_D\frac{a\sqrt{f(y)}+b\sqrt{f(x)}}{\sqrt{f(y)}+\sqrt{f(x)}}d\sigma$<span class="why">第一象限四分之一圆关于 $y=x$ 对称: 轮换变量不改变区域与积分值</span></div>
+<div class="step">③ 两式相加: $2I=\iint_D\frac{(a+b)(\sqrt{f(x)}+\sqrt{f(y)})}{\sqrt{f(x)}+\sqrt{f(y)}}d\sigma = (a+b)\iint_D 1\,d\sigma$<span class="why">分子恰好合并出公因子 $(a+b)$, 与分母约分 —— 出题人设计好的消元</span></div>
+<div class="step">④ $\iint_D 1\,d\sigma = \frac14\cdot\pi\cdot4 = \pi$, 故 $I=\frac{a+b}{2}\pi$, 选 (D)<span class="why">区域面积: 半径 2 圆面积的四分之一</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 轮换对称求和: $I$ 与自己"轮换后"相加, 分子分母同构约分, 把复杂被积函数化成常数积分。</div>
+</details>
+
+<hr />
+<p id="例67" class="prob"><b>例 6.7</b> 强化 区域 $D$ 由 $y=\sin x$, $x=\pm\frac{\pi}{2}$, $y=1$ 围成, 求 $\iint_D(x^5y-1)dxdy$ 【0725（1）】【题面按视觉转写定稿】(0725(1) 页10 例7.6、二重积分.txt 页7)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> · <a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例65">例 6.5</a> 同为对称性判定, 本题区域不对称是陷阱, 但奇函数项仍可单独消掉</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① <b>易错</b> 区域 $D=\{(x,y)\mid -\frac\pi2\le x\le\frac\pi2,\ \sin x\le y\le1\}$ 关于 $y$ 轴并<u>不</u>对称: $\sin(-x)=-\sin x\ne\sin x$<span class="why">反射 $(x,y)\mapsto(-x,y)$ 后下边界从 $\sin x$ 变成 $-\sin x$, 区域不保持; 不能把区域当对称区域整体简化</span></div>
+<div class="step">② $\iint_D x^5y\,dxdy = \int_{-\pi/2}^{\pi/2}\frac{x^5\cos^2x}{2}\,dx = 0$<span class="why">先对 $y$ 积分: $\int_{\sin x}^{1}y\,dy=\frac{1-\sin^2x}{2}=\frac{\cos^2x}{2}$; $x^5\cos^2x$ 是 $x$ 的奇函数, 在对称区间 $[-\frac\pi2,\frac\pi2]$ 上积分为 0——区域不对称不影响"被积函数对 $x$ 为奇、积分区间对称"的消项</span></div>
+<div class="step">③ $\iint_D (-1)dxdy = -S_D = -\int_{-\pi/2}^{\pi/2}(1-\sin x)dx = -[\pi - 0] = -\pi$<span class="why">面积积分: 高 $1-\sin x$ 沿 $x$ 积分; $\int\sin x\,dx$ 在 $[-\frac\pi2,\frac\pi2]$ 上为 0 (奇函数)</span></div>
+<div class="step">④ 原式 $=0-\pi=-\pi$, 选 (D)<span class="why">$\iint x^5y=0$ 与 $\iint(-1)=-\pi$ 相加。原笔记误读 $x^2y$ 得 $\frac{\pi^3}{48}-\frac{9\pi}{8}$ 与答案不符而疑题, 视觉稿 $x^5y$ 下奇函数归零, 答案 $-\pi$ 自洽</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 区域不对称时奇函数项依然可以单独消掉: $x^5y$ 对 $x$ 为奇、$x$ 积分区间对称, 该项积分为 0; 用对称性前必先验证区域对称。</div>
+</details>
+
+<hr />
+<h2 id="七二重积分直角坐标计算">七、二重积分: 直角坐标计算</h2>
+<p id="例71" class="prob"><b>例 7.1</b> 计算 $\iint_D (x+y)dxdy$, $D$ 由 $x+y=1$ 与 $x$ 轴、$y$ 轴围成 【二重积分】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例72">例 7.2</a> 同为直角坐标定限, 本题靠对称性省一半计算</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 积分区域: $0\le x\le1$, $0\le y\le1-x$<span class="why">三角形: 直线 $x+y=1$ 与两坐标轴围成, $y$ 从 0 到 $1-x$</span></div>
+<div class="step">② $\iint_D x\,dxdy = \int_0^1 x(1-x)dx = [\frac{x^2}{2}-\frac{x^3}{3}]_0^1 = \frac16$<span class="why">先对 $y$ 积分: 高为 $1-x$, 再对 $x$ 积分</span></div>
+<div class="step">③ 由对称性 $\iint_D y\,dxdy = \frac16$<span class="why">区域关于 $y=x$ 对称, $x$ 与 $y$ 互换积分值不变</span></div>
+<div class="step">④ 原式 $=\frac13$<span class="why">两项相加; 也可用形心: 三角形面积 $\frac12$, 形心 $(\frac13,\frac13)$, 积分 $=\frac12\cdot\frac23=\frac13$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 直角坐标入门: 先定区域再定积分次序; 对称区域上 $x$ 与 $y$ 的积分互换相等, 可省一半计算。</div>
+</details>
+
+<hr />
+<p id="例72" class="prob"><b>例 7.2</b> 计算 $\iint_D xy\,dxdy$, $D$ 由 $y^2=x$ 及 $y=x-2$ 围成 【二重积分】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例71">例 7.1</a> 同为化二次积分, 本题演示"先解交点选 $y$ 型"</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 交点: $y^2=y+2$ ⇒ $y=-1$ 或 $2$ ($x=1$ 或 $4$)<span class="why">抛物线 $x=y^2$ 与直线 $x=y+2$ 的交点, 解 $y$ 更方便</span></div>
+<div class="step">② 按 $y$ 型: $-1\le y\le2$, $y^2\le x\le y+2$<span class="why">对固定 $y$, $x$ 从抛物线到直线; 若按 $x$ 型需分段, $y$ 型最省事</span></div>
+<div class="step">③ $\iint_D xy\,dxdy = \int_{-1}^2 y\,dy\int_{y^2}^{y+2} x\,dx = \int_{-1}^2 y\cdot\frac{(y+2)^2-y^4}{2}dy$<span class="why">先对 $x$ 积分: $\int_{y^2}^{y+2}xdx=\frac{(y+2)^2-y^4}{2}$</span></div>
+<div class="step">④ 计算得 $\frac{45}{8}$<span class="why">展开 $\frac12\int_{-1}^2(y^3+4y^2+4y-y^5)dy$, 原函数逐项代值: $\frac12[(12)-(\frac34)]=\frac{45}{8}$ (原 OCR 该步残缺, 已补全并复核)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 抛物线+直线围域的典型 $y$ 型: 先解交点定 $y$ 范围, 再对固定 $y$ 定 $x$ 上下限, 多项式积分逐项做。</div>
+</details>
+
+<hr />
+<p id="例73" class="prob"><b>例 7.3</b> 计算 $\iint_D x\,dxdy$, $D$ 为: (1) $x^2+y^2\le1$; (2) $x^2+y^2\le2x$ ($y\ge0$) 与 $x$ 轴围成 【二重积分】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> · <a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例81">例 8.1</a> 同为 $x^2+y^2=2x$ 圆域极坐标, 本题先用对称性秒杀 (1)</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① (1) $D$ 关于 $y$ 轴对称, $x$ 奇函数, 积分为 0<span class="why">反射 $(x,y)\mapsto(-x,y)$ 下 $x$ 变号, 对称相消, 不用算</span></div>
+<div class="step">② (2) $x^2+y^2\le2x$ ⇒ $(x-1)^2+y^2\le1$, $y\ge0$; 极坐标: $0\le\theta\le\frac{\pi}{2}$, $0\le r\le2\cos\theta$<span class="why">圆 $x^2+y^2=2x$ 在极坐标下为 $r=2\cos\theta$; 上半部分限定 $\theta\in[0,\frac\pi2]$</span></div>
+<div class="step">③ $\iint_D x\,dxdy = \int_0^{\pi/2}d\theta\int_0^{2\cos\theta} r\cos\theta\cdot r\,dr = \int_0^{\pi/2}\cos\theta\cdot\frac{8\cos^3\theta}{3}d\theta = \frac{8}{3}\int_0^{\pi/2}\cos^4\theta\,d\theta$<span class="why">极坐标代换: $x=r\cos\theta$, $dxdy=rdrd\theta$ (雅可比因子 $r$ 别丢); 内层 $\int_0^{2\cos\theta}r^2dr=\frac{8\cos^3\theta}{3}$</span></div>
+<div class="step">④ $=\frac{8}{3}\cdot\frac{3\pi}{16}=\frac{\pi}{2}$<span class="why">华里士公式: $\int_0^{\pi/2}\cos^4\theta d\theta=\frac{3\cdot1}{4\cdot2}\cdot\frac\pi2=\frac{3\pi}{16}$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 圆边界用极坐标: 圆心在轴上时 $r$ 的上下限由圆方程直接给出, 注意雅可比 $r$ 与华里士公式。</div>
+</details>
+
+<hr />
+<h2 id="八二重积分极坐标计算">八、二重积分: 极坐标计算</h2>
+<p id="例81" class="prob"><b>例 8.1</b> 计算 $\iint_D x^2dxdy$, $D$ 由 $x^2+y^2=2x$ 与两坐标轴在第一象限围成 【0530（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例73">例 7.3</a> 同域 $x^2+y^2=2x$, 本题升级成 $x^2$ 配华里士</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 极坐标: $0\le\theta\le\frac{\pi}{2}$, $0\le r\le2\cos\theta$<span class="why">圆 $x^2+y^2=2x$ 即 $r=2\cos\theta$; 第一象限限定 $\theta$ 范围</span></div>
+<div class="step">② $\iint_D x^2dxdy = \int_0^{\pi/2}d\theta\int_0^{2\cos\theta} r^2\cos^2\theta\cdot r\,dr$<span class="why">$x^2=r^2\cos^2\theta$ 再乘雅可比 $r$: 被积函数为 $r^3\cos^2\theta$</span></div>
+<div class="step">③ $= \int_0^{\pi/2}\cos^2\theta\cdot\frac{16\cos^4\theta}{4}d\theta = 4\int_0^{\pi/2}\cos^6\theta\,d\theta$<span class="why">内层 $\int_0^{2\cos\theta}r^3dr=\frac{(2\cos\theta)^4}{4}=4\cos^4\theta$, 与 $\cos^2\theta$ 相乘</span></div>
+<div class="step">④ $=4\cdot\frac{5\cdot3\cdot1}{6\cdot4\cdot2}\cdot\frac{\pi}{2} = \frac{5\pi}{8}$<span class="why">华里士公式 $\int_0^{\pi/2}\cos^6\theta d\theta=\frac{5\cdot3\cdot1}{6\cdot4\cdot2}\cdot\frac\pi2$, 系数 $4\times\frac{15}{48}\times\frac\pi2=\frac{5\pi}{8}$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 圆域上 $x^2$ 型积分: 极坐标代换后靠华里士公式一锤定音, 系数运算要细心。</div>
+</details>
+
+<hr />
+<p id="例82" class="prob"><b>例 8.2</b> 设 $D=\{(x,y)\mid x^2+y^2\le x\}$, 求 $\iint_D\sqrt{x}\,dxdy$ 【0530（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例81">例 8.1</a> 同为"圆边界极坐标+华里士"结构, 本题多一层根号</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $x^2+y^2\le x$ ⇒ $(x-\frac12)^2+y^2\le\frac14$, 极坐标: $r\le\cos\theta$, $-\frac{\pi}{2}\le\theta\le\frac{\pi}{2}$<span class="why">圆方程代 $x=r\cos\theta$: $r^2\le r\cos\theta$ 即 $r\le\cos\theta$; $\cos\theta\ge0$ 保证 $r\ge0$, 且被积函数 $\sqrt x$ 要求 $x\ge0$ 自动满足</span></div>
+<div class="step">② 原式 $= \int_{-\pi/2}^{\pi/2}d\theta\int_0^{\cos\theta} r^{3/2}\cos^{1/2}\theta\,dr = \frac25\int_{-\pi/2}^{\pi/2}\cos^3\theta\,d\theta = \frac{8}{15}$<span class="why">$\sqrt x=\sqrt{r\cos\theta}=r^{1/2}\cos^{1/2}\theta$ 乘雅可比 $r$ 得 $r^{3/2}\cos^{1/2}\theta$; 内层积出 $\frac25\cos^{5/2}\theta$; $\int_{-\pi/2}^{\pi/2}\cos^3\theta d\theta=\frac43$ (原 OCR 只有一步, 已补全)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 根号 $\sqrt x$ 配 $x^2+y^2\le x$ 型圆域: 极坐标把根号与区域同时化开, $r$ 上下限直接由 $r=\cos\theta$ 给出。</div>
+</details>
+
+<hr />
+<p id="例83" class="prob"><b>例 8.3</b> 计算 $\iint_D\frac{1+xy}{1+x^2+y^2}dxdy$, $D=\{(x,y)\mid x^2+y^2\le1, x\ge0\}$ 【0530（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> · <a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例65">例 6.5</a> 同为"先对称性消项再积分"结构</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $\iint_D\frac{xy}{1+x^2+y^2}dxdy$: $D$ 关于 $x$ 轴对称, $xy$ 关于 $y$ 为奇函数 ⇒ 该项 $=0$<span class="why">右半圆关于 $x$ 轴对称; 被积函数含因子 $y$ (奇), $xy$ 项积分为 0 —— 先消项再积分</span></div>
+<div class="step">② 原式 $=\iint_D\frac{1}{1+x^2+y^2}dxdy$; 极坐标: $-\frac{\pi}{2}\le\theta\le\frac{\pi}{2}$, $0\le r\le1$<span class="why">只剩径向对称的被积函数, 极坐标下只依赖 $r$</span></div>
+<div class="step">③ $= \int_{-\pi/2}^{\pi/2}d\theta\int_0^1\frac{r}{1+r^2}dr = \pi\cdot\frac12\ln2 = \frac{\pi}{2}\ln2$<span class="why">雅可比 $r$ 使分子出现 $rdr$, 恰是 $d(1+r^2)$ 的半个微分; $\int_0^1\frac{rdr}{1+r^2}=\frac12[\ln(1+r^2)]_0^1=\frac12\ln2$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 对称性消项 ($xy$ 项为 0) + 极坐标处理 $\frac1{1+r^2}$: 凑 $d(1+r^2)$ 是标准操作。</div>
+</details>
+
+<hr />
+<p id="例84" class="prob"><b>例 8.4</b> 计算 $\iint_D y\,dxdy$, $D$ 由 $x=-2$, $y=0$, $y=2$ 及 $x=-\sqrt{2y-y^2}$ 围成 【0530（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> · <a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例91">例 9.1</a> 同为"整体减局部"拆分区域, 本题再用形心公式省积分</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $x=-\sqrt{2y-y^2}$ 即 $x^2+(y-1)^2=1$, $x\le0$ (左半圆)<span class="why">平方去根号: $2y-y^2=1-(y-1)^2$, 圆心 $(0,1)$ 半径 1 的左半圆</span></div>
+<div class="step">② $D$ = 矩形 $[-2,0]\times[0,2]$ 挖去左半圆盘, 用减法拆分积分<span class="why">直接积分需对每个 $y$ 算 $\int_{-2}^{-\sqrt{2y-y^2}}$, 减半圆法更省事</span></div>
+<div class="step">③ $\iint_D y\,dxdy = \iint_{\text{矩形}}y - \iint_{\text{左半圆}}y$: 矩形部分 $=\int_0^2\int_{-2}^0 y\,dxdy = \int_0^2 2y\,dy = 4$<span class="why">矩形上先对 $x$ 积分: 区间长 2</span></div>
+<div class="step">④ 半圆部分: 面积 $\frac\pi2$, 形心 $(x_0,y_0)=\bigl(-\frac{4}{3\pi},1\bigr)$, 故 $\iint_{\text{左半圆}}y = \bar{y}\cdot S = 1\cdot\frac\pi2 = \frac\pi2$; 原式 $=4-\frac\pi2$<span class="why"><b>修正</b> 半圆面积是 $\frac\pi2$ 而非 $\frac\pi4$ (半径 1 圆的一半); 形心公式 $\iint_D y = \bar{y}\cdot S$ 省去积分; 数值积分复核 $4-\frac\pi2\approx2.43$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 挖去对称子区域的积分用"整体减局部"+形心公式: $\iint_D y=\bar y\cdot S$ 可免去繁琐积分。</div>
+</details>
+
+<hr />
+<p id="例85" class="prob"><b>例 8.5</b> 计算 $\iint_D x\,dxdy$, $D=\{(x,y)\mid x^2+y^2\le4,\; x^2+y^2\ge2y,\; x\ge0,\; y\ge0\}$ 【0530（1）】【题面按视觉转写定稿】(0530(1) 页5 例8.6(3), 原笔记误写 $2x$)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例81">例 8.1</a> 同为圆域极坐标, 本题 $\rho$ 上下限成对 ($2\sin\theta\le\rho\le2$)</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 极坐标: $D$ 是第一象限中圆环 $2\sin\theta\le\rho\le2$, $\theta\in[0,\frac{\pi}{2}]$<span class="why">外边界 $\rho=2$ (半径 2 圆), 内边界 $\rho=2\sin\theta$ (圆 $x^2+y^2=2y$, 即 $x^2+(y-1)^2\le1$); $x,y\ge0$ 限定第一象限</span></div>
+<div class="step">② $\rho$ 的下限 $2\sin\theta$ 来自 $x^2+y^2\ge2y$; 对任意 $\theta\in[0,\frac\pi2]$, $2\sin\theta\le2$ 恒成立, 内环非空<span class="why">$\theta=0$ 时内外边界重合于点 $(0,0)$, 区间退化为单点, 不影响积分</span></div>
+<div class="step">③ 计算: $\iint_D x\,dxdy = \int_0^{\pi/2}\cos\theta\,d\theta\int_{2\sin\theta}^2 \rho^2\,d\rho = \int_0^{\pi/2}\cos\theta\cdot\frac{8-8\sin^3\theta}{3}d\theta$<span class="why">$x=\rho\cos\theta$ 乘雅可比 $\rho$ 得 $\rho^2\cos\theta$; 内层 $\int_{2\sin\theta}^2\rho^2d\rho=\frac{8-8\sin^3\theta}{3}$</span></div>
+<div class="step">④ $= \frac{8}{3}\int_0^{\pi/2}(1-\sin^3\theta)\,d(\sin\theta) = \frac{8}{3}[\sin\theta-\frac14\sin^4\theta]_0^{\pi/2} = \frac{8}{3}\cdot\frac34 = 2$<span class="why">凑微分 $d(\sin\theta)=\cos\theta d\theta$ 把角度积分直接做完; 原笔记误写 $2x$(内边界 $\rho=2\cos\theta$) 得 $\frac83-\frac\pi2$, 视觉稿为 $2y$, 答案 $2$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 圆环型区域: 先由两圆方程定 $\rho$ 上下限, $\theta$ 范围由象限限定, 凑 $d(\sin\theta)$ 秒杀 $\cos\theta\sin^3\theta$ 型积分。</div>
+</details>
+
+<hr />
+<p id="例86" class="prob"><b>例 8.6</b> 强化 求 $\iint_D(x-y)dxdy$, $D=\{(x,y)\mid (x-1)^2+(y-1)^2\le2, y\ge x\}$ 【0725（1）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例73">例 7.3</a> 同为"配方看圆心"再定极坐标, 本题再平移化标准圆</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 令 $u=x-1$, $v=y-1$, $D'=\{(u,v)\mid u^2+v^2\le2, v\ge u\}$<span class="why">平移把圆心搬到原点: 坐标平移不改变 $dxdy$</span></div>
+<div class="step">② 原式 $=\iint_{D'}(u-v)dudv$<span class="why">被积函数中常数 $1-1$ 相消: $(u+1)-(v+1)=u-v$</span></div>
+<div class="step">③ 极坐标: $v\ge u$ 即 $r\sin\theta\ge r\cos\theta$ ⇒ $\tan\theta\ge1$ ⇒ $\frac{\pi}{4}\le\theta\le\frac{5\pi}{4}$, $0\le r\le\sqrt2$<span class="why">半平面 $v\ge u$ 是过原点与 $u$ 轴成 $\frac\pi4$ 角的半平面: 从 $\theta=\frac\pi4$ 到 $\frac{5\pi}{4}$</span></div>
+<div class="step">④ $=\int_{\pi/4}^{5\pi/4}(\cos\theta-\sin\theta)d\theta\int_0^{\sqrt2} r^2\,dr = [\sin\theta+\cos\theta]_{\pi/4}^{5\pi/4}\cdot\frac{2\sqrt2}{3}$<span class="why">$u-v=r(\cos\theta-\sin\theta)$ 乘雅可比 $r$: 径向因子 $r^2$; $\int_0^{\sqrt2}r^2dr=\frac{2\sqrt2}{3}$ 提出去</span></div>
+<div class="step">⑤ $=(-\frac{\sqrt2}{2}-\frac{\sqrt2}{2}-\frac{\sqrt2}{2}-\frac{\sqrt2}{2})\cdot\frac{2\sqrt2}{3} = -2\sqrt2\cdot\frac{2\sqrt2}{3} = -\frac{8}{3}$<span class="why">$\sin\frac{5\pi}{4}+\cos\frac{5\pi}{4}=-\sqrt2$, $\sin\frac\pi4+\cos\frac\pi4=\sqrt2$, 差为 $-2\sqrt2$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 平移化标准圆 + 半平面用极坐标角度区间刻画, 径向与角度部分分离积分, 流程清晰。</div>
+</details>
+
+<hr />
+<p id="例87" class="prob"><b>例 8.7</b> 强化 计算 $\iint_D\frac{x^2-xy-y^2}{x^2+y^2}dxdy$, $D$ 由 $y=1$, $y=x$, $y=-x$ 围成 【0725（1）】【题面按视觉转写定稿】(0725(1) 页13 例7.9, 原笔记漏 $-xy$ 项)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> · <a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例86">例 8.6</a> 同为射线围成的角形区域: 例 8.6 走极坐标角度区间, 本题走 $y$ 型+比例换元</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 画图定区域: $y=x$ 与 $y=-x$ 交于原点, 与 $y=1$ 分别交于 $(1,1)$、$(-1,1)$; 三条线围成顶点在原点、底在 $y=1$ 的三角形<span class="why">两条射线夹的角向下, 水平线 $y=1$ 截顶, 顶点 $(0,0)$</span></div>
+<div class="step">② 区域即 $-y\le x\le y$, $0\le y\le1$<span class="why">对固定 $y\in[0,1]$, $x$ 在两条射线上、下限 $x=\pm y$ 之间</span></div>
+<div class="step">③ 按 $y$ 型: $0\le y\le1$, $-y\le x\le y$<span class="why">区域左右对称 (关于 $y$ 轴对称)</span></div>
+<div class="step">④ 拆分分子: 原式 $=\iint_D\frac{x^2-y^2}{x^2+y^2}dxdy-\iint_D\frac{xy}{x^2+y^2}dxdy$: 第二项关于 $x$ 为奇函数, 区域关于 $y$ 轴对称, 积分为 0<span class="why">$x^2-xy-y^2=(x^2-y^2)-xy$; $xy/(x^2+y^2)$ 奇函数对称消去 (原笔记漏 $xy$ 项, 视觉稿含之, 结论不变)</span></div>
+<div class="step">⑤ 第一项: $\frac{x^2-y^2}{x^2+y^2}$ 关于 $x$ 为偶 ⇒ $=2\int_0^1 dy\int_0^y\frac{x^2-y^2}{x^2+y^2}dx$<span class="why">偶函数对称积分取半区乘 2; 注意这里已含因子 2, 后面不再重复乘</span></div>
+<div class="step">⑥ 换元 $x=yt$: $=2\int_0^1 y\,dy\int_0^1\frac{t^2-1}{t^2+1}dt = 1\cdot\int_0^1(1-\frac{2}{t^2+1})dt = [t-2\arctan t]_0^1 = 1-\frac{\pi}{2}$<span class="why">固定 $y$, 令 $x=yt$ 使分母分子同提 $y^2$ 约掉, $dx=y\,dt$; $2\int_0^1 y\,dy=1$; $\int_0^1\frac{2dt}{1+t^2}=\frac\pi2$</span></div>
+<div class="step">⑦ 原式 $=1-\frac{\pi}{2}$<span class="why"><b>修正</b> 第⑤步的因子 2 已包含对称性, 第⑥步不再乘 2 (原解末步再乘 2 得 $2-\pi$ 系重复, 已修正; 数值积分复核 $-0.571$ 与 $1-\frac\pi2$ 一致)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 三角形区域 + 齐次分式: 固定 $y$ 做 $x=yt$ 换元把上下限归一化, 对称因子 2 只乘一次, 勿重复。</div>
+</details>
+
+<hr />
+<p id="例88" class="prob"><b>例 8.8</b> 强化 已知 $D$ 满足 $|x|\le y$, $(x^2+y^2)^3\le y^4$, 求 $\iint_D\frac{x+y}{\sqrt{x^2+y^2}}dxdy$ 【0725（2）】【题面按视觉转写定稿】(0725(2) 页1 例7.10、二重积分.txt 页9)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例105">例 10.5</a> 同为"由边界不等式反解 $r$ 上下限"</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $(x^2+y^2)^3\le y^4$ ⇒ $\rho^6\le\rho^4\sin^4\theta$ ⇒ $\rho\le\sin^2\theta$ ($\rho>0$, 原点单独处理不影响积分)<span class="why">极坐标: $x^2+y^2=\rho^2$, $y=\rho\sin\theta$; 约 $\rho^4$ 后两边开方: $\rho\le\sin^2\theta$</span></div>
+<div class="step">② $|x|\le y$ ⇒ $|\cos\theta|\le\sin\theta$; 结合 $\sin\theta\ge0$ ($y\ge0$), 得 $\theta\in[\frac\pi4,\frac{3\pi}4]$<span class="why">在 $[0,\pi]$ 上解 $|\cos\theta|\le\sin\theta$: 即 $\theta\in[\frac\pi4,\frac{3\pi}4]$ (第一、二象限的 $\frac\pi4$ 角带)</span></div>
+<div class="step">③ $\iint_D\frac{x}{\sqrt{x^2+y^2}}dxdy=0$: 区域关于 $y$ 轴对称, 被积函数关于 $x$ 为奇<span class="why">$|x|\le y$ 与 $(x^2+y^2)^3\le y^4$ 都只含 $x^2$, 区域关于 $y$ 轴对称; $x/\rho$ 为奇函数对称相消</span></div>
+<div class="step">④ $\iint_D\frac{y}{\sqrt{x^2+y^2}}dxdy = \int_{\pi/4}^{3\pi/4}\sin\theta\,d\theta\int_0^{\sin^2\theta}\rho\,d\rho = \frac12\int_{\pi/4}^{3\pi/4}\sin^5\theta\,d\theta = \int_{\pi/4}^{\pi/2}\sin^5\theta\,d\theta$<span class="why">$\frac{y}{\rho}\cdot\rho\,d\rho d\theta=\rho\sin\theta\,d\rho d\theta$; 内层 $\int_0^{\sin^2\theta}\rho d\rho=\frac12\sin^4\theta$; $\sin^5\theta$ 关于 $\theta=\frac\pi2$ 对称, 半区乘 2 与 $\frac12$ 相消</span></div>
+<div class="step">⑤ 令 $u=\cos\theta$: $\int_{\pi/4}^{\pi/2}\sin^5\theta\,d\theta=\int_0^{\sqrt2/2}(1-u^2)^2du=\big[u-\frac23u^3+\frac15u^5\big]_0^{\sqrt2/2}=\frac{43\sqrt2}{120}$<span class="why">$\sin^5\theta=\sin^4\theta\sin\theta=(1-\cos^2\theta)^2\sin\theta$, 凑 $d(\cos\theta)$; 代入 $u=\frac{\sqrt2}{2}$: $\frac{\sqrt2}{2}-\frac{\sqrt2}{6}+\frac{\sqrt2}{40}=\frac{43\sqrt2}{120}$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 次数悬殊的极坐标边界 ($\rho\le\sin^2\theta$) 直接由不等式解出; 奇函数消项 + $\sin^5$ 换元收尾。原笔记误读 $(x^2+y^2)^2\le y$ 且被积函数无根号, 视觉稿为 $(x^2+y^2)^3\le y^4$ 与 $\frac{x+y}{\sqrt{x^2+y^2}}$, 答案 $\frac{43\sqrt2}{120}$。</div>
+</details>
+
+<hr />
+<p id="例89" class="prob"><b>例 8.9</b> 强化 设 $D=\{(x,y)\mid x^2+y^2\le1, y\ge0\}$, $f(x,y)=y\sqrt{1-x^2}+x\iint_D fdxdy$, 求 $\iint_D xfdxdy$ 【0725（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> · <a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例65">例 6.5</a> 同为对称性消项, 本题核心是"记 $A=\iint f$ 代入"的自洽方程</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 令 $A=\iint_D f(x,y)dxdy$, 则 $f(x,y)=y\sqrt{1-x^2}+Ax$<span class="why">积分 $\iint_D f$ 是常数, 记作 $A$ 代入原等式, 化为函数关系</span></div>
+<div class="step">② $A = \iint_D y\sqrt{1-x^2}dxdy + A\iint_D x\,dxdy$<span class="why">两边同时积分, $A$ 从积分号中提出</span></div>
+<div class="step">③ $\iint_D x\,dxdy = 0$ ($D$ 关于 $y$ 轴对称, $x$ 奇函数)<span class="why">上半圆盘关于 $y$ 轴对称, $x$ 为奇函数对称相消 ⇒ $A$ 的系数项消失</span></div>
+<div class="step">④ $A = \iint_D y\sqrt{1-x^2}dxdy$<span class="why">$A$ 不再出现在右端, 直接积分即可</span></div>
+<div class="step">⑤ 直角坐标: $\int_{-1}^1\sqrt{1-x^2}dx\int_0^{\sqrt{1-x^2}}y\,dy = \int_{-1}^1\sqrt{1-x^2}\cdot\frac{1-x^2}{2}dx = \int_0^1(1-x^2)^{3/2}dx = \int_0^{\pi/2}\cos^4t\,dt = \frac{3\pi}{16}$<span class="why">先对 $y$ 积 (高 $\sqrt{1-x^2}$); 令 $x=\sin t$ 化为 $\int\cos^4t\,dt=\frac{3\pi}{16}$; 数值复核 $0.589$ 与 $\frac{3\pi}{16}$ 一致 (原补全 $A=\frac4{15}$ 有误, 已修正)</span></div>
+<div class="step">⑥ 目标 $\iint_D xf\,dxdy = \iint_D xy\sqrt{1-x^2}dxdy + A\iint_D x^2dxdy$: 第一项 $xy\sqrt{1-x^2}$ 关于 $y$ 奇函数 $=0$<span class="why">上半圆关于 $x$ 轴对称, 含因子 $y$ 的项对称相消</span></div>
+<div class="step">⑦ $\iint_D x^2dxdy = \frac14\iint_{x^2+y^2\le1}(x^2+y^2)dxdy = \frac14\cdot\int_0^{2\pi}d\theta\int_0^1 r^3dr = \frac14\cdot2\pi\cdot\frac14 = \frac{\pi}{8}$<span class="why">上半圆上 $\iint x^2$ 是整圆的一半, 再用 $x^2+y^2$ 对称性化为 $\frac12\cdot\frac12$ 因子; 极坐标 $\int r^3dr=\frac14$</span></div>
+<div class="step">⑧ 最终 $=A\cdot\frac{\pi}{8} = \frac{3\pi}{16}\cdot\frac{\pi}{8} = \frac{3\pi^2}{128}$<span class="why"><b>修正</b> 原补全答案 $\frac{\pi}{30}$ 基于 $A=\frac4{15}$ 的错误值; 按 $\frac{3\pi}{16}$ 计算得 $\frac{3\pi^2}{128}$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 被积函数含自身积分的"自洽方程": 记 $A=\iint f$ 代入消元, 对称性消项, 标准积分收尾。</div>
+</details>
+
+<hr />
+<p id="例810" class="prob"><b>例 8.10</b> 强化 (数一数二) 平面区域 $D$ 由摆线 $\begin{cases}x=t-\sin t\\y=1-\cos t\end{cases}$ ($0\le t\le2\pi$) 与 $x$ 轴围成, 求 $\iint_D(x+2y)dxdy$ 【0725（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例105">例 10.5</a> 同为换元法把二重积分化成新变量积分</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $D$: $0\le x\le2\pi$, $0\le y\le y(x)$ (摆线下的区域)<span class="why">摆线一拱从 $(0,0)$ 到 $(2\pi,0)$, 与 $x$ 轴围成一拱</span></div>
+<div class="step">② 先对 $y$ 积分: $\iint_D(x+2y)dxdy = \int_0^{2\pi}[xy+y^2]_{y=0}^{y=y(x)}dx$<span class="why">$\int_0^{y(x)}(x+2y)dy=xy(x)+y(x)^2$</span></div>
+<div class="step">③ $= \int_0^{2\pi}(x\cdot y(x) + y(x)^2)dx$, 换元 $x=t-\sin t$, $y=1-\cos t$, $dx=(1-\cos t)dt$<span class="why">摆线参数方程既是区域边界又是换元关系; $x'(t)=1-\cos t$</span></div>
+<div class="step">④ 原式 $= \int_0^{2\pi}[(t-\sin t)(1-\cos t)+(1-\cos t)^2](1-\cos t)dt$<span class="why">全部换到 $t$: $x=t-\sin t$, $y(x)=1-\cos t$, $dx=(1-\cos t)dt$</span></div>
+<div class="step">⑤ 化简: 原式 $=\int_0^{2\pi}[t+1-\sin t-\cos t](1-\cos t)^2\,dt$<span class="why">提出 $(1-\cos t)$ 合并: $(t-\sin t)+(1-\cos t)=t+1-\sin t-\cos t$, 与 $(1-\cos t)^2$ 相乘</span></div>
+<div class="step">⑥ 逐项积分: $\int_0^{2\pi}t(1-\cos t)^2dt=3\pi^2$ ($\int t\cos2t$ 部分为 0), $\int(1-\cos t)^2dt=3\pi$, $\int\sin t(1-\cos t)^2dt=0$ (令 $u=1-\cos t$), $\int\cos t(1-\cos t)^2dt=-2\pi$; 合计 $=3\pi^2+5\pi$<span class="why">四项分别处理, 其中 $t\cos t$、$t\cos2t$ 型项在整个周期积分为 0; 数值复核 $45.32$ 与 $3\pi^2+5\pi$ 一致 (OCR 显示 $3\pi+5\pi$ 漏了平方, 已修正)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 参数曲线围域: 二重积分化成参数积分, 逐项用周期积分性质 ($\int t\cos t=0$ 等) 与换元消项。</div>
+</details>
+
+<hr />
+<h2 id="九二重积分分段函数与绝对值">九、二重积分: 分段函数与绝对值</h2>
+<p id="例91" class="prob"><b>例 9.1</b> 计算 $\iint_D|x^2+y^2-1|d\sigma$, $D=\{(x,y)\mid 0\le x\le1, 0\le y\le1\}$ 【0725（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> · <a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例84">例 8.4</a> 同为"整体减局部"拆分策略</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 在 $D$ 内, $x^2+y^2=1$ 是四分之一圆弧, 分割 $D$ 为两部分: $D_1$ (圆内, $x^2+y^2\le1$) 和 $D_2$ (外部)<span class="why">绝对值处理第一步: 找变号分界线, 单位圆把正方形切成圆内、外两块</span></div>
+<div class="step">② $D_1$ 上: $|x^2+y^2-1| = 1-x^2-y^2$; $D_2$ 上: $=x^2+y^2-1$<span class="why">圆内 $x^2+y^2<1$ 取反号, 圆外保持</span></div>
+<div class="step">③ 原式 $= \iint_{D_1}(1-x^2-y^2)d\sigma + \iint_{D_2}(x^2+y^2-1)d\sigma$<span class="why">分块去绝对值</span></div>
+<div class="step">④ 用 $\iint_D(x^2+y^2-1)d\sigma = \iint_{D_1} + \iint_{D_2}$; 则原式 $= 2\iint_{D_1}(1-x^2-y^2)d\sigma - \iint_D(1-x^2-y^2)d\sigma$<span class="why">关键技巧: $D_2$ 上的积分用"整体减 $D_1$"表示, 从而只算 $D_1$ 与整个 $D$ 两个积分</span></div>
+<div class="step">⑤ 计算: $\iint_{D_1}(1-x^2-y^2)d\sigma = \int_0^{\pi/2}d\theta\int_0^1(1-r^2)r\,dr = \frac{\pi}{2}\cdot\frac14 = \frac{\pi}{8}$; $\iint_D(1-x^2-y^2)d\sigma = \int_0^1\int_0^1(1-x^2-y^2)dydx = 1-\frac13-\frac13 = \frac13$; 原式 $=2\cdot\frac{\pi}{8}-\frac13 = \frac{\pi}{4}-\frac13$<span class="why">$D_1$ 是四分之一圆用极坐标 ($\int_0^1(r-r^3)dr=\frac14$); $D$ 是单位正方形用直角坐标逐项积; 数值复核 $0.452$ 与 $\frac\pi4-\frac13$ 一致 (原 OCR 该步残缺, 已补全)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 绝对值二重积分: 分界线分割区域, 用"整体减部分"化 $D_2$, 极坐标与直角坐标各取所长。</div>
+</details>
+
+<hr />
+<p id="例92" class="prob"><b>例 9.2</b> 计算 $\iint_D e^{\max\{x^2,y^2\}}dxdy$, $D=\{(x,y)\mid 0\le x\le1, 0\le y\le1\}$ 【0725（2）、一元微积分证明题】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> · <a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例66">例 6.6</a> 同为"$y=x$ 分割+对称性"思路, 本题按 $\max$ 分块</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $D$ 用 $y=x$ 分割: $D_1$ ($y\ge x$): $\max\{x^2,y^2\}=y^2$; $D_2$ ($y\le x$): $\max\{x^2,y^2\}=x^2$<span class="why">$\max$ 型被积函数: 对角线 $y=x$ 上两侧 $x^2$ 与 $y^2$ 大小互换, 是天然分割线</span></div>
+<div class="step">② 由对称性: $\iint_D = 2\iint_{D_2}e^{x^2}dxdy = 2\int_0^1 dx\int_0^x e^{x^2}dy$<span class="why">正方形关于 $y=x$ 对称, 两块积分相等; 下半三角 $0\le y\le x$ 内 $\max=x^2$</span></div>
+<div class="step">③ $= 2\int_0^1 xe^{x^2}dx = [e^{x^2}]_0^1 = e-1$<span class="why">先对 $y$ 积: 区间长 $x$; 凑微分 $d(e^{x^2})=2xe^{x^2}dx$, 因子 2 恰好约去</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $\max\{x^2,y^2\}$ 沿对角线分块, 对称性乘 2, 凑微分 $2xe^{x^2}$ 与系数 2 对消是本题机关。</div>
+</details>
+
+<hr />
+<h2 id="十交换积分次序与变限二重积分">十、交换积分次序与变限二重积分</h2>
+<p id="例101" class="prob"><b>例 10.1</b> 强化 设 $f(x,y)$ 连续, $\int_1^2 dx\int_x^2 f(x,y)dy + \int_1^2 dy\int_y^{4-y} f(x,y)dx$ 等于? 【0725（2）】【题面按视觉转写定稿】(0725(2) 页7 例7.15)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例103">例 10.3</a> 同为积分区域重描述/换序题, 本题两三角形区域首尾相接拼成斜边区域</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 画积分区域: 第一项是 $1\le x\le2$, $x\le y\le2$; 第二项是 $1\le y\le2$, $y\le x\le4-y$<span class="why">第一项是"$x$ 小、$y$ 大"的三角形, 第二项是斜边 $x=4-y$ 的三角形, 都在带状 $[1,2]\times[1,3]$ 内</span></div>
+<div class="step">② 固定 $y\in[1,2]$: 第一项覆盖 $1\le x\le y$, 第二项覆盖 $y\le x\le4-y$; 两段区间首尾相接, 拼成 $1\le x\le4-y$<span class="why">逐 $y$ 检查: $x$ 从 $1$ 到 $y$ 接 $y$ 到 $4-y$, 无缝拼接; 注意 $y\le4-y$ 对 $y\le2$ 恒成立</span></div>
+<div class="step">③ 合并: $\int_1^2 dy\int_1^{4-y}f(x,y)dx$, 选 (C)<span class="why">换序后的统一表达式: 先 $y$ 后 $x$ 的累次积分 (原笔记误读第二项上限 $2$ 而选 (B), 视觉稿上限是 $4-y$, 答案为 C)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 两个三角形区域首尾相接拼成"带斜边"区域: 固定一个变量逐段看区间, 发现无缝拼接即合并。</div>
+</details>
+
+<hr />
+<p id="例102" class="prob"><b>例 10.2</b> 强化 已知 $f(t)=\int_1^{t^2}dx\int_{\sqrt{x}}^{t}\sin\frac{x}{y}\,dy$, 求 $f'(\frac{\pi}{2})$ 【0725（2）】【题面按视觉转写定稿】(0725(2) 页8 例7.16)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例38">例 3.8</a> 同为变上限积分求导, 例 3.8 是二元版需先走莱布尼茨</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 换序: 区域 $1\le x\le t^2$, $\sqrt{x}\le y\le t$ ⟺ $1\le y\le t$, $1\le x\le y^2$<span class="why">$y\ge\sqrt{x}\iff x\le y^2$, 且 $y\le t$ 时 $y^2\le t^2$ 自动满足 $x\le t^2$; $x\ge1$ 与 $y\ge\sqrt{x}\ge1$ 自洽</span></div>
+<div class="step">② $f(t)=\int_1^t dy\int_1^{y^2}\sin\frac{x}{y}\,dx = \int_1^t[-y\cos\frac{x}{y}]_{x=1}^{x=y^2}dy = \int_1^t(y\cos\frac1y-y\cos y)\,dy$<span class="why">内层对 $x$ 积分: $\int\sin\frac{x}{y}dx=-y\cos\frac{x}{y}$ (视 $y$ 为常数); 上限代入 $\cos\frac{y^2}{y}=\cos y$, 下限代入 $\cos\frac1y$</span></div>
+<div class="step">③ $f'(t)=t\cos\frac1t-t\cos t$, $f'(\frac\pi2)=\frac\pi2\cos\frac2\pi-\frac\pi2\cos\frac\pi2=\frac\pi2\cos\frac2\pi$<span class="why">变上限积分求导: 上限 $t$ 代入被积函数; $\cos\frac\pi2=0$ 消去第二项。视觉稿转写末步写作 $\frac2\pi\cos\frac2\pi$ 系笔误, 按 $f'(\frac\pi2)$ 计算为 $\frac\pi2\cos\frac2\pi$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 累次积分换序使内层可直接积出 ($\int\sin\frac{x}{y}dx=-y\cos\frac{x}{y}$), 再变上限求导; 换序后 $y$ 从 1 到 $t$ 别漏下限。</div>
+</details>
+
+<hr />
+<p id="例103" class="prob"><b>例 10.3</b> 强化 二次积分 $\int_{\frac{\pi}{2}}^{\pi}dx\int_{\sin x}^{1}f(x,y)dy$ 等于? 【0725（2）】【题面按视觉转写定稿】(0725(2) 页9 例7.17)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例104">例 10.4</a> 同为交换次序, 本题含反三角需注意 $\sin$ 在区间内的单调性</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 区域: $\frac\pi2\le x\le\pi$, $\sin x\le y\le1$<span class="why">对每个 $x$, $y$ 从 $\sin x$ 到 1; $x\in[\frac\pi2,\pi]$ 时 $\sin x\in[0,1]$, $y$ 的范围有效</span></div>
+<div class="step">② 反解: 固定 $y\in[0,1]$, 在 $x\in[\frac\pi2,\pi]$ 上 $\sin x\le y$ ⟺ $x\ge\pi-\arcsin y$<span class="why"><b>易错</b> 正弦在 $[\frac\pi2,\pi]$ 上单调递减, 解 $\sin x\le y$ 取的是 $\pi-\arcsin y$ 一侧 (不是 $\arcsin y$); $\arcsin y\in[0,\frac\pi2]$ 落在 $x$ 区间之外</span></div>
+<div class="step">③ 交换后: $\int_0^1 dy\int_{\pi-\arcsin y}^{\pi}f(x,y)dx$, 选 (B)<span class="why">固定 $y$: $x$ 从 $\pi-\arcsin y$ 到 $\pi$; 四个选项中 (B) 恰为此 (原笔记误读为 $\int_{\arcsin x}^{\pi-\arcsin x}$ 型题, 视觉稿为 $\int_{\pi/2}^{\pi}$ 上 $\sin x\le y\le1$, 答案为 B)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 含反三角的累次积分换序: 画图 + 注意正弦在区间内的单调性, 边界函数互换角色, 反解区间别取错支。</div>
+</details>
+
+<hr />
+<p id="例104" class="prob"><b>例 10.4</b> 计算 $\int_0^1 dy\int_y^1\left(\frac{e^{x^2}}{x}-e^{y^2}\right)dx$ (交换次序) 【0725（2）】【题面按视觉转写定稿】(0725(2) 页10 例7.18)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例103">例 10.3</a> 同为换序题, 本题换序后两次对消不可积函数</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 区域: $0\le y\le1$, $y\le x\le1$; 交换: $0\le x\le1$, $0\le y\le x$<span class="why">三角形区域: 原次序先积 $x$, 换序后先积 $y$</span></div>
+<div class="step">② 原式 $=\int_0^1 dx\int_0^x\left(\frac{e^{x^2}}{x}-e^{y^2}\right)dy=\int_0^1\left(e^{x^2}-\int_0^x e^{y^2}dy\right)dx$<span class="why">$\frac{e^{x^2}}{x}$ 对 $y$ 是常数, 先积 $y$ 得 $\frac{e^{x^2}}{x}\cdot x=e^{x^2}$——换序的目的: 两项拆开后都能处理</span></div>
+<div class="step">③ 第二项再换序: $\int_0^1 dx\int_0^x e^{y^2}dy=\int_0^1 dy\int_y^1 e^{y^2}dx=\int_0^1(1-y)e^{y^2}dy$<span class="why">$\int_0^1 e^{y^2}dy$ 无法积出, 但与第一项里的 $\int_0^1e^{x^2}dx$ 是同一个数, 相消后只剩可积部分</span></div>
+<div class="step">④ 原式 $=\int_0^1e^{x^2}dx-\int_0^1(1-y)e^{y^2}dy=\int_0^1ye^{y^2}dy=\frac12[e^{y^2}]_0^1=\frac12(e-1)$<span class="why">$ye^{y^2}$ 凑微分 $d(e^{y^2})=2ye^{y^2}dy$; 原笔记题面漏 $\frac{e^{x^2}}{x}-e^{y^2}$ 结构, 视觉稿为此式, 答案同为 $\frac{e-1}{2}$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 换序 + 二次换序对消不可积函数: $e^{x^2}$ 无初等原函数, 但配对后差项可积, 是"换序解决不可积"的进阶版。</div>
+</details>
+
+<hr />
+<p id="例105" class="prob"><b>例 10.5</b> 强化 区域 $D$ 由 $2xy=1$, $4xy=1$, $y=x$, $y=\sqrt3x$ 围成, 求极坐标变换后的积分表达式 【0725（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例88">例 8.8</a> 同为"由边界反解 $r$ 上下限", 本题双曲边界靠 $xy=\frac{r^2\sin2\theta}{2}$</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 双曲型边界 $xy=\text{const}$ 与射线边界, 用极坐标化开<span class="why">$xy=\frac{r^2\sin2\theta}{2}$ 在极坐标下分离成 $r$ 与 $\theta$ 的乘积, 上下限都能显式写出</span></div>
+<div class="step">② $2xy=1$ ⇒ $r^2\sin2\theta=1$; $4xy=1$ ⇒ $r^2\sin2\theta=1/2$<span class="why">代入 $xy=\frac{r^2}{2}\sin2\theta$: $2xy=r^2\sin2\theta$; $4xy=2r^2\sin2\theta$</span></div>
+<div class="step">③ $y=x$ ⇒ $\theta=\pi/4$; $y=\sqrt3x$ ⇒ $\theta=\pi/3$<span class="why">射线斜率 $\tan\theta$: $1$ 与 $\sqrt3$</span></div>
+<div class="step">④ $r$ 范围: $\frac{1}{\sqrt{2\sin2\theta}}\le r\le\frac{1}{\sqrt{\sin2\theta}}$<span class="why">由②反解: $r^2=\frac{1}{2\sin2\theta}$ 对应 $4xy=1$ (靠内), $r^2=\frac1{\sin2\theta}$ 对应 $2xy=1$ (靠外); $\theta\in[\frac\pi4,\frac\pi3]$ 时 $\sin2\theta>0$, 上下限均有效</span></div>
+<div class="step">⑤ 极坐标表达式: $\int_{\pi/4}^{\pi/3}d\theta\int_{\frac1{\sqrt{2\sin2\theta}}}^{\frac1{\sqrt{\sin2\theta}}} f(r\cos\theta,r\sin\theta)\,r\,dr$, 选 (B)<span class="why">雅可比因子 $r$ 与 $f$ 的具体形式由题目被积函数决定, 本题只问变换后的积分表达式</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 双曲边界族的极坐标化: $xy=\frac{r^2\sin2\theta}{2}$ 是关键公式, 射线给 $\theta$, 双曲线给 $r$ 上下限。</div>
+</details>
+
+<hr />
+<h2 id="十一无界区域二重积分">十一、无界区域二重积分</h2>
+<p id="例111" class="prob"><b>例 11.1</b> 计算 $\iint_D xe^x y\,dxdy$, $D$ 以 $y=\sqrt{x}$, $y=\frac{1}{\sqrt{x}}$ 及 $y$ 轴为边界的无界区域 【0530（1）】【题面按视觉转写定稿】(0530(1) 页7 例8.8)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#26无界区域上的二重积分数学三">无界区域二重积分</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例112">例 11.2</a> 同为无界区域二重积分, 本题被积函数简单、直接累次积分</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $D$: $0\le x\le1$, $\sqrt{x}\le y\le\frac{1}{\sqrt{x}}$<span class="why">$y=\sqrt{x}$ 与 $y=\frac1{\sqrt{x}}$ 交于 $(1,1)$; $x\to0^+$ 时 $y$ 上限 $\frac1{\sqrt{x}}\to\infty$, 故为无界区域</span></div>
+<div class="step">② $\iint_D = \int_0^1 xe^x\,dx\int_{\sqrt{x}}^{1/\sqrt{x}}y\,dy = \frac12\int_0^1 xe^x\left(\frac1x-x\right)dx = \frac12\int_0^1(e^x-x^2e^x)dx$<span class="why">内层先对 $y$ 积: $\frac12(y^2)\big|_{\sqrt{x}}^{1/\sqrt{x}}=\frac12(\frac1x-x)$; $xe^x\cdot\frac1x=e^x$, $xe^x\cdot x=x^2e^x$</span></div>
+<div class="step">③ $\int x^2e^x dx = x^2e^x-2xe^x+2e^x+C$ (分部积分); 故 $\int_0^1(e^x-x^2e^x)dx=[e^x-(x^2e^x-2xe^x+2e^x)]_0^1=[-x^2e^x+2xe^x-e^x]_0^1=1$<span class="why">分部积分表: $\int x^2e^xdx$ 两次分部; 代入端点: $x=1$ 处 $-e+2e-e=0$, $x=0$ 处 $-1$, 差为 $1$</span></div>
+<div class="step">④ 原式 $=\frac12\cdot1=\frac12$<span class="why">原笔记误读为 $\iint xe^{-y}$ 且边界取 $y=x$ 判"围不出无界区域/偏题", 视觉稿为 $xe^x y$ 与 $y=1/\sqrt{x}$ 边界, 可积且答案 $\frac12$ (视觉稿问题行写 $e^xy$、解题行用 $xe^x y$, 以解题为准)</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 无界区域按累次积分处理: 先定区域再内层积出, $\int x^2e^xdx$ 的分部积分表是本题机关。</div>
+</details>
+
+<hr />
+<p id="例112" class="prob"><b>例 11.2</b> 强化 计算 $\iint_D\frac{y^3}{(1+x^2+y^4)^2}dxdy$, $D$ 是第一象限中以 $y=\sqrt{x}$ 与 $x$ 轴为边界的无界区域 【0725（2）】【题面按视觉转写定稿】(0725(2) 页14 例7.21)</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#26无界区域上的二重积分数学三">无界区域二重积分</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例111">例 11.1</a> 同为无界区域二重积分, 本题靠 $y^3dy$ 与 $y^4$ 的凑微分</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① $D$: $x\ge0$, $0\le y\le\sqrt{x}$<span class="why">抛物线 $y=\sqrt{x}$ (即 $x=y^2$) 与 $x$ 轴围成的第一象限无界区域, $x\to\infty$ 时 $y$ 上限 $\sqrt{x}\to\infty$</span></div>
+<div class="step">② $\iint_D = \int_0^\infty dx\int_0^{\sqrt{x}}\frac{y^3}{(1+x^2+y^4)^2}dy$<span class="why">无界区域按累次积分处理, 先积内层</span></div>
+<div class="step">③ 内层: $d(1+x^2+y^4)=4y^3dy$, 故 $\int_0^{\sqrt{x}}\frac{y^3}{(1+x^2+y^4)^2}dy=\frac14\int\frac{d(1+x^2+y^4)}{(1+x^2+y^4)^2}=-\frac14\frac{1}{1+x^2+y^4}\Big|_0^{\sqrt{x}}=-\frac14\left(\frac1{1+2x^2}-\frac1{1+x^2}\right)$<span class="why">凑微分是本题机关: $y^3$ 恰是 $y^4$ 的导数因子 ($d(y^4)=4y^3dy$); 上限代入 $y^4=x^2$ 得 $1+x^2+x^2=1+2x^2$</span></div>
+<div class="step">④ 外层: $=-\frac14\left[\frac1{\sqrt2}\arctan(\sqrt2 x)-\arctan x\right]_0^\infty=-\frac14\left(\frac{\pi}{2\sqrt2}-\frac\pi2\right)=\frac{(\sqrt2-1)\pi}{8\sqrt2}$<span class="why">$\int\frac{dx}{1+2x^2}=\frac1{\sqrt2}\arctan(\sqrt2 x)$; $x\to\infty$ 时两反正切均趋 $\frac\pi2$; 原笔记漏 $y^3$ 使内层不可积而标"数值存疑/偏题", 视觉稿补 $y^3$ 后全程可积, 答案 $\frac{(\sqrt2-1)\pi}{8\sqrt2}$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 无界区域 + 凑微分: 分母是 $1+x^2+y^4$, 分子恰有 $y^3$, 凑 $d(1+x^2+y^4)$ 后化为两个 $\arctan$ 型积分。</div>
+</details>
+
+<hr />
+<p id="例113" class="prob"><b>例 11.3</b> 强化 计算 $\iint_D r^2\sin\theta\sqrt{1-r^2\cos2\theta}\,drd\theta$, $D=\{(\theta,r)\mid 0\le\theta\le\pi/4, 0\le r\le\sec\theta\}$ 【0725（2）】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例86">例 8.6</a> 同为坐标翻译: 例 8.6 直角→极坐标, 本题极坐标→直角坐标</li>
+</ul>
+<details><summary>解答</summary>
+<div class="step">① 回直角坐标: $r\le\sec\theta$ ⇒ $r\cos\theta\le1$ ⇒ $x\le1$; $\theta\in[0,\pi/4]$ ⇒ $0\le y\le x$; $r\ge0$<span class="why">$r\le\sec\theta\iff r\cos\theta\le1$, 这正是 $x\le1$; $\theta\in[0,\frac\pi4]$ 表示第一象限 $\frac\pi4$ 扇形, 即直线 $y=x$ 下方</span></div>
+<div class="step">② 被积函数: $r^2\sin\theta\cdot\sqrt{1-r^2(\cos^2\theta-\sin^2\theta)} = y\sqrt{1-x^2+y^2}$<span class="why">$\cos2\theta=\cos^2\theta-\sin^2\theta$, 故 $r^2\cos2\theta=x^2-y^2$; $r^2\sin\theta\cdot drd\theta = (r\sin\theta)\cdot r\,drd\theta = y\,dxdy$ (雅可比 $r$ 已含在被积函数记号中)</span></div>
+<div class="step">③ 原式 $= \iint_D y\sqrt{1-x^2+y^2}\,dxdy$, $D$: $0\le x\le1$, $0\le y\le x$<span class="why">三角形区域: 直角坐标直接积分</span></div>
+<div class="step">④ 先对 $y$ 积分: $\int_0^1 dx\int_0^x y\sqrt{1-x^2+y^2}\,dy$<span class="why">$1-x^2$ 对 $y$ 是常数, $y$ 的幂次 1 配根号内层 $y^2$ 正好凑微分</span></div>
+<div class="step">⑤ $= \int_0^1 \frac13[(1-x^2+y^2)^{3/2}]_{y=0}^{y=x}\,dx = \frac13\int_0^1[1-(1-x^2)^{3/2}]dx$<span class="why">$\int y\sqrt{1-x^2+y^2}\,dy=\frac13(1-x^2+y^2)^{3/2}$; 上限代入得 $\frac13(1^{3/2}-(1-x^2)^{3/2})$</span></div>
+<div class="step">⑥ 令 $x=\sin t$: $\int_0^1(1-x^2)^{3/2}dx=\int_0^{\pi/2}\cos^4t\,dt=\frac{3\pi}{16}$, 故原式 $=\frac13(1-\frac{3\pi}{16}) = \frac13-\frac{\pi}{16}$<span class="why">三角代换把根式积分化成 $\cos^4t$, 华里士公式收尾; 数值复核 $0.137$ 与 $\frac13-\frac\pi{16}$ 一致</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 极坐标回直角坐标: $r\le\sec\theta$ 的几何意义是竖直线 $x=1$, 反代 + 凑微分 + 三角代换三步完成。</div>
+</details></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_多元与二重.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 多元与二重</b></span></a><a class="next" href="数学_级数.html"><span class="pg-t"><small>下一篇</small><b>数学 · 级数</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

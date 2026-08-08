@@ -1,0 +1,614 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>行列式与矩阵_例题 · 线代救命 · 成册</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">线</span><span class="bt"><b>线代救命</b><small>BILIBILI · 没咋了</small></span></div>
+<a class="subj" href="线代救命_首页.html">⌂ 封面/目录</a>
+<a class="b" href="01_行列式与矩阵.html">行列式与矩阵</a>
+<a class="c on" href="01_行列式与矩阵_例题.html">▸ 行列式与矩阵_例题</a>
+<a class="b" href="02_矩阵的秩与分块矩阵.html">矩阵的秩与分块矩阵</a>
+<a class="c" href="02_矩阵的秩与分块矩阵_例题.html">▸ 矩阵的秩与分块矩阵_例题</a>
+<a class="b" href="03_向量.html">向量</a>
+<a class="c" href="03_向量_例题.html">▸ 向量_例题</a>
+<a class="b" href="04_线性方程组.html">线性方程组</a>
+<a class="c" href="04_线性方程组_例题.html">▸ 线性方程组_例题</a>
+<a class="b" href="05_矩阵相似.html">矩阵相似</a>
+<a class="c" href="05_矩阵相似_例题.html">▸ 矩阵相似_例题</a>
+<a class="b" href="06_二次型.html">二次型</a>
+<a class="c" href="06_二次型_例题.html">▸ 二次型_例题</a></nav><main><div class="article"><blockquote>
+<p>覆盖: 讲义 1.1-1.3, 例 1.1-1.22 全量 | 视频#1 | 手稿 P5-P16
+手稿/讲义 OCR 乱码处按视频讲解重建并标<span class="fill">【AI补全】</span>; 解法以视频讲解为准。
+⬅ 返回 <a href="01_行列式与矩阵.html">理论笔记</a></p>
+</blockquote>
+<hr />
+<h2 id="方法一行列式性质直接算倍加消混合列提k换列">方法一: 行列式性质直接算(倍加消混合列 → 提 k → 换列)</h2>
+<p id="例11" class="prob"><b>例 1.1</b> 设 $\begin{vmatrix} c_1 & b_1 & a_1 \\ c_2 & b_2 & a_2 \\ c_3 & b_3 & a_3 \end{vmatrix} = -2$, 则 $D = \begin{vmatrix} a_1 & a_1+2c_1 & a_1-b_1 \\ a_2 & a_2+2c_2 & a_2-b_2 \\ a_3 & a_3+2c_3 & a_3-b_3 \end{vmatrix} = \_\_\_\_$. <span class="src">【来源: 视频#1、讲义1.1】</span>【题干按视频讲解重建, 讲义 OCR 该处乱码<span class="fill">【AI补全】</span>】</p>
+<details><summary>解答过程</summary>
+<div class="step">① 倍加消混合项: 第 2 列减去第 1 列、第 3 列减去第 1 列(值不变), 得 $D = \begin{vmatrix} a_1 & 2c_1 & -b_1 \\ a_2 & 2c_2 & -b_2 \\ a_3 & 2c_3 & -b_3 \end{vmatrix}$。<span class="why">第 2、3 列都是"a + 某"的混合列, 减掉第 1 列把 a 部分抵消, 剩下的 $2c$ 和 $-b$ 单独成列。这就是老师说的"第一列的负一倍加过来, 把它消掉"。<b>考点</b>: 倍加性质是消除混合列的标准入口。</span></div>
+<div class="step">② 提公因子: 第 2 列提 2, 第 3 列提 $-1$, 得 $D = -2\begin{vmatrix} a_1 & c_1 & b_1 \\ a_2 & c_2 & b_2 \\ a_3 & c_3 & b_3 \end{vmatrix}$。<span class="why">行列式提 k 只针对某一列, 两列各提各的系数, 提出的数相乘。<b>易错</b>: 若这是矩阵, 提的是全部元素——行列式与矩阵提 k 的区别正在这里。</span></div>
+<div class="step">③ 换列凑条件: 交换第 2、3 列(变号), 得 $D = 2\begin{vmatrix} a_1 & b_1 & c_1 \\ a_2 & b_2 & c_2 \\ a_3 & b_3 & c_3 \end{vmatrix}$。<span class="why">已知条件里 c 在第一列、b 在第二列, 一步步把列序换过去, 每换一次乘一个负一。<b>易错</b>: 换列必变号, 一次一个负号, 别漏。</span></div>
+<div class="step">④ 再交换第 1、3 列, 得 $D = -2\begin{vmatrix} c_1 & b_1 & a_1 \\ c_2 & b_2 & a_2 \\ c_3 & b_3 & a_3 \end{vmatrix} = -2 \times (-2) = 4$。<span class="why">换两次后正好还原成已知条件的列序 $[c, b, a]$, 已知其值为 $-2$, 代入即得。<b>考点</b>: 性质题的标准流程——倍加消混合项 → 单列提 k → 换列凑已知, 每一步的符号都数清楚。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 行列式性质题三步走: 倍加消混合列、单列提公因子、换列凑已知条件, 变号次数逐一数。</div>
+</details>
+
+<hr />
+<h2 id="方法二代数余子式凑新行列式">方法二: 代数余子式 — 凑新行列式</h2>
+<p id="例12" class="prob"><b>例 1.2</b> 设 n 阶行列式 $D = \begin{vmatrix} 0 & 1 & 0 & \cdots & 0 \\ 0 & 0 & 2 & \cdots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \cdots & n-1 \\ n & 0 & 0 & \cdots & 0 \end{vmatrix}$(第 i 行只在 $(i, i+1)$ 位为 $i$, 第 n 行第 1 列为 $n$), 则 $D$ 的第 $k$ 行元素的代数余子式之和 $A_{k1} + A_{k2} + \cdots + A_{kn} = \_\_\_\_$. <span class="src">【来源: 视频#1、讲义1.1】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 凑新行列式: 把第 $k$ 行全部换成 1, 记为 $D_k$, 则 $A_{k1} + A_{k2} + \cdots + A_{kn} = D_k$。<span class="why">代数余子式与第 $k$ 行的取值无关, 按第 $k$ 行展开新行列式, 展开式正好就是这串和——"这前面没有东西, 就相当于有若干个 1 跟它相乘"。<b>考点</b>: 含大 A 的线性组合一律凑新行列式, 这是老师强调的核心处理手段。</span></div>
+<div class="step">② 消掉多余的 1: 第 $k$ 行那些 1 都能用别的行消成 0——$(k, j)$ 位的 1 用第 $j$ 行(或第 $j-1$ 行)的 $-1/j$ 倍(或 $-1/(j-1)$ 倍)加过来消掉; 只有原来放 $k$ 的那个位置(第 $k$ 行的 $(k, k+1)$ 位, 现在换成了 1)消不掉。<span class="why">原行列式每行只有一个非零元 $i$(在第 $i+1$ 列, 第 $n$ 行在第 1 列), 正好能定向消掉第 $k$ 行各列的 1。老师原话: "这些 1 都是纸老虎, 只有一个地方的一不能被消掉——就是原来 k 的那个位置。"</span></div>
+<div class="step">③ 消完后, 新行列式与 $D$ 处处相同, 唯一区别: $(k, k+1)$ 位是 1 而不是 $k$, 故 $D = k \cdot D_k$, 即 $D_k = D / k$。<span class="why">两个行列式只差一行的倍数, 按第 $k$ 行展开, 前者 = $k \times$ (同一串代数余子式和), 后者 = $1 \times$ (同一串和), 所以是 $k$ 倍关系。</span></div>
+<div class="step">④ 算 $|D|$: 按第 1 列展开, 唯一非零元 $(n,1) = n$, 划去后剩下对角元 $1, 2, \dots, n-1$ 的对角矩阵, 故 $|D| = n \cdot (-1)^{n+1} \cdot (n-1)! = (-1)^{n+1} n!$。<span class="why">第 1 列只有 $(n,1)$ 一个非零元, 符号 $(-1)^{n+1}$ 别忘了。</span></div>
+<div class="step">⑤ 答案: $A_{k1} + \cdots + A_{kn} = \dfrac{|D|}{k} = \dfrac{(-1)^{n+1} n!}{k}$。<span class="why">老师: "负一的 n 加一次方乘以 n 的阶乘比上 k"。<b>易错</b>: 分子是 $n!$(n 乘 $(n-1)!$ 合并), 别写成 $(n-1)!$。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 代数余子式线性组合的标准套路: 系数当新行的元素凑成新行列式 → 与原行列式对比差一行 → k 倍关系化简。</div>
+</details>
+
+<hr />
+<h2 id="方法三爪形行列式斜爪削平爪">方法三: 爪形行列式 — 斜爪削平爪</h2>
+<p id="例13" class="prob"><b>例 1.3</b> 计算行列式: ① $D_1 = \begin{vmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 0 & 0 \\ 1 & 0 & 3 & 0 \\ 1 & 0 & 0 & 4 \end{vmatrix}$; ② $D_2 = \begin{vmatrix} 1 & 1 & 0 & 0 \\ 1 & 2 & 1 & 0 \\ 1 & 0 & 3 & 1 \\ 1 & 0 & 0 & 4 \end{vmatrix}$. <span class="src">【来源: 视频#1、讲义1.1】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① $D_1$: 识别爪形——第一列全 1 是"平爪", 对角线 $1, 2, 3, 4$ 是"斜爪"。斜爪削平爪: 第二列的 $-\frac12$ 倍、第三列的 $-\frac13$ 倍、第四列的 $-\frac14$ 倍加到第一列, 得 $D_1 = \begin{vmatrix} 1-\frac12-\frac13-\frac14 & 1 & 1 & 1 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 3 & 0 \\ 0 & 0 & 0 & 4 \end{vmatrix}$。<span class="why">第二列是 $(1,2,0,0)^{\mathrm{T}}$, 取 $-\frac12$ 倍加过去, 恰好把第一列第二行的 1 消成 0, 依此类推——斜爪(对角线上)每列只有一个非零元, 正好定向削平爪。<b>考点</b>: 爪形行列式的唯一原则, 老师原话: "斜爪削平爪, 你给我记住"。</span></div>
+<div class="step">② $D_1 = \left(1 - \frac12 - \frac13 - \frac14\right) \times 2 \times 3 \times 4 = \left(-\frac{1}{12}\right) \times 24 = -2$。<span class="why">第一列只剩 (1,1) 非零, 化为下三角, 等于对角元之积。<b>易错</b>: 口算别错: $1/2+1/3+1/4 = 13/12$。</span></div>
+<div class="step">③ $D_2$: 这不是标准爪形(第 2、3 行各多了个 1), 别硬套爪形公式, 直接按第一行展开: $D_2 = 1 \cdot \begin{vmatrix} 2 & 1 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 4 \end{vmatrix} - 1 \cdot \begin{vmatrix} 1 & 1 & 0 \\ 1 & 3 & 1 \\ 1 & 0 & 4 \end{vmatrix}$。<span class="why">第一行只有两个非零元, 第二项带符号 $(-1)^{1+2} = -1$。<b>老师视角</b>: "找不到规律就硬算, 硬算不丢人, 考试一般就考四阶。"</span></div>
+<div class="step">④ 第一块是上三角 $= 2 \times 3 \times 4 = 24$; 第二块先做列变换 $c_2 - c_1$ 再展开: $\begin{vmatrix} 1 & 0 & 0 \\ 1 & 2 & 1 \\ 1 & -1 & 4 \end{vmatrix} = \begin{vmatrix} 2 & 1 \\ -1 & 4 \end{vmatrix} = 8+1 = 9$。<span class="why">第二块已有一个 0 在 (1,3) 位, 把第一列的负一倍加到第二列, 又造出一个 0, 按第一行展开只剩一个二阶行列式, "二阶 = 主对角积减副对角积"。</span></div>
+<div class="step">⑤ $D_2 = 24 - 9 = 15$。<span class="why"><b>考点</b>: 爪形(箭形)行列式结构多样——首行全 1 型、首列全 1 型、对角线型、副对角线型, 都是"斜爪削平爪"思路; 削不动就按零多的行(列)硬算。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 爪形行列式: 斜爪削平爪(对角线削第一行/列); 非标准型找不到规律就按非零元少的行展开硬算。</div>
+</details>
+
+<p id="例14" class="prob"><b>例 1.4</b> 计算行列式 $D = \begin{vmatrix} 1 & -1 & 1 & a-1 \\ 1 & -1 & 1+a & -1 \\ 1 & a-1 & 1 & -1 \\ 1+a & -1 & 1 & -1 \end{vmatrix}$. <span class="src">【来源: 视频#1、讲义1.1】</span>【讲义 OCR 乱码, 按视频讲解重建: 各行元素之和均为 a<span class="fill">【AI补全】</span>】</p>
+<details><summary>解答过程</summary>
+<div class="step">方法一(消元化副对角): ① $r_2 - r_1$, $r_3 - r_1$, $r_4 - r_1$: $D = \begin{vmatrix} 1 & -1 & 1 & a-1 \\ 0 & 0 & a & -a \\ 0 & a & 0 & -a \\ a & 0 & 0 & -a \end{vmatrix}$。<span class="why">各行前三个位置几乎相同(1, −1, 1 重复), 用第一行倍加一次, 第二、三、四行的前三个位置全变 0——"零一多了就好算"。<b>考点</b>: 行(列)间元素大量重复时, 倍加消元总是首选。</span></div>
+<div class="step">② 前三列都加到第 4 列: 第 4 列变为 $(a, 0, 0, 0)^{\mathrm{T}}$。<span class="why">第 4 列原为 $(a-1, -a, -a, -a)^{\mathrm{T}}$, 与前三列对应元素相加, 下面三个 $-a$ 恰好抵消, (1,4) 位积累成 $a$。</span></div>
+<div class="step">③ 得 $D = \begin{vmatrix} 1 & -1 & 1 & a \\ 0 & 0 & a & 0 \\ 0 & a & 0 & 0 \\ a & 0 & 0 & 0 \end{vmatrix}$, 这是副对角线-上三角(副对角线下方全为 0)。<span class="why">副对角线元素: $(1,4)=a$, $(2,3)=a$, $(3,2)=a$, $(4,1)=a$; 检查 $i+j > 5$ 的位置全为 0。</span></div>
+<div class="step">④ $D = a^4 \times (-1)^{\frac{4 \times 3}{2}} = a^4$。<span class="why">副对角线行列式 = $(-1)^{n(n-1)/2}$ × 副对角线元素乘积。老师: "这是负对角线, 一定要注意负一的二分之四乘三"——<b>易错</b>: 这个符号丢了, 五分就没了。</span></div>
+<div class="step">方法二(行和相等): ⑤ 各行元素之和均为 $a$: 把后三列都加到第一列, 第一列全变 $a$, 提出公因子 $a$: $D = a\begin{vmatrix} 1 & -1 & 1 & a-1 \\ 1 & -1 & 1+a & -1 \\ 1 & a-1 & 1 & -1 \\ 1 & -1 & 1 & -1 \end{vmatrix}$。<span class="why">行和相等型的标准入口: 列加到第一列, 第一列体现行和。<b>考点</b>: "行和相等也是可能会考到的。"</span></div>
+<div class="step">⑥ 消元: $c_2 + c_1$, $c_3 - c_1$, $c_4 + c_1$: $D = a\begin{vmatrix} 1 & 0 & 0 & a \\ 1 & 0 & a & 0 \\ 1 & a & 0 & 0 \\ 1 & 0 & 0 & 0 \end{vmatrix}$。<span class="why">第一列全 1, 各列加减第一列, 把 (2,3)、(3,2)、(4,1) 位的 $a$ 型元素"归位"——老师描述为"把这些地方全都消成零"。</span></div>
+<div class="step">⑦ 按第 4 行展开: 只剩 $(4,1) = 1$, 余子式 $\begin{vmatrix} 0 & 0 & a \\ 0 & a & 0 \\ a & 0 & 0 \end{vmatrix} = a^3 \times (-1)^{\frac{3 \times 2}{2}} = -a^3$, 故 $D = a \times (-1)^{4+1} \times (-a^3) = a^4$。<span class="why">3 阶副对角排列的符号是 $(-1)^3 = -1$; 代数余子式符号 $(-1)^{4+1} = -1$, 两个负号抵消。<b>考点</b>: 两种方法都验证 $D = a^4$——化三角 vs 行和相等, 双保险。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 行(列)大量重复 → 倍加消元化副对角; 行和相等 → 列加到第一列提公因子。副对角线符号 $(-1)^{n(n-1)/2}$ 两法都用到, 是本题真正的考点。</div>
+</details>
+
+<hr />
+<h2 id="方法四范德蒙行列式">方法四: 范德蒙行列式</h2>
+<p id="例15" class="prob"><b>例 1.5</b> 设 $f(x) = \begin{vmatrix} 1 & 1 & 1 & 1 \\ x & 2 & -1 & 1 \\ x^2 & 4 & 1 & 1 \\ x^3 & 8 & -1 & 1 \end{vmatrix}$, 则曲线 $y = f(x)$ 的拐点个数为(　)。(A) 0 (B) 1 (C) 2 (D) 3 <span class="src">【来源: 视频#1、讲义1.1】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 转置(行列式值不变): $f(x) = \begin{vmatrix} 1 & x & x^2 & x^3 \\ 1 & 2 & 4 & 8 \\ 1 & -1 & 1 & -1 \\ 1 & 1 & 1 & 1 \end{vmatrix}$。<span class="why">原来次数"横着"升高, 转置后每列是 $(1, x_i, x_i^2, x_i^3)^{\mathrm{T}}$ 的形式——标准范德蒙, 主体是第二行 $x, 2, -1, 1$。<b>考点</b>: 范德蒙的两种摆放, 转置是化标准形的开关。</span></div>
+<div class="step">② 范德蒙"挨个打巴掌": 主体排成一条线 $(x, 2, -1, 1)$, 右边的每个数都去"欺负"左边的每个数, 差乘起来: $f(x) = (2-x)(-1-x)(1-x) \cdot (-1-2)(1-2)(1-(-1))$。<span class="why">三个含 $x$ 的差: $2$ 打 $x$、$-1$ 打 $x$、$1$ 打 $x$; 三个常数差: $-1$ 打 $2$、$1$ 打 $2$、$1$ 打 $-1$。老师: "挨个打一巴掌, x 受不了跑了。"<b>记忆</b>: 永远是(右 − 左), 别反。</span></div>
+<div class="step">③ 常数部分 $= (-3)(-1)(2) = 6$; 每个括号提一个负号(三个负号, 整体符号不变): $f(x) = -6(x-2)(x+1)(x-1)$。<span class="why">老师: "我们讨厌负 x, 喜欢 x 在前面"——把 $(2-x)$ 写成 $-(x-2)$ 等, 三个负号总共还是负的, 系数写 $-6$。</span></div>
+<div class="step">④ $f$ 是三次函数, $f''(x)$ 是一次函数(直线), 直线与 $x$ 轴只有一个交点, 交点处二阶导变号 → 拐点唯一 → 选 <b>B</b>。<span class="why">$f''(x) = -36x + 24$, 在 $x = \frac23$ 处由正变负。不必真的展开求根——三次函数的二阶导必是一次函数, 拐点个数直接判 1。<b>易错</b>: 拐点是二阶导变号处, 不是 $f'(x) = 0$ 处。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 范德蒙计算原则——主体排线、挨个打巴掌(右 − 左); 拐点题先看次数: 三次函数拐点必唯一。</div>
+</details>
+
+<hr />
+<h2 id="方法五抽象行列式矩阵乘法因式分解秩正交特征值相似">方法五: 抽象行列式(矩阵乘法 / 因式分解+秩 / 正交 / 特征值 / 相似)</h2>
+<p id="例16" class="prob"><b>例 1.6</b> 设 $\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3$ 均为 3 维列向量, $A = (\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3)$, $B = (\boldsymbol{\alpha}_1+\boldsymbol{\alpha}_2+\boldsymbol{\alpha}_3, \; \boldsymbol{\alpha}_1+2\boldsymbol{\alpha}_2+4\boldsymbol{\alpha}_3, \; \boldsymbol{\alpha}_1+3\boldsymbol{\alpha}_2+9\boldsymbol{\alpha}_3)$, 如果 $|A| = 1$, 则 $|B| = \_\_\_\_$. <span class="src">【来源: 视频#1、讲义1.1】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 把列向量的线性组合翻译成矩阵乘法: $B = A \cdot C$, 其中 $C = \begin{vmatrix} 1 & 1 & 1 \\ 1 & 2 & 3 \\ 1 & 4 & 9 \end{vmatrix}$。<span class="why">右乘 $C$ 时, $C$ 的第 $j$ 列就是 $A$ 的列向量的组合系数: $A(1,1,1)^{\mathrm{T}} = \boldsymbol{\alpha}_1+\boldsymbol{\alpha}_2+\boldsymbol{\alpha}_3$, $A(1,2,4)^{\mathrm{T}} = \boldsymbol{\alpha}_1+2\boldsymbol{\alpha}_2+4\boldsymbol{\alpha}_3$, 依此类推。<b>考点</b>: "这种 b 矩阵可以拆成矩阵乘法的语言"——第一列是乘 $(1,1,1)^{\mathrm{T}}$ 得到的, 这是抽象行列式的常见入口。</span></div>
+<div class="step">② $|B| = |A| \cdot |C| = 1 \times |C|$。<span class="why">乘积的行列式 = 行列式的乘积。</span></div>
+<div class="step">③ $|C|$: 这是范德蒙($a_1=1, a_2=2, a_3=3$), 打巴掌: $|C| = (2-1)(3-1)(3-2) = 1 \times 2 \times 1 = 2$。<span class="why">老师: "二欺负一一下, 三也打一一巴掌, 一跑了; 剩他们两个单打独斗。"</span></div>
+<div class="step">④ $|B| = 2$。<span class="why"><b>考点</b>: 抽象的列组合 → 具体系数矩阵 → 范德蒙, 三步连环。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 列向量线性组合拼矩阵 = 原矩阵右乘系数矩阵; 系数矩阵常是范德蒙, 直接打巴掌。</div>
+</details>
+
+<p id="例17" class="prob"><b>例 1.7</b> 设三阶方阵 $A$, $B$ 满足 $A^2B - A - B = E$(E 为三阶单位矩阵), 其中 $A = \begin{pmatrix} 1 & 0 & 1 \\ 0 & 2 & 0 \\ -2 & 0 & 1 \end{pmatrix}$, 则 $|B| = \_\_\_\_$. <span class="src">【来源: 视频#1、讲义1.1】</span>【A 的 (3,1) 位负号按视频讲解确定<span class="fill">【AI补全】</span>】</p>
+<details><summary>解答过程</summary>
+<div class="step">① 含 B 的项提到一块: $A^2B - B = A + E$, 即 $(A^2 - E)B = A + E$, 再因式分解: $(A+E)(A-E)B = A + E$。<span class="why">先右提 B, 再拆 $A^2 - E = (A+E)(A-E)$——E 可以当 1 用, 老师: "这个 A 加 E 可以理解成 A 加 E 乘 E, E 是可以随便补的。"</span></div>
+<div class="step">② 移项构造 $XY = O$: $(A+E)\big[(A-E)B - E\big] = O$。<span class="why">目标是用秩的结论: 若 $XY = O$, 则 $r(X) + r(Y) \le n$(三阶则 $\le 3$)。</span></div>
+<div class="step">③ 算 $|A+E|$: $A+E = \begin{pmatrix} 2 & 0 & 1 \\ 0 & 3 & 0 \\ -2 & 0 & 2 \end{pmatrix}$, 按第 2 行展开: $3 \times \begin{vmatrix} 2 & 1 \\ -2 & 2 \end{vmatrix} = 3 \times (4+2) = 18 \neq 0$。<span class="why">先验证 $A+E$ 满秩——按中间那个 3 展开最省事。</span></div>
+<div class="step">④ $r(A+E) = 3$, 由 $r(A+E) + r\big((A-E)B - E\big) \le 3$ 得 $r\big((A-E)B - E\big) = 0$, 即 $(A-E)B - E = O$, 所以 $(A-E)B = E$。<span class="why">三阶矩阵秩最大 3, A+E 一个人占满了, 另一个只能为零矩阵。老师强调"整体思想": 结论里的 A、B 是泛指, 这里代进去的是 $A+E$ 和 $(A-E)B - E$ 这两个整体, 不要看花眼。</span></div>
+<div class="step">⑤ 两边取行列式: $|A-E| \cdot |B| = 1$。<span class="why">$|(A-E)B| = |A-E||B| = |E| = 1$。</span></div>
+<div class="step">⑥ $|A-E| = \begin{vmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ -2 & 0 & 0 \end{vmatrix}$, 按第一行展开: $(-1)^{1+3} \times \begin{vmatrix} 0 & 1 \\ -2 & 0 \end{vmatrix} = 2$, 故 $|B| = \dfrac12$。<span class="why"><b>易错</b>: 答案是 1/2 不是 2——行列式除过来时别除反。老师口述"算出来是一个 2, 所以等于二分之一"。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 矩阵等式 → 因式分解凑 $XY = O$ → 秩不等式判满秩 → 取行列式。因式分解与"补 E"是基本功。</div>
+</details>
+
+<p id="例18" class="prob"><b>例 1.8</b> 设 $B$ 是 3 阶正交矩阵, 且 $|B| < 1$, $A$ 是 3 阶矩阵, 且 $|A-B| = 6$, 则 $|E - BA^{\mathrm{T}}| = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.1】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 正交矩阵 $\Rightarrow |B| = \pm 1$; 由 $|B| < 1$ 得 $|B| = -1$。<span class="why">正交矩阵行列式只可能 ±1, 小于 1 只能取负。</span></div>
+<div class="step">② 把 E 拆成 $BB^{\mathrm{T}}$(不是 $B^{\mathrm{T}}B$): $E - BA^{\mathrm{T}} = BB^{\mathrm{T}} - BA^{\mathrm{T}} = B(B^{\mathrm{T}} - A^{\mathrm{T}})$。<span class="why">后面跟的是 $BA^{\mathrm{T}}$, 左边是 B——拆 E 也要"左边是 B"的形式, 形式一致才能提公因子。老师: "写成 B 转置乘 B 就提不出来了, 这就体现了你的思维。这一步是最关键的。"<b>考点</b>: 拆 E 的方向由周围的矩阵乘法形式决定(例 1.19 同款思想)。</span></div>
+<div class="step">③ $|E - BA^{\mathrm{T}}| = |B| \cdot |B^{\mathrm{T}} - A^{\mathrm{T}}| = (-1) \times |(B-A)^{\mathrm{T}}| = (-1) \times |B-A|$。<span class="why">乘积行列式 + 转置合并: $B^{\mathrm{T}} - A^{\mathrm{T}} = (B-A)^{\mathrm{T}}$; 转置不改变行列式值。</span></div>
+<div class="step">④ $B - A = -(A-B)$: 三阶矩阵, 提一个 $-1$ 变成 $(-1)^3$: $|B-A| = (-1)^3|A-B| = -6$。<span class="why"><b>易错</b>: 行列式提 k 对 n 阶是 $k^n$——这里 n = 3, "这个负号对很多同学是比较致命的, 千万不要在最后一步掉链子"。</span></div>
+<div class="step">⑤ 原式 $= (-1) \times (-1)^3 \times 6 = 6$。<span class="why">四个负号两两抵消——老师: "你算出来是 6 还是负 6? 这道题一定要拿到分。"</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 正交矩阵条件 → 拆 $E = BB^{\mathrm{T}}$(形式一致) → 提公因子 → 转置/提负号逐层算, 负号数清楚。</div>
+</details>
+
+<p id="例19" class="prob"><b>例 1.9</b> 设 $A$ 是 n 阶矩阵, $|A| = 1$, $A$ 的各行元素之和均为 $a$, 则 $A$ 中最后一行元素的代数余子式之和 $A_{n1} + A_{n2} + \cdots + A_{nn} = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.1】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 各行元素之和均为 $a$ 翻译成矩阵语言: $A \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} = \begin{pmatrix} a \\ a \\ \vdots \\ a \end{pmatrix} = a \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix}$。<span class="why">左端第 i 个分量 = 第 i 行元素之和 = $a$。老师用三阶矩阵完整推了一遍: "第一个位置填的就是第一行乘它, 即 $a_{11}+a_{12}+a_{13}$。"</span></div>
+<div class="step">② 这就是特征值与特征向量的定义: 特征值 $a$, 特征向量 $(1,1,\dots,1)^{\mathrm{T}}$。<span class="why">老师: "很多同学一直不懂这个原理, 用着用着就习以为常了, 但不知道为什么。以后一拿到'各行元素之和为 a', 立马反应: 特征值 a, 特征向量全 1。"</span></div>
+<div class="step">③ 要求的和 = $A^{*}$ 最后一行元素之和: $A^{*}$ 的第 n 行是 $A_{n1}, A_{n2}, \dots, A_{nn}$。<span class="why">伴随矩阵的组装: 代数余子式"竖着"的放"横着"——(i,j) 的代数余子式在伴随的第 j 行第 i 列, 所以第 n 行正是 $A_{n1},\dots,A_{nn}$。<b>易错</b>: 组装位置别搞反。</span></div>
+<div class="step">④ 借特征值: $|A| = 1$, 故 $A^{*} = |A|A^{-1} = A^{-1}$; A 的特征值 $a$ 对应 $A^{-1}$ 的特征值 $\dfrac1a$。<span class="why">老师给的"表格": A 的特征值 $\lambda$ ⇔ $A^{*}$ 的特征值 $|A|/\lambda$(第 4 讲系统学, 这里先用结论)。</span></div>
+<div class="step">⑤ 所以 $A^{*} \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix} = \dfrac1a \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix}$, 即 $A^{*}$ 每行元素之和为 $\dfrac1a$, 答案 $\dfrac1a$。<span class="why">把特征值语言再翻译回"行和"语言——老师: "先把行和翻译成特征值与特征向量的语言, 再翻译回来, 就结束了。"<b>注意</b>: 由 $|A| = 1 \neq 0$ 知 $a \neq 0$(若 $a = 0$ 则全 1 向量是零特征值特征向量, A 不可逆, 矛盾)。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: "各行元素之和为 a" ⇔ 特征值 a、特征向量全 1; 代数余子式之和 ↔ 伴随矩阵行和 ↔ 特征值倒数, 两个方向翻译自如。</div>
+</details>
+
+<p id="例110" class="prob"><b>例 1.10</b> 设 $A$ 是 3 阶矩阵, $\boldsymbol{\alpha}$ 为三维列向量, $P = (\boldsymbol{\alpha}, A\boldsymbol{\alpha}, A^2\boldsymbol{\alpha})$ 为可逆矩阵, $B = P^{-1}AP$, 且 $A^3\boldsymbol{\alpha} = 3A\boldsymbol{\alpha} - 2A^2\boldsymbol{\alpha}$, 则 $|A - E| = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.1】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 抽象矩阵相似问题的原则: 找 $AP = PB$(或 $AP = P\Lambda$), 找到一个就行。<span class="why">$P$ 可逆且由 $\boldsymbol{\alpha}$ 的循环轨道拼成, 题目就是在暗示这条路线——老师: "题目往往会给很强的暗示, 那我就大胆地找。"</span></div>
+<div class="step">② $AP = (A\boldsymbol{\alpha}, A^2\boldsymbol{\alpha}, A^3\boldsymbol{\alpha}) = (A\boldsymbol{\alpha}, A^2\boldsymbol{\alpha}, 3A\boldsymbol{\alpha} - 2A^2\boldsymbol{\alpha})$。<span class="why">矩阵乘 P 就是逐列作用, 第三列用条件 $A^3\boldsymbol{\alpha} = 3A\boldsymbol{\alpha} - 2A^2\boldsymbol{\alpha}$ 代入。</span></div>
+<div class="step">③ 每列写成 $P$ 乘某列: $A\boldsymbol{\alpha} = P(0,1,0)^{\mathrm{T}}$, $A^2\boldsymbol{\alpha} = P(0,0,1)^{\mathrm{T}}$, $A^3\boldsymbol{\alpha} = P(0,3,-2)^{\mathrm{T}}$, 故 $AP = PB$, 其中 $B = \begin{pmatrix} 0 & 0 & 0 \\ 1 & 0 & 3 \\ 0 & 1 & -2 \end{pmatrix}$。<span class="why">$P = (\boldsymbol{\alpha}, A\boldsymbol{\alpha}, A^2\boldsymbol{\alpha})$, $Px = x_1\boldsymbol{\alpha} + x_2A\boldsymbol{\alpha} + x_3A^2\boldsymbol{\alpha}$——系数就是 B 的列, 逐个对号入座。</span></div>
+<div class="step">④ $A \sim B \Rightarrow |A - E| = |B - E|$。<span class="why">相似矩阵行列式相等(特征多项式相同), 把抽象条件转嫁到具体的 B 上。</span></div>
+<div class="step">⑤ $B - E = \begin{pmatrix} -1 & 0 & 0 \\ 1 & -1 & 3 \\ 0 & 1 & -3 \end{pmatrix}$: 第 3 列 $= -3 \times$ 第 2 列 → $|B - E| = 0$。<span class="why">两列成比例, 行列式必为零——连展开都不用。<b>易错</b>: 别傻算, 先看成比例。</span></div>
+<div class="step">⑥ 答案: $|A - E| = 0$。<span class="why"><b>考点</b>: 抽象相似题的标准答案形式——相似矩阵把问题转移到具体矩阵, 成比例列直接判零。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 抽象矩阵相似题: 找 $AP = PB$, 系数矩阵由轨道条件逐列拼出; 相似不变量(行列式)转嫁后算具体矩阵。</div>
+</details>
+
+<hr />
+<h2 id="方法六高次幂套路一秩1矩阵Anln-1A">方法六: 高次幂套路一 — 秩 1 矩阵($A^n = l^{n-1}A$)</h2>
+<p id="例111" class="prob"><b>例 1.11</b> 设 $\boldsymbol{\alpha}$, $\boldsymbol{\beta}$ 是 3 维列向量, 如果 $\boldsymbol{\alpha}\boldsymbol{\beta}^{\mathrm{T}} = \begin{pmatrix} 1 & 1 & 2 \\ 2 & 2 & 4 \\ 3 & 3 & 6 \end{pmatrix}$, 则 $\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\beta} = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.2】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 矩阵三列成比例(第二列 = 第一列, 第三列 = 2 × 第一列) → 秩 1 → 可拆成列乘行, 且 $\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\beta} = \boldsymbol{\beta}^{\mathrm{T}}\boldsymbol{\alpha} = \operatorname{tr}(\boldsymbol{\alpha}\boldsymbol{\beta}^{\mathrm{T}})$。<span class="why">秩 1 矩阵的迹 = 列行分解的内积; 反过来用: 要求内积, 等价于求这个矩阵的迹。老师: "逆过来用也成立, 你要求向量内积, 相当于求这个矩阵的迹。"</span></div>
+<div class="step">② $\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\beta} = 1 + 2 + 6 = 9$。<span class="why">迹 = 对角线元素之和, 口算。<b>考点</b>: 不用去真的解 $\boldsymbol{\alpha}, \boldsymbol{\beta}$ 是什么。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $\operatorname{tr}(\boldsymbol{\alpha}\boldsymbol{\beta}^{\mathrm{T}}) = \boldsymbol{\beta}^{\mathrm{T}}\boldsymbol{\alpha} = \boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\beta}$, 秒杀一切"给矩阵求内积"题。</div>
+</details>
+
+<p id="例112" class="prob"><b>例 1.12</b> 已知 $A = \begin{pmatrix} 2 & 6 & 4 \\ -1 & -3 & -2 \\ 2 & 6 & 4 \end{pmatrix}$, 则 $A^n = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.2】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 拆秩 1: $A = (2, -1, 2)^{\mathrm{T}} \cdot (1, 3, 2)$。<span class="why">第一列 $(2,-1,2)^{\mathrm{T}}$ 当"主干", 第二列是第一列的 3 倍、第三列是第一列的 2 倍 → 行向量 $(1,3,2)$。老师: "第一列就是它的 1 倍、3 倍、2 倍, 所以拆成这个样子。"</span></div>
+<div class="step">② $l = (1,3,2) \cdot (2,-1,2)^{\mathrm{T}} = 2 - 3 + 4 = 3$, 恰好等于 $\operatorname{tr}(A) = 2 + (-3) + 4 = 3$。<span class="why">行乘列是一个数(内积), 也可以直接看对角线。</span></div>
+<div class="step">③ $A^n = l^{n-1}A = 3^{n-1}\begin{pmatrix} 2 & 6 & 4 \\ -1 & -3 & -2 \\ 2 & 6 & 4 \end{pmatrix}$。<span class="why">$A^2 = lA$ 后归纳: 中间 n−1 个内积数全部提到前面, 只留头尾的列和行——老师用"列×行…列×行"展开演示了为什么只剩一个 A。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 秩 1 矩阵求幂: 拆 $\boldsymbol{\alpha}\boldsymbol{\beta}^{\mathrm{T}}$ → 口算 $l = \operatorname{tr}(A)$ → $A^n = l^{n-1}A$, 全程不动笔。</div>
+</details>
+
+<hr />
+<h2 id="方法七高次幂套路二幂零矩阵">方法七: 高次幂套路二 — 幂零矩阵</h2>
+<p id="例113" class="prob"><b>例 1.13</b> 若 $A = \begin{pmatrix} 0 & 0 & 0 \\ 2 & 0 & 0 \\ 1 & 3 & 0 \end{pmatrix}$, 则 $A^2 = \_\_\_\_$, $A^3 = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.2】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 逐项乘: $A^2 = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 6 & 0 & 0 \end{pmatrix}$。<span class="why">唯一非零项 (3,1): 第三行乘第一列 $= 1 \times 0 + 3 \times 2 + 0 \times 0 = 6$。严格下三角(对角全 0), 平方后非零元往角上退一步。</span></div>
+<div class="step">② $A^3 = A^2 \cdot A = O$。<span class="why">再乘一次, 唯一的 6 也归零——"算了几次之后变成零矩阵", 这就是幂零矩阵。老师: "你算 A 的平方, 发现只有这个地方有个元素了; 再算 A 的三次方, 发现已经变成零矩阵。"</span></div>
+<div class="step">③ 结构规律: 幂零矩阵的 k 次方, 非零元沿副对角线方向一步一退, 退到角上就没了; 严格上(下)三角矩阵必幂零, 幂指数 ≤ 阶数。<span class="why"><b>考点</b>: 幂零是套路三(二项展开)的地基——只有幂零, 展开才能截断, 后面例 1.14、1.21 全靠它。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 幂零矩阵: 严格上(下)三角必幂零; 高次幂直接写零矩阵, 并留个心眼给二项展开用。</div>
+</details>
+
+<hr />
+<h2 id="方法八高次幂套路三二项展开AEB">方法八: 高次幂套路三 — 二项展开($A = E+B$)</h2>
+<p id="例114" class="prob"><b>例 1.14</b> 若 $A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 4 \\ 0 & 0 & 1 \end{pmatrix}$, 则 $A^n = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.2】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 拆: $A = E + B$, $B = \begin{pmatrix} 0 & 2 & 3 \\ 0 & 0 & 4 \\ 0 & 0 & 0 \end{pmatrix}$。<span class="why">对角线全 1 → E 全提走, 剩下严格上三角。</span></div>
+<div class="step">② B 幂零: $B^2 = \begin{pmatrix} 0 & 0 & 8 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}$, $B^3 = O$。<span class="why">严格上三角, 平方后非零元退到 (1,3), 三次归零。</span></div>
+<div class="step">③ 二项展开: $A^n = (E+B)^n = E + nB + \binom{n}{2}B^2$, 后面全是零矩阵。<span class="why">B³ 及以后全为 O, "只用展开到 B 的平方"。老师: "系数为什么是 n、二分之 n 乘 n 减一? 回去查查二项式展开定理。"</span></div>
+<div class="step">④ $A^n = \begin{pmatrix} 1 & 2n & 3n + \frac{n(n-1)}{2} \times 8 \\ 0 & 1 & 4n \\ 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 2n & 4n^2 - n \\ 0 & 1 & 4n \\ 0 & 0 & 1 \end{pmatrix}$。<span class="why">(1,3) 位: $3n + 4n(n-1) = 4n^2 - n$。<b>易错</b>: 别漏 $\binom{n}{2}B^2$ 这一项, 也别把 $B^2$ 的 8 乘错。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $A = E+B$ 且 B 幂零 → 二项展开只留有限项; 这是上三角(对角全 1)矩阵求幂的万能套路。</div>
+</details>
+
+<p id="例115" class="prob"><b>例 1.15</b> 设 $A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}$, 则 $A^n = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.2】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">方法一(二项展开, 老师推荐): ① $A = E + J$, $J = \begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix}$(全 1 矩阵, 秩 1)。<span class="why">对角线减 1 剩全 1——"除了用相似去做, 它还可以拆成一个 E 加上全 1 矩阵"。</span></div>
+<div class="step">② J 秩 1, $l = \operatorname{tr}(J) = 3$: $J^2 = 3J$, $J^k = 3^{k-1}J$。<span class="why">秩 1 幂公式, 内积 $l = 1+1+1 = 3$。</span></div>
+<div class="step">③ $A^n = (E+J)^n = E + \sum_{k=1}^{n}\binom{n}{k}J^k = E + \left(\sum_{k=1}^{n}\binom{n}{k}3^{k-1}\right)J = E + \frac{4^n - 1}{3}J$。<span class="why">$\sum_{k=1}^{n}\binom{n}{k}3^k = (1+3)^n - 1 = 4^n - 1$, 提出公因子 $\frac13$。<b>考点</b>: 秩 1 的二项展开 = 等比数列求和。</span></div>
+<div class="step">④ $A^n = \begin{pmatrix} \frac{4^n+2}{3} & \frac{4^n-1}{3} & \frac{4^n-1}{3} \\ \frac{4^n-1}{3} & \frac{4^n+2}{3} & \frac{4^n-1}{3} \\ \frac{4^n-1}{3} & \frac{4^n-1}{3} & \frac{4^n+2}{3} \end{pmatrix}$。<span class="why">验证 n = 1: 对角 $(4+2)/3 = 2$ ✓, 非对角 $(4-1)/3 = 1$ ✓。</span></div>
+<div class="step">方法二(相似对角化, 完整版<span class="fill">【AI补全】</span>): ⑤ A 实对称 → 可相似对角化。A = E+J, J 特征值 $3, 0, 0$ → A 特征值 $4, 1, 1$。<span class="why">实对称必可对角化是后面章节的结论, 老师提示可用。</span></div>
+<div class="step">⑥ 特征向量: 对应 4 取 $(1,1,1)^{\mathrm{T}}$, 对应 1 取 $(1,-1,0)^{\mathrm{T}}$, $(1,0,-1)^{\mathrm{T}}$。取 $P = \begin{pmatrix} 1 & 1 & 1 \\ 1 & -1 & 0 \\ 1 & 0 & -1 \end{pmatrix}$, $\Lambda = \operatorname{diag}(4,1,1)$, 则 $A^n = P\Lambda^n P^{-1}$, $\Lambda^n = \operatorname{diag}(4^n, 1, 1)$。<span class="why">中间 $P^{-1}P$ 全约掉, 只剩对角阵的幂——对角阵幂 = 每个对角元取幂。</span></div>
+<div class="step">⑦ 乘开化简与方法一结果一致。<span class="why">老师课上没展开算("这个求的过程我就不求了, 你们自己去求一下"), 但强调: "那个 P 矩阵还要求一次逆, 肯定没有二项展开快。"<span class="fill">【AI补全】</span></span></div>
+<div class="sum hot"><b>⭐ 经典</b>: E + 全 1 矩阵: 二项展开(秩 1 合并成等比)比相似对角化快——不用求 P 的逆。同题两套路, 选快的。</div>
+</details>
+
+<hr />
+<h2 id="方法九求逆初等行变换">方法九: 求逆 — 初等行变换</h2>
+<p id="例116" class="prob"><b>例 1.16</b> 若 $A = \begin{pmatrix} 0 & 1 & 3 \\ 1 & -1 & 0 \\ -1 & 2 & 1 \end{pmatrix}$, 则 $A^{-1} = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.3】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 写 $[A \mid E]$ 并做行变换: $r_1 + r_2$ 得新第一行 $(1, 0, 3 \mid 1, 1, 0)$ 换到第一行, 原第一行换到第二行, $r_3 + r_1$ 得 $(0, 2, 4 \mid 1, 1, 1)$。得 $\begin{pmatrix} 1 & 0 & 3 & \mid & 1 & 1 & 0 \\ 0 & 1 & 3 & \mid & 1 & 0 & 0 \\ 0 & 2 & 4 & \mid & 1 & 1 & 1 \end{pmatrix}$。<span class="why">先把 (1,1) 位造成 1(前两行相加), 顺便把 (3,1) 位的 $-1$ 消成 0——老师: "两步画一步"。<b>考点</b>: 求逆只用初等行变换, 不许用列变换。</span></div>
+<div class="step">② $r_3 - 2r_2$: 第三行变 $(0, 0, -2 \mid -1, 1, 1)$。<span class="why">消第三行第二列的 2。</span></div>
+<div class="step">③ $r_3 \times (-\frac12)$: 第三行变 $(0, 0, 1 \mid \frac12, -\frac12, -\frac12)$。<span class="why">化 1 后出现分数, 后面全是分数运算——<b>易错</b>: 每个分量都要除以 −2, 符号别错。</span></div>
+<div class="step">④ $r_2 - 3r_3$: 变 $(0, 1, 0 \mid -\frac12, \frac32, \frac32)$; $r_1 - 3r_3$: 变 $(1, 0, 0 \mid -\frac12, \frac52, \frac32)$。<span class="why">从下往上消, 把 (1,3) 位和 (2,3) 位的 3 消掉, 左侧化单位阵。</span></div>
+<div class="step">⑤ $A^{-1} = \begin{pmatrix} -\frac12 & \frac52 & \frac32 \\ -\frac12 & \frac32 & \frac32 \\ \frac12 & -\frac12 & -\frac12 \end{pmatrix}$。<span class="why">老师: "三阶老老实实用初等行变换, 不要用伴随矩阵——太了解你们了, 三阶伴随很容易错。算逆是基本功, 而且要快。"<b>检查</b>: $A \cdot A^{-1}$ 应等于 E(如第一行: $0 \cdot (-\frac12) + 1 \cdot (-\frac12) + 3 \cdot \frac12 = 1$)。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 求逆 $[A \mid E] \xrightarrow{\text{行变换}} [E \mid A^{-1}]$; 三阶用行变换不用伴随, 做完随手验算一行。</div>
+</details>
+
+<hr />
+<h2 id="方法十正交矩阵性质">方法十: 正交矩阵性质</h2>
+<p id="例117" class="prob"><b>例 1.17</b> 已知 n 阶实矩阵 $A$, $B$ 均为正交矩阵, 则以下结论不正确的是(　). <span class="src">【来源: 视频#1、讲义1.3】</span></p>
+<p>(A) $A^{\mathrm{T}}B$ 是正交矩阵　(B) $AB^{-1}$ 是正交矩阵　(C) $-A^{*}B$ 是正交矩阵　(D) $A^{-1} + B^{-1}$ 是正交矩阵</p>
+<details><summary>解答过程</summary>
+<div class="step">① 用性质: 正交矩阵的转置、逆、伴随、添负号仍是正交矩阵; 两个同阶正交矩阵之积仍是正交矩阵。<span class="why">这五条是正交矩阵的"封闭性", 理论页已列。<b>考点</b>: 乘积方向无所谓——$(AB)^{\mathrm{T}}(AB) = B^{\mathrm{T}}A^{\mathrm{T}}AB = E$ 用穿脱原则可证。</span></div>
+<div class="step">② (A) $A^{\mathrm{T}}$ 正交 × B 正交 → 正交 ✓。(B) $B^{-1}$ 正交 → $AB^{-1}$ 正交 ✓。(C) $A^{*}$ 正交, $-A^{*}$ 正交 → 再乘 B 正交 ✓。<span class="why">逐项分解成"已知正交的块相乘", 每块都是性质里的情形。</span></div>
+<div class="step">③ (D) 找反例: 取 $A = E$, $B = -E$(都是正交矩阵), 则 $A^{-1} + B^{-1} = E - E = O$ 不是正交矩阵。<span class="why">加法没有封闭性——"两个正交矩阵相加可能相消成零矩阵, 要考虑到相消的情况"。选 <b>D</b>。<b>方法</b>: 排除法 + 反例, 老师把每个选项都验证了一遍。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 正交矩阵封闭性只对乘积、转置、逆、伴随、负号成立; 对加法不成立, 反例取 A = E, B = −E 直接相消。</div>
+</details>
+
+<p id="例118" class="prob"><b>例 1.18</b> 设 $A = (a_{ij})$ 是三阶非零矩阵, $|A|$ 为 $A$ 的行列式, $A_{ij}$ 为 $a_{ij}$ 的代数余子式, 若 $a_{ij} + A_{ij} = 0$($i, j = 1, 2, 3$), 则 $|A| = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.3】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 翻译条件: 每个 $a_{ij}$ 与对应的 $A_{ij}$ 互为相反数。按伴随的组装规则写出来比较: $A^{*} = -A^{\mathrm{T}}$。<span class="why">伴随矩阵第 j 行第 i 列放 $A_{ij}$——把 A 转置后逐位对照, 正是 $A^{\mathrm{T}}$ 的相反数。<b>易错</b>: 组装位置别排错, 排错了这一步整个就错了。</span></div>
+<div class="step">② 两边取行列式: $|A^{*}| = |A|^2 = (-1)^3 |A^{\mathrm{T}}| = -|A|$, 即 $|A|(|A| + 1) = 0$ → $|A| = 0$ 或 $-1$。<span class="why">用公式 $|A^{*}| = |A|^{n-1}$(n = 3 → 平方); 提负号对 3 阶是 $(-1)^3$; 转置不改变行列式。</span></div>
+<div class="step">③ 排除 $|A| = 0$: A 非零, 取一个非零元素 $a_{ij} \neq 0$, 按第 i 行展开: $|A| = a_{i1}A_{i1} + \cdots + a_{in}A_{in} = -(a_{i1}^2 + \cdots + a_{in}^2) \neq 0$。<span class="why">$A_{ik} = -a_{ik}$ 代入, 得到负的平方和, 至少一项非零, 所以不为 0。老师: "我就从那个非零的地方展开。"</span></div>
+<div class="step">④ 另一种排除法(秩观点): $A^{*} = -A^{\mathrm{T}}$ → $r(A^{*}) = r(A)$; 而秩阶梯: $r(A) = 3 \Rightarrow r(A^{*}) = 3$, $r(A) = 2 \Rightarrow r(A^{*}) = 1$, $r(A) \le 1 \Rightarrow r(A^{*}) = 0$。三阶非零 → 只有 $r(A) = 3$ 满足两边相等 → $|A| \neq 0$。<span class="why">老师: "从质(秩)的角度入手, 看 RA 与 RA伴随的关系"——三阶非零排除了 r = 0, 三种情况逐一比对。<b>连接</b>: 这个秩阶梯第 2 讲系统讲。</span></div>
+<div class="step">⑤ 答案: $|A| = -1$。<span class="why"><b>易错</b>: 最后一步取舍——0 和 −1 里只留 −1。</span></div>
+<div class="step">⑥ 推论(老师补充): $A^{*} = -A^{\mathrm{T}}$ 两边左乘 A: $AA^{*} = |A|E = -AA^{\mathrm{T}}$, 代入 $|A| = -1$ 得 $AA^{\mathrm{T}} = E$ → <b>A 是正交矩阵</b>。<span class="why">"下次碰到这个条件或长得很像的条件, 你得会用, 就从这样一个角度去推导。"</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $a_{ij} + A_{ij} = 0$ ⇔ $A^{*} = -A^{\mathrm{T}}$: 取行列式得两个候选, 用展开平方和(或秩阶梯)排除零, 还白得一个"A 正交"的推论。</div>
+</details>
+
+<hr />
+<h2 id="方法十一抽象求逆无中生有">方法十一: 抽象求逆 — 无中生有</h2>
+<p id="例119" class="prob"><b>例 1.19</b> 设 $|A| = 1$, $|B| = 2$, $|A+B| = 2$(A, B 为同阶方阵), 则行列式 $|(A^{-1} + B^{-1})^{-1}| =$ (　). <span class="src">【来源: 视频#1、讲义1.3】</span></p>
+<p>(A) 1　(B) 2　(C) $\dfrac12$　(D) $-1$</p>
+<details><summary>解答过程</summary>
+<div class="step">① $|(A^{-1} + B^{-1})^{-1}| = \dfrac{1}{|A^{-1} + B^{-1}|}$。<span class="why">逆的行列式 = 行列式的倒数, 把括号整体当成一个矩阵看。</span></div>
+<div class="step">② 无中生有: 两头添 E, $A^{-1} + B^{-1} = B^{-1}(B + A)A^{-1}$。<span class="why">左边有个 $B^{-1}$, E 就拆成 $B^{-1}B$(拆完 E 仍在左边); 右边有个 $A^{-1}$, E 拆成 $AA^{-1}$(拆完 E 仍在右边)——形式保持一致, 目的是凑出矩阵乘法的形式, 把 $B^{-1}$ 和 $A^{-1}$ 分别提到两头。验证: $B^{-1}BA^{-1} + B^{-1}AA^{-1} = A^{-1} + B^{-1}$ ✓。老师: "无中生有, 这类题型都这么做。"</span></div>
+<div class="step">③ $|A^{-1} + B^{-1}| = |B^{-1}| \cdot |A+B| \cdot |A^{-1}| = \dfrac12 \times 2 \times 1 = 1$。<span class="why">乘积行列式拆开, 三个数题目全给了。</span></div>
+<div class="step">④ 原式 $= \dfrac{1}{1} = 1$, 选 <b>A</b>。<span class="why"><b>易错</b>: 别忘了外面还有一个"逆"——求的是逆的行列式, 不是行列式的逆。别选 C。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: "无中生有": 求 $A^{-1} \pm B^{-1}$ 型, 两头(或中间)添 E 拆成 $B^{-1}(B \pm A)A^{-1}$, 与例 1.8 拆 $E = BB^{\mathrm{T}}$ 是同一个思想。</div>
+</details>
+
+<hr />
+<h2 id="方法十二抽象求逆凑ABE">方法十二: 抽象求逆 — 凑 $AB = E$</h2>
+<p id="例120" class="prob"><b>例 1.20</b> 设 n 阶方阵 $A$ 满足 $A^3 - 2A^2 + 3A - 4E = O$, 则 $A^{-1} = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.3】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 提 A: $A(A^2 - 2A + 3E) = 4E$ → $A \cdot \frac{A^2 - 2A + 3E}{4} = E$。<span class="why">抽象求逆的唯一原则: 凑出 $A \times (\text{某矩阵}) = E$。<b>易错</b>: 常数项 4E 先移到右边再除, 别把 4 留在括号里。</span></div>
+<div class="step">② $A^{-1} = \dfrac{A^2 - 2A + 3E}{4}$。<span class="why">能凑出 $AB = E$, B 就是逆, 不用怀疑。</span></div>
+<div class="step">③ 思考题: 求 $(A-E)^{-1}$。做恒等变形(长除法思想): $(A-E)(A^2 - A + 2E) = A^3 - 2A^2 + 3A - 2E = (A^3 - 2A^2 + 3A - 4E) + 2E = 2E$。<span class="why">逐项配平: ① 平方项: 要出 $A^3$ 需乘 $A^2$, 但多出 $-A^2$ 还需一个 $-A$ 补足 $-2A^2$; ② 一次项: 现有 $+A$, 要 $3A$ 还差 $2A$, 补 $+2E$; ③ 常数项: 现有 $-2E$, 要 $-4E$ 还差 $-2E$, 再补 $-2E$——老师全程口述这套配平法。也可直接除: $A^3-2A^2+3A-4E$ 除以 $A-E$。</span></div>
+<div class="step">④ $(A-E)^{-1} = \dfrac{A^2 - A + 2E}{2}$。<span class="why">$(A-E) \cdot \frac{A^2-A+2E}{2} = E$, 2 移到分母。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 抽象求逆: 因式分解/长除法凑出(所求矩阵)×(表达式) = kE, 除 k 得逆。配平时次数从高到低逐项调系数。</div>
+</details>
+
+<p id="例121" class="prob"><b>例 1.21</b> 设 $B = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \end{pmatrix}$, $A = E + B + B^2 + B^3$, 则 $A^{-1} = \_\_\_\_.$ <span class="src">【来源: 视频#1、讲义1.3】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 妙手: 平方差公式的矩阵版——$(E - B)(E + B + B^2 + B^3) = E - B^4$。<span class="why">E 与 B 可交换(单位矩阵与任何矩阵可交换), 展开后中间项两两抵消。</span></div>
+<div class="step">② B 幂零: $B^4 = O$(严格上三角, 沿副对角线一步一退, 四次归零)。<span class="why">手稿/讲义该题给了"呆手"提示: 硬算 $B^2, B^3$ 再相加求逆——又慢又易错。老师: "呆手 vs 妙手", 识别结构才是关键。</span></div>
+<div class="step">③ $(E - B)A = E$, 故 $A^{-1} = E - B = \begin{pmatrix} 1 & -1 & 0 & 0 \\ 0 & 1 & -1 & 0 \\ 0 & 0 & 1 & -1 \\ 0 & 0 & 0 & 1 \end{pmatrix}$。<span class="why">直接口算: 单位阵减 B, 上对角变 −1。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $(E-B)(E+B+\cdots+B^{k-1}) = E - B^k$; B 幂零时 $E+B+\cdots+B^{k-1}$ 的逆就是 $E-B$, 一眼写出。</div>
+</details>
+
+<hr />
+<h2 id="方法十三boldsymbolalphaboldsymbolalphamathrmT结构平方处理">方法十三: $\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 结构 — 平方处理</h2>
+<p id="例122" class="prob"><b>例 1.22</b> 设 $\boldsymbol{\alpha}$ 为 3 维单位列向量, $E$ 为 3 阶单位矩阵, 则(　). <span class="src">【来源: 视频#1、讲义1.3】</span></p>
+<p>(A) $E - \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆　(B) $E + \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆　(C) $E + 2\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆　(D) $E - 2\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆</p>
+<details><summary>解答过程</summary>
+<div class="step">① 见到 $\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 结构 → 平方处理: $(\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}})^2 = \boldsymbol{\alpha}(\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\alpha})\boldsymbol{\alpha}^{\mathrm{T}} = \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$($\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\alpha} = 1$, 单位向量)。<span class="why">老师: "碰到阿尔法阿尔法 t 这种类似的结构, 平方处理是一个比较常用的手段, 平方处理是常用的。"内积为 1 使平方回到自身。</span></div>
+<div class="step">② 记 $A = E - \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$: $A^2 = E - 2\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}} + (\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}})^2 = E - \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}} = A$。<span class="why">A 幂等($A^2 = A$), 则 $A(E - A) = O$。</span></div>
+<div class="step">③ $A(E - A) = O \Rightarrow r(A) + r(E - A) \le 3$; 而 $r(E - A) = r(\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}) = 1$(秩 1), 故 $r(A) \le 2 < 3$, A 不可逆 ✓ —— (A) 正确。<span class="why">秩不等式 $r(X) + r(Y) \le n$(例 1.7 同款); 或直接说: 幂等阵可对角化, 特征值只能 0 或 1, A 有零特征值 → 不可逆。</span></div>
+<div class="step">④ 记 $B = E + \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$: $B^2 = E + 3\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}} = 3B - 2E$, 即 $B(B - 3E) = -2E$ → B 可逆 ✗。<span class="why">凑出 $BC = kE$, 逆都找到了, 当然可逆——老师的"逆矩阵我都给它找出来了, 你说可不可逆"。</span></div>
+<div class="step">⑤ 记 $C = E + 2\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$: $C^2 = E + 8\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}} = 4C - 3E$, 即 $C(C - 4E) = -3E$ → 可逆 ✗。记 $D = E - 2\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$: $D^2 = E - 4\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}} + 4\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}} = E$, $D^{-1} = D$ → 可逆 ✗。<span class="why">逐个平方展开, 内积 $\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\alpha} = 1$ 把交叉项化简; C 展开: $E + 4\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}} + 4(\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}})^2 = E + 8\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$。</span></div>
+<div class="step">⑥ 选 <b>A</b>。<span class="why">统一视角【AI补全, 第4讲特征值语言】: $\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 的特征值为 $1, 0, 0$, 故 $E + k\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 的特征值为 $1+k, 1, 1$, 不可逆当且仅当 $k = -1$——只有 (A) 满足。老师: "到后面咱们也可以用特征值与特征向量的语言来处理它。"</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 平方处理: $(\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}})^2 = \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$; $E + k\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 可逆 ⇔ $k \neq -1$。同一结构四个选项, 平方一次全解决。</div>
+</details>
+
+<hr />
+<blockquote>
+<p>全量收录完毕: 例 1.1-1.22 共 22 题(例 1.3、1.4、1.13、1.15 含多问/多法)。第 2 讲(矩阵的秩与分块矩阵)见下一章。</p>
+</blockquote><div class="pager"><a href="01_行列式与矩阵.html"><small>← 上一篇</small><b>行列式与矩阵</b></a><a class="next" href="02_矩阵的秩与分块矩阵.html"><small>下一篇 →</small><b>矩阵的秩与分块矩阵</b></a></div></div></main></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script></body></html>

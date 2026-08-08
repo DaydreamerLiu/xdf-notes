@@ -1,0 +1,1119 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数学 · 积分</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">📐 数学</div><details class="grp" data-k="grp-高数" open><summary>高数<em>10</em></summary><a class="b" href="数学_极限与数列.html">极限与数列</a><a class="c x" href="数学_极限与数列_例题.html">▸ 例题集</a><a class="b" href="数学_导数与微分.html">导数与微分</a><a class="c x" href="数学_导数与微分_例题.html">▸ 例题集</a><a class="b" href="数学_中值定理.html">中值定理</a><a class="c x" href="数学_中值定理_例题.html">▸ 例题集</a><a class="b on" aria-current="page" href="数学_积分.html">积分</a><a class="c x" href="数学_积分_例题.html">▸ 例题集</a><a class="c" href="数学_积分.html#板块总览">板块总览</a><a class="c" href="数学_积分.html#一原函数与不定积分">一、原函数与不定积分</a><a class="d" href="数学_积分.html#11原函数定义与存在性">1.1 原函数定义与存在性</a><a class="d" href="数学_积分.html#12不定积分的定义与性质">1.2 不定积分的定义与性质</a><a class="d" href="数学_积分.html#13基本积分公式必考">1.3 基本积分公式 【必考】</a><a class="c" href="数学_积分.html#二换元积分法">二、换元积分法</a><a class="d" href="数学_积分.html#21第一类换元法凑微分必考">2.1 第一类换元法 —— 凑微分 【必考】</a><a class="d" href="数学_积分.html#22第二类换元法变量代换必考">2.2 第二类换元法 —— 变量代换 【必考】</a><a class="d" href="数学_积分.html#23定积分的换元法别忘了换限易错">2.3 定积分的换元法 —— 别忘了换限! 【易错】</a><a class="c" href="数学_积分.html#三分部积分法">三、分部积分法</a><a class="d" href="数学_积分.html#31公式与口诀必考">3.1 公式与口诀 【必考】</a><a class="d" href="数学_积分.html#32三类典型模式">3.2 三类典型模式</a><a class="c" href="数学_积分.html#四有理函数与三角函数的积分">四、有理函数与三角函数的积分</a><a class="d" href="数学_积分.html#41有理函数积分必考">4.1 有理函数积分 【必考】</a><a class="d" href="数学_积分.html#42三角函数积分高频">4.2 三角函数积分 【高频】</a><a class="c" href="数学_积分.html#五定积分">五、定积分</a><a class="d" href="数学_积分.html#51定积分的定义必考">5.1 定积分的定义 【必考】</a><a class="d" href="数学_积分.html#52定积分的几何意义">5.2 定积分的几何意义</a><a class="d" href="数学_积分.html#53定积分的性质">5.3 定积分的性质</a><a class="d" href="数学_积分.html#54积分中值定理必考">5.4 积分中值定理 【必考】</a><a class="d" href="数学_积分.html#55牛顿-莱布尼茨公式微积分基本定理必考">5.5 牛顿-莱布尼茨公式 (微积分基本定理) 【必考】</a><a class="c" href="数学_积分.html#六定积分的计算技巧">六、定积分的计算技巧</a><a class="d" href="数学_积分.html#61对称区间上的奇偶性高频">6.1 对称区间上的奇偶性 【高频】</a><a class="d" href="数学_积分.html#62周期函数的积分高频">6.2 周期函数的积分 【高频】</a><a class="d" href="数学_积分.html#63点火公式Wallis公式必考">6.3 点火公式 (Wallis 公式) 【必考】</a><a class="d" href="数学_积分.html#64几个重要定积分结论">6.4 几个重要定积分结论</a><a class="c" href="数学_积分.html#七变上限积分函数">七、变上限积分函数</a><a class="d" href="数学_积分.html#71定义与性质必考">7.1 定义与性质 【必考】</a><a class="d" href="数学_积分.html#72变上限积分的求导公式必考">7.2 变上限积分的求导公式 【必考】</a><a class="d" href="数学_积分.html#73变上限积分求极限高频">7.3 变上限积分求极限 【高频】</a><a class="c" href="数学_积分.html#八广义积分反常积分">八、广义积分 (反常积分)</a><a class="d" href="数学_积分.html#81无穷限的反常积分">8.1 无穷限的反常积分</a><a class="d" href="数学_积分.html#82无界函数的反常积分瑕积分易错">8.2 无界函数的反常积分 (瑕积分) 【易错】</a><a class="d" href="数学_积分.html#83反常积分的判敛必考">8.3 反常积分的判敛 【必考】</a><a class="d" href="数学_积分.html#84反常积分的计算">8.4 反常积分的计算</a><a class="c" href="数学_积分.html#九定积分的应用">九、定积分的应用</a><a class="d" href="数学_积分.html#91平面图形的面积必考">9.1 平面图形的面积 【必考】</a><a class="d" href="数学_积分.html#92旋转体体积必考">9.2 旋转体体积 【必考】</a><a class="d" href="数学_积分.html#93平面曲线的弧长数一数二">9.3 平面曲线的弧长 (数一数二)</a><a class="d" href="数学_积分.html#94旋转曲面面积数一数二">9.4 旋转曲面面积 (数一数二)</a><a class="d" href="数学_积分.html#95物理应用数一数二">9.5 物理应用 (数一数二)</a><a class="c" href="数学_积分.html#十易错点与考法总结">十、易错点与考法总结</a><a class="d" href="数学_积分.html#101高频易错点易错">10.1 高频易错点 【易错】</a><a class="d" href="数学_积分.html#102考法视角">10.2 考法视角</a><a class="d" href="数学_积分.html#103柯西-施瓦茨不等式重点">10.3 柯西-施瓦茨不等式 【重点】</a><a class="d" href="数学_积分.html#104积分不等式证明策略">10.4 积分不等式证明策略</a><a class="c" href="数学_积分.html#知识连接">知识连接</a><a class="b" href="数学_微分方程.html">微分方程</a><a class="c x" href="数学_微分方程_例题.html">▸ 例题集</a><a class="b" href="数学_多元与二重.html">多元与二重</a><a class="c x" href="数学_多元与二重_例题.html">▸ 例题集</a><a class="b" href="数学_级数.html">级数</a><a class="c x" href="数学_级数_例题.html">▸ 例题集</a><a class="b" href="数学_曲线曲面积分.html">曲线曲面积分</a><a class="c x" href="数学_曲线曲面积分_例题.html">▸ 例题集</a><a class="b" href="数学_导数应用.html">导数应用</a><a class="c x" href="数学_导数应用_例题.html">▸ 例题集</a><a class="b" href="数学_数三专题.html">数三专题</a></details><details class="grp" data-k="grp-线性代数"><summary>线性代数<em>1</em></summary><a class="b" href="数学_线性代数.html">线性代数</a><a class="c x" href="数学_线性代数_例题.html">▸ 例题集</a><a class="c" href="数学_线性代数.html#板块总览">板块总览</a><a class="c" href="数学_线性代数.html#一行列式">一、行列式</a><a class="c" href="数学_线性代数.html#二矩阵">二、矩阵</a><a class="c" href="数学_线性代数.html#三向量与秩">三、向量与秩</a><a class="c" href="数学_线性代数.html#四线性方程组">四、线性方程组</a><a class="c" href="数学_线性代数.html#五特征值与特征向量">五、特征值与特征向量</a><a class="c" href="数学_线性代数.html#六相似对角化与二次型">六、相似对角化与二次型</a><a class="c" href="数学_线性代数.html#知识连接">知识连接</a></details><details class="grp" data-k="grp-概率论"><summary>概率论<em>1</em></summary><a class="b" href="数学_概率论.html">概率论</a><a class="c x" href="数学_概率论_例题.html">▸ 例题集</a><a class="c" href="数学_概率论.html#板块总览">板块总览</a><a class="c" href="数学_概率论.html#一随机事件与概率">一、随机事件与概率</a><a class="c" href="数学_概率论.html#二一维随机变量及其分布">二、一维随机变量及其分布</a><a class="c" href="数学_概率论.html#三随机变量函数的分布高频">三、随机变量函数的分布 【高频】</a><a class="c" href="数学_概率论.html#四多维随机变量及其分布">四、多维随机变量及其分布</a><a class="c" href="数学_概率论.html#五随机变量的数字特征必考">五、随机变量的数字特征 【必考】</a><a class="c" href="数学_概率论.html#六大数定律与中心极限定理高频">六、大数定律与中心极限定理 【高频】</a><a class="c" href="数学_概率论.html#七数理统计初步高频">七、数理统计初步 【高频】</a><a class="c" href="数学_概率论.html#八知识连接">八、知识连接</a><a class="c" href="数学_概率论.html#核心公式速查">核心公式速查</a></details><a class="b" href="数学_练习与测试.html">练习与测试</a><a class="c x" href="数学_练习与测试_例题.html">▸ 例题集</a><a class="b" href="数学_复习清单.html">复习清单</a><a class="b" href="数学_技巧速查.html">技巧速查</a></nav>
+<div id="progress"></div>
+<main data-subj="math"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>数学 · 积分</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>积分</h1><div class="board-meta">📐 数学 · <span class="pill">理论笔记</span><span class="pill">12 节</span></div><blockquote>
+<p>阶段: 基础(0425-0510) + 强化(0715-0716) | 覆盖课件 11 份:
+0425（3）、0505（1）、0505（2）、0510（1）、0510（2）、定积分、定积分作业解析、0715（2）、0715（3）、0716（1）、0716（2）
+📖 例题全量见: <a href="数学_积分_例题.html">积分 · 例题集</a></p>
+</blockquote>
+<h2 id="板块总览">板块总览</h2>
+<p>积分是微积分两大运算之一, 地位与求导并列。整个板块的核心线索是: <b>不定积分求原函数 → 定积分求面积/累积量 → 反常积分处理无穷/无界 → 应用求几何物理量</b>。</p>
+<p>大框架: 不定积分给方法(换元/分部/有理函数), 定积分给定义(黎曼和 → 面积)和计算工具(牛莱公式), 变上限积分做桥梁(求导回到被积函数), 反常积分用极限扩展边界。学完这板块, 你应该能: 拿到一个积分, 先判断类型(不定/定/反常), 再选方法, 最后算出来。</p>
+<hr />
+<h2 id="一原函数与不定积分">一、原函数与不定积分</h2>
+<h3 id="11原函数定义与存在性">1.1 原函数定义与存在性</h3>
+<p><b>核心结论</b>
+若在区间 $I$ 上 $F'(x)=f(x)$, 则称 $F(x)$ 为 $f(x)$ 在 $I$ 上的一个<b>原函数</b>。</p>
+<p><b>直觉</b> 原函数就是"谁求导得到 $f$?"——不定积分就是回答这个问题。就像乘法的逆运算是除法, 积分的逆运算就是求原函数。</p>
+<p><b>关键性质</b>:</p>
+<ul>
+<li>原函数不唯一: 若 $F$ 是 $f$ 的原函数, 则 $F+C$ 也是 ($C$ 为任意常数) —— 求导会把常数抹掉</li>
+<li>连续函数必有原函数 (原函数存在定理)</li>
+<li><b>但初等函数的原函数不一定是初等函数</b> <span class="mk info">注意</span>: 如 $\int \sin(x^2)dx$、$\int e^{-x^2}dx$、$\int \frac{\sin x}{x}dx$ 等"积不出来"——它们原函数存在, 但无法用有限个初等函数表示</li>
+</ul>
+<p><span class="src">【来源: 0425（3）】</span></p>
+<h3 id="12不定积分的定义与性质">1.2 不定积分的定义与性质</h3>
+<p><b>定义</b> $\int f(x)dx = F(x) + C$, 其中 $F'(x)=f(x)$。</p>
+<p><b>线性性质</b>:
+$$ \int [f(x) \pm g(x)]dx = \int f(x)dx \pm \int g(x)dx $$
+$$ \int kf(x)dx = k\int f(x)dx \quad (k \neq 0) $$</p>
+<p><b>微分与积分互逆</b>:
+$$ \frac{d}{dx}\left[\int f(x)dx\right] = f(x), \qquad \int F'(x)dx = F(x) + C $$</p>
+<p><b>直觉</b> 先积后导回到原函数, 先导后积差个常数——这跟"先加后减"和"先减后加"的关系一样。</p>
+<p><span class="src">【来源: 0425（3）】</span></p>
+<h3 id="13基本积分公式必考">1.3 基本积分公式 <span class="mk biz">必考</span></h3>
+<p>这些公式是<b>凑微分</b>的基础——每个公式都是求导公式的逆写:</p>
+<p>$$
+\begin{aligned}
+&\int x^\alpha dx = \frac{x^{\alpha+1}}{\alpha+1}+C \;(\alpha \neq -1) \quad &
+&\int \frac{1}{x}dx = \ln|x|+C \\[4pt]
+&\int a^x dx = \frac{a^x}{\ln a}+C \; (a>0,a\neq 1) \quad &
+&\int e^x dx = e^x+C \\[4pt]
+&\int \sin x\,dx = -\cos x+C \quad &
+&\int \cos x\,dx = \sin x+C \\[4pt]
+&\int \tan x\,dx = -\ln|\cos x|+C \quad &
+&\int \cot x\,dx = \ln|\sin x|+C \\[4pt]
+&\int \sec^2 x\,dx = \tan x+C \quad &
+&\int \csc^2 x\,dx = -\cot x+C \\[4pt]
+&\int \sec x\tan x\,dx = \sec x+C \quad &
+&\int \csc x\cot x\,dx = -\csc x+C \\[4pt]
+&\int \sec x\,dx = \ln|\sec x+\tan x|+C \quad &
+&\int \csc x\,dx = \ln|\csc x-\cot x|+C \\[4pt]
+&\int \frac{dx}{1+x^2} = \arctan x+C \quad &
+&\int \frac{dx}{\sqrt{1-x^2}} = \arcsin x+C \\[4pt]
+&\int \frac{dx}{a^2+x^2} = \frac{1}{a}\arctan\frac{x}{a}+C \quad &
+&\int \frac{dx}{\sqrt{a^2-x^2}} = \arcsin\frac{x}{a}+C \\[4pt]
+&\int \frac{dx}{a^2-x^2} = \frac{1}{2a}\ln\left|\frac{a+x}{a-x}\right|+C \quad &
+&\int \frac{dx}{\sqrt{x^2\pm a^2}} = \ln|x+\sqrt{x^2\pm a^2}|+C
+\end{aligned}
+$$</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> $\int \frac{1}{x}dx = \ln|x|+C$ 的绝对值不能丢(定义域包含负半轴时); $\int \tan x\,dx$ 和 $\int \cot x\,dx$ 易混淆符号。</p>
+<p><span class="src">【来源: 0425（3）】</span></p>
+<hr />
+<h2 id="二换元积分法">二、换元积分法</h2>
+<p>换元的本质: <b>改变积分变量, 把复杂的被积表达式"翻译"成简单形式</b>。有两类方向相反的换元。</p>
+<h3 id="21第一类换元法凑微分必考">2.1 第一类换元法 —— 凑微分 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b>
+$$ \int f(\varphi(x))\varphi'(x)dx = \int f(u)du \;\big|_{u=\varphi(x)} = F(\varphi(x)) + C $$</p>
+<p><b>直觉</b> 把 $\varphi'(x)dx$ "凑成" $d\varphi(x)$, 相当于把 $x$ 的积分换成 $u=\varphi(x)$ 的积分。关键是<b>识别</b>被积函数中哪部分是某函数的导数。</p>
+<p><b>常见凑微分公式</b>:</p>
+<p>$$ \int f(ax+b)\,dx = \frac{1}{a}\int f(u)du \quad (u=ax+b) $$
+$$ \int \sin x\,f(\cos x)dx = -\int f(u)du \quad (u=\cos x) $$
+$$ \int \cos x\,f(\sin x)dx = \int f(u)du \quad (u=\sin x) $$
+$$ \int \frac{1}{x}f(\ln x)dx = \int f(u)du \quad (u=\ln x) $$
+$$ \int e^x f(e^x)dx = \int f(u)du \quad (u=e^x) $$
+$$ \int \sec^2 x\,f(\tan x)dx = \int f(u)du \quad (u=\tan x) $$
+$$ \int \frac{1}{\sqrt{1-x^2}}f(\arcsin x)dx = \int f(u)du \quad (u=\arcsin x) $$
+$$ \int \frac{1}{1+x^2}f(\arctan x)dx = \int f(u)du \quad (u=\arctan x) $$</p>
+<p><b>识别口诀</b>: 看到 $\varphi'(x)$ 和 $f(\varphi(x))$ 同时出现 → 凑微分。</p>
+<p><span class="src">【来源: 0425（3）】</span></p>
+<h3 id="22第二类换元法变量代换必考">2.2 第二类换元法 —— 变量代换 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b>
+$$ \int f(x)dx \;\xrightarrow{x=\psi(t)}\; \int f(\psi(t))\psi'(t)dt = F(t)+C \;\xrightarrow{t=\psi^{-1}(x)}\; F(\psi^{-1}(x))+C $$</p>
+<p>要求: $\psi(t)$ 单调可导, $\psi'(t) \neq 0$。</p>
+<p><b>直觉</b> 凑微分是"往里塞"($u=\varphi(x)$), 第二类换元是"往外拉"($x=\psi(t)$)——当被积函数含根号时主动设 $x$ 为某三角函数消去根号。</p>
+<p><b>三种标准三角换元</b>:</p>
+<table>
+<thead>
+<tr>
+<th>根号形式</th>
+<th>所作替换</th>
+<th>回代示意图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\sqrt{a^2-x^2}$</td>
+<td>$x = a\sin t$</td>
+<td>直角边 $x$, 斜边 $a$, 邻边 $\sqrt{a^2-x^2}$</td>
+</tr>
+<tr>
+<td>$\sqrt{a^2+x^2}$</td>
+<td>$x = a\tan t$</td>
+<td>对边 $x$, 邻边 $a$, 斜边 $\sqrt{a^2+x^2}$</td>
+</tr>
+<tr>
+<td>$\sqrt{x^2-a^2}$ $(x>0)$</td>
+<td>$x = a\sec t$</td>
+<td>斜边 $x$, 邻边 $a$, 对边 $\sqrt{x^2-a^2}$</td>
+</tr>
+</tbody>
+</table>
+<p><b>根式换元</b>: 若含 $\sqrt[n]{ax+b}$, 直接令 $\sqrt[n]{ax+b}=t$, 则 $x=\frac{t^n-b}{a}$。</p>
+<p><b>为什么用三角换元?</b> 因为 $\sin^2 t + \cos^2 t = 1$, $1 + \tan^2 t = \sec^2 t$, $\sec^2 t - 1 = \tan^2 t$, 恰好消去平方和/差里的根号。</p>
+<p><span class="src">【来源: 0425（3）、0505（1）】</span></p>
+<h3 id="23定积分的换元法别忘了换限易错">2.3 定积分的换元法 —— 别忘了换限! <span class="mk warn">易错</span></h3>
+<p><b>核心结论</b>
+$$ \int_a^b f(x)dx \;\xrightarrow{x=\varphi(t)}\; \int_\alpha^\beta f(\varphi(t))\varphi'(t)dt $$
+其中 $\varphi(\alpha)=a$, $\varphi(\beta)=b$。</p>
+<p><b><span class="mk warn">易错</span> 定积分换元必须同步换限, 且换元后不用再换回 $x$——直接用新变量和新上下限算。这是定积分换元比不定积分换元省事的地方!</b></p>
+<p><b>区间再现公式</b> <span class="mk ok">重点</span>:
+$$ \int_a^b f(x)dx = \int_a^b f(a+b-x)dx $$
+令 $x = a+b-t$, 则 $dx=-dt$, 上限变下限, 翻过来即得上式。<b>用途</b>: 当 $f(x)+f(a+b-x)$ 可简化时使用。</p>
+<p>特例(0 到 $\pi/2$ 上的 $\sin$/$\cos$):
+$$ \int_0^{\frac{\pi}{2}} f(\sin x)dx = \int_0^{\frac{\pi}{2}} f(\cos x)dx $$</p>
+<p><span class="src">【来源: 0510（1）、0716（1）】</span></p>
+<hr />
+<h2 id="三分部积分法">三、分部积分法</h2>
+<h3 id="31公式与口诀必考">3.1 公式与口诀 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b>
+$$ \int u\,dv = uv - \int v\,du $$
+或写成: $\int uv'\,dx = uv - \int u'v\,dx$</p>
+<p><b>直觉</b> 分部积分是<b>乘积求导公式的逆用</b>: $(uv)' = u'v + uv'$, 移项得 $uv' = (uv)' - u'v$, 积分即得分部公式。</p>
+<p><b>选 $u$ 的口诀: "反对幂指三"</b> —— 按此顺序, 靠前的优先选为 $u$:</p>
+<ul>
+<li><b>反</b>: 反三角函数 ($\arcsin$, $\arctan$, $\arccos$)</li>
+<li><b>对</b>: 对数函数 ($\ln x$, $\log_a x$)</li>
+<li><b>幂</b>: 幂函数 ($x^n$)</li>
+<li><b>指</b>: 指数函数 ($e^x$, $a^x$)</li>
+<li><b>三</b>: 三角函数 ($\sin$, $\cos$, $\tan$)</li>
+</ul>
+<p><b>为什么是这个顺序?</b> 求导会"降级": 反三角 → 有理式, 对数 → 幂, 幂 → 常数 → 0, 指数不变, 三角变种类。选 $u$ 的原则是让 $\int v\,du$ 比原积分更简单, 所以优先选求导后能"降级"的。</p>
+<p><b><span class="mk info">注意</span></b> "越靠后越往后放"——选为 $dv$ 的那部分要容易积分。口诀中的顺序同时也是"谁做 $u$ (靠前)"和"谁做 $v$ (靠后)"的指导。</p>
+<p><span class="src">【来源: 0505（1）、0716（1）】</span></p>
+<h3 id="32三类典型模式">3.2 三类典型模式</h3>
+<p><b>(1) 幂函数 × 指数/三角</b> —— $u$ 选幂函数, 多次分部降幂
+例: $\int x^n e^x dx$, $\int x^n \sin x dx$ —— 每分部一次, $x$ 的幂降一次, 最终 $x^0$ 时消去。</p>
+<p><b>(2) 幂函数 × 对数/反三角</b> —— $u$ 选对数/反三角, 求导消去超越函数
+例: $\int x^n \ln x\,dx$ —— $u=\ln x$, 求导后变成有理式; $\int x^n \arctan x\,dx$ 同理。</p>
+<p><b>(3) 指数 × 三角 —— 循环型</b> <span class="mk ok">重点</span>
+例: $\int e^{ax}\sin bx\,dx$ 或 $\int e^{ax}\cos bx\,dx$
+分部两次后会回到原积分, 解方程即得:
+$$ \int e^{ax}\sin bx\,dx = \frac{e^{ax}(a\sin bx - b\cos bx)}{a^2+b^2} + C $$
+$$ \int e^{ax}\cos bx\,dx = \frac{e^{ax}(a\cos bx + b\sin bx)}{a^2+b^2} + C $$</p>
+<p><b>行列式记忆法</b><span class="mk info">注意</span> 循环型结果可写成行列式:
+$$ \int e^{ax}\sin bx\,dx=\frac{e^{ax}}{a^2+b^2}\begin{vmatrix}(e^{ax})' & (\sin bx)'\\ e^{ax} & \sin bx\end{vmatrix}+C $$
+分子 = "第一行导数、第二行原函数"的行列式——两行交叉项自动带符号, 一次写完, 免去循环解方程。题型带 $a=0$ 或 $b=0$ 时退化为普通公式, 也适用。</p>
+<p><b>递推型</b>: $\int \sec^n x\,dx$ 或 $\int \tan^n x\,dx$, 分部后得到同类但次数更低的形式, 建立递推公式。</p>
+<p><b><span class="mk warn">易错</span></b> 定积分分部: $\int_a^b u\,dv = uv\big|_a^b - \int_a^b v\,du$, 别忘了第一项代入上下限。</p>
+<p><span class="src">【来源: 0505（1）、0716（1）、0716（2）】</span></p>
+<hr />
+<h2 id="四有理函数与三角函数的积分">四、有理函数与三角函数的积分</h2>
+<h3 id="41有理函数积分必考">4.1 有理函数积分 <span class="mk biz">必考</span></h3>
+<p><b>定义</b> 有理函数 = 两个多项式的商 $\frac{P(x)}{Q(x)}$。若 $\deg P < \deg Q$ 称<b>真分式</b>, 否则为<b>假分式</b>。</p>
+<p><b>步骤</b>: 假分式先做多项式除法化为"多项式 + 真分式"; 真分式分解为部分分式。</p>
+<p><b>部分分式分解定理</b>:
+若 $Q(x)=b_0(x-a)^\alpha\cdots(x-b)^\beta(x^2+px+q)^\mu\cdots$ ($p^2-4q<0$), 则:
+$$ \frac{P(x)}{Q(x)} = \frac{A_1}{x-a} + \frac{A_2}{(x-a)^2} + \cdots + \frac{A_\alpha}{(x-a)^\alpha} + \cdots + \frac{P_1x+Q_1}{x^2+px+q} + \cdots $$</p>
+<p><b>系数的求法</b>:</p>
+<ul>
+<li><b>赋值法</b>: 等式两边同乘分母, 代入 $x$ 的特殊值(如 $x=a$, $x=b$)来求系数</li>
+<li><b>比较系数法</b>: 展开后比较同次幂系数</li>
+<li><b>取极限法</b>: 取 $x\to\infty$ 得到高次项间的关系</li>
+</ul>
+<p><b>四种基本部分分式的积分</b>:
+$$ \int \frac{A}{x-a}dx = A\ln|x-a|+C $$
+$$ \int \frac{A}{(x-a)^k}dx = \frac{A}{1-k}\frac{1}{(x-a)^{k-1}}+C \;(k>1) $$
+$$ \int \frac{Px+Q}{x^2+px+q}dx \;\text{—— 配方 + 凑微分 + arctan} $$
+$$ \int \frac{Px+Q}{(x^2+px+q)^k}dx \;\text{—— 三角换元或递推} $$</p>
+<p><span class="src">【来源: 0505（1）、0716（2）】</span></p>
+<h3 id="42三角函数积分高频">4.2 三角函数积分 <span class="mk freq">高频</span></h3>
+<p><b>万能代换</b> (最后手段): 令 $t = \tan\frac{x}{2}$, 则:
+$$ \sin x = \frac{2t}{1+t^2}, \quad \cos x = \frac{1-t^2}{1+t^2}, \quad dx = \frac{2}{1+t^2}dt $$
+把三角函数全部化为 $t$ 的有理函数。<b>万能代换总能算出来, 但计算量大——优先用凑微分/降幂。</b></p>
+<p><b>常用技巧</b>:</p>
+<ul>
+<li>$\int \sin^n x\,dx$ 或 $\int \cos^n x\,dx$: $n$ 为奇数, 拆一个出来凑 $d\cos x$ 或 $d\sin x$; $n$ 为偶数, 用半角公式降次 $\sin^2 x = \frac{1-\cos 2x}{2}$, $\cos^2 x = \frac{1+\cos 2x}{2}$</li>
+<li>$\int \sin^m x\cos^n x\,dx$: 若 $m$ 或 $n$ 为奇数, 拆一个凑微分; 均为偶数则降幂</li>
+<li>$\int \tan^n x\,dx$: $\tan^2 x = \sec^2 x - 1$, 拆项降次</li>
+<li>$\int \frac{dx}{1+\sin x}$ 型: 分子分母同乘共轭</li>
+<li><b>"化 tan x" 通法</b><span class="mk freq">高频</span> 被积函数是 $\sin/\cos$ 的<b>偶次幂齐次分式</b>(如 $\int\frac{dx}{\sin^4x\cos^2x}$): 分子分母同除以 $\cos$ 的最高次幂, 化成正切的多项式: $\int\frac{dx}{\sin^4x\cos^2x}=\int\frac{\sec^6x\,dx}{\tan^4x}=\int\frac{(1+t^2)^2}{t^4}dt$($t=\tan x$)。凡是"同幂次分式"先想化 tan。</li>
+<li><b>辅助角公式合项</b><span class="mk freq">高频</span> 分母含 $\sin x\pm\cos x$ 混合: 用 $\sin x+\cos x=\sqrt2\sin(x+\frac\pi4)$ 化成单一 $\sin$, 再令 $t=x+\frac\pi4$。例: $\int\frac{dx}{\sqrt2+\sin x+\cos x}$。</li>
+</ul>
+<p><b>例题用到的特定模式</b>:
+$$ \int \frac{\sin x - \cos x}{\sin x + 2\cos x}dx $$
+做法: 设分子 $= A(\text{分母}) + B(\text{分母})'$, 其中 $(\sin x+2\cos x)' = \cos x - 2\sin x$。解 $A,B$ 后拆成两项: 一项是 $A\int dx$, 另一项凑 $\int \frac{d(\text{分母})}{\text{分母}}$。</p>
+<p><span class="src">【来源: 0505（1）、0505（2）】</span></p>
+<hr />
+<h2 id="五定积分">五、定积分</h2>
+<h3 id="51定积分的定义必考">5.1 定积分的定义 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b>
+$$ \int_a^b f(x)dx = \lim_{\lambda\to 0}\sum_{i=1}^n f(\xi_i)\Delta x_i $$
+其中 $\lambda = \max\{\Delta x_i\}$ 是最大子区间长度。</p>
+<p><b>四步</b>: ① 分割 → ② 取点 → ③ 作和 → ④ 取极限。</p>
+<p><b>直觉</b> 把 $[a,b]$ 切成 $n$ 个小区间, 每段面积近似为 $f(\xi_i)\Delta x_i$(矩形面积), 分得越细近似越好, 极限就是精确面积。黎曼和 → 定积分。</p>
+<p><b>与极限的关系 —— 定积分定义求极限</b> <span class="mk freq">高频</span>:
+$$ \lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n f\!\left(\frac{k}{n}\right) = \int_0^1 f(x)dx $$
+识别特征: <b>含有 $\frac{1}{n}$ 因子 + 通项 $f(\frac{k}{n})$</b>。</p>
+<p>更一般: $\lim_{n\to\infty}\frac{b-a}{n}\sum_{k=1}^n f\!\left(a+k\frac{b-a}{n}\right) = \int_a^b f(x)dx$。</p>
+<p><span class="src">【来源: 0505（2）、定积分作业解析】</span></p>
+<h3 id="52定积分的几何意义">5.2 定积分的几何意义</h3>
+<p>$\int_a^b f(x)dx$ 表示曲线 $y=f(x)$ 与 $x=a$, $x=b$, $x$ 轴围成图形的<b>面积的代数和</b>: $x$ 轴上方取正, 下方取负 ($a<b$)。</p>
+<p><b>利用几何意义简化</b>: 如 $\int_0^2 \sqrt{2x-x^2}dx$ —— 这是半圆 $(x-1)^2+y^2=1$ (上半) 的面积 $= \frac{\pi}{2}$ <span class="fill">【AI补全】</span>, 无需积分计算。</p>
+<p><span class="src">【来源: 0505（2）】</span></p>
+<h3 id="53定积分的性质">5.3 定积分的性质</h3>
+<p><b>(1) 基本性质</b>:
+$$ \int_a^b f(x)dx = -\int_b^a f(x)dx, \quad \int_a^a f(x)dx = 0 $$
+$$ \int_a^b [k_1f(x)+k_2g(x)]dx = k_1\int_a^b f(x)dx + k_2\int_a^b g(x)dx $$
+$$ \int_a^b f(x)dx = \int_a^c f(x)dx + \int_c^b f(x)dx \quad (\text{区间可加性}) $$</p>
+<p><b>(2) 保序性</b>: 若 $f(x) \leq g(x)$ 在 $[a,b]$ 上, 则 $\int_a^b f(x)dx \leq \int_a^b g(x)dx$ ($a<b$)。</p>
+<p><b>(3) 绝对值不等式</b>:
+$$ \left|\int_a^b f(x)dx\right| \leq \int_a^b |f(x)|dx \quad (a<b) $$</p>
+<p><b>(4) 估值不等式</b>: 若 $m \leq f(x) \leq M$ 在 $[a,b]$ 上, 则
+$$ m(b-a) \leq \int_a^b f(x)dx \leq M(b-a) \quad (a<b) $$</p>
+<p><b><span class="mk ok">重点</span>函数比较大小题</b>: 在区间内比较 $f$ 和 $g$ 的大小 → 积分也保持大小关系。常用在选择题中判断积分的大小排序。</p>
+<p><span class="src">【来源: 0505（2）、定积分作业解析】</span></p>
+<h3 id="54积分中值定理必考">5.4 积分中值定理 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b> 若 $f(x)$ 在 $[a,b]$ 上连续, 则 $\exists \xi \in [a,b]$, 使得:
+$$ \int_a^b f(x)dx = f(\xi)(b-a) $$</p>
+<p><b>直觉</b> 曲边梯形的面积 = 以某高度 $f(\xi)$ 为高的等宽矩形面积。$f(\xi) = \frac{1}{b-a}\int_a^b f(x)dx$ 就是 $f$ 在 $[a,b]$ 上的<b>平均值</b>。</p>
+<p><b>用途</b>: ① 求函数在区间上的平均值 ② 去掉积分号(证明题) ③ 与微分中值定理联用。</p>
+<p><b>【连接】</b> 与微分中值定理板块呼应: 积分中值定理 = "积分的拉格朗日", 都是存在某个中间点使等式成立。</p>
+<p><span class="src">【来源: 0505（2）、定积分】</span></p>
+<h3 id="55牛顿-莱布尼茨公式微积分基本定理必考">5.5 牛顿-莱布尼茨公式 (微积分基本定理) <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b> 若 $F(x)$ 是连续函数 $f(x)$ 在 $[a,b]$ 上的一个原函数, 则:
+$$ \int_a^b f(x)dx = F(b) - F(a) = F(x)\big|_a^b $$</p>
+<p><b>直觉</b> 这是整个微积分的枢纽——把"求面积"(定积分)和"求原函数"(不定积分)连接起来。从此定积分不用每次都画矩形做黎曼和, 直接找原函数代上下限就行。</p>
+<p><span class="src">【来源: 0510（1）】</span></p>
+<hr />
+<h2 id="六定积分的计算技巧">六、定积分的计算技巧</h2>
+<h3 id="61对称区间上的奇偶性高频">6.1 对称区间上的奇偶性 <span class="mk freq">高频</span></h3>
+<p><b>核心结论</b></p>
+<ul>
+<li>若 $f(x)$ 为奇函数: $\int_{-a}^a f(x)dx = 0$</li>
+<li>若 $f(x)$ 为偶函数: $\int_{-a}^a f(x)dx = 2\int_0^a f(x)dx$</li>
+</ul>
+<p><b>直觉</b> 奇函数关于原点对称, 正负面积抵消; 偶函数对称, 左右面积相同。</p>
+<p><b>常用技巧</b>: 面对对称区间 $[-a,a]$, 把被积函数拆成奇部 + 偶部 —— 奇部积分为 0, 只算偶部。</p>
+<p><span class="src">【来源: 0505（2）、定积分、0716（1）】</span></p>
+<h3 id="62周期函数的积分高频">6.2 周期函数的积分 <span class="mk freq">高频</span></h3>
+<p><b>核心结论</b> 若 $f(x)$ 以 $T$ 为周期且连续, 则:
+$$ \int_a^{a+T} f(x)dx = \int_0^T f(x)dx \quad (\text{任意 } a) $$
+$$ \int_a^{a+nT} f(x)dx = n\int_0^T f(x)dx $$</p>
+<p><b>直觉</b> 周期函数在一个完整周期内的积分与起点无关——因为每个周期的"净面积"相同。</p>
+<p><b>【例】</b> $\int_0^{5\pi} |\sin x|dx = 5\int_0^\pi \sin x\,dx = 5 \times 2 = 10$。</p>
+<p><span class="src">【来源: 0505（2）、定积分作业解析】</span></p>
+<h3 id="63点火公式Wallis公式必考">6.3 点火公式 (Wallis 公式) <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b>
+$$ \int_0^{\frac{\pi}{2}} \sin^n x\,dx = \int_0^{\frac{\pi}{2}} \cos^n x\,dx = \begin{cases}
+\dfrac{n-1}{n} \cdot \dfrac{n-3}{n-2} \cdots \dfrac{1}{2} \cdot \dfrac{\pi}{2}, & n \text{ 为正偶数} \\[10pt]
+\dfrac{n-1}{n} \cdot \dfrac{n-3}{n-2} \cdots \dfrac{2}{3} \cdot 1, & n \text{ 为大于 1 的正奇数}
+\end{cases} $$</p>
+<p><b>记忆</b>: 从 $n$ 开始每次减 2 乘下去, 偶数以 $\frac{\pi}{2}$ 结尾, 奇数以 $1$ 结尾。<b>名字来源</b>: 像导火线一样"引燃"降次。</p>
+<p><b>何时用</b>: 看到 $\int_0^{\pi/2} \sin^n x\,dx$ 或 $\int_0^{\pi/2} \cos^n x\,dx$, 直接代公式, 不用分部积分。</p>
+<p><b><span class="mk warn">易错</span></b> 必须积分区间是 $[0,\frac{\pi}{2}]$; 其他区间要先通过换元或对称性转化为这个区间。</p>
+<p><span class="src">【来源: 0510（1）、定积分、0716（2）】</span></p>
+<h3 id="64几个重要定积分结论">6.4 几个重要定积分结论</h3>
+<p>$$ \int_0^\pi xf(\sin x)dx = \frac{\pi}{2}\int_0^\pi f(\sin x)dx = \pi\int_0^{\frac{\pi}{2}} f(\sin x)dx $$
+$$ \int_0^{\frac{\pi}{2}} f(\sin x)dx = \int_0^{\frac{\pi}{2}} f(\cos x)dx $$
+$$ \int_0^a \sqrt{a^2-x^2}\,dx = \frac{\pi a^2}{4} \quad (\text{四分之一圆面积}) $$</p>
+<p><b>区间再现</b>的典型应用: $\int_0^\pi \frac{x\sin x}{1+\cos^2 x}dx$, 令 $x=\pi-t$ 可得原式 $=\frac{\pi}{2}\int_0^\pi \frac{\sin x}{1+\cos^2 x}dx$ <span class="fill">【AI补全】</span>。核心思想: <b>当 $f(x)+f(a+b-x)$ 能消去麻烦的部分时使用</b>。</p>
+<p><span class="src">【来源: 0510（1）、0716（1）、0716（2）】</span></p>
+<hr />
+<h2 id="七变上限积分函数">七、变上限积分函数</h2>
+<h3 id="71定义与性质必考">7.1 定义与性质 <span class="mk biz">必考</span></h3>
+<p><b>定义</b> 设 $f(x)$ 在 $[a,b]$ 上可积, 称 $\Phi(x) = \int_a^x f(t)dt$ ($x\in[a,b]$) 为<b>变上限积分函数</b>。</p>
+<p><b>关键性质</b>:</p>
+<ol>
+<li><b>连续性</b>: 变上限积分函数必连续 (只要 $f$ 可积)</li>
+<li><b>可导性</b>: 若 $f$ 在 $[a,b]$ 上连续, 则 $\Phi(x)$ 可导, 且 $\Phi'(x) = f(x)$</li>
+<li><b>奇偶性</b>: $f$ 为奇函数 ⇒ $\int_0^x f(t)dt$ 为偶函数; $f$ 为偶函数 ⇒ $\int_0^x f(t)dt$ 为奇函数</li>
+<li><b>周期性</b>: $f$ 以 $T$ 为周期且 $\int_0^T f(x)dx=0$ ⇒ $\int_a^x f(t)dt$ 也以 $T$ 为周期</li>
+</ol>
+<p><span class="src">【来源: 0510（1）、定积分作业解析、0715（2）】</span></p>
+<h3 id="72变上限积分的求导公式必考">7.2 变上限积分的求导公式 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b>
+$$ \frac{d}{dx}\int_a^{\varphi(x)} f(t)dt = f(\varphi(x))\cdot\varphi'(x) $$
+$$ \frac{d}{dx}\int_{\psi(x)}^{\varphi(x)} f(t)dt = f(\varphi(x))\varphi'(x) - f(\psi(x))\psi'(x) $$</p>
+<p><b>直觉</b> 上限是 $x$ → 导数就是被积函数(把 $t$ 换成 $x$); 上限是 $\varphi(x)$ → 链式法则再乘 $\varphi'(x)$; 下限也要考虑(减掉)。</p>
+<p><b>含 $x$ 在积分号和被积函数中的情况</b>:</p>
+<ul>
+<li>$\int_a^x (x-t)f(t)dt$: 先把 $x$ 提出积分号外(积分变量是 $t$, $x$ 视作常数): $x\int_a^x f(t)dt - \int_a^x tf(t)dt$, 再求导</li>
+<li>$\int_a^x f(x-t)dt$: 换元 $u=x-t$, 变为 $\int_0^{x-a} f(u)du$, 再求导</li>
+</ul>
+<p><span class="src">【来源: 0510（1）、0715（2）】</span></p>
+<h3 id="73变上限积分求极限高频">7.3 变上限积分求极限 <span class="mk freq">高频</span></h3>
+<p><b>典型模式</b>: $\frac{0}{0}$ 型, 洛必达 + 变上限求导 + 等价无穷小。
+$$ \lim_{x\to 0}\frac{\int_0^x f(t)dt}{x^n} \;\xrightarrow{\text{洛}}\; \lim_{x\to 0}\frac{f(x)}{nx^{n-1}} $$</p>
+<p><b><span class="mk warn">易错</span></b> 洛必达前先确认是 $\frac{0}{0}$ 或 $\frac{\infty}{\infty}$ 型; 求导时注意上限是 $x$ 还是 $x$ 的函数。</p>
+<p><span class="src">【来源: 0510（1）】</span></p>
+<hr />
+<h2 id="八广义积分反常积分">八、广义积分 (反常积分)</h2>
+<h3 id="81无穷限的反常积分">8.1 无穷限的反常积分</h3>
+<p><b>定义</b>
+$$ \int_a^{+\infty} f(x)dx = \lim_{b\to+\infty}\int_a^b f(x)dx $$
+$$ \int_{-\infty}^b f(x)dx = \lim_{a\to-\infty}\int_a^b f(x)dx $$
+$$ \int_{-\infty}^{+\infty} f(x)dx = \lim_{a\to-\infty}\int_a^c f(x)dx + \lim_{b\to+\infty}\int_c^b f(x)dx $$</p>
+<p>极限存在 → <b>收敛</b>; 不存在 → <b>发散</b>。</p>
+<p><b><span class="mk info">注意</span></b> $\int_{-\infty}^{+\infty}$ 必须两个极限<b>同时</b>存在才收敛; 但凡一个不存在, 整体发散。</p>
+<p><b>重要结论 (p-积分)</b>:
+$$ \int_a^{+\infty} \frac{dx}{x^p} \;(a>0) \quad \begin{cases} \text{收敛}, & p>1 \\ \text{发散}, & p \leq 1 \end{cases} $$
+<b>特别地</b>, $p=1$ 时 $\int_a^{+\infty}\frac{dx}{x} = \ln x\big|_a^{+\infty}$ 发散。</p>
+<p><span class="src">【来源: 0510（1）】</span></p>
+<h3 id="82无界函数的反常积分瑕积分易错">8.2 无界函数的反常积分 (瑕积分) <span class="mk warn">易错</span></h3>
+<p><b>定义</b> 若 $f(x)$ 在 $a$ 的任一邻域内无界, 称 $a$ 为<b>瑕点</b>。</p>
+<ul>
+<li>$a$ 为瑕点: $\int_a^b f(x)dx = \lim_{t\to a^+}\int_t^b f(x)dx$</li>
+<li>$b$ 为瑕点: $\int_a^b f(x)dx = \lim_{t\to b^-}\int_a^t f(x)dx$</li>
+<li>$c\in(a,b)$ 为瑕点: $\int_a^b = \lim_{t\to c^-}\int_a^t + \lim_{t\to c^+}\int_t^b$, 两个极限<b>同时存在</b>才收敛</li>
+</ul>
+<p><b>重要结论 (q-积分)</b>:
+$$ \int_a^b \frac{dx}{(x-a)^q} \;(a<b) \quad \begin{cases} \text{收敛}, & q<1 \\ \text{发散}, & q \geq 1 \end{cases} $$</p>
+<p><b><span class="mk warn">易错</span></b> 瑕积分<b>看起来像普通定积分但被积函数在某处无穷</b>! 如 $\int_0^1 \frac{dx}{\sqrt{x}}$ 看起来是定积分, 实则在 $x=0$ 处是瑕积分。一定要先检查被积函数在积分区间内是否有瑕点。</p>
+<p><span class="src">【来源: 0510（2）】</span></p>
+<h3 id="83反常积分的判敛必考">8.3 反常积分的判敛 <span class="mk biz">必考</span></h3>
+<p><b>比较判别法 (定理)</b>: 若 $0 \leq f(x) \leq g(x)$ ($x\geq a$) 且它们有共同的瑕点, 则:</p>
+<ul>
+<li>$\int_a^{+\infty} g(x)dx$ 收敛 ⇒ $\int_a^{+\infty} f(x)dx$ 收敛</li>
+<li>$\int_a^{+\infty} f(x)dx$ 发散 ⇒ $\int_a^{+\infty} g(x)dx$ 发散</li>
+</ul>
+<p><b>极限形式 (同阶同敛散)</b>: 若 $\lim_{x\to+\infty}\frac{f(x)}{g(x)} = \lambda$ ($0<\lambda<+\infty$), 则 $\int_a^{+\infty}f(x)dx$ 与 $\int_a^{+\infty}g(x)dx$ <b>同时收敛或同时发散</b>。</p>
+<p><b>极限形式的两个边界</b><span class="mk info">注意</span> $\lambda=0$: $f$ 被 $g$ 控制, <b>小者随大者</b>: $g$ 收敛 ⇒ $f$ 收敛; $\lambda=+\infty$: $f$ 控制 $g$, <b>大者随小者</b>: $g$ 发散 ⇒ $f$ 发散。极限形式可以放宽到 $0\le\lambda\le+\infty$ 用。</p>
+<p><b>判敛策略</b>:</p>
+<ol>
+<li>找瑕点: $x\to\infty$ 或 $x$ 趋于某值使被积函数无界</li>
+<li>在瑕点附近找等价无穷小/无穷大, 与 p-积分/q-积分比较</li>
+<li><span class="mk info">注意</span>多个瑕点要分段讨论, 每段都收敛整体才收敛</li>
+</ol>
+<p><b>常见比较基准</b>:
+$$ \int_1^{+\infty}\frac{dx}{x^p}: p>1 \text{ 收敛}, p\leq 1 \text{ 发散} $$
+$$ \int_0^1\frac{dx}{x^q}: q<1 \text{ 收敛}, q\geq 1 \text{ 发散} $$
+$$ \int_2^{+\infty}\frac{dx}{x(\ln x)^p}: p>1 \text{ 收敛}, p\leq1 \text{ 发散}\ \ \text{【对数标尺, 必考】} $$</p>
+<p><b>直觉</b> 对数标尺的 $p$ 判据方向与 $x^p$ 相反? 不, 完全同向: 都是"<b>分母越强越收敛</b>"。$x(\ln x)^p$ 里 $x$ 已经保证了比 $1/x$ 略强, 剩下比拼 $(\ln x)^p$ 的力度——$p>1$ 才压得住。它与 $p$ 级数 $\sum\frac1{n(\ln n)^p}$ 是同一族(级数板块同款标尺)。</p>
+<p><span class="src">【来源: 0510（1）、0510（2）、0715（2）、0716（2）】</span></p>
+<h3 id="84反常积分的计算">8.4 反常积分的计算</h3>
+<p><b>方法</b>: ① 先当普通定积分, 用牛莱公式写出 $F(x)$ ② 对上限/下限取极限(瑕点处取单侧极限) ③ 若极限存在, 即为积分值; 不存在则发散。</p>
+<p><b>典型</b>: $\int_0^{+\infty} \frac{dx}{1+x^2} = \lim_{b\to+\infty}\arctan x\big|_0^b = \frac{\pi}{2}$。</p>
+<p><span class="src">【来源: 0510（1）、0510（2）】</span></p>
+<hr />
+<h2 id="九定积分的应用">九、定积分的应用</h2>
+<h3 id="91平面图形的面积必考">9.1 平面图形的面积 <span class="mk biz">必考</span></h3>
+<p><b>(1) 直角坐标</b>:</p>
+<ul>
+<li>X 型: $S = \int_a^b [y_{\text{上}}(x) - y_{\text{下}}(x)]dx$</li>
+<li>Y 型: $S = \int_c^d [x_{\text{右}}(y) - x_{\text{左}}(y)]dy$</li>
+</ul>
+<p><b>(2) 极坐标</b>:
+$$ S = \frac{1}{2}\int_\alpha^\beta r^2(\theta)d\theta $$
+两个极径之间: $S = \frac{1}{2}\int_\alpha^\beta [r_2^2(\theta) - r_1^2(\theta)]d\theta$</p>
+<p><b>典型图形</b>: 心形线 $r=a(1+\cos\theta)$ 面积 $= \frac{3}{2}\pi a^2$; 双纽线 $r^2=a^2\cos 2\theta$ 面积 $=a^2$ <span class="fill">【AI补全】</span>。</p>
+<p><span class="src">【来源: 0510（2）、0715（2）】</span></p>
+<h3 id="92旋转体体积必考">9.2 旋转体体积 <span class="mk biz">必考</span></h3>
+<p><b>(1) 绕 $x$ 轴旋转</b> (曲线 $y=f(x) \geq 0$, $x\in[a,b]$):
+$$ V_x = \pi\int_a^b f^2(x)dx $$</p>
+<p><b>(2) 绕 $y$ 轴旋转</b> (柱壳法):
+$$ V_y = 2\pi\int_a^b x|f(x)|dx $$</p>
+<p><b>(3) 由 $x=g(y) \geq 0$, $y\in[c,d]$ 绕 $y$ 轴旋转</b>:
+$$ V_y = \pi\int_c^d g^2(y)dy $$</p>
+<p><b>(4) 绕 $y$ 轴旋转 (柱壳法)</b>: $V_x = 2\pi\int_c^d y|g(y)|dy$</p>
+<p><b>直觉</b>: 绕 $x$ 轴 → 圆盘法, 面积是 $\pi r^2 = \pi f^2(x)$; 绕 $y$ 轴 → 柱壳法, 把图形看成很多薄壳, 每个壳体积 $2\pi x \cdot f(x) \cdot dx$ (周长 × 高度 × 厚度)。</p>
+<p><b>绕平行于坐标轴的直线旋转</b>: 先平移坐标系, 把旋转轴变成坐标轴。</p>
+<p><span class="src">【来源: 0510（2）、0715（2）】</span></p>
+<h3 id="93平面曲线的弧长数一数二">9.3 平面曲线的弧长 (数一数二)</h3>
+<p><b>(1) 参数方程</b> $x=x(t), y=y(t)$ ($\alpha\leq t\leq\beta$):
+$$ s = \int_\alpha^\beta \sqrt{x'^2(t) + y'^2(t)}\,dt $$</p>
+<p><b>(2) 直角坐标</b> $y=y(x)$ ($a\leq x\leq b$):
+$$ s = \int_a^b \sqrt{1 + y'^2(x)}\,dx $$</p>
+<p><b>(3) 极坐标</b> $r=r(\theta)$ ($\alpha\leq\theta\leq\beta$):
+$$ s = \int_\alpha^\beta \sqrt{r^2(\theta) + r'^2(\theta)}\,d\theta $$</p>
+<p><span class="src">【来源: 0510（2）】</span></p>
+<h3 id="94旋转曲面面积数一数二">9.4 旋转曲面面积 (数一数二)</h3>
+<p>曲线 $y=f(x)\geq 0$ ($a\leq x\leq b$) 绕 $x$ 轴旋转:
+$$ S = 2\pi\int_a^b y\,ds = 2\pi\int_a^b f(x)\sqrt{1+f'^2(x)}\,dx $$</p>
+<p><b>直觉</b>: 每个微弧段 $ds$ 旋转出一个"窄带", 面积 $= 2\pi y \cdot ds$ (周长 × 宽度)。</p>
+<p><span class="src">【来源: 0510（2）、0715（3）】</span></p>
+<h3 id="95物理应用数一数二">9.5 物理应用 (数一数二)</h3>
+<p><b>微元法四步</b>: ① 建坐标系, 确定积分区间 ② 取微元 $[x,x+\Delta x]$ ③ 写出微元的近似量 $\Delta Q \approx f(x)\Delta x$ ④ 积分。</p>
+<p><b>常见类型</b>:</p>
+<ul>
+<li><b>变力做功</b>: $W = \int_a^b F(x)dx$</li>
+<li><b>水压力</b>: $P = \int_a^b \rho g \cdot \text{深度} \cdot \text{宽度}\,dx$</li>
+<li><b>质心/形心</b>: $\bar{x} = \frac{\int x\,dm}{\int dm}$, $\bar{y} = \frac{\int y\,dm}{\int dm}$ (均匀时 $\rho=1$ 即为形心)</li>
+<li><b>抽水做功</b>: $W = \int \rho g \cdot \text{提升高度} \cdot \text{体积微元}$</li>
+</ul>
+<p><span class="src">【来源: 定积分、0715（3）】</span></p>
+<hr />
+<h2 id="十易错点与考法总结">十、易错点与考法总结</h2>
+<h3 id="101高频易错点易错">10.1 高频易错点 <span class="mk warn">易错</span></h3>
+<ol>
+<li><b>不定积分漏加 $C$</b>: 不定积分结果必须加常数项, 定积分不用</li>
+<li><b>定积分换元忘换限</b>: $x=\varphi(t)$ 后上下限同步变为 $t$ 的对应值</li>
+<li><b>$\int\frac{1}{x}dx$ 忘了绝对值</b>: 是 $\ln|x|$, 不是 $\ln x$</li>
+<li><b>瑕积分当普通定积分</b>: 如 $\int_{-1}^1\frac{dx}{x^2}$ 在 $x=0$ 处有瑕点, 不能直接牛莱</li>
+<li><b>分部积分选 $u$ 选错</b>: 口诀"反对幂指三"——靠前选为 $u$</li>
+<li><b>奇偶性用在非对称区间</b>: $\int_{-a}^a$ 才能用奇偶性, $\int_0^a$ 不行</li>
+<li><b>变上限求导忘了乘上限导数</b>: $\frac{d}{dx}\int_a^{x^2}f(t)dt = f(x^2)\cdot 2x$</li>
+<li><b>加减里的等价替换</b>: 如 $\sin x$ 和 $\tan x$ 在 $x\to 0$ 时等价, 但 $\sin x - \tan x$ 不能各自换成 $x$</li>
+</ol>
+<h3 id="102考法视角">10.2 考法视角</h3>
+<table>
+<thead>
+<tr>
+<th>考法</th>
+<th>频次</th>
+<th>常用手段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不定积分计算</td>
+<td><span class="mk biz">必考</span></td>
+<td>凑微分 → 分部 → 有理函数分解 → 三角换元</td>
+</tr>
+<tr>
+<td>定积分计算</td>
+<td><span class="mk biz">必考</span></td>
+<td>牛莱公式 + 奇偶性/周期性/点火公式</td>
+</tr>
+<tr>
+<td>变上限积分求导/极限</td>
+<td><span class="mk freq">高频</span></td>
+<td>洛必达 + 变上限求导</td>
+</tr>
+<tr>
+<td>积分比大小</td>
+<td><span class="mk freq">高频</span></td>
+<td>保序性 / 函数在区间内的单调性</td>
+</tr>
+<tr>
+<td>反常积分判敛</td>
+<td><span class="mk biz">必考</span></td>
+<td>比较判别法 / p-积分/q-积分</td>
+</tr>
+<tr>
+<td>定积分应用(面积/体积)</td>
+<td><span class="mk biz">必考</span></td>
+<td>公式 + 正确确定积分变量和上下限</td>
+</tr>
+<tr>
+<td>积分不等式证明</td>
+<td><span class="mk ok">重点</span></td>
+<td>变上限造辅助函数 / 积分中值定理 / 柯西-施瓦茨</td>
+</tr>
+</tbody>
+</table>
+<h3 id="103柯西-施瓦茨不等式重点">10.3 柯西-施瓦茨不等式 <span class="mk ok">重点</span></h3>
+<p>$$ \left(\int_a^b f(x)g(x)dx\right)^2 \leq \int_a^b f^2(x)dx \cdot \int_a^b g^2(x)dx $$</p>
+<p><b>证明思路</b>: 构造辅助函数 $F(t) = \int_a^b [f(x)t + g(x)]^2 dx \geq 0$, 展开后是关于 $t$ 的二次函数, 由于恒非负, 判别式 $\Delta \leq 0$, 即得不等式。</p>
+<p><span class="src">【来源: 0715（2）、0716（1）】</span></p>
+<h3 id="104积分不等式证明策略">10.4 积分不等式证明策略</h3>
+<ol>
+<li><b>变上限造辅助函数</b>: 令 $F(x) = \int_a^x f(t)dt - \text{(要证的不等式右端)}$, 求导判单调</li>
+<li><b>积分中值定理</b>: 去掉积分号, 转化为函数值比较</li>
+<li><b>柯西-施瓦茨</b>: 适合处理 $\int fg$ 与 $\int f^2$、$\int g^2$ 的关系</li>
+<li><b>分部积分</b>: 含 $f', f''$ 时常分部积分转化</li>
+<li><b>泰勒展开</b>: 已知 $f''(x)$ 符号时, 用泰勒展开后积分</li>
+</ol>
+<p><span class="src">【来源: 0715（2）、0716（1）】</span></p>
+<hr />
+<h2 id="知识连接">知识连接</h2>
+<ol>
+<li><b>积分 ← 求导</b>: 不定积分 = 求导的逆运算; 牛莱公式连接定积分和原函数</li>
+<li><b>积分 → 微分方程</b>: 解微分方程本质是积分</li>
+<li><b>积分 → 级数</b>: 部分和 → 定积分定义求极限</li>
+<li><b>积分中值定理 ↔ 微分中值定理</b>: 都是"存在某点使等式成立"</li>
+<li><b>柯西-施瓦茨 ↔ 向量内积不等式</b>: $\int fg$ 可视为函数空间的内积</li>
+<li><b>变上限积分 ↔ 极限</b>: 洛必达 + 变上限求导 是极限题的常见解法</li>
+<li><b>换元法 ↔ 链式法则</b>: 第一类换元 = 链式法则逆用; 第二类换元 = 反函数求导</li>
+<li><b>分部积分 ↔ 乘积求导</b>: $(uv)' = u'v + uv'$ 逆用</li>
+</ol>
+<hr />
+<blockquote>
+<p>📖 例题全量见: <a href="数学_积分_例题.html">积分 · 例题集</a></p>
+</blockquote></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_中值定理_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 中值定理_例题</b></span></a><a class="next" href="数学_积分_例题.html"><span class="pg-t"><small>下一篇</small><b>数学 · 积分_例题</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

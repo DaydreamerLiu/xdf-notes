@@ -1,0 +1,529 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>矩阵的秩与分块矩阵_例题 · 线代救命 · 成册</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">线</span><span class="bt"><b>线代救命</b><small>BILIBILI · 没咋了</small></span></div>
+<a class="subj" href="线代救命_首页.html">⌂ 封面/目录</a>
+<a class="b" href="01_行列式与矩阵.html">行列式与矩阵</a>
+<a class="c" href="01_行列式与矩阵_例题.html">▸ 行列式与矩阵_例题</a>
+<a class="b" href="02_矩阵的秩与分块矩阵.html">矩阵的秩与分块矩阵</a>
+<a class="c on" href="02_矩阵的秩与分块矩阵_例题.html">▸ 矩阵的秩与分块矩阵_例题</a>
+<a class="b" href="03_向量.html">向量</a>
+<a class="c" href="03_向量_例题.html">▸ 向量_例题</a>
+<a class="b" href="04_线性方程组.html">线性方程组</a>
+<a class="c" href="04_线性方程组_例题.html">▸ 线性方程组_例题</a>
+<a class="b" href="05_矩阵相似.html">矩阵相似</a>
+<a class="c" href="05_矩阵相似_例题.html">▸ 矩阵相似_例题</a>
+<a class="b" href="06_二次型.html">二次型</a>
+<a class="c" href="06_二次型_例题.html">▸ 二次型_例题</a></nav><main><div class="article"><blockquote>
+<p>全量收录本讲例题: 例 1.23-1.36 (共 14 题, 讲义 1.4 初等矩阵 / 1.5 矩阵的秩 / 1.6 分块矩阵)。
+解法以视频 #2 讲解为准; 题干以手稿/讲义为准重建, 模糊处标<span class="mk warn">数值不清</span>, 补全处标<span class="fill">【AI补全】</span>。
+⬅ 返回 <a href="02_矩阵的秩与分块矩阵.html">理论笔记</a></p>
+</blockquote>
+<hr />
+<h2 id="方法一初等矩阵左行右列翻译成等式">方法一: 初等矩阵——左行右列翻译成等式</h2>
+<p id="例123" class="prob"><b>例 1.23</b> 快速填空: <span class="src">【来源: 视频#2、讲义1.4】</span></p>
+<p>$$ \begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}^{-1}=\_\_\_\_\_, \qquad \begin{pmatrix}1&0&0\\0&1&0\\0&0&-2\end{pmatrix}^{-1}=\_\_\_\_\_, \qquad \begin{pmatrix}1&0&0\\2&1&0\\0&0&1\end{pmatrix}^{-1}=\_\_\_\_\_ $$</p>
+<p>$$ \begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}^{2024}\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\begin{pmatrix}1&-1&0\\0&1&0\\0&0&1\end{pmatrix}=\_\_\_\_\_ $$</p>
+<details><summary>解答过程</summary>
+<div class="step">① 第一个: 互换型初等矩阵 (交换第 1、2 行), 逆矩阵就是它本身: $\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}^{-1}=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}$。<span class="why">互换的再互换一次就回单位阵, 所以 $E_{ij}^{-1}=E_{ij}$。<b>考点</b>: 三种初等矩阵的逆靠理解直接写。</span></div>
+<div class="step">② 第二个: 倍乘型, 第三行 (列) 乘了 $-2$, 逆就是乘 $-\frac12$: $\begin{pmatrix}1&0&0\\0&1&0\\0&0&-2\end{pmatrix}^{-1}=\begin{pmatrix}1&0&0\\0&1&0\\0&0&-\frac12\end{pmatrix}$。<span class="why">$E_i(k)^{-1}=E_i(\frac1k)$, 乘 k 倍的再乘 $\frac1k$ 缩回去。<b>易错</b>: 只有对角元处换成 $\frac1k$, 其余位置不动。</span></div>
+<div class="step">③ 第三个: 倍加型, 表示"第一行的 2 倍加到第二行", 逆就是"第一行的 $-2$ 倍加到第二行": $\begin{pmatrix}1&0&0\\2&1&0\\0&0&1\end{pmatrix}^{-1}=\begin{pmatrix}1&0&0\\-2&1&0\\0&0&1\end{pmatrix}$。<span class="why">$E_{ij}(c)^{-1}=E_{ij}(-c)$, 加了 c 倍再用 $-c$ 加回去, "相当于没加"。<b>考点</b>: 倍加型逆矩阵只变一个位置, 添个负号。</span></div>
+<div class="step">④ 第四个: 左边 $\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}^{2024}=E$ (互换型初等矩阵, 偶次幂是单位阵)。所以整个式子变成 $\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\begin{pmatrix}1&-1&0\\0&1&0\\0&0&1\end{pmatrix}$。<span class="why">$E_{ij}^{\,n}$: n 偶得 $E$, n 奇得 $E_{ij}$ 本身。2024 是偶数——"左边就是迷惑你的, 看起来很吓人, 它没用, 就只用右边"。</span></div>
+<div class="step">⑤ 右乘 $\begin{pmatrix}1&-1&0\\0&1&0\\0&0&1\end{pmatrix}$ (表示"第一列的 $-1$ 倍加到第二列") 是列变换: 第一列 $(1,4,7)$ 不动, 第二列 $=(2-1,5-4,8-7)=(1,1,1)$, 第三列不动。结果 $\begin{pmatrix}1&1&3\\4&1&6\\7&1&9\end{pmatrix}$。<span class="why">右乘 = 列变换 (左行右列); 列变换只动对应列。<b>考点</b>: 左行右列 + $E_{ij}$ 幂的奇偶性, 基础概念务必熟练。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 初等矩阵三件套直接写答案——互换型逆=本身且幂看奇偶, 倍乘型逆=$\frac1k$, 倍加型逆=添负号。</div>
+</details>
+
+<p id="例124" class="prob"><b>例 1.24</b> 设 $A$ 是 3 阶矩阵, 将 $A$ 的第 1、2 行互换得矩阵 $B$, 再将 $B$ 的第 2、3 列互换得单位矩阵。记 $P_1=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}$, $P_2=\begin{pmatrix}1&0&0\\0&0&1\\0&1&0\end{pmatrix}$, 则 $A^*=$ <span class="src">【来源: 视频#2、讲义1.4】</span></p>
+<p>A. $P_1P_2$　　B. $P_2P_1$　　C. $P_1^{-1}P_2^{-1}$<span class="fill">【AI补全】</span>　　D. $P_1^{-1}P_2$<span class="fill">【AI补全】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 把变换翻译成矩阵等式: 第 1、2 行互换是行变换, 左乘 $P_1$: $P_1A=B$; 第 2、3 列互换是列变换, 右乘 $P_2$: $BP_2=E$。所以 $P_1AP_2=E$。<span class="why">左行右列: 行变换左乘, 列变换右乘。<b>考点</b>: 把语言描述翻译成矩阵方程, 建立等式关系。</span></div>
+<div class="step">② 解出 $A$: $A=P_1^{-1}P_2^{-1}=P_1P_2$。<span class="why">两边左乘 $P_1^{-1}$、右乘 $P_2^{-1}$, 单位阵夹在中间可以不写; 互换型初等矩阵的逆等于本身。</span></div>
+<div class="step">③ $A^*=(P_1P_2)^*=P_2^*P_1^*$。<span class="why">伴随矩阵的"穿透原则" (上节课讲过): 乘积的伴随 = 各自伴随反序相乘 $(AB)^*=B^*A^*$。<b>易错</b>: 顺序要反。</span></div>
+<div class="step">④ 初等矩阵的伴随走 $P^*=|P|P^{-1}$: $P_1^*=(-1)P_1^{-1}=-P_1$, 同理 $P_2^*=-P_2$。<span class="why">互换型行列式为 $-1$, 逆是本身。老师: "伴随嘛, 你就转化为求解它的行列式和逆, 因为行列式和逆我们非常熟悉"。</span></div>
+<div class="step">⑤ $A^*=(-P_2)(-P_1)=P_2P_1$, 选 <b>B</b>。<span class="why">两个负号抵消。<b>考点</b>: 伴随穿透原则 + 初等矩阵三大运算, 一步都不能省。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 初等变换题的标准流程: 翻译成 $P_1AP_2=E$ → 解出 $A$ → 伴随反序穿透, 初等矩阵伴随走 $|P|P^{-1}$。</div>
+</details>
+
+<p id="例125" class="prob"><b>例 1.25</b> 设 $A$ 为 3 阶矩阵【数值不清: 手稿中 $A$ 的元素模糊, 但本题求解 $P$ 只依赖所施行的初等变换, 不依赖 $A$ 的具体取值, 视频讲解亦未使用 $A$ 的元素】, 将 $A$ 的第 1 列分别乘以 $-\frac12$ 与 $-1$ 后依次加到第 2 列与第 3 列得 $B$, 再将 $B$ 的第 1 行分别乘以 $-\frac12$ 与 $-1$ 后依次加到第 2 行与第 3 行得 $C$。若可逆矩阵 $P$ 使得 $P^{\mathrm{T}}AP=C$, 则 $P=$ <span class="src">【来源: 视频#2、讲义1.4】</span></p>
+<p>A. $\begin{pmatrix}1&\frac12&1\\0&1&0\\0&0&1\end{pmatrix}$　　B. $\begin{pmatrix}1&-\frac12&-1\\0&1&0\\0&0&1\end{pmatrix}$　　C. $\begin{pmatrix}1&0&0\\-\frac12&1&0\\-1&0&1\end{pmatrix}$　　D. $\begin{pmatrix}1&0&0\\\frac12&1&0\\1&0&1\end{pmatrix}$</p>
+<details><summary>解答过程</summary>
+<div class="step">① 列变换右乘: 第 1 列乘 $-\frac12$ 加到第 2 列 → 右乘矩阵的<b>第 2 列</b>是 $\begin{pmatrix}-\frac12\\1\\0\end{pmatrix}$; 第 1 列乘 $-1$ 加到第 3 列 → 右乘矩阵的<b>第 3 列</b>是 $\begin{pmatrix}-1\\0\\1\end{pmatrix}$; 第 1 列不动 → 第 1 列是 $\begin{pmatrix}1\\0\\0\end{pmatrix}$。故 $B=AP$, $P=\begin{pmatrix}1&-\frac12&-1\\0&1&0\\0&0&1\end{pmatrix}$。<span class="why">右乘矩阵的每一列对应一个列变换: 被加的列的位置上放系数。老师描述: "第一列幺零零不动, 乘以负二分之一倍加到第二列去, 那是不是负二分之一幺零……"——直接按列读出 $P$。<b>考点</b>: 右乘 = 列变换, 系数按列摆放。</span></div>
+<div class="step">② 行变换左乘: 第 1 行乘 $-\frac12$ 加到第 2 行、乘 $-1$ 加到第 3 行 → 左乘矩阵的第 2 行是 $\begin{pmatrix}-\frac12&1&0\end{pmatrix}$、第 3 行是 $\begin{pmatrix}-1&0&1\end{pmatrix}$。正好是 $P^{\mathrm{T}}$。<span class="why">验证: 把 $P$ 转置, 第一列的 $-\frac12$、$-1$ 就落到了第一行——$P^{\mathrm{T}}$ 正好是行变换对应的左乘矩阵, 所以 $C=P^{\mathrm{T}}AP$ 成立。<b>考点</b>: 左行右列 + 转置初等矩阵下标互换的天然体现。</span></div>
+<div class="step">③ 选 <b>B</b>。<span class="why">$P$ 就是第一行有 $-\frac12$、$-1$ 的那个矩阵。<b>易错</b>: A、C 是符号放错位置的干扰项——A 把负号丢了, C 把 $P^{\mathrm{T}}$ 当成了 $P$。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: "某列乘 c 加到某列"这类语言 → 直接按列写右乘矩阵; 行变换同理按行写左乘矩阵, 两者互为转置。</div>
+</details>
+
+<hr />
+<h2 id="方法二秩的界ABO双角度定秩">方法二: 秩的界——$AB=O$ 双角度定秩</h2>
+<p id="例126" class="prob"><b>例 1.26</b> 已知 $Q=\begin{pmatrix}1&2&3\\2&4&t\\3&6&9\end{pmatrix}$, $P$ 为 3 阶非零矩阵, 且 $PQ=O$, 则必有（　）<span class="src">【来源: 视频#2、讲义1.5】</span></p>
+<p>A. 当 $t=6$ 时, $r(P)=1$　　B. 当 $t=6$ 时, $r(P)=2$</p>
+<p>C. 当 $t\neq6$ 时, $r(P)=1$　　D. 当 $t\neq6$ 时, $r(P)=2$</p>
+<details><summary>解答过程</summary>
+<div class="step">① $PQ=O$ 且 $P$、$Q$ 都是 3 阶 → $r(P)+r(Q)\le3$。<span class="why">$AB=O\Rightarrow r(A)+r(B)\le n$, n 是方阵阶数。这是本题的总框架。</span></div>
+<div class="step">② 当 $t=6$ 时, $Q$ 的三行 $(1,2,3),(2,4,6),(3,6,9)$ 成比例 → $r(Q)=1$。代入得 $r(P)\le2$; 又 $P$ 非零 → $r(P)\ge1$。$r(P)$ 是 1 还是 2 说不清, A、B 都不能选。<span class="why">$r(P)\in\{1,2\}$ 两种可能都存在, 题目要求"必有", 排除法。<b>易错</b>: 非零矩阵秩 ≥ 1 是常用下界, 别忘了。</span></div>
+<div class="step">③ 当 $t\neq6$ 时: 取前两行后两列的二阶子式 $\begin{vmatrix}2&3\\4&t\end{vmatrix}=2t-12=2(t-6)\neq0$ → $r(Q)\ge2$; 又第 1、3 行始终成比例 → $r(Q)\le2$。故 $r(Q)=2$。<span class="why">二阶子式非零给出下界, 成比例的两行给出上界, 夹逼定秩。<b>考点</b>: 含参矩阵定秩的套路——找一个非零子式卡下界, 找行 (列) 比例卡上界。</span></div>
+<div class="step">④ $r(P)\le3-2=1$, 且 $r(P)\ge1$ → $r(P)=1$, 选 <b>C</b>。<span class="why">两个方向一夹, 秩唯一确定。<b>易错</b>: $t=6$ 时是"不能确定", $t\neq6$ 时是"确定等于 1", 区别就在于 $r(Q)$ 是 1 还是 2。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $AB=O$ 定秩三步: ① 写 $r(A)+r(B)\le n$; ② 定已知矩阵的秩 (子式下界 + 比例上界); ③ 非零矩阵秩 ≥ 1, 夹逼出未知秩。</div>
+</details>
+
+<p id="例127" class="prob"><b>例 1.27</b> 设 $A$ 是 5 阶方阵, 且 $A^2=O$, 则 $r(A^*)=$＿＿＿。<span class="src">【来源: 视频#2、讲义1.5】</span></p>
+<details><summary>解答过程</summary>
+<div class="step">① 把 $A^2=O$ 看成 $A\cdot A=O$, 套 $AB=O$ 结论: $r(A)+r(A)\le5$, 即 $2r(A)\le5$ → $r(A)\le2.5$。<span class="why">老师特意提醒: "关于这种 $A^2=O$ 的时候, 你千万不要忘了我也能够用这个结论"——把 $A^2$ 写成 $A$ 乘 $A$。</span></div>
+<div class="step">② 秩是整数, $r(A)\le2$。<span class="why">"质是不可能取分数的"——$r(A)\le2.5$ 即 $r(A)\le2$。</span></div>
+<div class="step">③ $r(A)=2<5-1=4$ → 用伴随矩阵秩三情形, $r(A^*)=0$。<span class="why">$r(A)<n-1$ 时所有 $n-1$ 阶子式全为零, 伴随矩阵为零矩阵。<b>考点</b>: $A^2=O$ 转 $AB=O$ + 伴随秩三情形, 两步都是一行公式。</span></div>
+<div class="step">④ 答: $\boldsymbol{0}$。<span class="why">$A^*=O$, 秩自然为 0。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $A^2=O$ 型: 视作 $A\cdot A=O$ 得 $2r(A)\le n$, 再配合伴随秩三情形直接给答案。</div>
+</details>
+
+<p id="例128" class="prob"><b>例 1.28</b> 设 $A$ 为 $m\times n$ 矩阵, $B$ 为 $n\times m$ 矩阵, $E$ 为 $m$ 阶单位矩阵。若 $AB=E$, 则（　）<span class="src">【来源: 视频#2、讲义1.5】</span></p>
+<p>A. $r(A)=m,\ r(B)=m$　　B. $r(A)=m,\ r(B)=n$　　C. $r(A)=n,\ r(B)=m$　　D. $r(A)=n,\ r(B)=n$</p>
+<details><summary>解答过程</summary>
+<div class="step">① $AB=E$ 是 $m\times m$ 单位阵 → $r(AB)=r(E)=m$。<span class="why">单位阵满秩, 秩等于阶数。这是夹逼的一头。</span></div>
+<div class="step">② "秩越乘越小": $m=r(AB)\le r(A)$; 又 $A$ 是 $m\times n$, $r(A)\le\min(m,n)\le m$。于是 $m\le r(A)\le m$, 夹逼出 $r(A)=m$。<span class="why">左右两头都是 $m$, 中间的不等号必须全部取等。<b>考点</b>: 夹逼定秩——先找上界再找下界, 相等即定。</span></div>
+<div class="step">③ 同理 $m=r(AB)\le r(B)\le m$ → $r(B)=m$。选 <b>A</b>。<span class="why">$B$ 是 $n\times m$, 秩不超过列数 $m$; 对称地再夹一次。</span></div>
+<div class="step">④ 引申: 由此推出 $m\le n$。<span class="why">$r(A)=m$ 要求 $A$ 有 $m$ 个线性无关的行 (或列), 而 $A$ 只有 $n$ 列, 所以列数不少于行数。老师留的思考题: "m 和 n 哪个大? 这道题隐含起来了, m 应该是小于等于 n 的"。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 乘积等于单位阵型: $m=r(AB)\le r(A)\le m$ 双向夹逼, 两个因子都满秩 (秩 = 单位阵阶数)。</div>
+</details>
+
+<p id="例129" class="prob"><b>例 1.29</b> 设 $\alpha,\beta$ 为 3 维列向量, 矩阵 $A=\alpha\alpha^{\mathrm{T}}+\beta\beta^{\mathrm{T}}$。证明: <span class="src">【来源: 视频#2、讲义1.5】</span></p>
+<p>(1) $r(A)\le2$;　　(2) 若 $\alpha,\beta$ 线性相关, 则 $r(A)<2$。</p>
+<details><summary>解答过程</summary>
+<div class="step">(1) ① $r(A)=r(\alpha\alpha^{\mathrm{T}}+\beta\beta^{\mathrm{T}})\le r(\alpha\alpha^{\mathrm{T}})+r(\beta\beta^{\mathrm{T}})$。<span class="why">和的秩不超过秩的和 (公式⑥)。第一问比较直接, 就是套公式。</span></div>
+<div class="step">(1) ② 每个单项: $r(\alpha\alpha^{\mathrm{T}})\le r(\alpha)\le1$ (秩越乘越小 + 列向量秩 ≤ 1), 同理 $r(\beta\beta^{\mathrm{T}})\le1$。所以 $r(A)\le1+1=2$。<span class="why">$\alpha\alpha^{\mathrm{T}}$ 秩 ≤ 1 也可以直接看: 它是 $\alpha$ 乘 $\alpha^{\mathrm{T}}$, 秩越乘越小, 而 $\alpha$ 是列向量秩至多 1。$n$ 维列向量的秩 ≤ 1 是常识。</span></div>
+<div class="step">(2) ① $\alpha,\beta$ 线性相关 → $\alpha=k\beta$。则 $\alpha\alpha^{\mathrm{T}}=(k\beta)(k\beta)^{\mathrm{T}}=k^2\beta\beta^{\mathrm{T}}$。<span class="why">转置也乘进去: $(k\beta)^{\mathrm{T}}=k\beta^{\mathrm{T}}$, 共 $k^2$ 提出去。</span></div>
+<div class="step">(2) ② $A=(k^2+1)\beta\beta^{\mathrm{T}}$, 倍乘不改变秩 (公式②): $r(A)=r(\beta\beta^{\mathrm{T}})\le1<2$。<span class="why">非零常数乘矩阵秩不变, 又回到"秩越乘越小", $r(\beta\beta^{\mathrm{T}})\le r(\beta)\le1$。<b>易错</b>: 最后要的是严格小于 2, 所以写成 $\le1<2$。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $\alpha\beta^{\mathrm{T}}$ 型矩阵 (外积矩阵) 秩 ≤ 1; 本题的公式⑥、②、④ 三件套练手。老师预告: 后面学特征值时, 用 $A\alpha$、$A\beta$ 去乘, 能得到特征向量信息。</div>
+</details>
+
+<hr />
+<h2 id="方法三分块矩阵的伴随转化为行列式逆">方法三: 分块矩阵的伴随——转化为行列式 × 逆</h2>
+<p id="例130" class="prob"><b>例 1.30</b> 设 $A,B$ 均为 2 阶矩阵, $A^*,B^*$ 分别为 $A,B$ 的伴随矩阵。若 $|A|=2$, $|B|=3$, 则分块矩阵 $\begin{pmatrix}O&A\\B&O\end{pmatrix}$ 的伴随矩阵为（　）<span class="src">【来源: 视频#2、讲义1.6】</span></p>
+<p>A. $\begin{pmatrix}O&3B^*\\2A^*&O\end{pmatrix}$　　B. $\begin{pmatrix}O&2B^*\\3A^*&O\end{pmatrix}$　　C. $\begin{pmatrix}O&3A^*\\2B^*&O\end{pmatrix}$　　D. $\begin{pmatrix}O&2A^*\\3B^*&O\end{pmatrix}$</p>
+<details><summary>解答过程</summary>
+<div class="step">① 记 $M=\begin{pmatrix}O&A\\B&O\end{pmatrix}$。伴随一律走 $M^*=|M|M^{-1}$。<span class="why">老师: "伴随嘛, 你就转化为求解它的行列式和逆, 因为行列式和逆我们非常熟悉。"<b>考点</b>: 伴随公式 $A^*=|A|A^{-1}$ 对 $n\ge2$ 都成立, 是处理抽象伴随的唯一武器。</span></div>
+<div class="step">② $|M|=(-1)^{2\times2}|A||B|=|A||B|=6$。<span class="why">副对角线分块行列式带 $(-1)^{mn}$, A、B 都是 2 阶, $mn=4$ 是偶数, 符号为正。<b>易错</b>: 老师点名"负对角线特别容易错, 千万不要把这个 (符号) 掉了"。</span></div>
+<div class="step">③ $M^{-1}=\begin{pmatrix}O&B^{-1}\\A^{-1}&O\end{pmatrix}$。<span class="why">副对角线分块求逆: 各自求逆, 还要换位置。<b>易错</b>: 换位置是老师点名的第三个易错点。</span></div>
+<div class="step">④ $M^*=6M^{-1}=\begin{pmatrix}O&6B^{-1}\\6A^{-1}&O\end{pmatrix}$。再把 $6B^{-1}=6\cdot\dfrac{B^*}{|B|}=2B^*$, $6A^{-1}=6\cdot\dfrac{A^*}{|A|}=3A^*$ 代入: $M^*=\begin{pmatrix}O&2B^*\\3A^*&O\end{pmatrix}$, 选 <b>B</b>。<span class="why">把行列式塞进每个块里凑伴随的形式: $B^{-1}=\frac{B^*}{|B|}$ 代入, 系数 $6/3=2$、$6/2=3$。<b>考点</b>: 拉普拉斯公式 + 副对角逆 + 伴随公式三合一。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 分块伴随 = 行列式 (负对角带 $(-1)^{mn}$) × 逆 (副对角换位置), 再化 $B^{-1}=\frac{B^*}{|B|}$ 凑选项。</div>
+</details>
+
+<hr />
+<h2 id="方法四分块矩阵的秩矩阵乘法进一步解读">方法四: 分块矩阵的秩——矩阵乘法进一步解读</h2>
+<p id="例131" class="prob"><b>例 1.31</b> 设 $A,B$ 为 $n$ 阶矩阵, 记 $r(X)$ 为矩阵 $X$ 的秩, $(X\ Y)$ 表示分块矩阵, 则（　）<span class="src">【来源: 视频#2、讲义1.6】</span>(2018 年真题)</p>
+<p>A. $r(A,\ AB)=r(A)$　　B. $r(A,\ BA)=r(A)$　　C. $r(A,\ B)=\max\{r(A),r(B)\}$　　D. $r(AB)=r(A^{\mathrm{T}}B^{\mathrm{T}})$</p>
+<details><summary>解答过程</summary>
+<div class="step">① 先看 A: $(A,\ AB)=A(E,\ B)$, 所以 $r(A,\ AB)=r(A(E,B))\le r(A)$ (秩越乘越小); 又拼接只加列, 秩不减: $r(A,\ AB)\ge r(A)$。夹逼得 $r(A,\ AB)=r(A)$。<span class="why">两个方向: 拆成乘积给上界, 加列不减给下界。<b>考点</b>: 分块矩阵拆成乘积是常用变形。</span></div>
+<div class="step">② 更直观的理解 (老师主推): $AB$ 的<b>列</b>可以由 $A$ 的<b>列</b>线性表出 (矩阵乘法进一步解读结论三)。把 $AB$ 的列拼到 $A$ 后面, 这些新列本来就能被 $A$ 的列表出, "你把这些列向量给加进来之后, 它的秩会发生变化吗? 不会, 反正可以由之前的表出, 它会维持在 $r(A)$ 不变"。<span class="why">这就是"反复地品"的结论三: $AB$ 的列向量可由 $A$ 的列向量线性表出。<b>易错</b>: 表出方向别记反——列由前面的因子表出, 行由后面的因子表出。</span></div>
+<div class="step">③ B 为什么错: $BA$ 的列<b>不一定</b>能由 $A$ 的列表出, 拼进来秩可能增加。反例: $A=\begin{pmatrix}1&1\\0&0\end{pmatrix}$, $B=\begin{pmatrix}0&0\\1&1\end{pmatrix}$, 则 $BA=\begin{pmatrix}0&0\\1&1\end{pmatrix}$, $r(A,\ BA)=r\begin{pmatrix}1&1&0&0\\0&0&1&1\end{pmatrix}=2\neq r(A)=1$。<span class="why">$BA$ 的列是 $B$ 乘 $A$ 的列得到的, 是 $B$ 的列的线性组合, 跟 $A$ 的列没关系。<b>易错</b>: "$AB$ 的列可由 $A$ 的列表出"不能换成"$BA$ 的列可由 $A$ 的列表出"——因子顺序不能换。</span></div>
+<div class="step">④ C 为什么错: 拼接秩只能保证 $\ge\max$, 不保证相等。同反例: $r(A,\ B)=2$, 而 $\max\{r(A),r(B)\}=1$。<span class="why">"这个反例就不要太好找"——两个秩都是 1 的矩阵拼在一起秩到 2。</span></div>
+<div class="step">⑤ D 为什么错: $(AB)^{\mathrm{T}}=B^{\mathrm{T}}A^{\mathrm{T}}$, 不是 $A^{\mathrm{T}}B^{\mathrm{T}}$——"分块矩阵的转置是大转加小转"没搞清楚。反例【AI补全: 老师视频中口述反例数值有误, 此处给出正确反例】: $A=\begin{pmatrix}1&0\\0&0\end{pmatrix}$, $B=\begin{pmatrix}0&1\\0&0\end{pmatrix}$, 则 $AB=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ ($r=1$), 而 $A^{\mathrm{T}}B^{\mathrm{T}}=\begin{pmatrix}1&0\\0&0\end{pmatrix}\begin{pmatrix}0&0\\1&0\end{pmatrix}=O$ ($r=0$)。<span class="why">$r(AB)=r((AB)^{\mathrm{T}})=r(B^{\mathrm{T}}A^{\mathrm{T}})$, 转置要反序, 和 $r(A^{\mathrm{T}}B^{\mathrm{T}})$ 没有必然关系。<b>易错</b>: 乘积转置反序 $+$ 分块转置"大转加小转", 两个都容易错。</span></div>
+<div class="step">⑥ 选 <b>A</b>。<span class="why">唯一成立的结论: $r(A,AB)=r(A)$, 由 $AB$ 的列可由 $A$ 的列表出直接得到。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $AB$ 的列可由 $A$ 的列表出, $AB$ 的行可由 $B$ 的行表出——凡是"拼上 $AB$"的秩判断题都靠它, 因子顺序不能换。</div>
+</details>
+
+<p id="例132" class="prob"><b>例 1.32</b> 设分块矩阵 $D=\begin{pmatrix}A&O\\C&B\end{pmatrix}$, 则下列选项正确的是（　）<span class="src">【来源: 视频#2、讲义1.6】</span></p>
+<p>A. $r(D)\ge r(A)+r(B)$　　B. $r(D)<r(A)+r(B)$　　C. $r(D)\le r(A)+r(B)$　　D. $r(D)=r(A)+r(B)$</p>
+<details><summary>解答过程</summary>
+<div class="step">① 先看对角情形: $r\begin{pmatrix}A&O\\O&B\end{pmatrix}=r(A)+r(B)$。<span class="why">老师的证明思路 (想听的同学简单听): 分块对角 (含副对角) 时, $A$ 块所在列的列向量与 $B$ 块所在列的列向量互相正交; 非零且正交的两个向量一定线性无关, 所以两组极大线性无关组并起来还是线性无关组——秩正好相加。<b>考点</b>: 正交 ⇒ 线性无关, 是证明"秩相加"的钥匙。</span></div>
+<div class="step">② 加了一块 $C$, 结构变复杂: $D$ 比对角情形多出非零块, 秩只会更大 (列向量更多, 秩不减), 所以 $r(D)\ge r(A)+r(B)$。<span class="why">"这个矩阵变复杂了, 它就会增加", 直接记结论: 分块三角 $\ge$ 秩之和。</span></div>
+<div class="step">③ 什么时候取等号: $A$ <b>可逆</b>时, $r(D)=r(A)+r(B)$。<span class="why">$A$ 可逆 → 用行变换把 $A$ 化成 $E$: $D$ 变成 $\begin{pmatrix}E&O\\C&B\end{pmatrix}$, 再把第一行 (含 $E$) 左乘 $-C$ 加到第二行, 就能把 $C$ 全部消成零, 得 $\begin{pmatrix}E&O\\O&B\end{pmatrix}$, 秩 $=r(E)+r(B)=r(A)+r(B)$。<b>易错</b>: 取等号条件是 $A$ 可逆 (消 $C$ 的那一边), 不是 $B$。</span></div>
+<div class="step">④ 选 <b>A</b>。<span class="why">B (严格小于)、C (小于等于)、D (恒等) 都被排掉: 一般情形就是大于等于。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 分块对角 (副对角) 秩 = 各自相加; 分块三角 ≥ 各自相加, 可逆的一边取等号。</div>
+</details>
+
+<p id="例133" class="prob"><b>例 1.33</b> 设 $A,B$ 为 $n$ 阶实矩阵, 下列结论<b>不成立</b>的是（　）<span class="src">【来源: 视频#2、讲义1.6】</span>(数一真题)</p>
+<p>A. $r\begin{pmatrix}A&O\\O&A^{\mathrm{T}}\end{pmatrix}=2r(A)$　　B. $r\begin{pmatrix}A&AB\\O&A^{\mathrm{T}}\end{pmatrix}=2r(A)$</p>
+<p>C. $r\begin{pmatrix}A&BA\\O&A^{\mathrm{T}}\end{pmatrix}=2r(A)$　　D. $r\begin{pmatrix}A&O\\BA&A^{\mathrm{T}}\end{pmatrix}=2r(A)$</p>
+<details><summary>解答过程</summary>
+<div class="step">① A 对: 本身就是对角分块, $r(A)+r(A^{\mathrm{T}})=2r(A)$ (四字相等)。<span class="why">最简单的选项先拿下。</span></div>
+<div class="step">② B 对: $AB$ 的<b>列</b>可由 $A$ 的<b>列</b>线性表出 → 做列变换, 第一块列右乘 $-B$ 加到第二块列: $(A,\ AB)\to(A,\ AB-AB)=(A,\ O)$, 得 $\begin{pmatrix}A&O\\O&A^{\mathrm{T}}\end{pmatrix}$, 秩 $=2r(A)$。<span class="why">"我是不是能通过这里面的这些列去把这个 $AB$ 的列给消掉? 因为 $AB$ 的列向量可以由 $A$ 的列向量表出"——列变换 (右乘) 消块。<b>考点</b>: 消块操作的合法性完全由"表出"关系决定。</span></div>
+<div class="step">③ C 不成立: $BA$ 的<b>列</b>不一定能由 $A$ 的<b>列</b>表出, 消不掉——拼进来秩有可能增加, 不一定等于 $2r(A)$。<span class="why">"$BA$ 的列, 它并不一定可以由 $A$ 的列消掉。所以你把它加进来之后, 它的秩是有可能增加的。"<b>易错</b>: 和 B 只差一个因子顺序——$AB$ 的列能消, $BA$ 的列不能保证, 顺序敏感。</span></div>
+<div class="step">④ D 对: $BA$ 的<b>行</b>可由 $A$ 的<b>行</b>线性表出 → 做行变换, 第一块行左乘 $-B$ 加到第二块行: $(BA,\ A^{\mathrm{T}})\to(BA-BA,\ A^{\mathrm{T}})=(O,\ A^{\mathrm{T}})$, 得 $\begin{pmatrix}A&O\\O&A^{\mathrm{T}}\end{pmatrix}$, 秩 $=2r(A)$。<span class="why">$BA=B\cdot A$, 每行是 $A$ 的行的线性组合——行表出用的是"后面的因子"这条: 乘积的行可由右边因子的行表出。这里乘积 $BA$ 的右边因子是 $A$, 正好表出。<b>考点</b>: 消"右上的块"用列表出 (列变换), 消"左下的块"用行表出 (行变换), 方向一一对应。</span></div>
+<div class="step">⑤ 选 <b>C</b>。<span class="why">唯一消不掉的: $BA$ 在右上, 需要它的列由 $A$ 的列表出, 而这不成立。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 分块三角定秩——$AB$ 在右上可消 (列由 $A$ 表出), $BA$ 在左下可消 (行由 $A$ 表出), 消完变对角套 $2r(A)$; 位置换一下就消不掉。</div>
+</details>
+
+<hr />
+<h2 id="方法五广义初等变换化成标准形定秩">方法五: 广义初等变换——化成标准形定秩</h2>
+<p id="例134" class="prob"><b>例 1.34</b> 设 $A,B$ 为 $n$ 阶实矩阵, $E$ 为 $n$ 阶单位矩阵, 矩阵 $\begin{pmatrix}O&A\\B&E\end{pmatrix}$, $\begin{pmatrix}A&B\\O&E\end{pmatrix}$, $\begin{pmatrix}A&AB\\E&B\end{pmatrix}$ 的秩分别为 $r_1,r_2,r_3$, 则正确的是（　）<span class="src">【来源: 视频#2、讲义1.6】</span></p>
+<p>A. $r_2\ge r_1\ge r_3$　　B. $r_3\ge r_1\ge r_2$　　C. $r_1\ge r_2\ge r_3$　　D. $r_3\ge r_2\ge r_1$</p>
+<details><summary>解答过程</summary>
+<div class="step">① 目标: 把三个矩阵都化成对角分块标准形 $r\begin{pmatrix}A&O\\O&B\end{pmatrix}=r(A)+r(B)$ 的样子。<span class="why">"你要把这个东西给我搞清楚: 广义初等变换的目的, 是把矩阵化成我们熟悉、清晰的这种结构。"<b>考点</b>: 先定目标再动手。</span></div>
+<div class="step">② 第一个 $\begin{pmatrix}O&A\\B&E\end{pmatrix}$: 不能用 $B$ 消 $E$ ($B$ 不一定可逆), 只能<b>用 $E$ 消 $B$</b>: 做列变换, 第二块列右乘 $-B$ 加到第一块列 → $\begin{pmatrix}-AB&A\\O&E\end{pmatrix}$。再用 $E$ 消 $-AB$ 上方的 $A$: 做行变换, 第二块行左乘 $-A$ 加到第一块行 → $\begin{pmatrix}-AB&O\\O&E\end{pmatrix}$。故 $r_1=r(AB)+r(E)=r(AB)+n$。<span class="why">列变换右乘: 第二块列 $(A,E)^{\mathrm{T}}$ 右乘 $-B$ 是 $(-AB,-B)^{\mathrm{T}}$, 加到第一块列把 $B$ 消成零; 行变换左乘: 第二块行左乘 $-A$ 得 $(O,-A)$, 把第一块行的 $A$ 消成零。<b>易错</b>: 消列用右乘, 消行用左乘, 别搞反。</span></div>
+<div class="step">③ 第二个 $\begin{pmatrix}A&B\\O&E\end{pmatrix}$: 用 $E$ 消 $B$: 行变换, 第二块行左乘 $-B$ 加到第一块行 → $\begin{pmatrix}A&O\\O&E\end{pmatrix}$。故 $r_2=r(A)+n$。<span class="why">"用这个单位阵去消掉这个 $B$, 做行变换, 左乘一个 $-B$ 加上去, 这里不就消成零了嘛。"</span></div>
+<div class="step">④ 第三个 $\begin{pmatrix}A&AB\\E&B\end{pmatrix}$: 用第二块行消第一块行: 第二块行左乘 $-A$ 加到第一块行 → $(-A)(E,B)=(-A,-AB)$, 与第一块行相加得 $(A-A,\ AB-AB)=(O,O)$——<b>一下消掉两个</b>。得 $\begin{pmatrix}O&O\\E&B\end{pmatrix}$, 故 $r_3=r(E,B)=n$。<span class="why">"你发现它左侧负 $A$ 倍特别好, 这里也消成零, 所以上面直接变成两个零"——运气好一次消俩。<b>注意</b>: $r(E,B)=n$ 因为含单位阵 $E$, 行满秩。</span></div>
+<div class="step">⑤ 比较: $r_1=r(AB)+n\le r(A)+n=r_2$ (秩越乘越小), $r_3=n\le r_1$。所以 $r_2\ge r_1\ge r_3$, 选 <b>A</b>。<span class="why">三个数分别化为 $n$、$n+r(A)$、$n+r(AB)$, 只比 $r(AB)$ 和 $r(A)$ 的大小即可。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 含单位阵的分块矩阵——单位阵不能动也不怕, 用它当"消元主力"消别的块; 消行左乘、消列右乘, 化成对角标准形直接写秩。</div>
+</details>
+
+<p id="例135" class="prob"><b>例 1.35</b> 已知 $n$ 阶矩阵 $A,B,C$ 满足 $ABC=O$, $E$ 为 $n$ 阶单位矩阵。记矩阵 $\begin{pmatrix}O&A\\BC&E\end{pmatrix}$, $\begin{pmatrix}AB&C\\O&E\end{pmatrix}$, $\begin{pmatrix}E&AB\\AB&O\end{pmatrix}$ 的秩分别为 $r_1,r_2,r_3$, 则（　）<span class="src">【来源: 视频#2、讲义1.6】</span>(历年真题)</p>
+<p>A. $r_1\le r_2\le r_3$　　B. $r_1\le r_3\le r_2$　　C. $r_3\le r_1\le r_2$　　D. $r_2\le r_1\le r_3$</p>
+<details><summary>解答过程</summary>
+<div class="step">① 第一个 $\begin{pmatrix}O&A\\BC&E\end{pmatrix}$: 想用 $A$ (或 $BC$) 消 $E$? 绝对不行——$A$、$BC$ 不一定可逆, "这个 $E$ 你是绝对不能动"。只能<b>用 $E$ 消 $BC$</b>: 列变换, 第二块列右乘 $-BC$ 加到第一块列: 第一块列 $(O,BC)^{\mathrm{T}}$ 变成 $(A(-BC),\ BC+E(-BC))^{\mathrm{T}}=(-ABC,\ O)^{\mathrm{T}}$。而 $ABC=O$, 所以 $-ABC=O$, 得 $\begin{pmatrix}O&A\\O&E\end{pmatrix}$。<span class="why">"你想通过 $A$ 去把这个 $E$ 消掉, 那就做行变换, 要左乘一个 $-A^{-1}$……而这个 $A$ 矩阵并不一定可逆, 所以你这个操作不一定合规。"<b>易错</b>: 消单位阵的前提是要有逆, 条件里没有。</span></div>
+<div class="step">② 继续消 $A$: 行变换, 第二块行左乘 $-A$ 加到第一块行: $(-A)(O,E)=(O,-A)$, 第一块行变 $(O,A)+(O,-A)=(O,O)$。得 $\begin{pmatrix}O&O\\O&E\end{pmatrix}$, 故 $r_1=r(E)=n$。<span class="why">"左乘一个 $-A$ 给它加上去, 那么它就会变成零零零零 $E$。"<b>考点</b>: $ABC=O$ 的关键用法: 消元过程中 $ABC$ 整块归零。</span></div>
+<div class="step">③ 第二个 $\begin{pmatrix}AB&C\\O&E\end{pmatrix}$: 这里本来就有个零, 用 $E$ 消 $C$: 行变换, 第二块行左乘 $-C$ 加到第一块行 → $(AB,\ C-C)=(AB,\ O)$, 得 $\begin{pmatrix}AB&O\\O&E\end{pmatrix}$。故 $r_2=r(AB)+n$。<span class="why">"看到这个矩阵应该立马想到怎么处理? 这里有个零, 那我当然希望这里如果能够画成一个零——主对角线形式, 立马能把秩写出来。"</span></div>
+<div class="step">④ 第三个 $\begin{pmatrix}E&AB\\AB&O\end{pmatrix}$: 同理 $AB$ 不一定可逆, 不能用它消 $E$; 用 $E$ 消 $AB$: 列变换, 第一块列右乘 $-AB$ 加到第二块列 → $\begin{pmatrix}E&O\\AB&-ABAB\end{pmatrix}$; 再用 $E$ 消左下: 行变换, 第一块行左乘 $-AB$ 加到第二块行 → $\begin{pmatrix}E&O\\O&-ABAB\end{pmatrix}$。故 $r_3=n+r(ABAB)$。<span class="why">"你这里你用 $E$ 去削这个 $AB$, 做列变换, 右乘一个 $-AB$ 给它加到这里来……接下来再做行变换, 用这个 $E$ 很轻松就可以把这个 $AB$ 给消掉。"<b>注意</b>: $-ABAB$ 与 $ABAB$ 差个负号, 倍乘秩不变。</span></div>
+<div class="step">⑤ 比较: $r_1=n$, $r_2=n+r(AB)$, $r_3=n+r(ABAB)$; 由"秩越乘越小" $r(ABAB)\le r(AB)$。所以 $r_1\le r_3\le r_2$, 选 <b>B</b>。<span class="why">三个数都带上 $n$, 本质是比 $0$、$r(ABAB)$、$r(AB)$ 三个数的大小。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: $ABC=O$ 配合广义初等变换: 单位阵不动, 用它消别的块; 消到一半整块 $ABC$ 直接归零, 一气呵成化成对角标准形。</div>
+</details>
+
+<p id="例136" class="prob"><b>例 1.36</b> 已知 $A$ 为 $n$ 阶矩阵, $E$ 为 $n$ 阶单位矩阵。记矩阵 $\begin{pmatrix}O&A\\A^{\mathrm{T}}A&E\end{pmatrix}$, $\begin{pmatrix}O&A^{\mathrm{T}}A\\A^{\mathrm{T}}A&E\end{pmatrix}$, $\begin{pmatrix}A^{\mathrm{T}}&E\\A^{\mathrm{T}}AA^{\mathrm{T}}&A^{\mathrm{T}}A\end{pmatrix}$【AI补全: 手稿中三个分块矩阵的块布局模糊, 此处按视频讲解逻辑重建】的秩分别为 $r_1,r_2,r_3$, 则（　）<span class="src">【来源: 视频#2、讲义1.6】</span>(张宇八套卷)</p>
+<p>A. $r_1=r_2\ge r_3$　　B. $r_1=r_2\le r_3$　　C. $r_1=r_3\ge r_2$　　D. $r_1=r_3\le r_2$</p>
+<details><summary>解答过程</summary>
+<div class="step">① 先看 $r_1$ 与 $r_2$: 两个矩阵的下半部分完全一样, 上半部分分别是 $(O,A)$ 和 $(O,A^{\mathrm{T}}A)$。<span class="why">"一眼看过来就发现这一行和这一行它是完全一样的"——下面一坨完全相同, 只需研究上面。</span></div>
+<div class="step">② $A$ 的行向量与 $A^{\mathrm{T}}A$ 的行向量是等价的: $r(A)=r(A^{\mathrm{T}}A)$ (四字相等), 且 $A^{\mathrm{T}}A$ 的每一行都是 $A$ 的各行的线性组合 (行向量被 $A$ 的行空间装下), 维数相同 → 行空间相等。<span class="why">老师: "这个结论怎么推? 由同解方程组推到的——$A\mathbf{x}=\mathbf{0}$ 与 $A^{\mathrm{T}}A\mathbf{x}=\mathbf{0}$ 同解, 后面方程组章节证明, 这里先记住 $A$ 与 $A^{\mathrm{T}}A$ 行向量等价。"</span></div>
+<div class="step">③ 上半行向量等价, 下半行完全相同 → 两个矩阵的行向量组整体等价 → $r_1=r_2$。<span class="why">行向量组等价 ⇒ 行空间相同 ⇒ 秩相同。<b>考点</b>: 秩相等的判定可以走"行向量组等价"这条线。</span></div>
+<div class="step">④ 看 $r_3$: 第三个矩阵的下面一行恰好等于上面一行左乘 $A^{\mathrm{T}}A$: $(A^{\mathrm{T}}A)(A^{\mathrm{T}},\ E)=(A^{\mathrm{T}}AA^{\mathrm{T}},\ A^{\mathrm{T}}A)$。<span class="why">"这是 $A^{\mathrm{T}}$, 这是 $E$, 我是不是可以理解成下面这一行就是上面这一行左乘一个 $A^{\mathrm{T}}A$?"——先观察出结构, 才有后面的消元。</span></div>
+<div class="step">⑤ 做行变换: 上面一行左乘 $-A^{\mathrm{T}}A$ 加到下面一行, 下面一行变 $(O,O)$。得 $\begin{pmatrix}A^{\mathrm{T}}&E\\O&O\end{pmatrix}$, 再换一下行: $\begin{pmatrix}O&O\\A^{\mathrm{T}}&E\end{pmatrix}$。<span class="why">"一步通过一次行变换, 就换到了 $A^{\mathrm{T}}E$ 零零。"</span></div>
+<div class="step">⑥ $r_3=r(A^{\mathrm{T}},\ E)=n$ (含单位阵 $E$, 行满秩); 而 $r_1\ge r(E)=n$ (第一个矩阵也含 $E$)。所以 $r_1=r_2\ge r_3$, 选 <b>A</b>。<span class="why">"那你说这个 $r_3$ 的秩是不是应该比这个 $r_1$ 要小? 你是零 $A$ 我是两个零, 我的肯定要比你小一些。"<b>考点</b>: 广义初等变换的目的就是往标准形上凑, 凑完直接写秩。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 含 $A^{\mathrm{T}}A$ 的分块矩阵: 先认"行向量等价" ($A$ 与 $A^{\mathrm{T}}A$) 判 $r_1=r_2$, 再用行倍加 ($M$ 左乘) 把整行消成零判 $r_3$——观察结构是第一步, 消元是第二步。</div>
+</details><div class="pager"><a href="02_矩阵的秩与分块矩阵.html"><small>← 上一篇</small><b>矩阵的秩与分块矩阵</b></a><a class="next" href="03_向量.html"><small>下一篇 →</small><b>向量</b></a></div></div></main></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script></body></html>

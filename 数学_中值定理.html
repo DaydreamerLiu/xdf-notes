@@ -1,0 +1,815 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数学 · 中值定理</title>
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><button id="navbtn" aria-label="打开目录">☰</button><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="知识笔记首页.html">⌂ 全部板块</a><div class="sec">📐 数学</div><details class="grp" data-k="grp-高数" open><summary>高数<em>10</em></summary><a class="b" href="数学_极限与数列.html">极限与数列</a><a class="c x" href="数学_极限与数列_例题.html">▸ 例题集</a><a class="b" href="数学_导数与微分.html">导数与微分</a><a class="c x" href="数学_导数与微分_例题.html">▸ 例题集</a><a class="b on" aria-current="page" href="数学_中值定理.html">中值定理</a><a class="c x" href="数学_中值定理_例题.html">▸ 例题集</a><a class="c" href="数学_中值定理.html#板块总览">板块总览</a><a class="c" href="数学_中值定理.html#一三大中值定理">一、三大中值定理</a><a class="d" href="数学_中值定理.html#11罗尔定理必考">1.1 罗尔定理 【必考】</a><a class="d" href="数学_中值定理.html#12拉格朗日中值定理必考">1.2 拉格朗日中值定理 【必考】</a><a class="d" href="数学_中值定理.html#13柯西中值定理高频">1.3 柯西中值定理 【高频】</a><a class="d" href="数学_中值定理.html#14四大定理的谱系重点">1.4 四大定理的谱系 【重点】</a><a class="c" href="数学_中值定理.html#二泰勒公式拉格朗日余项必考">二、泰勒公式(拉格朗日余项) 【必考】</a><a class="d" href="数学_中值定理.html#21定理">2.1 定理</a><a class="d" href="数学_中值定理.html#22二阶泰勒在估计一阶导上的标准操作高频">2.2 二阶泰勒在&quot;估计一阶导&quot;上的标准操作 【高频】</a><a class="c" href="数学_中值定理.html#三积分中值定理高频">三、积分中值定理 【高频】</a><a class="c" href="数学_中值定理.html#四证明题方法总纲本板块灵魂">四、证明题方法总纲(本板块灵魂) ★</a><a class="d" href="数学_中值定理.html#41辅助函数构造法解微分方程必考">4.1 辅助函数构造法: 解微分方程 【必考】</a><a class="d" href="数学_中值定理.html#42根的存在性找乘积函数的零点高频">4.2 根的存在性: 找&quot;乘积函数&quot;的零点 【高频】</a><a class="d" href="数学_中值定理.html#43双中值问题两次中值定理组合消元高频">4.3 双中值问题: 两次中值定理 + 组合消元 【高频】</a><a class="d" href="数学_中值定理.html#44泰勒估计不等式必考">4.4 泰勒估计不等式 【必考】</a><a class="d" href="数学_中值定理.html#45恒等式与不等式单调性与最值高频">4.5 恒等式与不等式: 单调性与最值 【高频】</a><a class="c" href="数学_中值定理.html#五易错点与考法总结易错">五、易错点与考法总结 【易错】</a><a class="c" href="数学_中值定理.html#知识连接">知识连接</a><a class="b" href="数学_积分.html">积分</a><a class="c x" href="数学_积分_例题.html">▸ 例题集</a><a class="b" href="数学_微分方程.html">微分方程</a><a class="c x" href="数学_微分方程_例题.html">▸ 例题集</a><a class="b" href="数学_多元与二重.html">多元与二重</a><a class="c x" href="数学_多元与二重_例题.html">▸ 例题集</a><a class="b" href="数学_级数.html">级数</a><a class="c x" href="数学_级数_例题.html">▸ 例题集</a><a class="b" href="数学_曲线曲面积分.html">曲线曲面积分</a><a class="c x" href="数学_曲线曲面积分_例题.html">▸ 例题集</a><a class="b" href="数学_导数应用.html">导数应用</a><a class="c x" href="数学_导数应用_例题.html">▸ 例题集</a><a class="b" href="数学_数三专题.html">数三专题</a></details><details class="grp" data-k="grp-线性代数"><summary>线性代数<em>1</em></summary><a class="b" href="数学_线性代数.html">线性代数</a><a class="c x" href="数学_线性代数_例题.html">▸ 例题集</a><a class="c" href="数学_线性代数.html#板块总览">板块总览</a><a class="c" href="数学_线性代数.html#一行列式">一、行列式</a><a class="c" href="数学_线性代数.html#二矩阵">二、矩阵</a><a class="c" href="数学_线性代数.html#三向量与秩">三、向量与秩</a><a class="c" href="数学_线性代数.html#四线性方程组">四、线性方程组</a><a class="c" href="数学_线性代数.html#五特征值与特征向量">五、特征值与特征向量</a><a class="c" href="数学_线性代数.html#六相似对角化与二次型">六、相似对角化与二次型</a><a class="c" href="数学_线性代数.html#知识连接">知识连接</a></details><details class="grp" data-k="grp-概率论"><summary>概率论<em>1</em></summary><a class="b" href="数学_概率论.html">概率论</a><a class="c x" href="数学_概率论_例题.html">▸ 例题集</a><a class="c" href="数学_概率论.html#板块总览">板块总览</a><a class="c" href="数学_概率论.html#一随机事件与概率">一、随机事件与概率</a><a class="c" href="数学_概率论.html#二一维随机变量及其分布">二、一维随机变量及其分布</a><a class="c" href="数学_概率论.html#三随机变量函数的分布高频">三、随机变量函数的分布 【高频】</a><a class="c" href="数学_概率论.html#四多维随机变量及其分布">四、多维随机变量及其分布</a><a class="c" href="数学_概率论.html#五随机变量的数字特征必考">五、随机变量的数字特征 【必考】</a><a class="c" href="数学_概率论.html#六大数定律与中心极限定理高频">六、大数定律与中心极限定理 【高频】</a><a class="c" href="数学_概率论.html#七数理统计初步高频">七、数理统计初步 【高频】</a><a class="c" href="数学_概率论.html#八知识连接">八、知识连接</a><a class="c" href="数学_概率论.html#核心公式速查">核心公式速查</a></details><a class="b" href="数学_练习与测试.html">练习与测试</a><a class="c x" href="数学_练习与测试_例题.html">▸ 例题集</a><a class="b" href="数学_复习清单.html">复习清单</a><a class="b" href="数学_技巧速查.html">技巧速查</a></nav>
+<div id="progress"></div>
+<main data-subj="math"><header class="topbar"><div class="crumb"><a href="知识笔记首页.html">首页</a><span class="sep">/</span><b>数学 · 中值定理</b></div><div class="tb-actions"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">🌙</button><button id="printBtn" type="button" title="打印 / 导出 PDF">🖨 打印</button></div></header><div class="article"><h1>中值定理</h1><div class="board-meta">📐 数学 · <span class="pill">理论笔记</span><span class="pill">7 节</span></div><blockquote>
+<p>阶段: 基础(0419-0425) + 强化(0714-0715) | 覆盖课件 6 份:
+0419（2）、0425（1）、一元微积分证明题、0714（2）、0714（3）、0715（1）
+📖 例题全量见: <a href="数学_中值定理_例题.html">中值定理 · 例题集</a></p>
+</blockquote>
+<h2 id="板块总览">板块总览</h2>
+<p>中值定理是微分学的"翻译官": 把<b>导数的信息</b>(在某点的值、在区间上的符号与界)翻译成<b>函数的信息</b>(增量、零点、单调性、不等式)。证明题两大流派由此而生:</p>
+<ol>
+<li><b>中值定理流派</b> —— 罗尔/拉格朗日/柯西: 结论里出现 $f'(ξ)$ 且要证"存在某点",几乎必是它们;</li>
+<li><b>泰勒流派</b> —— 结论里出现 $f''(ξ)$、$f'''(ξ)$ 或"对任意 $x$ 的估计",必是泰勒展开 + 余项界。</li>
+</ol>
+<p>判据很简单: <b>看结论里有几阶导数</b>。一阶 → 中值定理; 二阶及以上 → 泰勒。这个板块是全书证明题的题源,数三每年必考。</p>
+<hr />
+<h2 id="一三大中值定理">一、三大中值定理</h2>
+<h3 id="11罗尔定理必考">1.1 罗尔定理 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b> 设 $f(x)$ 在 $[a,b]$ 上连续, 在 $(a,b)$ 内可导, 且 $f(a)=f(b)$, 则存在 $ξ\in(a,b)$, 使得 $f'(ξ)=0$。</p>
+<p><b>直觉</b> 起点和终点一样高, 中间必有"水平时刻"——拱桥的两端等高, 顶部(或底部)必然水平。 几何上就是: 存在一条<b>水平切线</b>。</p>
+<p><b>条件缺一不可</b>(三个反例记住):</p>
+<ul>
+<li>不连续: 阶梯函数 $[0,1]$ 上 $f(x)=x$ 挖掉 $x=1/2$ 处… 实际标准反例是闭区间不连续(如分段常值跳跃), 端点值相等但没有水平切线;</li>
+<li>开区间不可导: $f(x)=|x|$ 在 $[-1,1]$ 上, $f(-1)=f(1)$ 但无水平切线(尖点处不可导);</li>
+<li>端点值不等: $f(x)=x$ 在 $[0,1]$ 上, 处处斜率 $1\neq0$。</li>
+</ul>
+<p><b>地位</b> 它是证明题发动机。几乎所有"证 $f'(ξ)=$ 某某"的问题, 思路都是<b>构造一个辅助函数, 使它满足罗尔的条件</b>, 然后罗尔一下。§4 专门讲怎么构造。</p>
+<h3 id="12拉格朗日中值定理必考">1.2 拉格朗日中值定理 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b> 设 $f(x)$ 在 $[a,b]$ 上连续, 在 $(a,b)$ 内可导, 则存在 $ξ\in(a,b)$, 使得
+$$ \frac{f(b)-f(a)}{b-a}=f'(ξ) $$</p>
+<p><b>直觉</b> 全程的平均速度, 等于某一瞬间的瞬时速度(物理直觉)。几何: 弦 $AB$ 的斜率 $=$ 某点切线斜率——存在一条与弦平行的切线。</p>
+<p><b>等价形式(常用)</b> $f(x+Δx)-f(x)=f'(x+θΔx)·Δx$, 其中 $0<θ<1$。 把"增量"写成"某点的导数乘以步长", 这是处理误差估计的核心工具。</p>
+<p><b>两个重要推论</b></p>
+<ul>
+<li>$f'(x)\equiv0$ 于区间 $I$ $\Rightarrow$ $f(x)\equiv$ 常数。<b>恒等式证明的根</b>。</li>
+<li>$f'(x)\ge0$ 于 $I$ $\Rightarrow$ $f$ 在 $I$ 上单调不减($>0$ 则严格增)。<b>单调性判定的根</b>。</li>
+</ul>
+<p><b>定理证明(辅助函数法的第一次亮相)【AI补全思路】</b>
+欲证 $\frac{f(b)-f(a)}{b-a}=f'(ξ)$, 等价于证 $g'(ξ)=0$, 其中 $g(x)=f(x)-\frac{f(b)-f(a)}{b-a}(x-a)$ —— 也就是 $g$ 在 $[a,b]$ 上满足罗尔条件($g(a)=f(a)=g(b)$)。这里 $g(x)$ 的几何意义是"<b>函数值 − 弦的高度</b>", 中值定理要找的点正是函数与弦"差"的最平缓处。记住"函数 − 弦"这个想法, 后面柯西定理的证明同构。</p>
+<details><summary>证明细节</summary>
+<div class="step">① 构造 $g(x)=f(x)-\dfrac{f(b)-f(a)}{b-a}(x-a)$, 它在 $[a,b]$ 连续、$(a,b)$ 可导</div>
+<div class="step">② 检查端点: $g(a)=f(a)$, $g(b)=f(b)-\dfrac{f(b)-f(a)}{b-a}(b-a)=f(a)$, 满足 $g(a)=g(b)$</div>
+<div class="step">③ 罗尔: 存在 $ξ\in(a,b)$ 使 $g'(ξ)=0$, 即 $f'(ξ)-\dfrac{f(b)-f(a)}{b-a}=0$, 移项即得</div>
+</details>
+
+<h3 id="13柯西中值定理高频">1.3 柯西中值定理 <span class="mk freq">高频</span></h3>
+<p><b>核心结论</b> 设 $f(x),g(x)$ 在 $[a,b]$ 上连续, 在 $(a,b)$ 内可导, 且 $g'(x)\neq0$ 于 $(a,b)$, 则存在 $ξ\in(a,b)$, 使得
+$$ \frac{f'(ξ)}{g'(ξ)}=\frac{f(b)-f(a)}{g(b)-g(a)} $$</p>
+<p><b>直觉</b> 两条曲线端点连线的"斜率比" $=$ 某处瞬时"斜率比"。当 $g(x)=x$ 时就是拉格朗日——所以<b>柯西是拉格朗日关于"两个函数"的推广</b>。</p>
+<p><b>什么时候用柯西而不是拉格朗日?</b> 结论里出现<b>两个不同的函数</b>做比值, 或者要求的等式同时含 $f(b)-f(a)$ 和另一个量的增量(如 $\ln b-\ln a$、$e^b-e^a$、$b^2-a^2$)。典型: 证 $f(b)-f(a)=ξf'(ξ)\ln\frac{b}{a}$, 取 $g(x)=\ln x$ 即可。</p>
+<p><b>定理证明的辅助函数(与拉格朗日同构)</b> $F(x)=f(x)-\dfrac{f(b)-f(a)}{g(b)-g(a)}g(x)$, 则 $F(a)=F(b)$, 罗尔即得——"函数 $-$ 弦"的推广, 弦的斜率换成两个函数增量的比。</p>
+<p><b>常用 $g$ 候选清单</b><span class="mk info">注意</span> 结论里出现 $\ln b-\ln a$ → $g=\ln x$; 出现 $b^2-a^2$ → $g=x^2$; 出现 $e^b-e^a$ → $g=e^x$; 出现 $\frac1a-\frac1b$ → $g=\frac1x$。看到哪类增量, 就取哪个 $g$。</p>
+<p><b>注意</b> 不能"两次拉格朗日相除"——两个中值点 $ξ_1,ξ_2$ 未必相等, 相除就错了。柯西定理的存在性必须单独用。</p>
+<h3 id="14四大定理的谱系重点">1.4 四大定理的谱系 <span class="mk ok">重点</span></h3>
+<p>$$
+\text{罗尔}\ \xrightarrow{\text{放松 }f(a)=f(b)}\ \text{拉格朗日}\ \xrightarrow{\text{参数方程化(另一函数作参数)}}\ \text{柯西}\ \xrightarrow{n\text{ 阶}} \ \text{泰勒}
+$$</p>
+<p>记忆: <b>柯西 $g(x)=x$ → 拉格朗日; 拉格朗日端点值相等 → 罗尔</b>。反过来, 构造辅助函数后, 用罗尔能证拉格朗日和柯西(§4.1)。</p>
+<hr />
+<h2 id="二泰勒公式拉格朗日余项必考">二、泰勒公式(拉格朗日余项) <span class="mk biz">必考</span></h2>
+<h3 id="21定理">2.1 定理</h3>
+<p><b>核心结论</b> 若 $f(x)$ 在含 $x_0$ 的区间内具有 $n+1$ 阶导数, 则对任意 $x$,
+$$ f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n+\frac{f^{(n+1)}(ξ)}{(n+1)!}(x-x_0)^{n+1} $$
+其中 $ξ$ 位于 $x_0$ 与 $x$ 之间。最后一项叫<b>拉格朗日余项</b> $R_n(x)$。</p>
+<p><b>直觉</b> 用多项式"贴住"函数: 前 $n$ 项保证在 $x_0$ 处 $n$ 阶接触(同值同导), 余项量化了"贴"的误差, 而误差的<b>精确形态</b>是 $(n+1)$ 阶导数在中间某点 $\xi$ 的值——这正是证明题要抓的东西: <b>已知高阶导数有界 ⇒ 误差有界 ⇒ 函数值/一阶导被控制</b>。</p>
+<p><b>两个展开点选择原则</b></p>
+<ul>
+<li>证"对任意 $x$"的估计(如 $|f'(x)|\le 2a+\frac b2$) → 在<b>目标点 $x$</b> 展开, 然后把端点 $0,1$ 代入;</li>
+<li>证"存在某点"或端点组合(如 $|f(0)+f(1)|$) → 在<b>对称点 $x_0=\frac{a+b}{2}$</b> 展开, 相加减消去一阶项。</li>
+</ul>
+<p><b>常用麦克劳林(记忆基底)</b> $e^x=1+x+\frac{x^2}{2!}+\cdots$、$\ln(1+x)=x-\frac{x^2}{2}+\cdots$、$\sin x=x-\frac{x^3}{3!}+\cdots$(求极限/小题用)。</p>
+<h3 id="22二阶泰勒在估计一阶导上的标准操作高频">2.2 二阶泰勒在"估计一阶导"上的标准操作 <span class="mk freq">高频</span></h3>
+<p>已知 $|f(x)|\le a$、$|f''(x)|\le b$, 证 $|f'(x)|\le 2a+\frac b2$。套路固定:</p>
+<ol>
+<li>在目标点 $x$ 处展开 $f(0)$、$f(1)$ 到一阶 + 二阶余项;</li>
+<li><b>两式相减</b>, 消掉 $f(x)$ 项, 剩下 $f'(x)=f(1)-f(0)-\frac{f''(ξ_1)}{2}x^2+\frac{f''(ξ_2)}{2}(1-x)^2$(系数随展开点位置而定);</li>
+<li>三角不等式放缩: $|f'(x)|\le|f(1)|+|f(0)|+\frac b2(x^2+(1-x)^2)\le 2a+\frac b2$。</li>
+</ol>
+<p>要点: <b>相减消常数项</b>与<b>配凑 $x^2+(1-x)^2\le1$</b> 是这条路的两个核心动作。</p>
+<hr />
+<h2 id="三积分中值定理高频">三、积分中值定理 <span class="mk freq">高频</span></h2>
+<p><b>核心结论(第一积分中值)</b> 若 $f$ 在 $[a,b]$ 上连续, 则存在 $ξ\in[a,b]$ 使 $\displaystyle\int_a^b f(x)\,dx=f(ξ)(b-a)$。</p>
+<p><b>证明(与中值定理的联系)</b> 令 $F(x)=\int_a^x f(t)\,dt$, 对 $F$ 用拉格朗日中值定理: $F(b)-F(a)=F'(ξ)(b-a)$, 即 $\int_a^b f= f(ξ)(b-a)$。【AI补全: 课件原证思路】所以积分中值定理<b>就是拉格朗日套在变上限积分上</b>——中值定理的谱系又延伸了一环。</p>
+<p><b>加权推广(必会)</b> 若 $g(x)$ 在 $[a,b]$ 上不变号(恒 $\ge0$ 或恒 $\le0$), 则存在 $ξ\in[a,b]$ 使
+$$ \int_a^b f(x)g(x)\,dx=f(ξ)\int_a^b g(x)\,dx $$
+证明: 设 $m=\min f,\ M=\max f$, 由 $mg\le fg\le Mg$ 两边积分(注意 $g$ 不变号才能乘进去), 得 $\displaystyle m\le\frac{\int fg}{\int g}\le M$, 再由连续函数介值定理。<b>加权平均</b>视角: $f(ξ)$ 是 $f(x_i)$ 的加权平均。这个定理和它的加权版在证明题里反复出现(如例题集 D5: 由 $\int_0^1 f=1$ 反推 $f(c)=1$)。</p>
+<p><b>不加权推广(离散版)</b> $x_i\in[a,b]$, $k_i>0$, 存在 $ξ$ 使 $\displaystyle f(ξ)=\frac{\sum k_i f(x_i)}{\sum k_i}$ —— 即"连续函数的取值可以覆盖它的任何加权平均"。证明同上($m\le$ 加权平均 $\le M$ + 介值)。【例3.1】</p>
+<p><b>快速判据</b><span class="mk info">注意</span> 结论要求 $ξ\in[a,b]$ <b>闭区间</b> → 用介值定理(不要求可导); 结论要求 $ξ\in(a,b)$ <b>开区间</b> → 用罗尔/拉格朗日(要可导条件)。做题先看中值点带不带端点, 决定用哪把刀。</p>
+<hr />
+<h2 id="四证明题方法总纲本板块灵魂">四、证明题方法总纲(本板块灵魂) ★</h2>
+<h3 id="41辅助函数构造法解微分方程必考">4.1 辅助函数构造法: 解微分方程 <span class="mk biz">必考</span></h3>
+<p><b>目标形态</b> 结论是"$f'(ξ)+P(ξ)f(ξ)=0$"(或等价变形), 其中 $P$ 是具体函数。</p>
+<p><b>万能套路</b> —— 把它当作<b>微分方程</b>来解:
+$$ f'(x)+P(x)f(x)=0 \iff \frac{f'(x)}{f(x)}=-P(x) \iff \ln|f(x)|+\int P(x)\,dx=C $$
+解出隐式通解 $f(x)e^{\int P(x)dx}=C$, <b>取左边为辅助函数</b> $F(x)=f(x)e^{\int P(x)dx}$, 则 $F'(x)=e^{\int P(x)dx}[f'(x)+P(x)f(x)]$, 由罗尔得 $F'(ξ)=0$ 即所要结论。</p>
+<p><b>操作速记</b></p>
+<ul>
+<li>结论含 $\frac{f'(ξ)}{f(ξ)}$ 型(如 $f'(ξ)+k f(ξ)=0$): $F(x)=e^{kx}f(x)$(对应 $P(x)=k$);</li>
+<li>结论含 $\frac{1}{x}$ 系数(如 $x f'(ξ)+k f(ξ)=0$): $F(x)=x^k f(x)$;</li>
+<li>结论含 $\frac{1}{x}+k$ 型(如 $(2ξ+1)f'(ξ)+f(ξ)=0$, 即 $P(x)=2+\frac1x$): $F(x)=x\,e^{2x}f(x)$;</li>
+<li>结论是分式 $\frac{f'(ξ)}{f(ξ)}=\frac1ξ$($xf'-f=0$, 即 $P=-\frac1x$): $F(x)=\frac{f(x)}x$(0419(2) 例 A4)。</li>
+</ul>
+<p><b>端点值相等的来源(会伪装)</b> 构造完 $F$ 后, 还要验证 $F(a)=F(b)$——它可能来自:</p>
+<ol>
+<li>题设明给 $f(a)=f(b)=0$(或 $f(1)=0$ 与 $F(1)=0$ 之类);</li>
+<li><b>比例式伪装</b>: $af(b)=bf(a)$ 两边同除 $ab$ 即得 $F(a)=F(b)$;</li>
+<li><b>积分等式伪装</b>: 题设含积分, 先用积分中值定理打成单点等式, 再凑出 $F(a)=F(b)$(例 A5)。
+<b>构造对了, 端点条件自然成立</b>——这也是检验构造是否正确的方法: 端点条件若"巧合"成立, 说明方向对了。</li>
+</ol>
+<p><b>为什么这样有效?</b> 罗尔只认"端点值相等", 我们想让 $f'(ξ)+P(ξ)f(ξ)=0$ 等价于"某个函数的导数为 0", 而"$f'+Pf$ 是 $f e^{\int P}$ 的导数"是乘积求导的逆运算——<b>解微分方程就是在反推乘积求导公式</b>。</p>
+<h3 id="42根的存在性找乘积函数的零点高频">4.2 根的存在性: 找"乘积函数"的零点 <span class="mk freq">高频</span></h3>
+<p><b>目标形态</b> 结论是"方程 $f(x)f''(x)+[f'(x)]^2=0$(或类似)在区间内至少有两个不同实根"。</p>
+<p><b>关键观察</b> $f f''+(f')^2=\big(f f'\big)'$。所以问题转化为: 找到 $F(x)=f(x)f'(x)$ 的<b>三个零点</b>, 两次罗尔 $\Rightarrow$ $F''=f f''+(f')^2$ 至少两个零点。<b>注意 $F$ 的零点是"杂"的</b>: 既来自 $f=0$(题设已给), 也来自 $f'=0$(要用拉格朗日/单调性现造)。</p>
+<p><b>通用流程</b></p>
+<ol>
+<li>先用零点定理/极限保号性证明 $f$ 有零点 $\alpha$(第一问往往就是这个);</li>
+<li>用中值定理证明 $f'$ 有零点 $\gamma$($f$ 的两个零点之间拉格朗日即得);</li>
+<li>于是 $F=f f'$ 有三个零点($0$、$\alpha$、$\gamma$ 之类), 罗尔两次。</li>
+</ol>
+<p><b>同类变式</b> $F(x)=f'(x)g(x)-f(x)g'(x)$(形如 $\frac{f}{g}$ 的导数分子), 用于证 $\frac{f(ξ)}{g(ξ)}=\frac{f''(ξ)}{g''(ξ)}$——本质还是"凑一个函数使其导数为结论左侧"。</p>
+<h3 id="43双中值问题两次中值定理组合消元高频">4.3 双中值问题: 两次中值定理 + 组合消元 <span class="mk freq">高频</span></h3>
+<p><b>目标形态</b> 结论同时含两个点 $ξ,η$(如 $f'(ξ)f'(η)=1$、$f'(ξ)+f'(η)=ξ^2+η^2$)。</p>
+<p><b>套路</b> 先把区间切成两段(或对一个中间点 $c$ 分左右), 分别在两段上用拉格朗日/柯西, 然后<b>相乘或相加把 $f(c)$ 等中间量消掉</b>。</p>
+<p><b>三个常见子模式</b></p>
+<ul>
+<li>需要中间点 $c$ 时(如 $f(c)=1-c$): 先构造 $F(x)=f(x)+x-1$ 用<b>零点定理</b>找 $c$;</li>
+<li>$f'(ξ)f'(η)=$ 常数: 两段拉格朗日<b>相乘</b>, 分母的 $c(1-c)$ 与题设等式相消;</li>
+<li>结论与某个函数 $g$(如 $e^x$)纠缠: 一段拉格朗日于 $f$, 一段柯西于 $(f,e^x)$, 再联立消去 $f(b)-f(a)$。</li>
+</ul>
+<p><b>切分点怎么找(分析法反解)</b> <span class="mk info">注意</span> 切分点 $c$ 不一定是中点。先设出 $c$, 在两段 $[0,c]$、$[c,1]$ 上写出中值等式, 由"结论要求两段表达式相加(或相乘)后消去 $f(c)$"反解出 $c$。例: 结论 $f'(ξ)=\frac{f(c)}c$、$f'(η)=\frac{f(c)}{1-c}$ 型, 由 $\frac{F(c)}c=\frac{F(c)}{1-c}$ 反解 $c=\frac12$——设而不求, 条件自然定出 $c$。</p>
+<p><b>易错</b> 两个中值点必须属于<b>互不相交</b>的开区间, 才能保证 $ξ\neq η$。所以"切分"不能共用端点。</p>
+<h3 id="44泰勒估计不等式必考">4.4 泰勒估计不等式 <span class="mk biz">必考</span></h3>
+<p><b>目标形态</b> 条件给高阶导数的界($|f''|\le M$、$f'''>0$ 等), 结论是不等式(界、单调性、凹性)。</p>
+<p><b>两种标准动作</b></p>
+<ul>
+<li><b>估计型</b>(结论是数值界): 见 §2.2, 在目标点或中点展开 + 相加减 + 三角不等式;</li>
+<li><b>符号型</b>(结论是 $\int f < (b-a)f(\cdot)$ 类): 展开到二阶, 余项符号由 $f''$ 的符号决定(如 $f''<0 \Rightarrow f(x)\le f(x_0)+f'(x_0)(x-x_0)$, 即<b>凸函数图像在切线下方</b>), 两边积分。</li>
+</ul>
+<p><b>直觉</b> 泰勒给了函数的"二次近似", 二阶导的符号就是凹凸性, 凹凸性又给积分不等式——这条链(泰勒→凹凸→积分不等式)是证明题的常见出口。</p>
+<h3 id="45恒等式与不等式单调性与最值高频">4.5 恒等式与不等式: 单调性与最值 <span class="mk freq">高频</span></h3>
+<p><b>恒等式</b>(证 $f(x)\equiv$ 某常数):</p>
+<blockquote>
+<p>证 $f'(x)\equiv0$, 再代入一个特殊点定出常数。
+例: $\arctan x+\mathrm{arccot}\,x=\frac\pi2$ —— 左边求导恒为 0, 代 $x=0$ 得常数 $\frac\pi2$。</p>
+</blockquote>
+<p><b>不等式三大方法</b>(按"先想什么"排序):</p>
+<ol>
+<li><b>单调性法</b>: $F(x)=$ 左边 $-$ 右边, 证 $F'(x)$ 定号 + $F(0)=0$(或端点值); 一阶导定不了号就求二阶导再定(套娃到能定号为止);</li>
+<li><b>中值定理法</b>: 结论形如"$\frac{f(b)-f(a)}{b-a}$ 夹在两个值之间", 如 $\frac{b-a}{b}<\ln\frac ba<\frac{b-a}{a}$——取 $f=\ln x$, $\frac1b<f'(ξ)=\frac1ξ<\frac1a$;</li>
+<li><b>最值法</b>: 证 $\min f\ge0$(如 $\sin x>\frac{2x}{\pi}$, 用二阶导判凹性 + 端点值)。</li>
+</ol>
+<p><b>实用技巧</b></p>
+<ul>
+<li>取对数: 幂指乘积先 $\ln$ 再移项;</li>
+<li>分段讨论: 定义域分成端点两侧分别处理;</li>
+<li>证明"≥"时先找等号点(往往是端点或 $\frac12$), 用 $\min=0$ 定位。</li>
+</ul>
+<p><b>套娃判号(二阶不够就三阶)</b> <span class="mk warn">易错</span> 一阶导定不了号时求二阶, 二阶还定不了就求三阶——但每步都要"从底往上递推", 别只写一半。完整链示例: 已知 $g''<0$, 要证 $f'(x)<0$:
+$$ g''(x)<0 \Rightarrow g'(x) \text{ 单调减} \Rightarrow g'(x)<g'(0)=0 \Rightarrow g(x) \text{ 单调减} \Rightarrow g(x)<g(0)=0 \Rightarrow f'(x)=g(x)<0 $$
+关键是<b>每一步都把结论接到上一步的端点值/初值上</b>, 环环相扣才能下推。(0715(1) 例3.17 三阶套娃完整演示)</p>
+<hr />
+<h2 id="五易错点与考法总结易错">五、易错点与考法总结 <span class="mk warn">易错</span></h2>
+<ol>
+<li><b>条件次序</b>: 闭区间连续 + 开区间可导。端点不可导没关系(如 $f(x)=\sqrt{x}$ 于 $[0,1]$, 拉格朗日仍可用, 中值点在开区间内)。</li>
+<li><b>罗尔 ≠ 拉格朗日</b>: 罗尔要求端点值相等; 想用罗尔时端点值不等 → 先构造辅助函数把差值吃掉(如 $g(x)=f(x)-kx$)。</li>
+<li><b>柯西不能由两次拉格朗日"相除"得到</b>: 两个中值点不同, 比值不成立。</li>
+<li><b>双中值区间互斥</b>: $ξ,η$ 必须落在不重叠的开区间, 否则"两个不同的点"这个要求可能失效。</li>
+<li><b>泰勒余项的 $ξ$ 位置</b>: 在 $x_0$ 与 $x$ <b>之间</b>, 写题时交代一句"$ξ$ 介于 $x_0$ 与 $x$ 之间"是规范动作。</li>
+<li><b>证不等式忘看 $F(0)$</b>: 单调性法的起点是 $F(0)=0$(或某端点), 求完导忘了代入端点等于白做。</li>
+<li><b>考法视角</b>: 数三证明题高频形态 = "构造 $e^{\int P}$ 型辅助函数"(§4.1) + "双中值"(§4.3) + "泰勒估计"(§4.4)。见到 $f'$ 与 $f$ 的线性组合, 条件反射就是 $F=f e^{\int P dx}$。</li>
+</ol>
+<h2 id="知识连接">知识连接</h2>
+<ul>
+<li><b>与导数应用</b>: 本板块的 §4.5 不等式方法, 与"导数应用"板块的单调性/凹凸/最值是同一套工具的两个侧面(那边管求极值与画图, 这边管证明); 课件 0425（1） 两半分别对应这两个板块。</li>
+<li><b>与极限</b>: 泰勒公式是求极限的"终极武器"(麦克劳林展开), 极限板块的 $\frac00$ 型未定式均可下放到这里。</li>
+<li><b>与积分</b>: 积分中值定理、柯西-施瓦茨不等式($[\int fg]^2\le\int f^2\int g^2$)是积分板块的证明题地基, 其中柯西-施瓦茨的证法(构造 $F(t)=\int f^2\int g^2-[\int fg]^2$, 证 $F\ge0$ 用平方和)是"导数 + 积分"双拼的典范, 详见积分板块。</li>
+<li><b>与级数</b>: 拉格朗日中值定理给出 $\frac{1}{n+1}<\ln(1+\frac1n)<\frac1n$, 是正项级数与数列极限(如 $\sum\ln$ 求和、单调有界)的重要工具——极限与数列板块已用过。</li>
+</ul>
+<p><span class="src">【来源: 0419（2）、0425（1）、一元微积分证明题、0714（2）、0714（3）、0715（1）】</span></p></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_导数与微分_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 导数与微分_例题</b></span></a><a class="next" href="数学_中值定理_例题.html"><span class="pg-t"><small>下一篇</small><b>数学 · 中值定理_例题</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>
+
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 窄屏汉堡 ---------- */
+  var navbtn = document.getElementById('navbtn');
+  if (navbtn && nav) {
+    navbtn.addEventListener('click', function(){ nav.classList.toggle('show'); });
+    nav.addEventListener('click', function(e){ if (e.target.closest('a')) nav.classList.remove('show'); });
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 阅读进度 ---------- */
+  var prog = document.getElementById('progress');
+  function progress(){
+    if (!prog) return;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', progress, {passive:true});
+  progress();
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 ---------- */
+  var homeq = document.getElementById('homeq');
+  if (homeq) {
+    homeq.addEventListener('input', function(){
+      var t = homeq.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.board-card');
+      var secs2 = document.querySelectorAll('section[data-subj]');
+      var grpHs = document.querySelectorAll('.grp-h');
+      for (var iE = 0; iE < cards.length; iE++) {
+        cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+      }
+      for (var iF = 0; iF < secs2.length; iF++) {
+        var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+        for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+        sec.style.display = vis ? '' : 'none';
+      }
+      for (var iH = 0; iH < grpHs.length; iH++) {
+        var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+        if (next && next.classList && next.classList.contains('cards')) {
+          var c2 = next.querySelectorAll('.board-card');
+          for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+        }
+        grp.style.display = vis2 ? '' : 'none';
+      }
+      var recentSec2 = document.getElementById('recent');
+      if (recentSec2) {
+        var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+        for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+        recentSec2.style.display = (t && !rVis) ? 'none' : '';
+      }
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

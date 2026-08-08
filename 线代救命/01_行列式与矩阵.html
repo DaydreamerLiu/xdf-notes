@@ -1,0 +1,558 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>行列式与矩阵 · 线代救命 · 成册</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.85;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+/* ---------- 侧栏 ---------- */
+nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
+nav::-webkit-scrollbar{width:8px}
+nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.82rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.9rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.82rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.78rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶栏 ---------- */
+main{flex:1;min-width:0;max-width:980px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+.topbar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin:0 -2.3rem;padding:.72rem 2.3rem;background:var(--bg2);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.topbar .crumb{font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.45rem;min-width:0;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumb a{color:var(--ink2)}
+.crumb a:hover{color:var(--accent2);text-decoration:none}
+.crumb .sep{color:var(--ink3)}
+.crumb b{color:var(--ink);font-weight:600}
+.tb-actions{display:flex;gap:.45rem;flex-shrink:0}
+.tb-actions button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.34rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  display:inline-flex;align-items:center;gap:.32rem;transition:all .15s}
+.tb-actions button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2.1rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.45rem;margin:2.9rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.13rem;margin:2.2rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2;margin:.65rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:1.15rem 0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.93rem;box-shadow:var(--shadow-sm)}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+#navbtn{display:none;border:none;background:none;font-size:1.2rem;color:var(--ink);cursor:pointer}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  #navbtn{display:flex;position:fixed;top:.8rem;left:.8rem;z-index:100;width:2.45rem;height:2.45rem;
+    align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-sm)}
+  nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .topbar{margin:0 -1.15rem;padding:.72rem 1.15rem .72rem 3.7rem}
+  .tb-actions button span{display:none}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,.topbar,#navbtn,#topbtn,#progress,.tb-actions,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">线</span><span class="bt"><b>线代救命</b><small>BILIBILI · 没咋了</small></span></div>
+<a class="subj" href="线代救命_首页.html">⌂ 封面/目录</a>
+<a class="b on" href="01_行列式与矩阵.html">行列式与矩阵</a>
+<a class="c" href="01_行列式与矩阵_例题.html">▸ 行列式与矩阵_例题</a>
+<a class="b" href="02_矩阵的秩与分块矩阵.html">矩阵的秩与分块矩阵</a>
+<a class="c" href="02_矩阵的秩与分块矩阵_例题.html">▸ 矩阵的秩与分块矩阵_例题</a>
+<a class="b" href="03_向量.html">向量</a>
+<a class="c" href="03_向量_例题.html">▸ 向量_例题</a>
+<a class="b" href="04_线性方程组.html">线性方程组</a>
+<a class="c" href="04_线性方程组_例题.html">▸ 线性方程组_例题</a>
+<a class="b" href="05_矩阵相似.html">矩阵相似</a>
+<a class="c" href="05_矩阵相似_例题.html">▸ 矩阵相似_例题</a>
+<a class="b" href="06_二次型.html">二次型</a>
+<a class="c" href="06_二次型_例题.html">▸ 二次型_例题</a></nav><main><div class="article"><blockquote>
+<p>覆盖: 讲义 1.1-1.3(例1.1-1.22) | 视频#1 | 手稿 P5-P16 <span class="src">【来源: 视频#1、讲义1.1-1.3】</span>
+📖 例题全量见: <a href="01_行列式与矩阵_例题.html">第1讲 例题集</a></p>
+</blockquote>
+<h2 id="本讲定位">本讲定位</h2>
+<p>老师开场白: "现代(线代)救命, 到底能不能救命? 当然了。" 这个系列前两年连续押中线代真题, 拿下三次 B 站热门; 本讲是系列第一课, 只讲基础——行列式与矩阵的运算。老师原话: "这一章一共有六个小节, 前面三个小节作为第一堂课介绍行列式与矩阵的基础知识, 也是整个线代板块的基础, 务必要认真听, 可能有一些你之前遗漏掉的知识点, 我希望你能借这节课把它补回来。后面三个小节更重要——矩阵的秩、分块矩阵, 那是命题老头最喜欢考察的地方, 他就逮着你们不会的地方出。"</p>
+<p>听完本讲你应该能: 把任意四阶行列式算出来(找不到规律就硬算); 用四套路求矩阵高次幂; 熟练掌握转置、伴随、求逆三大运算及它们的易错点。</p>
+<h2 id="11行列式">1.1 行列式</h2>
+<h3 id="定义一个数不是矩阵必考">定义: 一个数, 不是矩阵 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b> n 阶行列式是 n 行 n 列的数表按展开法则算出的<b>一个数</b>。只有方阵才有行列式。</p>
+<p><b>老师视角</b> "三行四列是不是行列式? 说三行四列的全都给我插出去。" 行列式 = 数, 矩阵 = 表, 两者的"提 k"行为完全不同(见下), 这是全章第一个易错点。</p>
+<h3 id="行列式的五条性质必考">行列式的五条性质 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b> (记法: 转置不变 / 行(列)提 k / 互换变号 / 倍加不变 / 单行拆分)</p>
+<ol>
+<li>转置: $D^{\mathrm{T}} = D$ — 行列地位对称, 对行成立的性质对列也成立</li>
+<li>某行(列)有公因子 $k$, 可提到行列式符号外</li>
+<li>两行(列)互换, 值变号; 推论: 两行(列)相同或成比例 → 值 $= 0$</li>
+<li>某行(列)的 $k$ 倍加到另一行(列), 值不变</li>
+<li>若某行(列)所有元素都是两个数的和, 可写成两个行列式之和, <b>其余行(列)不动</b></li>
+</ol>
+<p><b>易错点</b> <span class="mk warn">易错</span> 第 2、5 条是老师专门点名的"大家比较容易错的地方", 与矩阵行为对比:</p>
+<ul>
+<li><b>行列式提 k 只针对一行或一列</b>; 矩阵提 k 是所有元素一起提, 即 $|kA| = k^n|A|$ (n 为阶数)。例如 $A = \begin{pmatrix}6&6\\6&6\end{pmatrix}$ 想提 6: 行列式是 $6\begin{vmatrix}1&1\\1&1\end{vmatrix}$, 矩阵是 $6\begin{pmatrix}1&1\\1&1\end{pmatrix}$ 且 $|kA| = k^2|A|$。老师: "搞清楚这个区别。"</li>
+<li><b>行列式拆分只拆一行(列)</b>, 其余行(列)不动; 矩阵加减 $A \pm B$ 是<b>所有元素</b>相加减。这是两者最根本的区别。</li>
+</ul>
+<p><b>直觉</b> 性质 2-5 的全部用途只有一个: 把任意行列式化成上三角/下三角, 然后取对角线乘积。</p>
+<h3 id="按行列展开公式必考">按行(列)展开公式 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b></p>
+<p>$$ D = a_{i1}A_{i1} + a_{i2}A_{i2} + \cdots + a_{in}A_{in} = \sum_{j=1}^{n} a_{ij}A_{ij} $$</p>
+<p>其中代数余子式 $A_{ij} = (-1)^{i+j}M_{ij}$, $M_{ij}$ 是划去第 $i$ 行第 $j$ 列后剩下的 $n-1$ 阶行列式(余子式)。按列展开同理。</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> "代数余子式一定有个 $(-1)^{i+j}$ 放到前面; 没有它单单 $M_{ij}$, 那叫余子式。" 忘了符号是老生常谈的错误。</p>
+<p><b>两条性质(老师重点讲)</b></p>
+<ul>
+<li>$A_{ij}$ 与 $a_{ij}$ 的<b>取值无关</b>: 算 $A_{ij}$ 时第 $i$ 行第 $j$ 列已被划掉, $a_{ij}$ 根本没参与运算, 当然无关。</li>
+<li>一行元素与<b>另一行</b>对应元素代数余子式乘积之和为零: $a_{i1}A_{j1} + a_{i2}A_{j2} + \cdots + a_{in}A_{jn} = 0$ ($i \neq j$)。</li>
+</ul>
+<p><b>推导思路</b> 为什么为零? 把它看成<b>凑一个新的行列式</b>: 把第 $j$ 行的元素替换成 $a_{i1}, a_{i2}, \dots, a_{in}$, 按第 $j$ 行展开后恰好就是那串乘积之和, 而新行列式的两行成比例 → 必为 0。这样理解一次就记住了。</p>
+<p><b>题型与考法</b> <span class="mk freq">高频</span> 凡是遇到"代数余子式的线性组合" $k_1A_{i1} + \cdots + k_nA_{in}$(例 1.2), 标准手段就是<b>凑新行列式</b>: 系数 $k_1, \dots, k_n$ 就是替换后第 $i$ 行的元素。老师: "以后再碰到这种含大 A 的问题, 很好用的处理手段就是凑一个新的行列式; 后面还会学一个手段——往 A 的伴随上去靠, 比如算 tr(A$^{*}$) 就和特征值联系起来。"</p>
+<h3 id="特殊行列式必考">特殊行列式 <span class="mk biz">必考</span></h3>
+<p><b>(1) 上(下)三角行列式 = 主对角线元素之积</b></p>
+<p>$$ \begin{vmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ 0 & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & a_{nn} \end{vmatrix} = a_{11}a_{22}\cdots a_{nn} $$</p>
+<p><b>(2) 副对角线行列式 <span class="mk warn">易错</span></b></p>
+<p>$$ \begin{vmatrix} 0 & \cdots & 0 & a_{1n} \\ 0 & \cdots & a_{2,n-1} & * \\ \vdots & \bullet & \vdots & \vdots \\ a_{n1} & \cdots & * & * \end{vmatrix} = (-1)^{\frac{n(n-1)}{2}}a_{1n}a_{2,n-1}\cdots a_{n1} $$</p>
+<p>(副对角线下方全为零时适用)</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> 副对角线前面<b>一定要添</b> $(-1)^{\frac{n(n-1)}{2}}$。老师反复强调: "一旦这个小细节没注意到, 考到了, 五分就没了, 务必要引起重视。" 例 1.4 的两个方法最后都栽在这个符号上。</p>
+<p><b>(3) 范德蒙行列式 <span class="mk freq">高频</span></b></p>
+<p>$$ \begin{vmatrix} 1 & 1 & \cdots & 1 \\ x_1 & x_2 & \cdots & x_n \\ x_1^2 & x_2^2 & \cdots & x_n^2 \\ \vdots & \vdots & \ddots & \vdots \\ x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1} \end{vmatrix} = \prod_{1 \le i < j \le n}(x_j - x_i) $$</p>
+<p><b>直觉</b> 老师教的计算原则(不用背公式): 把第二行这个"主体"拎出来排成一条线 $x_1, x_2, \dots, x_n$, 然后<b>挨个打巴掌</b>——右边的每个数都去"欺负"左边每一个数, 全部做(右 − 左)后乘起来。例 1.5 会演示怎么"打", 保证听一次再也不忘。</p>
+<p><b>题型与考法</b> 识别要点: 每行是 $(1, x_i, x_i^2, \dots, x_i^{n-1})$ 的列向排列; 若是"横着次数变高"(如例 1.5), 先转置。例 1.6 里范德蒙以"系数矩阵"的身份藏在矩阵乘法里。</p>
+<p><b>(4) 爪形(箭形)行列式 <span class="mk freq">高频</span></b></p>
+<p><b>公式方法</b> 结构特征: 一行(列)全是数 + 对角线上一列数, 其余为零, 长得像爪子/箭头。计算原则一句话:<b>斜爪削平爪</b>——用对角线(斜爪)把第一行/第一列(平爪)消成只剩一个元素, 化为三角。例 1.3 标准演示: 第二列的 $-\frac12$ 倍、第三列的 $-\frac13$ 倍、第四列的 $-\frac14$ 倍分别加到第一列。</p>
+<p><b>老师视角</b> "如果找不出这个行列式的规律, 你就直接硬算, 硬算不丢人。考试一般也就考四阶, 硬算给它算出来不就完了嘛。"(例 1.3 第二问就是硬算示范)</p>
+<p><b>(5) 累加型(各行/列和相等) <span class="mk freq">高频</span></b></p>
+<p><b>公式方法</b> 各行和相等 → 把后 $n-1$ 列全加到第一列, 第一列变成共同的行和, 提公因子, 再消元化三角。例 1.4 的方法二。</p>
+<h3 id="抽象行列式重点">抽象行列式 <span class="mk ok">重点</span></h3>
+<p><b>题型与考法</b> 老师: "我举的这几个抽象行列式问题都是非常有代表性的, 一个多余的题目都没有, 每个题都要搞懂它是怎么出出来的。" 五类武器:</p>
+<table>
+<thead>
+<tr>
+<th>例</th>
+<th>条件特征</th>
+<th>武器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.6</td>
+<td>列向量拼成的新矩阵</td>
+<td>拆成矩阵乘法 $B = AC$, 两边取行列式</td>
+</tr>
+<tr>
+<td>1.7</td>
+<td>矩阵等式 $A^2B-A-B=E$</td>
+<td>因式分解凑 $(A+E)(A-E)B = A+E$; 用 $XY=O \Rightarrow r(X)+r(Y) \le n$ 判满秩(整体思想)</td>
+</tr>
+<tr>
+<td>1.8</td>
+<td>正交矩阵 + 带 E 的行列式</td>
+<td>把 $E$ 拆成 $BB^{\mathrm{T}}$(保持"左边是 B"形式一致), 再提公因子</td>
+</tr>
+<tr>
+<td>1.9</td>
+<td>各行元素之和均为 $a$</td>
+<td>翻译成特征值语言: $A(1,\dots,1)^{\mathrm{T}} = a(1,\dots,1)^{\mathrm{T}}$, 再借伴随的特征值</td>
+</tr>
+<tr>
+<td>1.10</td>
+<td>$P$ 可逆, $B = P^{-1}AP$</td>
+<td>找 $AP = PB$(或 $AP = P\Lambda$), 用相似不变量转嫁行列式</td>
+</tr>
+</tbody>
+</table>
+<p><b>知识连接</b> 例 1.9 提前用了特征值(第 4 讲), 例 1.10 提前用了相似(第 5 讲): 老师建议基础差的同学"先学后面的章节, 再来处理这一部分"。例 1.7 的秩不等式 $r(X)+r(Y) \le n$ 在第 2 讲(矩阵的秩)系统讲。</p>
+<h2 id="12矩阵乘法">1.2 矩阵乘法</h2>
+<h3 id="定义与可乘条件必考">定义与可乘条件 <span class="mk biz">必考</span></h3>
+<p><b>核心结论</b> $A$ 是 $m \times n$, $B$ 是 $n \times s$, 则 $C = AB$ 是 $m \times s$, 其中</p>
+<p>$$ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{in}b_{nj} $$</p>
+<p>即第 $i$ 行点乘第 $j$ 列。<b>可乘条件: 第一个矩阵的列数 = 第二个矩阵的行数</b>; 结果形状 = "第一个矩阵的行 × 第二个矩阵的列"。</p>
+<p><b>老师视角</b> "矩阵加减法那都小意思, 乘法才是矩阵运算的精髓, 奠定了整个线代的基础, 务必要多花点心思。"</p>
+<h3 id="矩阵乘法的三个不易错">矩阵乘法的三个"不" <span class="mk warn">易错</span></h3>
+<p><b>核心结论</b> (老师强调的易错三连):</p>
+<ol>
+<li><b>无交换律</b>: 一般 $AB \neq BA$。例: $A = \begin{pmatrix}0&1\\1&0\end{pmatrix}$, $B = \begin{pmatrix}1&2\\3&4\end{pmatrix}$, 则 $AB = \begin{pmatrix}3&4\\1&2\end{pmatrix}$, $BA = \begin{pmatrix}2&1\\4&3\end{pmatrix}$。</li>
+<li><b>无消去律</b>: $AB = O$ <b>推不出</b> $A = O$ 或 $B = O$。例: $A = \begin{pmatrix}1&1\\2&2\end{pmatrix}$, $B = \begin{pmatrix}1&-3\\-1&3\end{pmatrix}$ 均非零, 但 $AB = O$。"这跟数不一样: 数是 $ab = 0$ 必有 $a = 0$ 或 $b = 0$。"</li>
+<li><b>展开不同</b>: $(A+B)^2 = A^2 + AB + BA + B^2 \neq A^2 + 2AB + B^2$(因无交换律, 两项不能合并)。</li>
+</ol>
+<h3 id="矩阵的高次幂四套路必考">矩阵的高次幂: 四套路 <span class="mk biz">必考</span></h3>
+<p>老师: "考研特别喜欢考矩阵的高次幂。" 拿到 $A^n$, 先看 A 属于哪一类:</p>
+<p><b>(1) 秩 1 矩阵: $A^n = l^{n-1}A$ <span class="mk freq">高频</span></b></p>
+<p><b>核心结论</b> 秩 1 矩阵必可分解为列向量乘行向量 $A = \boldsymbol{\alpha}\boldsymbol{\beta}^{\mathrm{T}}$(充要), 且</p>
+<p>$$ l = \boldsymbol{\beta}^{\mathrm{T}}\boldsymbol{\alpha} = \boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\beta} = \operatorname{tr}(A) \quad\Longrightarrow\quad A^2 = lA, \quad A^n = l^{n-1}A $$</p>
+<p><b>推导思路</b> $A^2 = (\boldsymbol{\alpha}\boldsymbol{\beta}^{\mathrm{T}})(\boldsymbol{\alpha}\boldsymbol{\beta}^{\mathrm{T}}) = \boldsymbol{\alpha}(\boldsymbol{\beta}^{\mathrm{T}}\boldsymbol{\alpha})\boldsymbol{\beta}^{\mathrm{T}} = l\boldsymbol{\alpha}\boldsymbol{\beta}^{\mathrm{T}} = lA$ — 中间的 $\boldsymbol{\beta}^{\mathrm{T}}\boldsymbol{\alpha}$ 是<b>行乘列, 一个数</b>(内积), 可以提到前面。老师: "行乘列得到的是一个数, 不是矩阵, 你一定给我记住了。" 这个 $l$ 同时是矩阵的迹(对角线元素之和)。</p>
+<p><b>题型与考法</b> 给 A 求 $A^n$: 拆成 $\boldsymbol{\alpha}\boldsymbol{\beta}^{\mathrm{T}}$(列向量取某一列, 行向量由各列与它的比例确定; 拆分不唯一, 但 $l$ 唯一), 口算 $l = \operatorname{tr}(A)$, 直接写 $A^n = l^{n-1}A$。例 1.12 全程口算。</p>
+<p><b>(2) 幂零矩阵 <span class="mk freq">高频</span></b></p>
+<p><b>定义</b> 存在 $k$ 使 $A^k = O$ 的矩阵("算了几次之后变成零矩阵")。例 1.13: 严格上(下)三角矩阵(三角且对角全 0)必幂零。</p>
+<p><b>题型与考法</b> 幂零矩阵的高次幂 = O, 常与套路三配合(二项展开后只留有限项); 例 1.21 用 $(E-B)(E+B+\cdots+B^{k-1}) = E - B^k$ 直接得逆。</p>
+<p><b>(3) 二项展开型 <span class="mk biz">必考</span></b></p>
+<p><b>公式方法</b> 若 $A = E + B$(B 是幂零或秩 1 等"有特点"的矩阵), 用二项展开:</p>
+<p>$$ (E+B)^n = E + nB + \binom{n}{2}B^2 + \binom{n}{3}B^3 + \cdots + B^n $$</p>
+<p>B 幂零 → 只剩有限项; B 秩 1 → 每项 $B^k = l^{k-1}B$ 可合并成等比求和。例 1.14(B 幂零), 例 1.15 法一(B = 全 1 矩阵, 秩 1)。老师: "至于系数为什么是 n、二分之 n 乘 n 减一, 回去查查二项式展开定理。"</p>
+<p><b>(4) 相似对角型 <span class="mk biz">必考</span></b></p>
+<p><b>公式方法</b> 若可相似对角化 $P^{-1}AP = \Lambda$, 则 $A = P\Lambda P^{-1}$, 乘开时中间的 $P^{-1}P$ 全部约掉:</p>
+<p>$$ A^n = (P\Lambda P^{-1})^n = P\Lambda^n P^{-1}, \qquad \Lambda^n = \operatorname{diag}(\lambda_1^n, \lambda_2^n, \dots, \lambda_n^n) $$</p>
+<p>对角矩阵的 n 次方 = 每个对角元取 n 次方,"我们太喜欢了"。</p>
+<p><b>老师视角</b> (例 1.15) "这个 A 是实对称矩阵, 一定能相似对角化。但算那个 P 矩阵还要求一次逆, 不如拆成 E 加全 1 矩阵用二项展开来得快。" — 同一道题, 套路要选快的。</p>
+<h2 id="13矩阵的三大运算转置伴随求逆必考">1.3 矩阵的三大运算: 转置、伴随、求逆 <span class="mk biz">必考</span></h2>
+<h3 id="转置">转置</h3>
+<p><b>定义</b> 把行换成同序数的列: $(A^{\mathrm{T}})_{ij} = a_{ji}$。</p>
+<p><b>性质</b></p>
+<ul>
+<li>$(A^{\mathrm{T}})^{\mathrm{T}} = A$ — 反身性(老师:"煎蛋翻个面再翻一个面, 回来了")</li>
+<li>$(A+B)^{\mathrm{T}} = A^{\mathrm{T}} + B^{\mathrm{T}}$ — <b>可加性, 转置独有</b>(求逆、伴随都没有这条)</li>
+<li>$(kA)^{\mathrm{T}} = kA^{\mathrm{T}}$</li>
+<li>$(AB)^{\mathrm{T}} = B^{\mathrm{T}}A^{\mathrm{T}}$ — <b>穿脱原则</b>(先穿后脱, 顺序要反)</li>
+</ul>
+<h3 id="伴随矩阵易错">伴随矩阵 <span class="mk warn">易错</span></h3>
+<p><b>定义</b> 把代数余子式 $A_{ij}$ 转置摆放:</p>
+<p>$$ A^{*} = \begin{pmatrix} A_{11} & A_{21} & \cdots & A_{n1} \\ A_{12} & A_{22} & \cdots & A_{n2} \\ \vdots & \vdots & \ddots & \vdots \\ A_{1n} & A_{2n} & \cdots & A_{nn} \end{pmatrix} $$</p>
+<p>即 $a_{ij}$ 的代数余子式放在<b>第 j 行第 i 列</b>——下标"竖着"的, 伴随里"横着"放。</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> 老师三大提醒: ① 求代数余子式别忘 $(-1)^{i+j}$; ② <b>组装别排错位</b>——"$a_{ij}$ 的伴随位置是反的", 很多人学到后面把这种基础的东西忘了, 导致做错, 非常难受; ③ 求逆别忘除以 $|A|$。</p>
+<p><b>二阶口诀</b> <span class="mk freq">高频</span> "主对调, 副变号": $A = \begin{pmatrix}a&b\\c&d\end{pmatrix}$ 的伴随 = $\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$。</p>
+<p><b>十条公式: 记基准, 其余推 <span class="mk biz">必考</span></b></p>
+<p>老师:"公式看起来特别多, 直接蒙圈了, 实际上并不都是二记。" 前几条重复同一意思, 只记基准, 其余全部由它推(推导见视频讲解):</p>
+<ul>
+<li><b>基准 ⑥</b>: $AA^{*} = A^{*}A = |A|E$, 即可逆时 $A^{*} = |A|A^{-1}$</li>
+<li>② $|A^{*}| = |A|^{n-1}$: ⑥ 两边取行列式, "数"拿出来要添 n 次方, 再除 $|A|$</li>
+<li>④ $(kA)^{*} = k^{n-1}A^{*}$</li>
+<li>③⑦ <b>运算次序可交换</b>: 转置、伴随、求逆两两可交换, 如 $(A^{*})^{-1} = (A^{-1})^{*}$, $(A^{\mathrm{T}})^{*} = (A^{*})^{\mathrm{T}}$</li>
+<li>⑧ $(A^{*})^{*} = |A|^{n-2}A$: ⑥ 套 ④ 套 ③ 反复用</li>
+<li>⑨ $|(A^{*})^{*}| = |A|^{(n-1)^2}$: ⑧ 两边取行列式</li>
+<li>⑩ $(AB)^{*} = B^{*}A^{*}$ — 穿脱原则</li>
+</ul>
+<p><b>注意</b> <span class="mk info">注意</span> 推导过程借用了可逆, 但<b>这些公式在 A 不可逆时照样成立</b>。老师明确说:"以 A 可逆为基准去推, 但 A 不可逆时这些公式也成立。"</p>
+<p><b>不可逆矩阵的伴随 <span class="mk freq">高频</span></b></p>
+<p><b>公式方法</b> 求伴随永远是<b>用定义求</b>, 哪怕不可逆(不能再用 $|A|A^{-1}$)。两个常用技巧:</p>
+<ul>
+<li><b>对角矩阵的伴随仍是对角矩阵</b>: 只算对角线上的代数余子式, 其余位置全 0。</li>
+<li><b>秩的阶梯 + 实对称</b>: 三阶 $r(A) = 2$ 时 $r(A^{*}) = 1$(每行成比例, 算一行推全体); 若 A 还是实对称, $A^{*}$ 也实对称——结合两点, 只算三个元素就能拼出整个 $A^{*}$(老师课上用两道例题示范了这个技巧)。</li>
+</ul>
+<h3 id="逆矩阵必考">逆矩阵 <span class="mk biz">必考</span></h3>
+<p><b>定义</b> 存在 B 使 $AB = BA = E$, 则称 B 是 A 的逆。老师补充:"定义里其实只用 $AB = E$ 就行——$AB = E$ 时必有 $BA = E$。"</p>
+<p><b>求法(具体型)</b></p>
+<ol>
+<li><b>初等行变换(老师强推)</b>: $[A \mid E] \xrightarrow{\text{初等行变换}} [E \mid A^{-1}]$。"大家解方程一直用初等行变换, 再熟悉不过; 伴随用得少, 考场上一紧张就搞错。三阶就老老实实用行变换, 别用伴随——我太了解你们, 三阶伴随很容易错。"</li>
+<li>伴随公式 $A^{-1} = \dfrac{A^{*}}{|A|}$ — 二阶专用, 配合"主对调副变号"口诀口算。</li>
+</ol>
+<p><b>求法(抽象型)</b> <span class="mk biz">必考</span></p>
+<p><b>公式方法</b> 核心一句话:<b>凑出 $AB = E$</b>。把矩阵等式因式分解/恒等变形, 提出 A, 剩下的就是 $A^{-1}$。例 1.20(直接提 A), 例 1.19(无中生有, 两头添 E), 例 1.21($(E-B)(E+B+\cdots+B^3) = E - B^4$)。</p>
+<p><b>老师口头禅(例 1.19)</b> "无中生有": 求 $A^{-1}+B^{-1}$ 这类, 在中间或两头"添 E"($E = B^{-1}B = AA^{-1}$), 目的是凑出矩阵乘法的形式——"左边有个 B⁻¹, E 就拆成左边也是 B⁻¹ 的形式; 右边有个 A⁻¹, E 也拆成右边是 A⁻¹ 的形式", 保持形式一致才能提公因子(和例 1.8 拆 $E = BB^{\mathrm{T}}$ 是同一个思想)。</p>
+<h3 id="正交矩阵高频">正交矩阵 <span class="mk freq">高频</span></h3>
+<p><b>定义</b> $A^{\mathrm{T}}A = AA^{\mathrm{T}} = E$, 即 $A^{-1} = A^{\mathrm{T}}$。</p>
+<p><b>等价刻画(五条) <span class="mk biz">必考</span></b></p>
+<ul>
+<li>① $A^{\mathrm{T}}A = E$(或 $AA^{\mathrm{T}} = E$)— 定义本身</li>
+<li>② $A^{-1} = A^{\mathrm{T}}$ — 转置即逆</li>
+<li>③ $A^{\mathrm{T}}$ 是正交矩阵</li>
+<li>④ $-A$ 是正交矩阵</li>
+<li>⑤ $A^{*}$ 是正交矩阵</li>
+</ul>
+<p><b>性质</b></p>
+<ul>
+<li>$|A| = \pm 1$: 由 $A^{\mathrm{T}}A = E$ 取行列式即得(故 $|A| < 0$ 时必 $|A| = -1$, 例 1.8)</li>
+<li>行向量组(或列向量组)是<b>规范正交基</b>: 每个向量都是单位向量, 不同向量两两正交(数一说法: 由规范正交基组成)</li>
+<li><b>同阶正交矩阵的乘积仍是正交矩阵</b>(可推广到任意多个): $(AB)^{\mathrm{T}}(AB) = B^{\mathrm{T}}A^{\mathrm{T}}AB = B^{\mathrm{T}}EB = E$。老师:"两个乘完还是正交矩阵, 它再去乘一个还是正交矩阵, 套娃式地推广。"</li>
+<li>例 1.18 的推论: 若 $a_{ij} + A_{ij} = 0$(三阶非零), 则不仅 $|A| = -1$, 还能推出 <b>A 是正交矩阵</b>: 由 $A^{*} = -A^{\mathrm{T}}$ 左乘 A 得 $|A|E = -AA^{\mathrm{T}}$, 代入 $|A| = -1$ 即 $AA^{\mathrm{T}} = E$。</li>
+</ul>
+<p><b>易错点</b> <span class="mk warn">易错</span> 例 1.8 型: 遇到 $E - BA^{\mathrm{T}}$, 把 E 拆成 $BB^{\mathrm{T}}$ 而非 $B^{\mathrm{T}}B$——因为后面跟的是 $BA^{\mathrm{T}}$(左边是 B), 拆法要保持形式一致才能提公因子。"这一步是最关键的, 这个思想后面求逆的时候还会用到。"</p>
+<h2 id="知识连接">知识连接</h2>
+<ul>
+<li>行列式提 k 与矩阵提 k 的区别、矩阵乘法三不——都是"行列式与矩阵行为差异"考点; 第 2 讲(矩阵的秩)继续用: $r(A)$ 与 $r(A^{*})$ 的阶梯关系(例 1.18 的秩论证已用到: $r(A)=n \Rightarrow r(A^{*})=n$, $r(A)=n-1 \Rightarrow r(A^{*})=1$, $r(A)\le n-2 \Rightarrow r(A^{*})=0$)。</li>
+<li>秩 1 矩阵 $A = \boldsymbol{\alpha}\boldsymbol{\beta}^{\mathrm{T}}$ 是全书最常用的分解: 后面特征值(非零特征值 = $l$ = 迹)、二次型、以及例 1.22 型 $E \pm k\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 的可逆性问题全靠它。</li>
+<li>正交矩阵是第 2 讲后"正交变换"的前置知识; 例 1.9(特征值)、例 1.10(相似)提前出现, 老师建议: 基础弱的同学可以先学第 4、5 讲再回头看抽象行列式部分。</li>
+</ul><div class="pager"><a href="线代救命_首页.html"><small>← 上一篇</small><b>线代救命 · 成册</b></a><a class="next" href="01_行列式与矩阵_例题.html"><small>下一篇 →</small><b>行列式与矩阵_例题</b></a></div></div></main></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script></body></html>
