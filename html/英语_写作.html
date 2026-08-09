@@ -1,0 +1,1801 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语 · 写作</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.9;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+
+/* ---------- 侧栏 ---------- */
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:rgba(251,250,246,.82);border-right:1px solid #EDEAE0;
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin;
+  transition:width .22s ease,background .2s ease}
+html[data-theme="dark"] .layout > nav{background:rgba(20,25,34,.78);border-right-color:#232A37}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem .6rem .95rem 1.15rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.8rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.86rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.8rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.76rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+/* 板块级折叠块(2026-08-09: 全站统一; 行尾 .tog 箭头负责折叠, 点板块名 = 跳转) */
+nav details.brd{margin:.05rem .3rem .15rem}
+nav details.brd>summary{list-style:none;cursor:default;display:flex;align-items:center;gap:.4rem;
+  padding:.12rem .35rem .12rem .45rem;margin:0;border-radius:8px;user-select:none}
+nav details.brd>summary::-webkit-details-marker{display:none}
+nav details.brd>summary:hover{background:var(--accent-soft)}
+nav details.brd>summary a.b{flex:1;min-width:0;margin:.02rem 0;padding:.3rem .42rem;cursor:pointer}
+nav details.brd>summary a.b:hover{background:none;text-decoration:none}
+nav details.brd>summary a.b.on:hover{background:var(--accent-soft)}
+nav details.brd>summary .tog{flex:none;width:1.55rem;text-align:center;color:var(--ink3);
+  font-size:.66rem;cursor:pointer;padding:.35rem 0;border-radius:6px}
+nav details.brd>summary .tog:hover{color:var(--accent2);background:var(--accent-soft)}
+nav details.brd>summary .tog::before{content:"▸";display:inline-block;transition:transform .15s ease}
+nav details.brd[open]>summary .tog::before{transform:rotate(90deg)}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶部(无容器框, 2026-08-09): ☰ 左上悬浮 / 操作按钮右上悬浮 / 面包屑随正文流 ---------- */
+main{flex:1;min-width:0;max-width:800px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+#navbtn{position:fixed;top:.7rem;left:.7rem;z-index:110;display:inline-flex;align-items:center;justify-content:center;
+  width:2.1rem;height:2.1rem;padding:0;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:9px;cursor:pointer;font-size:.98rem;flex-shrink:0;line-height:1;box-shadow:var(--shadow-sm);
+  transition:all .15s}
+#navbtn:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+#tbtools{position:fixed;top:.7rem;right:.7rem;z-index:110;display:flex;gap:.4rem}
+#tbtools button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.36rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  box-shadow:var(--shadow-sm);transition:all .15s}
+#tbtools button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+.crumbline{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--ink3);
+  padding:1.5rem 0 .1rem;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumbline a{color:var(--ink2)}
+.crumbline a:hover{color:var(--accent2);text-decoration:none}
+.crumbline .sep{color:var(--ink3)}
+.crumbline b{color:var(--ink);font-weight:600}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.4rem;margin:3rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.15rem;margin:2.3rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2.05;margin:.8rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+/* 宽表格由 JS 包一层 .table-wrap 横向滚动, 防止撑破 800px 行宽 */
+.table-wrap{overflow-x:auto;margin:1.15rem 0;border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.92rem}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin:0 auto 1.4rem}
+.tabs button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:20px;padding:.4rem 1.05rem;font-size:.84rem;cursor:pointer;transition:all .15s}
+.tabs button:hover{border-color:var(--accent);color:var(--accent2)}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* ---------- 侧栏收起(2026-08-09): 折叠态 = 8px 边缘热区零内容; 桌面悬停滑出(JS 控制,
+   移出 1.2s 后自动收回); ☰ 顶栏按钮展开并钉住; 触屏 ☰ 弹浮层 + 遮罩 ---------- */
+#navpin{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
+  cursor:pointer;flex-shrink:0}
+#navpin:hover{border-color:var(--accent);color:var(--accent2)}
+#navpin[aria-pressed="true"]{color:var(--accent2);border-color:var(--accent);background:var(--accent-soft)}
+#navscrim{position:fixed;inset:0;z-index:190;background:rgba(15,18,23,.45);
+  opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s}
+@media (min-width:921px){
+  /* 折叠态: 8px 热区(sticky 占位保持正文宽度), 内容全隐藏(鼠标移入 / ☰ / 键盘聚焦展开) */
+  html[data-nav="collapsed"] .layout > nav{width:8px;overflow:hidden;padding:0;background:transparent}
+  html[data-nav="collapsed"] .layout > nav .brand,
+  html[data-nav="collapsed"] .layout > nav #navq,
+  html[data-nav="collapsed"] .layout > nav a.subj,
+  html[data-nav="collapsed"] .layout > nav .navbody,
+  html[data-nav="collapsed"] .layout > nav #navpin{display:none}
+  /* 展开态 = 浮层覆盖在正文上方(用户要求: 侧栏伸缩时正文不重排);
+     折叠态 8px 占位保持不变 → main 宽度恒定; ☰ 被浮层覆盖, 展开时隐藏(收起靠图钉/移出) */
+  html[data-nav]:not([data-nav="collapsed"]) .layout > nav{position:fixed;left:0;top:0;height:100vh;
+    z-index:180;box-shadow:8px 0 28px rgba(0,0,0,.18)}
+  html[data-nav]:not([data-nav="collapsed"]) #navbtn{display:none}
+  /* 触屏(平板): ☰ 展开为浮层 + 遮罩, 点遮罩/链接收回; 无钉住 */
+  html[data-touch][data-nav="open"] #navscrim{opacity:1;visibility:visible}
+  html[data-touch] #navpin{display:none}
+}
+@media(max-width:920px){#navpin{display:none}}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  .layout > nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  .layout > nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,#tbtools,#navbtn,#topbtn,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style>
+<script>document.documentElement.dataset.nav='collapsed';</script></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span><button id="navpin" type="button" title="钉住目录" aria-pressed="false"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg></button></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="../知识笔记首页.html">全部板块</a><div class="navbody"><div class="sec cur">英语</div><details class="brd" open><summary><a class="b on" aria-current="page" href="英语_写作.html">写作</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_写作.html#一考试概览">一、考试概览</a><a class="d" href="英语_写作.html#11试卷结构">1.1 试卷结构</a><a class="d" href="英语_写作.html#12评分标准">1.2 评分标准</a><a class="c" href="英语_写作.html#二小作文">二、小作文</a><a class="d" href="英语_写作.html#21考查形式">2.1 考查形式</a><a class="d" href="英语_写作.html#22书信格式">2.2 书信格式</a><a class="d" href="英语_写作.html#23告示格式">2.3 告示格式</a><a class="d" href="英语_写作.html#24会议纪要格式">2.4 会议纪要格式</a><a class="c" href="英语_写作.html#三图表作文英语二大作文">三、图表作文（英语二大作文）</a><a class="d" href="英语_写作.html#31图表类型与分类">3.1 图表类型与分类</a><a class="d" href="英语_写作.html#32三段式框架">3.2 三段式框架</a><a class="d" href="英语_写作.html#33动态图首段">3.3 动态图首段</a><a class="d" href="英语_写作.html#34静态图首段">3.4 静态图首段</a><a class="d" href="英语_写作.html#35图表作文主体段第二段">3.5 图表作文主体段（第二段）</a><a class="d" href="英语_写作.html#36图表作文结尾段第三段">3.6 图表作文结尾段（第三段）</a><a class="c" href="英语_写作.html#四图画作文英语一大作文">四、图画作文（英语一大作文）</a><a class="d" href="英语_写作.html#41读图方法">4.1 读图方法</a><a class="d" href="英语_写作.html#42图画作文第一段描述图画">4.2 图画作文第一段: 描述图画</a><a class="d" href="英语_写作.html#43图画作文第二段解释含义">4.3 图画作文第二段: 解释含义</a><a class="d" href="英语_写作.html#44图画作文结尾段第三段">4.4 图画作文结尾段（第三段）</a><a class="c" href="英语_写作.html#五文字材料题">五、文字材料题</a><a class="d" href="英语_写作.html#51考查特征">5.1 考查特征</a><a class="d" href="英语_写作.html#52三段式框架">5.2 三段式框架</a><a class="d" href="英语_写作.html#53首段句型框架">5.3 首段句型框架</a><a class="d" href="英语_写作.html#54提取主题词与观点">5.4 提取主题词与观点</a><a class="d" href="英语_写作.html#55论证方式">5.5 论证方式</a><a class="c" href="英语_写作.html#六功能句与素材库">六、功能句与素材库</a><a class="d" href="英语_写作.html#61高频句式">6.1 高频句式</a><a class="d" href="英语_写作.html#62通用原因素材">6.2 通用原因素材</a><a class="d" href="英语_写作.html#63强调句">6.3 强调句</a><a class="d" href="英语_写作.html#64重复替换技巧">6.4 重复替换技巧</a><a class="c" href="英语_写作.html#七常见语法错误与丢分点">七、常见语法错误与丢分点</a><a class="d" href="英语_写作.html#71黄金法则一个句子有且只有1个谓语动词">7.1 黄金法则: 一个句子有且只有 1 个谓语动词</a><a class="d" href="英语_写作.html#72动词变形">7.2 动词变形</a><a class="d" href="英语_写作.html#73名词变形">7.3 名词变形</a><a class="d" href="英语_写作.html#74比较级">7.4 比较级</a><a class="d" href="英语_写作.html#75词性混淆">7.5 词性混淆</a><a class="d" href="英语_写作.html#76介词误用">7.6 介词误用</a><a class="d" href="英语_写作.html#77选词不当">7.7 选词不当</a><a class="d" href="英语_写作.html#78拼写错误">7.8 拼写错误</a><a class="d" href="英语_写作.html#79漏词">7.9 漏词</a><a class="d" href="英语_写作.html#710语序形容词顺序">7.10 语序（形容词顺序）</a><a class="c" href="英语_写作.html#八模板的合理使用">八、模板的合理使用</a><a class="d" href="英语_写作.html#81模板的价值与风险">8.1 模板的价值与风险</a><a class="d" href="英语_写作.html#82正确的使用策略">8.2 正确的使用策略</a><a class="d" href="英语_写作.html#83阅卷雷区">8.3 阅卷雷区</a><a class="c" href="英语_写作.html#九知识连接">九、知识连接</a><a class="d" href="英语_写作.html#91与阅读板块的关系">9.1 与阅读板块的关系</a><a class="d" href="英语_写作.html#92与翻译板块的关系">9.2 与翻译板块的关系</a><a class="d" href="英语_写作.html#93英语一vs英语二写作差异">9.3 英语一 vs 英语二写作差异</a><a class="c" href="英语_写作.html#十写作实战策略">十、写作实战策略</a><a class="d" href="英语_写作.html#101考场时间分配建议">10.1 考场时间分配建议</a><a class="d" href="英语_写作.html#102备考训练重点">10.2 备考训练重点</a><a class="c x" href="英语_写作_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-阅读"><summary><a class="b" href="英语_阅读.html">阅读</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_阅读.html#一阅读考试概览">一、阅读考试概览</a><a class="c" href="英语_阅读.html#二基础方法论">二、基础方法论</a><a class="c" href="英语_阅读.html#三六大题型逐个突破">三、六大题型逐个突破</a><a class="c" href="英语_阅读.html#四干扰项设置规律高频">四、干扰项设置规律【高频】</a><a class="c" href="英语_阅读.html#五长难句在阅读中的处理">五、长难句在阅读中的处理</a><a class="c" href="英语_阅读.html#六真题练习方法">六、真题练习方法</a><a class="c" href="英语_阅读.html#七常见丢分点与考场策略">七、常见丢分点与考场策略</a><a class="c" href="英语_阅读.html#八知识连接">八、知识连接</a><a class="c" href="英语_阅读.html#九新题型PartB必考">九、新题型（Part B）【必考】</a><a class="c x" href="英语_阅读_暑假_例题.html">▸ 暑假例题集</a><a class="c x" href="英语_阅读_无忧_例题.html">▸ 无忧例题集</a></details><details class="brd" data-k="brd-翻译"><summary><a class="b" href="英语_翻译.html">翻译</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_翻译.html#一考试概览">一、考试概览</a><a class="c" href="英语_翻译.html#二翻译流程从英语到汉语的四步法">二、翻译流程: 从英语到汉语的四步法</a><a class="c" href="英语_翻译.html#三词法翻译词义选择与搭配">三、词法翻译: 词义选择与搭配</a><a class="c" href="英语_翻译.html#四翻译技巧">四、翻译技巧</a><a class="c" href="英语_翻译.html#五易错点与避坑指南">五、易错点与避坑指南</a><a class="c" href="英语_翻译.html#六知识连接">六、知识连接</a><a class="c x" href="英语_翻译_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-长难句翻译"><summary><a class="b" href="英语_长难句翻译.html">长难句翻译</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_长难句翻译.html#一长难句处理五步法必考">一、长难句处理五步法 【必考】</a><a class="c" href="英语_长难句翻译.html#二按结构类型处理">二、按结构类型处理</a><a class="c" href="英语_长难句翻译.html#三翻译技巧">三、翻译技巧</a><a class="c" href="英语_长难句翻译.html#四易错点易错">四、易错点 【易错】</a><a class="c" href="英语_长难句翻译.html#五知识连接">五、知识连接</a><a class="c x" href="英语_长难句翻译_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-语法"><summary><a class="b" href="英语_语法.html">语法</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_语法.html#一句子成分与五大基本句型">一、句子成分与五大基本句型</a><a class="c" href="英语_语法.html#二状语成分与状语从句必考">二、状语成分与状语从句 【必考】</a><a class="c" href="英语_语法.html#三特殊结构必考">三、特殊结构 【必考】</a><a class="c" href="英语_语法.html#四三大从句概述">四、三大从句概述</a><a class="c" href="英语_语法.html#五长难句分析方法重点">五、长难句分析方法 【重点】</a><a class="c" href="英语_语法.html#六易错点与考点">六、易错点与考点</a><a class="c" href="英语_语法.html#七知识连接">七、知识连接</a><a class="c x" href="英语_语法_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-完形"><summary><a class="b" href="英语_完形.html">完形</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_完形.html#一题型概览">一、题型概览</a><a class="c" href="英语_完形.html#二解题总流程">二、解题总流程</a><a class="c" href="英语_完形.html#三选项词性考点">三、选项词性考点</a><a class="c" href="英语_完形.html#四词组搭配考点">四、词组搭配考点</a><a class="c" href="英语_完形.html#五常考逻辑关系">五、常考逻辑关系</a><a class="c" href="英语_完形.html#八高频易错点">八、高频易错点</a><a class="c" href="英语_完形.html#六考点类型表做完题对考点用重点">六、考点类型表(做完题对考点用)【重点】</a><a class="c" href="英语_完形.html#七新题型小标题四方法">七、新题型(小标题)四方法</a><a class="c" href="英语_完形.html#九考前准备建议">九、考前准备建议</a></details><details class="brd" data-k="brd-无忧0802_测试卷"><summary><a class="b" href="英语_无忧0802_测试卷.html">无忧0802_测试卷</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_无忧0802_测试卷.html#一试卷总览">一、试卷总览</a><a class="c" href="英语_无忧0802_测试卷.html#二SectionI完形填空20分">二、Section I：完形填空（20 分）</a><a class="c" href="英语_无忧0802_测试卷.html#三SectionII阅读理解60分">三、Section II：阅读理解（60 分）</a><a class="c" href="英语_无忧0802_测试卷.html#四SectionIII新题型20分">四、Section III：新题型（20 分）</a><a class="c" href="英语_无忧0802_测试卷.html#五备考启示">五、备考启示</a></details><details class="brd" data-k="brd-词汇"><summary><a class="b" href="英语_词汇.html">词汇</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_词汇.html#一态度题真题例句重点词">一、态度题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#二例证题真题例句重点词">二、例证题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#三语义题真题例句重点词">三、语义题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#四细节题真题例句重点词">四、细节题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#五推断题真题例句重点词">五、推断题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#六主旨题真题例句重点词">六、主旨题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#七篇章精读全文重点词">七、篇章精读 · 全文重点词</a><a class="c" href="英语_词汇.html#八写作重点词与阅读分离">八、写作重点词(与阅读分离)</a><a class="c" href="英语_词汇.html#九新题型PartB重点词">九、新题型（Part B）重点词</a></details></div></nav>
+<div id="navscrim" aria-hidden="true"></div>
+<main data-subj="english"><div class="crumbline"><a href="../知识笔记首页.html">首页</a><span class="sep">/</span><b>英语 · 写作</b></div><div class="article"><h1>写作</h1><div class="board-meta">📖 英语 · <span class="pill">理论笔记</span><span class="pill">10 节</span></div><blockquote>
+<p>阶段: 暑假 + 无忧 | 覆盖课件 14 份:
+写作第一次课、写作第二次课、写作第三次课(1)、写作第四次课、写作第五次课、1. 动态图首段、2. 静态图首段、3. 图表作文主体段、4. 图表结尾段、6. 图画作文主体段 - 精神品质类、7.1 图画作文主体段 - 社会现象类1、7.2 图画作文主体段 - 社会现象类2（备选写法）、8. 图画结尾段、9. 文字材料题
+📖 例题全量见: <a href="英语_写作_例题.html">写作 · 例题集</a>
+📖 重点词见: <a href="英语_词汇.html">英语 · 重点词汇总</a></p>
+</blockquote>
+<hr />
+<h2 id="一考试概览">一、考试概览</h2>
+<h3 id="11试卷结构">1.1 试卷结构</h3>
+<p><b>英语一</b>（写作 30 分）</p>
+<table>
+<thead>
+<tr>
+<th>节</th>
+<th>题型</th>
+<th>字数</th>
+<th>分值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 节 (小作文)</td>
+<td>应用文：书信、通知、告示、纪要等</td>
+<td>约 100 词</td>
+<td>10 分</td>
+</tr>
+<tr>
+<td>B 节 (大作文)</td>
+<td>短文写作：图画、图表或文字</td>
+<td>160~200 词</td>
+<td>20 分</td>
+</tr>
+</tbody>
+</table>
+<p><b>英语二</b>（写作 25 分）</p>
+<table>
+<thead>
+<tr>
+<th>节</th>
+<th>题型</th>
+<th>字数</th>
+<th>分值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 节 (小作文)</td>
+<td>应用文：书信、通知、告示、纪要等</td>
+<td>约 100 词</td>
+<td>10 分</td>
+</tr>
+<tr>
+<td>B 节 (大作文)</td>
+<td>短文写作：图画、图表或文字</td>
+<td>约 150 词</td>
+<td>15 分</td>
+</tr>
+</tbody>
+</table>
+<p><b><span class="mk info">注意</span></b> 英语一的大作文字数要求比英语二多 50 词左右，但两者小作文字数要求相同。英语一历年主要考图画作文，英语二历年主要考图表作文。但 2023-2025 年英语一出现了图表+图画混合趋势，不能只押一种题型。</p>
+<p><b>时间分配</b>: 小作文约 15 分钟，大作文约 35 分钟，合计约 50 分钟。</p>
+<h3 id="12评分标准">1.2 评分标准</h3>
+<p>评分由三个维度构成：<b>内容 + 结构 + 语言</b>。<span class="mk biz">必考</span></p>
+<ul>
+<li><b>内容</b>: 切题、完整。涵盖所有要点 -- 漏掉主要内容要点直接掉档。</li>
+<li><b>结构</b>: 连贯、逻辑清晰。段落分明、衔接自然。</li>
+<li><b>语言</b>: 正确、多样。语法准确 + 词汇丰富。</li>
+</ul>
+<blockquote>
+<p><b>阅卷老师在找什么？</b> 阅卷速度极快（每篇约 30-60 秒），老师扫读时抓三个东西：
+1. 段落是否齐整，字数够不够（视觉印象）；
+2. 首段是否点题，末尾是否有收束（结构完整）；
+3. 有没有明显语法硬伤、拼写错误（语言底子）。
+<b>高分标准</b>: 卷面整洁、字迹工整是隐性加分项。字迹潦草的作文很难拿到第五档。</p>
+</blockquote>
+<p><b>英语一大作文五档制</b>:</p>
+<table>
+<thead>
+<tr>
+<th>档次</th>
+<th>英语一</th>
+<th>英语二</th>
+<th>核心判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第五档</td>
+<td>17-20</td>
+<td>13-15</td>
+<td>内容要点全覆盖，语言自然流畅，语法错误极少，衔接多样，层次清晰</td>
+</tr>
+<tr>
+<td>第四档</td>
+<td>13-16</td>
+<td>10-12</td>
+<td>内容要点基本全覆盖（允许漏 1-2 个次重点），语言基本准确</td>
+</tr>
+<tr>
+<td>第三档</td>
+<td>9-12</td>
+<td>7-9</td>
+<td>包含多数要点，语法词汇能满足需求，有错误但不影响理解</td>
+</tr>
+<tr>
+<td>第二档</td>
+<td>5-8</td>
+<td>4-6</td>
+<td>漏掉较多要点，语法错误多，影响理解</td>
+</tr>
+<tr>
+<td>第一档</td>
+<td>1-4</td>
+<td>1-3</td>
+<td>未完成规定任务，语言错误严重</td>
+</tr>
+</tbody>
+</table>
+<p><b><span class="mk warn">易错</span></b> 很多同学以为"多用高级词汇就能高分"——错。阅卷先看"正确"再看"多样"。一篇错误较少但词汇朴素的文章，分数一定高于满篇"高级词"但错误百出的文章。</p>
+<hr />
+<h2 id="二小作文">二、小作文</h2>
+<h3 id="21考查形式">2.1 考查形式</h3>
+<p>小作文要求写一篇约 100 词的应用文，评分 10 分。考查形式包括:</p>
+<ul>
+<li><b>书信</b> (letter/email): 建议信、感谢信、道歉信、邀请信、申请信等 <span class="mk freq">高频</span></li>
+<li><b>通知/告示</b> (notice): 活动通知、招募告示等</li>
+<li><b>会议纪要</b> (meeting minutes): 2023 年大纲新增 <span class="mk info">注意</span></li>
+</ul>
+<h3 id="22书信格式">2.2 书信格式</h3>
+<p><b>两种格式均可</b>:</p>
+<ul>
+<li><b>齐头式</b> (block format): 每段顶格写，段间空一行。称呼顶格，署名顶格。</li>
+<li><b>缩进式</b> (indented format): 每段首行缩进，称呼顶格，署名右对齐。</li>
+</ul>
+<blockquote>
+<p>两格式都能得分，关键是全文统一 -- 不要混用。</p>
+</blockquote>
+<p><b>书信类型全清单(11 类)</b><span class="mk freq">高频</span>: 推荐介绍信 / 申请信 / 求职信 / 邀请信 / 倡议信 / 道歉信 / 感谢信 / 辞职信 / 建议信 / 祝贺建议信 / 投诉信。考场上认准类型再套框架:</p>
+<ul>
+<li>首段均点明写信目的(题干会给出情景)</li>
+<li>建议/推荐/倡议类: 中段给 2-3 点具体内容(建议要可操作, 不能空喊)</li>
+<li>道歉/辞职/投诉类: 中段解释原因 + 补救措施/请求</li>
+<li>邀请/感谢/祝贺类: 中段交代细节(时间地点/感谢的具体事由)</li>
+<li>末段统一: 期待回复/再次致歉/再次邀请等礼貌收尾</li>
+</ul>
+<p><b>书信基本结构</b>:</p>
+<pre><code>Dear [称呼],
+    [第一段: 写信目的]
+    [第二段: 正文内容 -- 多为 2-3 点]
+    [第三段: 礼貌收尾/期待回复]
+Yours sincerely,
+Li Ming
+</code></pre>
+<h3 id="23告示格式">2.3 告示格式</h3>
+<p>告示通常包含: 标题 (NOTICE)、发布日期、正文 (目的 + 条件 + 联系方式)、署名。</p>
+<p><b><span class="src">【来源: 1. 动态图首段】</span></b></p>
+<h3 id="24会议纪要格式">2.4 会议纪要格式</h3>
+<p>包含: Subject、Time、Date、Place、Attendees、Presided by、Summary、Submitted by。正文用首先/其次/最后带出讨论要点和决议。</p>
+<p><b><span class="src">【来源: 1. 动态图首段】</span></b></p>
+<blockquote>
+<p>小作文的实质是"信息完整 + 格式正确"。阅卷不会因为你的英文不够优美而大量扣分，但漏掉题目要求的信息点会直接扣分。所以小作文的策略是: 先保证信息全覆盖，再追求语言质量。</p>
+</blockquote>
+<hr />
+<h2 id="三图表作文英语二大作文">三、图表作文（英语二大作文）</h2>
+<h3 id="31图表类型与分类">3.1 图表类型与分类</h3>
+<p>历年英语二图表类型统计 (2010-2025):</p>
+<table>
+<thead>
+<tr>
+<th>图表类型</th>
+<th>考频</th>
+<th>代表年份</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>柱状图 (column chart)</td>
+<td>8 次</td>
+<td>2011, 2013, 2014, 2019, 2021, 2022, 2025</td>
+</tr>
+<tr>
+<td>饼状图 (pie chart)</td>
+<td>4 次</td>
+<td>2015, 2016, 2018, 2020</td>
+</tr>
+<tr>
+<td>折线图 (line chart)</td>
+<td>2 次</td>
+<td>2017, 2023</td>
+</tr>
+<tr>
+<td>表格 (table)</td>
+<td>1 次</td>
+<td>2012</td>
+</tr>
+<tr>
+<td>条形图 (bar chart)</td>
+<td>1 次</td>
+<td>2024</td>
+</tr>
+</tbody>
+</table>
+<p><b>图表核心分类</b> -- 这是比"柱/饼/线"更本质的分类:</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>定义</th>
+<th>判断法</th>
+<th>审题关键词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>动态图</b></td>
+<td>有 2 个及以上时间点，侧重于对象的变化趋势</td>
+<td>看横轴/图例是否含两个年份</td>
+<td>"变化"、change</td>
+</tr>
+<tr>
+<td><b>静态图</b></td>
+<td>至多 1 个时间点，侧重于对象间的差异比较</td>
+<td>只有一个时间或没有明确时间</td>
+<td>"调查"、"比例"</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>为什么要分动/静？</b> 因为两种图的首段写法完全不同。动态图描述"变化"，静态图描述"分布/占比"。混用模板是低分来源。</p>
+</blockquote>
+<p><b><span class="src">【来源: 写作第一次课、1. 动态图首段、2. 静态图首段】</span></b></p>
+<h3 id="32三段式框架">3.2 三段式框架</h3>
+<pre><code>第一段: 描述图表 (interpret the chart)
+    - 总述图表主题（改写标题）
+    - 描述图表细节（数据描述）
+第二段: 分析图表 (give your comments 前半)
+    - 过渡句
+    - 原因分析（2 个成因）
+第三段: 个人评论 (give your comments 后半)
+    - 评价 + 建议 + 展望
+</code></pre>
+<h3 id="33动态图首段">3.3 动态图首段</h3>
+<h4>审题三步法<span class="mk biz">必考</span></h4>
+<p>写任何图表作文前, 先完成三步审题: <b>读标题 → 定对象 → 看数据</b>。</p>
+<ol>
+<li><b>读标题</b>: 标题定主题(改写的原材料就是标题, 所以第一句必须改写标题, 不能照抄)</li>
+<li><b>定对象</b>: 对象定主体(有几个对象? 主体是"某高校学生"还是"某市居民"? 对象写错直接跑题)</li>
+<li><b>看数据</b>: 数据定细节(动态图看时间点与趋势, 静态图看占比与大小关系)</li>
+</ol>
+<blockquote>
+<p>图表作文跑题的最大原因不是没看懂图, 而是没审题——标题里的"地点/时间/对象"被忽略。</p>
+</blockquote>
+<h4>标题改写（总体概括）</h4>
+<p><b>基础模式</b>: <code>The [图表种类] clearly illustrates the change(s) in [主题词] in [地点] from [年份起] to [年份止].</code></p>
+<p><b>进阶模式</b> (用 how 从句): <code>The [图表种类] clearly illustrates how [主题词] changed from [年份起] to [年份止].</code></p>
+<blockquote>
+<p><b>为什么推荐 how 句式？</b> 因为用 how + 从句比用 changes in + 名词短语更灵活，尤其在标题比较复杂（含多个修饰成分）时不必绞尽脑汁堆名词短语。</p>
+</blockquote>
+<p><b>标题翻译四步法</b><span class="mk ok">重点</span>: ①确定内容(先把标题写成汉语完整句) → ②依次找<b>主题词、地点、时间</b>，拆成小短语 → ③逐个翻译 → ④通读检查(语法、单复数、介词)。切忌整句硬译——"某高校学生兼职情况"拆成 the proportions of the students participating in part-time work in different grades at a certain university 这样的小块拼接，比硬译通顺得多。</p>
+<h4>数据描述</h4>
+<p>动态图按变化关系分为两类:</p>
+<p><b>类型一: 此消彼长</b> (一个上升、一个下降)</p>
+<p>模板: <code>According to the chart, [对象1] rose from [数值] to [数值]. By contrast, [对象2] dropped from [数值] to [数值] during the same period.</code></p>
+<p><b>类型二: 趋势相同但变化幅度有差异</b></p>
+<p>基础版: <code>According to the chart, [对象1] rose/dropped from [数值] to [数值], while/whereas [对象2] increased/decreased from [数值] to [数值].</code></p>
+<p>进阶版: <code>We can see continued growth/decline in [对象] these years. A closer look, however, shows a (striking) difference: [对象1] grew/declined at a much/relatively faster pace, from [起始] to [结束], while/whereas [对象2] just witnessed a slight/steady increase/decline, from [起始] to [结束].</code></p>
+<h4>变化趋势表达三句式</h4>
+<table>
+<thead>
+<tr>
+<th>句式</th>
+<th>结构</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>句式一</td>
+<td><code>衔接词 + the number/percentage of + 主体 + 趋势动词 + 幅度副词 + from 数1 in 年1 to 数2 in 年2</code></td>
+<td>The number of urban people increased dramatically from 300 million in 1990 to 666 million in 2010.</td>
+</tr>
+<tr>
+<td>句式二</td>
+<td><code>衔接词 + there was a/an + 幅度形容词 + 趋势名词 + in the number/percentage of + 主体 + from 数1 in 年1 to 数2 in 年2</code></td>
+<td>There was a sharp increase in the market share of domestic car brands from 25% in 2008 to 32% in 2009.</td>
+</tr>
+<tr>
+<td>句式三</td>
+<td><code>衔接词 + this period saw/witnessed a/an + 幅度形容词 + 趋势名词 + in the number/percentage of + 主体 + from 数1 in 年1 to 数2 in 年2</code></td>
+<td>This period saw a dramatic rise in the number of mobile-phone subscriptions in developing countries from 400 million in 2000 to 4 billion in 2008.</td>
+</tr>
+</tbody>
+</table>
+<h4>趋势词汇库</h4>
+<p><b><span class="mk biz">必考</span></b> 以下词汇是图表作文的核心弹药:</p>
+<p><b>上升 V.</b>: increase, rise, grow (一般) / soar, surge, skyrocket (剧烈) / <b>edge up (缓慢上升)</b>
+<b>下降 V.</b>: decline, drop, decrease, fall (一般) / slump, plunge, plummet (剧烈) / <b>tumble, dwindle (缓降)</b>
+<b>幅度 Adj./Adv.</b>: rapid(ly), sharp(ly), dramatic(ally), significant(ly) (明显) / moderate(ly) (适中) / slight(ly), mild(ly) (不明显)
+<b>不变</b>: keep/remain/stay stable/steady/constant/unchanged at + 数值 / <b>level out (趋于平稳)</b>
+<b>大约/超过/少于</b>: about/around/approximately/nearly/roughly; more than/over; less than/under
+<b>单位词</b>: hundred 百 / thousand 千 / million 百万 / billion 十亿 / trillion 万亿</p>
+<p><b>描述时态</b>: 通常使用一般过去时。没有明确过去时间的静态图用一般现在时。</p>
+<p><b><span class="src">【来源: 写作第一次课、1. 动态图首段】</span></b></p>
+<h4>衔接词</h4>
+<ul>
+<li>整体→细节: <code>To be specific, / In detail, / Specifically,</code></li>
+<li>同向细节间: <code>Meanwhile, / At the same time, / During the same period, / In addition,</code></li>
+<li>反向细节间: <code>..., while ... / By contrast, / In contrast,</code></li>
+</ul>
+<h3 id="34静态图首段">3.4 静态图首段</h3>
+<h4>标题改写</h4>
+<p><b>两种思路</b>:</p>
+<ul>
+<li>常规: <code>The [图表种类] clearly illustrates [改写标题(名词短语)].</code></li>
+<li>新思路: <code>The [图表种类] clearly illustrates how/why/what...</code> (用宾语从句)</li>
+</ul>
+<blockquote>
+<p>静态图和动态图的首段区别: 动态图标题是 <code>changes in + 主题</code>，静态图标题直接是 <code>主题（名词短语）</code> 或 <code>how/why 从句</code>，因为静态图不描述变化。</p>
+</blockquote>
+<h4>数据描述（百分比三写法）</h4>
+<p><b><span class="mk biz">必考</span></b> 三种百分比表达法，每种各有用处，交替使用避免重复:</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>结构</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写法一</td>
+<td>A account(s) for X% of the total number/amount of B</td>
+<td>Boys account for 70% of the students.</td>
+</tr>
+<tr>
+<td>写法二</td>
+<td>X% of B ...</td>
+<td>70% of the students are boys.</td>
+</tr>
+<tr>
+<td>写法三</td>
+<td>The percentage of A be X%</td>
+<td>The percentage of boys is 70%.</td>
+</tr>
+</tbody>
+</table>
+<p><b>静态图数据描述核心逻辑</b>: 从最大比例讲起，依次说明。用 <code>Specifically,</code> 衔接。</p>
+<p><b>rate vs ratio</b>: </p>
+<ul>
+<li><code>rate</code> = 速率/比率/费率 (如 crime rate, interest rate)</li>
+<li><code>ratio</code> = 两者之间的比值关系 (如 the ratio of men to women is 1:6)</li>
+</ul>
+<p><b>respectively 用法</b>: "A 和 B 分别是 X% 和 Y%" → <code>the percentages of A and B are X% and Y% respectively.</code></p>
+<p><b><span class="src">【来源: 写作第二次课、2. 静态图首段】</span></b></p>
+<h3 id="35图表作文主体段第二段">3.5 图表作文主体段（第二段）</h3>
+<h4>过渡句</h4>
+<table>
+<thead>
+<tr>
+<th>句式</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>句式一</td>
+<td>It is not difficult to come up with some possible/potential factors for the result/the change(s)/the phenomenon.</td>
+</tr>
+<tr>
+<td>句式二</td>
+<td>At least two/three primary/main/leading factors, in my opinion, can account for/explain the result/the change(s)/the phenomenon.</td>
+</tr>
+<tr>
+<td>句式三</td>
+<td>This phenomenon can be attributed to two primary factors. / It is not difficult to think of two primary factors that might account for/explain this phenomenon.</td>
+</tr>
+</tbody>
+</table>
+<h4>找论证主体</h4>
+<table>
+<thead>
+<tr>
+<th>图表类型</th>
+<th>论证主体策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>动态图 - 一个主体</td>
+<td>一个主体的两个原因</td>
+</tr>
+<tr>
+<td>动态图 - 两个主体（此消彼长）</td>
+<td>刚好对应两个论点（或当作一个主体处理）</td>
+</tr>
+<tr>
+<td>动态图 - 三个主体</td>
+<td>剔除一个或合并其中两个</td>
+</tr>
+<tr>
+<td>静态图 - 多个主体</td>
+<td>找特殊值（最大、第二大、最小）或合并</td>
+</tr>
+</tbody>
+</table>
+<h4>通用原因思路</h4>
+<p><b>三大维度找原因</b>: <span class="mk ok">重点</span></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>思考方向</th>
+<th>常用表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>人 (群体)</b></td>
+<td>群体特点/需求变化/观念转变</td>
+<td>提升竞争力、扩大视野、健康意识增强、消费观念转变</td>
+</tr>
+<tr>
+<td><b>政府/机构</b></td>
+<td>政策支持/投资/监管</td>
+<td>颁布优惠政策、加大投资、加强监管、设计课程</td>
+</tr>
+<tr>
+<td><b>社会</b></td>
+<td>经济发展/科技进步/城市化</td>
+<td>经济繁荣、科技发展、生活水平提高、社会压力增大</td>
+</tr>
+</tbody>
+</table>
+<h4>论证结构: 论点 + 论据</h4>
+<p>每个论点展开: <b>论点句 + 论据 (因果链: 原因→结果)</b></p>
+<pre><code>For one thing, [论点1].
+    论据: Due to/Because of/Since [原因], [结果].
+For another, [论点2].
+    论据: As [原因], [结果].
+</code></pre>
+<p><b>拉长句子的扩充技巧</b>:</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定语</td>
+<td>local residents, higher per capita disposable income</td>
+</tr>
+<tr>
+<td>状语</td>
+<td>in recent years, with the development of</td>
+</tr>
+<tr>
+<td>举例</td>
+<td>such as European nations, including more accurate navigation systems</td>
+</tr>
+<tr>
+<td>句式</td>
+<td>as is universally acknowledged, it is clear that</td>
+</tr>
+</tbody>
+</table>
+<p><b><span class="src">【来源: 写作第四次课、写作第五次课、3. 图表作文主体段】</span></b></p>
+<h3 id="36图表作文结尾段第三段">3.6 图表作文结尾段（第三段）</h3>
+<p><b>三段式: 评价 + 建议 + 展望</b></p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>句式框架</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>评价</b></td>
+<td>It can be observed that [结论], which is encouraging/satisfying/concerning/alarming.</td>
+</tr>
+<tr>
+<td><b>建议 (好事)</b></td>
+<td>To sustain this momentum, [建议].</td>
+</tr>
+<tr>
+<td><b>建议 (坏事)</b></td>
+<td>To address this issue / To tackle this challenge, [建议].</td>
+</tr>
+<tr>
+<td><b>建议 (通用)</b></td>
+<td>Accordingly, [建议].</td>
+</tr>
+<tr>
+<td><b>展望 (好事)</b></td>
+<td>With persistent efforts in these aspects, this trend is projected to continue in the foreseeable future.</td>
+</tr>
+<tr>
+<td><b>展望 (通用)</b></td>
+<td>Only in this way can sb. do sth. [结果].</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b>好事 vs 坏事的判断</b>: 2011 国产车份额上升 → 好事 (encouraging)；2014 城镇人口增长 → 可以从两个角度写 (好事: 城市化进步; 坏事: 城乡失衡)；2012 中年员工不满 → 坏事 (concerning)。</p>
+</blockquote>
+<p><b>表达建议的句式</b>:</p>
+<ol>
+<li><code>Effective measures should be adopted to do sth.</code></li>
+<li><code>It is imperative/necessary/advisable that sb. (should) do sth.</code></li>
+<li><code>sb. should/need to/be supposed to do sth.</code></li>
+</ol>
+<p><b><span class="src">【来源: 写作第四次课、4. 图表结尾段】</span></b></p>
+<hr />
+<h2 id="四图画作文英语一大作文">四、图画作文（英语一大作文）</h2>
+<h3 id="41读图方法">4.1 读图方法</h3>
+<p>读图三个步骤: <b>审标题 → 看人物 → 读文字</b></p>
+<blockquote>
+<p>标题告诉你主题, 人物告诉你主体, 文字(对话/旁白)告诉你寓意。三者缺一不可。很多同学不读标题, 直接看图画猜寓意, 很容易跑题。</p>
+</blockquote>
+<h3 id="42图画作文第一段描述图画">4.2 图画作文第一段: 描述图画</h3>
+<h4>整体描述: 谁 + 在哪里 + 做什么</h4>
+<p><b>基本句型</b>: <code>We can see in the picture that [谁] [在哪里] [做什么].</code></p>
+<p><b>找共同点 vs 找差异点</b>:</p>
+<ul>
+<li>只有一幅图或多图共性明显 → 找共同点: <code>We can see in the picture that two young men are hiking in the mountains.</code></li>
+<li>多幅图对比 → 找差异点: <code>We can see in the pictures that two fathers have different ways of teaching their children.</code></li>
+</ul>
+<h4>细节描述: 动作 + 环境 + 语言 + 表情</h4>
+<p><b><span class="mk ok">重点</span></b> 这是图画作文第一段的关键部分。细节越具体, 描述分越高。</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>表达方式</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>动作</b></td>
+<td>doing 分词</td>
+<td>sitting on a stone step; staring at the smartphones</td>
+</tr>
+<tr>
+<td><b>环境</b></td>
+<td>with + 独立主格</td>
+<td>with his backpack put aside; with the tasty food in front of them untouched</td>
+</tr>
+<tr>
+<td><b>语言</b></td>
+<td>saying/sighing + 引语</td>
+<td>sighing, "I'm too tired to hike."</td>
+</tr>
+<tr>
+<td><b>表情</b></td>
+<td>with a look of + 名词</td>
+<td>with a look of cheerfulness; with a look of dejection</td>
+</tr>
+</tbody>
+</table>
+<h4>分词短语 vs 独立主格</h4>
+<blockquote>
+<p>这是一个高频语法点，也是阅卷老师判断语言水平的标志之一。</p>
+</blockquote>
+<p><b>规则</b>: </p>
+<ul>
+<li>"主语"与主句主语一致 → 分词短语: <code>Staring at the smartphones in their hands, they don't talk with each other.</code></li>
+<li>"主语"与主句主语不一致 → 独立主格: <code>With his backpack put aside, one of them sits on a stone step.</code></li>
+</ul>
+<p><b>句型模板</b>:</p>
+<ul>
+<li>分词: <code>Doing/done ..., 主句主语 动作, doing/done ...</code></li>
+<li>独立主格: <code>With 新主语 doing/done ..., 主句主语 动作, with 新主语 doing/done ...</code></li>
+</ul>
+<p><b>表情描写词汇库</b>:</p>
+<ul>
+<li>开心: with a look of happiness/glee; beaming with joy; looking cheerful</li>
+<li>难过: with a look of sadness; with tears in one's eyes</li>
+<li>失望: with a look of disappointment/dismay</li>
+<li>沮丧: with a look of dejection; looking crestfallen/dejected</li>
+<li>困惑: with a look of confusion/bewilderment</li>
+<li>愤怒: with a look of anger/rage; with a furious expression</li>
+<li>厌恶: with a look of disgust/contempt</li>
+</ul>
+<h4>标题翻译</h4>
+<p><b>句型</b>: <code>Under/Below the picture(s) is a caption which reads: "[标题翻译]."</code></p>
+<p><b><span class="mk info">注意</span>没有文字说明就不写</b>——图画如果没有标题/对话/旁白, 第一段就不要写"标题翻译"这一句, 只写整体描述 + 细节描述即可。硬凑一句反而暴露模板痕迹。</p>
+<p><b>标题首字母大写规则</b>:</p>
+<ul>
+<li>实义词首字母大写 (名词、动词、形容词、副词)</li>
+<li>冠词 (a/an/the)、短介词、连词不大写，除非是首词</li>
+<li>连字符连接的两个词均大写</li>
+</ul>
+<p><b><span class="src">【来源: 写作第三次课(1)、写作第四次课】</span></b></p>
+<h3 id="43图画作文第二段解释含义">4.3 图画作文第二段: 解释含义</h3>
+<p>图画作文按主题分为两大类: <b>精神品质类</b> 和 <b>社会现象类</b>。两大类第二段的写法完全不同。</p>
+<h4>判断方式</h4>
+<ul>
+<li><b>"踩一捧一"型 / 文字里有明确价值暗示</b> → 精神品质类</li>
+<li><b>无明确价值暗示，只呈现现象</b> → 社会现象类</li>
+</ul>
+<h4>类型一: 精神品质类</h4>
+<p><b>写作框架</b>:</p>
+<pre><code>主旨句: The picture conveys that it is crucial to do sth.
+    ↓
+论点一: For one thing, [正面品质的好处 -- 成功/成长]
+    论据一: As is universally acknowledged, [原因], so only those who [有该品质] can do sth. [结果]
+    ↓
+论点二: For another, [没有该品质的坏处]
+    论据二: For instance, if [具体情境/考研/生活], [负面结果].
+</code></pre>
+<blockquote>
+<p><b>为什么用"正面好处 + 反面坏处"结构？</b> 这是议论文最经典的正反论证，双重说服力远强于单面论述。正面讲"为什么要"，反面讲"为什么不能不要"。</p>
+</blockquote>
+<p><b>主旨句模板</b>: <code>The picture conveys that it is crucial/imperative to [动词短语].</code> 或 <code>What the picture tries to convey is that it is of paramount importance to [动词短语].</code></p>
+<h4>类型二: 社会现象类</h4>
+<p><b>写作框架</b> (与图表作文中间段方法相同):</p>
+<pre><code>主旨句: What the picture tries to reveal is that [现象描述].
+    ↓
+论点一 + 论据一: For one thing, [成因一及其因果链]
+    ↓
+论点二 + 论据二: For another, [成因二及其因果链]
+</code></pre>
+<p><b>备选写法</b> (社会现象类): 主旨句 → 现象背景 → 现象发生 → 现象原因。适合话题本身需要一个"来龙去脉"的情况，如 2009 年网络远近、2024 年公园建设。</p>
+<p><b><span class="src">【来源: 写作第五次课、6. 图画作文主体段 - 精神品质类、7.1 社会现象类1、7.2 社会现象类2】</span></b></p>
+<h3 id="44图画作文结尾段第三段">4.4 图画作文结尾段（第三段）</h3>
+<h4>精神品质类结尾</h4>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>句式框架</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>总结</b></td>
+<td>Based on the above analysis, the conclusion can be drawn that we ought to attach great importance to [品质名词].</td>
+</tr>
+<tr>
+<td><b>建议</b></td>
+<td>Accordingly, not only should sb. bear in mind that [名言], but sb. should also do sth. [做法].</td>
+</tr>
+<tr>
+<td><b>展望</b></td>
+<td>Only in this way can sb. do sth. [结果].</td>
+</tr>
+</tbody>
+</table>
+<p><b>常用名言</b>:</p>
+<ul>
+<li>坚持: Where there is a will, there is a way.</li>
+<li>乐观: Every cloud has a silver lining.</li>
+<li>挑战: Only those who will risk going too far can possibly find out how far one can go. (T. S. Eliot)</li>
+<li>榜样: Children are educated by what the grown-up is and not by his talk. (Carl Jung)</li>
+</ul>
+<h4>社会现象类结尾</h4>
+<p>与图表作文结尾段相同 (见 3.6 节): 评价 + 建议 + 展望。</p>
+<p><b><span class="src">【来源: 8. 图画结尾段】</span></b></p>
+<hr />
+<h2 id="五文字材料题">五、文字材料题</h2>
+<h3 id="51考查特征">5.1 考查特征</h3>
+<p>2023 年大纲新增题型。给一段英文文章节选，要求: <code>explain whether or to what extent you agree with the author. Support your argument with reasons and relevant examples.</code></p>
+<h3 id="52三段式框架">5.2 三段式框架</h3>
+<pre><code>第一段: 引出主题 + 概括总结 + 表明立场
+第二段: 原因分析（同图画/图表作文论证方式）
+第三段: 总结/评价 + 建议 + 展望
+</code></pre>
+<h3 id="53首段句型框架">5.3 首段句型框架</h3>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>句型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>引出话题</td>
+<td>What the excerpt above reveals is a highly debatable issue regarding [主题名词/从句].</td>
+</tr>
+<tr>
+<td>概括总结</td>
+<td>The writer argues that [文章观点].</td>
+</tr>
+<tr>
+<td>表明立场</td>
+<td>From my perspective, I completely agree/disagree with the point of view mainly for the following reasons.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54提取主题词与观点">5.4 提取主题词与观点</h3>
+<p><b>主题词提取</b>:</p>
+<ul>
+<li>出现在 find, believe, indicate, think, claim 等态度词后</li>
+<li>出现在 demonstrate, illustrate, show, summary 等结论词后</li>
+<li>反复出现或以同义表达反复出现</li>
+</ul>
+<p><b>观点概括</b>:</p>
+<ul>
+<li>显性观点: 跟在总结性词/短语后面 (find, show, in conclusion, in short)</li>
+<li>隐性观点: 转折处 (but/however); 高频出现; 段首/段末句; should/important 等</li>
+</ul>
+<p><b>观点改写技巧</b>:</p>
+<ul>
+<li>同义词替换: damage → do harm to, beneficial → advantageous</li>
+<li>正反互写: admitting our mistakes is not harmful → being honest is beneficial</li>
+<li>句式更替: sth. is important → it is important to do sth.</li>
+</ul>
+<h3 id="55论证方式">5.5 论证方式</h3>
+<ul>
+<li><b>精神品质类话题</b> (如"是否应该展示不确定性") → 使用"正面好处+因果论证" + "反面坏处+举例论证"</li>
+<li><b>社会现象类话题</b> (如"为什么儿童迷恋科技") → 使用"现象背景-现象发生-现象原因" 或 "论点 1+论据 1 + 论点 2+论据 2"</li>
+</ul>
+<p><b><span class="src">【来源: 9. 文字材料题】</span></b></p>
+<hr />
+<h2 id="六功能句与素材库">六、功能句与素材库</h2>
+<h3 id="61高频句式">6.1 高频句式</h3>
+<h4>sth. make(s) it adj. for sb. to do sth.</h4>
+<ul>
+<li>收入的提高使得人们周游世界变成可能。→ The increase of incomes makes it possible for people to travel around the world.</li>
+<li>缺乏定期复习使学习者更难高效掌握核心知识。→ Lack of regular reviews makes it harder for learners to master key knowledge efficiently.</li>
+</ul>
+<h4>prioritize A over B</h4>
+<ul>
+<li>Freshmen prioritize experiencing college life over taking part-time jobs.</li>
+<li>同义: give priority to A rather than B; attach more importance to A than to B; value A more than B</li>
+</ul>
+<h4>not only...but also 部分倒装<span class="mk biz">必考</span></h4>
+<ul>
+<li>结构: <b>Not only + 情/系/助动词 + 主语 + 实义动词原形/表语, but 主语 + (also) + ...</b>(not only 在句首 → 前半句部分倒装)</li>
+<li>Not only <b>can</b> reading improve our vocabulary, but it (also) helps us think logically.</li>
+<li>Not only <b>should</b> we bear in mind the saying, but we should also put it into practice.</li>
+<li>注意: but 后半句不倒装; also 可省。</li>
+</ul>
+<h4>access 三用法</h4>
+<ul>
+<li>动词: sb. access sth. → Students can easily access online courses.</li>
+<li>名词: sb. have access to sth. → Students have easy access to online courses.</li>
+<li>形容词: sth. be accessible to sb. → Online courses are easily accessible to students.</li>
+</ul>
+<h4>-oriented 和 -friendly</h4>
+<ul>
+<li>以...为导向: market-oriented economy (市场经济), quality-oriented education (素质教育), people-oriented government</li>
+<li>对...友好: environment-friendly, eco-friendly, beginner-friendly, senior-friendly, startup-friendly</li>
+</ul>
+<h3 id="62通用原因素材">6.2 通用原因素材</h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>短语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>个人发展</td>
+<td>improve personal competitiveness, broaden horizons, accumulate experience, maintain physical and mental health, improve physical fitness, realize one's value</td>
+</tr>
+<tr>
+<td>观念转变</td>
+<td>the shift in consumption concepts/ideas, the enhancement of health awareness</td>
+</tr>
+<tr>
+<td>政府/机构</td>
+<td>strengthen supervision over, issue preferential policies, increase investment in public facilities, design relevant courses, accelerate product innovation</td>
+</tr>
+<tr>
+<td>社会</td>
+<td>economic prosperity, the development of science and technology, the acceleration of urbanization, the improvement of living standards, growing social pressure</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63强调句">6.3 强调句</h3>
+<p><b>句型</b>: <code>It is/was + 被强调部分 + that/who + 其他部分</code></p>
+<p>可以强调主语、宾语、状语等（不能强调谓语动词）。判断方法：去掉 It is/was ... that/who，句子依然完整。</p>
+<p><b>示例</b>: <code>It is precisely such governmental backing that enables traditional cultural activities to be well-organized and widely popularized.</code></p>
+<h3 id="64重复替换技巧">6.4 重复替换技巧</h3>
+<p>避免重复用同一个词指代同一事物:</p>
+<table>
+<thead>
+<tr>
+<th>指代</th>
+<th>单数</th>
+<th>复数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>特指</td>
+<td>that (带 the 语境)</td>
+<td>those</td>
+</tr>
+<tr>
+<td>泛指</td>
+<td>one</td>
+<td>ones</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>例: the percentage of domestic brands ... that of Japanese brands ... that of American ones</p>
+</blockquote>
+<p><b><span class="src">【来源: 1. 动态图首段】</span></b></p>
+<hr />
+<h2 id="七常见语法错误与丢分点">七、常见语法错误与丢分点</h2>
+<h3 id="71黄金法则一个句子有且只有1个谓语动词">7.1 黄金法则: 一个句子有且只有 1 个谓语动词</h3>
+<p><b><span class="mk biz">必考</span></b> 这是考研英语写作最核心的语法规则。</p>
+<p>如果要加第二个谓语动词，必须有"门票":</p>
+<ol>
+<li>并列连词: FANBOYS (for, and, nor, but, or, yet, so)</li>
+<li>标点: 分号，冒号，破折号</li>
+<li>从句引导词: that / wh- / because ...</li>
+</ol>
+<p><b>错误</b>: There are many people take part in sports and games now.
+<b>正确</b>: There are many people who take part in sports and games now.</p>
+<p><b>错误</b>: Many people who get married before they are mature enough. (句子不完整，缺主句谓语)
+<b>正确</b>: Many people get married before they are mature enough.</p>
+<p>以下错误分类均配有课件中的"错误 → 正确"对照，按类别整理便于自查。</p>
+<h3 id="72动词变形">7.2 动词变形</h3>
+<p><b><span class="mk warn">易错</span></b> 三单和时态错误是中国考生最常见的硬伤。</p>
+<ul>
+<li>✗ I advise you to visit your teacher who <b>teach</b> you College English.</li>
+<li>✓ I advise you to visit your teacher who <b>teaches/taught</b> you College English.</li>
+</ul>
+<h3 id="73名词变形">7.3 名词变形</h3>
+<ul>
+<li>✗ <b>Employee</b> can get more benefits from this policy than <b>employer</b>.</li>
+<li>
+<p>✓ <b>Employees</b> can get more benefits from this policy than <b>employers</b>.</p>
+</li>
+<li>
+<p>✗ He had many interesting <b>experience</b> while travelling in Africa.</p>
+</li>
+<li>✓ He had many interesting <b>experiences</b> while travelling in Africa.</li>
+</ul>
+<h3 id="74比较级">7.4 比较级</h3>
+<p><b><span class="mk warn">易错</span></b> more + 比较级是典范错误。</p>
+<ul>
+<li>✗ Li Hua is <b>more kinder</b> than I.</li>
+<li>✓ Li Hua is <b>kinder</b> than I.</li>
+</ul>
+<h3 id="75词性混淆">7.5 词性混淆</h3>
+<p>形容词 vs 副词是最容易混淆的。</p>
+<ul>
+<li>✗ Due to the <b>rapidly</b> development of China's economy, this phenomenon is becoming <b>increasing</b> prevalent.</li>
+<li>
+<p>✓ Due to the <b>rapid</b> development of China's economy, this phenomenon is becoming <b>increasingly</b> prevalent.</p>
+</li>
+<li>
+<p>✗ Some people firmly agree, but others <b>against</b> it.</p>
+</li>
+<li>✓ Some people firmly agree, but others <b>are against</b> it. (against 是介词，不是动词！)</li>
+</ul>
+<h3 id="76介词误用">7.6 介词误用</h3>
+<p><b><span class="mk warn">易错</span></b> 介词搭配完全是"约定俗成"，不能按中文思维硬翻。</p>
+<ul>
+<li>✗ <b>Under</b> his help, I finished the task in time.</li>
+<li>
+<p>✓ <b>With</b> his help, I finished the task in time.</p>
+</li>
+<li>
+<p>✗ She has difficulty <b>on</b> learning English.</p>
+</li>
+<li>✓ She has difficulty <b>in</b> learning English.</li>
+</ul>
+<h3 id="77选词不当">7.7 选词不当</h3>
+<p><b><span class="mk warn">易错</span></b> 中文的万能动词"开"、"吃"不能直接对应英文。</p>
+<ul>
+<li>✗ I <b>opened</b> the television to watch a funny movie.</li>
+<li>
+<p>✓ I <b>turned on</b> the television to watch a funny movie.</p>
+</li>
+<li>
+<p>✗ You should <b>eat</b> this medicine three times a day.</p>
+</li>
+<li>✓ You should <b>take</b> this medicine three times a day.</li>
+</ul>
+<h3 id="78拼写错误">7.8 拼写错误</h3>
+<p><b><span class="mk warn">易错</span></b> 常见的拼写陷阱:</p>
+<ul>
+<li>morden → <b>modern</b></li>
+<li>goverment → <b>government</b></li>
+<li>enviroment → <b>environment</b></li>
+<li>convinient → <b>convenient</b></li>
+</ul>
+<blockquote>
+<p><b>为什么要在笔记里记拼写？</b> 阅卷时拼写错误是最明显的硬伤，一个拼写错可能不影响理解，但三个拼写错会让阅卷老师直接判定"语言基本功差"，掉档。</p>
+</blockquote>
+<h3 id="79漏词">7.9 漏词</h3>
+<ul>
+<li>✗ There's something that I'd like to <b>talk</b>. (缺介词)</li>
+<li>
+<p>✓ There's something that I'd like to <b>talk about</b>.</p>
+</li>
+<li>
+<p>✗ We have <b>problem</b> that needs to be solved immediately. (缺冠词)</p>
+</li>
+<li>✓ We have <b>a problem</b> that needs to be solved immediately.</li>
+</ul>
+<h3 id="710语序形容词顺序">7.10 语序（形容词顺序）</h3>
+<p><b><span class="mk warn">易错</span></b> 中文没有形容词顺序的概念，但英语有严格的规则。</p>
+<p>✗ Chinese traditional cooking → ✓ <b>traditional Chinese cooking</b></p>
+<p><b>口诀</b>: 美小圆旧黄，法国木书房</p>
+<p>"美"(描述/性质) → "小"(大小/长短/高低) → "圆"(形状) → "旧"(新旧/年龄) → "黄"(颜色) → "法国"(来源/国籍) → "木"(物质/材料) → "书"(用途/类别) → "房"(中心名词)</p>
+<p><b><span class="src">【来源: 写作第一次课、1. 动态图首段】</span></b></p>
+<hr />
+<h2 id="八模板的合理使用">八、模板的合理使用</h2>
+<h3 id="81模板的价值与风险">8.1 模板的价值与风险</h3>
+<p><b><span class="mk info">注意</span></b> 模板是双刃剑:</p>
+<ul>
+<li><b>价值</b>: 保证结构完整、逻辑清晰、快速成文。三段式骨架和衔接句可以模板化。</li>
+<li><b>风险</b>: 生搬硬套会被阅卷老师一眼识破。2010 年以后，阅卷组明确"反模板"。如果整篇作文除了填进去的主题词外全是模板句，直接判定为套作，分数不高于第三档。</li>
+</ul>
+<h3 id="82正确的使用策略">8.2 正确的使用策略</h3>
+<blockquote>
+<p><b>模板是脚手架，不是房子本身。</b> 好的作文 = 模板骨架 (20%) + 具体内容填充 (80%)。阅卷老师真正看的是你填进去的内容 -- 数据描述是否准确、原因分析是否合理、词汇句法是否多样。</p>
+</blockquote>
+<ol>
+<li><b>骨架可模板化</b>: 过渡句、衔接词、总结句可以套用。</li>
+<li><b>内容必须自己写</b>: 数据描述、原因分析、举例论证必须紧扣题目，不能空洞。</li>
+<li><b>替换避免重复</b>: 同一功能句准备 2-3 种表达，在文中交替使用。</li>
+<li><b>不同题型不同框架</b>: 不要把图表作文模板用到图画作文上。</li>
+</ol>
+<h3 id="83阅卷雷区">8.3 阅卷雷区</h3>
+<ul>
+<li>整篇都是"万能句"，言之无物</li>
+<li>模板与题目脱节（如在静态图上用"changes in..."模板）</li>
+<li>模板句中的高级词汇与自写部分的低级词汇形成反差</li>
+<li>背诵痕迹明显的大段引语</li>
+</ul>
+<hr />
+<h2 id="九知识连接">九、知识连接</h2>
+<h3 id="91与阅读板块的关系">9.1 与阅读板块的关系</h3>
+<ul>
+<li>阅读理解中的长难句分析能力直接用于写作的句型构造</li>
+<li>阅读中的议论文结构 (观点-论证-结论) 与写作三段式同构</li>
+<li>阅读中积累的高频词汇和表达可直接用于写作素材库</li>
+<li>图表作文的原因分析思维 = 阅读中的因果推理能力</li>
+</ul>
+<h3 id="92与翻译板块的关系">9.2 与翻译板块的关系</h3>
+<ul>
+<li>翻译要求准确转换中英文，写作同样需要"中文思路 → 英文表达"的转换能力</li>
+<li>翻译中积累的"英文习惯表达"(如 change in 而非 change of)直接用于写作</li>
+<li>翻译中的语法规范意识 (时态、语序、搭配) 同样制约写作质量</li>
+</ul>
+<h3 id="93英语一vs英语二写作差异">9.3 英语一 vs 英语二写作差异</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>英语一</th>
+<th>英语二</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大作文题型</td>
+<td>图画为主(近年也考图表)</td>
+<td>图表为主</td>
+</tr>
+<tr>
+<td>大作文字数</td>
+<td>160-200 词</td>
+<td>约 150 词</td>
+</tr>
+<tr>
+<td>大作文分值</td>
+<td>20 分</td>
+<td>15 分</td>
+</tr>
+<tr>
+<td>题材范围</td>
+<td>个人/家庭/学校/社会/自然</td>
+<td>学校/社会</td>
+</tr>
+<tr>
+<td>第二段风格</td>
+<td>精神品质类用正反论证</td>
+<td>因果分析为主</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="十写作实战策略">十、写作实战策略</h2>
+<h3 id="101考场时间分配建议">10.1 考场时间分配建议</h3>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>时间</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>审题</td>
+<td>2 分钟</td>
+<td>确认题型(图画/图表/文字)、确定主题、构思框架</td>
+</tr>
+<tr>
+<td>小作文</td>
+<td>15 分钟</td>
+<td>套用书信/通知格式，先保证信息完整</td>
+</tr>
+<tr>
+<td>大作文</td>
+<td>35 分钟</td>
+<td>按三段式推进，重点打磨首段描述和末段收束</td>
+</tr>
+<tr>
+<td>检查</td>
+<td>3 分钟</td>
+<td>扫读语法硬伤、拼写、单复数、时态一致性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="102备考训练重点">10.2 备考训练重点</h3>
+<ol>
+<li><b>首段训练优先</b>: 描述图表/图画是"必考动作"，而且第一印象决定阅卷基调。动态图三句式、静态图三写法、图画动作/环境/表情描写 必须练到肌肉记忆。</li>
+<li><b>原因分析模板化但有变通</b>: 政府/经济/社会/个人四维原因库要熟，但每次练习都逼自己想 1-2 个"非模板化"的原因。</li>
+<li><b>自己写完后对照范文</b>: 找出自己表达中的"中式英语"，对比范文同一句的写法。</li>
+<li><b>错误清单法</b>: 把自己常犯的语法错误列成清单(拼写/三单/单复数/介词)，每次写完对照检查。</li>
+</ol>
+<p><b><span class="src">【来源: 写作第一次课、写作第二次课、写作第三次课(1)、写作第四次课、写作第五次课、1. 动态图首段、2. 静态图首段、3. 图表作文主体段、4. 图表结尾段、6. 图画作文主体段 - 精神品质类、7.1 图画作文主体段 - 社会现象类1、7.2 图画作文主体段 - 社会现象类2（备选写法）、8. 图画结尾段、9. 文字材料题】</span></b></p></div><nav class="pager" aria-label="上一篇 / 下一篇"><span></span><a class="next" href="英语_写作_例题.html"><span class="pg-t"><small>下一篇</small><b>英语 · 写作_例题</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<button id="navbtn" type="button" aria-label="打开目录" title="目录">☰</button>
+<div id="tbtools" role="toolbar"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">深色</button><button id="printBtn" type="button" title="打印 / 导出 PDF">打印</button></div></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '浅色' : '深色'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 侧栏收起/展开(2026-08-09): 折叠态 = 8px 边缘热区零内容;
+     桌面: 悬停/键盘聚焦滑出, 移出 1.2s 自动收回(未钉住), ☰/图钉按钮钉住;
+     触屏(平板): ☰ 弹浮层 + 遮罩; 手机(≤920px): ☰ = 汉堡滑入 overlay ---------- */
+  var touchNav = !!(window.matchMedia && window.matchMedia('(hover: none)').matches);
+  var sideNav = document.querySelector('.layout > nav');
+  var navbtn = document.getElementById('navbtn');
+  if (sideNav) {
+    if (touchNav) root.setAttribute('data-touch', '1');
+    var pinSt = load('xnNavPin') === '1';
+    root.setAttribute('data-nav', (pinSt && !touchNav) ? 'pinned' : 'collapsed');
+    var pinBtn = document.getElementById('navpin');
+    if (pinBtn) pinBtn.setAttribute('aria-pressed', pinSt && !touchNav ? 'true' : 'false');
+    function setPin(pinned){
+      root.setAttribute('data-nav', pinned ? 'pinned' : 'collapsed');
+      store('xnNavPin', pinned ? '1' : '0');
+      if (pinBtn) pinBtn.setAttribute('aria-pressed', pinned ? 'true' : 'false');
+    }
+    if (pinBtn) pinBtn.addEventListener('click', function(){ setPin(root.getAttribute('data-nav') !== 'pinned'); });
+    if (navbtn) navbtn.addEventListener('click', function(){
+      if (window.matchMedia('(max-width: 920px)').matches) { nav.classList.toggle('show'); return; }
+      if (touchNav) {
+        root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+      } else {
+        setPin(root.getAttribute('data-nav') !== 'pinned');
+      }
+    });
+    sideNav.addEventListener('click', function(e){
+      if (e.target.closest('a')) { nav.classList.remove('show'); root.setAttribute('data-nav', 'collapsed'); return; }
+      if (touchNav) root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+    });
+    if (touchNav) {
+      var scrim = document.getElementById('navscrim');
+      if (scrim) scrim.addEventListener('click', function(){ root.setAttribute('data-nav', 'collapsed'); });
+    } else {
+      /* 桌面: 悬停/聚焦展开, 移出延迟 1.2s 自动收回(钉住时保持) */
+      var retractTimer = null;
+      function keepOpen(){
+        clearTimeout(retractTimer);
+        if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'open');
+      }
+      function scheduleRetract(){
+        clearTimeout(retractTimer);
+        retractTimer = setTimeout(function(){
+          if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'collapsed');
+        }, 1200);
+      }
+      sideNav.addEventListener('mouseenter', keepOpen);
+      sideNav.addEventListener('mouseleave', scheduleRetract);
+      sideNav.addEventListener('focusin', keepOpen);
+      sideNav.addEventListener('focusout', scheduleRetract);
+    }
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navBrds = nav.querySelectorAll('details.brd');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var k2 = 0; k2 < navBrds.length; k2++) {
+        var bd = navBrds[k2], bdLinks = bd.querySelectorAll('a[href]'), bdVis = false;
+        for (var n2 = 0; n2 < bdLinks.length; n2++) { if (bdLinks[n2].style.display !== 'none') { bdVis = true; break; } }
+        bd.style.display = bdVis ? '' : 'none';
+        if (t && bdVis) bd.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 表格横向滚动包裹 ---------- */
+  var tables = document.querySelectorAll('main table');
+  for (var iT = 0; iT < tables.length; iT++) {
+    var tw = document.createElement('div');
+    tw.className = 'table-wrap';
+    tables[iT].parentNode.insertBefore(tw, tables[iT]);
+    tw.appendChild(tables[iT]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 + 学科 Tab(2026-08-09: homeFilter 统一入口, Tab 只控 section 显隐) ---------- */
+  var homeq = document.getElementById('homeq');
+  var hometabs = document.getElementById('hometabs');
+  var homeTab = 'all';
+  function homeFilter(){
+    if (!homeq) return;
+    var t = homeq.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('.board-card');
+    var secs2 = document.querySelectorAll('section[data-subj]');
+    var grpHs = document.querySelectorAll('.grp-h');
+    for (var iE = 0; iE < cards.length; iE++) {
+      cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+    }
+    for (var iF = 0; iF < secs2.length; iF++) {
+      var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+      for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+      sec.style.display = ((homeTab === 'all' || sec.dataset.subj === homeTab) && vis) ? '' : 'none';
+    }
+    for (var iH = 0; iH < grpHs.length; iH++) {
+      var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+      if (next && next.classList && next.classList.contains('cards')) {
+        var c2 = next.querySelectorAll('.board-card');
+        for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+      }
+      grp.style.display = vis2 ? '' : 'none';
+    }
+    var recentSec2 = document.getElementById('recent');
+    if (recentSec2) {
+      var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+      for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+      recentSec2.style.display = (t && !rVis) ? 'none' : '';
+    }
+  }
+  if (homeq) homeq.addEventListener('input', homeFilter);
+  if (hometabs) {
+    hometabs.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-tab]');
+      if (!btn) return;
+      homeTab = btn.getAttribute('data-tab');
+      var bs = hometabs.querySelectorAll('button[data-tab]');
+      for (var iK = 0; iK < bs.length; iK++) bs[iK].classList.toggle('on', bs[iK] === btn);
+      homeFilter();
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

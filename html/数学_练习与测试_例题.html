@@ -1,0 +1,1405 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数学 · 练习与测试_例题</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.9;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+
+/* ---------- 侧栏 ---------- */
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:rgba(251,250,246,.82);border-right:1px solid #EDEAE0;
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin;
+  transition:width .22s ease,background .2s ease}
+html[data-theme="dark"] .layout > nav{background:rgba(20,25,34,.78);border-right-color:#232A37}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem .6rem .95rem 1.15rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.8rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.86rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.8rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.76rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+/* 板块级折叠块(2026-08-09: 全站统一; 行尾 .tog 箭头负责折叠, 点板块名 = 跳转) */
+nav details.brd{margin:.05rem .3rem .15rem}
+nav details.brd>summary{list-style:none;cursor:default;display:flex;align-items:center;gap:.4rem;
+  padding:.12rem .35rem .12rem .45rem;margin:0;border-radius:8px;user-select:none}
+nav details.brd>summary::-webkit-details-marker{display:none}
+nav details.brd>summary:hover{background:var(--accent-soft)}
+nav details.brd>summary a.b{flex:1;min-width:0;margin:.02rem 0;padding:.3rem .42rem;cursor:pointer}
+nav details.brd>summary a.b:hover{background:none;text-decoration:none}
+nav details.brd>summary a.b.on:hover{background:var(--accent-soft)}
+nav details.brd>summary .tog{flex:none;width:1.55rem;text-align:center;color:var(--ink3);
+  font-size:.66rem;cursor:pointer;padding:.35rem 0;border-radius:6px}
+nav details.brd>summary .tog:hover{color:var(--accent2);background:var(--accent-soft)}
+nav details.brd>summary .tog::before{content:"▸";display:inline-block;transition:transform .15s ease}
+nav details.brd[open]>summary .tog::before{transform:rotate(90deg)}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶部(无容器框, 2026-08-09): ☰ 左上悬浮 / 操作按钮右上悬浮 / 面包屑随正文流 ---------- */
+main{flex:1;min-width:0;max-width:800px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+#navbtn{position:fixed;top:.7rem;left:.7rem;z-index:110;display:inline-flex;align-items:center;justify-content:center;
+  width:2.1rem;height:2.1rem;padding:0;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:9px;cursor:pointer;font-size:.98rem;flex-shrink:0;line-height:1;box-shadow:var(--shadow-sm);
+  transition:all .15s}
+#navbtn:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+#tbtools{position:fixed;top:.7rem;right:.7rem;z-index:110;display:flex;gap:.4rem}
+#tbtools button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.36rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  box-shadow:var(--shadow-sm);transition:all .15s}
+#tbtools button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+.crumbline{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--ink3);
+  padding:1.5rem 0 .1rem;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumbline a{color:var(--ink2)}
+.crumbline a:hover{color:var(--accent2);text-decoration:none}
+.crumbline .sep{color:var(--ink3)}
+.crumbline b{color:var(--ink);font-weight:600}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.4rem;margin:3rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.15rem;margin:2.3rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2.05;margin:.8rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+/* 宽表格由 JS 包一层 .table-wrap 横向滚动, 防止撑破 800px 行宽 */
+.table-wrap{overflow-x:auto;margin:1.15rem 0;border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.92rem}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin:0 auto 1.4rem}
+.tabs button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:20px;padding:.4rem 1.05rem;font-size:.84rem;cursor:pointer;transition:all .15s}
+.tabs button:hover{border-color:var(--accent);color:var(--accent2)}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* ---------- 侧栏收起(2026-08-09): 折叠态 = 8px 边缘热区零内容; 桌面悬停滑出(JS 控制,
+   移出 1.2s 后自动收回); ☰ 顶栏按钮展开并钉住; 触屏 ☰ 弹浮层 + 遮罩 ---------- */
+#navpin{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
+  cursor:pointer;flex-shrink:0}
+#navpin:hover{border-color:var(--accent);color:var(--accent2)}
+#navpin[aria-pressed="true"]{color:var(--accent2);border-color:var(--accent);background:var(--accent-soft)}
+#navscrim{position:fixed;inset:0;z-index:190;background:rgba(15,18,23,.45);
+  opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s}
+@media (min-width:921px){
+  /* 折叠态: 8px 热区(sticky 占位保持正文宽度), 内容全隐藏(鼠标移入 / ☰ / 键盘聚焦展开) */
+  html[data-nav="collapsed"] .layout > nav{width:8px;overflow:hidden;padding:0;background:transparent}
+  html[data-nav="collapsed"] .layout > nav .brand,
+  html[data-nav="collapsed"] .layout > nav #navq,
+  html[data-nav="collapsed"] .layout > nav a.subj,
+  html[data-nav="collapsed"] .layout > nav .navbody,
+  html[data-nav="collapsed"] .layout > nav #navpin{display:none}
+  /* 展开态 = 浮层覆盖在正文上方(用户要求: 侧栏伸缩时正文不重排);
+     折叠态 8px 占位保持不变 → main 宽度恒定; ☰ 被浮层覆盖, 展开时隐藏(收起靠图钉/移出) */
+  html[data-nav]:not([data-nav="collapsed"]) .layout > nav{position:fixed;left:0;top:0;height:100vh;
+    z-index:180;box-shadow:8px 0 28px rgba(0,0,0,.18)}
+  html[data-nav]:not([data-nav="collapsed"]) #navbtn{display:none}
+  /* 触屏(平板): ☰ 展开为浮层 + 遮罩, 点遮罩/链接收回; 无钉住 */
+  html[data-touch][data-nav="open"] #navscrim{opacity:1;visibility:visible}
+  html[data-touch] #navpin{display:none}
+}
+@media(max-width:920px){#navpin{display:none}}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  .layout > nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  .layout > nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,#tbtools,#navbtn,#topbtn,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style>
+<script>document.documentElement.dataset.nav='collapsed';</script></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span><button id="navpin" type="button" title="钉住目录" aria-pressed="false"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg></button></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="../知识笔记首页.html">全部板块</a><div class="navbody"><div class="sec cur">数学</div><details class="grp" data-k="grp-高数"><summary>高数<em>10</em></summary><details class="brd" data-k="brd-极限与数列"><summary><a class="b" href="数学_极限与数列.html">极限与数列</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_极限与数列.html#板块总览">板块总览</a><a class="c" href="数学_极限与数列.html#一极限的定义">一、极限的定义</a><a class="c" href="数学_极限与数列.html#二极限的性质">二、极限的性质</a><a class="c" href="数学_极限与数列.html#三极限计算方法考试主力">三、极限计算方法(考试主力)</a><a class="c" href="数学_极限与数列.html#四判定准则">四、判定准则</a><a class="c" href="数学_极限与数列.html#五定积分定义求极限高频">五、定积分定义求极限 【高频】</a><a class="c" href="数学_极限与数列.html#六连续与间断必考">六、连续与间断 【必考】</a><a class="c" href="数学_极限与数列.html#七渐近线高频">七、渐近线 【高频】</a><a class="c" href="数学_极限与数列.html#八变上限积分与极限高频">八、变上限积分与极限 【高频】</a><a class="c" href="数学_极限与数列.html#知识连接">知识连接</a><a class="c x" href="数学_极限与数列_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-导数与微分"><summary><a class="b" href="数学_导数与微分.html">导数与微分</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_导数与微分.html#板块总览">板块总览</a><a class="c" href="数学_导数与微分.html#一导数的定义必考">一、导数的定义 【必考】</a><a class="c" href="数学_导数与微分.html#二导数的计算必考">二、导数的计算 【必考】</a><a class="c" href="数学_导数与微分.html#三微分高频">三、微分 【高频】</a><a class="c" href="数学_导数与微分.html#四可导性的讨论分段函数含参必考">四、可导性的讨论(分段函数/含参) 【必考】</a><a class="c" href="数学_导数与微分.html#五导数的几何应用高频">五、导数的几何应用 【高频】</a><a class="c" href="数学_导数与微分.html#知识连接">知识连接</a><a class="c x" href="数学_导数与微分_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-中值定理"><summary><a class="b" href="数学_中值定理.html">中值定理</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_中值定理.html#板块总览">板块总览</a><a class="c" href="数学_中值定理.html#一三大中值定理">一、三大中值定理</a><a class="c" href="数学_中值定理.html#二泰勒公式拉格朗日余项必考">二、泰勒公式(拉格朗日余项) 【必考】</a><a class="c" href="数学_中值定理.html#三积分中值定理高频">三、积分中值定理 【高频】</a><a class="c" href="数学_中值定理.html#四证明题方法总纲本板块灵魂">四、证明题方法总纲(本板块灵魂) ★</a><a class="c" href="数学_中值定理.html#五易错点与考法总结易错">五、易错点与考法总结 【易错】</a><a class="c" href="数学_中值定理.html#知识连接">知识连接</a><a class="c x" href="数学_中值定理_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-导数应用"><summary><a class="b" href="数学_导数应用.html">导数应用</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_导数应用.html#板块总览">板块总览</a><a class="c" href="数学_导数应用.html#一函数的单调性">一、函数的单调性</a><a class="c" href="数学_导数应用.html#二函数的极值与最值">二、函数的极值与最值</a><a class="c" href="数学_导数应用.html#三曲线的凹凸性与拐点">三、曲线的凹凸性与拐点</a><a class="c" href="数学_导数应用.html#四渐近线">四、渐近线</a><a class="c" href="数学_导数应用.html#五零点个数与参数范围高频">五、零点个数与参数范围 【高频】</a><a class="c" href="数学_导数应用.html#六曲率与曲率圆高频">六、曲率与曲率圆 【高频】</a><a class="c" href="数学_导数应用.html#七最值应用题数三经济应用高频">七、最值应用题(数三经济应用) 【高频】</a><a class="c" href="数学_导数应用.html#八易错点与考法总结">八、易错点与考法总结</a><a class="c" href="数学_导数应用.html#知识连接">知识连接</a><a class="c x" href="数学_导数应用_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-积分"><summary><a class="b" href="数学_积分.html">积分</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_积分.html#板块总览">板块总览</a><a class="c" href="数学_积分.html#一原函数与不定积分">一、原函数与不定积分</a><a class="c" href="数学_积分.html#二换元积分法">二、换元积分法</a><a class="c" href="数学_积分.html#三分部积分法">三、分部积分法</a><a class="c" href="数学_积分.html#四有理函数与三角函数的积分">四、有理函数与三角函数的积分</a><a class="c" href="数学_积分.html#五定积分">五、定积分</a><a class="c" href="数学_积分.html#六定积分的计算技巧">六、定积分的计算技巧</a><a class="c" href="数学_积分.html#七变上限积分函数">七、变上限积分函数</a><a class="c" href="数学_积分.html#八广义积分反常积分">八、广义积分 (反常积分)</a><a class="c" href="数学_积分.html#九定积分的应用">九、定积分的应用</a><a class="c" href="数学_积分.html#十易错点与考法总结">十、易错点与考法总结</a><a class="c" href="数学_积分.html#知识连接">知识连接</a><a class="c x" href="数学_积分_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-多元与二重"><summary><a class="b" href="数学_多元与二重.html">多元与二重</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_多元与二重.html#板块总览">板块总览</a><a class="c" href="数学_多元与二重.html#一多元函数微分学">一、多元函数微分学</a><a class="c" href="数学_多元与二重.html#二二重积分">二、二重积分</a><a class="c" href="数学_多元与二重.html#知识连接">知识连接</a><a class="c x" href="数学_多元与二重_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-微分方程"><summary><a class="b" href="数学_微分方程.html">微分方程</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_微分方程.html#板块总览">板块总览</a><a class="c" href="数学_微分方程.html#一基本概念">一、基本概念</a><a class="c" href="数学_微分方程.html#二一阶微分方程">二、一阶微分方程</a><a class="c" href="数学_微分方程.html#三可降阶的高阶微分方程数一数二">三、可降阶的高阶微分方程 (数一、数二)</a><a class="c" href="数学_微分方程.html#四二阶常系数线性微分方程必考">四、二阶常系数线性微分方程 【必考】</a><a class="c" href="数学_微分方程.html#五线性微分方程解的结构必考">五、线性微分方程解的结构 【必考】</a><a class="c" href="数学_微分方程.html#六差分方程数三专属必考">六、差分方程 (数三专属) 【必考】</a><a class="c" href="数学_微分方程.html#七微分方程的应用">七、微分方程的应用</a><a class="c" href="数学_微分方程.html#知识连接">知识连接</a><a class="c x" href="数学_微分方程_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-级数"><summary><a class="b" href="数学_级数.html">级数</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_级数.html#板块总览">板块总览</a><a class="c" href="数学_级数.html#一常数项级数的定义与收敛">一、常数项级数的定义与收敛</a><a class="c" href="数学_级数.html#二正项级数敛散性判别必考">二、正项级数敛散性判别 【必考】</a><a class="c" href="数学_级数.html#三交错级数与莱布尼兹判别法必考">三、交错级数与莱布尼兹判别法 【必考】</a><a class="c" href="数学_级数.html#四绝对收敛与条件收敛必考">四、绝对收敛与条件收敛 【必考】</a><a class="c" href="数学_级数.html#五幂级数必考">五、幂级数 【必考】</a><a class="c" href="数学_级数.html#知识连接">知识连接</a><a class="c x" href="数学_级数_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-曲线曲面积分"><summary><a class="b" href="数学_曲线曲面积分.html">曲线曲面积分</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_曲线曲面积分.html#板块总览">板块总览</a><a class="c" href="数学_曲线曲面积分.html#一三重积分了解">一、三重积分 【了解】</a><a class="c" href="数学_曲线曲面积分.html#二第一型曲线积分对弧长了解">二、第一型曲线积分(对弧长) 【了解】</a><a class="c" href="数学_曲线曲面积分.html#三第二型曲线积分对坐标了解">三、第二型曲线积分(对坐标) 【了解】</a><a class="c" href="数学_曲线曲面积分.html#四第一型曲面积分对面积了解">四、第一型曲面积分(对面积) 【了解】</a><a class="c" href="数学_曲线曲面积分.html#五第二型曲面积分对坐标了解">五、第二型曲面积分(对坐标) 【了解】</a><a class="c" href="数学_曲线曲面积分.html#知识连接">知识连接</a><a class="c x" href="数学_曲线曲面积分_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-数三专题"><summary><a class="b" href="数学_数三专题.html">数三专题</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_数三专题.html#一边际函数">一、边际函数</a><a class="c" href="数学_数三专题.html#二弹性分析">二、弹性分析</a><a class="c" href="数学_数三专题.html#三典型例题">三、典型例题</a><a class="c" href="数学_数三专题.html#四考点小结">四、考点小结</a></details></details><details class="grp" data-k="grp-线性代数"><summary>线性代数<em>1</em></summary><details class="brd" data-k="brd-线性代数"><summary><a class="b" href="数学_线性代数.html">线性代数</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_线性代数.html#板块总览">板块总览</a><a class="c" href="数学_线性代数.html#一行列式">一、行列式</a><a class="c" href="数学_线性代数.html#二矩阵">二、矩阵</a><a class="c" href="数学_线性代数.html#三向量与秩">三、向量与秩</a><a class="c" href="数学_线性代数.html#四线性方程组">四、线性方程组</a><a class="c" href="数学_线性代数.html#五特征值与特征向量">五、特征值与特征向量</a><a class="c" href="数学_线性代数.html#六相似对角化与二次型">六、相似对角化与二次型</a><a class="c" href="数学_线性代数.html#知识连接">知识连接</a><a class="c x" href="数学_线性代数_例题.html">▸ 例题集</a></details></details><details class="grp" data-k="grp-概率论"><summary>概率论<em>1</em></summary><details class="brd" data-k="brd-概率论"><summary><a class="b" href="数学_概率论.html">概率论</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_概率论.html#板块总览">板块总览</a><a class="c" href="数学_概率论.html#一随机事件与概率">一、随机事件与概率</a><a class="c" href="数学_概率论.html#二一维随机变量及其分布">二、一维随机变量及其分布</a><a class="c" href="数学_概率论.html#三随机变量函数的分布高频">三、随机变量函数的分布 【高频】</a><a class="c" href="数学_概率论.html#四多维随机变量及其分布">四、多维随机变量及其分布</a><a class="c" href="数学_概率论.html#五随机变量的数字特征必考">五、随机变量的数字特征 【必考】</a><a class="c" href="数学_概率论.html#六大数定律与中心极限定理高频">六、大数定律与中心极限定理 【高频】</a><a class="c" href="数学_概率论.html#七数理统计初步高频">七、数理统计初步 【高频】</a><a class="c" href="数学_概率论.html#八知识连接">八、知识连接</a><a class="c" href="数学_概率论.html#核心公式速查">核心公式速查</a><a class="c x" href="数学_概率论_例题.html">▸ 例题集</a></details></details><details class="brd" open><summary><a class="b" href="数学_练习与测试.html">练习与测试</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_练习与测试_例题.html#目录">目录</a><a class="c" href="数学_练习与测试_例题.html#概率卷T2几何概型与二维均匀分布">概率卷 T2: 几何概型与二维均匀分布</a><a class="c" href="数学_练习与测试_例题.html#概率卷填空T2拉普拉斯分布求分布函数">概率卷 填空T2: 拉普拉斯分布求分布函数</a><a class="c" href="数学_练习与测试_例题.html#概率卷填空T3YX2的密度变换">概率卷 填空T3: $Y = X^2$ 的密度变换</a><a class="c" href="数学_练习与测试_例题.html#概率卷解答T1联合密度边缘密度区域概率">概率卷 解答T1: 联合密度 → 边缘密度 + 区域概率</a><a class="c" href="数学_练习与测试_例题.html#概率卷解答T2威布尔分布的MLE">概率卷 解答T2: 威布尔分布的 MLE</a><a class="c" href="数学_练习与测试_例题.html#线代卷T5向量组线性相关性判定">线代卷 T5: 向量组线性相关性判定</a><a class="c" href="数学_练习与测试_例题.html#线代卷T9特征值与对角化基底表示法">线代卷 T9: 特征值与对角化（基底表示法）</a><a class="c" href="数学_练习与测试_例题.html#线代卷T10正交矩阵与特征值">线代卷 T10: 正交矩阵与特征值</a><a class="c" href="数学_练习与测试_例题.html#线代卷T11矩阵相似性证明">线代卷 T11: 矩阵相似性证明</a><a class="c" href="数学_练习与测试_例题.html#线代卷T12从矩阵方程求二次型规范形求参数">线代卷 T12: 从矩阵方程求二次型 + 规范形求参数</a><a class="c x on" href="数学_练习与测试_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-复习清单"><summary><a class="b" href="数学_复习清单.html">复习清单</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_复习清单.html#一函数极限连续15个知识点">一、函数、极限、连续（15 个知识点）</a><a class="c" href="数学_复习清单.html#二一元函数微分学16个知识点">二、一元函数微分学（16 个知识点）</a><a class="c" href="数学_复习清单.html#三一元函数积分学11个知识点">三、一元函数积分学（11 个知识点）</a><a class="c" href="数学_复习清单.html#四月考范围说明与复习策略">四、月考范围说明与复习策略</a></details><details class="brd" data-k="brd-技巧速查"><summary><a class="b" href="数学_技巧速查.html">技巧速查</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_技巧速查.html#一极限">一、极限</a><a class="c" href="数学_技巧速查.html#二导数与微分">二、导数与微分</a><a class="c" href="数学_技巧速查.html#三中值定理">三、中值定理</a><a class="c" href="数学_技巧速查.html#四积分">四、积分</a><a class="c" href="数学_技巧速查.html#五微分方程">五、微分方程</a><a class="c" href="数学_技巧速查.html#六多元与二重">六、多元与二重</a><a class="c" href="数学_技巧速查.html#七级数">七、级数</a><a class="c" href="数学_技巧速查.html#八线性代数">八、线性代数</a><a class="c" href="数学_技巧速查.html#九概率论">九、概率论</a><a class="c" href="数学_技巧速查.html#十曲线曲面积分数一了解">十、曲线曲面积分(数一) 【了解】</a></details></div></nav>
+<div id="navscrim" aria-hidden="true"></div>
+<main data-subj="math"><div class="crumbline"><a href="../知识笔记首页.html">首页</a><span class="sep">/</span><b>数学 · 练习与测试_例题</b></div><div class="article"><h1>练习与测试_例题</h1><div class="board-meta">📐 数学 · <span class="pill">例题集</span><span class="pill">0 道例题</span></div><blockquote>
+<p>收录概率基础阶段测试卷与线代测试题3中的典型题精讲，每题含题干重现与完整解答。快速浏览索引挑薄弱点，再展开 details 看过程。</p>
+</blockquote>
+<hr />
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#prob-t2">概率卷 · 几何概型与二维均匀分布</a></li>
+<li><a href="#prob-f2">概率卷 · 拉普拉斯分布求分布函数</a></li>
+<li><a href="#prob-f3">概率卷 · 随机变量函数 $Y=X^2$ 的密度变换</a></li>
+<li><a href="#prob-a1">概率卷 · 联合密度 → 边缘密度 + 区域概率</a></li>
+<li><a href="#prob-a2">概率卷 · 威布尔分布的 MLE</a></li>
+<li><a href="#la-t5">线代卷 · 向量组线性相关性判定</a></li>
+<li><a href="#la-t9">线代卷 · 特征值与对角化（基底表示法）</a></li>
+<li><a href="#la-t10">线代卷 · 正交矩阵与特征值</a></li>
+<li><a href="#la-t11">线代卷 · 矩阵相似性证明</a></li>
+<li><a href="#la-t12">线代卷 · 从矩阵方程求二次型 + 规范形求参数</a></li>
+</ul>
+<hr />
+<p><a name="prob-t2"></a></p>
+<h2 id="概率卷T2几何概型与二维均匀分布">概率卷 T2: 几何概型与二维均匀分布</h2>
+<p><b><span class="src">【来源: 概率基础阶段测试卷（解析版）】</span></b></p>
+<blockquote>
+<p><b>题干</b>: 设随机变量 $X$ 与 $Y$ 相互独立，且都服从区间 $(0,1)$ 上的均匀分布，则 $P\{X^2 + Y^2 \leq 1\} =$ （）
+<span class="mk theory">理论</span><a href="数学_概率论.html#18三大经典概型必考">三大经典概型</a> · <a href="数学_概率论.html#43二维连续型必考高频">二维连续型</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#prob-a1">概率卷 解答T1</a> 同为二维区域概率: 均匀密度走面积比, 非均匀密度须回归二重积分</p>
+</blockquote>
+<details><summary>解答过程</summary><div class="step">
+
+<b>Step 1: 确定联合分布</b>
+
+$X, Y$ 独立且各服从 $U(0,1)$，故联合概率密度:
+
+$$f(x,y) = \begin{cases} 1, &amp; 0 &lt; x &lt; 1, 0 &lt; y &lt; 1 \\ 0, &amp; \text{其他} \end{cases}$$
+
+$(X,Y)$ 为单位正方形上的二维均匀分布。<span class="why">独立随机变量的联合密度等于两边缘密度相乘: $1 \times 1 = 1$, 全区域上密度为常数——常数密度正是二维均匀分布的判据, 概率才能化为面积比。<b>考点</b>: 二维均匀分布的标志是"密度为常数", 见到它优先想几何概型。</span>
+
+</div>
+<div class="step">
+
+<b>Step 2: 利用几何概型</b>
+
+对于二维均匀分布，事件概率 = 事件区域面积 / 样本空间面积。
+
+样本空间: 单位正方形，面积 $S_{\text{总}} = 1 \times 1 = 1$。
+
+事件 $\{X^2 + Y^2 \leq 1\}$ 在样本空间内的部分为<b>单位圆在第一象限</b>的区域，即四分之一单位圆。
+
+$$S_{\text{事件}} = \frac{1}{4} \cdot \pi \cdot 1^2 = \frac{\pi}{4}$$
+
+<span class="why">$X^2+Y^2 \le 1$ 是以原点为圆心、半径 1 的圆盘; 它与正方形 $\{0&lt;x&lt;1, 0&lt;y&lt;1\}$ 的交集正是 $x>0, y>0$ 的第一象限部分, 占整圆的 $\frac{1}{4}$, 面积 $=\frac{1}{4}\pi r^2$。</span>
+
+</div>
+<div class="step">
+
+<b>Step 3: 求概率</b>
+
+$$P\{X^2 + Y^2 \leq 1\} = \frac{S_{\text{事件}}}{S_{\text{总}}} = \frac{\pi/4}{1} = \frac{\pi}{4}$$
+
+答案选 <b>D</b>。<span class="why">几何概型概率 = 有利区域面积 ÷ 总面积; 本题总面积恰为 1, 概率就等于四分之一圆面积 $\frac{\pi}{4}$。<b>易错</b>: 事件区域只取第一象限那一片, 别把整圆面积 $\pi$ 代入。</span>
+
+</div>
+<div class="step">
+
+> <b>思路提炼</b>: 二维均匀分布的概率问题，首选几何概型（面积比），比直接积分快得多。关键一步是看清 $(X,Y) \sim U(\text{单位正方形})$，然后 $X^2+Y^2 \leq 1$ 对应四分之一圆。<span class="why">面积比只在均匀分布下成立——非均匀密度必须老老实实算 $\iint f(x,y)\,dx\,dy$; "随机落点""相遇问题"等几何概型题都套这个模板。</span>
+
+</div>
+<div class="sum hot"><b>⭐ 经典</b>: 二维均匀分布求概率=面积比: X²+Y²≤1 化四分之一圆, 无需积分, 几何概型秒杀。</div>
+</details>
+
+<hr />
+<p><a name="prob-f2"></a></p>
+<h2 id="概率卷填空T2拉普拉斯分布求分布函数">概率卷 填空T2: 拉普拉斯分布求分布函数</h2>
+<p><b><span class="src">【来源: 概率基础阶段测试卷（解析版）】</span></b></p>
+<blockquote>
+<p><b>题干</b>: 已知随机变量 $X$ 的概率密度函数 $f(x) = \frac{1}{2}e^{-|x|}, -\infty &lt; x &lt; +\infty$，则 $X$ 的概率分布函数 $F(x) =$ ______。
+<span class="mk theory">理论</span><a href="数学_概率论.html#22分布函数必考高频">分布函数</a> · <a href="数学_概率论.html#24连续型随机变量必考">连续型随机变量</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#prob-f3">概率卷 填空T3</a> 互为"密度↔分布函数"互转: 本题由密度分段积分得 F, T3 由 F 求导回 f</p>
+</blockquote>
+<details><summary>解答过程</summary><div class="step">
+
+<b>Step 1: 写出分布函数的定义</b>
+
+$$F(x) = P\{X \leq x\} = \int_{-\infty}^x f(t) \, dt = \int_{-\infty}^x \frac{1}{2}e^{-|t|} \, dt$$
+
+<span class="why">分布函数 $F(x)$ 是"累积到 $x$ 为止的概率", 即密度函数从 $-\infty$ 到 $x$ 的积分; $|t|$ 在 $t=0$ 两侧的表达式不同, 这是后面必须分段的根源。</span>
+
+</div>
+<div class="step">
+
+<b>Step 2: 分段积分——去掉绝对值</b>
+
+绝对值使得积分需要按 $x$ 的正负分段处理。
+
+<b>当 $x &lt; 0$ 时</b>: $t \in (-\infty, x]$ 上 $t &lt; 0$，$|t| = -t$。
+
+$$F(x) = \int_{-\infty}^x \frac{1}{2}e^t \, dt = \frac{1}{2}e^t\Big|_{-\infty}^x = \frac{1}{2}e^x$$
+
+<b>当 $x \geq 0$ 时</b>: 积分区间 $(-\infty, x]$ 需拆为 $(-\infty, 0)$ 和 $(0, x]$。
+
+① $t \in (-\infty, 0)$: $|t| = -t$，$\int_{-\infty}^0 \frac{1}{2}e^t dt = \frac{1}{2}$
+② $t \in (0, x]$: $|t| = t$，$\int_0^x \frac{1}{2}e^{-t} dt = \frac{1}{2}(1 - e^{-x})$
+
+$$F(x) = \frac{1}{2} + \frac{1}{2}(1 - e^{-x}) = 1 - \frac{1}{2}e^{-x}$$
+
+<span class="why">$x&lt;0$ 时整个积分区间都在 $t&lt;0$ 一侧, 绝对值直接去掉, 下限代 $-\infty$ 处为 0; $x\ge 0$ 时区间必须拆成 $(-\infty,0)$ 与 $(0,x]$ 两段, 分别按 $|t|=-t$ 与 $|t|=t$ 积分, 再把两段拼起来。<b>易错</b>: 写第二段时容易漏掉前半段已累积的 $\frac{1}{2}$。</span>
+
+</div>
+<div class="step">
+
+<b>Step 3: 写出最终答案</b>
+
+$$F(x) = \begin{cases} \dfrac{1}{2}e^x, &amp; x &lt; 0 \\[8pt] 1 - \dfrac{1}{2}e^{-x}, &amp; x \geq 0 \end{cases}$$
+
+<span class="why">分段函数要过三关: 分界点衔接 $F(0^-)=\frac{1}{2}=F(0^+)$、两端归一 $F(-\infty)=0$、$F(+\infty)=1$; 三关都过才是合法的分布函数。</span>
+
+</div>
+<div class="step">
+
+> <b>验证</b>: $F(-\infty)=0$, $F(+\infty)=1$, $F(0^-)=\frac{1}{2}=F(0^+)$，连续性满足。拉普拉斯分布也叫双指数分布，对称于 $x=0$。<span class="why">检查点: 两端归一与分界点连续, 缺一不可; 拉普拉斯(双指数)分布关于 $x=0$ 对称, 故 $F(0)=\frac{1}{2}$ 是验证分段结果的天然锚点。</span>
+
+</div>
+<div class="sum hot"><b>⭐ 经典</b>: 含绝对值密度求分布函数: 按分界点分段积分, 用 F 连续性与两端归一自检。</div>
+</details>
+
+<hr />
+<p><a name="prob-f3"></a></p>
+<h2 id="概率卷填空T3YX2的密度变换">概率卷 填空T3: $Y = X^2$ 的密度变换</h2>
+<p><b><span class="src">【来源: 概率基础阶段测试卷（解析版）】</span></b></p>
+<blockquote>
+<p><b>题干</b>: 设随机变量 $X$ 服从 $(0,2)$ 上的均匀分布，则随机变量 $Y = X^2$ 在 $(0,4)$ 内的概率密度函数 $f_Y(y) =$ ______。
+<span class="mk theory">理论</span><a href="数学_概率论.html#32连续型连续型重点">连续型→连续型</a> · <a href="数学_概率论.html#22分布函数必考高频">分布函数</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#prob-f2">概率卷 填空T2</a> T3 的分布函数法正是 T2 分段积分的逆过程, 两条工具链配合用</p>
+</blockquote>
+<details><summary>解答过程</summary><div class="step">
+
+<b>Step 1: $X$ 的密度</b>
+
+$$f_X(x) = \begin{cases} \dfrac{1}{2}, &amp; 0 &lt; x &lt; 2 \\[4pt] 0, &amp; \text{其他} \end{cases}$$
+
+<span class="why">$U(0,2)$ 的密度等于区间长度的倒数 $\frac{1}{2}$, 区间之外为 0; 写清支撑 $(0,2)$ 是后面回代判断 $\sqrt{y}$ 落点的前提。</span>
+
+</div>
+<div class="step">
+
+<b>Step 2: 判断单调性，选用公式法</b>
+
+$Y = X^2$ 在 $x \in (0,2)$ 上严格单调递增，可直接用单调变换公式:
+
+$$f_Y(y) = f_X\big(h(y)\big) \cdot |h'(y)|$$
+
+其中 $h(y)$ 是 $y = x^2$ 的反函数: $x = h(y) = \sqrt{y}$（$0 &lt; y &lt; 4$）。
+
+$$h'(y) = \frac{1}{2\sqrt{y}}$$
+
+<span class="why">单调变换公式 $f_Y(y)=f_X(h(y))|h'(y)|$ 的本质: 反函数回代把 $y$ 换回 $x$, 而 $|h'|$ 是变量替换时的密度拉伸补偿系数。<b>易错</b>: 公式只对严格单调函数可用; 若 $X$ 定义在对称区间(如 $(-2,2)$)使 $Y=X^2$ 非单调, 要拆单调段或改用分布函数法。</span>
+
+</div>
+<div class="step">
+
+<b>Step 3: 代入公式</b>
+
+当 $0 &lt; y &lt; 4$ 时，$0 &lt; \sqrt{y} &lt; 2$，故 $f_X(\sqrt{y}) = \frac{1}{2}$。
+
+$$f_Y(y) = \frac{1}{2} \cdot \frac{1}{2\sqrt{y}} = \frac{1}{4\sqrt{y}}$$
+
+$$f_Y(y) = \begin{cases} \dfrac{1}{4\sqrt{y}}, &amp; 0 &lt; y &lt; 4 \\[6pt] 0, &amp; \text{其他} \end{cases}$$
+
+<span class="why">回代前先确认 $\sqrt{y}$ 落在 $X$ 密度的非零区间 $(0,2)$ 内, 对应 $y \in (0,4)$, 此时才取 $f_X=\frac{1}{2}$; 定义域外一律为 0。<b>易错</b>: $y=0,4$ 端点取不取不影响概率, 分段写开区间即可。</span>
+
+</div>
+<div class="step">
+
+> <b>验证</b>: $\int_0^4 \frac{1}{4\sqrt{y}}dy = \frac{1}{4} \cdot 2\sqrt{y}\big|_0^4 = \frac{1}{4} \cdot 4 = 1$。积分归一，自洽。<span class="why">密度函数合法性的硬检验: 全支撑上积分为 1; 另外 $\int_0^y \frac{1}{4\sqrt{t}}dt = \frac{\sqrt{y}}{2}$, 恰好是 $P\{X \le \sqrt{y}\}$, 与分布函数法一致。</span>
+
+</div>
+<div class="step">
+
+> <b>替代方法</b>: 也可用分布函数法——先求 $F_Y(y) = P\{Y \leq y\} = P\{X^2 \leq y\} = P\{X \leq \sqrt{y}\}$，再对 $y$ 求导。结果相同。<span class="why">分布函数法是通用方法: 先把事件 $\{Y\le y\}$ 翻译回 $X$ 的不等式, 用 $X$ 的分布函数写出 $F_Y$, 再求导得密度——非单调时这是唯一稳妥的路径。</span>
+
+</div>
+<div class="sum hot"><b>⭐ 经典</b>: 单调变换公式 f_Y=f_X∘h·|h'| 的标准应用; 分布函数法可作双通道验证。</div>
+</details>
+
+<hr />
+<p><a name="prob-a1"></a></p>
+<h2 id="概率卷解答T1联合密度边缘密度区域概率">概率卷 解答T1: 联合密度 → 边缘密度 + 区域概率</h2>
+<p><b><span class="src">【来源: 概率基础阶段测试卷（解析版）】</span></b></p>
+<blockquote>
+<p><b>题干</b>: 设二维随机变量 $(X,Y)$ 的概率密度为
+$$f(x,y) = \begin{cases} e^{-y}, &amp; 0 &lt; x &lt; y \\ 0, &amp; \text{其他} \end{cases}$$
+(1) 求随机变量 $X$ 的概率密度 $f_X(x)$；
+(2) 求概率 $P\{X + Y \leq 1\}$。
+<span class="mk theory">理论</span><a href="数学_概率论.html#43二维连续型必考高频">二维连续型</a> · <a href="数学_概率论.html#41联合分布函数必考">联合分布函数</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#prob-t2">概率卷 T2</a> 区域概率两条路线对比: T2 均匀密度用面积比秒杀, 本题非均匀密度必须定限积分</p>
+</blockquote>
+<details><summary>解答过程</summary><div class="step">
+
+<b>(1) 求边缘密度 $f_X(x)$</b>
+
+边缘密度公式: $f_X(x) = \int_{-\infty}^{\infty} f(x,y) \, dy$
+
+由于 $f(x,y)$ 非零区域为 $\{0 &lt; x &lt; y\}$，对固定的 $x$，$y$ 的积分范围是 $(x, +\infty)$。
+
+<b>当 $x > 0$ 时</b>:
+
+$$f_X(x) = \int_x^{\infty} e^{-y} \, dy = -e^{-y}\Big|_x^{\infty} = 0 - (-e^{-x}) = e^{-x}$$
+
+<b>当 $x \leq 0$ 时</b>: 对任何 $y$，$x \leq 0$ 不满足 $0 &lt; x &lt; y$（因为 $x$ 必须 $>0$），所以 $f_X(x) = 0$。
+
+$$\boxed{f_X(x) = \begin{cases} e^{-x}, &amp; x > 0 \\ 0, &amp; x \leq 0 \end{cases}}$$
+
+> 即 $X$ 的边际分布为指数分布 $Exp(1)$。<span class="why">边缘密度 = 固定 $x$ 后对 $y$ 全区间积分(把 $y$ "扫"掉); 支撑 $\{0&lt;x&lt;y\}$ 中 $x$ 是 $y$ 的下界, 所以 $y$ 从 $x$ 积到 $+\infty$; $x\le 0$ 时该层区域为空, 密度为 0——支撑 $x>0$ 别漏写。<b>考点</b>: 先画区域再定限、边缘密度的支撑, 是二维题基本功。</span>
+
+</div>
+<div class="step">
+
+<b>(2) 求 $P\{X + Y \leq 1\}$</b>
+
+$$P\{X + Y \leq 1\} = \iint_{\substack{x+y \leq 1 \\ 0 &lt; x &lt; y}} e^{-y} \, dx \, dy$$
+
+确定积分限:
+
+① 从 $x + y \leq 1$ 和 $x &lt; y$ 的交集: $x &lt; y$ 且 $x &lt; 1 - x$ → $2x &lt; 1$ → $x &lt; \frac{1}{2}$
+② 对固定的 $x$，$y$ 的范围: $\max(x, 0) = x$ 到 $\min(1-x, \infty) = 1-x$
+
+$$P = \int_0^{\frac{1}{2}} dx \int_x^{1-x} e^{-y} \, dy$$
+
+<span class="why">事件 $\{x+y\le 1\}$ 要与密度支撑 $\{0&lt;x&lt;y\}$ 取交集再积分: 由 $x&lt;y$ 且 $x&lt;1-x$ 推出 $x&lt;\frac{1}{2}$; 固定 $x$ 后, $y$ 的下界是支撑给的 $x$, 上界是事件给的 $1-x$。<b>易错</b>: 上界取 $1-x$ 而不是 $+\infty$——事件区域把积分截断了, 截断正是本问与第(1)问的区别。</span>
+
+</div>
+<div class="step">
+
+内层积分:
+
+$$\int_x^{1-x} e^{-y} \, dy = -e^{-y}\Big|_x^{1-x} = -e^{-(1-x)} + e^{-x} = e^{-x} - e^{x-1}$$
+
+外层积分:
+
+$$P = \int_0^{\frac{1}{2}} (e^{-x} - e^{x-1}) \, dx$$
+
+$$= \left[-e^{-x} - e^{x-1}\right]_0^{\frac{1}{2}}$$
+
+$$= \left(-e^{-\frac{1}{2}} - e^{-\frac{1}{2}}\right) - \left(-1 - e^{-1}\right)$$
+
+$$= -2e^{-\frac{1}{2}} + 1 + e^{-1}$$
+
+$$\boxed{P\{X + Y \leq 1\} = 1 + e^{-1} - 2e^{-\frac{1}{2}}}$$
+
+<span class="why">先内后外逐层积: 内层对 $y$ 积 $\int e^{-y}dy=-e^{-y}$, 代上下限得 $e^{-x}-e^{x-1}$; 外层拆两项: $\int_0^{1/2}e^{-x}dx=1-e^{-1/2}$, $\int_0^{1/2}e^{x-1}dx=e^{-1/2}-e^{-1}$, 合并即 $1+e^{-1}-2e^{-1/2}$。<b>易错</b>: $e^{x-1}$ 的原函数仍是它本身, 代入上下限时 $e^{-1/2}$ 与 $e^{-1}$ 两处别错位。</span>
+
+</div>
+<div class="sum hot"><b>⭐ 经典</b>: 边缘密度=固定一维扫另一维; 区域概率先画区域定限, 先内后外逐层积分。</div>
+</details>
+
+<hr />
+<p><a name="prob-a2"></a></p>
+<h2 id="概率卷解答T2威布尔分布的MLE">概率卷 解答T2: 威布尔分布的 MLE</h2>
+<p><b><span class="src">【来源: 概率基础阶段测试卷（解析版）】</span></b></p>
+<blockquote>
+<p><b>题干</b>: 设某元件使用寿命 $T$ 的分布函数为 $F(t) = 1 - e^{-(t/\theta)^m}$（$t \geq 0$），其中 $\theta, m > 0$。
+(1) 求 $P\{T > t\}$ 与 $P\{T > s+t \mid T > s\}$，$s > 0, t > 0$；
+(2) 设取 $n$ 个元件做寿命实验，测得寿命 $t_1, t_2, \ldots, t_n$，$m$ 已知，求 $\theta$ 的最大似然估计值。
+<span class="mk theory">理论</span><a href="数学_练习与测试.html#22核心考点精讲">核心考点精讲</a> · <a href="数学_概率论.html#15条件概率必考">条件概率</a></p>
+</blockquote>
+<details><summary>解答过程</summary><div class="step">
+
+<b>(1) 可靠度与条件生存概率</b>
+
+可靠度（生存函数）:
+
+$$P\{T > t\} = 1 - F(t) = e^{-(t/\theta)^m}$$
+
+条件生存概率:
+
+$$P\{T > s+t \mid T > s\} = \frac{P\{T > s+t\}}{P\{T > s\}} = \frac{e^{-((s+t)/\theta)^m}}{e^{-(s/\theta)^m}} = e^{-\frac{(s+t)^m - s^m}{\theta^m}}$$
+
+<span class="why">可靠度就是分布函数的补 $1-F(t)$; 条件概率按定义 $\frac{P(T>s+t)}{P(T>s)}$ 展开——分子分母同为 $e$ 的幂, 相除等于指数相减。<b>考点</b>: 寿命分布的条件概率计算是常考切入点, 指数相减这一步要熟练。</span>
+
+</div>
+<div class="step">
+
+> <b>注</b>: 当 $m=1$ 时退化为指数分布，具有无记忆性（条件概率 $= P\{T > t\}$）。当 $m \neq 1$ 时不再有无记忆性。<span class="why">$m=1$ 时 $e^{-\frac{(s+t)-s}{\theta}}=e^{-t/\theta}=P(T>t)$, 条件与 $s$ 无关——正是无记忆性; 威布尔分布把指数分布推广到"磨损/老化"情形, 退化和区别都是常考设问。</span>
+
+</div>
+<div class="step">
+
+<b>(2) 最大似然估计</b>
+
+先由分布函数求密度函数:
+
+$$f(t) = F'(t) = \frac{m}{\theta}\left(\frac{t}{\theta}\right)^{m-1} e^{-(t/\theta)^m}, \quad t > 0$$
+
+似然函数:
+
+$$L(\theta) = \prod_{i=1}^n f(t_i) = \prod_{i=1}^n \frac{m}{\theta}\left(\frac{t_i}{\theta}\right)^{m-1} e^{-(t_i/\theta)^m}$$
+
+$$= \frac{m^n}{\theta^{nm}} \left(\prod_{i=1}^n t_i\right)^{m-1} \exp\left(-\sum_{i=1}^n (t_i/\theta)^m\right)$$
+
+<span class="why">密度是分布函数求导: 链式法则对 $-(t/\theta)^m$ 求导得 $\frac{m}{\theta}(t/\theta)^{m-1}$; 似然函数是 $n$ 个独立样本的密度连乘, 合并同底数幂: 每个因子贡献一个 $\theta^{-m}$ 共 $\theta^{-nm}$, $t_i^{m-1}$ 连乘, 指数项累加。<b>考点</b>: 似然 = 密度连乘, 先化简再取对数。</span>
+
+</div>
+<div class="step">
+
+取对数:
+
+$$\ln L = n\ln m + (m-1)\sum_{i=1}^n \ln t_i - nm\ln\theta - \frac{1}{\theta^m}\sum_{i=1}^n t_i^m$$
+
+对 $\theta$ 求导:
+
+$$\frac{\partial \ln L}{\partial \theta} = -\frac{nm}{\theta} + \frac{m}{\theta^{m+1}}\sum_{i=1}^n t_i^m = 0$$
+
+$$\frac{nm}{\theta} = \frac{m}{\theta^{m+1}}\sum_{i=1}^n t_i^m$$
+
+$$\theta^m = \frac{1}{n}\sum_{i=1}^n t_i^m$$
+
+$$\boxed{\hat{\theta} = \left(\frac{1}{n}\sum_{i=1}^n t_i^m\right)^{1/m}}$$
+
+<span class="why">取对数把连乘变连加、幂变倍数, 求导变简单: $\frac{d}{d\theta}(-\theta^{-m}\sum t_i^m) = m\theta^{-m-1}\sum t_i^m$; 令导数为零、约去公因式 $\frac{m}{\theta}$ 得 $\theta^m = \frac{1}{n}\sum t_i^m$。<b>考点</b>: "对数似然 → 求导 → 置零 → 解参数"是 MLE 固定四步, 二阶导为负保证取极大值。</span>
+
+</div>
+<div class="step">
+
+> <b>直觉</b>: 威布尔分布下，$T^m \sim Exp(1/\theta^m)$（指数分布），所以 $\theta$ 的 MLE 其实就是 $\frac{1}{n}\sum t_i^m$ 的 $1/m$ 次方——这和指数分布 MLE 的结论一致。<span class="why">记忆捷径: 令 $S=T^m$, 则 $S$ 服从指数分布, 指数分布均值参数的 MLE 是样本均值 $\frac{1}{n}\sum t_i^m$, 开 $1/m$ 次方即得 $\hat\theta$——与上面硬算的结果互相印证。</span>
+
+</div>
+<div class="sum hot"><b>⭐ 经典</b>: MLE 标准流程: 密度→似然→对数→求导→解参数; 威布尔退指数时与指数 MLE 一致。</div>
+</details>
+
+<hr />
+<p><a name="la-t5"></a></p>
+<h2 id="线代卷T5向量组线性相关性判定">线代卷 T5: 向量组线性相关性判定</h2>
+<p><b><span class="src">【来源: 线代测试题3、线代测试题解析3】</span></b></p>
+<blockquote>
+<p><b>题干</b>: 已知向量组 $\alpha_1, \alpha_2, \alpha_3$ 线性无关，则下列向量组中线性相关的是（）</p>
+<p>A. $\alpha_1+\alpha_2,\; \alpha_2+\alpha_3,\; \alpha_3+\alpha_1$</p>
+<p>B. $\alpha_1+\alpha_2,\; \alpha_2+2\alpha_3,\; \alpha_1+2\alpha_2+\alpha_3,\; \alpha_1-\alpha_2+5\alpha_3$</p>
+<p>C. $\alpha_1+2\alpha_2,\; 2\alpha_2+3\alpha_3,\; 3\alpha_3+\alpha_1$</p>
+<p>D. $\alpha_1+\alpha_2+\alpha_3,\; 2\alpha_1+3\alpha_2+22\alpha_3,\; 3\alpha_1+5\alpha_2-5\alpha_3$
+<span class="mk theory">理论</span><a href="数学_线性代数.html#32线性相关与线性无关必考">线性相关与线性无关</a> · <a href="数学_线性代数.html#28矩阵的秩必考">矩阵的秩</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#la-t9">线代卷 T9</a> 同以线性无关组为基底: T5 由系数矩阵判相关性, T9 由表示矩阵读特征值</p>
+</blockquote>
+<details><summary>解答过程</summary><div class="step">
+
+<b>核心方法</b>: 新向量组 $= [\alpha_1, \alpha_2, \alpha_3] \times K$，其中 $K$ 是系数矩阵。若 $K$ 的列向量线性相关（$r(K) &lt;$ 向量个数），则新向量组线性相关。
+
+<span class="why">因为 $\alpha_1,\alpha_2,\alpha_3$ 线性无关构成一组基底, 组合组的线性关系完全由系数矩阵 $K$ 决定: 存在不全为零的 $c$ 使 $Kc=0$ ⇔ $\sum c_j\beta_j = 0$ 有非零解 ⇔ 新向量组线性相关。<b>考点</b>: "无关组经线性组合后的相关性 ⇔ 系数矩阵列的相关性"是本题的本质结论。</span>
+
+</div>
+<div class="step">
+
+<b>分析各选项</b>:
+
+<b>A</b>: 3 个向量，系数矩阵 $K_A = \begin{bmatrix} 1 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1 \end{bmatrix}$
+
+$\det K_A = 1 \cdot 1 \cdot 1 + 1 \cdot 1 \cdot 1 = 2 \neq 0$ → 满秩 → 线性无关。<span class="why">3 个向量 ⇔ $K$ 是 3×3 方阵, 行列式非零 ⇔ 满秩 ⇔ 列线性无关; 萨鲁斯法则(或按第一行展开)只剩两个非零项 $1\cdot1\cdot1$ 与 $1\cdot1\cdot1$, 和为 2。</span>
+
+</div>
+<div class="step">
+
+<b>B</b>: <b>4 个向量</b>！$\alpha_1, \alpha_2, \alpha_3$ 张成的空间至多 3 维，4 个向量必然线性相关。
+
+> <b>快捷判断</b>: 不需要算行列式。3 个线性无关的向量张成 3 维空间，至多容纳 3 个线性无关向量。B 有 4 个向量，必有线性关系。答案选 <b>B</b>。<span class="why">3 维空间里线性无关的向量最多 3 个, B 组有 4 个向量必相关——数个数即可秒杀, 连 $K_B$ 都不用写。<b>易错</b>: 先数向量个数与空间维数, 再决定要不要算行列式, 顺序反了会白算。</span>
+
+</div>
+<div class="step">
+
+<b>C</b>: 3 个向量，$K_C = \begin{bmatrix} 1 &amp; 0 &amp; 1 \\ 2 &amp; 2 &amp; 0 \\ 0 &amp; 3 &amp; 3 \end{bmatrix}$
+
+$\det K_C = 1 \cdot 2 \cdot 3 + 1 \cdot 2 \cdot 3 = 12 \neq 0$ → 无关。
+
+<b>D</b>: 3 个向量，$K_D = \begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 1 &amp; 3 &amp; 5 \\ 1 &amp; 22 &amp; -5 \end{bmatrix}$
+
+$\det K_D = 1 \cdot (-15-110) - 2\cdot(-5-5) + 3\cdot(22-3) = -125 + 20 + 57 = -48 \neq 0$ → 无关。<span class="why">C: 萨鲁斯法则非零项 $1\cdot2\cdot3+1\cdot2\cdot3=12\neq 0$, 满秩无关; D: 按第一行展开, $1(-15-110)-2(-5-5)+3(22-3)=-48\neq 0$, 满秩无关——数字大不要怕, 按行展开逐项算即可。<b>考点</b>: 满秩系数矩阵 ⇒ 组合组仍线性无关。</span>
+
+</div>
+<div class="step">
+
+> <b>总结</b>: 向量组线性相关 → 检查维度: 向量个数 > 基底维数 → 马上判定相关。不然再算系数矩阵行列式。<span class="why">判定顺序: ① 数向量个数, 超过空间维数直接判相关; ② 否则算系数矩阵的行列式(满秩无关/降秩相关)。该流程对一切"由已知无关组组合"的选择题通用。</span>
+
+</div>
+<div class="sum hot"><b>⭐ 经典</b>: 组合向量组相关性只看系数矩阵 K: 向量数>维数必相关, 否则算 det 判满秩。</div>
+</details>
+
+<hr />
+<p><a name="la-t9"></a></p>
+<h2 id="线代卷T9特征值与对角化基底表示法">线代卷 T9: 特征值与对角化（基底表示法）</h2>
+<p><b><span class="src">【来源: 线代测试题3、线代测试题解析3】</span></b></p>
+<blockquote>
+<p><b>题干</b>: 设 $A$ 为 2 阶矩阵，$\alpha_1, \alpha_2$ 是线性无关的 2 维列向量，且满足 $A\alpha_1 = \alpha_2$，$A\alpha_2 = -2\alpha_1 + 3\alpha_2$。
+(1) 求矩阵 $A$ 的特征值；
+(2) 求可逆矩阵 $P$，使得 $P^{-1}AP$ 为对角矩阵。
+<span class="mk theory">理论</span><a href="数学_线性代数.html#61相似矩阵必考">相似矩阵</a> · <a href="数学_线性代数.html#62相似对角化矩阵变对角阵必考">相似对角化</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#la-t5">线代卷 T5</a> 同是"抽象基底→系数矩阵"的翻译: T5 用系数矩阵判相关, 本题用表示矩阵做对角化</p>
+</blockquote>
+<details><summary>解答过程</summary><div class="step">
+
+<b>(1) 求特征值</b>
+
+令 $P_0 = [\alpha_1, \alpha_2]$（以 $\alpha_1, \alpha_2$ 为列），则 $\alpha_1, \alpha_2$ 线性无关保证 $P_0$ 可逆。
+
+$$AP_0 = [A\alpha_1, A\alpha_2] = [\alpha_2, -2\alpha_1 + 3\alpha_2]$$
+
+$$= [\alpha_1, \alpha_2] \begin{bmatrix} 0 &amp; -2 \\ 1 &amp; 3 \end{bmatrix} = P_0 \begin{bmatrix} 0 &amp; -2 \\ 1 &amp; 3 \end{bmatrix}$$
+
+所以 $P_0^{-1}AP_0 = \begin{bmatrix} 0 &amp; -2 \\ 1 &amp; 3 \end{bmatrix} \triangleq B$。$A$ 与 $B$ 相似，特征值相同。
+
+$B$ 的特征多项式: $|\lambda E - B| = \begin{vmatrix} \lambda &amp; 2 \\ -1 &amp; \lambda-3 \end{vmatrix} = \lambda(\lambda-3) + 2 = \lambda^2 - 3\lambda + 2 = (\lambda-1)(\lambda-2)$
+
+特征值: $\boxed{\lambda_1 = 1, \lambda_2 = 2}$。<span class="why">把基底拼成 $P_0$ 后, $A$ 对基底的作用 $[A\alpha_1, A\alpha_2]$ 恰好写成 $P_0B$——$B$ 的列就是各像在基底下的坐标, 即 $A$ 在基底 $\{\alpha_1,\alpha_2\}$ 下的表示矩阵; 相似矩阵特征值相同, 抽象矩阵 $A$ 的问题变成具体矩阵 $B$ 的问题。<b>考点</b>: "抽象基底上的线性变换 ⇔ 表示矩阵"是核心翻译, 直接由 $\alpha$ 的系数读矩阵。</span>
+
+</div>
+<div class="step">
+
+<b>(2) 求对角化矩阵 $P$</b>
+
+先求 $B$ 的特征向量:
+
+$\lambda = 1$: $(B - I)x = \begin{bmatrix} -1 &amp; -2 \\ 1 &amp; 2 \end{bmatrix}x = 0$，取 $x_1 = \begin{bmatrix} 2 \\ -1 \end{bmatrix}$。
+
+$\lambda = 2$: $(B - 2I)x = \begin{bmatrix} -2 &amp; -2 \\ 1 &amp; 1 \end{bmatrix}x = 0$，取 $x_2 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$。<span class="why">特征向量解齐次方程组 $(B-\lambda E)x=0$: 对 $\lambda=1$, 方程 $-x_1-2x_2=0$, 取 $x_2=-1$ 得 $(2,-1)^T$; 对 $\lambda=2$, $x_1+x_2=0$, 取 $(1,-1)^T$。<b>易错</b>: 特征向量不唯一, 取最简整数解即可, 但 $Q$ 的列必须与 $\Lambda$ 的对角元一一对应。</span>
+
+</div>
+<div class="step">
+
+则 $B = Q\Lambda Q^{-1}$，其中 $Q = \begin{bmatrix} 2 &amp; 1 \\ -1 &amp; -1 \end{bmatrix}$，$\Lambda = \operatorname{diag}(1, 2)$。
+
+回到 $A$: $A = P_0 B P_0^{-1} = (P_0 Q)\Lambda (P_0 Q)^{-1}$
+
+所以对角化矩阵 $P = P_0 Q = [\alpha_1, \alpha_2] \begin{bmatrix} 2 &amp; 1 \\ -1 &amp; -1 \end{bmatrix}$。
+
+$$P = [2\alpha_1 - \alpha_2,\; \alpha_1 - \alpha_2]$$
+
+<span class="why">$Q$ 以 $B$ 的特征向量为列, 满足 $BQ=Q\Lambda$; 代回 $A=P_0BP_0^{-1}$ 得 $A=(P_0Q)\Lambda(P_0Q)^{-1}$, 对角化矩阵就是 $P_0Q$——其列 $2\alpha_1-\alpha_2$、$\alpha_1-\alpha_2$ 仍是基底向量的组合。</span>
+
+</div>
+<div class="step">
+
+> <b>验证</b>: $A(2\alpha_1-\alpha_2) = 2\alpha_2 - (-2\alpha_1+3\alpha_2) = 2\alpha_1 - \alpha_2$（$\lambda=1$）✓
+> $A(\alpha_1-\alpha_2) = \alpha_2 - (-2\alpha_1+3\alpha_2) = 2\alpha_1 - 2\alpha_2 = 2(\alpha_1-\alpha_2)$（$\lambda=2$）✓<span class="why">抽象矩阵没有具体元素可代, 唯一可靠的检验是直接作用: 第一式说明 $2\alpha_1-\alpha_2$ 是 $\lambda=1$ 的特征向量, 第二式说明 $\alpha_1-\alpha_2$ 是 $\lambda=2$ 的特征向量——两式都过, 答案成立。</span>
+
+</div>
+<div class="step">
+
+> <b>方法提炼</b>: 遇到"在抽象基底上给出 $A$ 的作用"的题，自然的做法是把基底拼成 $P_0$，把 $A$ 的作用写成 $P_0B$ 的形式，则 $B$ 就是 $A$ 在该基底下的表示矩阵。然后特征值/对角化都在 $B$ 上操作，最后再映射回原空间。<span class="why">本题套路: 表示矩阵 $B$ 是"抽象→具体"的桥梁——一切计算(特征值、特征向量、对角化)在 $B$ 上完成后, 用 $P=P_0Q$ 把特征向量翻译回原空间; 同类题直接照此流程。</span>
+
+</div>
+<div class="sum hot"><b>⭐ 经典</b>: 抽象基底上求特征值与对角化: 拼 P0 得表示矩阵 B, 计算全在 B 上做再回映。</div>
+</details>
+
+<hr />
+<p><a name="la-t10"></a></p>
+<h2 id="线代卷T10正交矩阵与特征值">线代卷 T10: 正交矩阵与特征值</h2>
+<p><b><span class="src">【来源: 线代测试题3、线代测试题解析3】</span></b></p>
+<blockquote>
+<p><b>题干</b>: 已知 $\lambda = 2$ 是矩阵 $A = \begin{bmatrix} 4 &amp; 2 &amp; 2 \\ 2 &amp; 4 &amp; a \\ 2 &amp; a &amp; a+2 \end{bmatrix}$ 的二重特征值，求 $a$ 的值并求正交矩阵 $Q$ 使 $Q^{-1}AQ = \Lambda$。
+<span class="mk theory">理论</span><a href="数学_线性代数.html#63实对称矩阵线代最乖的一类矩阵必考">实对称矩阵</a> · <a href="数学_线性代数.html#62相似对角化矩阵变对角阵必考">相似对角化</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#la-t11">线代卷 T11</a> 共用"几何重数=代数重数"验证: T10 由二重反推 r(A-2E), T11 验 r(B-3E) 证可对角化</p>
+</blockquote>
+<details><summary>解答过程</summary><div class="step">
+
+<b>Step 1: 求 $a$</b>
+
+$\lambda = 2$ 是二重特征值 → 几何重数 = 2 → $r(A-2E) \leq 1$。
+
+$$A - 2E = \begin{bmatrix} 2 &amp; 2 &amp; 2 \\ 2 &amp; 2 &amp; a \\ 2 &amp; a &amp; a \end{bmatrix}$$
+
+要使 $r(A-2E) \leq 1$，三行必须成比例。第二行 - 第一行: $(0, 0, a-2)$，第三行 - 第一行: $(0, a-2, a-2)$。
+
+要求 $(0,0,a-2)$ 与 $(2,2,2)$ 成比例 → $a-2 = 0$ → $\boxed{a = 2}$。
+
+此时 $A-2E = \begin{bmatrix} 2 &amp; 2 &amp; 2 \\ 2 &amp; 2 &amp; 2 \\ 2 &amp; 2 &amp; 2 \end{bmatrix}$，$r = 1$，nullity $= 2$。✓<span class="why">实对称矩阵必可对角化, 所以 $\lambda=2$ 的几何重数 = 代数重数 = 2, 即 $r(A-2E)=3-2=1$——三行全成比例; 用"第 2、3 行减第 1 行"得到差分行, 它们必须为零向量, 于是 $a-2=0$。<b>考点</b>: "二重特征值 ⇔ nullity=2 ⇔ r(A-2E)=1"是含参矩阵定参数题的标准入口。</span>
+
+</div>
+<div class="step">
+
+<b>Step 2: 确定全部特征值</b>
+
+$A = \begin{bmatrix} 4 &amp; 2 &amp; 2 \\ 2 &amp; 4 &amp; 2 \\ 2 &amp; 2 &amp; 4 \end{bmatrix}$，$\operatorname{tr}(A) = 4+4+4 = 12 = 2+2+\lambda_3$ → $\lambda_3 = 8$。
+
+特征值: $\boxed{\lambda_1 = \lambda_2 = 2,\; \lambda_3 = 8}$。<span class="why">特征值之和等于迹 $tr(A)=12$, 已知两个 2, 第三个即 $12-4=8$。<b>易错</b>: "二重"条件只能定重数, 定不了第三个特征值的数值, 必须配迹(或行列式)才能求出 $\lambda_3$。</span>
+
+</div>
+<div class="step">
+
+<b>Step 3: 求特征向量</b>
+
+$\lambda = 2$: 解 $(A-2E)x = 0$ → $x_1 + x_2 + x_3 = 0$。
+
+取正交基: $v_1 = (1, -1, 0)^T$，$v_2 = (1, 1, -2)^T$（已正交化）。
+
+$\lambda = 8$: 解 $(A-8E)x = 0$，$\begin{bmatrix} -4 &amp; 2 &amp; 2 \\ 2 &amp; -4 &amp; 2 \\ 2 &amp; 2 &amp; -4 \end{bmatrix} x = 0$ → $x_1 = x_2 = x_3$。
+
+取 $v_3 = (1, 1, 1)^T$。注意 $v_3$ 与前两个正交（对称矩阵不同特征值的特征向量自动正交）。<span class="why">$\lambda=2$ 的特征子空间是平面 $x_1+x_2+x_3=0$, 先取 $v_1=(1,-1,0)$, 再配一个与之正交的解 $v_2=(1,1,-2)$(内积 $1-1+0=0$); $\lambda=8$ 的三条方程都等价于 $x_1=x_2=x_3$。<b>易错</b>: 同一特征值的特征向量不自动正交, 需手动配正交; 不同特征值的特征向量由对称性保证正交, 不用再验。</span>
+
+</div>
+<div class="step">
+
+<b>Step 4: 单位化得正交矩阵 $Q$</b>
+
+$$q_1 = \frac{1}{\sqrt{2}}(1, -1, 0)^T,\; q_2 = \frac{1}{\sqrt{6}}(1, 1, -2)^T,\; q_3 = \frac{1}{\sqrt{3}}(1, 1, 1)^T$$
+
+$$Q = \begin{bmatrix} \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}} &amp; \frac{1}{\sqrt{3}} \\[3pt] -\frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}} &amp; \frac{1}{\sqrt{3}} \\[3pt] 0 &amp; -\frac{2}{\sqrt{6}} &amp; \frac{1}{\sqrt{3}} \end{bmatrix}, \quad Q^{-1}AQ = Q^TAQ = \begin{bmatrix} 2 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 8 \end{bmatrix}$$
+
+> <b>关键步骤</b>: 利用二重特征值的条件 $r(A-2E) \leq 1$ 定参数 $a$。这是常见考法。<span class="why">特征向量已两两正交, 只需除以模长 $\|v_1\|=\sqrt{2}, \|v_2\|=\sqrt{6}, \|v_3\|=\sqrt{3}$ 再排成列; 正交矩阵满足 $Q^{-1}=Q^T$, 所以 $Q^{-1}AQ=Q^TAQ=\Lambda$。<b>考点</b>: 实对称矩阵的正交对角化 = "正交化 + 单位化 + 排成列", 是必考大题模板。</span>
+
+</div>
+<div class="sum hot"><b>⭐ 经典</b>: 实对称正交对角化模板: 二重特征值定参数→迹求第三特征值→正交化单位化。</div>
+</details>
+
+<hr />
+<p><a name="la-t11"></a></p>
+<h2 id="线代卷T11矩阵相似性证明">线代卷 T11: 矩阵相似性证明</h2>
+<p><b><span class="src">【来源: 线代测试题3、线代测试题解析3】</span></b></p>
+<blockquote>
+<p><b>题干</b>: 证明矩阵 $A = \begin{bmatrix} 2 &amp; 1 &amp; -1 \\ 1 &amp; 2 &amp; 1 \\ -1 &amp; 1 &amp; 2 \end{bmatrix}$ 与 $B = \begin{bmatrix} 2 &amp; 0 &amp; 1 \\ -1 &amp; 3 &amp; 1 \\ 2 &amp; 0 &amp; 1 \end{bmatrix}$ 相似。
+<span class="mk theory">理论</span><a href="数学_线性代数.html#61相似矩阵必考">相似矩阵</a> · <a href="数学_线性代数.html#62相似对角化矩阵变对角阵必考">相似对角化</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#la-t10">线代卷 T10</a> 同一判据双向用: T11 验几何重数证可对角化, T10 由二重特征值反推秩定参数</p>
+</blockquote>
+<details><summary>解答过程</summary><div class="step">
+
+<b>策略</b>: $A \sim B$ 的充分条件是: 特征多项式相同 + 均可对角化。
+
+<b>Step 1: 求 $A$ 的特征多项式</b>
+
+$$|\lambda E - A| = \begin{vmatrix} \lambda-2 &amp; -1 &amp; 1 \\ -1 &amp; \lambda-2 &amp; -1 \\ 1 &amp; -1 &amp; \lambda-2 \end{vmatrix}$$
+
+令 $c = \lambda - 2$，按第一行展开: $|\lambda E - A| = c(c^2-1) + (1-c) + (1-c) = c^3 - 3c + 2 = (c-1)^2(c+2)$
+
+$$|\lambda E - A| = (\lambda-3)^2 \cdot \lambda = \lambda(\lambda-3)^2$$
+
+【补全说明: 原卷 OCR 数值不清, 已按结构推演并校验——$\det A = 0$, $\operatorname{tr} A = 6$, 与特征值 $0, 3, 3$ 一致。】
+
+特征值: $0$（单重），$3$（二重）。<span class="why">相似矩阵特征多项式相同, 所以先展开 $|\lambda E - A|$: 令 $c=\lambda-2$ 后按第一行展开, 三处余子式符号为 $+,-,+$, 得 $c^3-3c+2=(c-1)^2(c+2)$, 回代即 $\lambda(\lambda-3)^2$。<b>易错</b>: 展开时余子式的符号 $(-1)^{i+j}$ 极易出错, 算完代入 $\lambda=0$ 验 $\det A$ 是否为 0 可以兜底。</span>
+
+</div>
+<div class="step">
+
+<b>Step 2: 求 $B$ 的特征多项式</b>
+
+$$|\lambda E - B| = \begin{vmatrix} \lambda-2 &amp; 0 &amp; -1 \\ 1 &amp; \lambda-3 &amp; -1 \\ -2 &amp; 0 &amp; \lambda-1 \end{vmatrix} = (\lambda-3)\begin{vmatrix} \lambda-2 &amp; -1 \\ -2 &amp; \lambda-1 \end{vmatrix}$$
+
+$$= (\lambda-3)[(\lambda-2)(\lambda-1) - 2] = (\lambda-3)(\lambda^2 - 3\lambda) = \lambda(\lambda-3)^2$$
+
+特征多项式相同！✓<span class="why">$|\lambda E - B|$ 的第二列只有 $(2,2)$ 位非零, 按第二列展开直接降为 2 阶行列式; $(\lambda-2)(\lambda-1)-2 = \lambda^2-3\lambda = \lambda(\lambda-3)$, 再乘 $(\lambda-3)$ 得 $\lambda(\lambda-3)^2$。<b>易错</b>: $\lambda^2-3\lambda$ 提出的是 $+\lambda$(不是 $-\lambda$), 三个特征值 $0,3,3$ 与 $A$ 逐一对上才算相同。</span>
+
+</div>
+<div class="step">
+
+<b>Step 3: 验证均可对角化</b>
+
+$A$ 是实对称矩阵 → 必然可对角化。✓
+
+对于 $B$，需验证 $\lambda=3$（二重）的几何重数 = 2:
+
+$$B - 3E = \begin{bmatrix} -1 &amp; 0 &amp; 1 \\ -1 &amp; 0 &amp; 1 \\ 2 &amp; 0 &amp; -2 \end{bmatrix}$$
+
+第二行 = 第一行，第三行 = $-2$ × 第一行。$r(B-3E) = 1$，nullity $= 3-1 = 2$。✓
+
+几何重数 = 代数重数，$B$ 可对角化。
+
+<b>结论</b>: $A$ 与 $B$ 特征多项式相同且均可对角化 → $\boxed{A \sim B}$。<span class="why">特征多项式相同只保证特征值(含重数)相同, 还要"均可对角化"才能推出两者相似于同一个对角阵 $\operatorname{diag}(0,3,3)$; $A$ 实对称自动满足, $B$ 验重根: $r(B-3E)=1$ 得 nullity 2 = 代数重数。<b>考点</b>: "特征多项式相同 + 可对角化 ⇒ 相似"是证相似的常用充分条件, 反过来不成立。</span>
+
+</div>
+<div class="step">
+
+> <b>证法提炼</b>: 证明两矩阵相似的标准路线——先比特征多项式，再验证每一特征值的几何重数=代数重数（即矩阵可对角化）。如果可对角化且特征值相同，则相似。<span class="why">完整链条: ① 比特征多项式(含重数); ② 验证每个特征值几何重数 = 代数重数; ③ 结论: 两个可对角化矩阵若特征值相同, 必相似于同一对角阵——三步缺一不可。</span>
+
+</div>
+<div class="sum hot"><b>⭐ 经典</b>: 证相似标准路线: 特征多项式相同+均可对角化⇒同相似于对角阵, 三步缺一不可。</div>
+</details>
+
+<hr />
+<p><a name="la-t12"></a></p>
+<h2 id="线代卷T12从矩阵方程求二次型规范形求参数">线代卷 T12: 从矩阵方程求二次型 + 规范形求参数</h2>
+<p><b><span class="src">【来源: 线代测试题3、线代测试题解析3】</span></b></p>
+<blockquote>
+<p><b>题干</b>: 设三元二次型 $f(x_1, x_2, x_3) = x^T A x$ 的矩阵 $A$ 满足 $A^2 - 2A = 0$，且 $\alpha_1 = (0,1,1)^T$ 是齐次线性方程组 $Ax = 0$ 的基础解系。
+(1) 求二次型 $f$ 的表达式；
+(2) 若二次型 $x^T(A+kE)x$ 的规范形是 $y_1^2 + y_2^2 - y_3^2$，求 $k$ 的范围。
+<span class="mk theory">理论</span><a href="数学_线性代数.html#53特征值的性质必考">特征值的性质</a> · <a href="数学_线性代数.html#63实对称矩阵线代最乖的一类矩阵必考">实对称矩阵</a> · <a href="数学_线性代数.html#65化标准形与规范形必考">化标准形与规范形</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#la-t10">线代卷 T10</a> 同为"由特征值结构定矩阵": T10 由重数+迹定 A, T12 由矩阵方程+核空间定 A</p>
+</blockquote>
+<details><summary>解答过程</summary><div class="step">
+
+<b>(1) 求二次型表达式</b>
+
+由 $A^2 - 2A = 0$，特征值满足 $\lambda^2 - 2\lambda = 0$ → $\lambda = 0$ 或 $2$。
+
+$\alpha_1 = (0,1,1)^T$ 是 $Ax=0$ 的基础解系 → 解空间 1 维 → $r(A) = 3-1 = 2$。故 $\lambda=0$ 单重，$\lambda=2$ 二重。
+
+$A$ 是实对称阵（二次型的矩阵），正交相似于对角阵:
+
+$$A \sim \operatorname{diag}(0, 2, 2)$$
+
+<span class="why">对特征向量 $Ax=\lambda x$, 左乘 $A$ 得 $A^2x=\lambda^2x$, 代入 $A^2-2A=0$ 得 $(\lambda^2-2\lambda)x=0$, 故 $\lambda\in\{0,2\}$; $\alpha_1$ 张成核空间说明 $\lambda=0$ 的几何重数为 1, 实对称矩阵几何重数 = 代数重数, 于是 0 单重、2 二重。<b>考点</b>: 矩阵多项式方程 $A^2-2A=0$ 直接给出特征值候选集合, 是这类"由方程定矩阵结构"题的起点。</span>
+
+</div>
+<div class="step">
+
+用谱分解: $A = 0 \cdot \frac{\alpha_1\alpha_1^T}{\|\alpha_1\|^2} + 2 \cdot \left(I - \frac{\alpha_1\alpha_1^T}{\|\alpha_1\|^2}\right) = 2I - 2\frac{\alpha_1\alpha_1^T}{\|\alpha_1\|^2}$
+
+$$\frac{\alpha_1\alpha_1^T}{\|\alpha_1\|^2} = \frac{1}{2}\begin{bmatrix} 0 \\ 1 \\ 1 \end{bmatrix}\begin{bmatrix} 0 &amp; 1 &amp; 1 \end{bmatrix} = \frac{1}{2}\begin{bmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \end{bmatrix}$$
+
+$$A = 2\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix} - 2 \cdot \frac{1}{2}\begin{bmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \end{bmatrix} = \begin{bmatrix} 2 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; -1 &amp; 1 \end{bmatrix}$$
+
+$$\boxed{f(x_1, x_2, x_3) = 2x_1^2 + x_2^2 + x_3^2 - 2x_2x_3}$$
+
+<span class="why">谱分解 $A=\sum\lambda_i P_i$ 中, $P=\frac{\alpha_1\alpha_1^T}{\|\alpha_1\|^2}$ 是秩 1 正交投影(把向量投到 $\operatorname{span}(\alpha_1)$, 对应 $\lambda=0$ 的特征子空间), $I-P$ 投到其正交补(对应 $\lambda=2$); $\|\alpha_1\|^2=0^2+1^2+1^2=2$。<b>考点</b>: 秩 1 投影矩阵 $\frac{uu^T}{u^Tu}$ 是谱分解、秩 1 修正类题的核心构件。</span>
+
+</div>
+<div class="step">
+
+> 验证: $f = 2x_1^2 + (x_2 - x_3)^2 \geq 0$，半正定（$\lambda_{\min}=0$），符合预期。<span class="why">读矩阵的规则: 对角元是平方项系数, 非对角元 $a_{ij}$ 对应交叉项 $2a_{ij}x_ix_j$——$a_{23}=-1$ 给出 $-2x_2x_3$。<b>易错</b>: 交叉项系数带因子 2, 别把 $a_{23}=-1$ 直接写成 $-x_2x_3$; 半正定与 $\lambda_{\min}=0$ 互相印证。</span>
+
+</div>
+<div class="step">
+
+<b>(2) 求 $k$ 的范围</b>
+
+$A+kE$ 的特征值为: $0+k = k$, $2+k$, $2+k$。
+
+规范形 $y_1^2 + y_2^2 - y_3^2$ 表示: 2 正 1 负（p=2, q=1, 秩=3）。
+
+在三个特征值 $\{k, 2+k, 2+k\}$ 中，必须恰好有一个为负，两个为正:
+
+$$k &lt; 0 &lt; 2+k \quad \Rightarrow \quad -2 &lt; k &lt; 0$$
+
+$$\boxed{k \in (-2, 0)}$$
+
+<span class="why">加 $kE$ 只是把特征值整体平移 $k$, 特征向量不变; 规范形看惯性指数: 2 正 1 负要求三个特征值符号为 $(+,+,-)$, 即唯一可能取负的是 $k$, 而 $2+k$ 必须为正。<b>易错</b>: 端点不可取——$k=0$ 或 $k=-2$ 时出现零特征值, 二次型退化不满秩, 规范形只有两项。</span>
+
+</div>
+<div class="step">
+
+> <b>验证</b>: $k=-1$ 时特征值 $\{-1, 1, 1\}$，规范形 $y_1^2+y_2^2-y_3^2$ ✓。$k=-3$ 时特征值 $\{-3, -1, -1\}$，全负 ✗。
+
+> <b>方法提炼</b>: 由 $A^2=2A$ → 特征值只能 0 或 2 → 利用核空间维数确定重数 → 谱分解写出 $A$。第(2)问只需看 $A+kE$ 特征值的符号分布。<span class="why">代入检验: $k=-1$ 时符号为 $-1,1,1$, 恰 1 负 2 正; $k=-3$ 全负不满足。整题链条: 矩阵方程定特征值 → 核空间定重数 → 谱分解重建 $A$ → 平移看符号。<b>考点</b>: 规范形定参数只与特征值符号有关, 与特征向量无关。</span>
+
+</div>
+<div class="sum hot"><b>⭐ 经典</b>: 由矩阵方程定特征值, 谱分解重建 A; 规范形定参数只看特征值符号分布。</div>
+</details></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_练习与测试.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 练习与测试</b></span></a><a class="next" href="数学_复习清单.html"><span class="pg-t"><small>下一篇</small><b>数学 · 复习清单</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<button id="navbtn" type="button" aria-label="打开目录" title="目录">☰</button>
+<div id="tbtools" role="toolbar"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">深色</button><button id="printBtn" type="button" title="打印 / 导出 PDF">打印</button></div></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '浅色' : '深色'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 侧栏收起/展开(2026-08-09): 折叠态 = 8px 边缘热区零内容;
+     桌面: 悬停/键盘聚焦滑出, 移出 1.2s 自动收回(未钉住), ☰/图钉按钮钉住;
+     触屏(平板): ☰ 弹浮层 + 遮罩; 手机(≤920px): ☰ = 汉堡滑入 overlay ---------- */
+  var touchNav = !!(window.matchMedia && window.matchMedia('(hover: none)').matches);
+  var sideNav = document.querySelector('.layout > nav');
+  var navbtn = document.getElementById('navbtn');
+  if (sideNav) {
+    if (touchNav) root.setAttribute('data-touch', '1');
+    var pinSt = load('xnNavPin') === '1';
+    root.setAttribute('data-nav', (pinSt && !touchNav) ? 'pinned' : 'collapsed');
+    var pinBtn = document.getElementById('navpin');
+    if (pinBtn) pinBtn.setAttribute('aria-pressed', pinSt && !touchNav ? 'true' : 'false');
+    function setPin(pinned){
+      root.setAttribute('data-nav', pinned ? 'pinned' : 'collapsed');
+      store('xnNavPin', pinned ? '1' : '0');
+      if (pinBtn) pinBtn.setAttribute('aria-pressed', pinned ? 'true' : 'false');
+    }
+    if (pinBtn) pinBtn.addEventListener('click', function(){ setPin(root.getAttribute('data-nav') !== 'pinned'); });
+    if (navbtn) navbtn.addEventListener('click', function(){
+      if (window.matchMedia('(max-width: 920px)').matches) { nav.classList.toggle('show'); return; }
+      if (touchNav) {
+        root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+      } else {
+        setPin(root.getAttribute('data-nav') !== 'pinned');
+      }
+    });
+    sideNav.addEventListener('click', function(e){
+      if (e.target.closest('a')) { nav.classList.remove('show'); root.setAttribute('data-nav', 'collapsed'); return; }
+      if (touchNav) root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+    });
+    if (touchNav) {
+      var scrim = document.getElementById('navscrim');
+      if (scrim) scrim.addEventListener('click', function(){ root.setAttribute('data-nav', 'collapsed'); });
+    } else {
+      /* 桌面: 悬停/聚焦展开, 移出延迟 1.2s 自动收回(钉住时保持) */
+      var retractTimer = null;
+      function keepOpen(){
+        clearTimeout(retractTimer);
+        if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'open');
+      }
+      function scheduleRetract(){
+        clearTimeout(retractTimer);
+        retractTimer = setTimeout(function(){
+          if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'collapsed');
+        }, 1200);
+      }
+      sideNav.addEventListener('mouseenter', keepOpen);
+      sideNav.addEventListener('mouseleave', scheduleRetract);
+      sideNav.addEventListener('focusin', keepOpen);
+      sideNav.addEventListener('focusout', scheduleRetract);
+    }
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navBrds = nav.querySelectorAll('details.brd');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var k2 = 0; k2 < navBrds.length; k2++) {
+        var bd = navBrds[k2], bdLinks = bd.querySelectorAll('a[href]'), bdVis = false;
+        for (var n2 = 0; n2 < bdLinks.length; n2++) { if (bdLinks[n2].style.display !== 'none') { bdVis = true; break; } }
+        bd.style.display = bdVis ? '' : 'none';
+        if (t && bdVis) bd.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 表格横向滚动包裹 ---------- */
+  var tables = document.querySelectorAll('main table');
+  for (var iT = 0; iT < tables.length; iT++) {
+    var tw = document.createElement('div');
+    tw.className = 'table-wrap';
+    tables[iT].parentNode.insertBefore(tw, tables[iT]);
+    tw.appendChild(tables[iT]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 + 学科 Tab(2026-08-09: homeFilter 统一入口, Tab 只控 section 显隐) ---------- */
+  var homeq = document.getElementById('homeq');
+  var hometabs = document.getElementById('hometabs');
+  var homeTab = 'all';
+  function homeFilter(){
+    if (!homeq) return;
+    var t = homeq.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('.board-card');
+    var secs2 = document.querySelectorAll('section[data-subj]');
+    var grpHs = document.querySelectorAll('.grp-h');
+    for (var iE = 0; iE < cards.length; iE++) {
+      cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+    }
+    for (var iF = 0; iF < secs2.length; iF++) {
+      var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+      for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+      sec.style.display = ((homeTab === 'all' || sec.dataset.subj === homeTab) && vis) ? '' : 'none';
+    }
+    for (var iH = 0; iH < grpHs.length; iH++) {
+      var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+      if (next && next.classList && next.classList.contains('cards')) {
+        var c2 = next.querySelectorAll('.board-card');
+        for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+      }
+      grp.style.display = vis2 ? '' : 'none';
+    }
+    var recentSec2 = document.getElementById('recent');
+    if (recentSec2) {
+      var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+      for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+      recentSec2.style.display = (t && !rVis) ? 'none' : '';
+    }
+  }
+  if (homeq) homeq.addEventListener('input', homeFilter);
+  if (hometabs) {
+    hometabs.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-tab]');
+      if (!btn) return;
+      homeTab = btn.getAttribute('data-tab');
+      var bs = hometabs.querySelectorAll('button[data-tab]');
+      for (var iK = 0; iK < bs.length; iK++) bs[iK].classList.toggle('on', bs[iK] === btn);
+      homeFilter();
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

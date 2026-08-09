@@ -1,0 +1,956 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数学 · 曲线曲面积分_例题</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.9;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+
+/* ---------- 侧栏 ---------- */
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:rgba(251,250,246,.82);border-right:1px solid #EDEAE0;
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin;
+  transition:width .22s ease,background .2s ease}
+html[data-theme="dark"] .layout > nav{background:rgba(20,25,34,.78);border-right-color:#232A37}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem .6rem .95rem 1.15rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.8rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.86rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.8rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.76rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+/* 板块级折叠块(2026-08-09: 全站统一; 行尾 .tog 箭头负责折叠, 点板块名 = 跳转) */
+nav details.brd{margin:.05rem .3rem .15rem}
+nav details.brd>summary{list-style:none;cursor:default;display:flex;align-items:center;gap:.4rem;
+  padding:.12rem .35rem .12rem .45rem;margin:0;border-radius:8px;user-select:none}
+nav details.brd>summary::-webkit-details-marker{display:none}
+nav details.brd>summary:hover{background:var(--accent-soft)}
+nav details.brd>summary a.b{flex:1;min-width:0;margin:.02rem 0;padding:.3rem .42rem;cursor:pointer}
+nav details.brd>summary a.b:hover{background:none;text-decoration:none}
+nav details.brd>summary a.b.on:hover{background:var(--accent-soft)}
+nav details.brd>summary .tog{flex:none;width:1.55rem;text-align:center;color:var(--ink3);
+  font-size:.66rem;cursor:pointer;padding:.35rem 0;border-radius:6px}
+nav details.brd>summary .tog:hover{color:var(--accent2);background:var(--accent-soft)}
+nav details.brd>summary .tog::before{content:"▸";display:inline-block;transition:transform .15s ease}
+nav details.brd[open]>summary .tog::before{transform:rotate(90deg)}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶部(无容器框, 2026-08-09): ☰ 左上悬浮 / 操作按钮右上悬浮 / 面包屑随正文流 ---------- */
+main{flex:1;min-width:0;max-width:800px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+#navbtn{position:fixed;top:.7rem;left:.7rem;z-index:110;display:inline-flex;align-items:center;justify-content:center;
+  width:2.1rem;height:2.1rem;padding:0;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:9px;cursor:pointer;font-size:.98rem;flex-shrink:0;line-height:1;box-shadow:var(--shadow-sm);
+  transition:all .15s}
+#navbtn:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+#tbtools{position:fixed;top:.7rem;right:.7rem;z-index:110;display:flex;gap:.4rem}
+#tbtools button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.36rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  box-shadow:var(--shadow-sm);transition:all .15s}
+#tbtools button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+.crumbline{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--ink3);
+  padding:1.5rem 0 .1rem;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumbline a{color:var(--ink2)}
+.crumbline a:hover{color:var(--accent2);text-decoration:none}
+.crumbline .sep{color:var(--ink3)}
+.crumbline b{color:var(--ink);font-weight:600}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.4rem;margin:3rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.15rem;margin:2.3rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2.05;margin:.8rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+/* 宽表格由 JS 包一层 .table-wrap 横向滚动, 防止撑破 800px 行宽 */
+.table-wrap{overflow-x:auto;margin:1.15rem 0;border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.92rem}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin:0 auto 1.4rem}
+.tabs button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:20px;padding:.4rem 1.05rem;font-size:.84rem;cursor:pointer;transition:all .15s}
+.tabs button:hover{border-color:var(--accent);color:var(--accent2)}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* ---------- 侧栏收起(2026-08-09): 折叠态 = 8px 边缘热区零内容; 桌面悬停滑出(JS 控制,
+   移出 1.2s 后自动收回); ☰ 顶栏按钮展开并钉住; 触屏 ☰ 弹浮层 + 遮罩 ---------- */
+#navpin{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
+  cursor:pointer;flex-shrink:0}
+#navpin:hover{border-color:var(--accent);color:var(--accent2)}
+#navpin[aria-pressed="true"]{color:var(--accent2);border-color:var(--accent);background:var(--accent-soft)}
+#navscrim{position:fixed;inset:0;z-index:190;background:rgba(15,18,23,.45);
+  opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s}
+@media (min-width:921px){
+  /* 折叠态: 8px 热区(sticky 占位保持正文宽度), 内容全隐藏(鼠标移入 / ☰ / 键盘聚焦展开) */
+  html[data-nav="collapsed"] .layout > nav{width:8px;overflow:hidden;padding:0;background:transparent}
+  html[data-nav="collapsed"] .layout > nav .brand,
+  html[data-nav="collapsed"] .layout > nav #navq,
+  html[data-nav="collapsed"] .layout > nav a.subj,
+  html[data-nav="collapsed"] .layout > nav .navbody,
+  html[data-nav="collapsed"] .layout > nav #navpin{display:none}
+  /* 展开态 = 浮层覆盖在正文上方(用户要求: 侧栏伸缩时正文不重排);
+     折叠态 8px 占位保持不变 → main 宽度恒定; ☰ 被浮层覆盖, 展开时隐藏(收起靠图钉/移出) */
+  html[data-nav]:not([data-nav="collapsed"]) .layout > nav{position:fixed;left:0;top:0;height:100vh;
+    z-index:180;box-shadow:8px 0 28px rgba(0,0,0,.18)}
+  html[data-nav]:not([data-nav="collapsed"]) #navbtn{display:none}
+  /* 触屏(平板): ☰ 展开为浮层 + 遮罩, 点遮罩/链接收回; 无钉住 */
+  html[data-touch][data-nav="open"] #navscrim{opacity:1;visibility:visible}
+  html[data-touch] #navpin{display:none}
+}
+@media(max-width:920px){#navpin{display:none}}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  .layout > nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  .layout > nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,#tbtools,#navbtn,#topbtn,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style>
+<script>document.documentElement.dataset.nav='collapsed';</script></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span><button id="navpin" type="button" title="钉住目录" aria-pressed="false"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg></button></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="../知识笔记首页.html">全部板块</a><div class="navbody"><div class="sec cur">数学</div><details class="grp" data-k="grp-高数" open><summary>高数<em>10</em></summary><details class="brd" data-k="brd-极限与数列"><summary><a class="b" href="数学_极限与数列.html">极限与数列</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_极限与数列.html#板块总览">板块总览</a><a class="c" href="数学_极限与数列.html#一极限的定义">一、极限的定义</a><a class="c" href="数学_极限与数列.html#二极限的性质">二、极限的性质</a><a class="c" href="数学_极限与数列.html#三极限计算方法考试主力">三、极限计算方法(考试主力)</a><a class="c" href="数学_极限与数列.html#四判定准则">四、判定准则</a><a class="c" href="数学_极限与数列.html#五定积分定义求极限高频">五、定积分定义求极限 【高频】</a><a class="c" href="数学_极限与数列.html#六连续与间断必考">六、连续与间断 【必考】</a><a class="c" href="数学_极限与数列.html#七渐近线高频">七、渐近线 【高频】</a><a class="c" href="数学_极限与数列.html#八变上限积分与极限高频">八、变上限积分与极限 【高频】</a><a class="c" href="数学_极限与数列.html#知识连接">知识连接</a><a class="c x" href="数学_极限与数列_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-导数与微分"><summary><a class="b" href="数学_导数与微分.html">导数与微分</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_导数与微分.html#板块总览">板块总览</a><a class="c" href="数学_导数与微分.html#一导数的定义必考">一、导数的定义 【必考】</a><a class="c" href="数学_导数与微分.html#二导数的计算必考">二、导数的计算 【必考】</a><a class="c" href="数学_导数与微分.html#三微分高频">三、微分 【高频】</a><a class="c" href="数学_导数与微分.html#四可导性的讨论分段函数含参必考">四、可导性的讨论(分段函数/含参) 【必考】</a><a class="c" href="数学_导数与微分.html#五导数的几何应用高频">五、导数的几何应用 【高频】</a><a class="c" href="数学_导数与微分.html#知识连接">知识连接</a><a class="c x" href="数学_导数与微分_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-中值定理"><summary><a class="b" href="数学_中值定理.html">中值定理</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_中值定理.html#板块总览">板块总览</a><a class="c" href="数学_中值定理.html#一三大中值定理">一、三大中值定理</a><a class="c" href="数学_中值定理.html#二泰勒公式拉格朗日余项必考">二、泰勒公式(拉格朗日余项) 【必考】</a><a class="c" href="数学_中值定理.html#三积分中值定理高频">三、积分中值定理 【高频】</a><a class="c" href="数学_中值定理.html#四证明题方法总纲本板块灵魂">四、证明题方法总纲(本板块灵魂) ★</a><a class="c" href="数学_中值定理.html#五易错点与考法总结易错">五、易错点与考法总结 【易错】</a><a class="c" href="数学_中值定理.html#知识连接">知识连接</a><a class="c x" href="数学_中值定理_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-导数应用"><summary><a class="b" href="数学_导数应用.html">导数应用</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_导数应用.html#板块总览">板块总览</a><a class="c" href="数学_导数应用.html#一函数的单调性">一、函数的单调性</a><a class="c" href="数学_导数应用.html#二函数的极值与最值">二、函数的极值与最值</a><a class="c" href="数学_导数应用.html#三曲线的凹凸性与拐点">三、曲线的凹凸性与拐点</a><a class="c" href="数学_导数应用.html#四渐近线">四、渐近线</a><a class="c" href="数学_导数应用.html#五零点个数与参数范围高频">五、零点个数与参数范围 【高频】</a><a class="c" href="数学_导数应用.html#六曲率与曲率圆高频">六、曲率与曲率圆 【高频】</a><a class="c" href="数学_导数应用.html#七最值应用题数三经济应用高频">七、最值应用题(数三经济应用) 【高频】</a><a class="c" href="数学_导数应用.html#八易错点与考法总结">八、易错点与考法总结</a><a class="c" href="数学_导数应用.html#知识连接">知识连接</a><a class="c x" href="数学_导数应用_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-积分"><summary><a class="b" href="数学_积分.html">积分</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_积分.html#板块总览">板块总览</a><a class="c" href="数学_积分.html#一原函数与不定积分">一、原函数与不定积分</a><a class="c" href="数学_积分.html#二换元积分法">二、换元积分法</a><a class="c" href="数学_积分.html#三分部积分法">三、分部积分法</a><a class="c" href="数学_积分.html#四有理函数与三角函数的积分">四、有理函数与三角函数的积分</a><a class="c" href="数学_积分.html#五定积分">五、定积分</a><a class="c" href="数学_积分.html#六定积分的计算技巧">六、定积分的计算技巧</a><a class="c" href="数学_积分.html#七变上限积分函数">七、变上限积分函数</a><a class="c" href="数学_积分.html#八广义积分反常积分">八、广义积分 (反常积分)</a><a class="c" href="数学_积分.html#九定积分的应用">九、定积分的应用</a><a class="c" href="数学_积分.html#十易错点与考法总结">十、易错点与考法总结</a><a class="c" href="数学_积分.html#知识连接">知识连接</a><a class="c x" href="数学_积分_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-多元与二重"><summary><a class="b" href="数学_多元与二重.html">多元与二重</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_多元与二重.html#板块总览">板块总览</a><a class="c" href="数学_多元与二重.html#一多元函数微分学">一、多元函数微分学</a><a class="c" href="数学_多元与二重.html#二二重积分">二、二重积分</a><a class="c" href="数学_多元与二重.html#知识连接">知识连接</a><a class="c x" href="数学_多元与二重_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-微分方程"><summary><a class="b" href="数学_微分方程.html">微分方程</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_微分方程.html#板块总览">板块总览</a><a class="c" href="数学_微分方程.html#一基本概念">一、基本概念</a><a class="c" href="数学_微分方程.html#二一阶微分方程">二、一阶微分方程</a><a class="c" href="数学_微分方程.html#三可降阶的高阶微分方程数一数二">三、可降阶的高阶微分方程 (数一、数二)</a><a class="c" href="数学_微分方程.html#四二阶常系数线性微分方程必考">四、二阶常系数线性微分方程 【必考】</a><a class="c" href="数学_微分方程.html#五线性微分方程解的结构必考">五、线性微分方程解的结构 【必考】</a><a class="c" href="数学_微分方程.html#六差分方程数三专属必考">六、差分方程 (数三专属) 【必考】</a><a class="c" href="数学_微分方程.html#七微分方程的应用">七、微分方程的应用</a><a class="c" href="数学_微分方程.html#知识连接">知识连接</a><a class="c x" href="数学_微分方程_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-级数"><summary><a class="b" href="数学_级数.html">级数</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_级数.html#板块总览">板块总览</a><a class="c" href="数学_级数.html#一常数项级数的定义与收敛">一、常数项级数的定义与收敛</a><a class="c" href="数学_级数.html#二正项级数敛散性判别必考">二、正项级数敛散性判别 【必考】</a><a class="c" href="数学_级数.html#三交错级数与莱布尼兹判别法必考">三、交错级数与莱布尼兹判别法 【必考】</a><a class="c" href="数学_级数.html#四绝对收敛与条件收敛必考">四、绝对收敛与条件收敛 【必考】</a><a class="c" href="数学_级数.html#五幂级数必考">五、幂级数 【必考】</a><a class="c" href="数学_级数.html#知识连接">知识连接</a><a class="c x" href="数学_级数_例题.html">▸ 例题集</a></details><details class="brd" open><summary><a class="b" href="数学_曲线曲面积分.html">曲线曲面积分</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_曲线曲面积分_例题.html#一三重积分">一、三重积分</a><a class="d" href="数学_曲线曲面积分_例题.html#例1">例 1</a><a class="d" href="数学_曲线曲面积分_例题.html#例2">例 2</a><a class="d" href="数学_曲线曲面积分_例题.html#例3">例 3</a><a class="d" href="数学_曲线曲面积分_例题.html#例4">例 4</a><a class="d" href="数学_曲线曲面积分_例题.html#例5">例 5</a><a class="c" href="数学_曲线曲面积分_例题.html#二第一型曲线积分">二、第一型曲线积分</a><a class="d" href="数学_曲线曲面积分_例题.html#例6">例 6</a><a class="d" href="数学_曲线曲面积分_例题.html#例7">例 7</a><a class="c" href="数学_曲线曲面积分_例题.html#三第二型曲线积分与格林公式">三、第二型曲线积分与格林公式</a><a class="d" href="数学_曲线曲面积分_例题.html#例8">例 8</a><a class="d" href="数学_曲线曲面积分_例题.html#例9">例 9</a><a class="d" href="数学_曲线曲面积分_例题.html#例10">例 10</a><a class="d" href="数学_曲线曲面积分_例题.html#例11">例 11</a><a class="d" href="数学_曲线曲面积分_例题.html#例12">例 12</a><a class="d" href="数学_曲线曲面积分_例题.html#例13">例 13</a><a class="c" href="数学_曲线曲面积分_例题.html#四第一型曲面积分">四、第一型曲面积分</a><a class="d" href="数学_曲线曲面积分_例题.html#例14">例 14</a><a class="d" href="数学_曲线曲面积分_例题.html#例15">例 15</a><a class="c" href="数学_曲线曲面积分_例题.html#知识连接">知识连接</a><a class="c x on" href="数学_曲线曲面积分_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-数三专题"><summary><a class="b" href="数学_数三专题.html">数三专题</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_数三专题.html#一边际函数">一、边际函数</a><a class="c" href="数学_数三专题.html#二弹性分析">二、弹性分析</a><a class="c" href="数学_数三专题.html#三典型例题">三、典型例题</a><a class="c" href="数学_数三专题.html#四考点小结">四、考点小结</a></details></details><details class="grp" data-k="grp-线性代数"><summary>线性代数<em>1</em></summary><details class="brd" data-k="brd-线性代数"><summary><a class="b" href="数学_线性代数.html">线性代数</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_线性代数.html#板块总览">板块总览</a><a class="c" href="数学_线性代数.html#一行列式">一、行列式</a><a class="c" href="数学_线性代数.html#二矩阵">二、矩阵</a><a class="c" href="数学_线性代数.html#三向量与秩">三、向量与秩</a><a class="c" href="数学_线性代数.html#四线性方程组">四、线性方程组</a><a class="c" href="数学_线性代数.html#五特征值与特征向量">五、特征值与特征向量</a><a class="c" href="数学_线性代数.html#六相似对角化与二次型">六、相似对角化与二次型</a><a class="c" href="数学_线性代数.html#知识连接">知识连接</a><a class="c x" href="数学_线性代数_例题.html">▸ 例题集</a></details></details><details class="grp" data-k="grp-概率论"><summary>概率论<em>1</em></summary><details class="brd" data-k="brd-概率论"><summary><a class="b" href="数学_概率论.html">概率论</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_概率论.html#板块总览">板块总览</a><a class="c" href="数学_概率论.html#一随机事件与概率">一、随机事件与概率</a><a class="c" href="数学_概率论.html#二一维随机变量及其分布">二、一维随机变量及其分布</a><a class="c" href="数学_概率论.html#三随机变量函数的分布高频">三、随机变量函数的分布 【高频】</a><a class="c" href="数学_概率论.html#四多维随机变量及其分布">四、多维随机变量及其分布</a><a class="c" href="数学_概率论.html#五随机变量的数字特征必考">五、随机变量的数字特征 【必考】</a><a class="c" href="数学_概率论.html#六大数定律与中心极限定理高频">六、大数定律与中心极限定理 【高频】</a><a class="c" href="数学_概率论.html#七数理统计初步高频">七、数理统计初步 【高频】</a><a class="c" href="数学_概率论.html#八知识连接">八、知识连接</a><a class="c" href="数学_概率论.html#核心公式速查">核心公式速查</a><a class="c x" href="数学_概率论_例题.html">▸ 例题集</a></details></details><details class="brd" data-k="brd-练习与测试"><summary><a class="b" href="数学_练习与测试.html">练习与测试</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_练习与测试.html#一试卷总览">一、试卷总览</a><a class="c" href="数学_练习与测试.html#二概率基础阶段测试卷">二、概率基础阶段测试卷</a><a class="c" href="数学_练习与测试.html#三线代测试题3">三、线代测试题3</a><a class="c" href="数学_练习与测试.html#四集训营数学公式测试2线代公式清单">四、集训营数学公式测试2 —— 线代公式清单</a><a class="c" href="数学_练习与测试.html#五集训营数学公式测试3高数导数公式清单">五、集训营数学公式测试3 —— 高数导数公式清单</a><a class="c" href="数学_练习与测试.html#六卷间横向联系">六、卷间横向联系</a><a class="c x" href="数学_练习与测试_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-复习清单"><summary><a class="b" href="数学_复习清单.html">复习清单</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_复习清单.html#一函数极限连续15个知识点">一、函数、极限、连续（15 个知识点）</a><a class="c" href="数学_复习清单.html#二一元函数微分学16个知识点">二、一元函数微分学（16 个知识点）</a><a class="c" href="数学_复习清单.html#三一元函数积分学11个知识点">三、一元函数积分学（11 个知识点）</a><a class="c" href="数学_复习清单.html#四月考范围说明与复习策略">四、月考范围说明与复习策略</a></details><details class="brd" data-k="brd-技巧速查"><summary><a class="b" href="数学_技巧速查.html">技巧速查</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_技巧速查.html#一极限">一、极限</a><a class="c" href="数学_技巧速查.html#二导数与微分">二、导数与微分</a><a class="c" href="数学_技巧速查.html#三中值定理">三、中值定理</a><a class="c" href="数学_技巧速查.html#四积分">四、积分</a><a class="c" href="数学_技巧速查.html#五微分方程">五、微分方程</a><a class="c" href="数学_技巧速查.html#六多元与二重">六、多元与二重</a><a class="c" href="数学_技巧速查.html#七级数">七、级数</a><a class="c" href="数学_技巧速查.html#八线性代数">八、线性代数</a><a class="c" href="数学_技巧速查.html#九概率论">九、概率论</a><a class="c" href="数学_技巧速查.html#十曲线曲面积分数一了解">十、曲线曲面积分(数一) 【了解】</a></details></div></nav>
+<div id="navscrim" aria-hidden="true"></div>
+<main data-subj="math"><div class="crumbline"><a href="../知识笔记首页.html">首页</a><span class="sep">/</span><b>数学 · 曲线曲面积分_例题</b></div><div class="article"><h1>曲线曲面积分_例题</h1><div class="board-meta">📐 数学 · <span class="pill">例题集</span><span class="pill">15 道例题</span></div><blockquote>
+<p>全量收录 0805(1)(2) 课件例题, 按方法分组。手写部分数值模糊处标<span class="mk warn">数值不清</span>; 重建解答标<span class="fill">【AI补全】</span>。⬅ 返回 <a href="数学_曲线曲面积分.html">理论笔记</a></p>
+</blockquote>
+<hr />
+<h2 id="一三重积分">一、三重积分</h2>
+<p id="例1" class="prob"><b>例 1</b> 计算 $\iiint_\Omega dV$, 其中 $\Omega$ 为 $x+y+z=1$ 与三个坐标平面在第一卦限所围的立体。【0805(1), 题面经视觉核对】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#一三重积分了解">三重积分</a></li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">先一后二(投影法): $\iiint_\Omega dV = \iint_D dxdy\int_0^{1-x-y}dz = \iint_D (1-x-y)\,dxdy$, $D: x\ge0,y\ge0,x+y\le1$。<span class="why">$z$ 从平面 $z=0$ 积到 $z=1-x-y$; 投影区域是第一卦限三角形。三重积分的体积 = 区域体积(被积函数 1)。</span></div>
+<div class="step">$= \int_0^1 dx\int_0^{1-x}(1-x-y)\,dy = \int_0^1 \frac{(1-x)^2}{2}\,dx = \frac16$。<span class="why">内层积分 $\int_0^{1-x}(1-x-y)dy = \frac{(1-x)^2}{2}$; 最后 $\frac12\int_0^1(1-x)^2dx = \frac12\cdot\frac13 = \frac16$——四面体体积公式 $\frac13\times$ 底面积 $\times$ 高 的核对。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 投影法标准流程: 先定 $z$ 限(上下面), 再投影区域二重积分。</div>
+</details>
+
+<p id="例2" class="prob"><b>例 2</b> 计算 $\iiint_\Omega z^2\,dV$, 其中 $\Omega$ 为球 $x^2+y^2+z^2\le R^2$ 与球 $x^2+y^2+(z-R)^2\le R^2$ 的交集。【0805(1), 题面按视觉转写定稿; 旧稿误作单球, 已更正】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#一三重积分了解">三重积分</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例3">例 3</a> 同为含 $z$ 的三重积分, 本题截面法分段</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">两球交线: 由 $R^2-z^2 = R^2-(z-R)^2$ 得 $z=\frac R2$; 交集 $z\in[0,R]$ 分两段: $z\in[0,\frac R2]$ 截面由球 2(球心 $(0,0,R)$)限制 $x^2+y^2\le R^2-(z-R)^2$, $z\in[\frac R2,R]$ 截面由球 1(球心原点)限制 $x^2+y^2\le R^2-z^2$。<span class="why">两球截面半径平方分别为 $R^2-z^2$ 与 $R^2-(z-R)^2$, 交集截面取较小者, 交界在 $z=R/2$。<b>考点</b>: 截面法适用判据——被积函数只含 $z$ 且截面面积易求; 多曲面围成区域先找交线定分段点。</span></div>
+<div class="step">$\iiint z^2\,dV = \pi\int_0^{R/2} z^2[R^2-(z-R)^2]\,dz + \pi\int_{R/2}^{R} z^2(R^2-z^2)\,dz = \pi\int_0^{R/2}(2Rz^3-z^4)\,dz + \pi\int_{R/2}^{R}(R^2z^2-z^4)\,dz$。<span class="why">$R^2-(z-R)^2 = 2Rz-z^2$。<b>易错</b>: 视觉稿把 $(z-R)^2$ 误读成 $(z+R)^2$, 数学上 $R^2-(z+R)^2$ 在 $z\ge0$ 为负, 不可能是截面。</span></div>
+<div class="step">第一段 $= \pi\left(\frac{R^5}{32}-\frac{R^5}{160}\right) = \frac{12\pi R^5}{480}$; 第二段 $= \pi\left[\left(\frac{R^5}{3}-\frac{R^5}{5}\right)-\left(\frac{R^5}{24}-\frac{R^5}{160}\right)\right] = \frac{47\pi R^5}{480}$; 总 $= \frac{59\pi R^5}{480}$。<span class="why">$\frac{2}{15}=\frac{64}{480}$, $64-17=47$, $47+12=59$。<b>核对</b>: 课件答案 $\frac{59}{480}\pi R^5$ ✓(比单球 $\frac{4\pi R^5}{15}$ 小, 区域缩小所致)。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: "含 $z$ 且截面已知" → 先二后一; 两曲面所围区域先找交线分段, 逐段套截面面积。</div>
+</details>
+
+<p id="例3" class="prob"><b>例 3</b> 计算 $\iiint_\Omega (x^2+y^2)\,dV$, 其中 $\Omega$ 由曲线 $y^2=2z$($x=0$ 平面上)绕 $z$ 轴旋转所得旋转抛物面 $x^2+y^2=2z$ 与 $z=2$, $z=8$ 所围。【0805(1), 题面按视觉转写定稿; 旧稿误作锥面 $z=\sqrt{x^2+y^2}$, 已更正】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#一三重积分了解">三重积分</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例2">例 2</a> 同为含 $z$ 的三重积分, 本题旋转体用柱面坐标</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">旋转抛物面: $y^2=2z$ 绕 $z$ 轴旋转 → $x^2+y^2=2z$, 即 $z=\frac{x^2+y^2}{2}$; 被 $z=2$ 与 $z=8$ 夹住, $z\in[2,8]$ 截面为圆盘 $x^2+y^2\le 2z$。<span class="why">绕 $z$ 轴旋转时把 $y^2$ 换成 $x^2+y^2$。<b>易错</b>: 旧稿把曲面误读为锥面 $z=\sqrt{x^2+y^2}$(那对应的是旋转直线 $y=z$, 不是本题的旋转抛物线)。</span></div>
+<div class="step">柱面坐标: $\iiint (x^2+y^2)dV = \int_0^{2\pi}d\theta\int_2^8 dz\int_0^{\sqrt{2z}}\rho^3\,d\rho = 2\pi\int_2^8 \frac{(2z)^2}{4}\,dz = 2\pi\int_2^8 z^2\,dz = 2\pi\cdot\frac{8^3-2^3}{3} = 336\pi$。<span class="why">内层 $\int_0^{\sqrt{2z}}\rho^3 d\rho = \frac{(\sqrt{2z})^4}{4} = z^2$; $\frac{512-8}{3}=168$。<b>核对</b>: 课件答案 $336\pi$ ✓。截面法核对: 截面面积 $\pi\cdot2z = 2\pi z$, 截面上 $x^2+y^2$ 的平均值 $=z$(半径平方之半), $\int_2^8 2\pi z\cdot z\,dz$ 同值。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 平面曲线绕轴旋转 → 方程中对应变量换成 $x^2+y^2$; 旋转体三重积分用柱面坐标, 先 $r$ 后 $z$。</div>
+</details>
+
+<p id="例4" class="prob"><b>例 4</b> 计算 $\iiint_\Omega (mx+ly+nz)^2\,dV$, 其中 $\Omega: x^2+y^2+z^2\le a^2$。【0805(1), 题面经 OCR 核对】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#一三重积分了解">三重积分(对称性)</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例5">例 5</a> 同为球对称+形心, 一个平方展开、一个平移</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">展开: $(mx+ly+nz)^2 = m^2x^2+l^2y^2+n^2z^2 + 2mlxy + 2mnxz + 2lnyz$。交叉项在球上积分为 0(关于坐标面对称, 奇函数)。<span class="why">球 $x^2+y^2+z^2\le a^2$ 关于三个坐标面都对称, $xy, xz, yz$ 都是关于对应变量的奇函数 → 积分 0。<b>考点</b>: 展开后先消交叉项, 只剩平方项。</span></div>
+<div class="step">$\iiint x^2 dV = \iiint y^2 dV = \iiint z^2 dV = \frac13\iiint(x^2+y^2+z^2)dV = \frac13\int_0^{2\pi}\int_0^\pi\int_0^a \rho^2\cdot\rho^2\sin\varphi\,d\rho d\varphi d\theta = \frac{4\pi a^5}{15}$。<span class="why">轮换对称: 三个平方项积分相等; 球面坐标 $\rho^2\sin\varphi\,dV$ 微元; $\int_0^a\rho^4 d\rho = a^5/5$, 角度积出 $4\pi$。结果 $\frac{4\pi a^5}{15} = \frac{a^2}{5}\cdot\frac{4\pi a^3}{3}$(半径平方均值 $\frac35a^2$ 的核对: $\frac13\cdot\frac{3a^2}{5}\cdot V$)。</span></div>
+<div class="step">原式 $= (m^2+l^2+n^2)\cdot\frac{4\pi a^5}{15}$。<span class="why">三个平方项各 $\frac{4\pi a^5}{15}$, 系数 $m^2+l^2+n^2$ 提出。<b>考点</b>: 展开 + 对称消交叉 + 轮换统一平方项。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 球对称积分三连: 展开、交叉项归零、轮换合并平方项。</div>
+</details>
+
+<p id="例5" class="prob"><b>例 5</b> 计算 $\iiint_\Omega (2x+3y+4z)\,dV$, 其中 $\Omega: (x-1)^2+(y-2)^2+(z-3)^2\le 1$。【0805(1), 题面按视觉转写定稿; 旧稿把一次项系数误作 $2x+4y+8$, 已更正】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#一三重积分了解">三重积分(对称性/形心)</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例4">例 4</a> 同为球对称+形心, 一个平方展开、一个平移</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">平移: 令 $X=x-1, Y=y-2, Z=z-3$, 则 $\Omega': X^2+Y^2+Z^2\le 1$, 且 $2x+3y+4z = 2(X+1)+3(Y+2)+4(Z+3) = 2X+3Y+4Z+20$。<span class="why">平移不改变体积; 被积函数在球心展开, 一次项 $2X+3Y+4Z$ 在中心对称球上积分为 0。<b>考点</b>: 球心处展开是处理球上线性函数的固定套路。</span></div>
+<div class="step">原式 $= 20\cdot\frac{4\pi}{3} = \frac{80\pi}{3}$。<span class="why">$\iiint 1\,dV = \frac43\pi\cdot1^3$; 一次项归零后只剩常数 20。形心核对: $(2\bar x+3\bar y+4\bar z)V = (2\cdot1+3\cdot2+4\cdot3)\frac{4\pi}{3} = 20\cdot\frac{4\pi}{3}$。<b>核对</b>: 课件 $\frac{80}{3}\pi$ ✓。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 球心展开: 线性项归零, 常数项 × 球体积; 平移换元一步到位。</div>
+</details>
+
+<hr />
+<h2 id="二第一型曲线积分">二、第一型曲线积分</h2>
+<p id="例6" class="prob"><b>例 6</b> 计算 $\oint_L (2xy+3x^2+4y^2)\,ds$, 其中 $L$ 为椭圆 $\frac{x^2}{4}+\frac{y^2}{3}=1$。【0805(1), 题面按视觉转写定稿; 旧稿把椭圆误作圆 $x^2+y^2=12$, 已更正】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#二第一型曲线积分对弧长了解">第一型曲线积分</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例7">例 7</a> 同为闭合曲线对弧长: 方程代入+形心</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">奇偶性: $2xy$ 关于 $y$ 为奇函数, 椭圆 $L$ 关于 $x$ 轴对称 → $\oint_L 2xy\,ds = 0$。<span class="why">$y\to-y$ 时 $xy\to -xy$, 而 $ds$ 不变, 上下两半抵消。<b>考点</b>: 对弧长积分先看奇偶对称。</span></div>
+<div class="step">在 $L$ 上曲线方程代入: $\frac{x^2}{4}+\frac{y^2}{3}=1$ 两边乘 12 → $3x^2+4y^2=12$ 恒成立, 故 $\oint_L(3x^2+4y^2)ds = 12\oint_L ds = 12a$, 其中 $a$ 为椭圆周长。<span class="why">第一型曲线积分的被积函数只沿曲线取值, 曲线方程可直接代入; 椭圆周长 $a=4\sqrt3 E(e)$ 无初等表达式, 保留 $12a$。<b>考点</b>: 方程代入把二次式化为常数, 积分化为弧长。</span></div>
+<div class="step">原式 $= 0 + 12a$。<span class="why">课件: "$= 12\oint_L ds = 12a$" ✓。<b>易错</b>: 旧稿误把椭圆当圆 $x^2+y^2=12$ 硬凑轮换, 正确做法是整体方程代入。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 闭合曲线对弧长积分: 奇偶消项 + 曲线方程代入(整个二次式成常数) + 化为弧长。</div>
+</details>
+
+<p id="例7" class="prob"><b>例 7</b> 计算 $\oint_L [x^2+(y+1)^2]\,ds$, 其中 $L: x^2+y^2=kx\ (k>0)$。【0805(1), 题面经 OCR 核对】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#二第一型曲线积分对弧长了解">第一型曲线积分</a></li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">圆 $x^2+y^2=kx$ 即 $(x-\frac k2)^2+y^2=\frac{k^2}{4}$, 半径 $R=\frac k2$。<span class="why">配方: 圆过原点, 圆心 $(\frac k2,0)$, 半径 $\frac k2$; 周长 $C = 2\pi R = k\pi$。</span></div>
+<div class="step">$x^2+(y+1)^2 = (x^2+y^2) + 2y + 1 = kx + 2y + 1$。$\oint kx\,ds = k\bar x C = k\cdot\frac k2\cdot k\pi = \frac{k^3\pi}{2}$; $\oint 2y\,ds = 0$(关于 $x$ 轴对称); $\oint 1\,ds = C$。<span class="why">形心: 圆关于 $x$ 轴对称, 质心 $(\frac k2, 0)$, $\oint x\,ds = \bar x C$; $y$ 为奇函数积分 0。<b>考点</b>: 形心公式 $\oint x\,ds = \bar x\cdot$ 弧长 是此类题秒杀技。</span></div>
+<div class="step">原式 $= \frac{k^3\pi}{2} + k\pi = k\pi\left(\frac{k^2}{2}+1\right)$。<span class="fill">【AI补全】</span><span class="why">$kx$ 项 = $\frac{k^3\pi}{2}$, 常数项 $1\cdot C = k\pi$; 两项相加。<b>核对</b>: 课件答案含 $R$ 表达($\oint ds = L$), 以视觉稿为准。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 曲线方程代入 + 形心(质心×弧长) + 奇偶归零, 三步秒算。</div>
+</details>
+
+<hr />
+<h2 id="三第二型曲线积分与格林公式">三、第二型曲线积分与格林公式</h2>
+<p id="例8" class="prob"><b>例 8</b> 设 $L$ 为折线 $y=1-|x|$ ($-1\le x\le 1$), 从 $(-1,0)$ 到 $(1,0)$, 计算 $\int_L xy\,dx + y^2\,dy$。【0805(2), 题面按视觉转写定稿; 旧稿把曲线误作 $y=|x|$, 起点终点也记反, 已更正】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#三第二型曲线积分对坐标了解">第二型曲线积分</a></li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">分两段: $L_1: y=x+1$ ($x$ 从 $-1\to 0$), $L_2: y=-x+1$ ($x$ 从 $0\to 1$)。<span class="why">$1-|x|$ 在 $x&lt;0$ 为 $1+x$、$x>0$ 为 $1-x$; 折线从 $(-1,0)$ 经顶点 $(0,1)$ 到 $(1,0)$。</span></div>
+<div class="step">$L_1$: $\int_{-1}^{0} [x(x+1) + (x+1)^2\cdot1]\,dx$; $L_2$: $\int_{0}^{1} [x(-x+1) + (-x+1)^2\cdot(-1)]\,dx$。<span class="fill">【AI补全】</span><span class="why">参数化 $y=y(x)$, $dy = y'(x)dx$; $L_1$ 上 $y'=1$, $L_2$ 上 $y'=-1$。<b>考点</b>: 第二型曲线积分参数化后按 $x$ 积分, 下限=起点 $x$ 坐标。</span></div>
+<div class="step">计算: $L_1$: $\int_{-1}^0(x^2+x+x^2+2x+1)dx = \int_{-1}^0(2x^2+3x+1)dx = \frac{2}{3}-\frac32+1 = \frac16$; $L_2$: $\int_0^1(-x^2+x - (x^2-2x+1))dx = \int_0^1(-2x^2+3x-1)dx = -\frac23+\frac32-1 = -\frac16$; 总和 $= \frac16-\frac16 = 0$。<span class="why">两段积分互为相反数。<b>核对</b>: 课件标注两段分别 $\frac16$ 与 $-\frac16$, 和为零 ✓。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 折线分段参数化, 每段按 $dy=y'dx$ 代入; 注意起点终点对应的积分限。</div>
+</details>
+
+<p id="例9" class="prob"><b>例 9</b> 设 $L$ 为椭圆 $4x^2+y^2=8x$, 取逆时针方向, 计算 $\oint_L e^{y^2}\,dx + (x+y^2)\,dy$。【0805(2), 题面按视觉转写定稿; 旧稿把第二项误作 $xy^2\,dy$, 已更正】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#31格林公式高频">格林公式</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例13">例 13</a> 同为 $4x^2+y^2$ 型椭圆区域用格林, 本题奇偶消项</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">配方: $4x^2+y^2=8x$ → $4(x-1)^2+y^2=4$, 即 $\frac{(x-1)^2}{1}+\frac{y^2}{4}=1$(中心 $(1,0)$, 半轴 $1,2$)。<span class="why">封闭椭圆直接格林, 无需补线。</span></div>
+<div class="step">格林: $P=e^{y^2}$, $Q=x+y^2$: $\oint_L Pdx+Qdy = \iint_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy = \iint_D(1-2ye^{y^2})\,dxdy$。<span class="why">$\partial Q/\partial x = 1$, $\partial P/\partial y = 2ye^{y^2}$(链式)。</span></div>
+<div class="step">$2ye^{y^2}$ 关于 $y$ 为奇函数, 区域 $D$ 关于 $x$ 轴对称 → 积分 0; 原式 $= \iint_D 1\,dxdy = $ 椭圆面积 $= \pi\cdot1\cdot2 = 2\pi$。<span class="why">奇偶消项后只剩面积。<b>核对</b>: 课件 $=2\pi$ ✓(旧稿把 $Q$ 误作 $xy^2$, 才出现需要硬算 $\iint y^2$ 的混乱)。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 格林公式把闭曲线积分化二重积分; $e^{y^2}$ 看似吓人, 实为奇函数陷阱, 区域对称直接消。</div>
+</details>
+
+<p id="例10" class="prob"><b>例 10</b> 计算 $\int_L (2xy-y^4+3)dx + (x^2-4xy^3)dy$, 其中 $L$ 为从 $(1,0)$ 到某点的任意路径。【0805(2), 题面经视觉核对, 终点待核对】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#31格林公式高频">积分与路径无关</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例9">例 9</a> 同为 $P,Q$ 型, 本题验证全微分条件</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">检验路径无关条件: $\frac{\partial P}{\partial y} = 2x-4y^3$, $\frac{\partial Q}{\partial x} = 2x-4y^3$, 相等 → 积分与路径无关。<span class="why">$P=2xy-y^4+3$, $Q=x^2-4xy^3$; $\partial_y P = 2x-4y^3 = \partial_x Q$。<b>考点</b>: 全微分条件成立时可选任意路径(通常取折线/直线)。</span></div>
+<div class="step">取折线 $(1,0)\to(x,0)\to(x,y)$: 第一段 $y=0, dy=0$: $\int_1^x 3\,dx = 3(x-1)$; 第二段 $x$ 固定: $\int_0^y (x^2-4xy^3)dy = x^2y - xy^4$。<span class="fill">【AI补全】</span><span class="why">折线法: 先沿 $x$ 轴(只有 $P$ 项, $y=0$ 代入 $P=3$), 再竖直线($dx=0$, 只有 $Q$ 项)。</span></div>
+<div class="step">原式 $= 3(x-1) + x^2y - xy^4$。课件答案 $=5$(若起终点确定), 代入验证。【数值待核对】<span class="why">起终点由题面给定(如 $(1,0)\to(2,1)$: $3+4-2=5$ ✓ 与课件 $=5$ 吻合, 说明终点为 $(2,1)$)。<b>易错</b>: 路径无关时别硬参数化曲线, 折线最省。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 全微分条件成立 → 折线积分; 沿 $x$ 轴 + 竖直线两步收口。</div>
+</details>
+
+<p id="例11" class="prob"><b>例 11</b> 计算 $\int_L \sin 2x\,dx + 2(x^2-1)y\,dy$, 其中 $L$ 是曲线 $y=\sin x$ 上从 $(0,0)$ 到 $(\pi,0)$ 的一段。【0805(2), 题面经视觉核对】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#三第二型曲线积分对坐标了解">第二型曲线积分</a></li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">直接参数化: $y=\sin x$, $dy=\cos x\,dx$, $x$ 从 $0\to\pi$:<span class="why">曲线非闭合, 直接参数化代入; 下限 0 = 起点 $x$ 坐标。</span></div>
+<div class="step">$\int_0^\pi [\sin 2x + 2(x^2-1)\sin x\cos x]\,dx = \int_0^\pi [\sin2x + (x^2-1)\sin 2x]\,dx = \int_0^\pi x^2\sin 2x\,dx$。<span class="why">$\sin2x = 2\sin x\cos x$, 合并同类项; $\sin2x$ 在 $[0,\pi]$ 积分 0(周期对称)。</span></div>
+<div class="step">$\int_0^\pi x^2\sin2x\,dx$: 分部积分两次 $= \left[-\frac{x^2}{2}\cos2x\right]_0^\pi + \int_0^\pi x\cos2x\,dx = -\frac{\pi^2}{2} + \left[\frac{x}{2}\sin2x\right]_0^\pi - \frac12\int_0^\pi\sin2x\,dx = -\frac{\pi^2}{2} + 0 - 0 = -\frac{\pi^2}{2}$。<span class="fill">【AI补全】</span><span class="why">$\int x^2\sin2x\,dx$ 分部: $u=x^2, dv=\sin2x dx$ → $-\frac{x^2}{2}\cos2x + \int x\cos2x\,dx$; 再分部得 $\frac{x}{2}\sin2x-\frac12\int\sin2x dx$。端点代入: $\cos2\pi=1, \cos0=1$ → $-\frac{\pi^2}{2}(1-0)+\frac{\pi}{2}\sin2\pi-0-\frac12\cdot0 = -\frac{\pi^2}{2}$。<b>易错</b>: $\cos2x$ 在端点的值别代错。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 正弦曲线直接参数化 + 二倍角合并 + 分部积分两次。</div>
+</details>
+
+<p id="例12" class="prob"><b>例 12</b> 计算 $\int_L [e^x\sin y - b(x+y)]\,dx + [e^x\cos y - ax]\,dy$, 其中 $L$ 为从 $(2a,0)$ 沿圆弧 $y=\sqrt{2ax-x^2}$ 到 $(0,0)$ 的弧, $a>0$。【0805(2), 题面按视觉转写定稿】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#31格林公式高频">格林公式</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例13">例 13</a> 补线/挖洞姊妹题, 同为"闭合化"手段</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">$y=\sqrt{2ax-x^2}$ → $x^2+y^2=2ax$, 即 $(x-a)^2+y^2=a^2$, $L$ 是上半圆弧(从 $(2a,0)$ 到 $(0,0)$); 补线 $L_1$: x 轴上从 $(0,0)$ 到 $(2a,0)$, 使 $L+L_1$ 成逆时针闭曲线。<span class="why">$L_1$ 上 $y=0,\ dy=0$; 半圆面积 $\frac{\pi a^2}{2}$。<b>考点</b>: 缺口曲线 → 补一条简单线段成闭曲线。</span></div>
+<div class="step">$P=e^x\sin y - b(x+y)$, $Q=e^x\cos y - ax$: $\frac{\partial P}{\partial y} = e^x\cos y - b$, $\frac{\partial Q}{\partial x} = e^x\cos y - a$; 格林: $\int_{L+L_1} = \iint_D(b-a)\,d\sigma = (b-a)\frac{\pi a^2}{2}$。<span class="why">两偏导数中 $e^x\cos y$ 相消, 旋度是常数 $b-a$。<b>易错</b>: $P$ 的 $y$ 偏导别漏 $e^x\cos y$ 项(那是 $-b(x+y)$ 中 $-b$ 之外的部分)。</span></div>
+<div class="step">$\int_{L_1} = \int_0^{2a}[e^x\sin 0 - b(x+0)]\,dx = -b\int_0^{2a}x\,dx = -2ba^2$; 原式 $= \int_{L+L_1}-\int_{L_1} = (b-a)\frac{\pi a^2}{2}+2ba^2$。<span class="why">$L_1$ 方向与闭曲线同向, 其积分值为负(被积函数 $-bx$); 减去负值得 $+2ba^2$。<b>核对</b>: 课件 $(b-a)\frac{\pi a^2}{2}+2ba^2$ ✓。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 补线法: 缺口曲线 + 简单补线 → 闭曲线用格林, 再减去补线积分; 旋度做差先化简。</div>
+</details>
+
+<p id="例13" class="prob"><b>例 13</b> 计算 $\oint_L \frac{x\,dy-y\,dx}{4x^2+y^2}$, 其中 $L: (x-1)^2+y^2=R^2$, $R>1$, 取逆时针方向。【0805(2), 题面按视觉转写定稿】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#31格林公式高频">格林公式</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例12">例 12</a> 补线/挖洞姊妹题; <a href="数学_曲线曲面积分_例题.html#例9">例 9</a> 同为 $4x^2+y^2$ 型椭圆区域</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">$P=-\frac{y}{4x^2+y^2}$, $Q=\frac{x}{4x^2+y^2}$: $\frac{\partial Q}{\partial x} = \frac{y^2-4x^2}{(4x^2+y^2)^2}$, $\frac{\partial P}{\partial y} = \frac{y^2-4x^2}{(4x^2+y^2)^2}$, 除原点外恒相等。<span class="why">$R>1$ 保证原点在大圆内部 → 奇点在区域内, 直接格林失效。<b>考点</b>: 旋度为零但有孤立奇点 → 挖洞。</span></div>
+<div class="step">挖洞: 取小椭圆 $L_1: 4x^2+y^2=\varepsilon^2$($\varepsilon$ 足够小, 位于 $L$ 内部), 与 $L$ 同向; $L$ 与 $L_1$ 之间环域上旋度为零 → $\oint_L = \oint_{L_1}$。<span class="why">格林公式在环域: $\oint_L - \oint_{L_1} = \iint 0 = 0$。挖分母的等值线使分母成常数。<b>易错</b>: $L_1$ 是椭圆(半轴 $\frac\varepsilon2,\varepsilon$)不是圆——分母 $4x^2+y^2$ 的等值线是椭圆。</span></div>
+<div class="step">在 $L_1$ 上分母 $=\varepsilon^2$: $\oint_{L_1}\frac{x\,dy-y\,dx}{\varepsilon^2} = \frac1{\varepsilon^2}\oint_{L_1}(x\,dy-y\,dx)$; 又 $\oint_{L_1}x\,dy-y\,dx = \iint 2\,d\sigma = 2\times$椭圆面积 $= 2\cdot\pi\cdot\frac\varepsilon2\cdot\varepsilon = \pi\varepsilon^2$; 原式 $= \frac{\pi\varepsilon^2}{\varepsilon^2} = \pi$。<span class="why">格林: $\oint x\,dy-y\,dx = \iint(1+1)d\sigma = 2S$。<b>核对</b>: 课件取 $\varepsilon=3$: $\frac19\cdot 2\cdot\frac{9\pi}{2} = \pi$ ✓; 结果与 $\varepsilon$ 无关, 挖洞不改变积分值。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 挖洞法: 奇点在区域内 → 沿分母等值线挖小椭圆, 环域旋度零 → 化为小椭圆上积分, 分母提常数。</div>
+</details>
+
+<hr />
+<h2 id="四第一型曲面积分">四、第一型曲面积分</h2>
+<p id="例14" class="prob"><b>例 14</b> 计算 $\iint_\Sigma (xy+yz+zx)\,dS$, 其中 $\Sigma$ 为锥面 $z=\sqrt{x^2+y^2}$ 被圆柱 $x^2+y^2=2ax$ 所截部分, $a>0$。【0805(2), 题面按视觉转写定稿】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#四第一型曲面积分对面积了解">第一型曲面积分</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例15">例 15</a> 同为第一型曲面积分: 对称性先行</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">对称性: $\Sigma$ 关于 $xz$ 面($y\to-y$)对称, $xy$ 与 $yz$ 都是 $y$ 的奇函数 → 积分 0; 只剩 $\iint_\Sigma xz\,dS$。<span class="why">$dS$ 在对称变换下不变。<b>考点</b>: 曲面积分同样先消奇函数项。</span></div>
+<div class="step">投影法: $z=\sqrt{x^2+y^2}$, $z_x'=\frac{x}{\sqrt{x^2+y^2}}$, $z_y'=\frac{y}{\sqrt{x^2+y^2}}$ → $dS=\sqrt{1+z_x'^2+z_y'^2}\,dxdy = \sqrt2\,dxdy$; 投影 $D: x^2+y^2\le 2ax$ 即 $(x-a)^2+y^2\le a^2$。<span class="why">锥面的 $dS=\sqrt2\,dxdy$ 是常数, 常用结论。</span></div>
+<div class="step">$\iint_\Sigma xz\,dS = \sqrt2\iint_D x\sqrt{x^2+y^2}\,dxdy$。极坐标($D$ 为 $r\le 2a\cos\theta$, $\theta\in[-\frac\pi2,\frac\pi2]$): $= \sqrt2\int_{-\pi/2}^{\pi/2}\cos\theta\,d\theta\int_0^{2a\cos\theta}r^3\,dr = 4\sqrt2\,a^4\int_{-\pi/2}^{\pi/2}\cos^5\theta\,d\theta = 8\sqrt2\,a^4\cdot\frac{8}{15} = \frac{64\sqrt2}{15}a^4$。<span class="why">$x=r\cos\theta$, $z=\sqrt{x^2+y^2}=r$; $\int_0^{2a\cos\theta}r^3dr = \frac{(2a\cos\theta)^4}{4}$; Wallis 公式 $\int_0^{\pi/2}\cos^5\theta\,d\theta = \frac{4\cdot2}{5\cdot3}=\frac8{15}$, 偶函数在对称区间乘 2。<b>核对</b>: 答案 $\frac{64\sqrt2}{15}a^4$ ✓。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 曲面积分四步: 对称消项 → $dS$ 投影公式 → 投影区域 → 极坐标求值。</div>
+</details>
+
+<p id="例15" class="prob"><b>例 15</b> 计算 $\oiint_\Sigma (x+|y|)\,dS$, 其中 $\Sigma: |x|+|y|+|z|=1$(正八面体表面)。【0805(1), 题面按视觉转写定稿】</p>
+<ul>
+<li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#四第一型曲面积分对面积了解">第一型曲面积分</a> <span class="mk xref">碰撞</span><a href="数学_曲线曲面积分_例题.html#例14">例 14</a> 同为第一型曲面积分: 对称性先行</li>
+</ul>
+<details><summary>解答过程</summary>
+<div class="step">对称性: $x$ 关于 $yz$ 面为奇函数, $\Sigma$ 关于 $yz$ 面对称 → $\oiint_\Sigma x\,dS = 0$。<span class="why">$x\to-x$ 时 $|x|+|y|+|z|$ 不变, 曲面不变, 正负两半抵消。</span></div>
+<div class="step">轮换对称: $\oiint|x|dS = \oiint|y|dS = \oiint|z|dS$ → $\oiint|y|dS = \frac13\oiint(|x|+|y|+|z|)\,dS = \frac13\oiint_\Sigma 1\,dS$。<span class="why">在 $\Sigma$ 上 $|x|+|y|+|z|=1$ 恒成立 → 曲面方程代入后被积函数化为常数 1。<b>考点</b>: 轮换对称 + 曲面方程代入。</span></div>
+<div class="step">总面积: 正八面体 8 个面, 每面是边长 $\sqrt2$ 的等边三角形(面 $x+y+z=1$ 与坐标轴交于 $(1,0,0),(0,1,0),(0,0,1)$), 面积 $\frac{\sqrt3}{4}(\sqrt2)^2 = \frac{\sqrt3}{2}$ → $S = 8\cdot\frac{\sqrt3}{2} = 4\sqrt3$; 原式 $= \frac13\cdot4\sqrt3 = \frac{4\sqrt3}{3}$。<span class="why"><b>核对</b>: 课件 $\frac{4\sqrt3}{3}$ ✓。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 正八面体: 奇偶消 $x$, 轮换均分 $|y|$, 曲面方程代入 → 只算总面积。</div>
+</details>
+
+<hr />
+<h2 id="知识连接">知识连接</h2>
+<ul>
+<li>三重积分两大次序(投影/截面)按"被积函数与截面"选; 旋转体用柱面坐标, 球用球面坐标; 多曲面围成区域先找交线分段</li>
+<li>对称性三步(奇偶/轮换/形心)是所有多元积分的共同前奏</li>
+<li>第二型曲线积分: 闭合 → 格林(奇点在区域内 → 挖洞); 非闭合 → 补线成闭曲线再减补线积分, 或参数化/路径无关折线</li>
+<li>第一型曲面积分: 投影 $dS=\sqrt{1+z_x'^2+z_y'^2}\,dxdy$(锥面 $dS=\sqrt2\,dxdy$), 对称性先行, 曲面方程可代入</li>
+<li>例题集与理论页对应: <a href="数学_曲线曲面积分.html">理论笔记</a></li>
+</ul>
+<p><span class="src">【来源: 0805(1)、0805(2)】</span></p></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_曲线曲面积分.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 曲线曲面积分</b></span></a><a class="next" href="数学_数三专题.html"><span class="pg-t"><small>下一篇</small><b>数学 · 数三专题</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<button id="navbtn" type="button" aria-label="打开目录" title="目录">☰</button>
+<div id="tbtools" role="toolbar"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">深色</button><button id="printBtn" type="button" title="打印 / 导出 PDF">打印</button></div></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '浅色' : '深色'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 侧栏收起/展开(2026-08-09): 折叠态 = 8px 边缘热区零内容;
+     桌面: 悬停/键盘聚焦滑出, 移出 1.2s 自动收回(未钉住), ☰/图钉按钮钉住;
+     触屏(平板): ☰ 弹浮层 + 遮罩; 手机(≤920px): ☰ = 汉堡滑入 overlay ---------- */
+  var touchNav = !!(window.matchMedia && window.matchMedia('(hover: none)').matches);
+  var sideNav = document.querySelector('.layout > nav');
+  var navbtn = document.getElementById('navbtn');
+  if (sideNav) {
+    if (touchNav) root.setAttribute('data-touch', '1');
+    var pinSt = load('xnNavPin') === '1';
+    root.setAttribute('data-nav', (pinSt && !touchNav) ? 'pinned' : 'collapsed');
+    var pinBtn = document.getElementById('navpin');
+    if (pinBtn) pinBtn.setAttribute('aria-pressed', pinSt && !touchNav ? 'true' : 'false');
+    function setPin(pinned){
+      root.setAttribute('data-nav', pinned ? 'pinned' : 'collapsed');
+      store('xnNavPin', pinned ? '1' : '0');
+      if (pinBtn) pinBtn.setAttribute('aria-pressed', pinned ? 'true' : 'false');
+    }
+    if (pinBtn) pinBtn.addEventListener('click', function(){ setPin(root.getAttribute('data-nav') !== 'pinned'); });
+    if (navbtn) navbtn.addEventListener('click', function(){
+      if (window.matchMedia('(max-width: 920px)').matches) { nav.classList.toggle('show'); return; }
+      if (touchNav) {
+        root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+      } else {
+        setPin(root.getAttribute('data-nav') !== 'pinned');
+      }
+    });
+    sideNav.addEventListener('click', function(e){
+      if (e.target.closest('a')) { nav.classList.remove('show'); root.setAttribute('data-nav', 'collapsed'); return; }
+      if (touchNav) root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+    });
+    if (touchNav) {
+      var scrim = document.getElementById('navscrim');
+      if (scrim) scrim.addEventListener('click', function(){ root.setAttribute('data-nav', 'collapsed'); });
+    } else {
+      /* 桌面: 悬停/聚焦展开, 移出延迟 1.2s 自动收回(钉住时保持) */
+      var retractTimer = null;
+      function keepOpen(){
+        clearTimeout(retractTimer);
+        if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'open');
+      }
+      function scheduleRetract(){
+        clearTimeout(retractTimer);
+        retractTimer = setTimeout(function(){
+          if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'collapsed');
+        }, 1200);
+      }
+      sideNav.addEventListener('mouseenter', keepOpen);
+      sideNav.addEventListener('mouseleave', scheduleRetract);
+      sideNav.addEventListener('focusin', keepOpen);
+      sideNav.addEventListener('focusout', scheduleRetract);
+    }
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navBrds = nav.querySelectorAll('details.brd');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var k2 = 0; k2 < navBrds.length; k2++) {
+        var bd = navBrds[k2], bdLinks = bd.querySelectorAll('a[href]'), bdVis = false;
+        for (var n2 = 0; n2 < bdLinks.length; n2++) { if (bdLinks[n2].style.display !== 'none') { bdVis = true; break; } }
+        bd.style.display = bdVis ? '' : 'none';
+        if (t && bdVis) bd.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 表格横向滚动包裹 ---------- */
+  var tables = document.querySelectorAll('main table');
+  for (var iT = 0; iT < tables.length; iT++) {
+    var tw = document.createElement('div');
+    tw.className = 'table-wrap';
+    tables[iT].parentNode.insertBefore(tw, tables[iT]);
+    tw.appendChild(tables[iT]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 + 学科 Tab(2026-08-09: homeFilter 统一入口, Tab 只控 section 显隐) ---------- */
+  var homeq = document.getElementById('homeq');
+  var hometabs = document.getElementById('hometabs');
+  var homeTab = 'all';
+  function homeFilter(){
+    if (!homeq) return;
+    var t = homeq.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('.board-card');
+    var secs2 = document.querySelectorAll('section[data-subj]');
+    var grpHs = document.querySelectorAll('.grp-h');
+    for (var iE = 0; iE < cards.length; iE++) {
+      cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+    }
+    for (var iF = 0; iF < secs2.length; iF++) {
+      var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+      for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+      sec.style.display = ((homeTab === 'all' || sec.dataset.subj === homeTab) && vis) ? '' : 'none';
+    }
+    for (var iH = 0; iH < grpHs.length; iH++) {
+      var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+      if (next && next.classList && next.classList.contains('cards')) {
+        var c2 = next.querySelectorAll('.board-card');
+        for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+      }
+      grp.style.display = vis2 ? '' : 'none';
+    }
+    var recentSec2 = document.getElementById('recent');
+    if (recentSec2) {
+      var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+      for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+      recentSec2.style.display = (t && !rVis) ? 'none' : '';
+    }
+  }
+  if (homeq) homeq.addEventListener('input', homeFilter);
+  if (hometabs) {
+    hometabs.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-tab]');
+      if (!btn) return;
+      homeTab = btn.getAttribute('data-tab');
+      var bs = hometabs.querySelectorAll('button[data-tab]');
+      for (var iK = 0; iK < bs.length; iK++) bs[iK].classList.toggle('on', bs[iK] === btn);
+      homeFilter();
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

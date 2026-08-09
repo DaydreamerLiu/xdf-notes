@@ -1,0 +1,1440 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数学 · 概率论</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.9;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+
+/* ---------- 侧栏 ---------- */
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:rgba(251,250,246,.82);border-right:1px solid #EDEAE0;
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin;
+  transition:width .22s ease,background .2s ease}
+html[data-theme="dark"] .layout > nav{background:rgba(20,25,34,.78);border-right-color:#232A37}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem .6rem .95rem 1.15rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.8rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.86rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.8rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.76rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+/* 板块级折叠块(2026-08-09: 全站统一; 行尾 .tog 箭头负责折叠, 点板块名 = 跳转) */
+nav details.brd{margin:.05rem .3rem .15rem}
+nav details.brd>summary{list-style:none;cursor:default;display:flex;align-items:center;gap:.4rem;
+  padding:.12rem .35rem .12rem .45rem;margin:0;border-radius:8px;user-select:none}
+nav details.brd>summary::-webkit-details-marker{display:none}
+nav details.brd>summary:hover{background:var(--accent-soft)}
+nav details.brd>summary a.b{flex:1;min-width:0;margin:.02rem 0;padding:.3rem .42rem;cursor:pointer}
+nav details.brd>summary a.b:hover{background:none;text-decoration:none}
+nav details.brd>summary a.b.on:hover{background:var(--accent-soft)}
+nav details.brd>summary .tog{flex:none;width:1.55rem;text-align:center;color:var(--ink3);
+  font-size:.66rem;cursor:pointer;padding:.35rem 0;border-radius:6px}
+nav details.brd>summary .tog:hover{color:var(--accent2);background:var(--accent-soft)}
+nav details.brd>summary .tog::before{content:"▸";display:inline-block;transition:transform .15s ease}
+nav details.brd[open]>summary .tog::before{transform:rotate(90deg)}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶部(无容器框, 2026-08-09): ☰ 左上悬浮 / 操作按钮右上悬浮 / 面包屑随正文流 ---------- */
+main{flex:1;min-width:0;max-width:800px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+#navbtn{position:fixed;top:.7rem;left:.7rem;z-index:110;display:inline-flex;align-items:center;justify-content:center;
+  width:2.1rem;height:2.1rem;padding:0;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:9px;cursor:pointer;font-size:.98rem;flex-shrink:0;line-height:1;box-shadow:var(--shadow-sm);
+  transition:all .15s}
+#navbtn:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+#tbtools{position:fixed;top:.7rem;right:.7rem;z-index:110;display:flex;gap:.4rem}
+#tbtools button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.36rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  box-shadow:var(--shadow-sm);transition:all .15s}
+#tbtools button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+.crumbline{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--ink3);
+  padding:1.5rem 0 .1rem;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumbline a{color:var(--ink2)}
+.crumbline a:hover{color:var(--accent2);text-decoration:none}
+.crumbline .sep{color:var(--ink3)}
+.crumbline b{color:var(--ink);font-weight:600}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.4rem;margin:3rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.15rem;margin:2.3rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2.05;margin:.8rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+/* 宽表格由 JS 包一层 .table-wrap 横向滚动, 防止撑破 800px 行宽 */
+.table-wrap{overflow-x:auto;margin:1.15rem 0;border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.92rem}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin:0 auto 1.4rem}
+.tabs button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:20px;padding:.4rem 1.05rem;font-size:.84rem;cursor:pointer;transition:all .15s}
+.tabs button:hover{border-color:var(--accent);color:var(--accent2)}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* ---------- 侧栏收起(2026-08-09): 折叠态 = 8px 边缘热区零内容; 桌面悬停滑出(JS 控制,
+   移出 1.2s 后自动收回); ☰ 顶栏按钮展开并钉住; 触屏 ☰ 弹浮层 + 遮罩 ---------- */
+#navpin{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
+  cursor:pointer;flex-shrink:0}
+#navpin:hover{border-color:var(--accent);color:var(--accent2)}
+#navpin[aria-pressed="true"]{color:var(--accent2);border-color:var(--accent);background:var(--accent-soft)}
+#navscrim{position:fixed;inset:0;z-index:190;background:rgba(15,18,23,.45);
+  opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s}
+@media (min-width:921px){
+  /* 折叠态: 8px 热区(sticky 占位保持正文宽度), 内容全隐藏(鼠标移入 / ☰ / 键盘聚焦展开) */
+  html[data-nav="collapsed"] .layout > nav{width:8px;overflow:hidden;padding:0;background:transparent}
+  html[data-nav="collapsed"] .layout > nav .brand,
+  html[data-nav="collapsed"] .layout > nav #navq,
+  html[data-nav="collapsed"] .layout > nav a.subj,
+  html[data-nav="collapsed"] .layout > nav .navbody,
+  html[data-nav="collapsed"] .layout > nav #navpin{display:none}
+  /* 展开态 = 浮层覆盖在正文上方(用户要求: 侧栏伸缩时正文不重排);
+     折叠态 8px 占位保持不变 → main 宽度恒定; ☰ 被浮层覆盖, 展开时隐藏(收起靠图钉/移出) */
+  html[data-nav]:not([data-nav="collapsed"]) .layout > nav{position:fixed;left:0;top:0;height:100vh;
+    z-index:180;box-shadow:8px 0 28px rgba(0,0,0,.18)}
+  html[data-nav]:not([data-nav="collapsed"]) #navbtn{display:none}
+  /* 触屏(平板): ☰ 展开为浮层 + 遮罩, 点遮罩/链接收回; 无钉住 */
+  html[data-touch][data-nav="open"] #navscrim{opacity:1;visibility:visible}
+  html[data-touch] #navpin{display:none}
+}
+@media(max-width:920px){#navpin{display:none}}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  .layout > nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  .layout > nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,#tbtools,#navbtn,#topbtn,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style>
+<script>document.documentElement.dataset.nav='collapsed';</script></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span><button id="navpin" type="button" title="钉住目录" aria-pressed="false"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg></button></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="../知识笔记首页.html">全部板块</a><div class="navbody"><div class="sec cur">数学</div><details class="grp" data-k="grp-高数"><summary>高数<em>10</em></summary><details class="brd" data-k="brd-极限与数列"><summary><a class="b" href="数学_极限与数列.html">极限与数列</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_极限与数列.html#板块总览">板块总览</a><a class="c" href="数学_极限与数列.html#一极限的定义">一、极限的定义</a><a class="c" href="数学_极限与数列.html#二极限的性质">二、极限的性质</a><a class="c" href="数学_极限与数列.html#三极限计算方法考试主力">三、极限计算方法(考试主力)</a><a class="c" href="数学_极限与数列.html#四判定准则">四、判定准则</a><a class="c" href="数学_极限与数列.html#五定积分定义求极限高频">五、定积分定义求极限 【高频】</a><a class="c" href="数学_极限与数列.html#六连续与间断必考">六、连续与间断 【必考】</a><a class="c" href="数学_极限与数列.html#七渐近线高频">七、渐近线 【高频】</a><a class="c" href="数学_极限与数列.html#八变上限积分与极限高频">八、变上限积分与极限 【高频】</a><a class="c" href="数学_极限与数列.html#知识连接">知识连接</a><a class="c x" href="数学_极限与数列_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-导数与微分"><summary><a class="b" href="数学_导数与微分.html">导数与微分</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_导数与微分.html#板块总览">板块总览</a><a class="c" href="数学_导数与微分.html#一导数的定义必考">一、导数的定义 【必考】</a><a class="c" href="数学_导数与微分.html#二导数的计算必考">二、导数的计算 【必考】</a><a class="c" href="数学_导数与微分.html#三微分高频">三、微分 【高频】</a><a class="c" href="数学_导数与微分.html#四可导性的讨论分段函数含参必考">四、可导性的讨论(分段函数/含参) 【必考】</a><a class="c" href="数学_导数与微分.html#五导数的几何应用高频">五、导数的几何应用 【高频】</a><a class="c" href="数学_导数与微分.html#知识连接">知识连接</a><a class="c x" href="数学_导数与微分_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-中值定理"><summary><a class="b" href="数学_中值定理.html">中值定理</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_中值定理.html#板块总览">板块总览</a><a class="c" href="数学_中值定理.html#一三大中值定理">一、三大中值定理</a><a class="c" href="数学_中值定理.html#二泰勒公式拉格朗日余项必考">二、泰勒公式(拉格朗日余项) 【必考】</a><a class="c" href="数学_中值定理.html#三积分中值定理高频">三、积分中值定理 【高频】</a><a class="c" href="数学_中值定理.html#四证明题方法总纲本板块灵魂">四、证明题方法总纲(本板块灵魂) ★</a><a class="c" href="数学_中值定理.html#五易错点与考法总结易错">五、易错点与考法总结 【易错】</a><a class="c" href="数学_中值定理.html#知识连接">知识连接</a><a class="c x" href="数学_中值定理_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-导数应用"><summary><a class="b" href="数学_导数应用.html">导数应用</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_导数应用.html#板块总览">板块总览</a><a class="c" href="数学_导数应用.html#一函数的单调性">一、函数的单调性</a><a class="c" href="数学_导数应用.html#二函数的极值与最值">二、函数的极值与最值</a><a class="c" href="数学_导数应用.html#三曲线的凹凸性与拐点">三、曲线的凹凸性与拐点</a><a class="c" href="数学_导数应用.html#四渐近线">四、渐近线</a><a class="c" href="数学_导数应用.html#五零点个数与参数范围高频">五、零点个数与参数范围 【高频】</a><a class="c" href="数学_导数应用.html#六曲率与曲率圆高频">六、曲率与曲率圆 【高频】</a><a class="c" href="数学_导数应用.html#七最值应用题数三经济应用高频">七、最值应用题(数三经济应用) 【高频】</a><a class="c" href="数学_导数应用.html#八易错点与考法总结">八、易错点与考法总结</a><a class="c" href="数学_导数应用.html#知识连接">知识连接</a><a class="c x" href="数学_导数应用_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-积分"><summary><a class="b" href="数学_积分.html">积分</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_积分.html#板块总览">板块总览</a><a class="c" href="数学_积分.html#一原函数与不定积分">一、原函数与不定积分</a><a class="c" href="数学_积分.html#二换元积分法">二、换元积分法</a><a class="c" href="数学_积分.html#三分部积分法">三、分部积分法</a><a class="c" href="数学_积分.html#四有理函数与三角函数的积分">四、有理函数与三角函数的积分</a><a class="c" href="数学_积分.html#五定积分">五、定积分</a><a class="c" href="数学_积分.html#六定积分的计算技巧">六、定积分的计算技巧</a><a class="c" href="数学_积分.html#七变上限积分函数">七、变上限积分函数</a><a class="c" href="数学_积分.html#八广义积分反常积分">八、广义积分 (反常积分)</a><a class="c" href="数学_积分.html#九定积分的应用">九、定积分的应用</a><a class="c" href="数学_积分.html#十易错点与考法总结">十、易错点与考法总结</a><a class="c" href="数学_积分.html#知识连接">知识连接</a><a class="c x" href="数学_积分_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-多元与二重"><summary><a class="b" href="数学_多元与二重.html">多元与二重</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_多元与二重.html#板块总览">板块总览</a><a class="c" href="数学_多元与二重.html#一多元函数微分学">一、多元函数微分学</a><a class="c" href="数学_多元与二重.html#二二重积分">二、二重积分</a><a class="c" href="数学_多元与二重.html#知识连接">知识连接</a><a class="c x" href="数学_多元与二重_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-微分方程"><summary><a class="b" href="数学_微分方程.html">微分方程</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_微分方程.html#板块总览">板块总览</a><a class="c" href="数学_微分方程.html#一基本概念">一、基本概念</a><a class="c" href="数学_微分方程.html#二一阶微分方程">二、一阶微分方程</a><a class="c" href="数学_微分方程.html#三可降阶的高阶微分方程数一数二">三、可降阶的高阶微分方程 (数一、数二)</a><a class="c" href="数学_微分方程.html#四二阶常系数线性微分方程必考">四、二阶常系数线性微分方程 【必考】</a><a class="c" href="数学_微分方程.html#五线性微分方程解的结构必考">五、线性微分方程解的结构 【必考】</a><a class="c" href="数学_微分方程.html#六差分方程数三专属必考">六、差分方程 (数三专属) 【必考】</a><a class="c" href="数学_微分方程.html#七微分方程的应用">七、微分方程的应用</a><a class="c" href="数学_微分方程.html#知识连接">知识连接</a><a class="c x" href="数学_微分方程_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-级数"><summary><a class="b" href="数学_级数.html">级数</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_级数.html#板块总览">板块总览</a><a class="c" href="数学_级数.html#一常数项级数的定义与收敛">一、常数项级数的定义与收敛</a><a class="c" href="数学_级数.html#二正项级数敛散性判别必考">二、正项级数敛散性判别 【必考】</a><a class="c" href="数学_级数.html#三交错级数与莱布尼兹判别法必考">三、交错级数与莱布尼兹判别法 【必考】</a><a class="c" href="数学_级数.html#四绝对收敛与条件收敛必考">四、绝对收敛与条件收敛 【必考】</a><a class="c" href="数学_级数.html#五幂级数必考">五、幂级数 【必考】</a><a class="c" href="数学_级数.html#知识连接">知识连接</a><a class="c x" href="数学_级数_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-曲线曲面积分"><summary><a class="b" href="数学_曲线曲面积分.html">曲线曲面积分</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_曲线曲面积分.html#板块总览">板块总览</a><a class="c" href="数学_曲线曲面积分.html#一三重积分了解">一、三重积分 【了解】</a><a class="c" href="数学_曲线曲面积分.html#二第一型曲线积分对弧长了解">二、第一型曲线积分(对弧长) 【了解】</a><a class="c" href="数学_曲线曲面积分.html#三第二型曲线积分对坐标了解">三、第二型曲线积分(对坐标) 【了解】</a><a class="c" href="数学_曲线曲面积分.html#四第一型曲面积分对面积了解">四、第一型曲面积分(对面积) 【了解】</a><a class="c" href="数学_曲线曲面积分.html#五第二型曲面积分对坐标了解">五、第二型曲面积分(对坐标) 【了解】</a><a class="c" href="数学_曲线曲面积分.html#知识连接">知识连接</a><a class="c x" href="数学_曲线曲面积分_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-数三专题"><summary><a class="b" href="数学_数三专题.html">数三专题</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_数三专题.html#一边际函数">一、边际函数</a><a class="c" href="数学_数三专题.html#二弹性分析">二、弹性分析</a><a class="c" href="数学_数三专题.html#三典型例题">三、典型例题</a><a class="c" href="数学_数三专题.html#四考点小结">四、考点小结</a></details></details><details class="grp" data-k="grp-线性代数"><summary>线性代数<em>1</em></summary><details class="brd" data-k="brd-线性代数"><summary><a class="b" href="数学_线性代数.html">线性代数</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_线性代数.html#板块总览">板块总览</a><a class="c" href="数学_线性代数.html#一行列式">一、行列式</a><a class="c" href="数学_线性代数.html#二矩阵">二、矩阵</a><a class="c" href="数学_线性代数.html#三向量与秩">三、向量与秩</a><a class="c" href="数学_线性代数.html#四线性方程组">四、线性方程组</a><a class="c" href="数学_线性代数.html#五特征值与特征向量">五、特征值与特征向量</a><a class="c" href="数学_线性代数.html#六相似对角化与二次型">六、相似对角化与二次型</a><a class="c" href="数学_线性代数.html#知识连接">知识连接</a><a class="c x" href="数学_线性代数_例题.html">▸ 例题集</a></details></details><details class="grp" data-k="grp-概率论" open><summary>概率论<em>1</em></summary><details class="brd" open><summary><a class="b on" aria-current="page" href="数学_概率论.html">概率论</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_概率论.html#板块总览">板块总览</a><a class="c" href="数学_概率论.html#一随机事件与概率">一、随机事件与概率</a><a class="d" href="数学_概率论.html#11样本空间与随机事件必考">1.1 样本空间与随机事件 【必考】</a><a class="d" href="数学_概率论.html#12事件的关系与运算必考">1.2 事件的关系与运算 【必考】</a><a class="d" href="数学_概率论.html#13概率的公理化定义必考">1.3 概率的公理化定义 【必考】</a><a class="d" href="数学_概率论.html#14概率的基本性质高频">1.4 概率的基本性质 【高频】</a><a class="d" href="数学_概率论.html#15条件概率必考">1.5 条件概率 【必考】</a><a class="d" href="数学_概率论.html#16事件的独立性必考易错">1.6 事件的独立性 【必考】【易错】</a><a class="d" href="数学_概率论.html#17五大概率公式必考">1.7 五大概率公式 【必考】</a><a class="d" href="数学_概率论.html#18三大经典概型必考">1.8 三大经典概型 【必考】</a><a class="c" href="数学_概率论.html#二一维随机变量及其分布">二、一维随机变量及其分布</a><a class="d" href="数学_概率论.html#21随机变量的定义必考">2.1 随机变量的定义 【必考】</a><a class="d" href="数学_概率论.html#22分布函数必考高频">2.2 分布函数 【必考】【高频】</a><a class="d" href="数学_概率论.html#23离散型随机变量必考">2.3 离散型随机变量 【必考】</a><a class="d" href="数学_概率论.html#24连续型随机变量必考">2.4 连续型随机变量 【必考】</a><a class="d" href="数学_概率论.html#25八大常见分布必考">2.5 八大常见分布 【必考】</a><a class="c" href="数学_概率论.html#三随机变量函数的分布高频">三、随机变量函数的分布 【高频】</a><a class="d" href="数学_概率论.html#31离散型离散型">3.1 离散型 → 离散型</a><a class="d" href="数学_概率论.html#32连续型连续型重点">3.2 连续型 → 连续型 【重点】</a><a class="c" href="数学_概率论.html#四多维随机变量及其分布">四、多维随机变量及其分布</a><a class="d" href="数学_概率论.html#41联合分布函数必考">4.1 联合分布函数 【必考】</a><a class="d" href="数学_概率论.html#42二维离散型必考">4.2 二维离散型 【必考】</a><a class="d" href="数学_概率论.html#43二维连续型必考高频">4.3 二维连续型 【必考】【高频】</a><a class="d" href="数学_概率论.html#44二维正态分布高频">4.4 二维正态分布 【高频】</a><a class="d" href="数学_概率论.html#45二维随机变量函数的分布必考">4.5 二维随机变量函数的分布 【必考】</a><a class="c" href="数学_概率论.html#五随机变量的数字特征必考">五、随机变量的数字特征 【必考】</a><a class="d" href="数学_概率论.html#51数学期望必考">5.1 数学期望 【必考】</a><a class="d" href="数学_概率论.html#52方差必考">5.2 方差 【必考】</a><a class="d" href="数学_概率论.html#53协方差与相关系数必考">5.3 协方差与相关系数 【必考】</a><a class="c" href="数学_概率论.html#六大数定律与中心极限定理高频">六、大数定律与中心极限定理 【高频】</a><a class="d" href="数学_概率论.html#61切比雪夫不等式">6.1 切比雪夫不等式</a><a class="d" href="数学_概率论.html#62大数定律">6.2 大数定律</a><a class="d" href="数学_概率论.html#63中心极限定理">6.3 中心极限定理</a><a class="c" href="数学_概率论.html#七数理统计初步高频">七、数理统计初步 【高频】</a><a class="d" href="数学_概率论.html#71总体样本与统计量">7.1 总体、样本与统计量</a><a class="d" href="数学_概率论.html#72三大抽样分布">7.2 三大抽样分布</a><a class="d" href="数学_概率论.html#73正态总体的抽样分布必考">7.3 正态总体的抽样分布 【必考】</a><a class="d" href="数学_概率论.html#74参数估计必考">7.4 参数估计 【必考】</a><a class="c" href="数学_概率论.html#八知识连接">八、知识连接</a><a class="c" href="数学_概率论.html#核心公式速查">核心公式速查</a><a class="c x" href="数学_概率论_例题.html">▸ 例题集</a></details></details><details class="brd" data-k="brd-练习与测试"><summary><a class="b" href="数学_练习与测试.html">练习与测试</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_练习与测试.html#一试卷总览">一、试卷总览</a><a class="c" href="数学_练习与测试.html#二概率基础阶段测试卷">二、概率基础阶段测试卷</a><a class="c" href="数学_练习与测试.html#三线代测试题3">三、线代测试题3</a><a class="c" href="数学_练习与测试.html#四集训营数学公式测试2线代公式清单">四、集训营数学公式测试2 —— 线代公式清单</a><a class="c" href="数学_练习与测试.html#五集训营数学公式测试3高数导数公式清单">五、集训营数学公式测试3 —— 高数导数公式清单</a><a class="c" href="数学_练习与测试.html#六卷间横向联系">六、卷间横向联系</a><a class="c x" href="数学_练习与测试_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-复习清单"><summary><a class="b" href="数学_复习清单.html">复习清单</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_复习清单.html#一函数极限连续15个知识点">一、函数、极限、连续（15 个知识点）</a><a class="c" href="数学_复习清单.html#二一元函数微分学16个知识点">二、一元函数微分学（16 个知识点）</a><a class="c" href="数学_复习清单.html#三一元函数积分学11个知识点">三、一元函数积分学（11 个知识点）</a><a class="c" href="数学_复习清单.html#四月考范围说明与复习策略">四、月考范围说明与复习策略</a></details><details class="brd" data-k="brd-技巧速查"><summary><a class="b" href="数学_技巧速查.html">技巧速查</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="数学_技巧速查.html#一极限">一、极限</a><a class="c" href="数学_技巧速查.html#二导数与微分">二、导数与微分</a><a class="c" href="数学_技巧速查.html#三中值定理">三、中值定理</a><a class="c" href="数学_技巧速查.html#四积分">四、积分</a><a class="c" href="数学_技巧速查.html#五微分方程">五、微分方程</a><a class="c" href="数学_技巧速查.html#六多元与二重">六、多元与二重</a><a class="c" href="数学_技巧速查.html#七级数">七、级数</a><a class="c" href="数学_技巧速查.html#八线性代数">八、线性代数</a><a class="c" href="数学_技巧速查.html#九概率论">九、概率论</a><a class="c" href="数学_技巧速查.html#十曲线曲面积分数一了解">十、曲线曲面积分(数一) 【了解】</a></details></div></nav>
+<div id="navscrim" aria-hidden="true"></div>
+<main data-subj="math"><div class="crumbline"><a href="../知识笔记首页.html">首页</a><span class="sep">/</span><b>数学 · 概率论</b></div><div class="article"><h1>概率论</h1><div class="board-meta">📐 数学 · <span class="pill">理论笔记</span><span class="pill">10 节</span></div><blockquote>
+<p>阶段: 基础(6月) + 强化(8月) | 覆盖课件 12 份:
+0620（1）、0620（2）、0620（3）、0621（1）、0621（2）、0621（3）、0801（1）、0801（2）、0801（3）、0802（1）、0802（2）、0802（3）
+📖 例题全量见: <a href="数学_概率论_例题.html">概率论 · 例题集</a></p>
+</blockquote>
+<h2 id="板块总览">板块总览</h2>
+<p>概率论研究随机现象的统计规律, 核心主线是一条链:
+<b>随机试验 → 样本空间 → 随机事件(集合) → 概率(测度) → 随机变量(函数) → 分布(完整描述) → 数字特征(概要描述)</b></p>
+<p>不同于微积分和线代的"确定性", 概率论引入<b>不确定性</b>: 我们不再问"是什么", 而问"有多大可能"。把握这条主线后, 公式和分布自然串起来。</p>
+<p>本板块按 <b>事件与概率 → 一维随机变量 → 多维随机变量 → 随机变量函数的分布</b> 组织。</p>
+<hr />
+<h2 id="一随机事件与概率">一、随机事件与概率</h2>
+<h3 id="11样本空间与随机事件必考">1.1 样本空间与随机事件 <span class="mk biz">必考</span></h3>
+<p><b>核心定义</b></p>
+<p>随机试验 E 的三个特点: 可重复、结果已知但不确定、事先明确所有可能结果。</p>
+<ul>
+<li><b>样本空间</b> Ω: 随机试验所有可能结果的集合。样本点 ω 是 Ω 的元素。</li>
+<li><b>随机事件</b> A: Ω 的子集。事件发生 = 试验结果落在该子集中。</li>
+<li><b>基本事件</b>: 单点集 {ω}。<b>复合事件</b>: 多点集。<b>必然事件</b> Ω, <b>不可能事件</b> ∅。</li>
+</ul>
+<p><b>直觉</b> 事件就是 Ω 上的一组结果。比如掷骰子, Ω={1,2,3,4,5,6}, "点数为偶数"={2,4,6}——就是我们圈出的一个子集。<b>概率论本质上是在样本空间上分配"大小"</b>, 这个大小就是概率。</p>
+<h3 id="12事件的关系与运算必考">1.2 事件的关系与运算 <span class="mk biz">必考</span></h3>
+<p>把事件当集合看, 全部运算就是集合运算的翻版:</p>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0620-1-p03_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0620-1-p03_1.png" alt="包含关系 A⊂B 韦恩图（0620(1) 页3）">
+<div class="figcap">📐 示意图（重绘）: 包含关系 A⊂B 韦恩图（0620(1) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0620-1-p03_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0620-1-p03_2.png" alt="和事件 A∪B 韦恩图（0620(1) 页3）">
+<div class="figcap">📐 示意图（重绘）: 和事件 A∪B 韦恩图（0620(1) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0620-1-p03_3.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0620-1-p03_3.png" alt="积事件 A∩B 韦恩图（0620(1) 页3）">
+<div class="figcap">📐 示意图（重绘）: 积事件 A∩B 韦恩图（0620(1) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0620-1-p04_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0620-1-p04_1.png" alt="完备事件组分割示意（0620(1) 页4）">
+<div class="figcap">📐 示意图（重绘）: 完备事件组分割示意（0620(1) 页4）</div>
+</div>
+</details>
+
+<table>
+<thead>
+<tr>
+<th>关系/运算</th>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>包含</td>
+<td>A⊂B</td>
+<td>A 发生 ⇒ B 发生</td>
+</tr>
+<tr>
+<td>相等</td>
+<td>A=B</td>
+<td>A⊂B 且 B⊂A</td>
+</tr>
+<tr>
+<td>和事件</td>
+<td>A∪B</td>
+<td>A, B 至少一个发生</td>
+</tr>
+<tr>
+<td>积事件</td>
+<td>A∩B (AB)</td>
+<td>A, B 同时发生</td>
+</tr>
+<tr>
+<td>差事件</td>
+<td>A−B</td>
+<td>A 发生且 B 不发生</td>
+</tr>
+<tr>
+<td>互斥</td>
+<td>AB=∅</td>
+<td>A, B 不能同时发生</td>
+</tr>
+<tr>
+<td>对立</td>
+<td>A∪B=Ω 且 AB=∅</td>
+<td>必有一个发生且仅一个发生。Ā = Ω\A</td>
+</tr>
+<tr>
+<td>完备事件组</td>
+<td>∪Aᵢ=Ω, AᵢAⱼ=∅(i≠j)</td>
+<td>分割样本空间, 全概率公式的基础</td>
+</tr>
+</tbody>
+</table>
+<p><b>运算律(核心: 德摩根律)</b> <span class="mk freq">高频</span>
+$$ \overline{A\cup B} = \bar{A}\cap\bar{B},\qquad \overline{A\cap B} = \bar{A}\cup\bar{B} $$</p>
+<p><b>直觉记忆</b> "长杠变短杠, 开口换方向"——取反后, 并把 ∪ 换成 ∩, ∩ 换成 ∪。</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> "A,B 至少一个发生" = A∪B; "A,B 至多一个发生" = 不同时发生 = \overline{AB} = Ā∪B̄ (恰有一个发生或都不发生)。</p>
+<h3 id="13概率的公理化定义必考">1.3 概率的公理化定义 <span class="mk biz">必考</span></h3>
+<p><b>三条公理</b> 对 Ω 上的每个事件 A, 赋予实数 P(A):</p>
+<ol>
+<li><b>非负性</b>: P(A) ≥ 0</li>
+<li><b>规范性</b>: P(Ω) = 1</li>
+<li><b>可列可加性</b>: 若 A₁, A₂, … 两两互斥, 则 P(∪Aᵢ) = ΣP(Aᵢ)</li>
+</ol>
+<p><b>直觉</b> 概率是把样本空间 Ω 的"总测度 1"分配到各个事件上。公理化定义不限定具体怎么分配——古典概型、几何概型、任何分布都是满足这三条的特例。</p>
+<p><span class="mk info">注意</span> P(A)=0 推不出 A=∅ (不可能事件), 只是说 A 发生的概率为零(如连续型 R.V. 单点概率); P(A)=1 也推不出 A=Ω。</p>
+<h3 id="14概率的基本性质高频">1.4 概率的基本性质 <span class="mk freq">高频</span></h3>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0620-1-p11_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0620-1-p11_1.png" alt="可比性 A⊂B 的韦恩图（0620(1) 页11）">
+<div class="figcap">📐 示意图（重绘）: 可比性 A⊂B 的韦恩图（0620(1) 页11）</div>
+</div>
+</details>
+
+<ol>
+<li><b>逆事件</b>: P(Ā) = 1−P(A) —— "至少一个发生" ↔ 1−"全都不发生"</li>
+<li><b>可比性</b>: A⊂B ⇒ P(A) ≤ P(B)</li>
+<li><b>加法公式</b>: P(A∪B) = P(A) + P(B) − P(AB)</li>
+<li>三事件: P(A∪B∪C) = P(A)+P(B)+P(C) − P(AB)−P(BC)−P(AC) + P(ABC) <span class="fill">【AI补全】</span></li>
+<li><b>减法公式</b>: P(A−B) = P(A) − P(AB) = P(A\B̄) — 即 A 发生而 B 不发生</li>
+</ol>
+<p><span class="mk info">注意</span> P(A∪B) ≤ P(A)+P(B) (容斥下界); P(AB) ≤ P(A), P(AB) ≤ P(B) (积事件概率 ≤ 各自概率)。</p>
+<h3 id="15条件概率必考">1.5 条件概率 <span class="mk biz">必考</span></h3>
+<p><b>定义</b> 若 P(A) &gt; 0:
+$$ P(B|A) = \frac{P(AB)}{P(A)} $$</p>
+<p><b>直觉</b> 把样本空间从 Ω <b>缩小到 A</b>, 重新归一化——原来 A 中的各样本点按比例放大了 1/P(A) 倍。条件概率 = 在"得知 A 发生"这一新信息后, 对 B 发生可能性的重新评估。</p>
+<p><b>性质</b></p>
+<ul>
+<li>0 ≤ P(B|A) ≤ 1, P(Ω|A) = 1</li>
+<li>P(B̄|A) = 1−P(B|A) (条件概率也是概率, 满足概率的三条公理)</li>
+<li><b>乘法公式</b>: P(AB) = P(B|A)·P(A) (当 P(A)&gt;0); 推广: P(ABC) = P(C|AB)·P(B|A)·P(A)</li>
+</ul>
+<h3 id="16事件的独立性必考易错">1.6 事件的独立性 <span class="mk biz">必考</span><span class="mk warn">易错</span></h3>
+<p><b>定义</b> A, B 独立 ⇔ P(AB) = P(A)·P(B)</p>
+<p><b>直觉</b> 独立 = B 的发生不改变 A 发生的概率。等价表述: 当 0&lt;P(A)&lt;1 时,
+$$ P(B|A) = P(B) = P(B|\bar{A}) $$
+即"知不知道 A 发生了, B 的概率都一样"。</p>
+<p><b><span class="mk ok">重点</span>独立与互斥的区别</b>:</p>
+<ul>
+<li>互斥(AB=∅): "不能同时发生" —— 若 A 发生则 B 必不发生, 所以 P(B|A)=0</li>
+<li>独立(AB 的概率可拆分): "互不影响" —— P(B|A)=P(B)</li>
+<li>若 P(A)&gt;0, P(B)&gt;0: <b>互斥 ⇒ 不独立</b> (因为 P(B|A)=0≠P(B))</li>
+</ul>
+<p><b>性质</b>: A 与 B 独立 ⇒ Ā 与 B、A 与 B̄、Ā 与 B̄ 全部独立 ("一推三")。</p>
+<p><b>三个事件的独立</b> <span class="mk warn">易错</span></p>
+<ul>
+<li><b>两两独立</b>: P(AB)=P(A)P(B), P(AC)=P(A)P(C), P(BC)=P(B)P(C)</li>
+<li><b>相互独立</b>: 两两独立 + P(ABC)=P(A)P(B)P(C)</li>
+<li>两两独立 ⇏ 相互独立(反例: 掷两枚硬币, 取 A={第一枚正面}, B={第二枚正面}, C={两枚同面}——两两独立但不相互独立)</li>
+</ul>
+<h3 id="17五大概率公式必考">1.7 五大概率公式 <span class="mk biz">必考</span></h3>
+<p><b>公式一览</b>:</p>
+<p>(1) <b>加法公式</b>: P(A∪B) = P(A)+P(B)−P(AB)</p>
+<p>(2) <b>减法公式</b>: P(A−B) = P(A)−P(AB) = P(A\B̄)</p>
+<p>(3) <b>乘法公式</b>(链式法则): P(AB) = P(A)·P(B|A) = P(B)·P(A|B)</p>
+<p>(4) <b>全概率公式</b>(由因导果): 若 A₁,…,Aₙ 为完备事件组, P(Aᵢ)&gt;0, 则
+$$ P(B) = \sum_{i=1}^{n} P(A_i)P(B|A_i) $$</p>
+<p><b>直觉</b> 把 B 按"原因 Aᵢ"切分成 n 块, 分别求概率再加总。解题思路: "要想 B 发生, 有哪些互斥的途径?"</p>
+<p>(5) <b>贝叶斯公式</b>(执果索因): 若 A₁,…,Aₙ 为完备事件组, P(B)&gt;0, 则
+$$ P(A_j|B) = \frac{P(A_j)P(B|A_j)}{\sum_{i=1}^{n} P(A_i)P(B|A_i)} $$</p>
+<p><b>直觉</b> P(Aⱼ) 是先验概率(在知道 B 之前对 Aⱼ 的信念), P(Aⱼ|B) 是后验概率(观察到 B 后更新的信念)。<b>贝叶斯公式 = 用证据 B 来更新概率</b>。</p>
+<p><span class="mk info">注意</span> 全概率的分母也是全概率, 贝叶斯的分母就是全概率。</p>
+<h3 id="18三大经典概型必考">1.8 三大经典概型 <span class="mk biz">必考</span></h3>
+<p><b>1. 古典概型</b> (有限等可能)
+$$ P(A) = \frac{|A|}{|\Omega|} = \frac{\text{A 包含的样本点数}}{\text{样本空间样本点总数}} $$
+条件: Ω 有限 + 每个样本点等可能。使用技巧: 排列组合(有序/无序, 放回/不放回)。</p>
+<p><b>2. 几何概型</b> (无限等可能)
+$$ P(A) = \frac{m(A)}{m(\Omega)} = \frac{\text{A 的测度(长度/面积/体积)}}{\Omega \text{ 的测度}} $$
+条件: Ω 为区间/区域/空间体, 等可能 = 落在等测度子区域的概率相等。
+典型题: 会面问题 —— 两人约定时间见面, 等 15 分钟, 求能见面的概率 → 画正方形区域, 满足 |x−y|≤15 的带状区域面积占比。</p>
+<p><b>3. 伯努利概型</b> (n 重独立重复)
+n 重伯努利试验中, 每次事件 A 发生概率为 p, 则 A 恰好发生 k 次的概率:
+$$ P_k = C_n^k p^k (1-p)^{n-k}, \quad k=0,1,\ldots,n $$
+识别特征: n 次独立重复、每次只有 A/Ā 两个结果、每次 p 相同。</p>
+<hr />
+<h2 id="二一维随机变量及其分布">二、一维随机变量及其分布</h2>
+<h3 id="21随机变量的定义必考">2.1 随机变量的定义 <span class="mk biz">必考</span></h3>
+<p><b>定义</b> 随机变量 X = X(ω) 是定义在样本空间 Ω 上的实值函数: 对每个样本点 ω, 赋予一个实数。</p>
+<p><b>直觉</b> 为什么需要随机变量? 因为"事件"是啰嗦的文字(如"掷骰子点数为偶数"), 随机变量把它变成数字(如 X≥3), 从而可以用函数、微积分等数学工具。</p>
+<p><b>分类</b>: 离散型(取值有限/可列)、连续型(取值充满区间)、既非离散也非连续型。</p>
+<h3 id="22分布函数必考高频">2.2 分布函数 <span class="mk biz">必考</span><span class="mk freq">高频</span></h3>
+<p><b>定义</b> F(x) = P{X ≤ x}, −∞&lt;x&lt;+∞。分布函数完整描述了随机变量的概率特征。</p>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0620-3-1-p02_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0620-3-1-p02_1.png" alt="分布函数阶梯曲线示意（0620(3) 页2）">
+<div class="figcap">📐 示意图（重绘）: 分布函数阶梯曲线示意（0620(3) 页2）</div>
+</div>
+</details>
+
+<p><b>成为分布函数的充要条件(四个)</b>:
+a. 非负规范性: 0 ≤ F(x) ≤ 1, F(−∞)=0, F(+∞)=1
+b. 单调不减: x₁&lt;x₂ ⇒ F(x₁) ≤ F(x₂)
+c. 右连续: F(x+0)=F(x)
+d. (隐含)极限存在</p>
+<p><b>利用分布函数求概率(等号跟着大于号)</b>:</p>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0620-3-1-p03_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0620-3-1-p03_1.png" alt="分布函数曲线与概率区间示意（0620(3) 页3）">
+<div class="figcap">📐 示意图（重绘）: 分布函数曲线与概率区间示意（0620(3) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0620-3-1-p03_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0620-3-1-p03_2.png" alt="P{X≤a} 概率区间示意（0620(3) 页3）">
+<div class="figcap">📐 示意图（重绘）: P{X≤a} 概率区间示意（0620(3) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0620-3-1-p03_3.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0620-3-1-p03_3.png" alt="P{a&lt;X≤b} 区间示意（0620(3) 页3）">
+<div class="figcap">📐 示意图（重绘）: P{a&lt;X≤b} 区间示意（0620(3) 页3）</div>
+</div>
+</details>
+
+<ul>
+<li>P{X &lt; a} = F(a−0) (左极限)</li>
+<li>P{X ≤ a} = F(a)</li>
+<li>P{X &gt; a} = 1−F(a)</li>
+<li>P{X ≥ a} = 1−F(a−0)</li>
+<li>P{a &lt; X ≤ b} = F(b)−F(a)</li>
+<li>P{X = a} = F(a)−F(a−0) (分布函数的跳跃 = 该点的概率质量)</li>
+</ul>
+<p><span class="mk info">注意</span> 对于连续型 R.V., F(x) 处处连续, 所以 P{X=a}=0 (等号有无不影响概率)。</p>
+<h3 id="23离散型随机变量必考">2.3 离散型随机变量 <span class="mk biz">必考</span></h3>
+<p><b>分布律</b>(概率质量函数): P{X = xₖ} = pₖ, k=1,2,…, 满足 pₖ≥0, Σpₖ=1。</p>
+<p>分布律可用表格表示:</p>
+<table>
+<thead>
+<tr>
+<th>X</th>
+<th>x₁</th>
+<th>x₂</th>
+<th>…</th>
+<th>xₖ</th>
+<th>…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P</td>
+<td>p₁</td>
+<td>p₂</td>
+<td>…</td>
+<td>pₖ</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p><b>分布函数</b>(阶梯函数): F(x) = Σ_{xₖ&lt;x} pₖ</p>
+<p><b>直觉</b> 离散型 R.V. 的概率是"一堆点上的质量", 分布函数是逐点累加。</p>
+<h3 id="24连续型随机变量必考">2.4 连续型随机变量 <span class="mk biz">必考</span></h3>
+<p><b>概率密度函数</b> f(x): 满足 f(x) ≥ 0, ∫_{−∞}^{+∞} f(x)dx = 1。</p>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-1-p02_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-1-p02_1.png" alt="连续型密度函数曲线示意（0621(1) 页2）">
+<div class="figcap">📐 示意图（重绘）: 连续型密度函数曲线示意（0621(1) 页2）</div>
+</div>
+</details>
+
+<p>分布函数: F(x) = ∫_{−∞}^{x} f(t)dt, 且 F'(x) = f(x) (在 f 连续的点处)。</p>
+<p><b>核心性质</b>:</p>
+<ul>
+<li>P{a &lt; X &lt; b} = ∫ₐᵇ f(x)dx = F(b)−F(a) — 概率 = 曲线下面积</li>
+<li>P{X = a} = 0 (单点概率为零, 等号可有可无)</li>
+<li>连续型 R.V. 的 F(x) 是连续函数</li>
+</ul>
+<p><b>直觉</b> 连续型 R.V. 把概率 1 "摊薄"到整个区间上, 密度 f(x) 表示 x 附近单位长度上的概率质量。单点厚度为零, 所以概率为零。这与离散型截然不同。</p>
+<h3 id="25八大常见分布必考">2.5 八大常见分布 <span class="mk biz">必考</span></h3>
+<h4>(1) 0-1 分布 B(1,p) 【基础】</h4>
+<p>$$ P\{X=k\} = p^k(1-p)^{1-k}, \quad k=0,1 $$
+描述只有成功/失败两种结果的单次试验。是二项分布 n=1 的特例。</p>
+<h4>(2) 二项分布 B(n,p) <span class="mk biz">必考</span></h4>
+<p>$$ P\{X=k\} = C_n^k p^k (1-p)^{n-k}, \quad k=0,1,\ldots,n $$
+n 重伯努利试验中成功的次数。X₁~B(n₁,p), X₂~B(n₂,p) 独立 ⇒ X₁+X₂~B(n₁+n₂,p)(可加性)。</p>
+<p><b>直觉</b> n 次射击, 每次命中概率 p, 命中次数 X~B(n,p)。</p>
+<h4>(3) 泊松分布 P(λ) <span class="mk freq">高频</span></h4>
+<p>$$ P\{X=k\} = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k=0,1,2,\ldots \quad (\lambda>0) $$</p>
+<p><b>泊松定理</b>: 若 npₙ → λ (n→∞), 则二项分布 → 泊松分布:
+$$ \lim_{n\to\infty} C_n^k p_n^k (1-p_n)^{n-k} = \frac{\lambda^k e^{-\lambda}}{k!} $$</p>
+<p><b>应用场景</b>: "小概率事件在大量重复中的发生次数"——车流量、事故数、电话呼叫数等。条件是 n 大 p 小, λ=np 适中。</p>
+<h4>(4) 几何分布 G(p) <span class="mk freq">高频</span></h4>
+<p>$$ P\{X=k\} = (1-p)^{k-1}p, \quad k=1,2,\ldots $$
+首次成功所需的试验次数。<b>无记忆性</b>: P{X&gt;m+n | X&gt;m} = P{X&gt;n}。</p>
+<p><b>直觉</b> "一直失败直到成功"——每次失败概率 (1−p), 前 k−1 次全失败, 第 k 次成功。</p>
+<h4>(5) 超几何分布 H(n,M,N) 【了解】</h4>
+<p>$$ P\{X=k\} = \frac{C_M^k C_{N-M}^{n-k}}{C_N^n} $$
+N 件产品中 M 件次品, 不放回抽 n 件, 次品数 X 的分布。当 N 很大时可用二项分布近似。</p>
+<h4>(6) 均匀分布 U(a,b) <span class="mk biz">必考</span></h4>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-1-p18_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-1-p18_1.png" alt="均匀分布区间概率的数轴示意（0621(1) 页18）">
+<div class="figcap">📐 示意图（重绘）: 均匀分布区间概率的数轴示意（0621(1) 页18）</div>
+</div>
+</details>
+
+<p>$$ f(x) = \begin{cases} \frac{1}{b-a}, &amp; a&lt;x&lt;b \\ 0, &amp; \text{其他} \end{cases} $$
+$$ F(x) = \begin{cases} 0, &amp; x&lt;a \\ \frac{x-a}{b-a}, &amp; a\leq x&lt;b \\ 1, &amp; x\geq b \end{cases} $$</p>
+<p><b>直觉</b> [a,b] 上的等可能性: 落在任一子区间的概率只取决于子区间的长度, 与位置无关。</p>
+<h4>(7) 指数分布 E(λ) <span class="mk biz">必考</span></h4>
+<p>$$ f(x) = \begin{cases} \lambda e^{-\lambda x}, &amp; x>0 \\ 0, &amp; x\leq0 \end{cases} $$
+$$ F(x) = \begin{cases} 1-e^{-\lambda x}, &amp; x\geq0 \\ 0, &amp; x&lt;0 \end{cases} $$</p>
+<p><b><span class="mk ok">重点</span>无记忆性</b>: P{X &gt; s+t | X &gt; s} = P{X &gt; t} = e^{−λt}。这是指数分布独有的性质(连续型中), 用于描述"寿命": 已经活了 s 小时, 再活 t 小时的概率等于从头再活 t 小时的概率。</p>
+<p><b>应用</b>: 电子元件寿命、等待时间、排队论。</p>
+<h4>(8) 正态分布 N(μ,σ²) <span class="mk biz">必考</span><span class="mk freq">高频</span></h4>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-2-p01_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-2-p01_1.png" alt="正态分布密度函数曲线（0621(2) 页1）">
+<div class="figcap">📐 示意图（重绘）: 正态分布密度函数曲线（0621(2) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-2-p01_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-2-p01_2.png" alt="标准正态密度曲线（0621(2) 页1）">
+<div class="figcap">📐 示意图（重绘）: 标准正态密度曲线（0621(2) 页1）</div>
+</div>
+</details>
+
+<p><b>概率密度</b>:
+$$ f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad -\infty&lt;x&lt;+\infty $$</p>
+<p><b>标准正态分布</b> N(0,1): μ=0, σ=1, 密度记为 φ(x), 分布函数记为 Φ(x)。</p>
+<p><b>标准化</b>: 若 X~N(μ,σ²), 则 Z = (X−μ)/σ ~ N(0,1)
+$$ P\{X \leq a\} = \Phi\!\left(\frac{a-\mu}{\sigma}\right) $$</p>
+<p><b>性质</b>:</p>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-2-p02_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-2-p02_1.png" alt="φ(x)=φ(−x) 对称性曲线（0621(2) 页2）">
+<div class="figcap">📐 示意图（重绘）: φ(x)=φ(−x) 对称性曲线（0621(2) 页2）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-2-p02_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-2-p02_2.png" alt="P{|X|≤a}=2Φ(a)−1 区域（0621(2) 页2）">
+<div class="figcap">📐 示意图（重绘）: P{|X|≤a}=2Φ(a)−1 区域（0621(2) 页2）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-2-p02_3.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-2-p02_3.png" alt="正态尾区域与分位点（0621(2) 页2）">
+<div class="figcap">📐 示意图（重绘）: 正态尾区域与分位点（0621(2) 页2）</div>
+</div>
+</details>
+
+<ul>
+<li>φ(x) 关于 y 轴对称: φ(−x) = φ(x)</li>
+<li>Φ(−x) = 1−Φ(x)</li>
+<li>Φ(0) = 1/2</li>
+<li>P{|X| &lt; a} = 2Φ(a)−1 (a≥0)</li>
+<li>上 α 分位点 u_α: P{X &gt; u_α} = α, 则 Φ(u_α) = 1−α</li>
+</ul>
+<p><b>直觉</b> 正态分布是自然界的"默认分布"——中心极限定理保证大量独立微小因素叠加的结果近似正态。μ 控制位置(峰值), σ 控制宽度(分散程度)。标准化 = 把所有正态分布拉到同一尺度 N(0,1) 上比较。</p>
+<p><span class="mk warn">易错</span> 查表时注意: Φ(−a) = 1−Φ(a); P{X &gt; a} = 1−Φ(a)。</p>
+<hr />
+<h2 id="三随机变量函数的分布高频">三、随机变量函数的分布 <span class="mk freq">高频</span></h2>
+<p>已知 X 的分布, 求 Y = g(X) 的分布。</p>
+<h3 id="31离散型离散型">3.1 离散型 → 离散型</h3>
+<p>将 X 的取值代入 g, 合并相同的 Y 值, 对应概率相加。</p>
+<h3 id="32连续型连续型重点">3.2 连续型 → 连续型 <span class="mk ok">重点</span></h3>
+<p><b>方法一: 分布函数法</b>(通用方法, 推荐)</p>
+<ol>
+<li>写出 F_Y(y) = P{Y ≤ y} = P{g(X) ≤ y}</li>
+<li>将事件 {g(X) ≤ y} 转化为关于 X 的不等式, 用 f_X(x) 的积分表示</li>
+<li>对 y 求导得 f_Y(y) = F'_Y(y)</li>
+</ol>
+<p><b>方法二: 公式法</b>(适用于 g 严格单调)
+若 y=g(x) 严格单调, 反函数 x=h(y), 则:
+$$ f_Y(y) = f_X(h(y)) \cdot |h'(y)| $$</p>
+<p><b>典型变换</b>:</p>
+<ul>
+<li>Y = aX+b: f_Y(y) = (1/|a|)·f_X((y−b)/a)</li>
+<li>Y = X²: 分 y&lt;0 和 y≥0 讨论; y≥0 时 F_Y(y)=P{−√y ≤ X ≤ √y}</li>
+</ul>
+<hr />
+<h2 id="四多维随机变量及其分布">四、多维随机变量及其分布</h2>
+<h3 id="41联合分布函数必考">4.1 联合分布函数 <span class="mk biz">必考</span></h3>
+<p><b>定义</b> F(x,y) = P{X ≤ x, Y ≤ y}</p>
+<p><b>性质</b>: 非负有界(0~1); 关于 x 和 y 分别单调不减、右连续; F(−∞,y)=0, F(x,−∞)=0, F(+∞,+∞)=1。</p>
+<p><b>边缘分布函数</b>:
+$$ F_X(x) = \lim_{y\to+\infty} F(x,y), \quad F_Y(y) = \lim_{x\to+\infty} F(x,y) $$</p>
+<p><b>独立性</b>: X 与 Y 独立 ⇔ F(x,y) = F_X(x)·F_Y(y), ∀x,y。</p>
+<h3 id="42二维离散型必考">4.2 二维离散型 <span class="mk biz">必考</span></h3>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-3-p07_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-3-p07_1.png" alt="二维离散型联合分布示意（0621(3) 页7）">
+<div class="figcap">📐 示意图（重绘）: 二维离散型联合分布示意（0621(3) 页7）</div>
+</div>
+</details>
+
+<p><b>联合分布律</b>: P{X=xᵢ, Y=yⱼ} = pᵢⱼ, pᵢⱼ≥0, ΣᵢΣⱼ pᵢⱼ=1。</p>
+<p><b>边缘分布律</b>: X 的边缘: pᵢ· = Σⱼ pᵢⱼ; Y 的边缘: p·ⱼ = Σᵢ pᵢⱼ。</p>
+<p><b>条件分布律</b>: P{X=xᵢ | Y=yⱼ} = pᵢⱼ / p·ⱼ (当 p·ⱼ &gt; 0)</p>
+<p><b>独立性充要条件</b>: pᵢⱼ = pᵢ··p·ⱼ, ∀i,j (每个格子概率 = 对应行列乘积)</p>
+<h3 id="43二维连续型必考高频">4.3 二维连续型 <span class="mk biz">必考</span><span class="mk freq">高频</span></h3>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-3-p16_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-3-p16_1.png" alt="二维连续型联合密度区域示意（0621(3) 页16）">
+<div class="figcap">📐 示意图（重绘）: 二维连续型联合密度区域示意（0621(3) 页16）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-3-p16_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-3-p16_2.png" alt="二维分布区域示意（0621(3) 页16）">
+<div class="figcap">📐 示意图（重绘）: 二维分布区域示意（0621(3) 页16）</div>
+</div>
+</details>
+
+<p><b>联合概率密度</b> f(x,y): f(x,y) ≥ 0, ∫∫_{R²} f(x,y)dxdy = 1。</p>
+<p>$$ P\{(X,Y)\in D\} = \iint_D f(x,y)\,dxdy $$</p>
+<p><b>边缘概率密度</b>:</p>
+<details class="figbox"><summary><img class="thumb" src="../figures/概率论/0621-3-p18_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="../figures/概率论/0621-3-p18_1.png" alt="边缘概率密度的积分区域示意（0621(3) 页18）">
+<div class="figcap">📐 示意图（重绘）: 边缘概率密度的积分区域示意（0621(3) 页18）</div>
+</div>
+</details>
+
+<p>$$ f_X(x) = \int_{-\infty}^{+\infty} f(x,y)\,dy, \quad f_Y(y) = \int_{-\infty}^{+\infty} f(x,y)\,dx $$</p>
+<p><b>条件概率密度</b>:
+$$ f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)} \quad (f_Y(y)>0), \qquad f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)} \quad (f_X(x)>0) $$</p>
+<p><b>独立性充要条件</b>: f(x,y) = f_X(x)·f_Y(y), ∀x,y。</p>
+<p><b>直觉</b> 二维与一维的类比——把"线段上的积分"升级为"平面区域上的二重积分"。独立性 = 联合密度能分解成两个一元密度的乘积——就像两个独立的人各自做决策, 联合行为等于各自行为的乘积。</p>
+<h3 id="44二维正态分布高频">4.4 二维正态分布 <span class="mk freq">高频</span></h3>
+<p>若 (X,Y) 服从二维正态分布, 则:</p>
+<ul>
+<li>X 和 Y 的边缘分布都是一维正态</li>
+<li><b>X 与 Y 独立 ⇔ 相关系数 ρ = 0</b> (正态分布独有的性质: 不相关 = 独立)</li>
+<li>X 和 Y 的线性组合 aX+bY 仍服从正态分布</li>
+<li>条件分布 f_{Y|X}(y|x) 也是正态分布</li>
+</ul>
+<p><span class="mk warn">易错</span> 两个一维正态的联合不一定是二维正态; 只有二维正态才有"ρ=0 ⇔ 独立"这个好性质。</p>
+<h3 id="45二维随机变量函数的分布必考">4.5 二维随机变量函数的分布 <span class="mk biz">必考</span></h3>
+<p><b>目标</b> 已知 (X,Y) 的联合分布, 求 $Z=g(X,Y)$ 的分布。</p>
+<p><b>(1) 离散型: 分层卷积(全概率展开)</b>
+$$ P\{Z=z\}=\sum_{x_i} P\{X=x_i\}\cdot P\{g(x_i,Y)=z\,|\,X=x_i\} $$
+按 $X$ 的取值分层, 每层内对 Y 求和。混合型(离散×连续)也一样: 先按离散变量取值分层, 每层对连续变量积分。</p>
+<p><b>(2) 连续型: 分布函数法(通用套路)</b>
+$$ F_Z(z)=P\{g(X,Y)\le z\}=\iint_{g(x,y)\le z} f(x,y)\,dxdy $$
+先在 $xy$ 平面上画出 $g(x,y)\le z$ 的区域再积分; 最后 $f_Z(z)=F_Z'(z)$。</p>
+<p><b>(3) 和分布 Z=X+Y: 卷积公式(必背)</b>
+$$ f_Z(z)=\int_{-\infty}^{+\infty} f_X(x)\,f_Y(z-x)\,dx \quad\text{(X,Y 独立时)} $$
+积分上下限由两密度支撑的交集确定——<b>先定支撑再写上下限</b>, 别一上来就写 $\pm\infty$。</p>
+<p><b>(4) 商/积分布: 变量替换法</b> 设 $Z=XY$ 或 $Z=X/Y$: 令 $u=g(x,y)$ 取一个(如 $u=xy$), 再令 $v=x$, 由雅可比变换求 (U,V) 联合密度, 再对 v 积分:
+$$ f_{U}(u)=\int f_{X,Y}\left(v,\frac{u}{v}\right)\left|\frac{\partial(x,y)}{\partial(u,v)}\right|dv $$</p>
+<p><b>直觉</b> 三种方法同一件事: 把"Z 的概率"翻译成"(X,Y) 落在某区域"的概率。分布函数法最通用, 卷积公式是和分布的专用捷径, 变量替换法适合积/商。</p>
+<p><b>极值分布(独立同分布样本的 min/max)</b> <span class="mk freq">高频</span>
+$$ F_{\max}(x)=[F(x)]^n,\qquad F_{\min}(x)=1-[1-F(x)]^n $$
+<b>直觉</b> max ≤ x ⟺ 全部 ≤ x; min &gt; x ⟺ 全部 &gt; x——"都"字翻译成连乘。指数族特例: $X_i\sim E(\lambda)$ 时 $\min\{X_i\}\sim E(n\lambda)$(参数相加, 例18.8); max 的密度 = $n[F(x)]^{n-1}f(x)$(逐项求导)。电路串联=min、并联=max 是常见应用模型。</p>
+<p><span class="src">【来源: 0803（1）】</span></p>
+<hr />
+<h2 id="五随机变量的数字特征必考">五、随机变量的数字特征 <span class="mk biz">必考</span></h2>
+<h3 id="51数学期望必考">5.1 数学期望 <span class="mk biz">必考</span></h3>
+<p><b>定义</b> 离散: $E(X)=\sum_i x_i p_i$; 连续: $E(X)=\int_{-\infty}^{+\infty}x f(x)\,dx$ (要求绝对收敛)</p>
+<p><b>直觉</b> 期望 = 概率加权平均, 是分布的"重心"。离散情形就是杠杆平衡点: 每个取值 $x_i$ 挂质量 $p_i$, 期望是使杠杆平衡的位置。</p>
+<p><b>性质</b>(全为线性运算, 无需独立):
+$$ E(C)=C,\quad E(aX+b)=aE(X)+b,\quad E(X\pm Y)=E(X)\pm E(Y) $$
+独立时: $E(XY)=E(X)E(Y)$ (不独立则一般不等)</p>
+<p><b>随机变量函数的期望</b> 不必先求 $g(X)$ 的分布:
+$$ E[g(X)]=\sum_i g(x_i)p_i \quad\text{或}\quad \int g(x)f(x)\,dx $$
+二维: $E[g(X,Y)]=\sum\sum g(x_i,y_j)p_{ij}$ 或 $\int\!\!\int g(x,y)f(x,y)\,dxdy$</p>
+<p><b>易错点</b> <span class="mk warn">易错</span> $E(X^2)\ne[E(X)]^2$——平方期望多算的是"分散程度"; $E(1/X)\ne 1/E(X)$, 非线性函数不能直接"代进去"。</p>
+<h3 id="52方差必考">5.2 方差 <span class="mk biz">必考</span></h3>
+<p><b>定义</b> $D(X)=E\{[X-E(X)]^2\}$, 标准差 $\sigma=\sqrt{D(X)}$</p>
+<p><b>计算公式</b> $D(X)=E(X^2)-[E(X)]^2$ <span class="mk freq">高频</span>——二阶原点矩减均值平方, 考试主用这个。</p>
+<p><b>性质</b>:
+$$ D(C)=0,\quad D(aX+b)=a^2D(X),\quad D(X\pm Y)=D(X)+D(Y)\pm 2\text{Cov}(X,Y) $$
+独立时: $D(X\pm Y)=D(X)+D(Y)$ (协方差项消失)</p>
+<p><b>直觉</b> 方差 = 偏离中心程度的平均。$a^2$ 系数说明: 尺度放大 $a$ 倍, 离散程度放大 $a^2$ 倍; 平移不影响方差。</p>
+<h3 id="53协方差与相关系数必考">5.3 协方差与相关系数 <span class="mk biz">必考</span></h3>
+<p><b>协方差定义</b> $\text{Cov}(X,Y)=E\{[X-E(X)][Y-E(Y)]\}=E(XY)-E(X)E(Y)$</p>
+<p><b>性质</b> $\text{Cov}(X,X)=D(X)$; $\text{Cov}(aX+b,cY+d)=ac\,\text{Cov}(X,Y)$; $\text{Cov}(X,Y+Z)=\text{Cov}(X,Y)+\text{Cov}(X,Z)$</p>
+<p><b>相关系数</b> $\rho_{XY}=\dfrac{\text{Cov}(X,Y)}{\sqrt{D(X)}\sqrt{D(Y)}}\in[-1,1]$</p>
+<ul>
+<li>$|\rho|=1$ ⇔ $P\{Y=aX+b\}=1$ (几乎必然线性相关)</li>
+<li>$\rho=0$ ⇔ X 与 Y <b>不相关</b></li>
+<li>独立 ⇒ 不相关; 不相关 ⇏ 独立 (正态例外: 正态下不相关 ⇔ 独立) <span class="mk warn">易错</span></li>
+</ul>
+<p><b>直觉</b> 相关系数 = 标准化后的协方差, 度量"线性相关程度"的强弱与方向; 只衡量线性关系, 非线性关系(如 $Y=X^2$)可能相关系数为 0 但显然相关。</p>
+<p><b>常用分布数字特征速查</b> <span class="mk biz">必考</span></p>
+<table>
+<thead>
+<tr>
+<th>分布</th>
+<th>E(X)</th>
+<th>D(X)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-1 分布 B(1,p)</td>
+<td>p</td>
+<td>p(1−p)</td>
+</tr>
+<tr>
+<td>二项 B(n,p)</td>
+<td>np</td>
+<td>np(1−p)</td>
+</tr>
+<tr>
+<td>泊松 P(λ)</td>
+<td>λ</td>
+<td>λ</td>
+</tr>
+<tr>
+<td>均匀 U(a,b)</td>
+<td>(a+b)/2</td>
+<td>(b−a)²/12</td>
+</tr>
+<tr>
+<td>指数 E(λ)</td>
+<td>1/λ</td>
+<td>1/λ²</td>
+</tr>
+<tr>
+<td>正态 N(μ,σ²)</td>
+<td>μ</td>
+<td>σ²</td>
+</tr>
+<tr>
+<td>几何 G(p)</td>
+<td>1/p</td>
+<td>(1−p)/p²</td>
+</tr>
+<tr>
+<td>卡方 χ²(n)</td>
+<td>n</td>
+<td>2n</td>
+</tr>
+</tbody>
+</table>
+<h2 id="六大数定律与中心极限定理高频">六、大数定律与中心极限定理 <span class="mk freq">高频</span></h2>
+<h3 id="61切比雪夫不等式">6.1 切比雪夫不等式</h3>
+<p>$P\{|X-E(X)|\ge\varepsilon\}\le\dfrac{D(X)}{\varepsilon^2}$ —— 距期望超过 ε 的概率被方差控制。只用到期望方差, 不需要分布。</p>
+<h3 id="62大数定律">6.2 大数定律</h3>
+<ul>
+<li><b>伯努利大数定律</b>: 事件频率 $\to$ 概率 (频率稳定性的理论保证)</li>
+<li><b>切比雪夫大数定律</b>: 两两不相关且方差一致有界时, 样本均值 $\to$ 数学期望</li>
+<li><b>辛钦大数定律</b>: 独立同分布且期望存在, 样本均值 $\to$ 期望</li>
+</ul>
+<p><b>直觉</b> "平均的结果稳定": 单个随机变量不可预测, 但大量独立同分布的平均几乎必然收敛到期望。</p>
+<h3 id="63中心极限定理">6.3 中心极限定理</h3>
+<ul>
+<li><b>列维-林德伯格(独立同分布)</b>: $X_i$ iid, $E(X)=\mu,\ D(X)=\sigma^2$, 则 $\dfrac{\sum X_i-n\mu}{\sqrt n\,\sigma}\xrightarrow{d} N(0,1)$ —— 大量独立同分布之和的标准化近似标准正态</li>
+<li><b>棣莫弗-拉普拉斯</b>: 二项分布 $B(n,p)$ 当 $n$ 大时近似正态 $N(np,\ np(1-p))$</li>
+</ul>
+<p><b>直觉</b> 正态分布的"统治地位"来源于此: 任何"大量独立随机因素叠加"的结果都长成正态。</p>
+<h2 id="七数理统计初步高频">七、数理统计初步 <span class="mk freq">高频</span></h2>
+<h3 id="71总体样本与统计量">7.1 总体、样本与统计量</h3>
+<ul>
+<li><b>总体/样本</b>: 总体分布 F(x), 简单随机样本 $X_1,\dots,X_n$ 独立同分布</li>
+<li><b>统计量</b>: 样本均值 $\bar X=\frac1n\sum X_i$; 样本方差 $S^2=\frac1{n-1}\sum(X_i-\bar X)^2$; 样本 k 阶矩</li>
+<li>经验分布函数 $F_n(x)$: 对任意 x, $E[F_n(x)]=F(x)$, $D[F_n(x)]=\frac{F(x)(1-F(x))}{n}$</li>
+</ul>
+<h3 id="72三大抽样分布">7.2 三大抽样分布</h3>
+<ul>
+<li><b>χ²(n)</b>: 独立标准正态平方和 $\sum Z_i^2$, $E=n,\ D=2n$; 可加性</li>
+<li><b>t(n)</b>: $Z/\sqrt{W/n}$, $Z\sim N(0,1)$, $W\sim\chi^2(n)$ 独立</li>
+<li><b>F(m,n)</b>: $(\chi^2(m)/m)/(\chi^2(n)/n)$; $F(1,n)=t^2(n)$</li>
+</ul>
+<h3 id="73正态总体的抽样分布必考">7.3 正态总体的抽样分布 <span class="mk biz">必考</span></h3>
+<p><b>补充结论(记住直接用)</b>:</p>
+<ul>
+<li><b>正态绝对偏差</b>: $E|X-\mu|=\sigma\sqrt{\frac2\pi}$(来自 $\int_0^\infty 2x\cdot\frac1{\sqrt{2\pi}\sigma}e^{-x^2/2\sigma^2}dx$); 标准正态时 $E|Z|=\sqrt{2/\pi}$。<span class="mk freq">高频</span></li>
+<li><b>样本二阶中心矩的方差</b>: $S^2=\frac1n\sum(X_i-\bar X)^2$ 时 $D(S^2)=\frac{2(n-1)}{n^2}\sigma^4$(把 $\frac{\sum(X_i-\bar X)^2}{\sigma^2}\sim\chi^2(n-1)$ 代入 $D(\chi^2)=2(n-1)$ 即得)。</li>
+<li><b>新观测值的预测统计量</b>: $\sqrt{\frac{n}{n+1}}\cdot\frac{X_{n+1}-\bar X}{S}\sim t(n-1)$(其中 $S^2=\frac1{n-1}\sum(X_i-\bar X)^2$)。理由: $X_{n+1}-\bar X\sim N(0,(1+\frac1n)\sigma^2)$ 且与 $S^2$ 独立——"新观测值预测"型 t 统计量, 与"均值检验"型 $\frac{\bar X-\mu}{S/\sqrt n}$ 是同族。【了解】</li>
+<li><b>t 分布对称性</b>: $t_{1-\alpha}=-t_\alpha$(查表省一半); <b>F 倒数性质</b>: $F_\alpha(m,n)=\frac1{F_{1-\alpha}(n,m)}$(例20.4 就用它)。</li>
+</ul>
+<p>$X_1,\dots,X_n$ iid $\sim N(\mu,\sigma^2)$:
+$$ \bar X\sim N(\mu,\tfrac{\sigma^2}{n}),\quad \frac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1),\quad \frac{\bar X-\mu}{S/\sqrt n}\sim t(n-1) $$
+$\bar X$ 与 $S^2$ 独立。</p>
+<h3 id="74参数估计必考">7.4 参数估计 <span class="mk biz">必考</span></h3>
+<ul>
+<li><b>矩估计</b>: 令样本矩 = 总体矩(一阶: $\bar X=E(X)$, 二阶: $\frac1n\sum X_i^2=E(X^2)$), 解出参数</li>
+<li><b>最大似然估计</b>: 似然函数 $L(\theta)=\prod f(x_i;\theta)$, 取对数求导零点(或直接观察)</li>
+<li>评价标准: 无偏性 $E(\hat\theta)=\theta$; 有效性(方差小); 一致性(样本增大收敛)</li>
+</ul>
+<p><span class="src">【来源: 0803(2)-(3)、0804(1)-(2)、概率论作业解析; 理论部分为课后重构, 例题全量见例题集十八/十九/二十】</span></p>
+<hr />
+<h2 id="八知识连接">八、知识连接</h2>
+<ol>
+<li>
+<p><b>概率 → 数理统计</b>: 概率论是已知分布推样本性质(演绎), 数理统计是已知样本推分布参数(归纳)。条件概率 → 似然函数, 贝叶斯公式 → 贝叶斯统计。</p>
+</li>
+<li>
+<p><b>随机变量 → 数字特征</b>: 分布完整描述 R.V., 但数字特征(期望、方差、协方差)只提取最关键的统计量。期望是"中心位置", 方差是"离散程度"。</p>
+</li>
+<li>
+<p><b>二维 → n 维</b>: 二维的联合/边缘/条件/独立概念直接推广到 n 维——无非是积分维数增加。</p>
+</li>
+<li>
+<p><b>独立 → 大数定律</b>: 独立同分布(i.i.d.)序列是概率论的核心假设, 大数定律保证样本均值 → 期望, 中心极限定理保证样本均值的分布 → 正态。</p>
+</li>
+<li>
+<p><b>分布函数法</b> 是求随机变量函数分布的通法, 核心技巧就是把 Y≤y 转化为 X 的范围, 然后用 X 的密度积分。</p>
+</li>
+<li>
+<p>正态分布之所以"统治"概率统计, 根源在中心极限定理: 无论原始分布是什么, 大量独立同分布随机变量之和的标准化趋近标准正态。</p>
+</li>
+</ol>
+<hr />
+<h2 id="核心公式速查">核心公式速查</h2>
+<table>
+<thead>
+<tr>
+<th>公式</th>
+<th>表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>条件概率</td>
+<td>P(B|A) = P(AB)/P(A)</td>
+</tr>
+<tr>
+<td>独立性</td>
+<td>P(AB) = P(A)P(B)</td>
+</tr>
+<tr>
+<td>全概率</td>
+<td>P(B) = Σ P(Aᵢ)P(B|Aᵢ)</td>
+</tr>
+<tr>
+<td>贝叶斯</td>
+<td>P(Aⱼ|B) = P(Aⱼ)P(B|Aⱼ) / Σ P(Aᵢ)P(B|Aᵢ)</td>
+</tr>
+<tr>
+<td>伯努利</td>
+<td>Pₖ = Cₙᵏ pᵏ(1−p)ⁿ⁻ᵏ</td>
+</tr>
+<tr>
+<td>二项分布</td>
+<td>P{X=k} = Cₙᵏ pᵏ(1−p)ⁿ⁻ᵏ</td>
+</tr>
+<tr>
+<td>泊松分布</td>
+<td>P{X=k} = λᵏe^{−λ}/k!</td>
+</tr>
+<tr>
+<td>几何分布</td>
+<td>P{X=k} = (1−p)ᵏ⁻¹p</td>
+</tr>
+<tr>
+<td>指数密度</td>
+<td>f(x) = λe^{−λx} (x&gt;0)</td>
+</tr>
+<tr>
+<td>正态密度</td>
+<td>f(x) = (1/√(2π)σ)·e^{−(x−μ)²/(2σ²)}</td>
+</tr>
+<tr>
+<td>标准化</td>
+<td>Z = (X−μ)/σ ~ N(0,1)</td>
+</tr>
+<tr>
+<td>分布函数法</td>
+<td>F_Y(y) = P{g(X)≤y}, f_Y(y)=F'_Y(y)</td>
+</tr>
+<tr>
+<td>二维独立</td>
+<td>f(x,y)=f_X(x)f_Y(y) (连续) / pᵢⱼ=pᵢ·p·ⱼ (离散)</td>
+</tr>
+</tbody>
+</table></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_线性代数_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 线性代数_例题</b></span></a><a class="next" href="数学_概率论_例题.html"><span class="pg-t"><small>下一篇</small><b>数学 · 概率论_例题</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<button id="navbtn" type="button" aria-label="打开目录" title="目录">☰</button>
+<div id="tbtools" role="toolbar"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">深色</button><button id="printBtn" type="button" title="打印 / 导出 PDF">打印</button></div></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '浅色' : '深色'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 侧栏收起/展开(2026-08-09): 折叠态 = 8px 边缘热区零内容;
+     桌面: 悬停/键盘聚焦滑出, 移出 1.2s 自动收回(未钉住), ☰/图钉按钮钉住;
+     触屏(平板): ☰ 弹浮层 + 遮罩; 手机(≤920px): ☰ = 汉堡滑入 overlay ---------- */
+  var touchNav = !!(window.matchMedia && window.matchMedia('(hover: none)').matches);
+  var sideNav = document.querySelector('.layout > nav');
+  var navbtn = document.getElementById('navbtn');
+  if (sideNav) {
+    if (touchNav) root.setAttribute('data-touch', '1');
+    var pinSt = load('xnNavPin') === '1';
+    root.setAttribute('data-nav', (pinSt && !touchNav) ? 'pinned' : 'collapsed');
+    var pinBtn = document.getElementById('navpin');
+    if (pinBtn) pinBtn.setAttribute('aria-pressed', pinSt && !touchNav ? 'true' : 'false');
+    function setPin(pinned){
+      root.setAttribute('data-nav', pinned ? 'pinned' : 'collapsed');
+      store('xnNavPin', pinned ? '1' : '0');
+      if (pinBtn) pinBtn.setAttribute('aria-pressed', pinned ? 'true' : 'false');
+    }
+    if (pinBtn) pinBtn.addEventListener('click', function(){ setPin(root.getAttribute('data-nav') !== 'pinned'); });
+    if (navbtn) navbtn.addEventListener('click', function(){
+      if (window.matchMedia('(max-width: 920px)').matches) { nav.classList.toggle('show'); return; }
+      if (touchNav) {
+        root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+      } else {
+        setPin(root.getAttribute('data-nav') !== 'pinned');
+      }
+    });
+    sideNav.addEventListener('click', function(e){
+      if (e.target.closest('a')) { nav.classList.remove('show'); root.setAttribute('data-nav', 'collapsed'); return; }
+      if (touchNav) root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+    });
+    if (touchNav) {
+      var scrim = document.getElementById('navscrim');
+      if (scrim) scrim.addEventListener('click', function(){ root.setAttribute('data-nav', 'collapsed'); });
+    } else {
+      /* 桌面: 悬停/聚焦展开, 移出延迟 1.2s 自动收回(钉住时保持) */
+      var retractTimer = null;
+      function keepOpen(){
+        clearTimeout(retractTimer);
+        if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'open');
+      }
+      function scheduleRetract(){
+        clearTimeout(retractTimer);
+        retractTimer = setTimeout(function(){
+          if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'collapsed');
+        }, 1200);
+      }
+      sideNav.addEventListener('mouseenter', keepOpen);
+      sideNav.addEventListener('mouseleave', scheduleRetract);
+      sideNav.addEventListener('focusin', keepOpen);
+      sideNav.addEventListener('focusout', scheduleRetract);
+    }
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navBrds = nav.querySelectorAll('details.brd');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var k2 = 0; k2 < navBrds.length; k2++) {
+        var bd = navBrds[k2], bdLinks = bd.querySelectorAll('a[href]'), bdVis = false;
+        for (var n2 = 0; n2 < bdLinks.length; n2++) { if (bdLinks[n2].style.display !== 'none') { bdVis = true; break; } }
+        bd.style.display = bdVis ? '' : 'none';
+        if (t && bdVis) bd.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 表格横向滚动包裹 ---------- */
+  var tables = document.querySelectorAll('main table');
+  for (var iT = 0; iT < tables.length; iT++) {
+    var tw = document.createElement('div');
+    tw.className = 'table-wrap';
+    tables[iT].parentNode.insertBefore(tw, tables[iT]);
+    tw.appendChild(tables[iT]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 + 学科 Tab(2026-08-09: homeFilter 统一入口, Tab 只控 section 显隐) ---------- */
+  var homeq = document.getElementById('homeq');
+  var hometabs = document.getElementById('hometabs');
+  var homeTab = 'all';
+  function homeFilter(){
+    if (!homeq) return;
+    var t = homeq.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('.board-card');
+    var secs2 = document.querySelectorAll('section[data-subj]');
+    var grpHs = document.querySelectorAll('.grp-h');
+    for (var iE = 0; iE < cards.length; iE++) {
+      cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+    }
+    for (var iF = 0; iF < secs2.length; iF++) {
+      var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+      for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+      sec.style.display = ((homeTab === 'all' || sec.dataset.subj === homeTab) && vis) ? '' : 'none';
+    }
+    for (var iH = 0; iH < grpHs.length; iH++) {
+      var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+      if (next && next.classList && next.classList.contains('cards')) {
+        var c2 = next.querySelectorAll('.board-card');
+        for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+      }
+      grp.style.display = vis2 ? '' : 'none';
+    }
+    var recentSec2 = document.getElementById('recent');
+    if (recentSec2) {
+      var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+      for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+      recentSec2.style.display = (t && !rVis) ? 'none' : '';
+    }
+  }
+  if (homeq) homeq.addEventListener('input', homeFilter);
+  if (hometabs) {
+    hometabs.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-tab]');
+      if (!btn) return;
+      homeTab = btn.getAttribute('data-tab');
+      var bs = hometabs.querySelectorAll('button[data-tab]');
+      for (var iK = 0; iK < bs.length; iK++) bs[iK].classList.toggle('on', bs[iK] === btn);
+      homeFilter();
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

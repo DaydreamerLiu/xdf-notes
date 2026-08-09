@@ -1,0 +1,1600 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语 · 写作_例题</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.9;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+
+/* ---------- 侧栏 ---------- */
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:rgba(251,250,246,.82);border-right:1px solid #EDEAE0;
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin;
+  transition:width .22s ease,background .2s ease}
+html[data-theme="dark"] .layout > nav{background:rgba(20,25,34,.78);border-right-color:#232A37}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem .6rem .95rem 1.15rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.8rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.86rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.8rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.76rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+/* 板块级折叠块(2026-08-09: 全站统一; 行尾 .tog 箭头负责折叠, 点板块名 = 跳转) */
+nav details.brd{margin:.05rem .3rem .15rem}
+nav details.brd>summary{list-style:none;cursor:default;display:flex;align-items:center;gap:.4rem;
+  padding:.12rem .35rem .12rem .45rem;margin:0;border-radius:8px;user-select:none}
+nav details.brd>summary::-webkit-details-marker{display:none}
+nav details.brd>summary:hover{background:var(--accent-soft)}
+nav details.brd>summary a.b{flex:1;min-width:0;margin:.02rem 0;padding:.3rem .42rem;cursor:pointer}
+nav details.brd>summary a.b:hover{background:none;text-decoration:none}
+nav details.brd>summary a.b.on:hover{background:var(--accent-soft)}
+nav details.brd>summary .tog{flex:none;width:1.55rem;text-align:center;color:var(--ink3);
+  font-size:.66rem;cursor:pointer;padding:.35rem 0;border-radius:6px}
+nav details.brd>summary .tog:hover{color:var(--accent2);background:var(--accent-soft)}
+nav details.brd>summary .tog::before{content:"▸";display:inline-block;transition:transform .15s ease}
+nav details.brd[open]>summary .tog::before{transform:rotate(90deg)}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶部(无容器框, 2026-08-09): ☰ 左上悬浮 / 操作按钮右上悬浮 / 面包屑随正文流 ---------- */
+main{flex:1;min-width:0;max-width:800px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+#navbtn{position:fixed;top:.7rem;left:.7rem;z-index:110;display:inline-flex;align-items:center;justify-content:center;
+  width:2.1rem;height:2.1rem;padding:0;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:9px;cursor:pointer;font-size:.98rem;flex-shrink:0;line-height:1;box-shadow:var(--shadow-sm);
+  transition:all .15s}
+#navbtn:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+#tbtools{position:fixed;top:.7rem;right:.7rem;z-index:110;display:flex;gap:.4rem}
+#tbtools button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.36rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  box-shadow:var(--shadow-sm);transition:all .15s}
+#tbtools button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+.crumbline{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--ink3);
+  padding:1.5rem 0 .1rem;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumbline a{color:var(--ink2)}
+.crumbline a:hover{color:var(--accent2);text-decoration:none}
+.crumbline .sep{color:var(--ink3)}
+.crumbline b{color:var(--ink);font-weight:600}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.4rem;margin:3rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.15rem;margin:2.3rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2.05;margin:.8rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+/* 宽表格由 JS 包一层 .table-wrap 横向滚动, 防止撑破 800px 行宽 */
+.table-wrap{overflow-x:auto;margin:1.15rem 0;border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.92rem}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin:0 auto 1.4rem}
+.tabs button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:20px;padding:.4rem 1.05rem;font-size:.84rem;cursor:pointer;transition:all .15s}
+.tabs button:hover{border-color:var(--accent);color:var(--accent2)}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* ---------- 侧栏收起(2026-08-09): 折叠态 = 8px 边缘热区零内容; 桌面悬停滑出(JS 控制,
+   移出 1.2s 后自动收回); ☰ 顶栏按钮展开并钉住; 触屏 ☰ 弹浮层 + 遮罩 ---------- */
+#navpin{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
+  cursor:pointer;flex-shrink:0}
+#navpin:hover{border-color:var(--accent);color:var(--accent2)}
+#navpin[aria-pressed="true"]{color:var(--accent2);border-color:var(--accent);background:var(--accent-soft)}
+#navscrim{position:fixed;inset:0;z-index:190;background:rgba(15,18,23,.45);
+  opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s}
+@media (min-width:921px){
+  /* 折叠态: 8px 热区(sticky 占位保持正文宽度), 内容全隐藏(鼠标移入 / ☰ / 键盘聚焦展开) */
+  html[data-nav="collapsed"] .layout > nav{width:8px;overflow:hidden;padding:0;background:transparent}
+  html[data-nav="collapsed"] .layout > nav .brand,
+  html[data-nav="collapsed"] .layout > nav #navq,
+  html[data-nav="collapsed"] .layout > nav a.subj,
+  html[data-nav="collapsed"] .layout > nav .navbody,
+  html[data-nav="collapsed"] .layout > nav #navpin{display:none}
+  /* 展开态 = 浮层覆盖在正文上方(用户要求: 侧栏伸缩时正文不重排);
+     折叠态 8px 占位保持不变 → main 宽度恒定; ☰ 被浮层覆盖, 展开时隐藏(收起靠图钉/移出) */
+  html[data-nav]:not([data-nav="collapsed"]) .layout > nav{position:fixed;left:0;top:0;height:100vh;
+    z-index:180;box-shadow:8px 0 28px rgba(0,0,0,.18)}
+  html[data-nav]:not([data-nav="collapsed"]) #navbtn{display:none}
+  /* 触屏(平板): ☰ 展开为浮层 + 遮罩, 点遮罩/链接收回; 无钉住 */
+  html[data-touch][data-nav="open"] #navscrim{opacity:1;visibility:visible}
+  html[data-touch] #navpin{display:none}
+}
+@media(max-width:920px){#navpin{display:none}}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  .layout > nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  .layout > nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,#tbtools,#navbtn,#topbtn,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style>
+<script>document.documentElement.dataset.nav='collapsed';</script></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span><button id="navpin" type="button" title="钉住目录" aria-pressed="false"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg></button></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="../知识笔记首页.html">全部板块</a><div class="navbody"><div class="sec cur">英语</div><details class="brd" open><summary><a class="b" href="英语_写作.html">写作</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_写作_例题.html#一语法改错题">一、语法改错题</a><a class="d" href="英语_写作_例题.html#11谓语动词个数黄金法则">1.1 谓语动词个数（黄金法则）</a><a class="d" href="英语_写作_例题.html#12动词变形">1.2 动词变形</a><a class="d" href="英语_写作_例题.html#13名词变形">1.3 名词变形</a><a class="d" href="英语_写作_例题.html#14比较级">1.4 比较级</a><a class="d" href="英语_写作_例题.html#15词性混淆">1.5 词性混淆</a><a class="d" href="英语_写作_例题.html#16介词误用">1.6 介词误用</a><a class="d" href="英语_写作_例题.html#17选词不当">1.7 选词不当</a><a class="d" href="英语_写作_例题.html#18拼写错误">1.8 拼写错误</a><a class="d" href="英语_写作_例题.html#19漏词">1.9 漏词</a><a class="d" href="英语_写作_例题.html#110语序">1.10 语序</a><a class="c" href="英语_写作_例题.html#二图表作文--动态图首段">二、图表作文 -- 动态图首段</a><a class="d" href="英语_写作_例题.html#21标题改写">2.1 标题改写</a><a class="d" href="英语_写作_例题.html#22数据描述--此消彼长型">2.2 数据描述 -- 此消彼长型</a><a class="d" href="英语_写作_例题.html#23数据描述--趋势相同幅度不同型">2.3 数据描述 -- 趋势相同幅度不同型</a><a class="c" href="英语_写作_例题.html#三图表作文--静态图首段">三、图表作文 -- 静态图首段</a><a class="d" href="英语_写作_例题.html#31标题改写">3.1 标题改写</a><a class="d" href="英语_写作_例题.html#32百分比表达练习">3.2 百分比表达练习</a><a class="d" href="英语_写作_例题.html#33静态图完整首段">3.3 静态图完整首段</a><a class="c" href="英语_写作_例题.html#四图表作文--主体段与结尾段">四、图表作文 -- 主体段与结尾段</a><a class="d" href="英语_写作_例题.html#41过渡句">4.1 过渡句</a><a class="d" href="英语_写作_例题.html#42完整主体段">4.2 完整主体段</a><a class="d" href="英语_写作_例题.html#43结尾段">4.3 结尾段</a><a class="c" href="英语_写作_例题.html#五图画作文--第一段描述">五、图画作文 -- 第一段描述</a><a class="d" href="英语_写作_例题.html#51整体描述">5.1 整体描述</a><a class="d" href="英语_写作_例题.html#52细节描述--独立主格和分词练习">5.2 细节描述 -- 独立主格和分词练习</a><a class="d" href="英语_写作_例题.html#53标题翻译">5.3 标题翻译</a><a class="c" href="英语_写作_例题.html#六图画作文--第二段解释含义">六、图画作文 -- 第二段解释含义</a><a class="d" href="英语_写作_例题.html#61精神品质类">6.1 精神品质类</a><a class="d" href="英语_写作_例题.html#62社会现象类--常规写法">6.2 社会现象类 -- 常规写法</a><a class="d" href="英语_写作_例题.html#63社会现象类--备选写法现象背景-现象发生-现象原因">6.3 社会现象类 -- 备选写法（现象背景-现象发生-现象原因）</a><a class="c" href="英语_写作_例题.html#七图画作文--第三段结尾">七、图画作文 -- 第三段结尾</a><a class="d" href="英语_写作_例题.html#71精神品质类结尾">7.1 精神品质类结尾</a><a class="d" href="英语_写作_例题.html#72社会现象类结尾">7.2 社会现象类结尾</a><a class="c" href="英语_写作_例题.html#八文字材料题">八、文字材料题</a><a class="d" href="英语_写作_例题.html#81首段练习">8.1 首段练习</a><a class="d" href="英语_写作_例题.html#82主体段练习">8.2 主体段练习</a><a class="d" href="英语_写作_例题.html#83结尾段练习">8.3 结尾段练习</a><a class="c" href="英语_写作_例题.html#九重点句型与词汇专项练习">九、重点句型与词汇专项练习</a><a class="d" href="英语_写作_例题.html#91changeinvschangeof">9.1 change in vs change of</a><a class="d" href="英语_写作_例题.html#92respectively练习">9.2 respectively 练习</a><a class="d" href="英语_写作_例题.html#93notonlybutalso倒装练习">9.3 not only...but also 倒装练习</a><a class="d" href="英语_写作_例题.html#94sthmakesitadjforsbtodosth">9.4 sth. make(s) it adj. for sb. to do sth.</a><a class="d" href="英语_写作_例题.html#95access三用法">9.5 access 三用法</a><a class="d" href="英语_写作_例题.html#96-oriented-friendly练习">9.6 -oriented / -friendly 练习</a><a class="d" href="英语_写作_例题.html#97prioritize替代表达">9.7 prioritize 替代表达</a><a class="c x on" href="英语_写作_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-阅读"><summary><a class="b" href="英语_阅读.html">阅读</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_阅读.html#一阅读考试概览">一、阅读考试概览</a><a class="c" href="英语_阅读.html#二基础方法论">二、基础方法论</a><a class="c" href="英语_阅读.html#三六大题型逐个突破">三、六大题型逐个突破</a><a class="c" href="英语_阅读.html#四干扰项设置规律高频">四、干扰项设置规律【高频】</a><a class="c" href="英语_阅读.html#五长难句在阅读中的处理">五、长难句在阅读中的处理</a><a class="c" href="英语_阅读.html#六真题练习方法">六、真题练习方法</a><a class="c" href="英语_阅读.html#七常见丢分点与考场策略">七、常见丢分点与考场策略</a><a class="c" href="英语_阅读.html#八知识连接">八、知识连接</a><a class="c" href="英语_阅读.html#九新题型PartB必考">九、新题型（Part B）【必考】</a><a class="c x" href="英语_阅读_暑假_例题.html">▸ 暑假例题集</a><a class="c x" href="英语_阅读_无忧_例题.html">▸ 无忧例题集</a></details><details class="brd" data-k="brd-翻译"><summary><a class="b" href="英语_翻译.html">翻译</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_翻译.html#一考试概览">一、考试概览</a><a class="c" href="英语_翻译.html#二翻译流程从英语到汉语的四步法">二、翻译流程: 从英语到汉语的四步法</a><a class="c" href="英语_翻译.html#三词法翻译词义选择与搭配">三、词法翻译: 词义选择与搭配</a><a class="c" href="英语_翻译.html#四翻译技巧">四、翻译技巧</a><a class="c" href="英语_翻译.html#五易错点与避坑指南">五、易错点与避坑指南</a><a class="c" href="英语_翻译.html#六知识连接">六、知识连接</a><a class="c x" href="英语_翻译_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-长难句翻译"><summary><a class="b" href="英语_长难句翻译.html">长难句翻译</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_长难句翻译.html#一长难句处理五步法必考">一、长难句处理五步法 【必考】</a><a class="c" href="英语_长难句翻译.html#二按结构类型处理">二、按结构类型处理</a><a class="c" href="英语_长难句翻译.html#三翻译技巧">三、翻译技巧</a><a class="c" href="英语_长难句翻译.html#四易错点易错">四、易错点 【易错】</a><a class="c" href="英语_长难句翻译.html#五知识连接">五、知识连接</a><a class="c x" href="英语_长难句翻译_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-语法"><summary><a class="b" href="英语_语法.html">语法</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_语法.html#一句子成分与五大基本句型">一、句子成分与五大基本句型</a><a class="c" href="英语_语法.html#二状语成分与状语从句必考">二、状语成分与状语从句 【必考】</a><a class="c" href="英语_语法.html#三特殊结构必考">三、特殊结构 【必考】</a><a class="c" href="英语_语法.html#四三大从句概述">四、三大从句概述</a><a class="c" href="英语_语法.html#五长难句分析方法重点">五、长难句分析方法 【重点】</a><a class="c" href="英语_语法.html#六易错点与考点">六、易错点与考点</a><a class="c" href="英语_语法.html#七知识连接">七、知识连接</a><a class="c x" href="英语_语法_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-完形"><summary><a class="b" href="英语_完形.html">完形</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_完形.html#一题型概览">一、题型概览</a><a class="c" href="英语_完形.html#二解题总流程">二、解题总流程</a><a class="c" href="英语_完形.html#三选项词性考点">三、选项词性考点</a><a class="c" href="英语_完形.html#四词组搭配考点">四、词组搭配考点</a><a class="c" href="英语_完形.html#五常考逻辑关系">五、常考逻辑关系</a><a class="c" href="英语_完形.html#八高频易错点">八、高频易错点</a><a class="c" href="英语_完形.html#六考点类型表做完题对考点用重点">六、考点类型表(做完题对考点用)【重点】</a><a class="c" href="英语_完形.html#七新题型小标题四方法">七、新题型(小标题)四方法</a><a class="c" href="英语_完形.html#九考前准备建议">九、考前准备建议</a></details><details class="brd" data-k="brd-无忧0802_测试卷"><summary><a class="b" href="英语_无忧0802_测试卷.html">无忧0802_测试卷</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_无忧0802_测试卷.html#一试卷总览">一、试卷总览</a><a class="c" href="英语_无忧0802_测试卷.html#二SectionI完形填空20分">二、Section I：完形填空（20 分）</a><a class="c" href="英语_无忧0802_测试卷.html#三SectionII阅读理解60分">三、Section II：阅读理解（60 分）</a><a class="c" href="英语_无忧0802_测试卷.html#四SectionIII新题型20分">四、Section III：新题型（20 分）</a><a class="c" href="英语_无忧0802_测试卷.html#五备考启示">五、备考启示</a></details><details class="brd" data-k="brd-词汇"><summary><a class="b" href="英语_词汇.html">词汇</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_词汇.html#一态度题真题例句重点词">一、态度题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#二例证题真题例句重点词">二、例证题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#三语义题真题例句重点词">三、语义题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#四细节题真题例句重点词">四、细节题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#五推断题真题例句重点词">五、推断题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#六主旨题真题例句重点词">六、主旨题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#七篇章精读全文重点词">七、篇章精读 · 全文重点词</a><a class="c" href="英语_词汇.html#八写作重点词与阅读分离">八、写作重点词(与阅读分离)</a><a class="c" href="英语_词汇.html#九新题型PartB重点词">九、新题型（Part B）重点词</a></details></div></nav>
+<div id="navscrim" aria-hidden="true"></div>
+<main data-subj="english"><div class="crumbline"><a href="../知识笔记首页.html">首页</a><span class="sep">/</span><b>英语 · 写作_例题</b></div><div class="article"><h1>写作_例题</h1><div class="board-meta">📖 英语 · <span class="pill">例题集</span><span class="pill">0 道例题</span></div><blockquote>
+<p>全量收录本板块课件例题（写作第一次课、写作第二次课、写作第三次课(1)、写作第四次课、写作第五次课、1. 动态图首段、2. 静态图首段、3. 图表作文主体段、4. 图表结尾段、6. 图画作文主体段 - 精神品质类、7.1 图画作文主体段 - 社会现象类1、7.2 图画作文主体段 - 社会现象类2（备选写法）、8. 图画结尾段、9. 文字材料题），按类型分组。
+⬅ 返回 <a href="英语_写作.html">理论笔记</a></p>
+</blockquote>
+<hr />
+<h2 id="一语法改错题">一、语法改错题</h2>
+<h3 id="11谓语动词个数黄金法则">1.1 谓语动词个数（黄金法则）</h3>
+<p><b>题目 1</b>: There are many people take part in sports and games now.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: 一个简单句出现了两个谓语动词 (are 和 take)，违反黄金法则。
+
+<b>改正</b>: There are many people <b>who</b> take part in sports and games now.
+
+用定语从句引导词 who 作为"门票"将第二个谓语引入句子。
+</div></details>
+
+<p><b>题目 2</b>: Many people who get married before they are mature enough.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: 整个句子只有 who 从句中有谓语 (get married + are)，主句没有谓语动词，"who get married before they are mature enough" 成了 people 的定语，句子不完整。
+
+<b>改正</b>: Many people get married before they are mature enough.
+
+去掉 who，让 get married 成为主句谓语。
+</div></details>
+
+<h3 id="12动词变形">1.2 动词变形</h3>
+<p><b>题目</b>: I advise you to visit your teacher who <b>teach</b> you College English.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: 定语从句主语 who 指代 teacher（单数），谓语动词应加三单。
+
+<b>改正</b>: I advise you to visit your teacher who <b>teaches/taught</b> you College English.
+
+注意时态根据语境也可用 taught。
+</div></details>
+
+<h3 id="13名词变形">1.3 名词变形</h3>
+<p><b>题目 1</b>: <b>Employee</b> can get more benefits from this policy than <b>employer</b>.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: 可数名词 employee/employer 在泛指时应用复数形式。
+
+<b>改正</b>: <b>Employees</b> can get more benefits from this policy than <b>employers</b>.
+</div></details>
+
+<p><b>题目 2</b>: He had many interesting <b>experience</b> while travelling in Africa.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: experience 作"经历"讲时是可数名词，many 后需用复数。
+
+<b>改正</b>: He had many interesting <b>experiences</b> while travelling in Africa.
+</div></details>
+
+<h3 id="14比较级">1.4 比较级</h3>
+<p><b>题目</b>: Li Hua is <b>more kinder</b> than I.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: kinder 本身就是比较级，不能再加 more。这是最典型的"中式比较级"错误。
+
+<b>改正</b>: Li Hua is <b>kinder</b> than I.
+</div></details>
+
+<h3 id="15词性混淆">1.5 词性混淆</h3>
+<p><b>题目 1</b>: Due to the <b>rapidly</b> development of China's economy, this phenomenon is becoming <b>increasing</b> prevalent.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: rapidly 是副词，不能修饰名词 development；increasing 是形容词，不能修饰形容词 prevalent。
+
+<b>改正</b>: Due to the <b>rapid</b> development of China's economy, this phenomenon is becoming <b>increasingly</b> prevalent.
+
+记住: 形容词修饰名词，副词修饰动词/形容词/副词。
+</div></details>
+
+<p><b>题目 2</b>: Some people firmly agree, but others <b>against</b> it.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: against 是介词，不是动词，不能直接作谓语。
+
+<b>改正</b>: Some people firmly agree, but others <b>are against</b> it.
+
+类似错误: "I against the plan" → "I am against the plan"。
+</div></details>
+
+<h3 id="16介词误用">1.6 介词误用</h3>
+<p><b>题目 1</b>: <b>Under</b> his help, I finished the task in time.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: 中文"在他的帮助下"用 under 是逐字硬翻。英文固定搭配是 with one's help。
+
+<b>改正</b>: <b>With</b> his help, I finished the task in time.
+</div></details>
+
+<p><b>题目 2</b>: She has difficulty <b>on</b> learning English.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: have difficulty 固定搭配介词是 in，不是 on。
+
+<b>改正</b>: She has difficulty <b>in</b> learning English.
+</div></details>
+
+<h3 id="17选词不当">1.7 选词不当</h3>
+<p><b>题目 1</b>: I <b>opened</b> the television to watch a funny movie.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: open 用于物理上"打开"(开门/开窗/开书)，电器设备"打开"用 turn on。
+
+<b>改正</b>: I <b>turned on</b> the television to watch a funny movie.
+</div></details>
+
+<p><b>题目 2</b>: You should <b>eat</b> this medicine three times a day.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: 中文"吃药"的"吃"不能直译为 eat。英文固定搭配是 take medicine。
+
+<b>改正</b>: You should <b>take</b> this medicine three times a day.
+</div></details>
+
+<h3 id="18拼写错误">1.8 拼写错误</h3>
+<p><b>题目 1</b>: In <b>morden</b> society, the <b>goverment</b> should take measures to protect the <b>enviroment</b>.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>改正</b>: In <b>modern</b> society, the <b>government</b> should take measures to protect the <b>environment</b>.
+</div></details>
+
+<p><b>题目 2</b>: It is <b>convinient</b> to use this method to inform you of this case.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>改正</b>: It is <b>convenient</b> to use this method to inform you of this case.
+</div></details>
+
+<h3 id="19漏词">1.9 漏词</h3>
+<p><b>题目 1</b>: There's something that I'd like to <b>talk</b>.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: talk 是不及物动词，需要加介词 about 才能带宾语 (something)。
+
+<b>改正</b>: There's something that I'd like to <b>talk about</b>.
+</div></details>
+
+<p><b>题目 2</b>: We have <b>problem</b> that needs to be solved immediately.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: problem 是可数名词单数，前面需要冠词。
+
+<b>改正</b>: We have <b>a problem</b> that needs to be solved immediately.
+</div></details>
+
+<h3 id="110语序">1.10 语序</h3>
+<p><b>题目</b>: I know that you are interested in <b>Chinese traditional</b> cooking.</p>
+<details><summary>解析</summary><div class="step">
+
+<b>错误</b>: 形容词顺序规则：国籍(Chinese)应在性质/描述类(traditional)之前？不对--口诀"美小圆旧黄，法国木书房"中，"法国"(国籍/来源)在"旧"(新旧)之后，但 traditional 是属于"用途/类别"类还是"性质"类？
+
+正确顺序: 描述类 → 大小 → 形状 → 新旧 → 颜色 → 来源/国籍 → 材料 → 用途 → 中心名词
+
+Chinese 是国籍/来源，traditional 是描述/性质。因此描述(traditional)在前，国籍(Chinese)在后。
+
+<b>改正</b>: I know that you are interested in <b>traditional Chinese</b> cooking.
+</div></details>
+
+<hr />
+<h2 id="二图表作文--动态图首段">二、图表作文 -- 动态图首段</h2>
+<h3 id="21标题改写">2.1 标题改写</h3>
+<p><b>题目 1 (2011 英语二)</b>: 2008、2009 年国内轿车市场部分品牌市场份额示意图</p>
+<details><summary>参考表达</summary><div class="step">
+
+The column chart clearly illustrates <b>the changes in the market shares of some brands in the domestic car market from 2008 to 2009</b>.
+
+<div class="alt">或: The column chart clearly illustrates <b>how the market shares of some brands in the domestic car market changed from 2008 to 2009</b>.</div>
+
+<div class="vn"><b>词汇</b>: 轿车市场 = car market；<br>市场份额 = market share；<br>国产品牌 = domestic/Chinese brand；<br>日系品牌 = Japanese brand；<br>美系品牌 = American brand</div>
+</div></details>
+
+<p><b>题目 2 (2014 英语二)</b>: 20 年间中国城镇人口与乡村人口变化图</p>
+<details><summary>参考表达</summary><div class="step">
+
+The column chart clearly illustrates <b>the changes in the urban and rural populations in China from 1990 to 2010</b>.
+
+<div class="alt">或: The column chart clearly illustrates <b>how the urban and rural populations of China changed between 1990 and 2010</b>.</div>
+
+<div class="vn"><b>词汇</b>: 城镇人口 = urban population；<br>乡村人口 = rural population；<br>百万 = million</div>
+</div></details>
+
+<p><b>题目 3 (2017 英语二)</b>: 2013-2015 年我国博物馆数量和参观人数</p>
+<details><summary>参考表达</summary><div class="step">
+
+The line chart clearly illustrates <b>the changes in the numbers of museums and their visitors in China from 2013 to 2015</b>.
+
+<div class="vn"><b>词汇</b>: 博物馆 = museum；<br>参观人数 = visitor / number of visitors；<br>十万 = 0.1 million</div>
+</div></details>
+
+<p><b>题目 4 (2010 英语二)</b>: Mobile-phone subscriptions (2000-2008)</p>
+<details><summary>参考表达</summary><div class="step">
+
+The column chart clearly illustrates <b>the changes in the numbers of mobile-phone subscriptions in developing and developed countries from 2000 to 2008</b>.
+
+<div class="vn"><b>词汇</b>: developing countries = 发展中国家；<br>developed countries = 发达国家；<br>subscription = 订阅/订购；<br>billion = 十亿</div>
+</div></details>
+
+<p><b>题目 5 (2019 英语二)</b>: 某高校 2013 年和 2018 年本科毕业生去向统计</p>
+<details><summary>参考表达</summary><div class="step">
+
+The column chart shows <b>the changes in the career choices of the graduates of a certain college from 2013 to 2018</b>.
+
+<div class="vn"><b>词汇</b>: 就业 = find a job / employment；<br>升学 = pursue further study；<br>创业 = start a business / entrepreneurship</div>
+</div></details>
+
+<h3 id="22数据描述--此消彼长型">2.2 数据描述 -- 此消彼长型</h3>
+<p><b>题目 1 (2011 英语二)</b>: 国产品牌 25%→33%，日系品牌 35%→25%</p>
+<details><summary>参考表达</summary><div class="step">
+
+According to the chart, the market share of domestic brands rose from <b class="kw">26%</b> to <b class="kw">33%</b>.<br>By contrast, that of Japanese brands dropped from <b class="kw">35%</b> to <b class="kw">25%</b> during the same period.
+
+或使用句式二: In detail, there was a sharp increase in the market share of domestic car brands from <b class="kw">25%</b> in 2008 to about <b class="kw">32%</b> in 2009.<br>By contrast, this period witnessed a rapid decline in the proportion of Japanese ones from <b class="kw">35%</b> to <b class="kw">25%</b>.
+</div></details>
+
+<p><b>题目 2 (2014 英语二)</b>: 城镇人口 300m→666m，乡村人口 834m→674m</p>
+<details><summary>参考表达</summary><div class="step">
+
+完整首段: The column chart shows the changes in the urban and rural populations in China from 1990 to 2010.<br>According to the chart, the urban population rose from 300 million to 666 million.<br>By contrast, the rural population dropped from 834 million to 674 million during the same period.
+</div></details>
+
+<h3 id="23数据描述--趋势相同幅度不同型">2.3 数据描述 -- 趋势相同幅度不同型</h3>
+<p><b>题目 1 (2010 英语二)</b>: 发展中国家 0.4b→4b，发达国家 0.6b→1b</p>
+<details><summary>参考表达</summary><div class="step">
+
+基础版: According to the chart, the number of users in developing countries surged from 0.4 billion to 4 billion, while the figure in developed countries increased gradually from 0.6 billion to 1 billion.
+
+进阶版: We can see continued growth in the numbers of mobile-phone users both in developing and developed countries these years.<br>A closer look, however, shows a striking difference: the number of users in developing countries grew at a much faster pace, from about 0.4 billion to 4 billion, while the figure in developed countries just witnessed a steady increase, from 0.6 billion to 1 billion.
+</div></details>
+
+<p><b>题目 2 (2017 英语二)</b>: 博物馆数量 4165→4692，参观人数 637.8 万→781.1 万</p>
+<details><summary>参考表达</summary><div class="step">
+
+The line chart clearly illustrates the changes in the numbers of museums and their visitors in China from 2013 to 2015.<br>Specifically, the number of museums increased moderately from 4165 in 2013 to 4692 in 2015.<br>Meanwhile, this period witnessed a sharp rise in the number of visitors from 637.8 million to 781.1 million.
+</div></details>
+
+<p><b>题目 3 (2019 英语二)</b>: 就业 68.1%→60.7%，升学 26.3%→34%，创业 1.3%→2.6%</p>
+<details><summary>参考表达</summary><div class="step">
+
+完整首段: The column chart clearly illustrates the changes in the future plans of graduates at a certain university between 2013 and 2018.<br>To be specific, this period witnessed a moderate decline in the proportion of graduates who chose to work from <b class="kw">68.1%</b> to <b class="kw">60.7%</b>.<br>By contrast, there was a significant increase in the proportion of those opting for further study from <b class="kw">26.3%</b> to <b class="kw">34.0%</b>, and the percentage of graduates engaged in entrepreneurship rose gently from <b class="kw">1.3%</b> to <b class="kw">2.6%</b> during the same period.
+</div></details>
+
+<hr />
+<h2 id="三图表作文--静态图首段">三、图表作文 -- 静态图首段</h2>
+<h3 id="31标题改写">3.1 标题改写</h3>
+<p><b>题目 1 (2016 英语二)</b>: 某高校学生旅游目的调查</p>
+<details><summary>参考表达</summary><div class="step">
+
+The pie chart clearly illustrates <b>why the students at a certain university go on a journey</b>.
+
+<div class="alt">或: The pie chart shows <b>the travel purposes of the students at a certain college</b>.</div>
+
+<div class="vn"><b>词汇</b>: 旅游目的 = travel purpose；<br>欣赏风景 = enjoy the scenery；<br>缓解压力 = relieve/alleviate stress；<br>广交朋友 = make friends；<br>培养独立能力 = develop independence</div>
+</div></details>
+
+<p><b>题目 2 (2018 英语二)</b>: 2017 年某市消费者选择餐厅时的关注因素</p>
+<details><summary>参考表达</summary><div class="step">
+
+The pie chart clearly illustrates <b>the factors to which the consumers in a certain city paid attention when choosing a restaurant in 2017</b>.
+
+<div class="alt">或: The column chart clearly illustrates <b>what the consumers of a certain city paid attention to when choosing a restaurant in 2017</b>.</div>
+
+<div class="vn"><b>词汇</b>: 关注因素 = factor taken into account；<br>特色 = feature；<br>服务 = service；<br>环境 = environment；<br>价格 = price</div>
+</div></details>
+
+<p><b>题目 3 (2020 英语二)</b>: 某高校学生手机阅读目的调查</p>
+<details><summary>参考表达</summary><div class="step">
+
+This pie chart clearly illustrates <b>why the students at a certain college read on mobile phones</b>.
+
+<div class="alt">或: The pie chart clearly illustrates <b>the purposes of reading on mobile phones among the students at a certain university</b>.</div>
+
+<div class="vn"><b>词汇</b>: 学习知识 = acquire knowledge；<br>消磨时间 = kill time；<br>获取信息 = obtain information</div>
+</div></details>
+
+<p><b>题目 4 (2021 英语二)</b>: 某市居民体育锻炼方式调查</p>
+<details><summary>参考表达</summary><div class="step">
+
+The column chart clearly illustrates <b>how the residents of a certain city do exercise</b>.
+
+<div class="alt">或: The column chart clearly illustrates <b>the ways of exercising of the residents in a certain city</b>.</div>
+</div></details>
+
+<p><b>题目 5 (2015 英语二)</b>: 我国某市居民春节假期花销比例</p>
+<details><summary>参考表达</summary><div class="step">
+
+The pie chart clearly illustrates <b>how the residents in a certain city of China spend their money during the Spring Festival</b>.
+
+<div class="alt">或: The pie chart clearly illustrates <b>the spending proportions of the residents of a certain city in China during the Spring Festival</b>.</div>
+</div></details>
+
+<p><b>题目 6 (2012 英语二)</b>: 某公司员工工作满意度调查</p>
+<details><summary>参考表达</summary><div class="step">
+
+The table clearly illustrates <b>the job satisfaction of employees among different age groups at a certain company</b>.
+
+<div class="vn"><b>词汇</b>: 工作满意度 = job satisfaction；<br>对...不满意 = be dissatisfied/discontented with；<br>≤40 岁 = aged 40 and under；<br>41-50 岁 = aged between 41 and 50；<br>>50 岁 = aged over 50</div>
+</div></details>
+
+<p><b>题目 7 (2013 英语二)</b>: 某高校学生兼职情况</p>
+<details><summary>参考表达</summary><div class="step">
+
+The column chart clearly illustrates <b>the proportions of the students participating in part-time work in different grades at a certain university</b>.
+
+<div class="vn"><b>词汇</b>: 兼职 = take/do a part-time job；<br>大一 = freshman；<br>大二 = sophomore；<br>大三 = junior；<br>大四 = senior</div>
+</div></details>
+
+<h3 id="32百分比表达练习">3.2 百分比表达练习</h3>
+<p><b>题目 1</b>: 男生占学生总人数的 70%。</p>
+<details><summary>参考表达</summary><div class="step">
+
+写法一 (account for): Boys account for <b class="kw">70%</b> of the students.
+
+写法二 (% of B): <b class="kw">70%</b> of the students are boys.
+
+写法三 (the percentage of): The percentage of boys is <b class="kw">70%</b>.
+</div></details>
+
+<p><b>题目 2</b>: 氧气占空气总量的 21%。</p>
+<details><summary>参考表达</summary><div class="step">
+
+Oxygen accounts for <b class="kw">21%</b> of the total amount of air.
+</div></details>
+
+<h3 id="33静态图完整首段">3.3 静态图完整首段</h3>
+<p><b>题目 1 (2016 英语二)</b>: 欣赏风景 37%, 缓解压力 33%, 广交朋友 9%, 培养独立能力 6%</p>
+<details><summary>参考表达</summary><div class="step">
+
+The pie chart clearly illustrates why the students at a certain university go on a journey.<br>Specifically, the students whose purpose is to enjoy the scenery account for <b class="kw">37%</b>, the largest proportion among all.<br>Meanwhile, <b class="kw">33%</b> of the students surveyed look to relieve stress through trips.<br>In addition, the percentages of those who travel in order to make new friends and cultivate independence are <b class="kw">9%</b> and <b class="kw">6%</b> respectively.
+</div></details>
+
+<p><b>题目 2 (2018 英语二)</b>: 特色 36.3%, 服务 26.8%, 环境 23.8%, 价格 8.4%</p>
+<details><summary>参考表达</summary><div class="step">
+
+The pie chart clearly illustrates the factors to which the consumers in a certain city paid attention when choosing a restaurant in 2017.<br>Specifically, the consumers who attached importance to the features accounted for <b class="kw">36.3%</b>, the largest proportion among all.<br>Meanwhile, the percentages of those who cared about the service and the environment were <b class="kw">26.8%</b> and <b class="kw">23.8%</b> respectively.<br>In addition, <b class="kw">8.4%</b> of the consumers surveyed took the prices into consideration.
+
+拓展句式: Specifically, consumers prioritizing the features account for the largest percentage among all categories, at <b class="kw">36.3%</b>, followed by those caring about the service (<b class="kw">26.8%</b>), the environment (<b class="kw">23.8%</b>) and the prices (<b class="kw">8.4%</b>).
+</div></details>
+
+<p><b>题目 3 (2020 英语二)</b>: 学习知识 59.5%, 消磨时间 21.3%, 获取信息 17%</p>
+<details><summary>参考表达</summary><div class="step">
+
+The pie chart clearly illustrates why the students at a certain college read on mobile phones.<br>Specifically, the students whose purpose is to acquire knowledge account for <b class="kw">59.5%</b>, the largest proportion among all.<br>Meanwhile, the percentage of those using phones in order to kill time is <b class="kw">21.3%</b>.<br>In addition, <b class="kw">17%</b> of the students surveyed intend to obtain information.
+</div></details>
+
+<p><b>题目 4 (2015 英语二)</b>: 新年礼物 40%, 交通 20%, 聚会吃饭 20%, 其他 20%</p>
+<details><summary>参考表达</summary><div class="step">
+
+The pie chart clearly illustrates how the residents in a certain city of China spend their money during the Spring Festival.<br>Specifically, the money spent on New Year gifts accounts for <b class="kw">40%</b>, the largest proportion among all.<br>Meanwhile, the percentages of the spending on transportation, gatherings and other activities are each <b class="kw">20%</b>.
+</div></details>
+
+<p><b>题目 5 (2013 英语二)</b>: 大四 88.24%, 大三 71.93%, 大二 71.13%, 大一 67.77%</p>
+<details><summary>参考表达</summary><div class="step">
+
+The column chart clearly illustrates the proportions of the students participating in part-time work in different grades at a certain university.<br>Specifically, the seniors who take part in part-time jobs account for <b class="kw">88.24%</b>, the largest proportion among all grades.<br>Meanwhile, the percentages of the juniors and sophomores doing part-time jobs are <b class="kw">71.93%</b> and <b class="kw">71.13%</b> respectively.<br>In addition, <b class="kw">67.77%</b> of the freshmen work in their spare time.
+</div></details>
+
+<p><b>题目 6 (2021 英语二)</b>: 独自锻炼 54.3%, 和朋友一起 47.7%, 和家人一起 23.9%, 团体活动 15.8%</p>
+<details><summary>参考表达</summary><div class="step">
+
+The column chart shows the results of a survey in which the residents of a certain city are asked how they do exercise.<br>According to the chart, those who do sports alone account for the largest proportion (<b class="kw">54.3%</b>) of the residents surveyed.<br>Moreover, <b class="kw">47.7%</b> of the participants exercise with their friends.<br>By contrast, the percentages of those who exercise with family members and join in group activities are <b class="kw">23.9%</b> and <b class="kw">15.8%</b> respectively.
+</div></details>
+
+<p><b>题目 7 (2012 英语二)</b>: 表格 -- ≤40 岁不满 33.3%，41-50 岁不满 64%，&gt;50 岁不满 10%</p>
+<details><summary>参考表达</summary><div class="step">
+
+The table clearly illustrates the job satisfaction of employees among different age groups at a certain company.<br>Specifically, those who express dissatisfaction account for <b class="kw">64%</b> of the staff aged between 41 and 50, the largest proportion among all groups.<br>Meanwhile, the percentage of the participants aged 40 and under who are discontented is <b class="kw">33.3%</b>.<br>In addition, only <b class="kw">10%</b> of those who are over 50 are dissatisfied.
+</div></details>
+
+<hr />
+<h2 id="四图表作文--主体段与结尾段">四、图表作文 -- 主体段与结尾段</h2>
+<h3 id="41过渡句">4.1 过渡句</h3>
+<p><b>题目</b>: 写出两种"不难发现原因"的过渡句。</p>
+<details><summary>参考表达</summary><div class="step">
+
+句式一: It is not difficult to come up with some possible factors for the result/the change(s)/the phenomenon.
+
+句式二: At least two primary factors, in my opinion, can account for the result/the change(s)/the phenomenon.
+</div></details>
+
+<h3 id="42完整主体段">4.2 完整主体段</h3>
+<p><b>题目 1 (2012 英语二)</b>: 工作满意度 -- 为什么 41-50 岁最不满意？</p>
+<details><summary>参考表达</summary><div class="step">
+
+At least two primary factors, in my opinion, can explain the phenomenon.<br>For one thing, financial pressure makes it harder for middle-aged employees to feel satisfied with their jobs.<br>Since they have to take care of their elderly parents and young children, they may complain that their salaries barely cover their household expenses.<br>For another, workers aged 50 and above are more inclined to be content with their jobs, as they can perform their duties with greater efficiency and ease, owing to their abundant work experience and skills, combined with relatively lighter tasks assigned to them because of their seniority.
+</div></details>
+
+<p><b>题目 2 (2011 英语二)</b>: 国产车份额上升原因</p>
+<details><summary>参考表达</summary><div class="step">
+
+At least two primary factors, in my opinion, can account for the changes.<br>For one thing, domestic vehicles boast competitive prices.<br>Due to government support for domestic automakers, such as tax incentives, interest-free loans and financial subsidies, the manufacturing costs of automobiles made in China are lower than those of foreign counterparts.<br>Correspondingly, their selling prices are lower, which makes them gain popularity among consumers.<br>For another, the quality of domestic automobiles improves significantly.<br>With the development of science and technology, domestic cars are continuously upgraded, which helps greatly improve their quality, including more accurate navigation systems and more reliable brakes, enabling consumers to have greater confidence in domestic cars.
+</div></details>
+
+<p><b>题目 3 (2014 英语二)</b>: 城镇人口上升原因</p>
+<details><summary>参考表达</summary><div class="step">
+
+At least two primary factors, in my opinion, can account for the changes.<br>For one thing, cities have more job opportunities, which serves as a strong motivator for rural residents to migrate.<br>The majority of factories and enterprises are based in cities, offering not only a wider range of career options but also more competitive salaries.<br>For another, cities boast abundant educational resources, with more prestigious schools and highly qualified teachers to choose from.<br>As a result, parents who attach great importance to education move to cities.
+</div></details>
+
+<p><b>题目 4 (2019 英语二)</b>: 毕业生去向变化原因</p>
+<details><summary>参考表达</summary><div class="step">
+
+At least two primary factors, in my opinion, can explain the changes.<br>For one thing, the highly competitive job market makes it harder for graduates to find a decent job.<br>As the number of college graduates continues to grow, those lacking confidence in securing a good job may choose to pursue a master's degree to boost their qualifications.<br>For another, it is clear that the government provides new graduates with startup-friendly policies, such as tax incentives and financial subsidies.<br>As a result, students are more motivated to pursue their entrepreneurial dreams.
+</div></details>
+
+<p><b>题目 5 (2018 英语二)</b>: 消费者重视特色/服务 &gt; 价格</p>
+<details><summary>参考表达</summary><div class="step">
+
+At least two primary factors, in my opinion, can explain the phenomenon.<br>For one thing, as living standards rise, people are less concerned about prices.<br>With economic prosperity, those with significantly higher incomes are now more willing to dine at upscale restaurants boasting superb service and a pleasant environment.<br>For another, people choose to eat out in order to escape from the routine of home-cooking.<br>As a result, restaurants offering creative recipes or signature dishes appeal to consumers, especially those who seek novelty.
+</div></details>
+
+<p><b>题目 6 (2017 英语二)</b>: 博物馆数量和参观人数增长原因</p>
+<details><summary>参考表达</summary><div class="step">
+
+At least two primary factors, in my opinion, can explain the changes.<br>For one thing, the government provides strong support for the construction of museums.<br>Thanks to China's sustained economic growth, the people-oriented government accumulates more funds to improve citizens' well-being, which enables it to accelerate infrastructure construction, including that of museums.<br>For another, public demand undergoes tremendous changes.<br>As people's living standards improve by leaps and bounds, their basic needs such as food and housing are met, leading them to pursue higher-level spiritual fulfillment.<br>Museums, as carriers of history and art, allow people to enrich their inner world, which further fuels public enthusiasm for museums.
+</div></details>
+
+<p><b>题目 7 (2010 英语二)</b>: 发展中国家和发达国家手机用户差异</p>
+<details><summary>参考表达</summary><div class="step">
+
+At least two primary factors, in my opinion, can account for the changes.<br>For one thing, as is universally acknowledged, local residents in developing countries enjoy higher per capita disposable income.<br>Due to the continuous and prosperous economic development in these countries in recent years, people can afford to purchase mobile phones that were once seen as luxuries.<br>For another, it is clear that developed countries such as European nations and North American countries are characterized by smaller populations and limited market sizes, thus causing their markets to show a trend of saturation.
+</div></details>
+
+<h3 id="43结尾段">4.3 结尾段</h3>
+<p><b>题目 1 (2011 英语二)</b>: 国产车份额上升的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+It can be observed that consumers increasingly favored domestic brands from 2008 to 2009, which is encouraging.<br>To sustain this momentum, domestic car manufacturers are supposed to further upgrade core technologies and after-sales services.<br>With persistent efforts in these aspects, this trend is projected to continue in the foreseeable future.
+</div></details>
+
+<p><b>题目 2 (2014 英语二)</b>: 城镇人口增长的结尾（好事写法）</p>
+<details><summary>参考表达</summary><div class="step">
+
+It can be observed that the urban population increased from 1990 to 2010, which is encouraging.<br>To sustain this momentum, the Chinese government needs to further improve education, health care and infrastructure in urban areas.<br>With persistent efforts in these aspects, this trend is projected to continue in the foreseeable future.
+</div></details>
+
+<p><b>题目 3 (2014 英语二)</b>: 城镇人口增长过快（坏事写法）</p>
+<details><summary>参考表达</summary><div class="step">
+
+It can be observed that the urban population increased at an excessively rapid rate from 1990 to 2010, which is concerning.<br>To address this issue, the Chinese government should attach importance to the balanced rural-urban development.<br>Only in this way can sustainable social harmony be achieved.
+</div></details>
+
+<p><b>题目 4 (2018 英语二)</b>: 餐厅选择的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+It can be observed that consumers were no longer worried about the prices when choosing a restaurant, which is encouraging.<br>Accordingly, it is advisable that restaurants further improve the quality of their services and explore more diversified features.<br>Only in this way can they stand out in today's highly competitive market.
+</div></details>
+
+<p><b>题目 5 (2012 英语二)</b>: 工作满意度调查的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+It can be observed that a significant proportion of middle-aged staff report job dissatisfaction, which is concerning.<br>To address this issue, not only should the company pay more attention to employees' needs, but it should also cultivate a growth-oriented and harmonious workplace.<br>Only in this way can the company achieve stable development and retain talented employees.
+</div></details>
+
+<hr />
+<h2 id="五图画作文--第一段描述">五、图画作文 -- 第一段描述</h2>
+<h3 id="51整体描述">5.1 整体描述</h3>
+<p><b>题目 1 (2018 英语一)</b>: 选课进行时</p>
+<details><summary>参考表达</summary><div class="step">
+
+We can see in the picture that a college student is selecting courses in front of a computer.
+</div></details>
+
+<p><b>题目 2 (2011 英语一)</b>: 旅程之余</p>
+<details><summary>参考表达</summary><div class="step">
+
+We can see in the picture that two tourists are enjoying the scenery on a boat.
+</div></details>
+
+<p><b>题目 3 (2019 英语一)</b>: 途中</p>
+<details><summary>参考表达</summary><div class="step">
+
+We can see in the picture that two young men are hiking in the mountains. / We can see in the picture that two young men are on their way to the top of a mountain.
+</div></details>
+
+<p><b>题目 4 (2015 英语一)</b>: 手机时代的聚会</p>
+<details><summary>参考表达</summary><div class="step">
+
+We can see in the picture that four young adults are having dinner together.
+</div></details>
+
+<p><b>题目 5 (2012 英语一)</b>: 乐观悲观</p>
+<details><summary>参考表达</summary><div class="step">
+
+We can see in the picture that two men are in front of an overturned bottle. / We can see in the picture that two men have different attitudes towards an overturned bottle.
+</div></details>
+
+<p><b>题目 6 (2016 英语一)</b>: 与其只提要求，不如做个榜样</p>
+<details><summary>参考表达</summary><div class="step">
+
+We can see in the pictures that two fathers have different ways of teaching their children. / two fathers have different parenting styles.
+
+(或强调变化) We can see in the pictures that a father has changed his parenting style.
+</div></details>
+
+<p><b>题目 7 (2014 英语一)</b>: 相携</p>
+<details><summary>参考表达</summary><div class="step">
+
+We can see in the pictures that a mother and daughter have been mutually supporting each other through thick and thin.
+</div></details>
+
+<p><b>题目 8 (2010 英语一)</b>: 文化火锅</p>
+<details><summary>参考表达</summary><div class="step">
+
+We can see in the picture that a hot pot is boiling.
+</div></details>
+
+<h3 id="52细节描述--独立主格和分词练习">5.2 细节描述 -- 独立主格和分词练习</h3>
+<p><b>题目 1</b>: 葛优躺在沙发上。葛优盯着天花板。葛优被一只猫陪着。把三句合成一句。</p>
+<details><summary>参考表达</summary><div class="step">
+
+Accompanied by a cat, Ge You lies on the sofa, staring at the ceiling.
+
+(独立主格版) With a cat accompanying him, Ge You lies on the sofa, staring at the ceiling.
+
+<div class="vn"><b>分析</b>: 动作主体与主句主语一致用分词 (staring), 不一致用独立主格 (with a cat accompanying him)。</div>
+</div></details>
+
+<p><b>题目 2 (2019 英语一)</b>: 途中 -- 旁边放着包，其中一人坐在石阶上，叹气说"太累了不爬了"</p>
+<details><summary>参考表达</summary><div class="step">
+
+With his backpack put aside, one of them sits on a stone step, sighing, "I'm too tired to hike."
+</div></details>
+
+<p><b>题目 3 (2008 英语一)</b>: 合作 -- 捆腿、扶肩膀、向前跑、拐杖留在身后</p>
+<details><summary>参考表达</summary><div class="step">
+
+Binding their disabled legs together and holding on to each other's shoulders, these two men dash forward, with their crutches left behind.
+</div></details>
+
+<p><b>题目 4 (2015 英语一)</b>: 手机时代的聚会 -- 盯着手机不说话、食物没动</p>
+<details><summary>参考表达</summary><div class="step">
+
+Staring at the smartphones in their hands, they don't talk with each other, with the tasty food in front of them untouched.
+</div></details>
+
+<p><b>题目 5 (2011 英语一)</b>: 旅程之余 -- 扔垃圾进湖、湖里满是空瓶子</p>
+<details><summary>参考表达</summary><div class="step">
+
+One of them recklessly throws rubbish into the lake, which is already littered with empty bottles, watermelon rinds, fish bones and so on.
+</div></details>
+
+<p><b>题目 6 (2018 英语一)</b>: 选课 -- 困惑、思考选轻松的还是有挑战的</p>
+<details><summary>参考表达</summary><div class="step">
+
+He seems confused, wondering which course to choose, a challenging one that contains new knowledge and emphasizes innovation, or an easy one that requires little homework but guarantees a high score.
+</div></details>
+
+<p><b>题目 7 (2012 英语一)</b>: 乐观悲观 -- 捂脸叹气"全完了"，另一人扶瓶子</p>
+<details><summary>参考表达</summary><div class="step">
+
+With his hand covering his face, one of them is standing still, sighing, "It's all over." By contrast, the other man seems optimistic because there is still some water left, hurrying to pick up the bottle.
+</div></details>
+
+<p><b>题目 8 (2019 英语一)</b>: 途中 -- 综合描写</p>
+<details><summary>参考表达</summary><div class="step">
+
+We can see in the picture that two young men are hiking in the mountains.<br>With his backpack put aside, one of them sits on a stone step, sighing, "I'm too tired to hike." By contrast, the other man looks cheerful, encouraging his companion to continue after a short break by handing him a bottle of water. (57 words)
+</div></details>
+
+<h3 id="53标题翻译">5.3 标题翻译</h3>
+<p><b>题目</b>: 翻译下列图画标题</p>
+<details><summary>参考表达</summary><div class="step">
+
+1. 2019 途中 → On the Way
+2. 2018 选课进行时 → Course Selection Is Underway
+3. 2016 与其只提要求，不如做个榜样 → Set an Example Instead of Just Making a Demand
+4. 2011 旅程之"余" → "Remains" of a Journey
+5. 2010 文化"火锅"既美味又营养 → Cultural "Hot Pot" Is Both Delicious and Nutritious
+
+<b>标题呈现句型</b>: Under the picture(s) is a caption which reads: "..."
+
+<b>大写规则</b>: 实义词首字母大写，冠词、短介词、连词不大写（除非是首词）。
+</div></details>
+
+<hr />
+<h2 id="六图画作文--第二段解释含义">六、图画作文 -- 第二段解释含义</h2>
+<h3 id="61精神品质类">6.1 精神品质类</h3>
+<p><b>题目 1 (2019 英语一)</b>: 途中 -- 坚持/毅力</p>
+<details><summary>参考表达</summary><div class="step">
+
+<b>主旨句</b>: The picture conveys that it is crucial to persevere when faced with difficulties.
+
+<b>主体段完整版</b>:
+The picture conveys that it is crucial to persevere when faced with difficulties.<br>For one thing, perseverance significantly enhances the likelihood of success.<br>As is universally acknowledged, the way to success is often fraught with difficulties, so only those who possess unwavering determination can conquer these hurdles and achieve career objectives and life goals.<br>For another, lack of perseverance leads to a waste of time and energy.<br>For instance, if a student gives up halfway when preparing for the postgraduate entrance exam, the effort that he or she has put in will end in vain.
+</div></details>
+
+<p><b>题目 2 (2012 英语一)</b>: 乐观悲观</p>
+<details><summary>参考表达</summary><div class="step">
+
+<b>主旨句</b>: The picture conveys that it is crucial to be optimistic in adverse circumstances.
+
+<b>主体段</b>:
+The picture conveys that it is crucial to be optimistic in adverse circumstances.<br>For one thing, optimism enhances the likelihood of success.<br>As is universally acknowledged, the way to success is often fraught with difficulties, so only those who possess a positive outlook can overcome these hurdles and achieve professional and personal goals.<br>For another, pessimism leads to a lack of motivation.<br>For instance, if a student is trapped in a gloomy mindset when preparing for the postgraduate entrance exam, they will fail to summon up the courage to make it to the end.
+</div></details>
+
+<p><b>题目 3 (2016 英语一)</b>: 与其只提要求，不如做个榜样</p>
+<details><summary>参考表达</summary><div class="step">
+
+<b>主旨句</b>: The pictures convey that it is crucial for parents to set good examples for their children.
+
+<b>主体段</b>:
+The pictures convey that it is crucial for parents to set good examples for their children.<br>For one thing, acting as a role model makes it more likely for parents to achieve success in parenting.<br>As is universally acknowledged, imitating and learning are children's nature, so only kind and positive parents have a greater tendency to raise children with similar desirable traits.<br>For another, failing to set a positive example will undermine the parent-child relationship.<br>If a father who never does housework forces his children to share household chores, they will develop a sense of resistance, which inevitably leads to conflicts and estrangement between parents and children.
+</div></details>
+
+<p><b>题目 4 (2018 英语一)</b>: 选课进行时 -- 勇敢面对挑战</p>
+<details><summary>参考表达</summary><div class="step">
+
+<b>主旨句</b>: The picture conveys that it is crucial to face/embrace challenges bravely.
+
+<b>主体段</b>:
+The picture conveys that it is crucial to embrace challenges bravely.<br>For one thing, challenging ourselves plays a vital role in future development.<br>As is universally acknowledged, growth never takes place in the comfort zone.<br>Only by stepping out to embrace difficulties can we broaden our horizons and build up resilience, which will serve as a solid foundation for our future career.<br>For another, avoiding challenges will seriously hinder the improvement of comprehensive abilities.<br>If a person always gives up whenever encountering difficulties, he or she will gradually lose the ability to deal with complex problems.
+</div></details>
+
+<h3 id="62社会现象类--常规写法">6.2 社会现象类 -- 常规写法</h3>
+<p><b>题目 1 (2013 英语一)</b>: 毕业生选择 -- 对未来迷茫</p>
+<details><summary>参考表达</summary><div class="step">
+
+<b>主旨句</b>: What the picture tries to reveal is that a great number of college graduates are confused about their future.
+
+<b>主体段</b>:
+What the picture tries to reveal is that a great number of college graduates are confused about their future.<br>For one thing, the situation is attributed to the lack of courses related to career planning.<br>As the majority of universities attach importance to teaching theoretical knowledge instead of providing students with practical training and career guidance, students without much social experience have no idea about their future directions.<br>For another, such confusion among graduates has a lot to do with the absence of clear future plans.<br>College students devote themselves to enjoying wonderful college life and acquiring academic knowledge, but neglect future planning and the evaluation of their own strengths and weaknesses, so they find it difficult to decide which path is best for them.
+</div></details>
+
+<p><b>题目 2 (2023 英语一)</b>: 龙舟赛 -- 传统文化蓬勃发展</p>
+<details><summary>参考表达</summary><div class="step">
+
+<b>主旨句</b>: What the picture tries to reveal is that traditional culture, typified by dragon-boat racing, is thriving.
+
+<b>主体段</b>:
+What the picture tries to reveal is that traditional culture, typified by dragon-boat racing, is thriving.<br>For one thing, the reason for the prosperity of traditional culture lies in its inherent allure.<br>Rooted in history, traditions like dragon-boat racing embody the united spirit of the Chinese nation, which naturally draws people across generations to participate in and pass down these traditions.<br>For another, the government strongly supports its inheritance.<br>For example, the local government, which has long recognized the value of traditional culture, allocates funds annually to organize large-scale dragon-boat racing events.<br>Undoubtedly, it is precisely such governmental backing that enables traditional cultural activities like dragon-boat races to be well-organized and widely popularized, ensuring their sustainable vitality.
+</div></details>
+
+<p><b>题目 3 (2024 英语一)</b>: 公园建设 -- 基础设施建设成就</p>
+<details><summary>参考表达</summary><div class="step">
+
+<b>主旨句</b>: What the picture tries to reveal is that China has made remarkable achievements in infrastructure construction.
+
+<b>主体段</b>:
+What the picture tries to reveal is that China has made great achievements in infrastructure construction.<br>For one thing, the situation has a lot to do with more funds invested in infrastructure.<br>With the economic prosperity, the government has extra financial budgets for public facilities, so more parks have been built in recent years.<br>For another, the phenomenon is attributed to public demands.<br>Due to the improvement of people's living standards and growing social pressure, people in contemporary society, especially employees with sedentary lifestyles, would like to exercise for the purpose of maintaining physical health.<br>As a result, parks as places for workouts become necessities for citizens, which drives the people-oriented government to construct more parks to meet their needs.
+</div></details>
+
+<h3 id="63社会现象类--备选写法现象背景-现象发生-现象原因">6.3 社会现象类 -- 备选写法（现象背景-现象发生-现象原因）</h3>
+<p><b>题目 1 (2009 英语一)</b>: 网络的"近"与"远"</p>
+<details><summary>参考表达</summary><div class="step">
+
+<b>主体段（四步法）</b>:
+
+The picture conveys that the Internet draws people closer, but simultaneously distances them from each other. (主旨句)
+
+With the development of science and technology, the Internet has not only made it easier for people to communicate, but also provided a great deal of convenience and entertainment. (现象背景)
+
+However, regrettably, many people become too addicted to the Internet to maintain face-to-face contact with their friends and colleagues. (现象发生)
+
+This phenomenon can be largely attributed to the fact that online activities are so diverse and attractive that few people can resist the temptation. (现象原因)
+</div></details>
+
+<p><b>题目 2 (2013 英语一 -- 备选写法)</b>: 毕业生迷茫</p>
+<details><summary>参考表达</summary><div class="step">
+
+The picture conveys that a great number of college graduates are confused about their future. (主旨) With the development of the economy and society, today's graduates enjoy far more options than previous generations. (背景) However, regrettably, this abundance often leaves them disoriented when making career decisions.<br>For example, some struggle to choose between pursuing postgraduate education at home and going abroad for further study. (出现) This phenomenon can largely be attributed to two factors.<br>For one thing, many students lack a clear understanding of their own advantages and disadvantages.<br>For another, colleges and universities fail to provide students with appropriate career guidance. (原因)
+</div></details>
+
+<hr />
+<h2 id="七图画作文--第三段结尾">七、图画作文 -- 第三段结尾</h2>
+<h3 id="71精神品质类结尾">7.1 精神品质类结尾</h3>
+<p><b>题目 1 (2019 英语一)</b>: 坚持的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+Based on the above analysis, the conclusion can be drawn that we ought to attach great importance to perseverance.<br>Accordingly, not only should we bear in mind that where there is a will, there is a way, but we should also summon up the courage to overcome all the obstacles on our way.<br>Only in this way can we turn our dream into reality.
+</div></details>
+
+<p><b>题目 2 (2012 英语一)</b>: 乐观的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+Based on the above analysis, the conclusion can be drawn that we ought to attach great importance to optimism.<br>Accordingly, not only should we bear in mind that every cloud has a silver lining, but we should also make the best of bad situations.<br>Only in this way can we lead a happy and fulfilling life.
+</div></details>
+
+<p><b>题目 3 (2018 英语一)</b>: 勇敢挑战的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+Based on the above analysis, the conclusion can be drawn that we ought to attach great importance to challenging ourselves bravely.<br>Accordingly, not only should we bear in mind that only those who will risk going too far can possibly find out how far one can go, but we should also summon up courage to explore our potential.<br>Only in this way can we embrace a promising and extraordinary future.
+</div></details>
+
+<h3 id="72社会现象类结尾">7.2 社会现象类结尾</h3>
+<p><b>题目 1 (2013 英语一)</b>: 毕业生迷茫的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+It can be observed that many graduates lack a clear understanding of their future development directions, which is concerning.<br>To address this issue, not only should college students set clear goals and improve their comprehensive abilities, but schools and enterprises should also strengthen career guidance and provide more practical opportunities.<br>Only in this way can college students achieve sound development, realize their self-worth, and make contributions to the great rejuvenation of the Chinese nation.
+</div></details>
+
+<p><b>题目 2 (2023 英语一)</b>: 传统文化的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+It can be observed that traditional culture is witnessing a vibrant revival, which is encouraging.<br>To sustain the momentum, we should promote creative transformation of traditional culture and facilitate international exchanges to showcase its timeless appeal.<br>Only in this way can we build solid cultural confidence and make our unique cultural contributions to the world civilization.
+</div></details>
+
+<p><b>题目 3 (2024 英语一)</b>: 公园建设的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+It can be observed that China has witnessed remarkable progress in infrastructure construction, especially in the building of urban parks, which is encouraging.<br>To sustain the momentum, not only should the government keep investing in public facilities, but citizens should also actively participate in protecting them.<br>Only in this way can we create a more livable environment and lay a solid foundation for a harmonious society.
+</div></details>
+
+<hr />
+<h2 id="八文字材料题">八、文字材料题</h2>
+<h3 id="81首段练习">8.1 首段练习</h3>
+<p><b>题目 1 (英一大纲样题)</b>: 关于"展示不确定性是否有助于获得信任"</p>
+<details><summary>参考表达</summary><div class="step">
+
+<b>主题词提取</b>: communicating uncertainty, admitting mistakes → trustworthiness
+
+<b>首段</b>:
+What the excerpt above reveals is a highly debatable issue regarding whether we should show uncertainty.<br>The writer argues that while many of us believe that communicating uncertainty would do harm to our image, it actually helps us gain others' trust.<br>From my perspective, I completely agree with the point of view mainly for the following reasons.
+</div></details>
+
+<p><b>题目 2 (英二大纲样题)</b>: 关于"儿童为什么沉迷科技"</p>
+<details><summary>参考表达</summary><div class="step">
+
+<b>首段</b>:
+What the excerpt above reveals is a highly debatable issue regarding why children are obsessed with technology.<br>The writer argues that since children are deprived of chances to interact with peers, they turn to digital devices for social connection.<br>From my perspective, I completely agree with the point of view mainly for the following reasons.
+</div></details>
+
+<h3 id="82主体段练习">8.2 主体段练习</h3>
+<p><b>题目 1 (英一大纲样题 -- 价值评判类)</b>: 同意"展示不确定性有益于信任"</p>
+<details><summary>参考表达</summary><div class="step">
+
+For one thing, expressing uncertainty signals that we are honest and sincere.<br>As is universally acknowledged, no one is perfect and sincerity is the foundation of trust, so admitting our limitations actually helps to establish an image of trustworthiness.<br>For another, demonstrating overconfidence will raise others' expectations, which may eventually result in the collapse of trust.<br>For instance, if a teacher always pretends to know everything but is found to have made a small mistake, his students will no longer trust him, let alone regard him as a reliable guide.
+</div></details>
+
+<p><b>题目 2 (英二大纲样题 -- 社会现象类)</b>: 同意"儿童因户外自由被剥夺而转向科技"</p>
+<details><summary>参考表达</summary><div class="step">
+
+For one thing, mounting safety concerns have deprived numerous children of the freedom to engage in outdoor activities.<br>For instance, young children are highly vulnerable to traffic hazards when playing outside.<br>Consequently, when parents are preoccupied with their careers and unable to supervise them, they often restrict their children to the home.<br>For another, social interaction is inherent in children.<br>Therefore, when this psychological need is not met due to limited offline social opportunities with peers, they inevitably turn to the online world to fulfill it, thereby exacerbating their dependence on digital devices.
+</div></details>
+
+<h3 id="83结尾段练习">8.3 结尾段练习</h3>
+<p><b>题目 1 (英一大纲样题)</b>: 真诚的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+Based on the above analysis, the conclusion can be drawn that we ought to attach great importance to sincerity.<br>Accordingly, not only should we bear in mind that honesty breeds trust, but we should also stay modest and dare to acknowledge our limitations.<br>Only in this way can we win genuine trust and maintain healthy relationships with others.
+</div></details>
+
+<p><b>题目 2 (英二大纲样题)</b>: 儿童科技依赖的结尾</p>
+<details><summary>参考表达</summary><div class="step">
+
+It can be observed that the restriction of children's outdoor social activities is driving them toward technology for social fulfillment, which is concerning.<br>To address this issue, not only should parents spend as much time with their children as possible, but they should also pay more attention to children's interaction needs with peers.<br>Only in this way can they create a positive environment for their children to grow happily and healthily.
+</div></details>
+
+<hr />
+<h2 id="九重点句型与词汇专项练习">九、重点句型与词汇专项练习</h2>
+<h3 id="91changeinvschangeof">9.1 change in vs change of</h3>
+<p><b>题目</b>: 填空选择 in 或 of</p>
+<ol>
+<li>We can reduce the unemployment rate with a change ___ the economy.</li>
+<li>What the country needs is a change ___ government.</li>
+</ol>
+<details><summary>解析与答案</summary><div class="step">
+
+1. <b>in</b> -- "经济方面的变化"，经济本身没有变，而是经济内部发生了变化。
+2. <b>of</b> -- "更换政府"，把一个政府换成另一个（完全替代）。
+
+<b>规则</b>: change in = 某事物自身发生了变化; change of = 替换掉某事物
+</div></details>
+
+<h3 id="92respectively练习">9.2 respectively 练习</h3>
+<p><b>题目</b>: 翻译"他们的儿子们分别是 3 岁和 6 岁。"</p>
+<details><summary>参考表达</summary><div class="step">
+
+Their sons were three and six respectively.
+</div></details>
+
+<h3 id="93notonlybutalso倒装练习">9.3 not only...but also 倒装练习</h3>
+<p><b>题目</b>: 翻译"阅读不仅能提升词汇量，还能帮助我们逻辑思考。"</p>
+<details><summary>参考表达</summary><div class="step">
+
+Not only can reading improve our vocabulary, but it also helps us think logically.
+</div></details>
+
+<h3 id="94sthmakesitadjforsbtodosth">9.4 sth. make(s) it adj. for sb. to do sth.</h3>
+<p><b>题目</b>: 翻译"缺乏定期复习使学习者更难高效掌握核心知识。"</p>
+<details><summary>参考表达</summary><div class="step">
+
+Lack of regular reviews makes it harder for learners to master key knowledge efficiently.
+</div></details>
+
+<h3 id="95access三用法">9.5 access 三用法</h3>
+<p><b>题目</b>: 用三种方式翻译"在现代社会，学生可以轻松获取在线课程。"</p>
+<details><summary>参考表达</summary><div class="step">
+
+1.<br>In modern society, students can easily <b>access</b> online courses. (动词)
+2.<br>In modern society, students <b>have easy access to</b> online courses. (名词)
+3.<br>In modern society, online courses <b>are easily accessible to</b> students. (形容词)
+</div></details>
+
+<h3 id="96-oriented-friendly练习">9.6 -oriented / -friendly 练习</h3>
+<p><b>题目</b>: 写出下列词的英文</p>
+<ol>
+<li>市场经济 (市场导向型经济)</li>
+<li>素质教育</li>
+<li>环保的</li>
+<li>新手友好的</li>
+</ol>
+<details><summary>参考表达</summary><div class="step">
+
+1. <b>market-oriented</b> economy
+2. <b>quality-oriented</b> education
+3. <b>environment-friendly</b> / <b>eco-friendly</b>
+4. <b>beginner-friendly</b>
+</div></details>
+
+<h3 id="97prioritize替代表达">9.7 prioritize 替代表达</h3>
+<p><b>题目</b>: 写出"将 A 置于 B 之上"的四种英文表达。</p>
+<details><summary>参考表达</summary><div class="step">
+
+1. prioritize A over B
+2. give priority to A rather than B
+3. attach more importance to A than to B
+4. value A more than B
+</div></details>
+
+<hr />
+<blockquote>
+<p>📖 返回 <a href="英语_写作.html">理论笔记</a></p>
+</blockquote></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="英语_写作.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>英语 · 写作</b></span></a><a class="next" href="英语_阅读.html"><span class="pg-t"><small>下一篇</small><b>英语 · 阅读</b></span><span class="pg-ic">→</span></a></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<button id="navbtn" type="button" aria-label="打开目录" title="目录">☰</button>
+<div id="tbtools" role="toolbar"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">深色</button><button id="printBtn" type="button" title="打印 / 导出 PDF">打印</button></div></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '浅色' : '深色'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 侧栏收起/展开(2026-08-09): 折叠态 = 8px 边缘热区零内容;
+     桌面: 悬停/键盘聚焦滑出, 移出 1.2s 自动收回(未钉住), ☰/图钉按钮钉住;
+     触屏(平板): ☰ 弹浮层 + 遮罩; 手机(≤920px): ☰ = 汉堡滑入 overlay ---------- */
+  var touchNav = !!(window.matchMedia && window.matchMedia('(hover: none)').matches);
+  var sideNav = document.querySelector('.layout > nav');
+  var navbtn = document.getElementById('navbtn');
+  if (sideNav) {
+    if (touchNav) root.setAttribute('data-touch', '1');
+    var pinSt = load('xnNavPin') === '1';
+    root.setAttribute('data-nav', (pinSt && !touchNav) ? 'pinned' : 'collapsed');
+    var pinBtn = document.getElementById('navpin');
+    if (pinBtn) pinBtn.setAttribute('aria-pressed', pinSt && !touchNav ? 'true' : 'false');
+    function setPin(pinned){
+      root.setAttribute('data-nav', pinned ? 'pinned' : 'collapsed');
+      store('xnNavPin', pinned ? '1' : '0');
+      if (pinBtn) pinBtn.setAttribute('aria-pressed', pinned ? 'true' : 'false');
+    }
+    if (pinBtn) pinBtn.addEventListener('click', function(){ setPin(root.getAttribute('data-nav') !== 'pinned'); });
+    if (navbtn) navbtn.addEventListener('click', function(){
+      if (window.matchMedia('(max-width: 920px)').matches) { nav.classList.toggle('show'); return; }
+      if (touchNav) {
+        root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+      } else {
+        setPin(root.getAttribute('data-nav') !== 'pinned');
+      }
+    });
+    sideNav.addEventListener('click', function(e){
+      if (e.target.closest('a')) { nav.classList.remove('show'); root.setAttribute('data-nav', 'collapsed'); return; }
+      if (touchNav) root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+    });
+    if (touchNav) {
+      var scrim = document.getElementById('navscrim');
+      if (scrim) scrim.addEventListener('click', function(){ root.setAttribute('data-nav', 'collapsed'); });
+    } else {
+      /* 桌面: 悬停/聚焦展开, 移出延迟 1.2s 自动收回(钉住时保持) */
+      var retractTimer = null;
+      function keepOpen(){
+        clearTimeout(retractTimer);
+        if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'open');
+      }
+      function scheduleRetract(){
+        clearTimeout(retractTimer);
+        retractTimer = setTimeout(function(){
+          if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'collapsed');
+        }, 1200);
+      }
+      sideNav.addEventListener('mouseenter', keepOpen);
+      sideNav.addEventListener('mouseleave', scheduleRetract);
+      sideNav.addEventListener('focusin', keepOpen);
+      sideNav.addEventListener('focusout', scheduleRetract);
+    }
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navBrds = nav.querySelectorAll('details.brd');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var k2 = 0; k2 < navBrds.length; k2++) {
+        var bd = navBrds[k2], bdLinks = bd.querySelectorAll('a[href]'), bdVis = false;
+        for (var n2 = 0; n2 < bdLinks.length; n2++) { if (bdLinks[n2].style.display !== 'none') { bdVis = true; break; } }
+        bd.style.display = bdVis ? '' : 'none';
+        if (t && bdVis) bd.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 表格横向滚动包裹 ---------- */
+  var tables = document.querySelectorAll('main table');
+  for (var iT = 0; iT < tables.length; iT++) {
+    var tw = document.createElement('div');
+    tw.className = 'table-wrap';
+    tables[iT].parentNode.insertBefore(tw, tables[iT]);
+    tw.appendChild(tables[iT]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 + 学科 Tab(2026-08-09: homeFilter 统一入口, Tab 只控 section 显隐) ---------- */
+  var homeq = document.getElementById('homeq');
+  var hometabs = document.getElementById('hometabs');
+  var homeTab = 'all';
+  function homeFilter(){
+    if (!homeq) return;
+    var t = homeq.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('.board-card');
+    var secs2 = document.querySelectorAll('section[data-subj]');
+    var grpHs = document.querySelectorAll('.grp-h');
+    for (var iE = 0; iE < cards.length; iE++) {
+      cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+    }
+    for (var iF = 0; iF < secs2.length; iF++) {
+      var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+      for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+      sec.style.display = ((homeTab === 'all' || sec.dataset.subj === homeTab) && vis) ? '' : 'none';
+    }
+    for (var iH = 0; iH < grpHs.length; iH++) {
+      var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+      if (next && next.classList && next.classList.contains('cards')) {
+        var c2 = next.querySelectorAll('.board-card');
+        for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+      }
+      grp.style.display = vis2 ? '' : 'none';
+    }
+    var recentSec2 = document.getElementById('recent');
+    if (recentSec2) {
+      var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+      for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+      recentSec2.style.display = (t && !rVis) ? 'none' : '';
+    }
+  }
+  if (homeq) homeq.addEventListener('input', homeFilter);
+  if (hometabs) {
+    hometabs.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-tab]');
+      if (!btn) return;
+      homeTab = btn.getAttribute('data-tab');
+      var bs = hometabs.querySelectorAll('button[data-tab]');
+      for (var iK = 0; iK < bs.length; iK++) bs[iK].classList.toggle('on', bs[iK] === btn);
+      homeFilter();
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>

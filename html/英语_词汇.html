@@ -1,0 +1,1710 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语 · 词汇</title>
+<link rel="stylesheet" href="../katex/katex.min.css">
+<style>
+:root{
+  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
+  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
+  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
+  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
+  --red:#DC2626; --red-soft:#FDEBEA;
+  --amber:#B45309; --amber-soft:#FDF1DC;
+  --green:#15803D; --green-soft:#E7F4EA;
+  --violet:#7C3AED; --violet-soft:#F1EBFC;
+  --teal:#0F766E; --teal-soft:#DFF2EF;
+  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
+  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
+  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
+  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
+  --red:#F87171; --red-soft:rgba(248,113,113,.13);
+  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
+  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
+  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
+  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
+section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
+section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
+html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
+html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
+html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.9;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;background-attachment:fixed}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font-family:inherit}
+.layout{display:flex;min-height:100vh}
+
+/* ---------- 侧栏 ---------- */
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:rgba(251,250,246,.82);border-right:1px solid #EDEAE0;
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin;
+  transition:width .22s ease,background .2s ease}
+html[data-theme="dark"] .layout > nav{background:rgba(20,25,34,.78);border-right-color:#232A37}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem .6rem .95rem 1.15rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
+nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
+  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
+nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
+nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
+#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
+#navq::placeholder{color:var(--ink3)}
+#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.8rem;
+  letter-spacing:.06em;border-radius:8px}
+nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
+  color:var(--ink3);letter-spacing:.18em}
+nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.86rem;border-radius:8px;
+  border-left:3px solid transparent;line-height:1.45}
+nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
+nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.8rem;
+  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav a.c.x{color:var(--violet)}
+nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
+nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
+nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.76rem;
+  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav details.grp{margin:.2rem 0}
+nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
+nav details.grp>summary::-webkit-details-marker{display:none}
+nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
+nav details.grp[open]>summary::before{transform:rotate(90deg)}
+nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
+nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
+/* 板块级折叠块(2026-08-09: 全站统一; 行尾 .tog 箭头负责折叠, 点板块名 = 跳转) */
+nav details.brd{margin:.05rem .3rem .15rem}
+nav details.brd>summary{list-style:none;cursor:default;display:flex;align-items:center;gap:.4rem;
+  padding:.12rem .35rem .12rem .45rem;margin:0;border-radius:8px;user-select:none}
+nav details.brd>summary::-webkit-details-marker{display:none}
+nav details.brd>summary:hover{background:var(--accent-soft)}
+nav details.brd>summary a.b{flex:1;min-width:0;margin:.02rem 0;padding:.3rem .42rem;cursor:pointer}
+nav details.brd>summary a.b:hover{background:none;text-decoration:none}
+nav details.brd>summary a.b.on:hover{background:var(--accent-soft)}
+nav details.brd>summary .tog{flex:none;width:1.55rem;text-align:center;color:var(--ink3);
+  font-size:.66rem;cursor:pointer;padding:.35rem 0;border-radius:6px}
+nav details.brd>summary .tog:hover{color:var(--accent2);background:var(--accent-soft)}
+nav details.brd>summary .tog::before{content:"▸";display:inline-block;transition:transform .15s ease}
+nav details.brd[open]>summary .tog::before{transform:rotate(90deg)}
+nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
+
+/* ---------- 顶部(无容器框, 2026-08-09): ☰ 左上悬浮 / 操作按钮右上悬浮 / 面包屑随正文流 ---------- */
+main{flex:1;min-width:0;max-width:800px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
+#navbtn{position:fixed;top:.7rem;left:.7rem;z-index:110;display:inline-flex;align-items:center;justify-content:center;
+  width:2.1rem;height:2.1rem;padding:0;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:9px;cursor:pointer;font-size:.98rem;flex-shrink:0;line-height:1;box-shadow:var(--shadow-sm);
+  transition:all .15s}
+#navbtn:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+#tbtools{position:fixed;top:.7rem;right:.7rem;z-index:110;display:flex;gap:.4rem}
+#tbtools button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:8px;padding:.36rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
+  box-shadow:var(--shadow-sm);transition:all .15s}
+#tbtools button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+.crumbline{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--ink3);
+  padding:1.5rem 0 .1rem;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumbline a{color:var(--ink2)}
+.crumbline a:hover{color:var(--accent2);text-decoration:none}
+.crumbline .sep{color:var(--ink3)}
+.crumbline b{color:var(--ink);font-weight:600}
+
+/* ---------- 正文区 ---------- */
+.article{padding-top:2.15rem}
+main h1{font-family:var(--serif);font-size:2rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
+.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
+.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
+  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
+main h2{font-family:var(--serif);font-size:1.4rem;margin:3rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
+  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
+  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
+main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
+main h2:hover .anc,main h3:hover .anc{opacity:1}
+main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
+main h3{font-size:1.15rem;margin:2.3rem 0 .7rem;color:var(--accent2);line-height:1.6}
+main h3 .mk{margin-left:.25em}
+main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
+main p{line-height:2.05;margin:.8rem 0}
+main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
+main ul{list-style:none}
+main ul>li{position:relative;padding-left:1.05rem}
+main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
+main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
+main ol>li::marker{color:var(--accent2);font-weight:700}
+main li{line-height:1.95;margin:.26rem 0}
+main li>strong{color:var(--accent2)}
+/* 宽表格由 JS 包一层 .table-wrap 横向滚动, 防止撑破 800px 行宽 */
+.table-wrap{overflow-x:auto;margin:1.15rem 0;border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+main table{border-collapse:separate;border-spacing:0;width:100%;margin:0;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.92rem}
+main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
+main th:last-child,main td:last-child{border-right:none}
+main tr:last-child th,main tr:last-child td{border-bottom:none}
+main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
+main tr:nth-child(even) td{background:var(--bg2)}
+main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
+  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
+main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
+code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
+  font-family:var(--mono);font-size:.86em}
+pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
+pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
+.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
+  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ---------- 笔迹批注 ---------- */
+.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
+  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
+.mk.biz{color:var(--red);background:var(--red-soft)}
+.mk.freq{color:var(--amber);background:var(--amber-soft)}
+.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
+.mk.ok{color:var(--green);background:var(--green-soft)}
+.mk.info{color:var(--violet);background:var(--violet-soft)}
+.mk.theory{color:var(--accent2);background:var(--accent-soft)}
+.mk.xref{color:var(--violet);background:var(--violet-soft)}
+.mk.res{color:var(--teal);background:var(--teal-soft)}
+.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
+.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
+  border-radius:5px;font-weight:700;font-size:.88em}
+
+/* ---------- 例题 ---------- */
+.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
+  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  line-height:2;color:var(--ink)}
+.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
+  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
+  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
+.prob .src{margin-left:.35em}
+
+/* ---------- 英语题型 ---------- */
+.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
+  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
+.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
+  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
+.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
+  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
+.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
+  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
+.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
+  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
+  margin:.12em .4em .12em 0}
+.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
+  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
+.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
+.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
+.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
+  background:var(--red-soft);border-radius:3px}
+.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
+.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
+.vn b{color:var(--accent2)}
+.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
+  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
+
+/* ---------- 词汇卡片 ---------- */
+.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
+.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
+.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
+.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
+.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
+.w .wl2 .mk{margin-left:.35em}
+
+/* ---------- 折叠 ---------- */
+main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
+main details>summary::-webkit-details-marker{display:none}
+main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
+main details[open]>summary::before{transform:rotate(90deg)}
+main details>summary:hover{color:var(--accent2);background:none}
+main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
+main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  line-height:2.05;font-size:.97em;color:var(--ink)}
+main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
+  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
+  background:none;border-radius:0}
+main details .step .why b{color:var(--ink);font-weight:600}
+main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
+  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
+main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
+main details .sum.skip{color:var(--ink3)}
+main details .sum b{font-weight:700}
+@supports (interpolate-size: allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
+  main details[open]::details-content{block-size:auto}
+}
+
+/* ---------- KaTeX ---------- */
+.katex{color:var(--ink);font-size:1.06em}
+.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
+
+/* ---------- 翻页 ---------- */
+.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
+  transition:all .16s;text-decoration:none}
+.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
+.pager a.next{flex-direction:row-reverse;text-align:right}
+.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
+  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
+.pager .pg-t{min-width:0}
+.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
+.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager span:empty{flex:1}
+
+/* ---------- 首页 ---------- */
+.hero{padding:3.2rem 0 1.6rem;text-align:center}
+.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
+.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
+.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
+.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
+#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
+#homeq::placeholder{color:var(--ink3)}
+#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin:0 auto 1.4rem}
+.tabs button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+  border-radius:20px;padding:.4rem 1.05rem;font-size:.84rem;cursor:pointer;transition:all .15s}
+.tabs button:hover{border-color:var(--accent);color:var(--accent2)}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
+  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
+.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
+.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
+.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
+.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  opacity:0;transition:opacity .16s}
+.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
+.board-card:hover::before{opacity:1}
+.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
+.board-card span{font-size:.75rem;color:var(--ink3)}
+.board-card.ex{border-style:dashed}
+.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
+  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
+#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+
+/* ---------- 回到顶部 / 汉堡 ---------- */
+#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
+#topbtn.show{opacity:1;visibility:visible;transform:none}
+#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* ---------- 侧栏收起(2026-08-09): 折叠态 = 8px 边缘热区零内容; 桌面悬停滑出(JS 控制,
+   移出 1.2s 后自动收回); ☰ 顶栏按钮展开并钉住; 触屏 ☰ 弹浮层 + 遮罩 ---------- */
+#navpin{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
+  cursor:pointer;flex-shrink:0}
+#navpin:hover{border-color:var(--accent);color:var(--accent2)}
+#navpin[aria-pressed="true"]{color:var(--accent2);border-color:var(--accent);background:var(--accent-soft)}
+#navscrim{position:fixed;inset:0;z-index:190;background:rgba(15,18,23,.45);
+  opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s}
+@media (min-width:921px){
+  /* 折叠态: 8px 热区(sticky 占位保持正文宽度), 内容全隐藏(鼠标移入 / ☰ / 键盘聚焦展开) */
+  html[data-nav="collapsed"] .layout > nav{width:8px;overflow:hidden;padding:0;background:transparent}
+  html[data-nav="collapsed"] .layout > nav .brand,
+  html[data-nav="collapsed"] .layout > nav #navq,
+  html[data-nav="collapsed"] .layout > nav a.subj,
+  html[data-nav="collapsed"] .layout > nav .navbody,
+  html[data-nav="collapsed"] .layout > nav #navpin{display:none}
+  /* 展开态 = 浮层覆盖在正文上方(用户要求: 侧栏伸缩时正文不重排);
+     折叠态 8px 占位保持不变 → main 宽度恒定; ☰ 被浮层覆盖, 展开时隐藏(收起靠图钉/移出) */
+  html[data-nav]:not([data-nav="collapsed"]) .layout > nav{position:fixed;left:0;top:0;height:100vh;
+    z-index:180;box-shadow:8px 0 28px rgba(0,0,0,.18)}
+  html[data-nav]:not([data-nav="collapsed"]) #navbtn{display:none}
+  /* 触屏(平板): ☰ 展开为浮层 + 遮罩, 点遮罩/链接收回; 无钉住 */
+  html[data-touch][data-nav="open"] #navscrim{opacity:1;visibility:visible}
+  html[data-touch] #navpin{display:none}
+}
+@media(max-width:920px){#navpin{display:none}}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:920px){
+  .layout > nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
+    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
+  .layout > nav.show{transform:none}
+  main{padding:0 1.15rem 4rem}
+  .pager{flex-direction:column}
+  .pager a{justify-content:flex-start}
+  .pager a.next{justify-content:flex-end}
+  .hero{padding-top:2.6rem}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  nav,#tbtools,#navbtn,#topbtn,.pager{display:none!important}
+  body{background:#fff;background-image:none}
+  main{max-width:none;padding:0}
+  .article{padding-top:0}
+  .hero{padding:0 0 1rem;text-align:left}
+  .subject-h{margin-top:1.2rem}
+  a{color:inherit}
+  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
+  main details{border-color:#ddd;box-shadow:none}
+}
+@page{margin:14mm}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style>
+<script>document.documentElement.dataset.nav='collapsed';</script></head><body>
+<div class="layout"><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span><button id="navpin" type="button" title="钉住目录" aria-pressed="false"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg></button></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="../知识笔记首页.html">全部板块</a><div class="navbody"><div class="sec cur">英语</div><details class="brd" data-k="brd-写作"><summary><a class="b" href="英语_写作.html">写作</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_写作.html#一考试概览">一、考试概览</a><a class="c" href="英语_写作.html#二小作文">二、小作文</a><a class="c" href="英语_写作.html#三图表作文英语二大作文">三、图表作文（英语二大作文）</a><a class="c" href="英语_写作.html#四图画作文英语一大作文">四、图画作文（英语一大作文）</a><a class="c" href="英语_写作.html#五文字材料题">五、文字材料题</a><a class="c" href="英语_写作.html#六功能句与素材库">六、功能句与素材库</a><a class="c" href="英语_写作.html#七常见语法错误与丢分点">七、常见语法错误与丢分点</a><a class="c" href="英语_写作.html#八模板的合理使用">八、模板的合理使用</a><a class="c" href="英语_写作.html#九知识连接">九、知识连接</a><a class="c" href="英语_写作.html#十写作实战策略">十、写作实战策略</a><a class="c x" href="英语_写作_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-阅读"><summary><a class="b" href="英语_阅读.html">阅读</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_阅读.html#一阅读考试概览">一、阅读考试概览</a><a class="c" href="英语_阅读.html#二基础方法论">二、基础方法论</a><a class="c" href="英语_阅读.html#三六大题型逐个突破">三、六大题型逐个突破</a><a class="c" href="英语_阅读.html#四干扰项设置规律高频">四、干扰项设置规律【高频】</a><a class="c" href="英语_阅读.html#五长难句在阅读中的处理">五、长难句在阅读中的处理</a><a class="c" href="英语_阅读.html#六真题练习方法">六、真题练习方法</a><a class="c" href="英语_阅读.html#七常见丢分点与考场策略">七、常见丢分点与考场策略</a><a class="c" href="英语_阅读.html#八知识连接">八、知识连接</a><a class="c" href="英语_阅读.html#九新题型PartB必考">九、新题型（Part B）【必考】</a><a class="c x" href="英语_阅读_暑假_例题.html">▸ 暑假例题集</a><a class="c x" href="英语_阅读_无忧_例题.html">▸ 无忧例题集</a></details><details class="brd" data-k="brd-翻译"><summary><a class="b" href="英语_翻译.html">翻译</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_翻译.html#一考试概览">一、考试概览</a><a class="c" href="英语_翻译.html#二翻译流程从英语到汉语的四步法">二、翻译流程: 从英语到汉语的四步法</a><a class="c" href="英语_翻译.html#三词法翻译词义选择与搭配">三、词法翻译: 词义选择与搭配</a><a class="c" href="英语_翻译.html#四翻译技巧">四、翻译技巧</a><a class="c" href="英语_翻译.html#五易错点与避坑指南">五、易错点与避坑指南</a><a class="c" href="英语_翻译.html#六知识连接">六、知识连接</a><a class="c x" href="英语_翻译_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-长难句翻译"><summary><a class="b" href="英语_长难句翻译.html">长难句翻译</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_长难句翻译.html#一长难句处理五步法必考">一、长难句处理五步法 【必考】</a><a class="c" href="英语_长难句翻译.html#二按结构类型处理">二、按结构类型处理</a><a class="c" href="英语_长难句翻译.html#三翻译技巧">三、翻译技巧</a><a class="c" href="英语_长难句翻译.html#四易错点易错">四、易错点 【易错】</a><a class="c" href="英语_长难句翻译.html#五知识连接">五、知识连接</a><a class="c x" href="英语_长难句翻译_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-语法"><summary><a class="b" href="英语_语法.html">语法</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_语法.html#一句子成分与五大基本句型">一、句子成分与五大基本句型</a><a class="c" href="英语_语法.html#二状语成分与状语从句必考">二、状语成分与状语从句 【必考】</a><a class="c" href="英语_语法.html#三特殊结构必考">三、特殊结构 【必考】</a><a class="c" href="英语_语法.html#四三大从句概述">四、三大从句概述</a><a class="c" href="英语_语法.html#五长难句分析方法重点">五、长难句分析方法 【重点】</a><a class="c" href="英语_语法.html#六易错点与考点">六、易错点与考点</a><a class="c" href="英语_语法.html#七知识连接">七、知识连接</a><a class="c x" href="英语_语法_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-完形"><summary><a class="b" href="英语_完形.html">完形</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_完形.html#一题型概览">一、题型概览</a><a class="c" href="英语_完形.html#二解题总流程">二、解题总流程</a><a class="c" href="英语_完形.html#三选项词性考点">三、选项词性考点</a><a class="c" href="英语_完形.html#四词组搭配考点">四、词组搭配考点</a><a class="c" href="英语_完形.html#五常考逻辑关系">五、常考逻辑关系</a><a class="c" href="英语_完形.html#八高频易错点">八、高频易错点</a><a class="c" href="英语_完形.html#六考点类型表做完题对考点用重点">六、考点类型表(做完题对考点用)【重点】</a><a class="c" href="英语_完形.html#七新题型小标题四方法">七、新题型(小标题)四方法</a><a class="c" href="英语_完形.html#九考前准备建议">九、考前准备建议</a></details><details class="brd" data-k="brd-无忧0802_测试卷"><summary><a class="b" href="英语_无忧0802_测试卷.html">无忧0802_测试卷</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_无忧0802_测试卷.html#一试卷总览">一、试卷总览</a><a class="c" href="英语_无忧0802_测试卷.html#二SectionI完形填空20分">二、Section I：完形填空（20 分）</a><a class="c" href="英语_无忧0802_测试卷.html#三SectionII阅读理解60分">三、Section II：阅读理解（60 分）</a><a class="c" href="英语_无忧0802_测试卷.html#四SectionIII新题型20分">四、Section III：新题型（20 分）</a><a class="c" href="英语_无忧0802_测试卷.html#五备考启示">五、备考启示</a></details><details class="brd" open><summary><a class="b on" aria-current="page" href="英语_词汇.html">词汇</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_词汇.html#一态度题真题例句重点词">一、态度题 · 真题例句重点词</a><a class="d" href="英语_词汇.html#2004英一T3公众对经济形势的态度">2004 英一 T3 · 公众对经济形势的态度</a><a class="d" href="英语_词汇.html#2012英一T4Donahue对公共部门系统的态度">2012 英一 T4 · Donahue 对公共部门系统的态度</a><a class="d" href="英语_词汇.html#2014英一T4作者对AAAS报告的态度">2014 英一 T4 · 作者对 AAAS 报告的态度</a><a class="d" href="英语_词汇.html#2017英二T1作者对英国政府体育政策的态度">2017 英二 T1 · 作者对英国政府体育政策的态度</a><a class="d" href="英语_词汇.html#2016英一T3作者对Friedman关于CSR观点的态度">2016 英一 T3 · 作者对 Friedman 关于 CSR 观点的态度</a><a class="d" href="英语_词汇.html#2015英一T2作者对California论点手机隐私案的态度">2015 英一 T2 · 作者对 California 论点(手机隐私案)的态度</a><a class="d" href="英语_词汇.html#2013英一T2作者对BrendonLynch博客言论的态度">2013 英一 T2 · 作者对 Brendon Lynch 博客言论的态度</a><a class="d" href="英语_词汇.html#2013英二T3作者对逆转高速生活趋势的态度">2013 英二 T3 · 作者对逆转高速生活趋势的态度</a><a class="d" href="英语_词汇.html#2011英一T1作者对Gilbert复兴交响乐团的态度">2011 英一 T1 · 作者对 Gilbert 复兴交响乐团的态度</a><a class="d" href="英语_词汇.html#2021英二T2作者对英国粮食自给自足的态度">2021 英二 T2 · 作者对英国粮食自给自足的态度</a><a class="c" href="英语_词汇.html#二例证题真题例句重点词">二、例证题 · 真题例句重点词</a><a class="d" href="英语_词汇.html#2017英一T1EgyptAir空难例子的论证目的">2017 英一 T1 · EgyptAir 空难例子的论证目的</a><a class="d" href="英语_词汇.html#2018英二T1自行车链条例子的论证目的">2018 英二 T1 · 自行车链条例子的论证目的</a><a class="d" href="英语_词汇.html#2009英一T3祖先例子的论证目的">2009 英一 T3 · 祖先例子的论证目的</a><a class="d" href="英语_词汇.html#2014英二T1McRib例子的论证目的">2014 英二 T1 · McRib 例子的论证目的</a><a class="d" href="英语_词汇.html#2008英一T3WiltChamberlain例子的论证目的">2008 英一 T3 · Wilt Chamberlain 例子的论证目的</a><a class="d" href="英语_词汇.html#2017英一T3RobertFKennedy引用的论证目的">2017 英一 T3 · Robert F. Kennedy 引用的论证目的</a><a class="d" href="英语_词汇.html#2008英一T4GeorgeWashington拔牙故事的引用目的">2008 英一 T4 · George Washington 拔牙故事的引用目的</a><a class="d" href="英语_词汇.html#2003英一T1Donovan故事的开篇功能">2003 英一 T1 · Donovan 故事的开篇功能</a><a class="c" href="英语_词汇.html#三语义题真题例句重点词">三、语义题 · 真题例句重点词</a><a class="d" href="英语_词汇.html#2006英一T1homogenizing的含义">2006 英一 T1 · &quot;homogenizing&quot; 的含义</a><a class="d" href="英语_词汇.html#2017英一T1expedited的含义">2017 英一 T1 · &quot;expedited&quot; 的含义</a><a class="d" href="英语_词汇.html#2015英二T1moola的含义">2015 英二 T1 · &quot;moola&quot; 的含义</a><a class="d" href="英语_词汇.html#2004英一T1tipservice的含义">2004 英一 T1 · &quot;tip service&quot; 的含义</a><a class="d" href="英语_词汇.html#2018英二T2plummeting的含义">2018 英二 T2 · &quot;plummeting&quot; 的含义</a><a class="d" href="英语_词汇.html#2006英一T4bummer的含义">2006 英一 T4 · &quot;bummer&quot; 的含义</a><a class="d" href="英语_词汇.html#2002英一T2gizmos的含义">2002 英一 T2 · &quot;gizmos&quot; 的含义</a><a class="d" href="英语_词汇.html#2005英一T2paralysisbyanalysis的含义">2005 英一 T2 · &quot;paralysis by analysis&quot; 的含义</a><a class="d" href="英语_词汇.html#2013英二T2Birdsofpassage指谁">2013 英二 T2 · &quot;Birds of passage&quot; 指谁</a><a class="d" href="英语_词汇.html#2003英一T3arbiters指谁">2003 英一 T3 · &quot;arbiters&quot; 指谁</a><a class="c" href="英语_词汇.html#四细节题真题例句重点词">四、细节题 · 真题例句重点词</a><a class="d" href="英语_词汇.html#2013英一T1Priestly批评助理的原因">2013 英一 T1 · Priestly 批评助理的原因</a><a class="d" href="英语_词汇.html#2012英一T3科学发现过程的特征">2012 英一 T3 · 科学发现过程的特征</a><a class="d" href="英语_词汇.html#2011英二T3Mies关于建筑优雅的观点">2011 英二 T3 · Mies 关于建筑优雅的观点</a><a class="c" href="英语_词汇.html#五推断题真题例句重点词">五、推断题 · 真题例句重点词</a><a class="d" href="英语_词汇.html#2014英二T2Facebook是自我提升者的天堂">2014 英二 T2 · Facebook 是自我提升者的天堂</a><a class="d" href="英语_词汇.html#2007英一T3从最后一段推断">2007 英一 T3 · 从最后一段推断</a><a class="c" href="英语_词汇.html#六主旨题真题例句重点词">六、主旨题 · 真题例句重点词</a><a class="d" href="英语_词汇.html#2011英一T2高管裸辞最佳标题">2011 英一 T2 · 高管裸辞(最佳标题)</a><a class="d" href="英语_词汇.html#2009英一T2DNA测试最佳标题">2009 英一 T2 · DNA 测试(最佳标题)</a><a class="d" href="英语_词汇.html#2012英二T1家庭作业政策最佳标题">2012 英二 T1 · 家庭作业政策(最佳标题)</a><a class="d" href="英语_词汇.html#2014英二T3人机赛跑最佳标题">2014 英二 T3 · 人机赛跑(最佳标题)</a><a class="d" href="英语_词汇.html#2004英二T2字母排序歧视全文主旨">2004 英二 T2 · 字母排序歧视(全文主旨)</a><a class="c" href="英语_词汇.html#七篇章精读全文重点词">七、篇章精读 · 全文重点词</a><a class="d" href="英语_词汇.html#2012英一T1同伴压力peerpressure全文精读">2012 英一 T1 · 同伴压力 (peer pressure)【全文精读】</a><a class="d" href="英语_词汇.html#2001英一P3报纸公信力危机">2001 英一 P3 · 报纸公信力危机</a><a class="d" href="英语_词汇.html#2004英一T4反智主义在美国">2004 英一 T4 · 反智主义在美国</a><a class="d" href="英语_词汇.html#2007英一T2IQ测试的局限性">2007 英一 T2 · IQ 测试的局限性</a><a class="d" href="英语_词汇.html#2008英一T2学术期刊出版的变革">2008 英一 T2 · 学术期刊出版的变革</a><a class="d" href="英语_词汇.html#2014英一T3科学奖项的反思">2014 英一 T3 · 科学奖项的反思</a><a class="d" href="英语_词汇.html#2011英一T4育儿与幸福感全文精读">2011 英一 T4 · 育儿与幸福感【全文精读】</a><a class="d" href="英语_词汇.html#2011英二T4欧盟危机与德法之争全文精读">2011 英二 T4 · 欧盟危机与德法之争【全文精读】</a><a class="d" href="英语_词汇.html#2013英一T4亚利桑那移民法全文精读">2013 英一 T4 · 亚利桑那移民法【全文精读】</a><a class="d" href="英语_词汇.html#2003英一T4医疗与死亡全文精读">2003 英一 T4 · 医疗与死亡【全文精读】</a><a class="d" href="英语_词汇.html#2012英二T2粉色与女孩身份Prettyinpink全文精读">2012 英二 T2 · 粉色与女孩身份 (Pretty in pink)【全文精读】</a><a class="d" href="英语_词汇.html#2018英二T4深度工作与闲适deepwork全文精读">2018 英二 T4 · 深度工作与闲适 (deep work)【全文精读】</a><a class="c" href="英语_词汇.html#八写作重点词与阅读分离">八、写作重点词(与阅读分离)</a><a class="d" href="英语_词汇.html#81图表作文各真题主题词">8.1 图表作文 · 各真题主题词</a><a class="d" href="英语_词汇.html#82图画作文各真题主题词">8.2 图画作文 · 各真题主题词</a><a class="d" href="英语_词汇.html#83通用表达库写作万能词汇短语必考">8.3 通用表达库(写作万能词汇/短语)【必考】</a><a class="c" href="英语_词汇.html#九新题型PartB重点词">九、新题型（Part B）重点词</a><a class="d" href="英语_词汇.html#91小标题2007英语一PartB家长如何帮孩子走向成年">9.1 小标题 · 2007 英语一 Part B · 家长如何帮孩子走向成年</a><a class="d" href="英语_词汇.html#92小标题2013英语二PartB省钱吃货的饮食经">9.2 小标题 · 2013 英语二 Part B · 省钱吃货的饮食经</a><a class="d" href="英语_词汇.html#93小标题2016英语一PartB职场形象升级">9.3 小标题 · 2016 英语一 Part B · 职场形象升级</a><a class="d" href="英语_词汇.html#94小标题2016英语二PartB向孩子学快乐">9.4 小标题 · 2016 英语二 Part B · 向孩子学快乐</a><a class="d" href="英语_词汇.html#95多项对应2011英语二PartB快餐与健康之争">9.5 多项对应 · 2011 英语二 Part B · 快餐与健康之争</a><a class="d" href="英语_词汇.html#96多项对应2017英语二PartB制造业招工难">9.6 多项对应 · 2017 英语二 Part B · 制造业招工难</a><a class="d" href="英语_词汇.html#97七选五2012英语一PartB下载与上传的数字文化">9.7 七选五 · 2012 英语一 Part B · 下载与上传的数字文化</a><a class="d" href="英语_词汇.html#98七选五2013英语一PartB社会科学与全球挑战">9.8 七选五 · 2013 英语一 Part B · 社会科学与全球挑战</a><a class="d" href="英语_词汇.html#99七选五2015英语一PartB阅读的维度">9.9 七选五 · 2015 英语一 Part B · 阅读的维度</a><a class="d" href="英语_词汇.html#910排序2014英语一PartB考古学家的勘探术">9.10 排序 · 2014 英语一 Part B · 考古学家的勘探术</a><a class="d" href="英语_词汇.html#911排序2018英语一PartB美国EEOB大楼的前世今生">9.11 排序 · 2018 英语一 Part B · 美国 EEOB 大楼的前世今生</a><a class="d" href="英语_词汇.html#912排序2010英语一PartB欧洲食品零售">9.12 排序 · 2010 英语一 Part B · 欧洲食品零售</a></details></div></nav>
+<div id="navscrim" aria-hidden="true"></div>
+<main data-subj="english"><div class="crumbline"><a href="../知识笔记首页.html">首页</a><span class="sep">/</span><b>英语 · 词汇</b></div><div class="article"><h1>词汇</h1><div class="board-meta">📖 英语 · <span class="pill">理论笔记</span><span class="pill">9 节</span></div><blockquote>
+<p>阅读与写作分开整理, 按"真题例句原文 → 重点词详解"组织。
+阅读词: 每个真题例句先给原文(重点词已标红), 下方逐词列出音标/全部词性/意思/本段释义/重要程度。
+写作词: 按真题列出主题词与短语, 末尾是通用表达库(写作文直接套用)。
+📖 与 <a href="英语_阅读_暑假_例题.html">阅读例题·暑假册</a>、<a href="英语_阅读_无忧_例题.html">阅读例题·无忧册</a>、<a href="英语_写作_例题.html">写作例题集</a> 配合使用</p>
+<p>⚠️ 课件为扫描件无颜色信息, "重点词"按真题例句中的考点词/定位词/同义替换词判断(课件标红的正是这些)。</p>
+</blockquote>
+<hr />
+<h2 id="一态度题真题例句重点词">一、态度题 · 真题例句重点词</h2>
+<h3 id="2004英一T3公众对经济形势的态度">2004 英一 T3 · 公众对经济形势的态度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Consumers seem only <b class="kw">mildly concerned</b>, not <b class="kw">panicked</b>, and many say they remain <b class="kw">optimistic</b> about the economy's long-term prospects, even as they do some modest belt-tightening."
+</div></div>
+<div class="w"><div class="wl"><b>concerned</b> /kənˈsɜːnd/ <span class="pos">adj.</span> 担心的; 关切的(be concerned about/with 关心…)</div><div class="wl2">本段: mildly concerned 轻微担忧<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>panicked</b> /ˈpænɪkt/ <span class="pos">adj.</span> 恐慌的; panic <span class="pos">n.</span>/<span class="pos">v.</span> 恐慌(panic → panicked 过去式)</div><div class="wl2">本段: not panicked 并不恐慌(态度题反证词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>optimistic</b> /ˌɒptɪˈmɪstɪk/ <span class="pos">adj.</span> 乐观的; optimism <span class="pos">n.</span> 乐观主义</div><div class="wl2">本段: remain optimistic 保持乐观<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>mildly</b> /ˈmaɪldli/ <span class="pos">adv.</span> 轻微地; 温和地(to put it mildly 说得委婉些)</div><div class="wl2">本段: 程度副词, 修饰 concerned<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>prospects</b> /ˈprɒspekts/ <span class="pos">n.</span> 前景; 可能性(prospect 的复数, 常作"前途"讲)</div><div class="wl2">本段: long-term prospects 长期前景<span class="mk freq">高频</span></div></div>
+<p><b>belt-tightening</b> /ˈbelt taɪtnɪŋ/ n. 勒紧腰带; 缩减开支 — 本段: modest belt-tightening 适度节约<span class="mk ok">重点</span></p>
+<h3 id="2012英一T4Donahue对公共部门系统的态度">2012 英一 T4 · Donahue 对公共部门系统的态度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "John Donahue at Harvard's Kennedy School points out that the norms of culture in Western civil services suit those who want to stay put but is <b class="kw">bad for high achievers</b>. ... Bankers' fat pay packets have attracted much criticism, but a public-sector system that does not reward high achievers may be a <b class="kw">much bigger problem</b> for America."
+</div></div>
+<div class="w"><div class="wl"><b>norms</b> /nɔːmz/ <span class="pos">n.</span> 规范; 准则(norm 复数; social norms 社会规范)</div><div class="wl2">本段: 文化规范<span class="mk freq">高频</span></div></div>
+<p><b>civil services</b> n. 文职部门; 公共行政机构(civil servant 公务员) — 本段: 西方公共服务部门<span class="mk biz">必考</span>
+<b>stay put</b> /steɪ pʊt/ 固定搭配: 待在原处; 安于现状 — 本段: 想安于现状的人<span class="mk ok">重点</span>
+<b>high achievers</b> n. 高成就者; 表现优异者(achieve v. 达成) — 本段: 高成就者(公共部门不奖励他们=问题)<span class="mk biz">必考</span>
+<b>fat pay packets</b> n. 丰厚的薪酬(fat 引申"丰厚的"; pay packet 工资袋) — 本段: 银行家丰厚薪酬<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>reward</b> /rɪˈwɔːd/ <span class="pos">v.</span>/<span class="pos">n.</span> 奖赏; 回报</div><div class="wl2">本段: 不奖励高成就者<span class="mk freq">高频</span></div></div>
+
+<h3 id="2014英一T4作者对AAAS报告的态度">2014 英一 T4 · 作者对 AAAS 报告的态度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "'The Heart of the Matter,' the just-released report by the American Academy of Arts and Sciences (AAAS), <b class="kw">deserves praise</b> for affirming the importance of the humanities and social sciences ... <b class="kw">Regrettably, however</b>, the report's failure to address the true nature of the crisis facing liberal education <b class="kw">may cause more harm than good</b>."
+</div></div>
+<p><b>deserves praise</b> v. 值得赞扬(deserve 应得, 值得; praise 表扬) — 本段: 先肯定 → 为后文转折做铺垫<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>affirming</b> /əˈfɜːmɪŋ/ <span class="pos">v.</span> 肯定; 确认(affirm 现在分词; affirmation <span class="pos">n.</span>)</div><div class="wl2">本段: 肯定人文学科的重要性<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>humanities</b> /hjuːˈmænətiz/ <span class="pos">n.</span> 人文学科(复数常作学科名)</div><div class="wl2">本段: 人文学科<span class="mk freq">高频</span></div></div>
+<p><b>Regrettably, however</b> 然而遗憾的是(态度题转折信号词) — 本段: 转折词, 后面才是作者真实态度<span class="mk biz">必考</span>
+<b>failure to address</b> 未能处理(fail to do sth. 未能做某事的名词化) — 本段: 报告未能处理问题本质<span class="mk ok">重点</span>
+<b>liberal education</b> n. 通识教育; 人文教育 — 本段: 通识教育面临的危机<span class="mk freq">高频</span>
+<b>may cause more harm than good</b> 弊大于利 — 本段: 整体负面评价(态度题关键句)<span class="mk biz">必考</span></p>
+<h3 id="2017英二T1作者对英国政府体育政策的态度">2017 英二 T1 · 作者对英国政府体育政策的态度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "But successive governments have presided over <b class="kw">selling green spaces</b>, <b class="kw">squeezing money</b> from local authorities and <b class="kw">declining attention</b> on sport in education. <b class="kw">Instead of...</b> wordy, worthy strategies, future governments <b class="kw">need to do more</b> to provide the conditions for sport to thrive."
+</div></div>
+<div class="w"><div class="wl"><b>successive</b> /səkˈsesɪv/ <span class="pos">adj.</span> 连续的; 接连的(succession <span class="pos">n.</span>)</div><div class="wl2">本段: 历届政府<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>presided over</b> /prɪˈzaɪd/ 主持; 掌管(preside over 常含"放任…发生"贬义)</div><div class="wl2">本段: 历届政府放任了这些负面行为<span class="mk ok">重点</span></div></div>
+<p><b>squeezing money</b> 挤压资金(squeeze v. 挤压, 榨取) — 本段: 从地方当局挤钱<span class="mk biz">必考</span>
+<b>declining attention</b> 对…的关注下降(declining 下降中的, decline v./n.) — 本段: 教育中体育受关注度下降<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>wordy</b> /ˈwɜːdi/ <span class="pos">adj.</span> 冗长的; 废话多的</div><div class="wl2">本段: 空话连篇的策略<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>thrive</b> /θraɪv/ <span class="pos">v.</span> 兴旺; 茁壮成长(throve/thrived, thriven)</div><div class="wl2">本段: 让体育蓬勃发展<span class="mk freq">高频</span></div></div>
+
+<h3 id="2016英一T3作者对Friedman关于CSR观点的态度">2016 英一 T3 · 作者对 Friedman 关于 CSR 观点的态度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "'There is one and only one social responsibility of business,' wrote Milton Friedman ... 'to use its resources and engage in activities designed to increase its profits.' But even if you accept Friedman's premise ... things may not be absolutely clear-cut. New research suggests that CSR may create monetary value for companies — at least when they are prosecuted for corruption."
+</div></div>
+<p><b>social responsibility</b> n. 社会责任(CSR = corporate social responsibility) — 本段: 企业社会责任<span class="mk biz">必考</span>
+<b>engage in</b> 从事; 参与 — 本段: 从事以盈利为目的的活动<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>premise</b> /ˈpremɪs/ <span class="pos">n.</span> 前提; 假定</div><div class="wl2">本段: 接受 Friedman 的前提<span class="mk freq">高频</span></div></div>
+<p><b>clear-cut</b> /ˌklɪə ˈkʌt/ adj. 明确的; 清晰的 — 本段: 事情并非绝对清晰(转折后质疑)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>monetary</b> /ˈmʌnɪtri/ <span class="pos">adj.</span> 货币的; 金钱的(monetary value 货币价值)</div><div class="wl2">本段: CSR 可能创造货币价值<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>prosecuted</b> /ˈprɒsɪkjuːtɪd/ <span class="pos">v.</span> 起诉; 检举(prosecution <span class="pos">n.</span>)</div><div class="wl2">本段: 被控腐败时<span class="mk ok">重点</span></div></div>
+
+<h3 id="2015英一T2作者对California论点手机隐私案的态度">2015 英一 T2 · 作者对 California 论点(手机隐私案)的态度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "California has asked the justices to <b class="kw">refrain from</b> a sweeping ruling... It is hard, the state argues, for judges to assess the implications of new and rapidly changing technologies." 第四段: "They should start by discarding California's <b class="kw">lame argument</b>..."
+</div></div>
+<div class="w"><div class="wl"><b>refrain from</b> /rɪˈfreɪn/ 克制; 避免(正式用语)</div><div class="wl2">本段: 克制不做全面裁决<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>sweeping</b> /ˈswiːpɪŋ/ <span class="pos">adj.</span> 全面的; 笼统的(sweeping ruling 一刀切的裁决)</div><div class="wl2">本段: 全面性裁决<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>assess</b> /əˈses/ <span class="pos">v.</span> 评估; 评定(assessment <span class="pos">n.</span>)</div><div class="wl2">本段: 评估新技术的影响<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>implications</b> /ˌɪmplɪˈkeɪʃnz/ <span class="pos">n.</span> 影响; 含义(implication 复数)</div><div class="wl2">本段: 新技术的潜在影响<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>recklessly</b> /ˈrekləsli/ <span class="pos">adv.</span> 鲁莽地; 不计后果地(reckless <span class="pos">adj.</span>)</div><div class="wl2">本段: "recklessly modest" 鲁莽的谦虚(态度词)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>lame</b> /leɪm/ <span class="pos">adj.</span> 蹩脚的; 站不住脚的</div><div class="wl2">本段: lame argument 蹩脚的论点<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>discard</b> /dɪsˈkɑːd/ <span class="pos">v.</span> 抛弃; 丢弃</div><div class="wl2">本段: 应首先抛弃该论点<span class="mk ok">重点</span></div></div>
+
+<h3 id="2013英一T2作者对BrendonLynch博客言论的态度">2013 英一 T2 · 作者对 Brendon Lynch 博客言论的态度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> Brendon Lynch blogged: "We believe consumers should have more control." Could it really be that simple?
+</div></div>
+<div class="w"><div class="wl"><b>control</b> /kənˈtrəʊl/ <span class="pos">n.</span>/<span class="pos">v.</span> 控制; 掌控(have control over 对…有控制权)</div><div class="wl2">本段: 消费者应有更多控制权<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>blogged</b> /blɒɡd/ <span class="pos">v.</span> 写博客(blog 作动词的过去式)</div><div class="wl2">本段: 在博客中写道<span class="mk ok">重点</span></div></div>
+<p><b>Could it really be that simple?</b> 反问句=质疑(态度题固定考点: 问号=怀疑) — 本段: 对简单化说法表示怀疑<span class="mk biz">必考</span></p>
+<h3 id="2013英二T3作者对逆转高速生活趋势的态度">2013 英二 T3 · 作者对逆转高速生活趋势的态度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Although technology might change the way we react, it hasn't changed our nature. We still have the imaginative capacity to rise above temptation and reverse the high-speed trend."
+</div></div>
+<div class="w"><div class="wl"><b>react</b> /riˈækt/ <span class="pos">v.</span> 反应; 应对(reaction <span class="pos">n.</span>)</div><div class="wl2">本段: 技术改变我们反应的方式<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>nature</b> /ˈneɪtʃə/ <span class="pos">n.</span> 本性; 天性; 自然</div><div class="wl2">本段: 技术没有改变我们的本性<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>imaginative</b> /ɪˈmædʒɪnətɪv/ <span class="pos">adj.</span> 富有想象力的</div><div class="wl2">本段: 想象的能力<span class="mk ok">重点</span></div></div>
+<p><b>rise above</b> 超越; 克服(rise above temptation 克服诱惑) — 本段: 超越诱惑<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>temptation</b> /tempˈteɪʃn/ <span class="pos">n.</span> 诱惑(tempt <span class="pos">v.</span> 引诱)</div><div class="wl2">本段: 诱惑<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>reverse</b> /rɪˈvɜːs/ <span class="pos">v.</span> 逆转; 颠倒</div><div class="wl2">本段: 逆转高速趋势<span class="mk freq">高频</span></div></div>
+
+<h3 id="2011英一T1作者对Gilbert复兴交响乐团的态度">2011 英一 T1 · 作者对 Gilbert 复兴交响乐团的态度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "But what will be the nature of that difference? Merely expanding the orchestra's repertoire will not be enough. If Gilbert and the Philharmonic are to succeed, they must first change the relationship between America's oldest orchestra and the new audience it hopes to attract."
+</div></div>
+<div class="w"><div class="wl"><b>revitalizing</b> /ˌriːˈvaɪtəlaɪzɪŋ/ <span class="pos">v.</span> 使复兴; 使复苏(revitalize; vitality <span class="pos">n.</span> 活力)</div><div class="wl2">本段: 复兴交响乐团<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>repertoire</b> /ˈrepətwɑː/ <span class="pos">n.</span> 保留曲目; 全部剧目</div><div class="wl2">本段: 扩充乐团曲目<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>nature</b> /ˈneɪtʃə/ <span class="pos">n.</span> 本质; 性质</div><div class="wl2">本段: 这种差异的本质<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>succeed</b> /səkˈsiːd/ <span class="pos">v.</span> 成功; 继承(success <span class="pos">n.</span>)</div><div class="wl2">本段: 要成功就必须…(条件句表不确定)<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>attract</b> /əˈtrækt/ <span class="pos">v.</span> 吸引(attraction <span class="pos">n.</span> 吸引力)</div><div class="wl2">本段: 想吸引的新观众<span class="mk freq">高频</span></div></div>
+
+<h3 id="2021英二T2作者对英国粮食自给自足的态度">2021 英二 T2 · 作者对英国粮食自给自足的态度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Sounds great —— but how feasible is this vision?"
+</div></div>
+<div class="w"><div class="wl"><b>feasible</b> /ˈfiːzəbl/ <span class="pos">adj.</span> 可行的(feasibility <span class="pos">n.</span> 可行性)</div><div class="wl2">本段: 这个愿景有多可行(反问=质疑)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>vision</b> /ˈvɪʒn/ <span class="pos">n.</span> 愿景; 远见</div><div class="wl2">本段: 粮食自给的愿景<span class="mk freq">高频</span></div></div>
+<p><b>self-sufficiency</b> /ˌself səˈfɪʃnsi/ n. 自给自足(self-sufficient adj.) — 本段: 粮食自给自足<span class="mk freq">高频</span>
+<b>Sounds great — but</b> 听起来不错, 但…(先扬后抑=态度题转折结构) — 本段: 表面肯定, 实则质疑<span class="mk biz">必考</span></p>
+<h2 id="二例证题真题例句重点词">二、例证题 · 真题例句重点词</h2>
+<h3 id="2017英一T1EgyptAir空难例子的论证目的">2017 英一 T1 · EgyptAir 空难例子的论证目的</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Americans are willing to tolerate time-consuming security procedures in return for increased safety. The crash of EgyptAir Flight 804, which terrorists may have downed over the Mediterranean Sea, provides another <b class="kw">tragic reminder of why</b>."
+</div></div>
+<div class="w"><div class="wl"><b>tolerate</b> /ˈtɒləreɪt/ <span class="pos">v.</span> 容忍; 忍受(tolerance <span class="pos">n.</span> 容忍)</div><div class="wl2">本段: 愿意容忍耗时的安检<span class="mk freq">高频</span></div></div>
+<p><b>time-consuming</b> /ˈtaɪm kənˌsjuːmɪŋ/ adj. 耗时的(consume v. 消耗) — 本段: 耗时的安检程序<span class="mk ok">重点</span>
+<b>in return for</b> 作为…的回报; 以换取 — 本段: 以容忍安检换取安全<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>procedures</b> /prəˈsiːdʒəz/ <span class="pos">n.</span> 程序; 步骤(procedure 复数)</div><div class="wl2">本段: 安检程序<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>crash</b> /kræʃ/ <span class="pos">n.</span>/<span class="pos">v.</span> 坠毁; 崩溃</div><div class="wl2">本段: 航班坠毁(例子本身)<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>downed</b> /daʊnd/ <span class="pos">v.</span> 击落; 使坠毁(down 作动词)</div><div class="wl2">本段: 恐怖分子可能击落的<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>tragic</b> /ˈtrædʒɪk/ <span class="pos">adj.</span> 悲剧的; 悲惨的(tragedy <span class="pos">n.</span> 悲剧)</div><div class="wl2">本段: 悲剧性的提醒<span class="mk freq">高频</span></div></div>
+
+<h3 id="2018英二T1自行车链条例子的论证目的">2018 英二 T1 · 自行车链条例子的论证目的</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "He is a teacher at a New Hampshire high school where learning is not something of books and tests and <b class="kw">mechanical memorization</b>, but practical. When did it become accepted wisdom that students should be able to name the 13th president of the United States but be utterly overwhelmed by a broken bike chain?"
+</div></div>
+<div class="w"><div class="wl"><b>mechanical</b> /məˈkænɪkl/ <span class="pos">adj.</span> 机械的; 呆板的</div><div class="wl2">本段: 机械记忆(被批评的对象)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>memorization</b> /ˌmeməraɪˈzeɪʃn/ <span class="pos">n.</span> 记忆; 背诵(memorize <span class="pos">v.</span> 记住)</div><div class="wl2">本段: 死记硬背<span class="mk freq">高频</span></div></div>
+<p><b>accepted wisdom</b> 公认的看法; 普遍认知 — 本段: 何时成了公认看法(反问质疑)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>utterly</b> /ˈʌtəli/ <span class="pos">adv.</span> 完全地; 彻底地</div><div class="wl2">本段: 完全不知所措<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>overwhelmed</b> /ˌəʊvəˈwelm(ə)d/ <span class="pos">adj.</span> 不知所措的; 被压垮的(overwhelm <span class="pos">v.</span>)</div><div class="wl2">本段: 被一个坏自行车链条难倒<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>practical</b> /ˈpræktɪkl/ <span class="pos">adj.</span> 实践的; 实际的</div><div class="wl2">本段: 学习应是实用的(观点句关键词)<span class="mk freq">高频</span></div></div>
+
+<h3 id="2009英一T3祖先例子的论证目的">2009 英一 T3 · 祖先例子的论证目的</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "When our ancestors were hunters and gatherers 10,000 years ago, they didn't have time to wonder much about anything besides finding food. Only when humanity began to get its food in a more productive way was there time for other things."
+</div></div>
+<div class="w"><div class="wl"><b>ancestors</b> /ˈænsestəz/ <span class="pos">n.</span> 祖先(ancestor 复数; ancestry <span class="pos">n.</span> 血统)</div><div class="wl2">本段: 祖先(例子主体)<span class="mk freq">高频</span></div></div>
+<p><b>hunters and gatherers</b> 狩猎采集者 — 本段: 狩猎采集时代<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>wonder</b> /ˈwʌndə/ <span class="pos">v.</span> 想知道; 思考 <span class="pos">n.</span> 惊奇</div><div class="wl2">本段: 没时间思考食物以外的事<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>besides</b> /bɪˈsaɪdz/ <span class="pos">prep.</span> 除…之外</div><div class="wl2">本段: 除觅食以外<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>productive</b> /prəˈdʌktɪv/ <span class="pos">adj.</span> 富有成效的; 多产的</div><div class="wl2">本段: 更高效地获取食物<span class="mk freq">高频</span></div></div>
+<p><b>Only when...was there</b> 倒装句(only+状语提前, 主谓倒装) — 本段: 只有…才有时间(强调条件)<span class="mk biz">必考</span></p>
+<h3 id="2014英二T1McRib例子的论证目的">2014 英二 T1 · McRib 例子的论证目的</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "... and luxuries are most enjoyable when they are consumed sparingly. This is apparently the reason MacDonald's restricts the availability of its popular McRib — a marketing trick that has turned the pork sandwich into an object of obsession."
+</div></div>
+<div class="w"><div class="wl"><b>luxuries</b> /ˈlʌkʃəriz/ <span class="pos">n.</span> 奢侈品(luxury 复数; luxurious <span class="pos">adj.</span> 豪华的)</div><div class="wl2">本段: 奢侈品<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>sparingly</b> /ˈspeərɪŋli/ <span class="pos">adv.</span> 节俭地; 有节制地</div><div class="wl2">本段: 有节制地消费奢侈品时最愉悦<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>restricts</b> /rɪˈstrɪkts/ <span class="pos">v.</span> 限制; 约束(restriction <span class="pos">n.</span>)</div><div class="wl2">本段: 限制供应<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>availability</b> /əˌveɪləˈbɪləti/ <span class="pos">n.</span> 可用性; 可获得性(available <span class="pos">adj.</span>)</div><div class="wl2">本段: 限供(制造稀缺)<span class="mk ok">重点</span></div></div>
+<p><b>marketing trick</b> 营销手段(trick 花招; 窍门) — 本段: 营销噱头<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>obsession</b> /əbˈseʃn/ <span class="pos">n.</span> 痴迷; 执念(be obsessed with 痴迷于)</div><div class="wl2">本段: 让三明治成为痴迷之物<span class="mk freq">高频</span></div></div>
+
+<h3 id="2008英一T3WiltChamberlain例子的论证目的">2008 英一 T3 · Wilt Chamberlain 例子的论证目的</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "In the early 1960s Wilt Chamberlain was one of only three players in the NBA listed at over seven feet. If he had played last season, however, he would have been one of 42. The bodies playing major professional sports have changed dramatically over the years..."
+</div></div>
+<p><b>listed at</b> 标为; 记录为(list 列出的) — 本段: 身高记录在册的超7尺球员<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>dramatically</b> /drəˈmætɪkli/ <span class="pos">adv.</span> 巨大地; 戏剧性地</div><div class="wl2">本段: 运动员体型发生了巨大变化<span class="mk freq">高频</span></div></div>
+<p><b>major professional sports</b> 主要职业体育赛事 — 本段: 职业体育(观点句主体)<span class="mk ok">重点</span>
+<b>over the years</b> 多年来 — 本段: 多年来<span class="mk freq">高频</span></p>
+<h3 id="2017英一T3RobertFKennedy引用的论证目的">2017 英一 T3 · Robert F. Kennedy 引用的论证目的</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Robert F. Kennedy once said that a country's GDP measures 'everything except that which makes life worthwhile.'" 第二段: "Many argue that it (GDP) is a flawed concept."
+</div></div>
+<p><b>GDP</b> n. 国内生产总值(Gross Domestic Product) — 本段: 国家财富指标<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>measures</b> /ˈmeʒəz/ <span class="pos">v.</span> 衡量; 测量 <span class="pos">n.</span> 措施</div><div class="wl2">本段: GDP 衡量一切<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>worthwhile</b> /ˌwɜːθˈwaɪl/ <span class="pos">adj.</span> 值得的; 有价值的</div><div class="wl2">本段: 让生活有价值的东西<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>flawed</b> /flɔːd/ <span class="pos">adj.</span> 有缺陷的(flaw <span class="pos">n.</span> 缺陷)</div><div class="wl2">本段: 有缺陷的概念<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>concept</b> /ˈkɒnsept/ <span class="pos">n.</span> 概念; 观念</div><div class="wl2">本段: 概念<span class="mk freq">高频</span></div></div>
+<p><b>had a low opinion of</b> 对…评价低(opinion 看法; 与 think highly of 相对) — 本段: 对 GDP 评价低(引用目的)<span class="mk biz">必考</span></p>
+<h3 id="2008英一T4GeorgeWashington拔牙故事的引用目的">2008 英一 T4 · George Washington 拔牙故事的引用目的</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段讲 Washington 拔牙(用奴隶的牙移植到自己嘴里)。第二段: "That's a far different image from the cherry-tree-chopping George most people remember from their history books. But recently, many historians have begun to focus on the roles slavery played in the lives of the founding generation."
+</div></div>
+<div class="w"><div class="wl"><b>image</b> /ˈɪmɪdʒ/ <span class="pos">n.</span> 形象; 印象</div><div class="wl2">本段: 与教科书形象大不相同<span class="mk ok">重点</span></div></div>
+<p><b>cherry-tree-chopping</b> 砍樱桃树的(华盛顿诚实传说) — 本段: 人们记忆中的诚实形象<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>slavery</b> /ˈsleɪvəri/ <span class="pos">n.</span> 奴隶制(slave <span class="pos">n.</span> 奴隶)</div><div class="wl2">本段: 奴隶制在开国者生活中的作用<span class="mk biz">必考</span></div></div>
+<p><b>founding generation</b> 开国一代; 建国先贤(found v. 建立) — 本段: 开国一代<span class="mk freq">高频</span>
+<b>focus on</b> 聚焦; 关注 — 本段: 历史学家开始关注<span class="mk freq">高频</span></p>
+<h3 id="2003英一T1Donovan故事的开篇功能">2003 英一 T1 · Donovan 故事的开篇功能</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段讲 Donovan 热爱信息、创建 OSS。末句: "These days the Net, which has already re-made such everyday pastimes as buying books and sending mail, is reshaping Donovan's vocation as well."
+</div></div>
+<div class="w"><div class="wl"><b>pastimes</b> /ˈpɑːstaɪmz/ <span class="pos">n.</span> 消遣; 娱乐(pastime 复数)</div><div class="wl2">本段: 日常消遣(购书寄信)<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>reshaping</b> /ˌriːˈʃeɪpɪŋ/ <span class="pos">v.</span> 重塑; 改变形态(reshape)</div><div class="wl2">本段: 网络正重塑 Donovan 的事业<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>vocation</b> /vəʊˈkeɪʃn/ <span class="pos">n.</span> 职业; 使命(vocational <span class="pos">adj.</span> 职业的)</div><div class="wl2">本段: 情报工作这一职业<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>spying</b> /ˈspaɪɪŋ/ <span class="pos">n.</span> 间谍活动(spy <span class="pos">v.</span>/<span class="pos">n.</span> 间谍)</div><div class="wl2">本段: 网络间谍(文章真正主题)<span class="mk freq">高频</span></div></div>
+
+<h2 id="三语义题真题例句重点词">三、语义题 · 真题例句重点词</h2>
+<h3 id="2006英一T1homogenizing的含义">2006 英一 T1 · "homogenizing" 的含义</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "In spite of 'endless talk of difference,' American society is an amazing machine for <b class="kw">homogenizing</b> people." 后文: "the democratizing uniformity of dress and discourse... People are absorbed into 'a culture of consumption'..."
+</div></div>
+<div class="w"><div class="wl"><b>homogenizing</b> /həˈmɒdʒənaɪzɪŋ/ <span class="pos">v.</span> 使同质化; 同化(homogeneous <span class="pos">adj.</span> 同质的)</div><div class="wl2">本段: 同化人们=assimilating<span class="mk biz">必考</span></div></div>
+<p><b>in spite of</b> 尽管(让步信号词=反向逻辑) — 本段: 尽管有"差异"的说法<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>uniformity</b> /ˌjuːnɪˈfɔːməti/ <span class="pos">n.</span> 一致性; 统一(uniform <span class="pos">adj.</span>/<span class="pos">n.</span>)</div><div class="wl2">本段: 衣着谈吐的一致性<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>discourse</b> /ˈdɪskɔːs/ <span class="pos">n.</span> 话语; 论述</div><div class="wl2">本段: 谈吐<span class="mk ok">重点</span></div></div>
+<p><b>absorbed into</b> 被吸收; 融入(absorb v. 吸收) — 本段: 人们被吸收进消费文化<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>democratizing</b> /dɪˈmɒkrətaɪzɪŋ/ <span class="pos">v.</span> 民主化的; 普及的</div><div class="wl2">本段: 普及的一致性<span class="mk ok">重点</span></div></div>
+
+<h3 id="2017英一T1expedited的含义">2017 英一 T1 · "expedited" 的含义</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Passengers who pass a background check are eligible to use <b class="kw">expedited</b> screening lanes. This allows the TSA to focus on travelers who are higher risk, <b class="kw">saving time</b> for everyone involved."
+</div></div>
+<div class="w"><div class="wl"><b>expedited</b> /ˈekspədaɪtɪd/ <span class="pos">adj.</span> 加快的; 加速的(expedite <span class="pos">v.</span> 加快)</div><div class="wl2">本段: 快速安检通道=faster<span class="mk biz">必考</span></div></div>
+<p><b>background check</b> 背景调查 — 本段: 通过背景调查的乘客<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>eligible</b> /ˈelɪdʒəbl/ <span class="pos">adj.</span> 有资格的; 符合条件的</div><div class="wl2">本段: 有资格使用快速通道<span class="mk freq">高频</span></div></div>
+<p><b>screening lanes</b> 安检通道(screen v. 筛查) — 本段: 快速安检通道<span class="mk ok">重点</span>
+<b>higher risk</b> 高风险 — 本段: 集中关注高风险旅客<span class="mk freq">高频</span></p>
+<h3 id="2015英二T1moola的含义">2015 英二 T1 · "moola" 的含义</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "At work, people pretty much know what they're supposed to be doing: working, making money, doing the tasks they have to do in order to draw an income. The bargain is very pure: Employee puts in hours of physical or mental labor and employee draws out <b class="kw">life-sustaining moola</b>."
+</div></div>
+<div class="w"><div class="wl"><b>moola</b> /ˈmuːlə/ <span class="pos">n.</span> 钱; 钞票(口语)</div><div class="wl2">本段: 收入=earnings<span class="mk biz">必考</span></div></div>
+<p><b>draw an income</b> 获得收入(draw 提取; 领取) — 本段: 领取收入<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>bargain</b> /ˈbɑːɡən/ <span class="pos">n.</span> 交易; 协议</div><div class="wl2">本段: 交易很纯粹<span class="mk ok">重点</span></div></div>
+<p><b>puts in</b> 投入; 付出(put in hours 花费时间) — 本段: 投入体力/脑力劳动<span class="mk freq">高频</span>
+<b>life-sustaining</b> /ˌlaɪf səˈsteɪnɪŋ/ adj. 维持生命的; 糊口的(sustain v. 维持) — 本段: 维持生活的钱<span class="mk ok">重点</span>
+<b>physical or mental labor</b> 体力或脑力劳动 — 本段: 劳动<span class="mk ok">重点</span></p>
+<h3 id="2004英一T1tipservice的含义">2004 英一 T1 · "tip service" 的含义</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Instead, the best strategy is to use the agent as a kind of <b class="kw">tip service</b> to keep abreast of jobs in a particular database; when you get E-mail, consider it a reminder to check the database again."
+</div></div>
+<p><b>tip service</b> n. 提示服务(tip 提示; 小费) — 本段: 提醒工具=reminder<span class="mk biz">必考</span>
+<b>keep abreast of</b> 跟上; 了解最新情况(abreast 并排) — 本段: 及时了解工作机会<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>database</b> /ˈdeɪtəbeɪs/ <span class="pos">n.</span> 数据库</div><div class="wl2">本段: 特定数据库<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>reminder</b> /rɪˈmaɪndə/ <span class="pos">n.</span> 提醒; 提示(remind <span class="pos">v.</span>)</div><div class="wl2">本段: 收到邮件=提醒再去查库<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>strategy</b> /ˈstrætədʒi/ <span class="pos">n.</span> 策略; 战略</div><div class="wl2">本段: 最佳策略<span class="mk freq">高频</span></div></div>
+
+<h3 id="2018英二T2plummeting的含义">2018 英二 T2 · "plummeting" 的含义</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "But increasingly the story is about the <b class="kw">plummeting</b> prices of renewables, especially wind and solar. The cost of solar panels has <b class="kw">dropped by 80 percent</b> and the cost of wind turbines by close to one-third in the past eight years."
+</div></div>
+<div class="w"><div class="wl"><b>plummeting</b> /ˈplʌmɪtɪŋ/ <span class="pos">v.</span> 暴跌; 骤降(plummet; 同义 surge 的反义)</div><div class="wl2">本段: 价格暴跌=falling<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>renewables</b> /rɪˈnjuːəblz/ <span class="pos">n.</span> 可再生能源(renewable <span class="pos">adj.</span>)</div><div class="wl2">本段: 可再生能源<span class="mk freq">高频</span></div></div>
+<p><b>solar panels</b> 太阳能电池板 — 本段: 太阳能<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>turbines</b> /ˈtɜːbaɪnz/ <span class="pos">n.</span> 涡轮机(wind turbines 风力发电机)</div><div class="wl2">本段: 风电成本<span class="mk ok">重点</span></div></div>
+<p><b>dropped by 80 percent</b> 下降了80%(下降幅度表达) — 本段: 数据佐证 plummeting<span class="mk biz">必考</span></p>
+<h3 id="2006英一T4bummer的含义">2006 英一 T4 · "bummer" 的含义</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "People in earlier eras were surrounded by reminders of misery. They worked until exhausted, lived with few protections and died young. ... Given all this, they did not exactly need their art to be a bummer too."
+</div></div>
+<div class="w"><div class="wl"><b>eras</b> /ˈɪərəz/ <span class="pos">n.</span> 时代(era 复数; 同义 age/period)</div><div class="wl2">本段: 早期时代<span class="mk freq">高频</span></div></div>
+<p><b>surrounded by</b> 被…包围(surround v.) — 本段: 被苦难提醒包围<span class="mk ok">重点</span>
+<b>reminders of misery</b> 苦难的提醒(reminder 提醒物) — 本段: 苦难无处不在<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>exhausted</b> /ɪɡˈzɔːstɪd/ <span class="pos">adj.</span> 精疲力竭的(exhaust <span class="pos">v.</span> 耗尽)</div><div class="wl2">本段: 工作到精疲力竭<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>protections</b> /prəˈtekʃnz/ <span class="pos">n.</span> 保护; 保障(protection 复数)</div><div class="wl2">本段: 生活鲜有保障<span class="mk ok">重点</span></div></div>
+<p><b>Given all this</b> 鉴于这一切(given 考虑到) — 本段: 逻辑信号词, 引出 bummer 的语义<span class="mk biz">必考</span></p>
+<h3 id="2002英一T2gizmos的含义">2002 英一 T2 · "gizmos" 的含义</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "As a result, the modern world is increasingly populated by intelligent gizmos whose presence we barely notice but whose universal existence has <b class="kw">removed much human labor</b>. Our factories hum to the rhythm of robot assembly arms. Our banking is done at automated teller terminals..."
+</div></div>
+<div class="w"><div class="wl"><b>gizmos</b> /ˈɡɪzməʊz/ <span class="pos">n.</span> 小装置; 设备(口语)</div><div class="wl2">本段: 智能设备=devices<span class="mk biz">必考</span></div></div>
+<p><b>populated by</b> 充满; 遍布(populate v. 居住于) — 本段: 现代世界遍布智能装置<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>intelligent</b> /ɪnˈtelɪdʒənt/ <span class="pos">adj.</span> 智能的; 聪明的</div><div class="wl2">本段: 智能装置<span class="mk freq">高频</span></div></div>
+<p><b>barely notice</b> 几乎没注意(barely 几乎不) — 本段: 我们几乎没察觉其存在<span class="mk ok">重点</span>
+<b>removed much human labor</b> 替代了大量人力(remove 去除) — 本段: 装置的功能=替代人力<span class="mk biz">必考</span>
+<b>assembly arms</b> 装配机械臂(assemble v. 组装) — 本段: 机器人装配臂<span class="mk ok">重点</span>
+<b>automated teller</b> 自动柜员机(ATM) — 本段: 自动取款终端<span class="mk ok">重点</span></p>
+<h3 id="2005英一T2paralysisbyanalysis的含义">2005 英一 T2 · "paralysis by analysis" 的含义</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Instead of a plan of action, they continue to press for more research — a classic case of 'paralysis by analysis'."
+</div></div>
+<div class="w"><div class="wl"><b>paralysis</b> /pəˈræləsɪs/ <span class="pos">n.</span> 瘫痪; 麻痹(paralyze <span class="pos">v.</span>)</div><div class="wl2">本段: 分析导致的"瘫痪"<span class="mk biz">必考</span></div></div>
+<p><b>instead of</b> 而不是(反向逻辑信号词) — 本段: 不是行动而是研究<span class="mk biz">必考</span>
+<b>press for</b> 迫切要求; 敦促 — 本段: 不断要求更多研究<span class="mk ok">重点</span>
+<b>a classic case of</b> …的典型案例(classic 典型的) — 本段: 典型例证<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>analysis</b> /əˈnæləsɪs/ <span class="pos">n.</span> 分析(复数 analyses)</div><div class="wl2">本段: 只分析不行动<span class="mk freq">高频</span></div></div>
+
+<h3 id="2013英二T2Birdsofpassage指谁">2013 英二 T2 · "Birds of passage" 指谁</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Along with the many folks looking to make a permanent home in the United States came those who had no intention to stay, and who would make some money and then go home. ... They even had an affectionate nickname, 'uccelli di passaggio', <b class="kw">birds of passage</b>."
+</div></div>
+<div class="w"><div class="wl"><b>folks</b> /fəʊks/ <span class="pos">n.</span> 人们; 大伙(口语)</div><div class="wl2">本段: 很多人<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>permanent</b> /ˈpɜːmənənt/ <span class="pos">adj.</span> 永久的; 长期的</div><div class="wl2">本段: 永久定居美国<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>intention</b> /ɪnˈtenʃn/ <span class="pos">n.</span> 意图; 打算(intend <span class="pos">v.</span>)</div><div class="wl2">本段: 无意久留<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>affectionate</b> /əˈfekʃənət/ <span class="pos">adj.</span> 深情的; 亲昵的</div><div class="wl2">本段: 亲切的昵称<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>nickname</b> /ˈnɪkneɪm/ <span class="pos">n.</span> 昵称; 绰号</div><div class="wl2">本段: 昵称<span class="mk freq">高频</span></div></div>
+<p><b>birds of passage</b> 候鸟; 迁徙者(引申"过客") — 本段: 临时居留者=stay temporarily<span class="mk biz">必考</span></p>
+<h3 id="2003英一T3arbiters指谁">2003 英一 T3 · "arbiters" 指谁</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "... in practice it often leaves railroads in the position of determining which companies will flourish and which will fail. 'Do we really want railroads to be the <b class="kw">arbiters of</b> who wins and who loses in the marketplace?'"
+</div></div>
+<div class="w"><div class="wl"><b>arbiters</b> /ˈɑːbɪtəz/ <span class="pos">n.</span> 裁决者; 仲裁人(arbiter 复数; 同义 judge)</div><div class="wl2">本段: 谁赢谁输的裁决者=judges<span class="mk biz">必考</span></div></div>
+<p><b>in practice</b> 实际上(与 in theory 相对) — 本段: 在实践中<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>flourish</b> /ˈflʌrɪʃ/ <span class="pos">v.</span> 繁荣; 兴旺</div><div class="wl2">本段: 哪些公司兴旺<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>marketplace</b> /ˈmɑːkɪtpleɪs/ <span class="pos">n.</span> 市场; 商界</div><div class="wl2">本段: 市场竞争<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>determining</b> /dɪˈtɜːmɪnɪŋ/ <span class="pos">v.</span> 决定; 确定</div><div class="wl2">本段: 决定成败(与 arbiters 呼应)<span class="mk freq">高频</span></div></div>
+<h2 id="四细节题真题例句重点词">四、细节题 · 真题例句重点词</h2>
+<h3 id="2013英一T1Priestly批评助理的原因">2013 英一 T1 · Priestly 批评助理的原因</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Miranda Priestly scolds her unattractive assistant for imagining that high fashion doesn't affect her."
+</div></div>
+<div class="w"><div class="wl"><b>scolds</b> /skəʊldz/ <span class="pos">v.</span> 责骂; 斥责(scold 三单; 同义 criticize)</div><div class="wl2">本段: 责备助理<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>unattractive</b> /ˌʌnəˈtræktɪv/ <span class="pos">adj.</span> 不漂亮的; 无吸引力的(un- 否定前缀)</div><div class="wl2">本段: 其貌不扬的助理<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>imagining</b> /ɪˈmædʒɪnɪŋ/ <span class="pos">v.</span> 想象; 以为(imagine 动名词)</div><div class="wl2">本段: 以为高级时装与她无关(原因)<span class="mk freq">高频</span></div></div>
+<p><b>high fashion</b> 高级时装; 时尚前沿 — 本段: 高级时装<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>affect</b> /əˈfekt/ <span class="pos">v.</span> 影响(affect 影响≠effect 效果)</div><div class="wl2">本段: 时装不影响她<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>insensitivity</b> /ɪnˌsensəˈtɪvəti/ <span class="pos">n.</span> 不敏感; 迟钝(sensitive 敏感)</div><div class="wl2">本段: 对时尚不敏感(正确答案词)<span class="mk biz">必考</span></div></div>
+
+<h3 id="2012英一T3科学发现过程的特征">2012 英一 T3 · 科学发现过程的特征</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "But in the everyday practice of science, discovery frequently follows an <b class="kw">ambiguous and complicated</b> route."
+</div></div>
+<p><b>everyday practice</b> 日常实践 — 本段: 日常科学实践<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>discovery</b> /dɪˈskʌvəri/ <span class="pos">n.</span> 发现; 发觉(discover <span class="pos">v.</span>)</div><div class="wl2">本段: 科学发现<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>frequently</b> /ˈfriːkwəntli/ <span class="pos">adv.</span> 频繁地; 经常(同义 often)</div><div class="wl2">本段: 经常走模糊复杂的路径<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>ambiguous</b> /æmˈbɪɡjuəs/ <span class="pos">adj.</span> 模糊的; 模棱两可的(=uncertain)</div><div class="wl2">本段: 模糊的路径<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>complicated</b> /ˈkɒmplɪkeɪtɪd/ <span class="pos">adj.</span> 复杂的(=complex)</div><div class="wl2">本段: 复杂的路径<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>route</b> /ruːt/ <span class="pos">n.</span> 路线; 路径</div><div class="wl2">本段: 发现之路<span class="mk freq">高频</span></div></div>
+
+<h3 id="2011英二T3Mies关于建筑优雅的观点">2011 英二 T3 · Mies 关于建筑优雅的观点</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Mies's signature phrase means that <b class="kw">less decoration</b>...has <b class="kw">more impact</b> than a lot. Elegance, he believed, did not derive from abundance."
+</div></div>
+<p><b>signature phrase</b> 标志性名言; 口头禅(signature 标志性的) — 本段: 密斯的标志性名言<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>decoration</b> /ˌdekəˈreɪʃn/ <span class="pos">n.</span> 装饰; 装潢(decorate <span class="pos">v.</span>)</div><div class="wl2">本段: 少装饰比多装饰更有冲击力<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>impact</b> /ˈɪmpækt/ <span class="pos">n.</span> 影响; 冲击力</div><div class="wl2">本段: 影响力<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>elegance</b> /ˈelɪɡəns/ <span class="pos">n.</span> 优雅(elegant <span class="pos">adj.</span>)</div><div class="wl2">本段: 优雅<span class="mk freq">高频</span></div></div>
+<p><b>derive from</b> 来源于; 源自 — 本段: 优雅并非源于丰富(同义替换不依赖)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>abundance</b> /əˈbʌndəns/ <span class="pos">n.</span> 丰富; 充裕(abundant <span class="pos">adj.</span>)</div><div class="wl2">本段: 大量的装饰<span class="mk biz">必考</span></div></div>
+
+<h2 id="五推断题真题例句重点词">五、推断题 · 真题例句重点词</h2>
+<h3 id="2014英二T2Facebook是自我提升者的天堂">2014 英二 T2 · Facebook 是自我提升者的天堂</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Facebook, therefore, is a self-enhancer's paradise, where people can share only the most flattering photos, the cream of their wit, style, beauty, intellect and lifestyle. 'It's not that people's profiles are dishonest,' says Catalina Toma, 'but they portray an idealized version of themselves'."
+</div></div>
+<p><b>self-enhancer</b> /ˌself ɪnˈhɑːnsə/ n. 自我提升者(enhance v. 提升) — 本段: 自我美化者<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>paradise</b> /ˈpærədaɪs/ <span class="pos">n.</span> 天堂; 乐园</div><div class="wl2">本段: 自我美化者的天堂<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>flattering</b> /ˈflætərɪŋ/ <span class="pos">adj.</span> 讨好的; 美化人的(flatter <span class="pos">v.</span> 奉承)</div><div class="wl2">本段: 只分享最讨喜的照片<span class="mk biz">必考</span></div></div>
+<p><b>the cream of</b> …的精华(cream 奶油→精英) — 本段: 才智的精华<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>wit</b> /wɪt/ <span class="pos">n.</span> 才智; 风趣(witty <span class="pos">adj.</span>)</div><div class="wl2">本段: 风趣才智<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>profiles</b> /ˈprəʊfaɪlz/ <span class="pos">n.</span> 个人资料; 简介</div><div class="wl2">本段: 个人主页资料<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>portray</b> /pɔːˈtreɪ/ <span class="pos">v.</span> 描绘; 呈现</div><div class="wl2">本段: 呈现理想化的自己<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>idealized</b> /aɪˈdiːəlaɪzd/ <span class="pos">adj.</span> 理想化的(ideal <span class="pos">n.</span> 理想)</div><div class="wl2">本段: 理想化版本<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>withhold</b> /wɪðˈhəʊld/ <span class="pos">v.</span> 隐瞒; 保留(推断: 只分享好的=隐瞒不好的)</div><div class="wl2">本段: 隐瞒不讨喜的一面(答案词)<span class="mk ok">重点</span></div></div>
+
+<h3 id="2007英一T3从最后一段推断">2007 英一 T3 · 从最后一段推断</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "The financial fallout has begun, and the political fallout may not be far behind."
+</div></div>
+<div class="w"><div class="wl"><b>fallout</b> /ˈfɔːlaʊt/ <span class="pos">n.</span> 后果; 余波(原义"放射性尘埃")</div><div class="wl2">本段: 金融冲击的余波<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>financial</b> /faɪˈnænʃl/ <span class="pos">adj.</span> 金融的; 财务的</div><div class="wl2">本段: 金融问题<span class="mk freq">高频</span></div></div>
+<p><b>may not be far behind</b> 可能不远了(委婉推测=推断题标志) — 本段: 政治问题可能随之而来<span class="mk biz">必考</span>
+<b>bring about</b> 带来; 导致(推断的逻辑推演) — 本段: 金融问题可能带来政治问题(答案)<span class="mk freq">高频</span></p>
+<h2 id="六主旨题真题例句重点词">六、主旨题 · 真题例句重点词</h2>
+<h3 id="2011英一T2高管裸辞最佳标题">2011 英一 T2 · 高管裸辞(最佳标题)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 各段主旨句: McGee 直接离职; 经济复苏后更多人愿意"<b class="kw">jump without a net</b>"; 这种做法不传统但正在变化; 也不是总很快找到新工作; 旧耻辱观念在淡化。
+</div></div>
+<p><b>jump without a net</b> 无网跳跃(比喻: 没有下家就辞职) — 本段: 裸辞(全文核心概念)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>quit</b> /kwɪt/ <span class="pos">v.</span> 辞职; 退出(quit one's job 辞职)</div><div class="wl2">本段: 高管离职<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>stigma</b> /ˈstɪɡmə/ <span class="pos">n.</span> 耻辱; 污名(stigmatize <span class="pos">v.</span>)</div><div class="wl2">本段: 旧耻辱观念在淡化<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>fade</b> /feɪd/ <span class="pos">v.</span> 褪色; 逐渐消失</div><div class="wl2">本段: 耻辱感逐渐淡化<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>recruiters</b> /rɪˈkruːtəz/ <span class="pos">n.</span> 招聘人员(recruit <span class="pos">v.</span> 招聘)</div><div class="wl2">本段: 招聘者<span class="mk ok">重点</span></div></div>
+
+<h3 id="2009英一T2DNA测试最佳标题">2009 英一 T2 · DNA 测试(最佳标题)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 文章介绍 PTK/DNA 测试的普及、用途, 然后重点讨论其中的问题——虚假精确性、数据库不系统化等。
+</div></div>
+<div class="w"><div class="wl"><b>genealogy</b> /ˌdʒiːniˈælədʒi/ <span class="pos">n.</span> 家谱; 宗谱(genealogical <span class="pos">adj.</span>)</div><div class="wl2">本段: 家谱测试<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>ancestry</b> /ˈænsestri/ <span class="pos">n.</span> 祖先; 血统</div><div class="wl2">本段: 祖先血统<span class="mk freq">高频</span></div></div>
+<p><b>at-home</b> /ˌæt ˈhəʊm/ adj. 家用的(at-home kits 家用测试盒) — 本段: 家用测试(文章核心: 实验室之外)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>kit</b> /kɪt/ <span class="pos">n.</span> 成套工具; 试剂盒</div><div class="wl2">本段: 测试盒<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>database</b> /ˈdeɪtəbeɪs/ <span class="pos">n.</span> 数据库</div><div class="wl2">本段: 数据库不系统化(问题)<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>precise</b> /prɪˈsaɪs/ <span class="pos">adj.</span> 精确的(precision <span class="pos">n.</span> 精确性)</div><div class="wl2">本段: 虚假的精确性(问题)<span class="mk ok">重点</span></div></div>
+
+<h3 id="2012英二T1家庭作业政策最佳标题">2012 英二 T1 · 家庭作业政策(最佳标题)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 全文批评 L.A. Unified 的作业政策: "<b class="kw">inflexible policy</b>"、"<b class="kw">unclear and contradictory</b>"、"imposes a flat, across-the-board rule"、"addresses none of the truly thorny questions"。
+</div></div>
+<div class="w"><div class="wl"><b>inflexible</b> /ɪnˈfleksəbl/ <span class="pos">adj.</span> 僵化的; 不通融的(inflexible policy 僵化政策)</div><div class="wl2">本段: 批评用语<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>contradictory</b> /ˌkɒntrəˈdɪktəri/ <span class="pos">adj.</span> 自相矛盾的(contradict <span class="pos">v.</span>)</div><div class="wl2">本段: 模糊而矛盾<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>impose</b> /ɪmˈpəʊz/ <span class="pos">v.</span> 强加; 推行(impose a rule 推行规则)</div><div class="wl2">本段: 强加一刀切规则<span class="mk freq">高频</span></div></div>
+<p><b>across-the-board</b> /əˌkrɒs ðə ˈbɔːd/ adj. 全面的; 一刀切的 — 本段: 一刀切规则<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>address</b> /əˈdres/ <span class="pos">v.</span> 处理; 解决(=deal with)</div><div class="wl2">本段: 一个真正棘手的问题都没解决<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>thorny</b> /ˈθɔːni/ <span class="pos">adj.</span> 棘手的; 多刺的(thorn 刺)</div><div class="wl2">本段: 棘手的问题<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>faulty</b> /ˈfɔːlti/ <span class="pos">adj.</span> 有缺陷的; 有错误的(=flawed)</div><div class="wl2">本段: 有缺陷的做法(标题答案词)<span class="mk biz">必考</span></div></div>
+
+<h3 id="2014英二T3人机赛跑最佳标题">2014 英二 T3 · 人机赛跑(最佳标题)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 文章讨论人机矛盾, 指出根本问题在于工作模式而非技术本身, 最终呼吁变"人机赛跑"为"人机同跑"。
+</div></div>
+<div class="w"><div class="wl"><b>innovate</b> /ˈɪnəveɪt/ <span class="pos">v.</span> 创新; 革新(innovation <span class="pos">n.</span>)</div><div class="wl2">本段: 创新工作方式<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>institutions</b> /ˌɪnstɪˈtjuːʃnz/ <span class="pos">n.</span> 机构; 制度</div><div class="wl2">本段: 机构与工作实践<span class="mk ok">重点</span></div></div>
+<p><b>work practices</b> 工作方式; 工作惯例 — 本段: 创新工作方式(答案核心)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>replace</b> /rɪˈpleɪs/ <span class="pos">v.</span> 取代; 替换</div><div class="wl2">本段: 机器取代人力(文章起点)<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>downturn</b> /ˈdaʊntɜːn/ <span class="pos">n.</span> 低迷; 衰退(经济下行)</div><div class="wl2">本段: 经济低迷(干扰项词)<span class="mk ok">重点</span></div></div>
+
+<h3 id="2004英二T2字母排序歧视全文主旨">2004 英二 T2 · 字母排序歧视(全文主旨)</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 全文揭示隐蔽歧视——按字母排序可能带来无意识的偏见, 从儿童时期持续到成年。
+</div></div>
+<div class="w"><div class="wl"><b>alphabetical</b> /ˌælfəˈbetɪkl/ <span class="pos">adj.</span> 按字母顺序的</div><div class="wl2">本段: 按字母排序<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>bias</b> /ˈbaɪəs/ <span class="pos">n.</span> 偏见; 偏向(biased <span class="pos">adj.</span> 有偏见的)</div><div class="wl2">本段: 无意识偏见<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>unintentional</b> /ˌʌnɪnˈtenʃənl/ <span class="pos">adj.</span> 无意的; 非故意的</div><div class="wl2">本段: 无意偏见<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>surnames</b> /ˈsɜːneɪmz/ <span class="pos">n.</span> 姓氏(surname 复数; 同义 last name)</div><div class="wl2">本段: 姓氏<span class="mk ok">重点</span></div></div>
+<p><b>ill-treated</b> /ˌɪl ˈtriːtɪd/ adj. 受虐待的; 被亏待的 — 本段: 常被亏待(干扰项夸大词)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>alphabetism</b> /ˈælfəbətɪzəm/ <span class="pos">n.</span> 字母排序歧视(仿 racism 构词)</div><div class="wl2">本段: 全文核心概念<span class="mk biz">必考</span></div></div>
+<h2 id="七篇章精读全文重点词">七、篇章精读 · 全文重点词</h2>
+<h3 id="2012英一T1同伴压力peerpressure全文精读">2012 英一 T1 · 同伴压力 (peer pressure)【全文精读】</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Come on—Everybody's doing it." That whispered message, half invitation and half forcing, is what most of us think of when we hear the words <b class="kw">peer pressure</b>. It usually <b class="kw">leads to no good</b>—drinking, drugs and casual sex. But in her new book, Join the Club, Tina Rosenberg contends that peer pressure can also be a positive force through what she calls the social cure, in which organizations and officials use the power of group dynamics to help individuals improve their lives.
+</div></div>
+<p><b>peer pressure</b> /pɪə ˈpreʃə/ n. 同伴压力; 同辈压力(peer 同龄人) — 本段: 同龄群体的行为影响力<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>whispered</b> /ˈwɪspəd/ <span class="pos">adj.</span> 耳语的; <span class="pos">v.</span> whisper 低语</div><div class="wl2">本段: 悄悄话式的消息<span class="mk ok">重点</span></div></div>
+<p><b>half invitation and half forcing</b> 半邀请半强制(对偶结构) — 本段: 同伴压力的特征<span class="mk ok">重点</span>
+<b>leads to no good</b> 导致不良后果(lead to 导致) — 本段: 通常没什么好事<span class="mk biz">必考</span>
+<b>casual sex</b> 随意的性行为(casual 随便的) — 本段: 不良行为举例<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>contends</b> /kənˈtendz/ <span class="pos">v.</span> 主张; 争辩(contend; 同义 argues/maintains)</div><div class="wl2">本段: 主张同伴压力也可以是积极力量<span class="mk biz">必考</span></div></div>
+<p><b>positive force</b> 积极力量 — 本段: 与 no good 相对, 全文转折核心<span class="mk freq">高频</span>
+<b>social cure</b> 社会疗法(cure 疗法) — 本段: 她所称的"社会疗法"<span class="mk biz">必考</span>
+<b>group dynamics</b> 群体动力; 群体互动机制 — 本段: 利用群体动力帮助个人<span class="mk ok">重点</span></p>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "There's no doubt that our peer groups exert enormous influence on our behavior. An emerging body of research shows that positive health habits—as well as negative ones—spread through networks of friends via social communication. This is a subtle form of peer pressure: we unconsciously imitate the behavior we see every day."
+</div></div>
+<div class="w"><div class="wl"><b>exert</b> /ɪɡˈzɜːt/ <span class="pos">v.</span> 施加(exert influence on 对…施加影响)</div><div class="wl2">本段: 同伴群体施加巨大影响<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>enormous</b> /ɪˈnɔːməs/ <span class="pos">adj.</span> 巨大的(同义 huge/tremendous)</div><div class="wl2">本段: 巨大影响<span class="mk freq">高频</span></div></div>
+<p><b>emerging body of research</b> 越来越多的研究(emerging 新兴的; body 一批) — 本段: 新兴研究<span class="mk ok">重点</span>
+<b>spread through</b> 通过…传播 — 本段: 健康习惯通过社交网络传播<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>via</b> /ˈvaɪə/ <span class="pos">prep.</span> 通过; 经由</div><div class="wl2">本段: 通过社交沟通<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>subtle</b> /ˈsʌtl/ <span class="pos">adj.</span> 微妙的; 不易察觉的</div><div class="wl2">本段: 微妙形式的同伴压力<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>unconsciously</b> /ʌnˈkɒnʃəsli/ <span class="pos">adv.</span> 无意识地(conscious 有意识的)</div><div class="wl2">本段: 无意识地模仿<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>imitate</b> /ˈɪmɪteɪt/ <span class="pos">v.</span> 模仿(imitation <span class="pos">n.</span>)</div><div class="wl2">本段: 模仿日常看到的行为<span class="mk freq">高频</span></div></div>
+
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "Far less certain, however, is how successfully experts and bureaucrats can select our peer groups and steer their activities in virtuous directions. ... And that's the problem with a social cure engineered from the outside: in the real world, as in school, we insist on choosing our own friends."
+</div></div>
+<div class="w"><div class="wl"><b>bureaucrats</b> /ˈbjʊərəkræts/ <span class="pos">n.</span> 官僚; 官员(bureaucracy <span class="pos">n.</span>)</div><div class="wl2">本段: 专家与官员<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>steer</b> /stɪə/ <span class="pos">v.</span> 引导; 操纵方向</div><div class="wl2">本段: 引导活动朝美德方向发展<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>virtuous</b> /ˈvɜːtʃuəs/ <span class="pos">adj.</span> 有美德的; 品德高尚的(virtue <span class="pos">n.</span>)</div><div class="wl2">本段: 美德方向<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>tactic</b> /ˈtæktɪk/ <span class="pos">n.</span> 策略; 手段</div><div class="wl2">本段: 这招根本不管用<span class="mk ok">重点</span></div></div>
+<p><b>engineered from the outside</b> 从外部设计的(engineer 设计) — 本段: 外部强加的社会疗法<span class="mk biz">必考</span>
+<b>insist on</b> 坚持; 执意 — 本段: 我们坚持自己选择朋友<span class="mk freq">高频</span></p>
+<h3 id="2001英一P3报纸公信力危机">2001 英一 P3 · 报纸公信力危机</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> "What is the passage mainly about?" —— 文章脉络: 提出问题(读者为什么不信任报纸)→自查结果(只找到低级错误)→深层原因(模板化、文化差异、世界观冲突)→解决建议(多元化记者招聘)。
+</div></div>
+<div class="w"><div class="wl"><b>credibility</b> /ˌkredəˈbɪləti/ <span class="pos">n.</span> 可信度; 公信力(credible <span class="pos">adj.</span> 可信的)</div><div class="wl2">本段: 报纸公信力<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>distrust</b> /dɪsˈtrʌst/ <span class="pos">n.</span>/<span class="pos">v.</span> 不信任(dis- 否定 + trust)</div><div class="wl2">本段: 公众不信任报纸<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>journalism</b> /ˈdʒɜːnəlɪzəm/ <span class="pos">n.</span> 新闻业; 新闻工作(journalist 记者)</div><div class="wl2">本段: 新闻业<span class="mk freq">高频</span></div></div>
+<p><b>credibility project</b> 公信力调查项目 — 本段: 目的=找原因(文章起点)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>disappointment</b> /ˌdɪsəˈpɔɪntmənt/ <span class="pos">n.</span> 失望(disappoint <span class="pos">v.</span>)</div><div class="wl2">本段: 公众对报纸失望的原因(答案)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>declining</b> /dɪˈklaɪnɪŋ/ <span class="pos">adj.</span> 下降中的(decline <span class="pos">v.</span>/<span class="pos">n.</span> 下降)</div><div class="wl2">本段: 报纸行业衰退(干扰项词)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>stereotype</b> /ˈsteriətaɪp/ <span class="pos">n.</span> 刻板印象; 模板化</div><div class="wl2">本段: 报道模板化(深层原因之一)<span class="mk freq">高频</span></div></div>
+
+<h3 id="2004英一T4反智主义在美国">2004 英一 T4 · 反智主义在美国</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 37. "From the beginning of our history, our democratic and populist urges have driven us to reject anything that smells of elitism. ... Practicality, common sense, and native intelligence have been considered more noble qualities than anything you could learn from a book."
+</div></div>
+<div class="w"><div class="wl"><b>intellect</b> /ˈɪntəlekt/ <span class="pos">n.</span> 才智; 智力(intellectual 知识分子/智力的)</div><div class="wl2">本段: 低估才智(全文主题)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>populist</b> /ˈpɒpjəlɪst/ <span class="pos">adj.</span>/<span class="pos">n.</span> 平民主义的; 民粹的</div><div class="wl2">本段: 民主与平民主义冲动<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>urges</b> /ɜːdʒɪz/ <span class="pos">n.</span> 强烈欲望; 冲动</div><div class="wl2">本段: 民主冲动<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>elitism</b> /ɪˈliːtɪzəm/ <span class="pos">n.</span> 精英主义(elite <span class="pos">n.</span> 精英)</div><div class="wl2">本段: 拒绝任何精英主义气味<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>practicality</b> /ˌpræktɪˈkæləti/ <span class="pos">n.</span> 实用性; 务实</div><div class="wl2">本段: 实用性被看得更高尚<span class="mk freq">高频</span></div></div>
+<p><b>common sense</b> 常识 — 本段: 常识<span class="mk freq">高频</span>
+<b>native intelligence</b> 天赋智慧(native 天生的) — 本段: 天赋智慧<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>noble</b> /ˈnəʊbl/ <span class="pos">adj.</span> 高尚的; 高贵的</div><div class="wl2">本段: 更高尚的品质<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>undervaluing</b> /ˌʌndəˈvæljuːɪŋ/ <span class="pos">v.</span> 低估; 轻视(under- 不足)</div><div class="wl2">本段: 低估才智的历史(答案)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>suppress</b> /səˈpres/ <span class="pos">v.</span> 压制; 镇压</div><div class="wl2">本段: 压制天赋(干扰项词)<span class="mk ok">重点</span></div></div>
+
+<h3 id="2007英一T2IQ测试的局限性">2007 英一 T2 · IQ 测试的局限性</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 29. Sternberg 的三点: ①测试不全面(缺失创造力和实践知识) ②结果不稳定(压力环境影响) ③应试技巧影响 → 测试分数可能不是可靠的能力指标。
+</div></div>
+<div class="w"><div class="wl"><b>reliable</b> /rɪˈlaɪəbl/ <span class="pos">adj.</span> 可靠的; 可信赖的(rely on 依赖)</div><div class="wl2">本段: 测试分数不是可靠指标<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>indicators</b> /ˈɪndɪkeɪtəz/ <span class="pos">n.</span> 指标; 指示物(indicate <span class="pos">v.</span>)</div><div class="wl2">本段: 能力指标<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>correlated</b> /ˈkɒrəleɪtɪd/ <span class="pos">adj.</span> 相关的(correlate with 与…相关)</div><div class="wl2">本段: 高度相关(干扰项词)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>standardized</b> /ˈstændədaɪzd/ <span class="pos">adj.</span> 标准化的(standard 标准)</div><div class="wl2">本段: 标准化测试<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>creativity</b> /ˌkriːeɪˈtɪvəti/ <span class="pos">n.</span> 创造力(creative <span class="pos">adj.</span>)</div><div class="wl2">本段: 测试缺失创造力维度<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>guesswork</b> /ˈɡeswɜːk/ <span class="pos">n.</span> 猜测; 推测</div><div class="wl2">本段: 测试含猜测成分(干扰项词)<span class="mk ok">重点</span></div></div>
+<p><b>out of date</b> 过时的(=obsolete) — 本段: 传统测试过时(干扰项词)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>score</b> /skɔː/ <span class="pos">n.</span>/<span class="pos">v.</span> 分数; 得分</div><div class="wl2">本段: 测试分数<span class="mk freq">高频</span></div></div>
+
+<h3 id="2008英一T2学术期刊出版的变革">2008 英一 T2 · 学术期刊出版的变革</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 26. "It used to be so straightforward: ... would submit ... would remove ... would accept ... Copyright rested with the journal ..." —— 整段用 would 描述过去的常规流程。
+</div></div>
+<div class="w"><div class="wl"><b>straightforward</b> /ˌstreɪtˈfɔːwəd/ <span class="pos">adj.</span> 简单的; 直截了当的</div><div class="wl2">本段: 过去流程很简单<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>submit</b> /səbˈmɪt/ <span class="pos">v.</span> 提交; 递交(submission <span class="pos">n.</span>)</div><div class="wl2">本段: 投稿<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>routine</b> /ruːˈtiːn/ <span class="pos">n.</span> 常规; 例行程序</div><div class="wl2">本段: 出版常规流程<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>copyright</b> /ˈkɒpiraɪt/ <span class="pos">n.</span> 版权(right 权利)</div><div class="wl2">本段: 版权归期刊所有<span class="mk ok">重点</span></div></div>
+<p><b>laboratory reports</b> 实验室报告 — 本段: 实验报告(干扰项缩小范围词)<span class="mk ok">重点</span>
+<b>traditional process</b> 传统流程 — 本段: 传统出版流程(答案核心)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>background</b> /ˈbækɡraʊnd/ <span class="pos">n.</span> 背景; 背景资料</div><div class="wl2">本段: 背景信息(干扰项词)<span class="mk ok">重点</span></div></div>
+
+<h3 id="2014英一T3科学奖项的反思">2014 英一 T3 · 科学奖项的反思</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 35. "As much as some scientists may complain ... most researchers would accept such a prize ... it is surely a good thing ... it is wise to take such gifts with gratitude and grace."
+</div></div>
+<div class="w"><div class="wl"><b>awards</b> /əˈwɔːdz/ <span class="pos">n.</span> 奖项; 奖品(award <span class="pos">v.</span>/<span class="pos">n.</span>)</div><div class="wl2">本段: 新科学奖项<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>acceptable</b> /əkˈseptəbl/ <span class="pos">adj.</span> 可接受的; 可容忍的</div><div class="wl2">本段: 虽有批评但可接受(答案)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>criticism</b> /ˈkrɪtɪsɪzəm/ <span class="pos">n.</span> 批评(criticize <span class="pos">v.</span>)</div><div class="wl2">本段: 批评之声<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>gratitude</b> /ˈɡrætɪtjuːd/ <span class="pos">n.</span> 感激; 感谢(grateful <span class="pos">adj.</span>)</div><div class="wl2">本段: 带着感激接受<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>grace</b> /ɡreɪs/ <span class="pos">n.</span> 优雅; 风度(graceful <span class="pos">adj.</span>)</div><div class="wl2">本段: 心怀感恩与风度<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>desirable</b> /dɪˈzaɪərəbl/ <span class="pos">adj.</span> 值得拥有的; 可取的</div><div class="wl2">本段: 不良变化(干扰项词)<span class="mk ok">重点</span></div></div>
+<p><b>unworthy of</b> 不值得的(worthy 值得) — 本段: 不值得关注(干扰项词)<span class="mk ok">重点</span></p>
+<h3 id="2011英一T4育儿与幸福感全文精读">2011 英一 T4 · 育儿与幸福感【全文精读】</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 8月4日课精讲(暑假册篇章1, 无忧7.30亦讲过)。幸福是"过去时"——育儿的痛苦日后成为快乐的源泉。
+</div></div>
+<div class="w"><div class="wl"><b>redefine</b> /ˌriːdɪˈfaɪn/ <span class="pos">v.</span> 重新定义(re- 重新 + define)</div><div class="wl2">本段: 重新定义幸福(答案核心)<span class="mk biz">必考</span></div></div>
+<p><b>past-tense condition</b> 过去时状态 — 本段: 回顾式幸福, 与 moment-to-moment 相对(答案词)<span class="mk biz">必考</span>
+<b>moment-to-moment</b> 当下的; 逐刻的 — 本段: 用当下快乐衡量(干扰项词)<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>gratification</b> /ˌɡrætɪfɪˈkeɪʃn/ <span class="pos">n.</span> 满足; 喜悦(gratify <span class="pos">v.</span>)</div><div class="wl2">本段: 日后成为快乐源泉<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>dampen</b> /ˈdæmpən/ <span class="pos">v.</span> 抑制; 使沮丧</div><div class="wl2">本段: 当下压抑情绪的事<span class="mk ok">重点</span></div></div>
+<p><b>soul-crushingly</b> 极其压抑地 — 本段: 育儿过程艰难<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>celebrity</b> /səˈlebrəti/ <span class="pos">n.</span> 名人(celebrities 复数)</div><div class="wl2">本段: 名人妈妈上封面<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>childless</b> /ˈtʃaɪldləs/ <span class="pos">adj.</span> 无子女的</div><div class="wl2">本段: 与父母对比, 被舆论指责<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>procreation</b> /ˌprəʊkriˈeɪʃn/ <span class="pos">n.</span> 生育(procreate <span class="pos">v.</span>)</div><div class="wl2">本段: 社会赞美生育<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>unrealistic</b> /ˌʌnrɪəˈlɪstɪk/ <span class="pos">adj.</span> 不现实的(un- 否定 + realistic)</div><div class="wl2">本段: 名人形象不真实 = misleading(答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>subconscious</b> /ˌsʌbˈkɒnʃəs/ <span class="pos">adj.</span> 潜意识的</div><div class="wl2">本段: 潜意识里加深不满(答案词)<span class="mk freq">高频</span></div></div>
+<p><b>in retrospect</b> 回顾起来 — 本段: 幸福是回顾式的(答案词)<span class="mk biz">必考</span></p>
+<h3 id="2011英二T4欧盟危机与德法之争全文精读">2011 英二 T4 · 欧盟危机与德法之争【全文精读】</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 8月4日课精讲(暑假册篇章2, 无忧7.30亦讲过)。德法之争: 严规制裁 vs 核心内转移支付。
+</div></div>
+<div class="w"><div class="wl"><b>cheerleader</b> /ˈtʃɪəliːdə(r)/ <span class="pos">n.</span> 啦啦队长; 狂热支持者</div><div class="wl2">本段: 连支持者都担忧(答案词)<span class="mk biz">必考</span></div></div>
+<p><b>Bermuda triangle</b> 百慕大三角 — 本段: 比喻债务/人口/增长三重困境<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>chronic</b> /ˈkrɒnɪk/ <span class="pos">adj.</span> 慢性的; 长期的</div><div class="wl2">本段: 慢性问题 vs 急性危机<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>converge</b> /kənˈvɜːdʒ/ <span class="pos">v.</span> 趋同; 汇聚</div><div class="wl2">本段: 经济最终趋同(德国信仰)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>devaluation</b> /ˌdiːˌvæljuˈeɪʃn/ <span class="pos">n.</span> 贬值(devalue <span class="pos">v.</span>)</div><div class="wl2">本段: 单一货币夺走的"快捷方式"<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>disintegration</b> /dɪsˌɪntɪˈɡreɪʃn/ <span class="pos">n.</span> 解体(disintegrate <span class="pos">v.</span>)</div><div class="wl2">本段: 欧元解体(考点词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>harmonization</b> /ˌhɑːmənaɪˈzeɪʃn/ <span class="pos">n.</span> 协调; 一致化</div><div class="wl2">本段: 德法分歧核心(答案词)<span class="mk biz">必考</span></div></div>
+<p><b>quasi-automatic sanctions</b> 准自动制裁 — 本段: 德国方案要素<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>redistribution</b> /ˌriːdɪstrɪˈbjuːʃn/ <span class="pos">n.</span> 再分配(redistribute <span class="pos">v.</span>)</div><div class="wl2">本段: 法国方案核心(答案词)<span class="mk biz">必考</span></div></div>
+<p><b>Eurobonds</b> 欧洲共同债券 — 本段: 降低政府借贷成本<span class="mk ok">重点</span>
+<b>write off</b> 放弃; 看衰 — 本段: 作者态度核心(答案词)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>blunt</b> /blʌnt/ <span class="pos">v.</span> 削弱; 使迟钝</div><div class="wl2">本段: 削弱全球化最锋利的棱角<span class="mk ok">重点</span></div></div>
+
+<h3 id="2013英一T4亚利桑那移民法全文精读">2013 英一 T4 · 亚利桑那移民法【全文精读】</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 8月4日课精讲(暑假册篇章3)。课件批注: Administration = government = federal = White House = Obama。
+</div></div>
+<p><b>knock out</b> 推翻; 击倒 — 本段: 最高法院推翻移民法<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>provision</b> /prəˈvɪʒn/ <span class="pos">n.</span> 条款; 规定(provide <span class="pos">v.</span>)</div><div class="wl2">本段: 被推翻的三项条款<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>naturalization</b> /ˌnætʃrəlaɪˈzeɪʃn/ <span class="pos">n.</span> 入籍</div><div class="wl2">本段: 联邦专属权力(考点词)<span class="mk ok">重点</span></div></div>
+<p><b>noncontroversial</b> 无争议的 — 本段: 宪法原则无争议<span class="mk ok">重点</span>
+<b>intrude on</b> 侵犯; 闯入 — 本段: 侵犯联邦特权(答案词)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>privileged</b> /ˈprɪvəlɪdʒd/ <span class="pos">adj.</span> 有特权的(privilege <span class="pos">n.</span>)</div><div class="wl2">本段: 联邦特权<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>enforcement</b> /ɪnˈfɔːsmənt/ <span class="pos">n.</span> 执法; 执行(enforce <span class="pos">v.</span>)</div><div class="wl2">本段: 移民执法(答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>envision</b> /ɪnˈvɪʒn/ <span class="pos">v.</span> 设想; 展望</div><div class="wl2">本段: 国会设想联合执法<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>robust</b> /rəʊˈbʌst/ <span class="pos">adj.</span> 有力的; 强健的</div><div class="wl2">本段: Scalia 最有力的辩护<span class="mk ok">重点</span></div></div>
+<p><b>to the letter</b> 严格地; 不折不扣地 — 本段: 州法完全符合联邦法规<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>invalidate</b> /ɪnˈvælɪdeɪt/ <span class="pos">v.</span> 使无效(invalid 无效的)</div><div class="wl2">本段: 白宫主张能否决州法(答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>Administration</b> /ədˌmɪnɪˈstreɪʃn/ <span class="pos">n.</span> 行政当局</div><div class="wl2">本段: 全文同义替换链(答案词)<span class="mk biz">必考</span></div></div>
+
+<h3 id="2003英一T4医疗与死亡全文精读">2003 英一 T4 · 医疗与死亡【全文精读】</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 8月4日课精讲(暑假册篇章4)。死亡是正常的——"在英格兰死亡紧迫, 在加拿大不可避免, 在加州可选项"。
+</div></div>
+<div class="w"><div class="wl"><b>pressing</b> /ˈpresɪŋ/ <span class="pos">adj.</span> 紧迫的(press <span class="pos">v.</span>)</div><div class="wl2">本段: 死亡紧迫(首句考点)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>optional</b> /ˈɒpʃənl/ <span class="pos">adj.</span> 可选的(option <span class="pos">n.</span>)</div><div class="wl2">本段: 死亡可选项(反讽, 答案词)<span class="mk biz">必考</span></div></div>
+<p><b>life expectancy</b> 预期寿命 — 本段: 百年内翻倍<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>disintegrate</b> /dɪsˈɪntɪɡreɪt/ <span class="pos">v.</span> 分解; 瓦解</div><div class="wl2">本段: 基因上注定瓦解<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>perish</b> /ˈperɪʃ/ <span class="pos">v.</span> 消亡; 死亡</div><div class="wl2">本段: 死亡是正常的(主旨词)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>aggressive</b> /əˈɡresɪv/ <span class="pos">adj.</span> 激进的; 好斗的</div><div class="wl2">本段: 过度治疗(答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>justified</b> /ˈdʒʌstɪfaɪd/ <span class="pos">adj.</span> 有正当理由的(justify <span class="pos">v.</span>)</div><div class="wl2">本段: 超出科学依据的治疗<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>unsustainable</b> /ˌʌnsəˈsteɪnəbl/ <span class="pos">adj.</span> 不可持续的(sustain <span class="pos">v.</span>)</div><div class="wl2">本段: 医疗开支趋势<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>infirm</b> /ɪnˈfɜːm/ <span class="pos">adj.</span> 体弱的; 虚弱的</div><div class="wl2">本段: Lamm 言论的对象<span class="mk ok">重点</span></div></div>
+<p><b>reserved consent</b> 保留性赞同 — 本段: 作者态度答案词<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>humble</b> /ˈhʌmbl/ <span class="pos">adj.</span> 朴素的; 不起眼的</div><div class="wl2">本段: 朴素疗法 vs 渺茫疗法<span class="mk freq">高频</span></div></div>
+<p><b>over-funding</b> 过度投入 — 本段: 追逐渺茫疗法而忽视朴素疗法(答案词)<span class="mk biz">必考</span></p>
+<h3 id="2012英二T2粉色与女孩身份Prettyinpink全文精读">2012 英二 T2 · 粉色与女孩身份 (Pretty in pink)【全文精读】</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 ①Pretty in pink: adult women do not remember being so <b class="kw">obsessed</b> with the color, yet it is <b class="kw">pervasive</b> in our young girls' lives. ②It is not that pink is <b class="kw">intrinsically</b> bad, but it is such a tiny slice of the rainbow and, though it may <b class="kw">celebrate</b> girlhood in one way, it also repeatedly and firmly <b class="kw">fuses girls' identity to appearance</b>. ③Then it presents that connection, even among two-year-olds, between girls as not only innocent but as evidence of innocence. ④Looking around, I <b class="kw">despaired</b> at the singular lack of imagination about girls' lives and interests.
+</div></div>
+<div class="w"><div class="wl"><b>obsessed</b> /əbˈsest/ <span class="pos">adj.</span> 着迷的; 痴迷的(be obsessed with 沉迷于)</div><div class="wl2">本段: 成年女性不记得自己曾如此痴迷粉色<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>pervasive</b> /pəˈveɪsɪv/ <span class="pos">adj.</span> 普遍的; 无处不在的</div><div class="wl2">本段: 粉色在小女孩生活中无处不在<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>intrinsically</b> /ɪnˈtrɪnzɪkli/ <span class="pos">adv.</span> 本质上; 内在地(intrinsic <span class="pos">adj.</span>)</div><div class="wl2">本段: 粉色本身并不坏(转折句, 语义题考点)<span class="mk biz">必考</span></div></div>
+<p><b>a tiny slice of the rainbow</b> 彩虹的一小片 — 本段: 粉色只是女孩生活的一小部分(26 题答案句)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>celebrate</b> /ˈselɪbreɪt/ <span class="pos">v.</span> 庆祝; 赞美</div><div class="wl2">本段: 在某个方面赞美女孩身份<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>fuse...to</b> /fjuːz/ <span class="pos">v.</span> 融合; 熔合</div><div class="wl2">本段: 把女孩身份与外表绑在一起(26 题考点)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>identity</b> /aɪˈdentəti/ <span class="pos">n.</span> 身份; 认同</div><div class="wl2">本段: 女孩的身份认同<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>despair at</b> /dɪˈspeə/ <span class="pos">v.</span> 对…感到绝望</div><div class="wl2">本段: 对缺乏想象力感到绝望(态度词)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>singular</b> /ˈsɪŋɡjələ/ <span class="pos">adj.</span> 单一的; 非凡的</div><div class="wl2">本段: 极度的缺乏想象力(singular lack = 极为缺乏)<span class="mk ok">重点</span></div></div>
+
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第二段 ①Girls' attraction to pink may seem unavoidable, somehow <b class="kw">encoded in their DNA</b>, but according to Jo Paoletti...it is not. ②Children were not <b class="kw">color-coded</b> at all until the early 20th century...④pink was actually considered the more <b class="kw">masculine</b> color, a <b class="kw">pastel</b> version of red, which was associated with strength. ⑤Blue, with its intimations of the Virgin Mary, constancy and faithfulness, <b class="kw">symbolized femininity</b>. ⑥It was not until the mid-1980s, when <b class="kw">amplifying</b> age and sex differences became a dominant children's <b class="kw">marketing strategy</b>, that pink fully <b class="kw">came into its own</b>...
+</div></div>
+<div class="w"><div class="wl"><b>attraction</b> /əˈtrækʃn/ <span class="pos">n.</span> 吸引力(attract <span class="pos">v.</span>)</div><div class="wl2">本段: 女孩对粉色的吸引<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>encoded in</b> /ɪnˈkəʊd/ <span class="pos">v.</span> 编码在…中</div><div class="wl2">本段: 粉色偏好似乎编码在 DNA 里(被反驳的 DNA 论)<span class="mk biz">必考</span></div></div>
+<p><b>color-coded</b> /ˈkʌlə kəʊdɪd/ adj. 按颜色编码的 — 本段: 20 世纪初前孩子根本没有颜色编码<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>masculine</b> /ˈmæskjəlɪn/ <span class="pos">adj.</span> 男性的; 阳刚的</div><div class="wl2">本段: 粉色一度被认为是男性色(27 题考点)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>pastel</b> /ˈpæstl/ <span class="pos">n.</span>/<span class="pos">adj.</span> 淡色(的); 柔和的</div><div class="wl2">本段: 粉色是红色的淡版本<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>symbolize</b> /ˈsɪmbəlaɪz/ <span class="pos">v.</span> 象征(symbol <span class="pos">n.</span>)</div><div class="wl2">本段: 蓝色象征女性气质(27 题答案句)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>femininity</b> /ˌfeməˈnɪnəti/ <span class="pos">n.</span> 女性气质(与 masculinity 相对)</div><div class="wl2">本段: 蓝色代表女性<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>amplify</b> /ˈæmplɪfaɪ/ <span class="pos">v.</span> 放大; 增强</div><div class="wl2">本段: 放大年龄和性别差异<span class="mk biz">必考</span></div></div>
+<p><b>marketing strategy</b> 营销策略 — 本段: 80 年代中期主流的儿童营销策略<span class="mk biz">必考</span>
+<b>come into its own</b> 大显身手; 充分发挥作用 — 本段: 粉色全面流行(考点短语)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>inherently</b> /ɪnˈhɪərəntli/ <span class="pos">adv.</span> 天生地; 内在地</div><div class="wl2">本段: 看起来天生吸引女孩(被否定)<span class="mk ok">重点</span></div></div>
+
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第三段 ①I had not realised how profoundly marketing trends <b class="kw">dictated our perception</b> of what is natural to kids, including our core beliefs about their psychological development. ②Take the <b class="kw">toddler</b>. ③I assumed that phase was something experts developed after years of research into children's behaviour: wrong. ④Turns out...it was <b class="kw">popularised</b> as a <b class="kw">marketing trick</b> by clothing manufacturers in the 1930s.
+</div></div>
+<div class="w"><div class="wl"><b>dictate</b> /dɪkˈteɪt/ <span class="pos">v.</span> 决定; 支配; 口述</div><div class="wl2">本段: 营销趋势决定我们的认知(28 题答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>perception</b> /pəˈsepʃn/ <span class="pos">n.</span> 认知; 感知(perceive <span class="pos">v.</span>)</div><div class="wl2">本段: 我们对孩子天性的认知<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>toddler</b> /ˈtɒdlə/ <span class="pos">n.</span> 学步儿童; 幼儿</div><div class="wl2">本段: 连 toddler 阶段都是营销产物(28 题考点)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>popularise</b> /ˈpɒpjələraɪz/ <span class="pos">v.</span> 使流行; 推广</div><div class="wl2">本段: 1930s 服装商推广的营销把戏<span class="mk ok">重点</span></div></div>
+<p><b>marketing trick</b> 营销把戏(trick 花招) — 本段: 专家研究是假, 营销是真(28 题答案)<span class="mk biz">必考</span></p>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第四段 ①Trade publications <b class="kw">counseled department stores</b>...they should create a "third <b class="kw">stepping stone</b>" between infant wear and older kids' clothes. ③<b class="kw">Splitting</b> kids, or adults, into ever-tinier categories has proved a <b class="kw">sure-fire</b> way to boost profits. ④one of the easiest ways to <b class="kw">segment a market</b> is to <b class="kw">magnify</b> gender differences – or <b class="kw">invent</b> them where they did not previously exist.
+</div></div>
+<div class="w"><div class="wl"><b>counsel</b> /ˈkaʊnsl/ <span class="pos">v.</span>/<span class="pos">n.</span> 建议; 劝告(advise 同义)</div><div class="wl2">本段: 行业刊物建议百货商店(29 题考点)<span class="mk ok">重点</span></div></div>
+<p><b>department store</b> 百货商店 — 本段: 百货商店被建议的对象<span class="mk ok">重点</span>
+<b>stepping stone</b> 垫脚石; 踏脚石 — 本段: 婴儿装与大童装之间的"第三块踏脚石"<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>split</b> /splɪt/ <span class="pos">v.</span> 拆分; 分割</div><div class="wl2">本段: 把消费者拆成更小群体(29 题答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>sure-fire</b> /ˈʃʊəfaɪə/ <span class="pos">adj.</span> 稳操胜券的; 必定成功的</div><div class="wl2">本段: 稳赚不赔的利润方法<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>boost</b> /buːst/ <span class="pos">v.</span> 促进; 提升</div><div class="wl2">本段: 促进利润<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>segment</b> /seɡˈment/ <span class="pos">v.</span> 分割(市场细分 segment a market)</div><div class="wl2">本段: 分割市场(29 题同义替换)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>magnify</b> /ˈmæɡnɪfaɪ/ <span class="pos">v.</span> 放大; 夸大</div><div class="wl2">本段: 放大性别差异<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>invent</b> /ɪnˈvent/ <span class="pos">v.</span> 发明; 捏造</div><div class="wl2">本段: 在不存在差异的地方创造差异<span class="mk freq">高频</span></div></div>
+
+<h3 id="2018英二T4深度工作与闲适deepwork全文精读">2018 英二 T4 · 深度工作与闲适 (deep work)【全文精读】</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第一段 To <b class="kw">combat</b> the trap of <b class="kw">putting a premium on</b> being busy, Cal Newport...recommends building a habit of "deep work"—the ability to focus without <b class="kw">distraction</b>. 第二段 There are a number of <b class="kw">approaches</b> to mastering the art of deep work—be it lengthy <b class="kw">retreats</b>...developing a daily <b class="kw">ritual</b>; or taking a "journalistic" approach to <b class="kw">seizing</b> moments of deep work...the key is to determine your length of focus time and <b class="kw">stick to it</b>.
+</div></div>
+<div class="w"><div class="wl"><b>combat</b> /ˈkɒmbæt/ <span class="pos">v.</span>/<span class="pos">n.</span> 对抗; 斗争</div><div class="wl2">本段: 对抗"以忙碌为荣"的陷阱<span class="mk freq">高频</span></div></div>
+<p><b>put a premium on</b> 重视; 助长(把…当作宝) — 本段: 把忙碌当优点(反讽考点)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>distraction</b> /dɪˈstrækʃn/ <span class="pos">n.</span> 分心; 干扰(distract <span class="pos">v.</span>)</div><div class="wl2">本段: 无干扰的专注(核心概念)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>approaches</b> /əˈprəʊtʃɪz/ <span class="pos">n.</span> 方法; 途径(approach to sth.)</div><div class="wl2">本段: 掌握深度工作艺术的方法(36 题定位词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>retreat</b> /rɪˈtriːt/ <span class="pos">n.</span> 隐居; 静修</div><div class="wl2">本段: 长期闭关式专注<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>ritual</b> /ˈrɪtʃuəl/ <span class="pos">n.</span> 惯例; 仪式</div><div class="wl2">本段: 每日惯例(方法之一)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>seize</b> /siːz/ <span class="pos">v.</span> 抓住; 把握</div><div class="wl2">本段: 抓住时机做深度工作(干扰项来源)<span class="mk ok">重点</span></div></div>
+<p><b>stick to</b> 坚持 — 本段: 确定专注时长并坚持(36 题答案句)<span class="mk biz">必考</span></p>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第三段 Newport also recommends "deep <b class="kw">scheduling</b>" to combat constant interruptions and <b class="kw">get more done in less time</b>...Once on the calendar I <b class="kw">protect</b> this time like I would a doctor's appointment...
+</div></div>
+<div class="w"><div class="wl"><b>scheduling</b> /ˈʃedjuːlɪŋ/ <span class="pos">n.</span> 日程安排(schedule <span class="pos">n.</span>/<span class="pos">v.</span>)</div><div class="wl2">本段: 深度日程安排<span class="mk freq">高频</span></div></div>
+<p><b>get more done in less time</b> 用更少的时间做更多的事 — 本段: 全文主旨句反复出现(40 题答案)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>protect</b> /prəˈtekt/ <span class="pos">v.</span> 保护</div><div class="wl2">本段: 像保护医生预约一样保护这段时间<span class="mk freq">高频</span></div></div>
+
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第四段 ①Another approach...is to <b class="kw">rethink</b> how you <b class="kw">prioritize</b> your day—in particular how we <b class="kw">craft</b> our to-do lists. ②Tim Harford...points to a study...divided undergraduates into two groups: some were advised to set out monthly goals...others were told to plan...in much more detail, day by day. 第五段 ①While the researchers assumed that the well-structured daily plans would be most effective when it came to the execution of tasks, they were wrong: the detailed daily plans <b class="kw">demotivated</b> students. ②Harford argues that <b class="kw">inevitable</b> distractions often <b class="kw">render</b> the daily to-do list ineffective, while leaving room for <b class="kw">improvisation</b> in such a list can <b class="kw">reap</b> the best results.
+</div></div>
+<div class="w"><div class="wl"><b>rethink</b> /ˌriːˈθɪŋk/ <span class="pos">v.</span> 重新思考</div><div class="wl2">本段: 重新思考一天的优先级<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>prioritize</b> /praɪˈɒrətaɪz/ <span class="pos">v.</span> 优先考虑(priority <span class="pos">n.</span>)</div><div class="wl2">本段: 安排每日优先级(写作高频词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>craft</b> /krɑːft/ <span class="pos">v.</span> 精心制作</div><div class="wl2">本段: 制作待办清单<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>demotivate</b> /ˌdiːˈməʊtɪveɪt/ <span class="pos">v.</span> 使失去动力(motivate 反义)</div><div class="wl2">本段: 详细日计划挫伤学生(37 题答案句)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>inevitable</b> /ɪnˈevɪtəbl/ <span class="pos">adj.</span> 不可避免的</div><div class="wl2">本段: 分心不可避免(40 题 C 干扰项依据)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>render</b> /ˈrendə/ <span class="pos">v.</span> 使成为(render sth. ineffective 使…失效)</div><div class="wl2">本段: 让待办清单失效<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>improvisation</b> /ˌɪmprəvaɪˈzeɪʃn/ <span class="pos">n.</span> 即兴发挥; 临场应变</div><div class="wl2">本段: 留出即兴空间反而收获最佳<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>reap</b> /riːp/ <span class="pos">v.</span> 收获; 获得</div><div class="wl2">本段: 收获最好的结果<span class="mk ok">重点</span></div></div>
+
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第六段...we also need to <b class="kw">embrace</b> <b class="kw">downtime</b>, or as Newport suggests, "be lazy." 第七段 "Idleness is not just a vacation, an <b class="kw">indulgence</b> or a <b class="kw">vice</b>; it is as <b class="kw">indispensable</b> to the brain as Vitamin D is to the body... [idleness] is, <b class="kw">paradoxically</b>, necessary to getting any work done," he argues. 第八段 Srini Pillay...believes this <b class="kw">counter-intuitive</b> link between downtime and productivity may be due to the way our brains operate. When our brains <b class="kw">switch</b> between being focused and unfocused on a task, they tend to be more <b class="kw">efficient</b>.
+</div></div>
+<div class="w"><div class="wl"><b>embrace</b> /ɪmˈbreɪs/ <span class="pos">v.</span> 欣然接受; 拥抱</div><div class="wl2">本段: 拥抱休息时间<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>downtime</b> /ˈdaʊntaɪm/ <span class="pos">n.</span> 休息时间; 停工时间</div><div class="wl2">本段: 拥抱闲适(主旨词之一)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>indulgence</b> /ɪnˈdʌldʒəns/ <span class="pos">n.</span> 放纵; 沉迷</div><div class="wl2">本段: 闲适不是放纵<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>vice</b> /vaɪs/ <span class="pos">n.</span> 恶习; 缺点</div><div class="wl2">本段: 闲适不是恶习<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>indispensable</b> /ˌɪndɪˈspensəbl/ <span class="pos">adj.</span> 不可或缺的(同义 essential)</div><div class="wl2">本段: 闲适之于大脑=维生素 D 之于身体(38 题答案)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>paradoxically</b> /ˌpærəˈdɒksɪkli/ <span class="pos">adv.</span> 矛盾地; 悖论地(paradox <span class="pos">n.</span>)</div><div class="wl2">本段: 悖论的是, 闲适是完成工作所必需<span class="mk biz">必考</span></div></div>
+<p><b>counter-intuitive</b> /ˌkaʊntər ɪnˈtjuːɪtɪv/ adj. 反直觉的 — 本段: 休息与效率的反直觉联系<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>switch</b> /swɪtʃ/ <span class="pos">v.</span> 切换; 转换</div><div class="wl2">本段: 专注与不专注之间切换(39 题答案句)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>efficient</b> /ɪˈfɪʃnt/ <span class="pos">adj.</span> 高效的(efficiency <span class="pos">n.</span>)</div><div class="wl2">本段: 切换更高效(39 题答案词)<span class="mk biz">必考</span></div></div>
+
+<h2 id="八写作重点词与阅读分离">八、写作重点词(与阅读分离)</h2>
+<blockquote>
+<p>写作词按"真题 → 主题词/短语"列出, 最后是通用表达库(写任何作文都用得上, 优先背)。</p>
+</blockquote>
+<h3 id="81图表作文各真题主题词">8.1 图表作文 · 各真题主题词</h3>
+<p><b>2011 英二 · 国内轿车市场份额</b></p>
+<ul>
+<li>市场份额 = market share; 轿车市场 = car market</li>
+<li>国产品牌 = domestic/Chinese brand; 日系品牌 = Japanese brand; 美系品牌 = American brand</li>
+</ul>
+<p><b>2014 英二 · 城镇/乡村人口</b></p>
+<ul>
+<li>城镇人口 = urban population; 乡村人口 = rural population</li>
+<li>百万 = million; 十亿 = billion</li>
+</ul>
+<p><b>2017 英二 · 博物馆数量与参观人数</b></p>
+<ul>
+<li>博物馆 = museum; 参观人数 = visitor / number of visitors</li>
+</ul>
+<p><b>2010 英二 · 手机用户</b></p>
+<ul>
+<li>发展中国家 = developing countries; 发达国家 = developed countries</li>
+<li>手机用户 = mobile-phone users; 订阅 = subscription</li>
+</ul>
+<p><b>2019 英二 · 毕业生去向</b></p>
+<ul>
+<li>就业 = find a job / employment; 升学 = pursue further study</li>
+<li>创业 = start a business / entrepreneurship</li>
+</ul>
+<p><b>2016 英二 · 旅游目的</b></p>
+<ul>
+<li>旅游目的 = travel purpose; 欣赏风景 = enjoy the scenery</li>
+<li>缓解压力 = relieve/alleviate stress; 广交朋友 = make friends; 培养独立能力 = develop independence</li>
+</ul>
+<p><b>2018 英二 · 选择餐厅关注因素</b></p>
+<ul>
+<li>关注因素 = factor taken into account; 特色 = feature</li>
+<li>服务 = service; 环境 = environment; 价格 = price</li>
+</ul>
+<p><b>2020 英二 · 手机阅读目的</b></p>
+<ul>
+<li>学习知识 = acquire knowledge; 消磨时间 = kill time; 获取信息 = obtain information</li>
+</ul>
+<p><b>2021 英二 · 锻炼方式</b></p>
+<ul>
+<li>独自锻炼 = do sports alone; 和朋友一起 = exercise with friends; 团体活动 = join in group activities</li>
+</ul>
+<p><b>2012 英二 · 工作满意度</b></p>
+<ul>
+<li>工作满意度 = job satisfaction; 对…不满意 = be dissatisfied/discontented with</li>
+<li>40 岁及以下 = aged 40 and under; 41-50 岁 = aged between 41 and 50; 50 岁以上 = aged over 50</li>
+</ul>
+<p><b>2013 英二 · 学生兼职</b></p>
+<ul>
+<li>兼职 = take/do a part-time job; 大一 = freshman; 大二 = sophomore; 大三 = junior; 大四 = senior</li>
+</ul>
+<p><b>2015 英二 · 春节花销</b></p>
+<ul>
+<li>新年礼物 = New Year gifts; 交通 = transportation; 聚会吃饭 = gatherings; 花销 = spending</li>
+</ul>
+<h3 id="82图画作文各真题主题词">8.2 图画作文 · 各真题主题词</h3>
+<p><b>2019 英一 · 途中(坚持)</b>: 坚持 = perseverance/persistence; 坚持不懈 = persevere in; 中途放弃 = give up halfway
+<b>2012 英一 · 乐观悲观</b>: 乐观 = optimism/optimistic; 悲观 = pessimism; 逆境 = adverse circumstances
+<b>2016 英一 · 榜样</b>: 树立榜样 = set a good example; 以身作则 = lead by example; 角色榜样 = role model
+<b>2018 英一 · 选课(挑战)</b>: 迎接挑战 = embrace/face challenges bravely; 舒适区 = comfort zone; 韧性 = resilience
+<b>2013 英一 · 毕业生迷茫</b>: 对未来迷茫 = be confused about one's future; 职业规划 = career planning
+<b>2023 英一 · 龙舟赛(传统文化)</b>: 传统文化 = traditional culture; 蓬勃发展 = thrive; 传承 = inherit/pass down
+<b>2024 英一 · 公园建设</b>: 基础设施 = infrastructure; 公共设施 = public facilities; 民生 = people's well-being</p>
+<h3 id="83通用表达库写作万能词汇短语必考">8.3 通用表达库(写作万能词汇/短语)<span class="mk biz">必考</span></h3>
+<p><b>数据描述(图表首段)</b></p>
+<ul>
+<li>上升: increase, rise, grow(一般) / soar, surge, skyrocket(剧烈)</li>
+<li>下降: decline, drop, decrease, fall(一般) / slump, plunge, plummet(剧烈)</li>
+<li>幅度: rapid(ly), sharp(ly), dramatic(ally), significant(ly) 明显 / moderate(ly) 适中 / slight(ly), mild(ly) 不明显</li>
+<li>不变: keep/remain/stay stable/steady/constant/unchanged at + 数值</li>
+<li>大约/超过/少于: about/around/approximately/nearly/roughly; more than/over; less than/under</li>
+</ul>
+<p><b>百分比三写法</b></p>
+<ul>
+<li>A account(s) for X% of the total number/amount of B</li>
+<li>X% of B ... (如 70% of the students are boys)</li>
+<li>The percentage of A is X%</li>
+</ul>
+<p><b>静态图描述逻辑</b>: 从最大比例讲起, Specifically, 衔接; 分述用 Meanwhile, / In addition,
+<b>动态图描述</b>: 总体 To be specific, / In detail,; 同向 Meanwhile, / During the same period,; 反向 By contrast, / In contrast, / ...while...</p>
+<p><b>通用原因表达(主体段)</b></p>
+<ul>
+<li>It is not difficult to come up with some possible factors for the result/the changes/the phenomenon.</li>
+<li>At least two/three primary factors, in my opinion, can account for/explain the result.</li>
+<li>This phenomenon can be attributed to two primary factors.</li>
+<li>For one thing, ... For another, ...(论点并列)</li>
+<li>论据: Due to/Because of/Since [原因], [结果]. / As [原因], [结果].</li>
+<li>As is universally acknowledged, ...(众所周知)</li>
+</ul>
+<p><b>三大维度找原因</b>: 个人(竞争力/视野/健康意识/观念转变) + 政府(优惠政策/投资/监管/课程) + 社会(经济发展/科技进步/城市化/生活水平/压力)</p>
+<p><b>评价与建议(结尾段)</b></p>
+<ul>
+<li>It can be observed that ..., which is encouraging/satisfying/concerning/alarming.</li>
+<li>好事建议: To sustain this momentum, [建议].</li>
+<li>坏事建议: To address this issue / To tackle this challenge, [建议].</li>
+<li>Effective measures should be adopted to do sth.</li>
+<li>It is imperative/necessary/advisable that sb. (should) do sth.</li>
+<li>展望: With persistent efforts in these aspects, this trend is projected to continue in the foreseeable future.</li>
+<li>万能收尾: Only in this way can sb. do sth.(倒装)</li>
+</ul>
+<p><b>图画描写(第一段)</b></p>
+<ul>
+<li>整体: We can see in the picture that [谁] [在哪里] [做什么].</li>
+<li>动作: doing 分词(Staring at the smartphones ...)</li>
+<li>环境: with + 独立主格(with his backpack put aside ...)</li>
+<li>语言: saying/sighing, "..."; 表情: with a look of happiness/sadness/disappointment/dejection/confusion/anger</li>
+<li>标题: Under/Below the picture(s) is a caption which reads: "..."</li>
+<li>强调变化: By contrast, the other man looks cheerful, ...</li>
+</ul>
+<p><b>精神品质类第二段</b></p>
+<ul>
+<li>主旨句: The picture conveys that it is crucial/imperative to [动词短语].</li>
+<li>正面: As is universally acknowledged, [原因], so only those who [有品质] can do sth.</li>
+<li>反面: For instance, if [具体情境], [负面结果].</li>
+<li>名言: Where there is a will, there is a way. / Every cloud has a silver lining.</li>
+</ul>
+<p><b>文字材料题首段</b></p>
+<ul>
+<li>What the excerpt above reveals is a highly debatable issue regarding ...</li>
+<li>The writer argues that ...</li>
+<li>From my perspective, I completely agree/disagree with the point of view mainly for the following reasons.</li>
+</ul>
+<p><b>高频功能句型</b></p>
+<ul>
+<li>sth. makes it adj. for sb. to do sth.(收入的提高使人们周游世界成为可能)</li>
+<li>prioritize A over B / give priority to A rather than B / attach more importance to A than to B</li>
+<li>access 三用法: access sth. / have access to sth. / be accessible to sb.</li>
+<li>-oriented(市场导向 market-oriented)、-friendly(环保的 environment-friendly)</li>
+<li>Not only should sb. do sth., but sb. (also) do sth.(部分倒装)</li>
+<li>It is + 被强调部分 + that/who + 其他(强调句, 不能强调谓语)</li>
+<li>代词替换避免重复: that(特指单数)/those(特指复数)/one(泛指)/ones</li>
+<li>change in(自身变化) vs change of(替换)</li>
+</ul>
+<h2 id="九新题型PartB重点词">九、新题型（Part B）重点词</h2>
+<blockquote>
+<p>8月5日课新题型开讲（方法见 阅读.md 九章）。小标题/多项对应的词汇价值: 段落主旨词（标题同义替换的来源）+ 定位词（大写/数字/符号）; 七选五/排序的词汇价值: 选项里的限定词/代词结构 + 复现名词。这里按 12 篇例文收录, 每篇 8-12 词。</p>
+</blockquote>
+<h3 id="91小标题2007英语一PartB家长如何帮孩子走向成年">9.1 小标题 · 2007 英语一 Part B · 家长如何帮孩子走向成年</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 41 段 Periodically review their <b class="kw">emerging strengths and weaknesses</b>...identify the kinds of interests they keep coming back to, as these offer clues to the careers that will fit them best. 42 段 Kids need a range of authentic <b class="kw">role models</b>—as opposed to members of their clique, pop stars and vaunted athletes...having only a <b class="kw">foggy view</b> of the future is of little good.
+</div></div>
+<div class="w"><div class="wl"><b>emerging</b> /ɪˈmɜːdʒɪŋ/ <span class="pos">adj.</span> 新兴的; 正在显现的(emerge <span class="pos">v.</span>)</div><div class="wl2">本段: 逐渐显现的优缺点(41 题定位词)<span class="mk ok">重点</span></div></div>
+<p><b>strengths and weaknesses</b> 优点与缺点 — 本段: 定期评估孩子的优缺点<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>identify</b> /aɪˈdentɪfaɪ/ <span class="pos">v.</span> 识别; 确定</div><div class="wl2">本段: 确定他们反复出现的兴趣(41 题答案词)<span class="mk biz">必考</span></div></div>
+<p><b>clues to</b> 线索( clue /kluː/ n.) — 本段: 为未来职业提供线索<span class="mk freq">高频</span>
+<b>authentic role models</b> 真实的榜样(authentic 真实的; 非模仿的) — 本段: 42 段开头的陷阱信息(A 干扰)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>clique</b> /kliːk/ <span class="pos">n.</span> 小圈子; 小集团</div><div class="wl2">本段: 不同于小圈子成员(不认识不影响做题)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>vaunted</b> /ˈvɔːntɪd/ <span class="pos">adj.</span> 被吹嘘的</div><div class="wl2">本段: 被吹捧的运动员(不认识不影响)<span class="mk ok">重点</span></div></div>
+<p><b>foggy view</b> 模糊的看法(foggy 有雾的) — 本段: 对未来只有模糊认识 → 42 题选"谈未来"的依据<span class="mk ok">重点</span></p>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 43 段 Kids need plenty of practice <b class="kw">delaying gratification</b> and <b class="kw">deploying</b> effective <b class="kw">organizational skills</b>, such as managing time and setting priorities. 44 段 ...listening...to the same <b class="kw">monotonous beats</b>...encourages kids to stay inside their <b class="kw">bubble</b>...make it difficult for kids to develop the kind of <b class="kw">sustained concentration</b> they will need for most jobs. 45 段 They should know how to deal with <b class="kw">setbacks</b>, stresses and feelings of <b class="kw">inadequacy</b>...ways to <b class="kw">brainstorm</b> and think critically.
+</div></div>
+<p><b>delay gratification</b> 延迟满足(delay 推迟; gratification /ˌɡrætɪfɪˈkeɪʃn/ 满足) — 本段: 练习延迟满足(43 题答案词)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>deploy</b> /dɪˈplɔɪ/ <span class="pos">v.</span> 部署; 运用</div><div class="wl2">本段: 运用有效的组织技能<span class="mk ok">重点</span></div></div>
+<p><b>organizational skills</b> 组织技能 — 本段: 管理时间/设优先级(43 题答案词)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>monotonous</b> /məˈnɒtənəs/ <span class="pos">adj.</span> 单调的; 乏味的</div><div class="wl2">本段: 单调的节拍(44 题举例)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>bubble</b> /ˈbʌbl/ <span class="pos">n.</span> 气泡; 封闭圈子</div><div class="wl2">本段: 缩在自己的小圈子里<span class="mk ok">重点</span></div></div>
+<p><b>sustained concentration</b> 持续的专注(sustain 维持) — 本段: 工作需要的持续专注(44 题总结句)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>setbacks</b> /ˈsetbæks/ <span class="pos">n.</span> 挫折; 退步</div><div class="wl2">本段: 应对挫折压力(45 题答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>inadequacy</b> /ɪnˈædɪkwəsi/ <span class="pos">n.</span> 不足; 能力欠缺</div><div class="wl2">本段: 感觉能力不足(45 题考点)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>brainstorm</b> /ˈbreɪnstɔːm/ <span class="pos">v.</span>/<span class="pos">n.</span> 头脑风暴</div><div class="wl2">本段: 集思广益、批判思考(45 题答案词)<span class="mk ok">重点</span></div></div>
+
+<h3 id="92小标题2013英语二PartB省钱吃货的饮食经">9.2 小标题 · 2013 英语二 Part B · 省钱吃货的饮食经</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 41 段 <b class="kw">Impulsive</b> spending isn't an option, so plan your week's menu in advance, making shopping lists for your <b class="kw">ingredients</b> in their exact quantities...it's not just <b class="kw">cost effective</b> but helps you balance your diet...you'll sometimes change your mind about what you <b class="kw">fancy</b>. 42 段 This is where supermarkets and their <b class="kw">anonymity</b> come in handy...you only need, say, 350g of <b class="kw">shin of beef</b> and six <b class="kw">rashers of bacon</b>, not whatever weight is <b class="kw">pre-packed</b>...
+</div></div>
+<div class="w"><div class="wl"><b>impulsive</b> /ɪmˈpʌlsɪv/ <span class="pos">adj.</span> 冲动的(impulse <span class="pos">n.</span>)</div><div class="wl2">本段: 冲动消费不可取(41 题定位词)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>ingredients</b> /ɪnˈɡriːdiənts/ <span class="pos">n.</span> 原料; 食材</div><div class="wl2">本段: 按精确数量列食材清单<span class="mk freq">高频</span></div></div>
+<p><b>cost effective</b> 性价比高的; 省钱的 — 本段: 计划不止省钱还平衡饮食(41 题逻辑)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>fancy</b> /ˈfænsi/ <span class="pos">v.</span> 想要; 喜欢</div><div class="wl2">本段: 想要吃的东西(一时兴起的口味)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>anonymity</b> /ˌænəˈnɪməti/ <span class="pos">n.</span> 匿名; 无名</div><div class="wl2">本段: 超市的"匿名"优势(没人认识你, 买一根胡萝卜不尴尬)<span class="mk ok">重点</span></div></div>
+<p><b>shin of beef</b> 牛腱肉(shin 小腿) — 本段: 只需要 350g 牛腱(42 题"坚持所需"答案依据)<span class="mk ok">重点</span>
+<b>rashers of bacon</b> 培根片(rasher /ˈræʃə/ 薄片) — 本段: 六片培根就够(同上)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>pre-packed</b> /ˌpriːˈpækt/ <span class="pos">adj.</span> 预包装的</div><div class="wl2">本段: 不买超市预包装的分量<span class="mk ok">重点</span></div></div>
+
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 43 段 ...Planning ahead should <b class="kw">eliminate wastage</b>, but if you have <b class="kw">surplus</b> vegetables you'll do a vegetable soup, and all fruits threatening to "go off" will be cooked or juiced. 44 段 ...it really is a top tip for <b class="kw">frugal</b> eaters...beef bones, chicken <b class="kw">carcasses</b> and fish heads for stock which, more often than not, they'll let you have for free. 45 段 ...save your <b class="kw">pennies</b> and once every few months <b class="kw">treat yourself</b> to a set lunch...
+</div></div>
+<p><b>eliminate wastage</b> 消除浪费(eliminate 消除; wastage /ˈweɪstɪdʒ/ 浪费) — 本段: 提前规划应消除浪费(43 题答案词)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>surplus</b> /ˈsɜːpləs/ <span class="pos">adj.</span>/<span class="pos">n.</span> 多余的; 过剩</div><div class="wl2">本段: 多余的蔬菜做汤<span class="mk ok">重点</span></div></div>
+<p><b>go off</b> (食物)变质; 坏掉 — 本段: 快坏的水果煮了或榨汁<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>frugal</b> /ˈfruːɡl/ <span class="pos">adj.</span> 节俭的</div><div class="wl2">本段: 省钱吃货的头号技巧(44 题定位词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>carcasses</b> /ˈkɑːkəsɪz/ <span class="pos">n.</span> (动物)尸体; 骨架</div><div class="wl2">本段: 鸡架熬高汤(不认识不影响)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>pennies</b> /ˈpeniz/ <span class="pos">n.</span> 便士(penny 复数)</div><div class="wl2">本段: 攒便士(省小钱)<span class="mk freq">高频</span></div></div>
+<p><b>treat yourself</b> 犒劳自己(treat 款待) — 本段: 每几个月犒劳自己一顿(45 题答案原词)<span class="mk biz">必考</span></p>
+<h3 id="93小标题2016英语一PartB职场形象升级">9.3 小标题 · 2016 英语一 Part B · 职场形象升级</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 引言 ...people <b class="kw">assess</b> your <b class="kw">competence</b>, trustworthiness, and <b class="kw">likeability</b> in just a tenth of a second, solely based on the way you look...Norms have <b class="kw">evolved and fragmented</b>...whatever image we present is <b class="kw">magnified</b> by social-media services like LinkedIn...Millennials...face the <b class="kw">paradox</b> of being the least formal generation yet the most conscious of style and personal <b class="kw">branding</b>.
+</div></div>
+<div class="w"><div class="wl"><b>assess</b> /əˈses/ <span class="pos">v.</span> 评估; 评价</div><div class="wl2">本段: 十分之一秒内评估你的能力<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>competence</b> /ˈkɒmpɪtəns/ <span class="pos">n.</span> 能力; 胜任(competent <span class="pos">adj.</span>)</div><div class="wl2">本段: 评估能力、可信度、讨喜度<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>likeability</b> /ˌlaɪkəˈbɪləti/ <span class="pos">n.</span> 讨人喜欢; 亲和力</div><div class="wl2">本段: 第一印象三要素之一<span class="mk ok">重点</span></div></div>
+<p><b>evolved and fragmented</b> 演变并分化(evolve 演化; fragment 碎片化) — 本段: 职场规范已经演变分化<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>magnify</b> /ˈmæɡnɪfaɪ/ <span class="pos">v.</span> 放大</div><div class="wl2">本段: 社交平台放大你的形象<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>paradox</b> /ˈpærədɒks/ <span class="pos">n.</span> 悖论; 矛盾</div><div class="wl2">本段: 最不正式却又最在意形象的一代<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>branding</b> /ˈbrændɪŋ/ <span class="pos">n.</span> 品牌塑造; 个人品牌</div><div class="wl2">本段: 个人品牌意识<span class="mk ok">重点</span></div></div>
+
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 41 段 I've seen image upgrades be particularly helpful during <b class="kw">transitions</b>...If you're in a period of change or just feeling <b class="kw">stuck in a rut</b>, now may be a good time...ask for honest <b class="kw">feedback</b>...Look for <b class="kw">cues</b> about how others <b class="kw">perceive</b> you. 42 段 Get clear on what impact you're hoping to have. Are you looking to <b class="kw">refresh</b> your image or <b class="kw">pivot</b> it? 45 段 ...use it as an opportunity to reduce <b class="kw">decision fatigue</b>...instead of spending more time <b class="kw">fussing over</b> what to wear.
+</div></div>
+<div class="w"><div class="wl"><b>transitions</b> /trænˈzɪʃnz/ <span class="pos">n.</span> 过渡期; 转变(transition)</div><div class="wl2">本段: 转变期做形象升级最有帮助(41 题定位)<span class="mk biz">必考</span></div></div>
+<p><b>stuck in a rut</b> 陷入僵局; 生活一成不变(rut 车辙) — 本段: 感觉卡住了 → 可能是好时机<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>feedback</b> /ˈfiːdbæk/ <span class="pos">n.</span> 反馈</div><div class="wl2">本段: 向信任的朋友同事征求反馈<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>cues</b> /kjuːz/ <span class="pos">n.</span> 线索; 提示</div><div class="wl2">本段: 寻找别人如何看待你的线索<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>perceive</b> /pəˈsiːv/ <span class="pos">v.</span> 感知; 看待(perception <span class="pos">n.</span>)</div><div class="wl2">本段: 他人对你的看法<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>refresh</b> /rɪˈfreʃ/ <span class="pos">v.</span> 刷新; 更新</div><div class="wl2">本段: 是更新形象还是转向(42 题定位词)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>pivot</b> /ˈpɪvət/ <span class="pos">v.</span> 转向; 调整</div><div class="wl2">本段: 彻底转向形象(同上)<span class="mk ok">重点</span></div></div>
+<p><b>decision fatigue</b> 决策疲劳(fatigue /fəˈtiːɡ/ 疲劳) — 本段: 减少决策疲劳(45 题答案词)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>fuss over</b> /fʌs/ 过分操心; 纠结</div><div class="wl2">本段: 不必花太多时间纠结穿什么(45 题考点)<span class="mk ok">重点</span></div></div>
+
+<h3 id="94小标题2016英语二PartB向孩子学快乐">9.4 小标题 · 2016 英语二 Part B · 向孩子学快乐</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 41 段 ...we learn to control our emotions...But too often we take this process too far and end up <b class="kw">suppressing</b> emotions...find a way to <b class="kw">acknowledge</b> and express what we feel appropriately. 42 段 It cost less than a fiver but she was <b class="kw">overjoyed</b>...Too often we believe that a new job...will be the magic <b class="kw">silver bullet</b>...being <b class="kw">grateful</b> for small things every day is a much better way to improve <b class="kw">wellbeing</b>.
+</div></div>
+<div class="w"><div class="wl"><b>suppress</b> /səˈpres/ <span class="pos">v.</span> 压抑; 抑制</div><div class="wl2">本段: 过度压抑情绪(尤其负面情绪)(41 题考点)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>acknowledge</b> /əkˈnɒlɪdʒ/ <span class="pos">v.</span> 承认; 认可</div><div class="wl2">本段: 找到方式承认并表达感受(41 题答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>overjoyed</b> /ˌəʊvəˈdʒɔɪd/ <span class="pos">adj.</span> 欣喜若狂的(over- 过度 + joy)</div><div class="wl2">本段: 9 岁继女拿到 5 英镑 T 恤欣喜若狂(42 题例子)<span class="mk ok">重点</span></div></div>
+<p><b>silver bullet</b> 灵丹妙药; 万灵药 — 本段: 以为新车大房是幸福的灵丹妙药(被反驳)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>grateful</b> /ˈɡreɪtfl/ <span class="pos">adj.</span> 感激的(gratitude <span class="pos">n.</span>)</div><div class="wl2">本段: 每天感恩小事(42 题答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>wellbeing</b> /ˌwelˈbiːɪŋ/ <span class="pos">n.</span> 幸福; 安康</div><div class="wl2">本段: 提升幸福感的更好方式<span class="mk biz">必考</span></div></div>
+
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 43 段 If we adults could <b class="kw">indulge in</b> a bit of <b class="kw">silliness</b> and giggling, we would reduce the stress hormones...increase good hormones like <b class="kw">endorphins</b>... 44 段 ...we also have the <b class="kw">luxury</b> of being able to control our own diaries...so long as they're enjoyable, and not likely to have negative side effects, such as...going on a wild <b class="kw">spending spree</b> if you're on a <b class="kw">tight budget</b>. 45 段 ...we shouldn't try too hard to be happy. Scientists tell us this can <b class="kw">backfire</b>...Happiness is the absence of <b class="kw">striving</b> for happiness...happiness is not a goal but a natural <b class="kw">byproduct</b> of the way they live.
+</div></div>
+<div class="w"><div class="wl"><b>indulge in</b> /ɪnˈdʌldʒ/ 沉溺于; 纵情</div><div class="wl2">本段: 纵情傻笑一下(43 题答案词)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>silliness</b> /ˈsɪlinəs/ <span class="pos">n.</span> 傻气; 傻乎乎(silly <span class="pos">adj.</span>)</div><div class="wl2">本段: 傻气+咯咯笑(43 题答案原词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>endorphins</b> /enˈdɔːfɪnz/ <span class="pos">n.</span> 内啡肽(大脑分泌的快乐物质)</div><div class="wl2">本段: 增加内啡肽(43 题考点)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>luxury</b> /ˈlʌkʃəri/ <span class="pos">n.</span> 奢侈; 享受</div><div class="wl2">本段: 成人拥有掌控日程的奢侈<span class="mk freq">高频</span></div></div>
+<p><b>spending spree</b> 疯狂购物(spree 狂欢) — 本段: 预算紧张时不搞疯狂消费(44 题负面例子)<span class="mk ok">重点</span>
+<b>tight budget</b> 预算紧张(tight 紧的) — 本段: 预算紧张的情况下<span class="mk freq">高频</span></p>
+<div class="w"><div class="wl"><b>backfire</b> /ˌbækˈfaɪə/ <span class="pos">v.</span> 适得其反; 产生反效果</div><div class="wl2">本段: 过度追求快乐会适得其反(45 题答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>striving</b> /ˈstraɪvɪŋ/ <span class="pos">v.</span> 努力; 奋斗(strive for 追求)</div><div class="wl2">本段: 庄子: 幸福就是不去追求幸福(45 题考点)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>byproduct</b> /ˈbaɪprɒdʌkt/ <span class="pos">n.</span> 副产品</div><div class="wl2">本段: 幸福是生活方式的自然副产品(45 题答案句)<span class="mk biz">必考</span></div></div>
+
+<h3 id="95多项对应2011英语二PartB快餐与健康之争">9.5 多项对应 · 2011 英语二 Part B · 快餐与健康之争</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第四段 ...government action is necessary to <b class="kw">curb</b> Britain's <b class="kw">addiction</b> to unhealthy food and help <b class="kw">halt</b> spiraling rates of <b class="kw">obesity</b>, diabetes and heart disease...the consumption of unhealthy food should be seen to be just as damaging as smoking or excessive drinking. 第七段 ...banning TV advertisements...before the 9pm <b class="kw">watershed</b>...by setting <b class="kw">stringent</b> limits on advertising, product placement and sponsorship...
+</div></div>
+<div class="w"><div class="wl"><b>curb</b> /kɜːb/ <span class="pos">v.</span> 遏制; 控制</div><div class="wl2">本段: 遏制英国人对不健康食品的上瘾<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>addiction</b> /əˈdɪkʃn/ <span class="pos">n.</span> 上瘾; 沉溺(addict <span class="pos">n.</span>)</div><div class="wl2">本段: 对不健康食品的瘾<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>halt</b> /hɔːlt/ <span class="pos">v.</span> 停止; 阻止</div><div class="wl2">本段: 阻止肥胖率的螺旋上升<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>obesity</b> /əʊˈbiːsəti/ <span class="pos">n.</span> 肥胖(obese <span class="pos">adj.</span>)</div><div class="wl2">本段: 肥胖/糖尿病/心脏病率<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>watershed</b> /ˈwɔːtəʃed/ <span class="pos">n.</span> 分水岭; 关键时间点</div><div class="wl2">本段: 晚上 9 点前禁播食品广告(定位词)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>stringent</b> /ˈstrɪndʒənt/ <span class="pos">adj.</span> 严格的; 严厉的</div><div class="wl2">本段: 对广告设置严格限制(42 题答案句)<span class="mk biz">必考</span></div></div>
+
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第六段 ①Lansley has <b class="kw">alarmed</b> health <b class="kw">campaigners</b> by suggesting he wants industry rather than government to take the lead. ②He said that manufacturers of crisps and candies could play a <b class="kw">central role</b> in the Change4Life campaign, the <b class="kw">centrepiece</b> of government efforts to boost healthy eating...③He has also criticized...Jamie Oliver's <b class="kw">high-profile</b> attempt...第八段 Fast-food chains should also stop offering "<b class="kw">inducements</b>" such as toys...to <b class="kw">lure</b> young customers. 第十段 He also <b class="kw">urged</b> councils to impose "fast-food-free zones" around schools...
+</div></div>
+<div class="w"><div class="wl"><b>alarm</b> /əˈlɑːm/ <span class="pos">v.</span> 使惊慌; 警示</div><div class="wl2">本段: 让健康活动人士感到不安<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>campaigners</b> /kæmˈpeɪnəz/ <span class="pos">n.</span> 活动人士; 倡导者</div><div class="wl2">本段: 健康倡导者<span class="mk ok">重点</span></div></div>
+<p><b>central role</b> 核心角色 — 本段: 薯片糖果商可扮演核心角色(41 题答案句: play a central role ↔ contribute significantly)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>centrepiece</b> /ˈsentəpiːs/ <span class="pos">n.</span> 核心; 最重要部分</div><div class="wl2">本段: 政府促健康饮食努力的核心项目<span class="mk ok">重点</span></div></div>
+<p><b>high-profile</b> /ˌhaɪ ˈprəʊfaɪl/ adj. 高调的; 引人注目的 — 本段: Oliver 高调改善学校午餐(43 题考点)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>inducements</b> /ɪnˈdjuːsmənts/ <span class="pos">n.</span> 引诱物; 诱饵</div><div class="wl2">本段: 玩具/可爱动物/话费都是引诱物(42 题 D 干扰依据)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>lure</b> /lʊə/ <span class="pos">v.</span> 引诱; 诱惑</div><div class="wl2">本段: 引诱年轻顾客<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>urge</b> /ɜːdʒ/ <span class="pos">v.</span> 敦促; 强烈要求</div><div class="wl2">本段: 敦促议会设"无快餐区"(44 题答案句)<span class="mk biz">必考</span></div></div>
+
+<h3 id="96多项对应2017英语二PartB制造业招工难">9.6 多项对应 · 2017 英语二 Part B · 制造业招工难</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> 第五段 For factory owners, it all adds up to <b class="kw">stiff competition</b> for workers – and upward pressure on wages. "They're harder to find and they have job offers"...they've been <b class="kw">plucked</b> by other industries... 第八段 ...a major <b class="kw">hurdle</b>: parents, who lived through the worst US economic downturn since the Great Depression...They <b class="kw">blame</b> it on the manufacturing <b class="kw">recession</b>. 最后一段 <b class="kw">luring</b> Millennials into manufacturing: a work/life balance...young people value <b class="kw">flexibility</b>.
+</div></div>
+<p><b>stiff competition</b> 激烈的竞争(stiff /stɪf/ 僵硬的; 强烈的) — 本段: 用工竞争激烈(41 题答案句)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>pluck</b> /plʌk/ <span class="pos">v.</span> 摘; 抢夺</div><div class="wl2">本段: 被其他行业挖走(工人)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>hurdle</b> /ˈhɜːdl/ <span class="pos">n.</span> 障碍; 栏架</div><div class="wl2">本段: 要越过另一大障碍: 父母<span class="mk ok">重点</span></div></div>
+<p><b>be to blame for</b> 应为…负责; 是…的原因(blame 归咎于) — 本段: 制造业衰退要为父母被裁负责(43 题答案短语)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>recession</b> /rɪˈseʃn/ <span class="pos">n.</span> 衰退; 萧条</div><div class="wl2">本段: 制造业衰退(43 题答案词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>lure</b> /lʊə/ <span class="pos">v.</span> 引诱</div><div class="wl2">本段: 吸引千禧一代进制造业(45 题答案句: luring ↔ attract)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>Millennials</b> /mɪˈleniəlz/ <span class="pos">n.</span> 千禧一代(2000 年前后互联网兴起时成长的一代)</div><div class="wl2">本段: 年轻人(45 题考点)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>flexibility</b> /ˌfleksəˈbɪləti/ <span class="pos">n.</span> 灵活性</div><div class="wl2">本段: 年轻人看重灵活(work/life balance 的体现)<span class="mk freq">高频</span></div></div>
+
+<h3 id="97七选五2012英语一PartB下载与上传的数字文化">9.7 七选五 · 2012 英语一 Part B · 下载与上传的数字文化</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> (41 空前) ...a collection of <b class="kw">geniuses, warriors, entrepreneurs and visionaries</b> labour to create a <b class="kw">fabulous</b> machine that could function as a typewriter and printing press... (43 空前) ...create <b class="kw">superfluous</b> material goods...and superfluous experiences... (44 空前) ...a <b class="kw">pyramid</b> of production remains... (45 空前) Television is a <b class="kw">one-way tap</b> flowing into our homes... (45 空后) What counts as <b class="kw">meaningful</b> uploading? My definition revolves around the concept of "<b class="kw">stickiness</b>" —creations and experiences to which others <b class="kw">adhere</b>.
+</div></div>
+<p><b>geniuses / warriors / entrepreneurs / visionaries</b> 天才/战士/企业家/梦想家 — 本段: 41 题空前的一帮人(认识一个即可)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>fabulous</b> /ˈfæbjələs/ <span class="pos">adj.</span> 极好的; 神话般的</div><div class="wl2">本段: 了不起的机器(41 题空前)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>superfluous</b> /suːˈpɜːfluəs/ <span class="pos">adj.</span> 多余的; 过剩的</div><div class="wl2">本段: 多余的物质/精神产品(43 题答案词, 空前复现)<span class="mk biz">必考</span></div></div>
+<p><b>pyramid of production</b> 生产的金字塔(金字塔式生产结构) — 本段: 少数人上传、多数人消费(44 题答案词)<span class="mk biz">必考</span>
+<b>one-way tap</b> 单向水龙头 — 本段: 电视是单向流入(45 题空前意象, 对应 reverse the flow)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>meaningful</b> /ˈmiːnɪŋfl/ <span class="pos">adj.</span> 有意义的</div><div class="wl2">本段: 有意义的上传(45 题空后复现词)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>stickiness</b> /ˈstɪkɪnəs/ <span class="pos">n.</span> 粘性; 粘住人的特质(sticky <span class="pos">adj.</span>)</div><div class="wl2">本段: 让人"粘住"的创作与体验<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>adhere</b> /ədˈhɪə/ <span class="pos">v.</span> 粘附; 坚持</div><div class="wl2">本段: 别人愿意依附/追随(45 题空后)<span class="mk ok">重点</span></div></div>
+
+<h3 id="98七选五2013英语一PartB社会科学与全球挑战">9.8 七选五 · 2013 英语一 Part B · 社会科学与全球挑战</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> (41 空前) ...today's global <b class="kw">challenges</b>, including climate change, security, sustainable development and health... Humanity has the necessary <b class="kw">agro-technological</b> tools to <b class="kw">eradicate</b> hunger... (42 空后) This is a <b class="kw">shame</b> — the community should be <b class="kw">grasping</b> the opportunity to raise its influence... (44 空后) This is an <b class="kw">adequate</b> amount so long as it is aimed in the right direction. (45 空后) That should create more <b class="kw">collaborative endeavors</b>...
+</div></div>
+<div class="w"><div class="wl"><b>challenges</b> /ˈtʃælɪndʒɪz/ <span class="pos">n.</span> 挑战</div><div class="wl2">本段: 全球挑战: 气候变化/安全/可持续发展/健康(41 题复数线索)<span class="mk biz">必考</span></div></div>
+<p><b>agro-technological</b> 农业技术的(agro- 农业) — 本段: 消灭饥饿的农业技术工具<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>eradicate</b> /ɪˈrædɪkeɪt/ <span class="pos">v.</span> 根除; 消灭</div><div class="wl2">本段: 根除饥饿(41 题空后)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>shame</b> /ʃeɪm/ <span class="pos">n.</span> 耻辱; 憾事</div><div class="wl2">本段: 空后 This is a shame → 空里要有"不情愿解决"的事(42 题线索)<span class="mk freq">高频</span></div></div>
+<p><b>grasp the opportunity</b> 抓住机会(grasp 抓住; 理解) — 本段: 学界应抓住提升影响力的机会(42 题空后)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>adequate</b> /ˈædɪkwət/ <span class="pos">adj.</span> 充足的; 适当的</div><div class="wl2">本段: 数额充足(44 题空后 This is an adequate amount → 空里要有金额词)<span class="mk biz">必考</span></div></div>
+<p><b>collaborative endeavors</b> 合作的努力(collaborative 合作的; endeavor 努力) — 本段: 45 题空后 → 空里要有"整合/合作"(integrate)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>integrate</b> /ˈɪntɪɡreɪt/ <span class="pos">v.</span> 整合; 使一体化(反义 disintegrate 分裂)</div><div class="wl2">本段: 45 题答案词: 强迫社会科学家整合工作(C 选项)<span class="mk biz">必考</span></div></div>
+
+<h3 id="99七选五2015英语一PartB阅读的维度">9.9 七选五 · 2015 英语一 Part B · 阅读的维度</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> (41 空前) ...identifying meanings for individual words and working out relationships between them, drawing on your <b class="kw">implicit</b> knowledge of English grammar. (41 空后) You begin to <b class="kw">infer</b> a <b class="kw">context</b> for the text... (43 空后) Such <b class="kw">background material</b> inevitably reflects who we are. (44 空后) This doesn't, however, make <b class="kw">interpretation</b> merely relative... (45 空后) Such <b class="kw">dimensions</b> of reading suggest...that we bring an <b class="kw">implicit agenda</b> to any act of reading.
+</div></div>
+<div class="w"><div class="wl"><b>implicit</b> /ɪmˈplɪsɪt/ <span class="pos">adj.</span> 含蓄的; 内隐的</div><div class="wl2">本段: 内隐的语法知识(41 题空前)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>infer</b> /ɪnˈfɜː/ <span class="pos">v.</span> 推断(inference <span class="pos">n.</span>)</div><div class="wl2">本段: 开始推断语境(41 题空后; 42 题 E 选项 further inferences)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>context</b> /ˈkɒntekst/ <span class="pos">n.</span> 语境; 背景</div><div class="wl2">本段: 为文本推断语境(41 题空后)<span class="mk biz">必考</span></div></div>
+<p><b>background material</b> 背景材料 — 本段: 空后 Such background material → 空里要有 material(43 题线索)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>interpretation</b> /ɪnˌtɜːprɪˈteɪʃn/ <span class="pos">n.</span> 解释; 解读(interpret <span class="pos">v.</span>)</div><div class="wl2">本段: 空后 make interpretation → 空里要有 interpret(44 题线索, B 选项尾句)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>dimensions</b> /daɪˈmenʃnz/ <span class="pos">n.</span> 维度; 方面</div><div class="wl2">本段: 空后 Such dimensions of reading → 空里要有"阅读方式"(45 题线索)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>agenda</b> /əˈdʒendə/ <span class="pos">n.</span> 议程; 意图</div><div class="wl2">本段: 任何阅读都带着内隐的意图(45 题空后)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>assimilation</b> /əˌsɪməˈleɪʃn/ <span class="pos">n.</span> 同化; 吸收</div><div class="wl2">本段: 理解不是被动吸收而是主动参与(42 题空前)<span class="mk ok">重点</span></div></div>
+
+<h3 id="910排序2014英语一PartB考古学家的勘探术">9.10 排序 · 2014 英语一 Part B · 考古学家的勘探术</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> A 段 Some <b class="kw">archaeological sites</b> have always been easily <b class="kw">observable</b> — for example, the Parthenon...the <b class="kw">megaliths</b> of Stonehenge...known only through <b class="kw">looters'</b> activities. C 段 ...they <b class="kw">survey</b> and <b class="kw">sample</b> (make test <b class="kw">excavations</b> on) large areas of <b class="kw">terrain</b>... D 段 ...the ancient Maya city of Copán...using <b class="kw">aerial photographs</b>... B 段 In <b class="kw">another case</b>, American archaeologists René Millon and George Cowgill spent years <b class="kw">systematically mapping</b> the entire city of Teotihuacan...
+</div></div>
+<p><b>archaeological sites</b> 考古遗址(archaeology 考古学) — 本段: 全文主题词<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>observable</b> /əbˈzɜːvəbl/ <span class="pos">adj.</span> 可观察到的</div><div class="wl2">本段: 容易被观察到的遗址(A 段)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>megaliths</b> /ˈmeɡəlɪθs/ <span class="pos">n.</span> 巨石(巨石阵 Stonehenge 的一部分)</div><div class="wl2">本段: A 段举例<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>looters</b> /ˈluːtəz/ <span class="pos">n.</span> 盗掘者; 掠夺者</div><div class="wl2">本段: 大多数遗址是靠盗掘者发现的(A 段尾 → F 段 however 转折)<span class="mk ok">重点</span></div></div>
+<p><b>survey and sample</b> 勘探与采样 — 本段: C 段核心方法(41 题首段)<span class="mk biz">必考</span></p>
+<div class="w"><div class="wl"><b>excavations</b> /ˌekskəˈveɪʃnz/ <span class="pos">n.</span> 挖掘; 发掘(excavate <span class="pos">v.</span>)</div><div class="wl2">本段: 试掘(41 题首段)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>terrain</b> /təˈreɪn/ <span class="pos">n.</span> 地形; 地带</div><div class="wl2">本段: 大范围地形勘探<span class="mk ok">重点</span></div></div>
+<p><b>aerial photographs</b> 航空照片(aerial 空中的) — 本段: D 段: 用航空照片定位(44 题答案段)<span class="mk ok">重点</span>
+<b>in another case</b> 在另一个案例中 — 本段: B 段与 D 段(in one case)成对, 排序铁线索<span class="mk biz">必考</span></p>
+<h3 id="911排序2018英语一PartB美国EEOB大楼的前世今生">9.11 排序 · 2018 英语一 Part B · 美国 EEOB 大楼的前世今生</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> A 段 Congress appointed a <b class="kw">commission</b> to select a site and prepare plans and cost <b class="kw">estimates</b>... F 段 <b class="kw">Construction</b> took 17 years as the building slowly rose wing by wing... B 段 <b class="kw">Completed</b> in 1875, the State Department's south wing was the first to be <b class="kw">occupied</b>... D 段 ...historical events that have taken place within the EEOB's <b class="kw">granite</b> walls...
+</div></div>
+<div class="w"><div class="wl"><b>commission</b> /kəˈmɪʃn/ <span class="pos">n.</span> 委员会; 委托</div><div class="wl2">本段: 国会任命委员会选址(43 题答案段)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>estimates</b> /ˈestɪməts/ <span class="pos">n.</span> 估价; 估算</div><div class="wl2">本段: 准备计划和成本估算(43 题答案段)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>construction</b> /kənˈstrʌkʃn/ <span class="pos">n.</span> 建造</div><div class="wl2">本段: 建造花了 17 年(F 段, 时间顺序核心)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>completed</b> /kəmˈpliːtɪd/ <span class="pos">adj.</span> 完工的</div><div class="wl2">本段: 1875 年完工(B 段, 时间顺序: 准备→建造→完工)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>occupied</b> /ˈɒkjupaɪd/ <span class="pos">v.</span> 占用; 入住</div><div class="wl2">本段: 南翼最先入住(B 段)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>granite</b> /ˈɡrænɪt/ <span class="pos">n.</span> 花岗岩</div><div class="wl2">本段: EEOB 的花岗岩墙内(D 段, 结尾段)<span class="mk ok">重点</span></div></div>
+<div class="w"><div class="wl"><b>wings</b> /wɪŋz/ <span class="pos">n.</span> 翼楼</div><div class="wl2">本段: 大楼一翼一翼地建起(F 段)<span class="mk ok">重点</span></div></div>
+
+<h3 id="912排序2010英语一PartB欧洲食品零售">9.12 排序 · 2010 英语一 Part B · 欧洲食品零售</h3>
+<div class="loc"><span class="loc-tag">真题原文</span><div class="loc-text"> B 段 Retail sales of food and drink in Europe's largest markets are at a <b class="kw">standstill</b>, leaving European grocery retailers <b class="kw">hungry for</b> opportunities to grow... F 段 For example, <b class="kw">wholesale</b> food and drink sales come to \$268 billion... D 段 ...big retailers could profitably apply their <b class="kw">scale</b>, existing <b class="kw">infrastructure</b> and proven skills... A 段 The first and more important is the consumer's growing <b class="kw">preference for eating out</b>... E 段 ...wholesale markets...are made out of the same <b class="kw">building blocks</b>: demand, supply, and chains of <b class="kw">intermediaries</b>...
+</div></div>
+<div class="w"><div class="wl"><b>standstill</b> /ˈstændstɪl/ <span class="pos">n.</span> 停滞</div><div class="wl2">本段: 零售额停滞(41 题首段)<span class="mk biz">必考</span></div></div>
+<p><b>hungry for</b> 渴望 — 本段: 零售商渴望增长机会(41 题首段)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>wholesale</b> /ˈhəʊlseɪl/ <span class="pos">n.</span>/<span class="pos">adj.</span> 批发</div><div class="wl2">本段: 批发销售额 2680 亿(42 题答案段)<span class="mk biz">必考</span></div></div>
+<div class="w"><div class="wl"><b>scale</b> /skeɪl/ <span class="pos">n.</span> 规模</div><div class="wl2">本段: 大零售商可运用规模优势(D 段)<span class="mk freq">高频</span></div></div>
+<div class="w"><div class="wl"><b>infrastructure</b> /ˈɪnfrəstrʌktʃə/ <span class="pos">n.</span> 基础设施</div><div class="wl2">本段: 现有基础设施(D 段)<span class="mk freq">高频</span></div></div>
+<p><b>preference for eating out</b> 外出就餐的偏好 — 本段: 消费者越来越爱在外吃(45 题答案段)<span class="mk biz">必考</span>
+<b>building blocks</b> 组成部分; 积木 — 本段: 批发市场由相同的要素构成(E 段)<span class="mk ok">重点</span></p>
+<div class="w"><div class="wl"><b>intermediaries</b> /ˌɪntəˈmiːdiəriz/ <span class="pos">n.</span> 中介; 中间商</div><div class="wl2">本段: 需求、供给和中介链(E 段)<span class="mk ok">重点</span></div></div></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="英语_无忧0802_测试卷.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>英语 · 无忧0802_测试卷</b></span></a><span></span></nav></main>
+<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<button id="navbtn" type="button" aria-label="打开目录" title="目录">☰</button>
+<div id="tbtools" role="toolbar"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">深色</button><button id="printBtn" type="button" title="打印 / 导出 PDF">打印</button></div></div>
+
+<script src="../katex/katex.min.js"></script>
+<script src="../katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  try{renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});}catch(e){}
+});
+</script>
+
+<script>
+(function(){
+  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
+     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
+  var PAGE = location.pathname.split('/').pop() || '';
+  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
+  var root = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
+
+  /* ---------- 深色模式 ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var theme = load('xnTheme');
+  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
+  else {
+    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '浅色' : '深色'; }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
+    });
+  }
+  themeIcon();
+
+  /* ---------- 折叠状态跨页记忆 ---------- */
+  var NAV_KEY = 'xnNav_' + PAGE;
+  var saved = loadJSON(NAV_KEY) || {};
+  var grps = document.querySelectorAll('nav details.grp[data-k]');
+  for (var i = 0; i < grps.length; i++) {
+    var k = grps[i].getAttribute('data-k');
+    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
+  }
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.addEventListener('toggle', function(e){
+      var d = e.target;
+      if (!d || !d.hasAttribute('data-k')) return;
+      var s = loadJSON(NAV_KEY) || {};
+      s[d.getAttribute('data-k')] = d.open;
+      store(NAV_KEY, JSON.stringify(s));
+    }, true); /* toggle 不冒泡, 必须 capture */
+  }
+
+  /* ---------- 侧栏收起/展开(2026-08-09): 折叠态 = 8px 边缘热区零内容;
+     桌面: 悬停/键盘聚焦滑出, 移出 1.2s 自动收回(未钉住), ☰/图钉按钮钉住;
+     触屏(平板): ☰ 弹浮层 + 遮罩; 手机(≤920px): ☰ = 汉堡滑入 overlay ---------- */
+  var touchNav = !!(window.matchMedia && window.matchMedia('(hover: none)').matches);
+  var sideNav = document.querySelector('.layout > nav');
+  var navbtn = document.getElementById('navbtn');
+  if (sideNav) {
+    if (touchNav) root.setAttribute('data-touch', '1');
+    var pinSt = load('xnNavPin') === '1';
+    root.setAttribute('data-nav', (pinSt && !touchNav) ? 'pinned' : 'collapsed');
+    var pinBtn = document.getElementById('navpin');
+    if (pinBtn) pinBtn.setAttribute('aria-pressed', pinSt && !touchNav ? 'true' : 'false');
+    function setPin(pinned){
+      root.setAttribute('data-nav', pinned ? 'pinned' : 'collapsed');
+      store('xnNavPin', pinned ? '1' : '0');
+      if (pinBtn) pinBtn.setAttribute('aria-pressed', pinned ? 'true' : 'false');
+    }
+    if (pinBtn) pinBtn.addEventListener('click', function(){ setPin(root.getAttribute('data-nav') !== 'pinned'); });
+    if (navbtn) navbtn.addEventListener('click', function(){
+      if (window.matchMedia('(max-width: 920px)').matches) { nav.classList.toggle('show'); return; }
+      if (touchNav) {
+        root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+      } else {
+        setPin(root.getAttribute('data-nav') !== 'pinned');
+      }
+    });
+    sideNav.addEventListener('click', function(e){
+      if (e.target.closest('a')) { nav.classList.remove('show'); root.setAttribute('data-nav', 'collapsed'); return; }
+      if (touchNav) root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
+    });
+    if (touchNav) {
+      var scrim = document.getElementById('navscrim');
+      if (scrim) scrim.addEventListener('click', function(){ root.setAttribute('data-nav', 'collapsed'); });
+    } else {
+      /* 桌面: 悬停/聚焦展开, 移出延迟 1.2s 自动收回(钉住时保持) */
+      var retractTimer = null;
+      function keepOpen(){
+        clearTimeout(retractTimer);
+        if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'open');
+      }
+      function scheduleRetract(){
+        clearTimeout(retractTimer);
+        retractTimer = setTimeout(function(){
+          if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'collapsed');
+        }, 1200);
+      }
+      sideNav.addEventListener('mouseenter', keepOpen);
+      sideNav.addEventListener('mouseleave', scheduleRetract);
+      sideNav.addEventListener('focusin', keepOpen);
+      sideNav.addEventListener('focusout', scheduleRetract);
+    }
+  }
+
+  /* ---------- 目录筛选 ---------- */
+  var navq = document.getElementById('navq');
+  if (navq && nav) {
+    var navLinks = nav.querySelectorAll('a[href]');
+    var navGrps = nav.querySelectorAll('details.grp');
+    var navBrds = nav.querySelectorAll('details.brd');
+    var navSecs = nav.querySelectorAll('.sec');
+    navq.addEventListener('input', function(){
+      var t = navq.value.trim().toLowerCase();
+      for (var i2 = 0; i2 < navLinks.length; i2++) {
+        var a = navLinks[i2];
+        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
+                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
+        a.style.display = hit ? '' : 'none';
+      }
+      for (var j = 0; j < navGrps.length; j++) {
+        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
+        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
+        g.style.display = gVis ? '' : 'none';
+        if (t && gVis) g.open = true;
+      }
+      for (var k2 = 0; k2 < navBrds.length; k2++) {
+        var bd = navBrds[k2], bdLinks = bd.querySelectorAll('a[href]'), bdVis = false;
+        for (var n2 = 0; n2 < bdLinks.length; n2++) { if (bdLinks[n2].style.display !== 'none') { bdVis = true; break; } }
+        bd.style.display = bdVis ? '' : 'none';
+        if (t && bdVis) bd.open = true;
+      }
+      for (var s = 0; s < navSecs.length; s++) {
+        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
+        while (el && !(el.classList && el.classList.contains('sec'))) {
+          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
+          for (var q2 = 0; q2 < sLinks.length; q2++) {
+            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
+          }
+          if (secVis) break;
+          el = el.nextElementSibling;
+        }
+        sec.style.display = secVis ? '' : 'none';
+      }
+    });
+  }
+
+  /* ---------- 滚动定位(scrollspy) ---------- */
+  var spyAnchors = [];
+  if (nav) {
+    var spyLinks = nav.querySelectorAll('a.c, a.d');
+    for (var i3 = 0; i3 < spyLinks.length; i3++) {
+      var h = spyLinks[i3].getAttribute('href') || '';
+      var pp = h.split('#');
+      if (pp.length < 2 || !pp[1]) continue;
+      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
+      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
+    }
+  }
+  var spyHeads = [], spyMap = {};
+  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
+    var hd = document.getElementById(spyAnchors[j2].id);
+    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
+  }
+  var lastSpy = null;
+  function spyUpdate(){
+    var pos = window.scrollY + 170, cur = null;
+    for (var i4 = 0; i4 < spyHeads.length; i4++) {
+      var r = spyHeads[i4].getBoundingClientRect();
+      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
+    }
+    var id = cur ? cur.id : '';
+    if (id !== lastSpy) {
+      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
+      lastSpy = id;
+      if (id && spyMap[id]) spyMap[id].classList.add('on');
+    }
+  }
+  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
+
+  /* ---------- 回到顶部 ---------- */
+  var topbtn = document.getElementById('topbtn');
+  if (topbtn) {
+    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+
+  /* ---------- 展开 / 收起全部 ---------- */
+  var exp = document.getElementById('expandBtn');
+  if (exp) {
+    var mainDetails = document.querySelectorAll('main details');
+    if (!mainDetails.length) { exp.style.display = 'none'; }
+    else {
+      exp.hidden = false;
+      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
+      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
+      exp.addEventListener('click', function(){
+        var all = mainDetails.length === detailsState();
+        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
+        expRefresh();
+      });
+      expRefresh();
+    }
+  }
+
+  /* ---------- 代码复制 ---------- */
+  var pres = document.querySelectorAll('main pre');
+  for (var i7 = 0; i7 < pres.length; i7++) {
+    (function(pre){
+      var cb = document.createElement('button');
+      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
+      cb.setAttribute('aria-label', '复制代码');
+      pre.appendChild(cb);
+      cb.addEventListener('click', function(){
+        var codeEl = pre.querySelector('code');
+        var txt = codeEl ? codeEl.innerText : pre.innerText;
+        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
+        } else { done(); }
+      });
+    })(pres[i7]);
+  }
+
+  /* ---------- 表格横向滚动包裹 ---------- */
+  var tables = document.querySelectorAll('main table');
+  for (var iT = 0; iT < tables.length; iT++) {
+    var tw = document.createElement('div');
+    tw.className = 'table-wrap';
+    tables[iT].parentNode.insertBefore(tw, tables[iT]);
+    tw.appendChild(tables[iT]);
+  }
+
+  /* ---------- 标题锚点链接 ---------- */
+  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
+  for (var i8 = 0; i8 < heads2.length; i8++) {
+    if (heads2[i8].querySelector('.anc')) continue;
+    var anc = document.createElement('a');
+    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
+    anc.setAttribute('aria-label', '链接到本小节');
+    heads2[i8].appendChild(anc);
+  }
+
+  /* ---------- 打印时展开全部 ---------- */
+  var prevOpen = [];
+  window.addEventListener('beforeprint', function(){
+    var ds = document.querySelectorAll('main details');
+    prevOpen = [];
+    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
+  });
+  window.addEventListener('afterprint', function(){
+    var ds = document.querySelectorAll('main details');
+    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
+  });
+
+  /* ---------- 已读标记 + 最近学习 ---------- */
+  var VKEY = 'xnVisited';
+  var visited = loadJSON(VKEY) || [];
+  function remember(f){
+    if (f && visited.indexOf(f) < 0) {
+      visited.push(f);
+      if (visited.length > 80) visited = visited.slice(-80);
+      store(VKEY, JSON.stringify(visited));
+    }
+  }
+  if (PAGE) remember(PAGE);
+  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
+  for (var iB = 0; iB < markLinks.length; iB++) {
+    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
+    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
+  }
+  var recentSec = document.getElementById('recent');
+  var recentBox = document.getElementById('recentCards');
+  if (recentSec && recentBox) {
+    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
+    for (var iC = 0; iC < cardsAll.length; iC++) {
+      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
+      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
+    }
+    var shown = {}, frag = document.createDocumentFragment(), added = 0;
+    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
+      var fD = visited[iD];
+      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
+      shown[fD] = 1; added++;
+      var clone = cardMap[fD].cloneNode(true);
+      clone.classList.add('vis');
+      frag.appendChild(clone);
+    }
+    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
+  }
+
+  /* ---------- 首页搜索 + 学科 Tab(2026-08-09: homeFilter 统一入口, Tab 只控 section 显隐) ---------- */
+  var homeq = document.getElementById('homeq');
+  var hometabs = document.getElementById('hometabs');
+  var homeTab = 'all';
+  function homeFilter(){
+    if (!homeq) return;
+    var t = homeq.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('.board-card');
+    var secs2 = document.querySelectorAll('section[data-subj]');
+    var grpHs = document.querySelectorAll('.grp-h');
+    for (var iE = 0; iE < cards.length; iE++) {
+      cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
+    }
+    for (var iF = 0; iF < secs2.length; iF++) {
+      var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
+      for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
+      sec.style.display = ((homeTab === 'all' || sec.dataset.subj === homeTab) && vis) ? '' : 'none';
+    }
+    for (var iH = 0; iH < grpHs.length; iH++) {
+      var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
+      if (next && next.classList && next.classList.contains('cards')) {
+        var c2 = next.querySelectorAll('.board-card');
+        for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
+      }
+      grp.style.display = vis2 ? '' : 'none';
+    }
+    var recentSec2 = document.getElementById('recent');
+    if (recentSec2) {
+      var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
+      for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
+      recentSec2.style.display = (t && !rVis) ? 'none' : '';
+    }
+  }
+  if (homeq) homeq.addEventListener('input', homeFilter);
+  if (hometabs) {
+    hometabs.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-tab]');
+      if (!btn) return;
+      homeTab = btn.getAttribute('data-tab');
+      var bs = hometabs.querySelectorAll('button[data-tab]');
+      for (var iK = 0; iK < bs.length; iK++) bs[iK].classList.toggle('on', bs[iK] === btn);
+      homeFilter();
+    });
+  }
+
+  /* ---------- 键盘翻页 ---------- */
+  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
+  document.addEventListener('keydown', function(e){
+    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
+    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
+    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === '[') go('.pager a.prev');
+      else if (e.key === ']') go('.pager a.next');
+    }
+  });
+})();
+</script></body></html>
