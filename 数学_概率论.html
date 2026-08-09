@@ -58,10 +58,11 @@ button{font-family:inherit}
   z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
 
 /* ---------- 侧栏 ---------- */
-nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
   position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
-nav::-webkit-scrollbar{width:8px}
-nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
 nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
 nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
   background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
@@ -151,6 +152,28 @@ main tr:nth-child(even) td{background:var(--bg2)}
 main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
   background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
 main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
 code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
   font-family:var(--mono);font-size:.86em}
 pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
@@ -365,6 +388,31 @@ main details .sum b{font-weight:700}
 <p><b>直觉</b> 事件就是 Ω 上的一组结果。比如掷骰子, Ω={1,2,3,4,5,6}, "点数为偶数"={2,4,6}——就是我们圈出的一个子集。<b>概率论本质上是在样本空间上分配"大小"</b>, 这个大小就是概率。</p>
 <h3 id="12事件的关系与运算必考">1.2 事件的关系与运算 <span class="mk biz">必考</span></h3>
 <p>把事件当集合看, 全部运算就是集合运算的翻版:</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-1-p03_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-1-p03_1.png" alt="包含关系 A⊂B 韦恩图（0620(1) 页3）">
+<div class="figcap">📐 示意图（重绘）: 包含关系 A⊂B 韦恩图（0620(1) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-1-p03_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-1-p03_2.png" alt="和事件 A∪B 韦恩图（0620(1) 页3）">
+<div class="figcap">📐 示意图（重绘）: 和事件 A∪B 韦恩图（0620(1) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-1-p03_3.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-1-p03_3.png" alt="积事件 A∩B 韦恩图（0620(1) 页3）">
+<div class="figcap">📐 示意图（重绘）: 积事件 A∩B 韦恩图（0620(1) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-1-p04_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-1-p04_1.png" alt="完备事件组分割示意（0620(1) 页4）">
+<div class="figcap">📐 示意图（重绘）: 完备事件组分割示意（0620(1) 页4）</div>
+</div>
+</details>
+
 <table>
 <thead>
 <tr>
@@ -430,6 +478,13 @@ $$ \overline{A\cup B} = \bar{A}\cap\bar{B},\qquad \overline{A\cap B} = \bar{A}\c
 <p><b>直觉</b> 概率是把样本空间 Ω 的"总测度 1"分配到各个事件上。公理化定义不限定具体怎么分配——古典概型、几何概型、任何分布都是满足这三条的特例。</p>
 <p><span class="mk info">注意</span> P(A)=0 推不出 A=∅ (不可能事件), 只是说 A 发生的概率为零(如连续型 R.V. 单点概率); P(A)=1 也推不出 A=Ω。</p>
 <h3 id="14概率的基本性质高频">1.4 概率的基本性质 <span class="mk freq">高频</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-1-p11_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-1-p11_1.png" alt="可比性 A⊂B 的韦恩图（0620(1) 页11）">
+<div class="figcap">📐 示意图（重绘）: 可比性 A⊂B 的韦恩图（0620(1) 页11）</div>
+</div>
+</details>
+
 <ol>
 <li><b>逆事件</b>: P(Ā) = 1−P(A) —— "至少一个发生" ↔ 1−"全都不发生"</li>
 <li><b>可比性</b>: A⊂B ⇒ P(A) ≤ P(B)</li>
@@ -498,12 +553,38 @@ $$ P_k = C_n^k p^k (1-p)^{n-k}, \quad k=0,1,\ldots,n $$
 <p><b>分类</b>: 离散型(取值有限/可列)、连续型(取值充满区间)、既非离散也非连续型。</p>
 <h3 id="22分布函数必考高频">2.2 分布函数 <span class="mk biz">必考</span><span class="mk freq">高频</span></h3>
 <p><b>定义</b> F(x) = P{X ≤ x}, −∞&lt;x&lt;+∞。分布函数完整描述了随机变量的概率特征。</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-3-1-p02_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-3-1-p02_1.png" alt="分布函数阶梯曲线示意（0620(3) 页2）">
+<div class="figcap">📐 示意图（重绘）: 分布函数阶梯曲线示意（0620(3) 页2）</div>
+</div>
+</details>
+
 <p><b>成为分布函数的充要条件(四个)</b>:
 a. 非负规范性: 0 ≤ F(x) ≤ 1, F(−∞)=0, F(+∞)=1
 b. 单调不减: x₁&lt;x₂ ⇒ F(x₁) ≤ F(x₂)
 c. 右连续: F(x+0)=F(x)
 d. (隐含)极限存在</p>
 <p><b>利用分布函数求概率(等号跟着大于号)</b>:</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-3-1-p03_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-3-1-p03_1.png" alt="分布函数曲线与概率区间示意（0620(3) 页3）">
+<div class="figcap">📐 示意图（重绘）: 分布函数曲线与概率区间示意（0620(3) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-3-1-p03_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-3-1-p03_2.png" alt="P{X≤a} 概率区间示意（0620(3) 页3）">
+<div class="figcap">📐 示意图（重绘）: P{X≤a} 概率区间示意（0620(3) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-3-1-p03_3.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-3-1-p03_3.png" alt="P{a&lt;X≤b} 区间示意（0620(3) 页3）">
+<div class="figcap">📐 示意图（重绘）: P{a&lt;X≤b} 区间示意（0620(3) 页3）</div>
+</div>
+</details>
+
 <ul>
 <li>P{X &lt; a} = F(a−0) (左极限)</li>
 <li>P{X ≤ a} = F(a)</li>
@@ -542,6 +623,13 @@ d. (隐含)极限存在</p>
 <p><b>直觉</b> 离散型 R.V. 的概率是"一堆点上的质量", 分布函数是逐点累加。</p>
 <h3 id="24连续型随机变量必考">2.4 连续型随机变量 <span class="mk biz">必考</span></h3>
 <p><b>概率密度函数</b> f(x): 满足 f(x) ≥ 0, ∫_{−∞}^{+∞} f(x)dx = 1。</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-1-p02_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-1-p02_1.png" alt="连续型密度函数曲线示意（0621(1) 页2）">
+<div class="figcap">📐 示意图（重绘）: 连续型密度函数曲线示意（0621(1) 页2）</div>
+</div>
+</details>
+
 <p>分布函数: F(x) = ∫_{−∞}^{x} f(t)dt, 且 F'(x) = f(x) (在 f 连续的点处)。</p>
 <p><b>核心性质</b>:</p>
 <ul>
@@ -571,6 +659,13 @@ $$ \lim_{n\to\infty} C_n^k p_n^k (1-p_n)^{n-k} = \frac{\lambda^k e^{-\lambda}}{k
 <p>$$ P\{X=k\} = \frac{C_M^k C_{N-M}^{n-k}}{C_N^n} $$
 N 件产品中 M 件次品, 不放回抽 n 件, 次品数 X 的分布。当 N 很大时可用二项分布近似。</p>
 <h4>(6) 均匀分布 U(a,b) <span class="mk biz">必考</span></h4>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-1-p18_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-1-p18_1.png" alt="均匀分布区间概率的数轴示意（0621(1) 页18）">
+<div class="figcap">📐 示意图（重绘）: 均匀分布区间概率的数轴示意（0621(1) 页18）</div>
+</div>
+</details>
+
 <p>$$ f(x) = \begin{cases} \frac{1}{b-a}, &amp; a&lt;x&lt;b \\ 0, &amp; \text{其他} \end{cases} $$
 $$ F(x) = \begin{cases} 0, &amp; x&lt;a \\ \frac{x-a}{b-a}, &amp; a\leq x&lt;b \\ 1, &amp; x\geq b \end{cases} $$</p>
 <p><b>直觉</b> [a,b] 上的等可能性: 落在任一子区间的概率只取决于子区间的长度, 与位置无关。</p>
@@ -580,12 +675,44 @@ $$ F(x) = \begin{cases} 1-e^{-\lambda x}, &amp; x\geq0 \\ 0, &amp; x&lt;0 \end{c
 <p><b><span class="mk ok">重点</span>无记忆性</b>: P{X &gt; s+t | X &gt; s} = P{X &gt; t} = e^{−λt}。这是指数分布独有的性质(连续型中), 用于描述"寿命": 已经活了 s 小时, 再活 t 小时的概率等于从头再活 t 小时的概率。</p>
 <p><b>应用</b>: 电子元件寿命、等待时间、排队论。</p>
 <h4>(8) 正态分布 N(μ,σ²) <span class="mk biz">必考</span><span class="mk freq">高频</span></h4>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-2-p01_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-2-p01_1.png" alt="正态分布密度函数曲线（0621(2) 页1）">
+<div class="figcap">📐 示意图（重绘）: 正态分布密度函数曲线（0621(2) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-2-p01_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-2-p01_2.png" alt="标准正态密度曲线（0621(2) 页1）">
+<div class="figcap">📐 示意图（重绘）: 标准正态密度曲线（0621(2) 页1）</div>
+</div>
+</details>
+
 <p><b>概率密度</b>:
 $$ f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad -\infty&lt;x&lt;+\infty $$</p>
 <p><b>标准正态分布</b> N(0,1): μ=0, σ=1, 密度记为 φ(x), 分布函数记为 Φ(x)。</p>
 <p><b>标准化</b>: 若 X~N(μ,σ²), 则 Z = (X−μ)/σ ~ N(0,1)
 $$ P\{X \leq a\} = \Phi\!\left(\frac{a-\mu}{\sigma}\right) $$</p>
 <p><b>性质</b>:</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-2-p02_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-2-p02_1.png" alt="φ(x)=φ(−x) 对称性曲线（0621(2) 页2）">
+<div class="figcap">📐 示意图（重绘）: φ(x)=φ(−x) 对称性曲线（0621(2) 页2）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-2-p02_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-2-p02_2.png" alt="P{|X|≤a}=2Φ(a)−1 区域（0621(2) 页2）">
+<div class="figcap">📐 示意图（重绘）: P{|X|≤a}=2Φ(a)−1 区域（0621(2) 页2）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-2-p02_3.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-2-p02_3.png" alt="正态尾区域与分位点（0621(2) 页2）">
+<div class="figcap">📐 示意图（重绘）: 正态尾区域与分位点（0621(2) 页2）</div>
+</div>
+</details>
+
 <ul>
 <li>φ(x) 关于 y 轴对称: φ(−x) = φ(x)</li>
 <li>Φ(−x) = 1−Φ(x)</li>
@@ -624,15 +751,42 @@ $$ f_Y(y) = f_X(h(y)) \cdot |h'(y)| $$</p>
 $$ F_X(x) = \lim_{y\to+\infty} F(x,y), \quad F_Y(y) = \lim_{x\to+\infty} F(x,y) $$</p>
 <p><b>独立性</b>: X 与 Y 独立 ⇔ F(x,y) = F_X(x)·F_Y(y), ∀x,y。</p>
 <h3 id="42二维离散型必考">4.2 二维离散型 <span class="mk biz">必考</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-3-p07_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-3-p07_1.png" alt="二维离散型联合分布示意（0621(3) 页7）">
+<div class="figcap">📐 示意图（重绘）: 二维离散型联合分布示意（0621(3) 页7）</div>
+</div>
+</details>
+
 <p><b>联合分布律</b>: P{X=xᵢ, Y=yⱼ} = pᵢⱼ, pᵢⱼ≥0, ΣᵢΣⱼ pᵢⱼ=1。</p>
 <p><b>边缘分布律</b>: X 的边缘: pᵢ· = Σⱼ pᵢⱼ; Y 的边缘: p·ⱼ = Σᵢ pᵢⱼ。</p>
 <p><b>条件分布律</b>: P{X=xᵢ | Y=yⱼ} = pᵢⱼ / p·ⱼ (当 p·ⱼ &gt; 0)</p>
 <p><b>独立性充要条件</b>: pᵢⱼ = pᵢ··p·ⱼ, ∀i,j (每个格子概率 = 对应行列乘积)</p>
 <h3 id="43二维连续型必考高频">4.3 二维连续型 <span class="mk biz">必考</span><span class="mk freq">高频</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-3-p16_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-3-p16_1.png" alt="二维连续型联合密度区域示意（0621(3) 页16）">
+<div class="figcap">📐 示意图（重绘）: 二维连续型联合密度区域示意（0621(3) 页16）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-3-p16_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-3-p16_2.png" alt="二维分布区域示意（0621(3) 页16）">
+<div class="figcap">📐 示意图（重绘）: 二维分布区域示意（0621(3) 页16）</div>
+</div>
+</details>
+
 <p><b>联合概率密度</b> f(x,y): f(x,y) ≥ 0, ∫∫_{R²} f(x,y)dxdy = 1。</p>
 <p>$$ P\{(X,Y)\in D\} = \iint_D f(x,y)\,dxdy $$</p>
-<p><b>边缘概率密度</b>:
-$$ f_X(x) = \int_{-\infty}^{+\infty} f(x,y)\,dy, \quad f_Y(y) = \int_{-\infty}^{+\infty} f(x,y)\,dx $$</p>
+<p><b>边缘概率密度</b>:</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-3-p18_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-3-p18_1.png" alt="边缘概率密度的积分区域示意（0621(3) 页18）">
+<div class="figcap">📐 示意图（重绘）: 边缘概率密度的积分区域示意（0621(3) 页18）</div>
+</div>
+</details>
+
+<p>$$ f_X(x) = \int_{-\infty}^{+\infty} f(x,y)\,dy, \quad f_Y(y) = \int_{-\infty}^{+\infty} f(x,y)\,dx $$</p>
 <p><b>条件概率密度</b>:
 $$ f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)} \quad (f_Y(y)>0), \qquad f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)} \quad (f_X(x)>0) $$</p>
 <p><b>独立性充要条件</b>: f(x,y) = f_X(x)·f_Y(y), ∀x,y。</p>

@@ -58,10 +58,11 @@ button{font-family:inherit}
   z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
 
 /* ---------- 侧栏 ---------- */
-nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
   position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
-nav::-webkit-scrollbar{width:8px}
-nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
 nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
 nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
   background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
@@ -151,6 +152,28 @@ main tr:nth-child(even) td{background:var(--bg2)}
 main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
   background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
 main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
 code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
   font-family:var(--mono);font-size:.86em}
 pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
@@ -354,6 +377,25 @@ main details .sum b{font-weight:700}
 <hr />
 <h2 id="一多元函数微分学">一、多元函数微分学</h2>
 <h3 id="11多元函数基本概念">1.1 多元函数基本概念</h3>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0516-3-p01_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0516-3-p01_1.png" alt="z=x²+y² 旋转抛物面（0516(3) 页1）">
+<div class="figcap">📐 课件原图: z=x²+y² 旋转抛物面（0516(3) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0516-3-p01_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0516-3-p01_2.png" alt="上半球面 z=√(1−x²−y²)（0516(3) 页1）">
+<div class="figcap">📐 课件原图: 上半球面 z=√(1−x²−y²)（0516(3) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0516-3-p01_3.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0516-3-p01_3.png" alt="曲面示意（0516(3) 页1）">
+<div class="figcap">📐 课件原图: 曲面示意（0516(3) 页1）</div>
+</div>
+</details>
+
 <p><b>定义</b> 设 $D\subset\mathbb{R}^2$, 映射 $f:D\to\mathbb{R}$ 称为二元函数, 记 $z=f(x,y)$, 其中 $D$ 为定义域, $f(D)=\{z\mid z=f(x,y),(x,y)\in D\}$ 为值域。三元及以上类似。</p>
 <p><b>几何意义</b> 二元函数 $z=f(x,y)$ 表示三维空间中的一张曲面。如 $z=x^2+y^2$ 是旋转抛物面, $z=\sqrt{1-x^2-y^2}$ 是上半球面。</p>
 <p><span class="src">【来源: 0516（3）】</span></p>
@@ -492,6 +534,37 @@ $$ L(x,y,z,\lambda,\mu) = f(x,y,z) + \lambda\,\varphi(x,y,z) + \mu\,\psi(x,y,z) 
 <hr />
 <h2 id="二二重积分">二、二重积分</h2>
 <h3 id="21定义与几何意义">2.1 定义与几何意义</h3>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p01_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p01_1.png" alt="二重积分几何意义图(1)（0523(3) 页1）">
+<div class="figcap">📐 课件原图: 二重积分几何意义图(1)（0523(3) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p01_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p01_2.png" alt="二重积分几何意义图(2)（0523(3) 页1）">
+<div class="figcap">📐 课件原图: 二重积分几何意义图(2)（0523(3) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p01_3.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p01_3.png" alt="二重积分几何意义图(3)（0523(3) 页1）">
+<div class="figcap">📐 课件原图: 二重积分几何意义图(3)（0523(3) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p01_4.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p01_4.png" alt="二重积分几何意义图(4)（0523(3) 页1）">
+<div class="figcap">📐 课件原图: 二重积分几何意义图(4)（0523(3) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p01_5.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p01_5.png" alt="二重积分几何意义图(5)（0523(3) 页1）">
+<div class="figcap">📐 课件原图: 二重积分几何意义图(5)（0523(3) 页1）</div>
+</div>
+</details>
+
 <p><b>定义</b> 设 $f(x,y)$ 在有界闭区域 $D$ 上有界, 将 $D$ 任意分割为 $n$ 个小区域 $\Delta\sigma_i$, 每个上取点 $(\xi_i,\eta_i)$, 作积分和 $\sum f(\xi_i,\eta_i)\Delta\sigma_i$。当分割无限加密(所有小区域直径的最大值 $\lambda\to0$)时, 此和式的极限称为 $f$ 在 $D$ 上的二重积分:
 $$ \iint_D f(x,y)\,d\sigma = \lim_{\lambda\to0}\sum_{i=1}^{n} f(\xi_i,\eta_i)\Delta\sigma_i $$</p>
 <p><b>几何意义</b> 若 $f(x,y)\ge0$, 二重积分表示以 $D$ 为底、以曲面 $z=f(x,y)$ 为顶的<b>曲顶柱体的体积</b>。</p>
@@ -501,6 +574,19 @@ $$ \iint_D f(x,y)\,d\sigma = \lim_{\lambda\to0}\sum_{i=1}^{n} f(\xi_i,\eta_i)\De
 </blockquote>
 <p><span class="src">【来源: 二重积分、0530（1）】</span></p>
 <h3 id="22二重积分的性质">2.2 二重积分的性质</h3>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p03_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p03_1.png" alt="积分区域可加性示意(1)（0523(3) 页3）">
+<div class="figcap">📐 课件原图: 积分区域可加性示意(1)（0523(3) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p03_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p03_2.png" alt="积分区域可加性示意(2)（0523(3) 页3）">
+<div class="figcap">📐 课件原图: 积分区域可加性示意(2)（0523(3) 页3）</div>
+</div>
+</details>
+
 <ol>
 <li><b>线性</b>: $\iint(\alpha f+\beta g) = \alpha\iint f + \beta\iint g$</li>
 <li><b>区域可加性</b>: $D=D_1\cup D_2$ 且 $D_1,D_2$ 不重叠, 则 $\iint_D = \iint_{D_1} + \iint_{D_2}$</li>
@@ -515,6 +601,19 @@ $$ \bar x=\frac{\iint_D x\,d\sigma}{\iint_D 1\,d\sigma}=\frac{\iint_D x}{S_D},\q
 反过来: $\iint_D x = \bar x\cdot S_D$, $\iint_D y=\bar y\cdot S_D$——<b>形心坐标已知(或可心算)时, 一重积分当面积乘坐标, 秒杀一切</b>。例: 圆域形心在圆心、三角形形心 = 三顶点坐标平均、$y=x^2$ 与 $y=x$ 围成区域的形心… 例题 7.1/8.4/8.6/8.7 全部靠它。</p>
 <p><span class="src">【来源: 二重积分、0523(3)、0530(1)、0725(1)】</span></p>
 <h3 id="23直角坐标下的计算必考">2.3 直角坐标下的计算 <span class="mk biz">必考</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p08_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p08_1.png" alt="后积先限区域图（0523(3) 页8）">
+<div class="figcap">📐 课件原图: 后积先限区域图（0523(3) 页8）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p10_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p10_1.png" alt="直角坐标积分区域图（0523(3) 页10）">
+<div class="figcap">📐 课件原图: 直角坐标积分区域图（0523(3) 页10）</div>
+</div>
+</details>
+
 <p><b>核心方法: 化二重积分为二次积分</b></p>
 <p><b>口诀</b>: "后积先定限, 限内画条线; 先交写下限, 后交写上限。"</p>
 <p><b>X 型区域</b> ($D$ 由 $a\le x\le b$, $y_1(x)\le y\le y_2(x)$ 描述):
@@ -529,6 +628,49 @@ $$ \iint_D f(x,y)\,dxdy = \int_c^d dy \int_{x_1(y)}^{x_2(y)} f(x,y)\,dx $$
 <p><b>交换积分次序</b> <span class="mk freq">高频</span> 有时原次序难积(如 $\int\frac{\sin x}{x}dx$ 积不出), 需要交换次序。步骤: ① 由原积分上下限画出积分区域 $D$; ② 按另一种类型重新描述 $D$; ③ 写出交换后的二次积分。</p>
 <p><span class="src">【来源: 二重积分、0725（1-2）】</span></p>
 <h3 id="24极坐标下的计算必考">2.4 极坐标下的计算 <span class="mk biz">必考</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p01_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p01_1.png" alt="极坐标区域示意(1)（0530(1) 页1）">
+<div class="figcap">📐 课件原图: 极坐标区域示意(1)（0530(1) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p01_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p01_2.png" alt="极坐标区域示意(2)（0530(1) 页1）">
+<div class="figcap">📐 课件原图: 极坐标区域示意(2)（0530(1) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p01_3.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p01_3.png" alt="极坐标转换示意（0530(1) 页1）">
+<div class="figcap">📐 课件原图: 极坐标转换示意（0530(1) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p01_4.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p01_4.png" alt="极坐标与直角坐标转换（0530(1) 页1）">
+<div class="figcap">📐 课件原图: 极坐标与直角坐标转换（0530(1) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p01_5.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p01_5.png" alt="极坐标积分区域（0530(1) 页1）">
+<div class="figcap">📐 课件原图: 极坐标积分区域（0530(1) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/二重积分-p09_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/二重积分-p09_1.png" alt="极坐标区域示意（二重积分 页9）">
+<div class="figcap">📐 课件原图: 极坐标区域示意（二重积分 页9）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/二重积分-p09_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/二重积分-p09_2.png" alt="单位圆示意（二重积分 页9）">
+<div class="figcap">📐 课件原图: 单位圆示意（二重积分 页9）</div>
+</div>
+</details>
+
 <p><b>什么时候用极坐标?</b> ① 被积函数含 $x^2+y^2$; ② 积分区域是圆/圆环/扇形。</p>
 <p><b>坐标变换</b>:
 $$ x = r\cos\theta,\quad y = r\sin\theta,\quad dxdy = r\,dr\,d\theta $$</p>
@@ -542,6 +684,25 @@ $$ x = r\cos\theta,\quad y = r\sin\theta,\quad dxdy = r\,dr\,d\theta $$</p>
 <p><b>易错点</b> <span class="mk warn">易错</span> 别忘乘以 $r$ ($dxdy = r\,dr\,d\theta$)！这是极坐标变换中最常见的丢分点。$r$ 来自雅可比行列式 $J=\frac{\partial(x,y)}{\partial(r,\theta)}=r$。</p>
 <p><span class="src">【来源: 0530（1）、二重积分、0725（1）】</span></p>
 <h3 id="25对称性化简利器高频">2.5 对称性(化简利器) <span class="mk freq">高频</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p11_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p11_1.png" alt="关于 x 轴对称区域（0523(3) 页11）">
+<div class="figcap">📐 课件原图: 关于 x 轴对称区域（0523(3) 页11）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p14_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p14_1.png" alt="关于 y=x 对称区域(1)（0523(3) 页14）">
+<div class="figcap">📐 课件原图: 关于 y=x 对称区域(1)（0523(3) 页14）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p14_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p14_2.png" alt="关于 y=x 对称区域(2)（0523(3) 页14）">
+<div class="figcap">📐 课件原图: 关于 y=x 对称区域(2)（0523(3) 页14）</div>
+</div>
+</details>
+
 <h4>2.5.1 奇偶对称性</h4>
 <p><b>关于 $x$ 轴对称</b> ($D$ 上下对称):</p>
 <ul>
@@ -569,6 +730,13 @@ $$ \iint_D \frac{af(x)+bf(y)}{f(x)+f(y)}dxdy = \frac{a+b}{2}\iint_D 1\,dxdy = \f
 </blockquote>
 <p><span class="src">【来源: 二重积分、0725（1）】</span></p>
 <h3 id="26无界区域上的二重积分数学三">2.6 无界区域上的二重积分(数学三)</h3>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p07_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p07_1.png" alt="y=√x 无界区域示意（0530(1) 页7）">
+<div class="figcap">📐 课件原图: y=√x 无界区域示意（0530(1) 页7）</div>
+</div>
+</details>
+
 <p>对于无界区域 $D$, 用有界子区域取极限:
 $$ \iint_D f(x,y)\,d\sigma = \lim_{D_n\to D} \iint_{D_n} f(x,y)\,d\sigma $$
 其中 $D_n$ 是有界闭区域, 单调增趋于 $D$。</p>

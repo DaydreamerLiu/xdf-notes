@@ -58,10 +58,11 @@ button{font-family:inherit}
   z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
 
 /* ---------- 侧栏 ---------- */
-nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
   position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
-nav::-webkit-scrollbar{width:8px}
-nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
 nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
 nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
   background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
@@ -151,6 +152,28 @@ main tr:nth-child(even) td{background:var(--bg2)}
 main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
   background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
 main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
 code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
   font-family:var(--mono);font-size:.86em}
 pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
@@ -419,6 +442,25 @@ $$ \int \frac{1}{1+x^2}f(\arctan x)dx = \int f(u)du \quad (u=\arctan x) $$</p>
 <p><b>识别口诀</b>: 看到 $\varphi'(x)$ 和 $f(\varphi(x))$ 同时出现 → 凑微分。</p>
 <p><span class="src">【来源: 0425（3）】</span></p>
 <h3 id="22第二类换元法变量代换必考">2.2 第二类换元法 —— 变量代换 <span class="mk biz">必考</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0425-3-1-p19_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0425-3-1-p19_1.png" alt="三角代换直角三角形(1)（0425(3)(1) 页19）">
+<div class="figcap">📐 课件原图: 三角代换直角三角形(1)（0425(3)(1) 页19）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0425-3-1-p19_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0425-3-1-p19_2.png" alt="三角代换直角三角形(2)（0425(3)(1) 页19）">
+<div class="figcap">📐 课件原图: 三角代换直角三角形(2)（0425(3)(1) 页19）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0425-3-1-p19_3.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0425-3-1-p19_3.png" alt="三角代换直角三角形(3)（0425(3)(1) 页19）">
+<div class="figcap">📐 课件原图: 三角代换直角三角形(3)（0425(3)(1) 页19）</div>
+</div>
+</details>
+
 <p><b>核心结论</b>
 $$ \int f(x)dx \;\xrightarrow{x=\psi(t)}\; \int f(\psi(t))\psi'(t)dt = F(t)+C \;\xrightarrow{t=\psi^{-1}(x)}\; F(\psi^{-1}(x))+C $$</p>
 <p>要求: $\psi(t)$ 单调可导, $\psi'(t) \neq 0$。</p>
@@ -549,6 +591,31 @@ $$ \lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n f\!\left(\frac{k}{n}\right) = \int_0
 <p>更一般: $\lim_{n\to\infty}\frac{b-a}{n}\sum_{k=1}^n f\!\left(a+k\frac{b-a}{n}\right) = \int_a^b f(x)dx$。</p>
 <p><span class="src">【来源: 0505（2）、定积分作业解析】</span></p>
 <h3 id="52定积分的几何意义">5.2 定积分的几何意义</h3>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0505-2-p12_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0505-2-p12_1.png" alt="曲线 y=f(x) 与直线围成区域（0505(2) 页12）">
+<div class="figcap">📐 课件原图: 曲线 y=f(x) 与直线围成区域（0505(2) 页12）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0505-2-p12_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0505-2-p12_2.png" alt="圆与抛物线围成区域（0505(2) 页12）">
+<div class="figcap">📐 课件原图: 圆与抛物线围成区域（0505(2) 页12）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0505-2-p12_3.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0505-2-p12_3.png" alt="圆 x²+y²=9 与半圆（0505(2) 页12）">
+<div class="figcap">📐 课件原图: 圆 x²+y²=9 与半圆（0505(2) 页12）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0505-2-p12_4.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0505-2-p12_4.png" alt="半圆 x²+y²=9 (y≥0)（0505(2) 页12）">
+<div class="figcap">📐 课件原图: 半圆 x²+y²=9 (y≥0)（0505(2) 页12）</div>
+</div>
+</details>
+
 <p>$\int_a^b f(x)dx$ 表示曲线 $y=f(x)$ 与 $x=a$, $x=b$, $x$ 轴围成图形的<b>面积的代数和</b>: $x$ 轴上方取正, 下方取负 ($a&lt;b$)。</p>
 <p><b>利用几何意义简化</b>: 如 $\int_0^2 \sqrt{2x-x^2}dx$ —— 这是半圆 $(x-1)^2+y^2=1$ (上半) 的面积 $= \frac{\pi}{2}$ <span class="fill">【AI补全】</span>, 无需积分计算。</p>
 <p><span class="src">【来源: 0505（2）】</span></p>
@@ -689,6 +756,31 @@ $$ \int_2^{+\infty}\frac{dx}{x(\ln x)^p}: p>1 \text{ 收敛}, p\leq1 \text{ 发�
 <hr />
 <h2 id="九定积分的应用">九、定积分的应用</h2>
 <h3 id="91平面图形的面积必考">9.1 平面图形的面积 <span class="mk biz">必考</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0510-2-p04_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0510-2-p04_1.png" alt="直角坐标平面图形面积示意(1)（0510(2) 页4）">
+<div class="figcap">📐 课件原图: 直角坐标平面图形面积示意(1)（0510(2) 页4）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0510-2-p04_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0510-2-p04_2.png" alt="直角坐标平面图形面积示意(2)（0510(2) 页4）">
+<div class="figcap">📐 课件原图: 直角坐标平面图形面积示意(2)（0510(2) 页4）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0510-2-p04_3.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0510-2-p04_3.png" alt="极坐标平面图形面积示意(1)（0510(2) 页4）">
+<div class="figcap">📐 课件原图: 极坐标平面图形面积示意(1)（0510(2) 页4）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0510-2-p04_4.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0510-2-p04_4.png" alt="极坐标平面图形面积示意(2)（0510(2) 页4）">
+<div class="figcap">📐 课件原图: 极坐标平面图形面积示意(2)（0510(2) 页4）</div>
+</div>
+</details>
+
 <p><b>(1) 直角坐标</b>:</p>
 <ul>
 <li>X 型: $S = \int_a^b [y_{\text{上}}(x) - y_{\text{下}}(x)]dx$</li>
@@ -700,6 +792,19 @@ $$ S = \frac{1}{2}\int_\alpha^\beta r^2(\theta)d\theta $$
 <p><b>典型图形</b>: 心形线 $r=a(1+\cos\theta)$ 面积 $= \frac{3}{2}\pi a^2$; 双纽线 $r^2=a^2\cos 2\theta$ 面积 $=a^2$ <span class="fill">【AI补全】</span>。</p>
 <p><span class="src">【来源: 0510（2）、0715（2）】</span></p>
 <h3 id="92旋转体体积必考">9.2 旋转体体积 <span class="mk biz">必考</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0510-2-p10_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0510-2-p10_1.png" alt="绕 x 轴旋转体示意（0510(2) 页10）">
+<div class="figcap">📐 课件原图: 绕 x 轴旋转体示意（0510(2) 页10）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/积分/0510-2-p10_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/积分/0510-2-p10_2.png" alt="绕 y 轴旋转体示意（0510(2) 页10）">
+<div class="figcap">📐 课件原图: 绕 y 轴旋转体示意（0510(2) 页10）</div>
+</div>
+</details>
+
 <p><b>(1) 绕 $x$ 轴旋转</b> (曲线 $y=f(x) \geq 0$, $x\in[a,b]$):
 $$ V_x = \pi\int_a^b f^2(x)dx $$</p>
 <p><b>(2) 绕 $y$ 轴旋转</b> (柱壳法):

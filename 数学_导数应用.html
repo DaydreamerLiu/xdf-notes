@@ -58,10 +58,11 @@ button{font-family:inherit}
   z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
 
 /* ---------- 侧栏 ---------- */
-nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
   position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
-nav::-webkit-scrollbar{width:8px}
-nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
 nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
 nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
   background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
@@ -151,6 +152,28 @@ main tr:nth-child(even) td{background:var(--bg2)}
 main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
   background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
 main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
 code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
   font-family:var(--mono);font-size:.86em}
 pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
@@ -474,6 +497,13 @@ $$ f'(x_0)=0 $$</p>
 <hr />
 <h2 id="三曲线的凹凸性与拐点">三、曲线的凹凸性与拐点</h2>
 <h3 id="31凹凸性的定义重点">3.1 凹凸性的定义 <span class="mk ok">重点</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/导数应用/0425-1-1-p13_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/导数应用/0425-1-1-p13_1.png" alt="凹凸性定义曲线示意（0425(1)(1) 页13）">
+<div class="figcap">📐 课件原图: 凹凸性定义曲线示意（0425(1)(1) 页13）</div>
+</div>
+</details>
+
 <p><b>核心结论</b> 设 $f(x)$ 在区间 $I$ 上连续。若对 $I$ 上任意不同的两点 $x_1,x_2$, 恒有:</p>
 <ul>
 <li><b>凹</b>(上凹/下凸): $f\!\left(\frac{x_1+x_2}{2}\right) &lt; \frac{f(x_1)+f(x_2)}{2}$ — 中点函数值<b>小于</b>弦中点</li>
@@ -518,6 +548,31 @@ $$ f'(x_0)=0 $$</p>
 <hr />
 <h2 id="四渐近线">四、渐近线</h2>
 <h3 id="41三种渐近线的定义与求法必考">4.1 三种渐近线的定义与求法 <span class="mk biz">必考</span></h3>
+<details class="figbox"><summary><img class="thumb" src="figures/导数应用/0425-1-1-p16_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/导数应用/0425-1-1-p16_1.png" alt="y=1/x 曲线（0425(1)(1) 页16）">
+<div class="figcap">📐 课件原图: y=1/x 曲线（0425(1)(1) 页16）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/导数应用/0425-1-1-p16_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/导数应用/0425-1-1-p16_2.png" alt="水平渐近线示意（0425(1)(1) 页16）">
+<div class="figcap">📐 课件原图: 水平渐近线示意（0425(1)(1) 页16）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/导数应用/0425-1-1-p16_3.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/导数应用/0425-1-1-p16_3.png" alt="斜渐近线示意（0425(1)(1) 页16）">
+<div class="figcap">📐 课件原图: 斜渐近线示意（0425(1)(1) 页16）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/导数应用/0425-1-1-p16_4.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/导数应用/0425-1-1-p16_4.png" alt="y=eˣ 曲线（0425(1)(1) 页16）">
+<div class="figcap">📐 课件原图: y=eˣ 曲线（0425(1)(1) 页16）</div>
+</div>
+</details>
+
 <p>渐近线是函数曲线在"无穷远处"趋近的直线。有三种类型:</p>
 <table>
 <thead>
@@ -606,6 +661,19 @@ $$ f'(x_0)=0 $$</p>
 <hr />
 <h2 id="六曲率与曲率圆高频">六、曲率与曲率圆 <span class="mk freq">高频</span></h2>
 <h3 id="61曲率公式">6.1 曲率公式</h3>
+<details class="figbox"><summary><img class="thumb" src="figures/导数应用/0425-2-1-p03_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/导数应用/0425-2-1-p03_1.png" alt="曲线 y=f(x) 示意（0425(2)(1) 页3）">
+<div class="figcap">📐 课件原图: 曲线 y=f(x) 示意（0425(2)(1) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/导数应用/0425-2-1-p03_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/导数应用/0425-2-1-p03_2.png" alt="弧微分 ds、dx、dy 示意（0425(2)(1) 页3）">
+<div class="figcap">📐 课件原图: 弧微分 ds、dx、dy 示意（0425(2)(1) 页3）</div>
+</div>
+</details>
+
 <p><b>核心结论</b> 曲线 $y=f(x)$ 在点 $(x,f(x))$ 处的曲率(弯曲程度):
 $$ K = \frac{|y''|}{(1+(y')^2)^{3/2}} $$</p>
 <p><b>直觉</b> 曲率 = 曲线在该点的"瞬时弯曲程度"。分子 $|y''|$ 越大(二阶导越大 → 弯曲越厉害), 分母 $(1+(y')^2)^{3/2}$ 修正了斜率的影响(斜率很大时同样的 $y''$ 对应的实际弯曲较小)。</p>

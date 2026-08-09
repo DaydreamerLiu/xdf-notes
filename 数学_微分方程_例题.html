@@ -58,10 +58,11 @@ button{font-family:inherit}
   z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
 
 /* ---------- 侧栏 ---------- */
-nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
   position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
-nav::-webkit-scrollbar{width:8px}
-nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
 nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
 nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
   background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
@@ -151,6 +152,28 @@ main tr:nth-child(even) td{background:var(--bg2)}
 main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
   background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
 main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
 code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
   font-family:var(--mono);font-size:.86em}
 pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
@@ -509,8 +532,15 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: 一阶线性公式 + 分部积分; 思路为标准化 → 积分因子 → 分部积分 → 定 $C$。</div>
 </details>
 
-<p id="例43" class="prob"><b>例 4.3</b> $y=y(x)$ 是微分方程 $y'-xy=\frac{e^{x^2/2}}{2\sqrt{x}}$ 满足 $y(1)=\sqrt{e}$ 的特解。【0723（1）】
-(1) 求 $y(x)$; (2) 设 $D=\{(x,y)\mid 1\le x\le2, 0\le y\le y(x)\}$, 求 $D$ 绕 $x$ 轴旋转一周所得旋转体体积。</p>
+<p id="例43" class="prob"><b>例 4.3</b> $y=y(x)$ 是微分方程 $y'-xy=\frac{e^{x^2/2}}{2\sqrt{x}}$ 满足 $y(1)=\sqrt{e}$ 的特解。【0723（1）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/微分方程/微分方程-1-p08_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/微分方程/微分方程-1-p08_1.png" alt="微分方程特解的曲线示意（微分方程(1) 页8）">
+<div class="figcap">📐 课件原图: 微分方程特解的曲线示意（微分方程(1) 页8）</div>
+</div>
+</details>
+
+<p>(1) 求 $y(x)$; (2) 设 $D=\{(x,y)\mid 1\le x\le2, 0\le y\le y(x)\}$, 求 $D$ 绕 $x$ 轴旋转一周所得旋转体体积。</p>
 <ul>
 <li>考点: 一阶线性 + 旋转体体积</li>
 <li><span class="mk theory">理论</span><a href="数学_微分方程.html#23一阶线性微分方程必考">一阶线性方程</a> <span class="mk xref">相关</span><a href="数学_微分方程_例题.html#例41">例 4.1</a> 同公式法, 本题 $Q$ 与积分因子中 $e^{x^2/2}$ 对消而化简</li>
@@ -943,6 +973,25 @@ main details .sum b{font-weight:700}
 </details>
 
 <p id="例114" class="prob"><b>例 11.4</b> (数一数二) 已知 $f(x)$ 可导, 且 $f(x)>0\ (x\ge0)$, 曲线 $y=f(x)$ 过原点。$M$ 为曲线上任意一点, 过 $M$ 的切线与 $x$ 轴交于 $T$, $MP\perp x$ 轴于 $P$。曲线与 $MP$ 及 $x$ 轴所围面积与 $\triangle MTP$ 面积比为 $3:2$, 求曲线方程。【0723（1）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/微分方程/0723-2-p09_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/微分方程/0723-2-p09_1.png" alt="面积比 3:2 的曲线/切线/垂线图形（0723(2) 页9）">
+<div class="figcap">📐 课件原图: 面积比 3:2 的曲线/切线/垂线图形（0723(2) 页9）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/微分方程/多元函数微分学-p01_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/微分方程/多元函数微分学-p01_1.png" alt="面积比 3:2 的曲线图形（多元函数微分学 页1）">
+<div class="figcap">📐 课件原图: 面积比 3:2 的曲线图形（多元函数微分学 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/微分方程/多元函数微分学-p01_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/微分方程/多元函数微分学-p01_2.png" alt="曲线与切线、垂线示意（多元函数微分学 页1）">
+<div class="figcap">📐 课件原图: 曲线与切线、垂线示意（多元函数微分学 页1）</div>
+</div>
+</details>
+
 <ul>
 <li>考点: 面积条件 → 积分等式 → 求导得微分方程</li>
 <li><span class="mk theory">理论</span><a href="数学_微分方程.html#71几何应用高频">几何应用</a> · <a href="数学_微分方程.html#33yfyy型缺x重点">$y''=f(y,y')$ 型 (缺 $x$)</a> <span class="mk xref">相关</span><a href="数学_微分方程_例题.html#例53">例 5.3</a> 消积分后的 $3ff''=2f'^2$ 按缺 $x$ 型 $p\frac{dp}{df}$ 降阶</li>

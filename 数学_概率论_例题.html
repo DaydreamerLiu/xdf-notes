@@ -58,10 +58,11 @@ button{font-family:inherit}
   z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
 
 /* ---------- 侧栏 ---------- */
-nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
   position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
-nav::-webkit-scrollbar{width:8px}
-nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
 nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
 nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
   background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
@@ -151,6 +152,28 @@ main tr:nth-child(even) td{background:var(--bg2)}
 main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
   background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
 main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
 code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
   font-family:var(--mono);font-size:.86em}
 pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
@@ -348,19 +371,33 @@ main details .sum b{font-weight:700}
 </blockquote>
 <hr />
 <h2 id="一事件关系与运算">一、事件关系与运算</h2>
-<p id="例11" class="prob"><b>例 1.1</b> 对于任意两个事件 A,B, 与 A∪B=B 不等价的是 【0620(1)】
-(A) A⊂B (B) B̄⊂Ā (C) AB̄=∅ (D) ĀB=∅</p>
+<p id="例11" class="prob"><b>例 1.1</b> 对于任意两个事件 A,B, 与 $A∪B=B$ 不等价的是 【0620(1)】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-1-p06_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-1-p06_1.png" alt="事件包含 A⊂B 的韦恩图（0620(1) 页6）">
+<div class="figcap">📐 示意图（重绘）: 事件包含 A⊂B 的韦恩图（0620(1) 页6）</div>
+</div>
+</details>
+
+<p>(A) A⊂B (B) B̄⊂Ā (C) AB̄=∅ (D) ĀB=∅</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#12事件的关系与运算必考">事件关系与运算</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例14">例 1.4</a> 同用德摩根律换补集写法、"积事件为空"判包含方向</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">A∪B=B ⇔ A⊂B ⇔ AB̄=∅ (A 发生而 B 不发生是不可能事件) ⇔ B̄⊂Ā (德摩根)<span class="why">A∪B=B 的含义是 A 的样本点全部落在 B 内, 即 A⊂B; AB̄=∅ 表示"A 中落在 B 之外的点不存在"; B̄⊂Ā 是 A⊂B 的逆否命题写法(不在 B 则必不在 A)。<b>考点</b>: 事件包含 ⇔ 积事件为空, 是最常用的翻译。</span></div>
-<div class="step">ĀB=∅ ⇔ B⊂A, 与 A⊂B 不同。选 (D)<span class="why">ĀB=∅ 表示"B 中落在 A 之外的点不存在", 即 B⊂A, 方向与 A⊂B 相反。<b>易错</b>: AB̄=∅ 是 A⊂B, ĀB=∅ 是 B⊂A——补集号落在哪个事件上, 那个事件就更小。</span></div>
+<div class="step">$A∪B=B ⇔ A⊂B ⇔ AB̄=∅ (A$ 发生而 B 不发生是不可能事件) $⇔ B̄⊂Ā$ (德摩根)<span class="why">A∪B=B 的含义是 A 的样本点全部落在 B 内, 即 A⊂B; AB̄=∅ 表示"A 中落在 B 之外的点不存在"; B̄⊂Ā 是 A⊂B 的逆否命题写法(不在 B 则必不在 A)。<b>考点</b>: 事件包含 ⇔ 积事件为空, 是最常用的翻译。</span></div>
+<div class="step">$ĀB=∅ ⇔ B⊂A,$ 与 A⊂B 不同。选 (D)<span class="why">ĀB=∅ 表示"B 中落在 A 之外的点不存在", 即 B⊂A, 方向与 A⊂B 相反。<b>易错</b>: AB̄=∅ 是 A⊂B, ĀB=∅ 是 B⊂A——补集号落在哪个事件上, 那个事件就更小。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 事件关系四等价互推: 用 AB̄=∅/ĀB=∅ 判定包含方向, 德摩根换补集写法。</div>
 </details>
 
-<p id="例12" class="prob"><b>例 1.2</b> 设 A,B 为任意两个事件, 则下列选项错误的是 【0620(1)】
-(A) AB=∅, 则 A,B 可能不相容
+<p id="例12" class="prob"><b>例 1.2</b> 设 A,B 为任意两个事件, 则下列选项错误的是 【0620(1)】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-1-p07_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-1-p07_1.png" alt="两事件相容(有交集)的韦恩图（0620(1) 页7）">
+<div class="figcap">📐 示意图（重绘）: 两事件相容(有交集)的韦恩图（0620(1) 页7）</div>
+</div>
+</details>
+
+<p>(A) AB=∅, 则 A,B 可能不相容
 (B) AB≠∅, 则 A,B 也可能相容
 (C) AB=∅, 则 A,B 也可能相容
 (D) AB≠∅, 则 A,B 一定不相容</p>
@@ -368,9 +405,9 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#12事件的关系与运算必考">事件关系与运算</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例21">例 2.1</a> 同为辨析: 集合关系(互斥)与概率值互不蕴含</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">概念: 不相容(互斥) ⇔ AB=∅; 相容 ⇔ AB≠∅。按此标准逐条检验<span class="why">相容/不相容是集合层面的关系(有无公共样本点), 与概率大小无关; 先把 AB 是否为空定下来, 再对照各命题结论。</span></div>
-<div class="step">(A) AB=∅ ⇒ A,B 一定不相容, 说"可能不相容"是弱命题, 为真; (B) AB≠∅ ⇒ 一定相容, "也可能相容"为真<span class="why">结论必然成立时用"可能"表述并不算错——必然蕴含可能, 这是本题最容易引起争议的地方;<b>易错</b>: 若把"可能"理解成"可能但不必然", 对 (A)(B) 的判定会随之改变, 各讲义口径不一。</span></div>
-<div class="step">(C) AB=∅ ⇒ 不可能相容, 命题"也可能相容"为假; (D) AB≠∅ ⇒ 一定相容, 命题"一定不相容"为假 <b>【修正】</b><span class="why">按字面 (C)(D) 同时为假, 单选题不应有两个错项——应是 OCR 丢失了否定词(如 (C) 原文为"不可能相容", 或 (D) 原文为"一定相容")。</span></div>
+<div class="step">概念: 不相容(互斥) ⇔ AB=∅; 相容 $⇔ AB≠∅$。按此标准逐条检验<span class="why">相容/不相容是集合层面的关系(有无公共样本点), 与概率大小无关; 先把 AB 是否为空定下来, 再对照各命题结论。</span></div>
+<div class="step">$(A) AB=∅ ⇒ A,B$ 一定不相容, 说"可能不相容"是弱命题, 为真$; (B) AB≠∅ ⇒$ 一定相容, "也可能相容"为真<span class="why">结论必然成立时用"可能"表述并不算错——必然蕴含可能, 这是本题最容易引起争议的地方;<b>易错</b>: 若把"可能"理解成"可能但不必然", 对 (A)(B) 的判定会随之改变, 各讲义口径不一。</span></div>
+<div class="step">$(C) AB=∅ ⇒$ 不可能相容, 命题"也可能相容"为假$; (D) AB≠∅ ⇒$ 一定相容, 命题"一定不相容"为假 <b>【修正】</b><span class="why">按字面 (C)(D) 同时为假, 单选题不应有两个错项——应是 OCR 丢失了否定词(如 (C) 原文为"不可能相容", 或 (D) 原文为"一定相容")。</span></div>
 <div class="step">结论: 按字面无法唯一确定答案, 原课件记 (A) 【数值不清, 以原课件为准】<span class="why">备考不必纠结此题: 记住"相容 ⇔ AB≠∅, 不相容 ⇔ AB=∅"的定义即可, 原选项在 OCR 中丢了否定词。</span></div>
 <div class="sum skip"><b>※ 偏题</b>: 选项疑缺否定词, 按字面 (C)(D) 同假, 答案存疑; 记牢"相容=有交集"。</div>
 </details>
@@ -381,7 +418,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#12事件的关系与运算必考">事件关系与运算</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例14">例 1.4</a> 一题"文字→符号"、一题"符号→文字", 互为逆翻译</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) AB̄C̄ (2) ABC̄ (3) ABC (4) A∪B∪C<span class="why">事件翻译规则: 发生的事件取本身, 不发生的事件取补集, 多个条件用交连接——"只有 A 发生"即 A 且 B̄ 且 C̄, 写为 AB̄C̄。</span></div>
+<div class="step">$(1) AB̄C̄ (2) ABC̄ (3) ABC (4) A∪B∪C$<span class="why">事件翻译规则: 发生的事件取本身, 不发生的事件取补集, 多个条件用交连接——"只有 A 发生"即 A 且 B̄ 且 C̄, 写为 AB̄C̄。</span></div>
 <div class="step">(5) "至多一个发生" = 恰 0 个发生 + 恰 1 个发生 = ĀB̄C̄ + AB̄C̄ + ĀBC̄ + ĀB̄C<span class="why">"至多一个"拆成互斥的"0 个"+ "1 个"共四种情形, 逐个写出再取并;<b>易错</b>: ABC̄ 表示 A、B 都发生, 不属于"至多一个"; 也可写成 (AB∪AC∪BC)̄ 的德摩根形式。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 事件表示三原则: 发生取本身、不发生取补、条件用交连; 至多/至少拆互斥情形。</div>
 </details>
@@ -415,7 +452,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#14概率的基本性质高频">概率基本性质</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例145">例 14.5</a> 同为概率不等式放缩: 本题积事件夹逼, 14.5 并事件下界</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">已知 P(AB) ≤ P(A) 且 P(AB) ≤ P(B), 故 P(AB) ≤ min(P(A),P(B)) ≤ (P(A)+P(B))/2。选 (C)<span class="why">AB⊂A 且 AB⊂B, 由概率单调性得 P(AB) 被两个单事件概率同时压住; 两个数的最小值必不超过它们的平均数, 于是 P(AB)≤(P(A)+P(B))/2。<b>考点</b>: "积事件的概率 ≤ 每个单事件的概率"是最常用的包含关系结论。</span></div>
+<div class="step">已知 $P(AB) ≤ P(A)$ 且 $P(AB) ≤ P(B),$ 故 $P(AB) ≤ min(P(A),P(B)) ≤ (P(A)+P(B))/2$。选 (C)<span class="why">AB⊂A 且 AB⊂B, 由概率单调性得 P(AB) 被两个单事件概率同时压住; 两个数的最小值必不超过它们的平均数, 于是 P(AB)≤(P(A)+P(B))/2。<b>考点</b>: "积事件的概率 ≤ 每个单事件的概率"是最常用的包含关系结论。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 积事件被单事件夹逼: P(AB)≤min≤平均数, 真题原题, 秒选 (C)。</div>
 </details>
 
@@ -425,12 +462,19 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#14概率的基本性质高频">概率基本性质(单调性/加法公式)</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例22">例 2.2</a> 同为概率不等式放缩, 本题并事件下界</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">"A,B 同时发生时 C 一定发生" ⟹ AB⊂C ⟹ P(AB) ≤ P(C)。<span class="why">事件包含关系 ⟹ 概率单调: 大事件概率不小。<b>易错</b>: 条件给的是"AB 发生时 C 发生", 是 $AB\subseteq C$, 不是 $C\subseteq AB$。</span></div>
+<div class="step">"A,B 同时发生时 C 一定发生" $⟹ AB⊂C ⟹ P(AB) ≤ P(C)$。<span class="why">事件包含关系 ⟹ 概率单调: 大事件概率不小。<b>易错</b>: 条件给的是"AB 发生时 C 发生", 是 $AB\subseteq C$, 不是 $C\subseteq AB$。</span></div>
 <div class="step">又 $P(AB)=P(A)+P(B)-P(A+B)\ge P(A)+P(B)-1$, 故 $P(C)\ge P(AB)\ge P(A)+P(B)-1$, 选 (B)。<span class="why">加法公式 $P(A+B)=P(A)+P(B)-P(AB)$ 改写 $P(AB)=P(A)+P(B)-P(A+B)$; 概率不大于 1 ⟹ $P(A+B)\le1$ ⟹ 下界 $P(A)+P(B)-1$。<b>考点</b>: "AB⊂C" 双链放缩: 先由单调性传一次, 再用加法公式放缩一次。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: $AB\subseteq C\Rightarrow P(C)\ge P(A)+P(B)-1$; 传递链 $P(C)\ge P(AB)\ge$ 下界是标准写法。</div>
 </details>
 
 <p id="例24" class="prob"><b>例 2.4</b> 设事件 A,B 仅发生一个的概率为 $\frac{3}{10}$, 且 $P(A)+P(B)=\frac12$, 求 A,B 至少有一个不发生的概率。【0808(1), 电子版 27概率论第一章 例1.6】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0808-1-p06_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0808-1-p06_1.png" alt="仅发生一个事件的韦恩图（0808(1) 页6）">
+<div class="figcap">📐 示意图（重绘）: 仅发生一个事件的韦恩图（0808(1) 页6）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#14概率的基本性质高频">概率基本性质(加法公式/对偶)</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例22">例 2.2</a> 同为概率公式变形, 本题用"恰一个"反解交集</li>
 </ul>
@@ -448,7 +492,7 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">P(AB) = P(A)·P(B|A) = 0.4×0.5 = 0.2<span class="why">乘法公式: 联合概率 = "先发生 A"再"在 A 条件下发生 B"两步相乘; 写成 P(AB)=P(B)P(A|B) 同样成立, 用哪边取决于哪边已知。</span></div>
-<div class="step">P(A|B) = P(AB)/P(B) ⇒ 0.25 = 0.2/P(B) ⇒ P(B)=0.8<span class="why">条件概率 P(A|B)=P(AB)/P(B): 本质是把样本空间缩到 B 上重算比例; 已知 P(A|B) 与 P(AB) 反解 P(B), 是条件概率公式的逆向使用。</span></div>
+<div class="step">$P(A|B) = P(AB)/P(B) ⇒ 0.25 = 0.2/P(B) ⇒ P(B)=0.8$<span class="why">条件概率 P(A|B)=P(AB)/P(B): 本质是把样本空间缩到 B 上重算比例; 已知 P(A|B) 与 P(AB) 反解 P(B), 是条件概率公式的逆向使用。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 乘法公式求交集, 条件概率公式反解分母——两公式正用反用一遍到底。</div>
 </details>
 
@@ -495,7 +539,7 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">P(B|A)=P(B|Ā) 含 A 发生与否不影响 B 的概率, 这是独立的等价条件。选 (C)<span class="why">"A 发生与不发生, B 的概率不变"正是独立的直观含义; 题设 0<P(A)<1 保证两个条件概率都有意义。</span></div>
-<div class="step">推导: P(B|A)=P(B|Ā) ⇒ P(AB)/P(A) = P(ĀB)/(1−P(A)) ⇒ 交叉乘 ⇒ P(AB)(1−P(A)) = P(A)(P(B)−P(AB)) ⇒ P(AB) = P(A)P(B) <span class="fill">【AI补全】</span><span class="why">关键代换 P(ĀB)=P(B)−P(AB)(B 拆成 AB 与 ĀB 两个互斥部分); 交叉相乘后两边同有 P(A)P(AB) 抵消, 直接得独立等式。<b>考点</b>: P(B|A)=P(B|Ā) ⇔ 独立, 选择题高频判据。</span></div>
+<div class="step">推导$: P(B|A)=P(B|Ā) ⇒ P(AB)/P(A) = P(ĀB)/(1−P(A)) ⇒$ 交叉乘 $⇒ P(AB)(1−P(A)) = P(A)(P(B)−P(AB)) ⇒ P(AB) = P(A)P(B)$ <span class="fill">【AI补全】</span><span class="why">关键代换 P(ĀB)=P(B)−P(AB)(B 拆成 AB 与 ĀB 两个互斥部分); 交叉相乘后两边同有 P(A)P(AB) 抵消, 直接得独立等式。<b>考点</b>: P(B|A)=P(B|Ā) ⇔ 独立, 选择题高频判据。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 条件概率相等⇔独立: P(B|A)=P(B|Ā) 的代数推导与直观理解双通道。</div>
 </details>
 
@@ -507,7 +551,7 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">独立由等式 P(AB)=P(A)P(B) 定义, 与 AB 是否为空集无必然关系。AB≠∅ 时可能独立(如 P(A)=0.5,P(B)=0.5,AB 非空且 P(AB)=0.25); 也可能不独立。<span class="why">独立是概率层面的关系, 互斥是集合层面的关系, 两者互不蕴含;<b>易错</b>: "有交集就不独立"是错觉——抛两枚硬币, 第一枚正面与第二枚正面有交集 {(正,正)} 却完全独立。</span></div>
-<div class="step">AB=∅ 时, 若 P(A)>0 且 P(B)>0, 则 P(AB)=0≠P(A)P(B), 不独立。选 (B)<span class="why">互斥且都正概率 ⇒ 必不独立(积概率 0 而两概率之积>0); 除非某事件概率为 0 才能既互斥又独立。<b>考点</b>: 四选项逐条用定义检验, 只有 (B) 恒真。</span></div>
+<div class="step">AB=∅ 时, 若 P(A)>0 且 P(B)>0, 则 $P(AB)=0≠P(A)P(B),$ 不独立。选 (B)<span class="why">互斥且都正概率 ⇒ 必不独立(积概率 0 而两概率之积>0); 除非某事件概率为 0 才能既互斥又独立。<b>考点</b>: 四选项逐条用定义检验, 只有 (B) 恒真。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 独立与互斥无必然联系, 用定义 P(AB)=P(A)P(B) 逐项检验, 常考概念题。</div>
 </details>
 
@@ -522,14 +566,21 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: 两两独立补 P(ABC) 等式得相互独立; "A 与 BC 独立"形式, 考研真题。</div>
 </details>
 
-<p id="例44" class="prob"><b>例 4.4</b> 设随机变量 X 服从 (−1,1) 上的均匀分布, 事件 A={0&lt;X&lt;1}, B={|X|&lt;1/4}, 则 【0621(1) 页20, 题面按视觉转写定稿】
-(A) P(AB)=0 (B) P(AB)=P(A) (C) P(AB)+P(B)=1 (D) P(AB)=P(A)P(B)</p>
+<p id="例44" class="prob"><b>例 4.4</b> 设随机变量 X 服从 $(−1,1)$ 上的均匀分布, 事件 A={0&lt;X&lt;1}, B={|X|&lt;1/4}, 则 【0621(1) 页20, 题面按视觉转写定稿】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-1-p20_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-1-p20_1.png" alt="U(−1,1) 上事件 A、B 的数轴图（0621(1) 页20）">
+<div class="figcap">📐 示意图（重绘）: U(−1,1) 上事件 A、B 的数轴图（0621(1) 页20）</div>
+</div>
+</details>
+
+<p>(A) P(AB)=0 (B) P(AB)=P(A) (C) P(AB)+P(B)=1 (D) P(AB)=P(A)P(B)</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#16事件的独立性必考易错">独立性</a> · <a href="数学_概率论.html#25八大常见分布必考">均匀分布</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例42">例 4.2</a> 同为独立性判定: 4.2 抽象事件逐项验, 本题连续型事件用长度比算概率</li>
 </ul>
 <details><summary>解答</summary>
 <div class="step">X~U(−1,1): P(A)=P{0&lt;X<1}=1/2, P(B)=P{−1/4&lt;X<1/4}=1/4<span class="why">均匀分布区间概率 = 长度比: A 对应区间 (0,1) 长 1, 总区间长 2; B 对应 (−1/4,1/4) 长 1/2。<b>考点</b>: 连续型事件概率一律落回区间长度。</span></div>
-<div class="step">P(AB)=P{0&lt;X<1/4}=(1/4)/2=1/8, 而 P(A)P(B)=(1/2)(1/4)=1/8=P(AB) ⇒ A 与 B 独立, 选 (D)<span class="why">AB=A∩B={0&lt;X<1/4}(B 的正半段才落入 A);<b>易错</b>: 不能凭"A、B 有交集"猜不独立——独立只看概率等式 P(AB)=P(A)P(B), 与例 4.2 的"有交集也可能独立"同一道理。</span></div>
+<div class="step">P(AB)=P{0&lt;X<1/4}=(1/4)/2=1/8, 而 $P(A)P(B)=(1/2)(1/4)=1/8=P(AB) ⇒ A$ 与 B 独立, 选 (D)<span class="why">AB=A∩B={0&lt;X<1/4}(B 的正半段才落入 A);<b>易错</b>: 不能凭"A、B 有交集"猜不独立——独立只看概率等式 P(AB)=P(A)P(B), 与例 4.2 的"有交集也可能独立"同一道理。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 连续型事件独立性: 长度比算三概率, P(AB)=P(A)P(B) 即独立; 有交集≠不独立。</div>
 </details>
 
@@ -561,8 +612,8 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#14概率的基本性质高频">概率基本性质</a> · <a href="数学_概率论.html#12事件的关系与运算必考">事件关系与运算</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例52">例 5.2</a> 同用加法公式: 本题"全不发生=1−并"取对立, 5.2 三事件展开</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">P(ĀB̄) = 1−P(A∪B) = 1−[P(A)+P(B)−P(AB)]<span class="why">ĀB̄ 是"A、B 都不发生" = A∪B 的对立事件; 对 A∪B 用加法公式拆成两项之和减交集。</span></div>
-<div class="step">由条件: P(AB) = 1−P(A)−P(B)+P(AB) ⇒ P(A)+P(B)=1 ⇒ P(B)=1−p<span class="why">等式两边都有 P(AB), 抵消后只剩 P(A)+P(B)=1;<b>考点</b>: "全不发生"=1−"至少一个发生", 与加法公式联用是常考组合。</span></div>
+<div class="step">$P(ĀB̄) = 1−P(A∪B) = 1−[P(A)+P(B)−P(AB)]$<span class="why">ĀB̄ 是"A、B 都不发生" = A∪B 的对立事件; 对 A∪B 用加法公式拆成两项之和减交集。</span></div>
+<div class="step">由条件$: P(AB) = 1−P(A)−P(B)+P(AB) ⇒ P(A)+P(B)=1 ⇒ P(B)=1−p$<span class="why">等式两边都有 P(AB), 抵消后只剩 P(A)+P(B)=1;<b>考点</b>: "全不发生"=1−"至少一个发生", 与加法公式联用是常考组合。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: ĀB̄=1−P(A∪B) 接加法公式, 交叉抵消 P(AB) 的典型手法。</div>
 </details>
 
@@ -571,40 +622,47 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#14概率的基本性质高频">概率基本性质</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例51">例 5.1</a> 同是加法公式组合: 本题三事件展开, 靠包含关系定 P(ABC)=0</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">加法公式: P(A∪B∪C)=P(A)+P(B)+P(C)−P(AB)−P(BC)−P(AC)+P(ABC)<span class="why">三事件加法公式: 单个之和 − 两两交集 + 三交集, 加减号交替; 漏掉 P(ABC) 项是最常见错误。</span></div>
-<div class="step">P(AB)=0, P(BC)=0 ⇒ P(ABC) ≤ min(P(AB),P(BC)) = 0 ⇒ P(ABC)=0<span class="why">ABC⊂AB 且 ABC⊂BC, 概率非负又被 0 压住, 只能为 0;<b>易错</b>: 不能想当然, 要靠包含关系严格推出 P(ABC)=0。</span></div>
-<div class="step">= 3/4 − 0 − 0 − 1/8 + 0 = 5/8<span class="why">代入: 3×(1/4) − 1/8 = 5/8; 也可用 1−P(全不发生) 对偶验证。</span></div>
+<div class="step">加法公式$: P(A∪B∪C)=P(A)+P(B)+P(C)−P(AB)−P(BC)−P(AC)+P(ABC)$<span class="why">三事件加法公式: 单个之和 − 两两交集 + 三交集, 加减号交替; 漏掉 P(ABC) 项是最常见错误。</span></div>
+<div class="step">$P(AB)=0, P(BC)=0 ⇒ P(ABC) ≤ min(P(AB),P(BC)) = 0 ⇒ P(ABC)=0$<span class="why">ABC⊂AB 且 ABC⊂BC, 概率非负又被 0 压住, 只能为 0;<b>易错</b>: 不能想当然, 要靠包含关系严格推出 P(ABC)=0。</span></div>
+<div class="step">$= 3/4 − 0 − 0 − 1/8 + 0 = 5/8$<span class="why">代入: 3×(1/4) − 1/8 = 5/8; 也可用 1−P(全不发生) 对偶验证。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 三事件加法公式 + 包含关系定 P(ABC)=0, 考研真题原题原数。</div>
 </details>
 
-<p id="例53" class="prob"><b>例 5.3</b> 已知 P(B)=0.4, P(A∪B)=0.5, 求 P(A|B̄) 【0620(1)]</p>
+<p id="例53" class="prob"><b>例 5.3</b> 已知 $P(B)=0.4, P(A∪B)=0.5,$ 求 P(A|B̄) 【0620(1)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#15条件概率必考">条件概率</a> · <a href="数学_概率论.html#14概率的基本性质高频">概率基本性质</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例31">例 3.1</a> 同为公式接力: 3.1 乘法求积, 本题加法凑差, 最后都落回条件概率</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">P(A∪B) = P(A)+P(B)−P(AB) ⇒ 0.5 = P(A)+0.4−P(AB) ⇒ P(A)−P(AB) = 0.1<span class="why">加法公式把未知量打包成整体 P(A)−P(AB), 不必分别求出 P(A) 与 P(AB); 这是本题的巧思。</span></div>
-<div class="step">P(AB̄) = P(A)−P(AB) = 0.1<span class="why">AB̄ 是"A 发生而 B 不发生" = A 中扣除 AB 的部分;<b>易错</b>: 写成 P(AB̄)=P(A)(1−P(B)) 是错的, 那是独立假设下才有的分解。</span></div>
-<div class="step">P(A|B̄) = P(AB̄)/P(B̄) = 0.1/(1−0.4) = 0.1/0.6 = 1/6<span class="why">条件概率: 把样本空间缩到 B̄ 上, 分子是 A 与 B̄ 同时发生的概率, 分母是 B̄ 的概率 0.6。</span></div>
+<div class="step">$P(A∪B) = P(A)+P(B)−P(AB) ⇒ 0.5 = P(A)+0.4−P(AB) ⇒ P(A)−P(AB) = 0.1$<span class="why">加法公式把未知量打包成整体 P(A)−P(AB), 不必分别求出 P(A) 与 P(AB); 这是本题的巧思。</span></div>
+<div class="step">$P(AB̄) = P(A)−P(AB) = 0.1$<span class="why">AB̄ 是"A 发生而 B 不发生" = A 中扣除 AB 的部分;<b>易错</b>: 写成 P(AB̄)=P(A)(1−P(B)) 是错的, 那是独立假设下才有的分解。</span></div>
+<div class="step">$P(A|B̄) = P(AB̄)/P(B̄) = 0.1/(1−0.4) = 0.1/0.6 = 1/6$<span class="why">条件概率: 把样本空间缩到 B̄ 上, 分子是 A 与 B̄ 同时发生的概率, 分母是 B̄ 的概率 0.6。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 加法公式凑出 P(A)−P(AB), 再进条件概率——两公式接力, 高频考题。</div>
 </details>
 
-<p id="例54" class="prob"><b>例 5.4</b> 若 A⊂B, A⊂C, 且 P(A)=0.9, P(B̄∪C̄)=0.8, 求 P(A−BC) 【0620(1)]</p>
+<p id="例54" class="prob"><b>例 5.4</b> 若 $A⊂B, A⊂C,$ 且 $P(A)=0.9, P(B̄∪C̄)=0.8,$ 求 $P(A−BC)$ 【0620(1)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-1-p26_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-1-p26_1.png" alt="A⊂B、A⊂C 的三事件韦恩图（0620(1) 页26）">
+<div class="figcap">📐 示意图（重绘）: A⊂B、A⊂C 的三事件韦恩图（0620(1) 页26）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#14概率的基本性质高频">概率基本性质</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例146">例 14.6</a> 同为差事件/德摩根组装: 本题需 BC⊂A 才可相减, 14.6 先求 P(AB) 再取对立</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">P(B̄∪C̄) = P(\overline{BC}) = 0.8 ⇒ P(BC) = 0.2<span class="why">德摩根: B̄∪C̄ = \overline{BC}("至少一个不发生"是"两个都发生"的对立事件), 故 P(BC)=1−0.8=0.2。</span></div>
-<div class="step">P(A−BC) = P(A)−P(BC) = 0.9−0.2 = 0.7, 需 BC⊂A——即题意应为 B⊂A 且 C⊂A <b>【修正】</b><span class="why">差事件公式: A−BC 是 A 中不在 BC 内的部分, 只有 BC⊂A 才能拆成 P(A)−P(BC);<b>易错</b>: 若按题干字面 A⊂B、A⊂C, 则 A⊂BC, A−BC=∅, 概率为 0, 题给的 P(B̄∪C̄)=0.8 完全用不上——答案 0.7 对应"B⊂A 且 C⊂A", 判断题干为 OCR 把包含方向读反。</span></div>
+<div class="step">$P(B̄∪C̄) = P(\overline{BC}) = 0.8 ⇒ P(BC) = 0.2$<span class="why">德摩根: B̄∪C̄ = \overline{BC}("至少一个不发生"是"两个都发生"的对立事件), 故 P(BC)=1−0.8=0.2。</span></div>
+<div class="step">$P(A−BC) = P(A)−P(BC) = 0.9−0.2 = 0.7,$ 需 BC⊂A——即题意应为 B⊂A 且 C⊂A <b>【修正】</b><span class="why">差事件公式: A−BC 是 A 中不在 BC 内的部分, 只有 BC⊂A 才能拆成 P(A)−P(BC);<b>易错</b>: 若按题干字面 A⊂B、A⊂C, 则 A⊂BC, A−BC=∅, 概率为 0, 题给的 P(B̄∪C̄)=0.8 完全用不上——答案 0.7 对应"B⊂A 且 C⊂A", 判断题干为 OCR 把包含方向读反。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 差事件 P(A−B)=P(A)−P(AB), 前提 B⊂A 才可相减; 题干方向疑被 OCR 读反。</div>
 </details>
 
-<p id="例55" class="prob"><b>例 5.5</b> 已知 P(A)=0.3, P(B)=0.4, P(AB̄)=0.5, 求条件概率 P(B|A∪B̄) 【0620(1)]</p>
+<p id="例55" class="prob"><b>例 5.5</b> 已知 P(A)=0.3, P(B)=0.4, P(AB̄)=0.5, 求条件概率 $P(B|A∪B̄)$ 【0620(1)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#15条件概率必考">条件概率</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例22">例 2.2</a> 同为"子事件概率被父事件压住": 2.2 判不等式, 本题用 AB̄⊂A 揪出题设矛盾</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">P(AB̄) = P(A)−P(AB) ≤ P(A) = 0.3, 而题给 P(AB̄)=0.5, 数据自相矛盾, 无法求解 <span class="mk warn">数值不清</span><span class="why">AB̄⊂A 且 AB̄ 与 AB 互斥拼成整个 A, 故 P(AB̄)=P(A)−P(AB)≤P(A); 0.5>0.3 说明题设中某数据被 OCR 读错(0.5 应为别的量), 不能据此继续算。</span></div>
-<div class="step">若原题为 P(A∪B)=0.5(常见配套数据), 则 P(AB)=0.2, P(A∪B̄)=P(A)+P(B̄)−P(AB̄)=0.8, P(B|A∪B̄)=P(AB)/P(A∪B̄)=1/4——仅为自洽补全, 以原课件为准 <span class="fill">【AI补全】</span><span class="why">B∩(A∪B̄)=AB, 分子恰为 P(AB); 这一补全只是猜测性还原, 不能当作结论记忆。<b>易错</b>: 遇到数据矛盾, 先停手检查题干, 不要硬凑答案。</span></div>
+<div class="step">$P(AB̄) = P(A)−P(AB) ≤ P(A) = 0.3,$ 而题给 P(AB̄)=0.5, 数据自相矛盾, 无法求解 <span class="mk warn">数值不清</span><span class="why">AB̄⊂A 且 AB̄ 与 AB 互斥拼成整个 A, 故 P(AB̄)=P(A)−P(AB)≤P(A); 0.5>0.3 说明题设中某数据被 OCR 读错(0.5 应为别的量), 不能据此继续算。</span></div>
+<div class="step">若原题为 $P(A∪B)=0.5$(常见配套数据), 则 $P(AB)=0.2, P(A∪B̄)=P(A)+P(B̄)−P(AB̄)=0.8, P(B|A∪B̄)=P(AB)/P(A∪B̄)=1/4$——仅为自洽补全, 以原课件为准 <span class="fill">【AI补全】</span><span class="why">B∩(A∪B̄)=AB, 分子恰为 P(AB); 这一补全只是猜测性还原, 不能当作结论记忆。<b>易错</b>: 遇到数据矛盾, 先停手检查题干, 不要硬凑答案。</span></div>
 <div class="sum skip"><b>※ 偏题</b>: 题设数据矛盾(0.5>P(A)), 无法求解; 记牢"AB̄ 与 AB 互斥分割 A"即可。</div>
 </details>
 
@@ -616,8 +674,8 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">(1) P(A|B)=P(A) ⇔ A,B 独立。独立则 Ā 与 B 也独立, 故 P(Ā|B)=P(Ā)。正确<span class="why">P(A|B)=P(A) 即 B 发生与否不改变 A 的概率, 与独立定义等价; 独立性对补集稳定(A⊥B ⇒ Ā⊥B), 也可用 P(ĀB)=P(B)−P(AB)=P(B)(1−P(A)) 验证。</span></div>
-<div class="step">(2) P(A|A∪B) = P(A)/P(A∪B), P(A|Ā∪B) = P(AB)/P(Ā∪B), 交叉相乘化简得: P(A)(1−P(A)) > P(AB)(P(B)−P(AB)) <b>【修正】</b><span class="why">分子: A∩(A∪B)=A, A∩(Ā∪B)=AB; 分母: P(A∪B)=P(A)+P(B)−P(AB), P(Ā∪B)=1−P(A)+P(AB); 化简后比较的是 P(A)(1−P(A)) 与 P(AB)(P(B)−P(AB)), 并非 P(A) 与 P(B) 的直接比较。</span></div>
-<div class="step">该不等式推不出 P(A)>P(B)。反例: P(A)=0.3, P(B)=0.5, P(AB)=0.1 时, P(A|A∪B)=3/7 > 1/8 = P(A|Ā∪B), 但 P(A)=0.3<0.5=P(B)。(2) 应为错误<span class="why">验证: 0.3/0.7≈0.43, 0.1/0.8=0.125, 前者大而 P(A)<P(B);<b>易错</b>: 判断推理题必须用反例敲定, 不能凭直觉; 若原课件判 (2) 正确, 应是题干事件被 OCR 改动过, 建议回查。</span></div>
+<div class="step">$(2) P(A|A∪B) = P(A)/P(A∪B), P(A|Ā∪B) = P(AB)/P(Ā∪B),$ 交叉相乘化简得: P(A)(1−P(A)) > P(AB)(P(B)−P(AB)) <b>【修正】</b><span class="why">分子: A∩(A∪B)=A, A∩(Ā∪B)=AB; 分母: P(A∪B)=P(A)+P(B)−P(AB), P(Ā∪B)=1−P(A)+P(AB); 化简后比较的是 P(A)(1−P(A)) 与 P(AB)(P(B)−P(AB)), 并非 P(A) 与 P(B) 的直接比较。</span></div>
+<div class="step">该不等式推不出 P(A)>P(B)。反例: P(A)=0.3, P(B)=0.5, P(AB)=0.1 时$, P(A|A∪B)=3/7 > 1/8 = P(A|Ā∪B),$ 但 P(A)=0.3<0.5=P(B)。(2) 应为错误<span class="why">验证: 0.3/0.7≈0.43, 0.1/0.8=0.125, 前者大而 P(A)<P(B);<b>易错</b>: 判断推理题必须用反例敲定, 不能凭直觉; 若原课件判 (2) 正确, 应是题干事件被 OCR 改动过, 建议回查。</span></div>
 <div class="sum skip"><b>※ 偏题</b>: 判断推理题: (1) 独立对补集稳定为真; (2) 字面为假, 反例可破, 课件判法存疑。</div>
 </details>
 
@@ -699,37 +757,58 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">总样本: 千位不能为 0, 首位有 5 种选择, 剩下 3 位从剩余 5 个数字排列: 5×P₅₃ = 5×60 = 300 <span class="fill">【AI补全】</span><span class="why">四位数要求千位非 0: 先定千位(从 1~5 选 5 种), 其余三位是剩余 5 个数字的有序排列 P(5,3)=60。</span></div>
-<div class="step">有利: "1 不在千位, 0 不在个位"。可先排千位(≠0,≠1 有 4 种), 再排个位(≠0), 再排中间两位<span class="why">计数从限制最多的位置开始: 千位不能取 0 或 1, 只剩 {2,3,4,5} 共 4 种; 之后个位在剩余数字中再排除 0。</span></div>
+<div class="step">有利: "1 不在千位, 0 不在个位"。可先排千位$(≠0,≠1$ 有 4 种), 再排个位$(≠0),$ 再排中间两位<span class="why">计数从限制最多的位置开始: 千位不能取 0 或 1, 只剩 {2,3,4,5} 共 4 种; 之后个位在剩余数字中再排除 0。</span></div>
 <div class="step">计算: 4×4×4×3 = 192, 概率 = 192/300 = 16/25 <b>【补全】</b><span class="why">千位 4 种后, 剩余 5 个数中非 0 的恒有 4 个, 故个位 4 种, 中间两位 4×3 种; 容斥法验证: 300−60(1 在千位)−60(0 在个位)+12(两者同时) = 192, 两法一致, 16/25 确定无误。<b>易错</b>: 千位、个位两重限制, 先排受限位再补中间位。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 数字排列计数: 受限位置先排, 或容斥 300−60−60+12; 两法互验得 16/25。</div>
 </details>
 
 <hr />
 <h2 id="八几何概型高频">八、几何概型 <span class="mk freq">高频</span></h2>
-<p id="例81" class="prob"><b>例 8.1</b> (1) 在区间 (0,1) 中随机地取一个数, 则这个数落在区间 (1/4, 1/3) 内的概率为 <strong><em>
-(2) 在区间 (0,1) 中随机地取两个数, 则事件"两数之和小于 6/5"发生的概率为 </em></strong> 【0620(2), 题面按视觉转写定稿】</p>
+<p id="例81" class="prob"><b>例 8.1</b> (1) 在区间 (0,1) 中随机地取一个数, 则这个数落在区间 (1/4, 1/3) 内的概率为 ___</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-2-p08_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-2-p08_1.png" alt="x+y<6/5 的几何概型区域图（0620(2) 页8）">
+<div class="figcap">📐 示意图（重绘）: x+y<6/5 的几何概型区域图（0620(2) 页8）</div>
+</div>
+</details>
+
+<p>(2) 在区间 (0,1) 中随机地取两个数, 则事件"两数之和小于 6/5"发生的概率为 ___ 【0620(2), 题面按视觉转写定稿】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#18三大经典概型必考">几何概型</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1410">例 14.10</a> 同为单位正方形取两数: 本题求"和"、14.10 求"差", 都靠整体减补集 <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例82">例 8.2</a> 同为面积比: 本题补三角形, 8.2 补角三角形</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) 长度比: (1/3−1/4)/1 = 1/12<span class="why">一维几何概型: 概率 = 有利区间长度 ÷ 总长度, 区间 (0,1) 总长 1, 有利段长 1/12。</span></div>
-<div class="step">(2) 样本空间 1×1 正方形, 有利区域 x+y<6/5 且 0&lt;x<1,0&lt;y<1, 面积 = 1 − (1/2)(1−1/5)² <span class="fill">【AI补全】</span><span class="why">两数落在单位正方形内, x+y<6/5 是直线 x+y=6/5 下方区域; 直线与 x=1、y=1 交于 (1/5,1)、(1,1/5), 上方只在右上角缺一块三角形, 用 1 减去它更快。</span></div>
+<div class="step">(1) 长度比$: (1/3−1/4)/1 = 1/12$<span class="why">一维几何概型: 概率 = 有利区间长度 ÷ 总长度, 区间 (0,1) 总长 1, 有利段长 1/12。</span></div>
+<div class="step">(2) 样本空间 1×1 正方形, 有利区域 x+y<6/5 且 0&lt;x<1,0&lt;y<1, 面积 $= 1 − (1/2)(1−1/5)²$ <span class="fill">【AI补全】</span><span class="why">两数落在单位正方形内, x+y<6/5 是直线 x+y=6/5 下方区域; 直线与 x=1、y=1 交于 (1/5,1)、(1,1/5), 上方只在右上角缺一块三角形, 用 1 减去它更快。</span></div>
 <div class="step">详细: 截去右上角三角形面积 (1/2)×(4/5)×(4/5) = 8/25, 故概率 = 1−8/25 = 17/25 <b>【修正】</b><span class="why">三角形两直角边均为 1−1/5=4/5, 面积 (1/2)(4/5)²=8/25; 结果为 17/25, 数值确定无误, 原<span class="mk warn">数值不清</span>标记解除。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 二维几何概型面积比; 学会"整体减补集三角形"的快速算法, 真题原题。</div>
 </details>
 
 <p id="例82" class="prob"><b>例 8.2</b> (会面问题) 甲乙约定上午 9-10 点之间在某地见面, 先到者等 15 分钟便离开, 求两人能会面的概率 【0620(2)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0620-2-p09_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0620-2-p09_1.png" alt="会面问题的坐标系区域图（0620(2) 页9）">
+<div class="figcap">📐 示意图（重绘）: 会面问题的坐标系区域图（0620(2) 页9）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#18三大经典概型必考">几何概型</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例81">例 8.1</a> 同为"整体减补集"的面积比: 本题 |x−y|≤15 带状区域减两角</li>
 </ul>
 <details><summary>解答</summary>
 <div class="step">设 x,y 为甲乙到达时间(9 点为 0, 10 点为 60, 单位: 分钟)。样本空间 60×60 正方形<span class="why">会面问题翻译成坐标: 点 (x,y) 表示两人到达时刻, 均匀落在 60×60 正方形内——先设坐标是几何概型的第一步。</span></div>
-<div class="step">能见面 ⇔ |x−y|≤15。画出带状区域, 面积 = 60² − 45² = 3600−2025 = 1575<span class="why">|x−y|≤15 是两条平行线间的带状区域; 计算用正方形减去两个直角边为 45 的角三角形: 3600−2×(45²/2)=3600−45²。</span></div>
+<div class="step">能见面 $⇔ |x−y|≤15$。画出带状区域, 面积 $= 60² − 45² = 3600−2025 = 1575$<span class="why">|x−y|≤15 是两条平行线间的带状区域; 计算用正方形减去两个直角边为 45 的角三角形: 3600−2×(45²/2)=3600−45²。</span></div>
 <div class="step">概率 = 1575/3600 = 7/16<span class="why">面积比 1575/3600 约分得 7/16;<b>考点</b>: 会面问题是最经典的二维几何概型, 关键一步是"等 15 分钟"→"|x−y|≤15"。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 会面问题: 翻译成 |x−y|≤15 带状区域, 面积比 7/16——几何概型必考模板。</div>
 </details>
 
 <p id="例83" class="prob"><b>例 8.3</b> 在区间 $(0,1)$ 中随机地取两个数, 则这两数之差的绝对值小于 $\frac12$ 的概率为____。【0808(1), 电子版 27概率论第一章 例1.10】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0808-1-p10_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0808-1-p10_1.png" alt="|x−y|<1/2 的几何概型区域图（0808(1) 页10）">
+<div class="figcap">📐 示意图（重绘）: |x−y|<1/2 的几何概型区域图（0808(1) 页10）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#18三大经典概型必考">几何概型(面积法)</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例81">例 8.1</a> 同为二维均匀几何概型, 本题求带形区域</li>
 </ul>
@@ -746,7 +825,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#18三大经典概型必考">伯努利概型</a> · <a href="数学_概率论.html#14概率的基本性质高频">概率基本性质</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例131">例 13.1</a> 同用"至少一次=1−(1−p)ⁿ"反解 p: 本题止于单次概率, 13.1 再代入另一分布</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">设每次 p, P{至少一次}=1−(1−p)³ = 19/27 ⇒ (1−p)³ = 8/27 ⇒ 1−p = 2/3 ⇒ p=1/3<span class="why">"至少一次"取对立面"一次都不发生": 三次独立全不发生的概率是 (1−p)³; 8/27=(2/3)³ 开立方得 1−p=2/3。<b>易错</b>: 不要展开三次事件和的加法公式, 取对立最省事。</span></div>
+<div class="step">设每次 p, P{至少一次}$=1−(1−p)³ = 19/27 ⇒ (1−p)³ = 8/27 ⇒ 1−p = 2/3 ⇒ p=1/3$<span class="why">"至少一次"取对立面"一次都不发生": 三次独立全不发生的概率是 (1−p)³; 8/27=(2/3)³ 开立方得 1−p=2/3。<b>易错</b>: 不要展开三次事件和的加法公式, 取对立最省事。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 伯努利"至少一次"一律用 1−(1−p)ⁿ, 再由对立概率反解单次 p。</div>
 </details>
 
@@ -762,23 +841,23 @@ main details .sum b{font-weight:700}
 
 <hr />
 <h2 id="十分布函数必考">十、分布函数 <span class="mk biz">必考</span></h2>
-<p id="例101" class="prob"><b>例 10.1</b> 设随机变量 X 的分布函数 F(x)=a+b/(1+x)² (x&gt;0), F(x)=c (x≤0), 求 a,b,c 的值 【0620(3), c 值经视觉核对补全】</p>
+<p id="例101" class="prob"><b>例 10.1</b> 设随机变量 X 的分布函数 $F(x)=a+b/(1+x)² (x>0), F(x)=c (x≤0),$ 求 a,b,c 的值 【0620(3), c 值经视觉核对补全】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#22分布函数必考高频">分布函数</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例102">例 10.2</a> 同为用分布函数硬条件(端点极限/右连续)定参数</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">F(+∞)=a=1; F(−∞)=c=0 <span class="why">两条端点硬条件: 正无穷处收敛到 1、负无穷处收敛到 0——c 是 x≤0 段的常数值, 由 F(−∞)=0 直接定 c=0。</span></div>
-<div class="step">右连续于分段点 0: F(0+)=a+b=1+b 必须等于 F(0)=c=0 ⇒ b=−1 <span class="why">F(0+)=\lim_{x\to0^+}[a+b/(1+x)^2]=a+b; 分布函数右连续, F(0+)=F(0)=c;<b>易错</b>: c 不是"分段参数"而是 x≤0 段的取值——先由端点极限定 c=0, 右连续条件才能闭合: a+b=c。</span></div>
+<div class="step">$F(+∞)=a=1; F(−∞)=c=0$ <span class="why">两条端点硬条件: 正无穷处收敛到 1、负无穷处收敛到 0——c 是 x≤0 段的常数值, 由 F(−∞)=0 直接定 c=0。</span></div>
+<div class="step">右连续于分段点 0: F(0+)=a+b=1+b 必须等于 $F(0)=c=0 ⇒ b=−1$ <span class="why">F(0+)=\lim_{x\to0^+}[a+b/(1+x)^2]=a+b; 分布函数右连续, F(0+)=F(0)=c;<b>易错</b>: c 不是"分段参数"而是 x≤0 段的取值——先由端点极限定 c=0, 右连续条件才能闭合: a+b=c。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分段分布函数三参数: 两条端点极限 + 分段点右连续, 三条件定三参数。</div>
 </details>
 
-<p id="例102" class="prob"><b>例 10.2</b> 设 F₁(x),F₂(x) 为随机变量 X₁ 与 X₂ 的分布函数。若 F(x)=aF₁(x)−bF₂(x) 是某一变量的分布函数, 在下列给定的各组数值中应取 【0620(3)]
+<p id="例102" class="prob"><b>例 10.2</b> 设 F₁(x),F₂(x) 为随机变量 X₁ 与 X₂ 的分布函数。若 $F(x)=aF₁(x)−bF₂(x)$ 是某一变量的分布函数, 在下列给定的各组数值中应取 【0620(3)]
 (A) a=3/5, b=−2/5 (B) a=2/3, b=2/3 (C) a=−1/2, b=3/2 (D) a=1/2, b=−3/2</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#22分布函数必考高频">分布函数</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例103">例 10.3</a> 同为分布函数判定: 本题验线性组合系数, 10.3 验具体函数</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">F(+∞)=a·1−b·1 = a−b = 1; 且 F 单调不减 ⇒ a>0, −b>0 ⇒ b<0。选 (A): 3/5−(−2/5)=1, a>0, b<0 ✓<span class="why">分布函数必须 F(+∞)=1, 这条直接筛选项; 线性组合 aF₁−bF₂ 单调不减, 需两个系数 a 与 −b 同号非负(一增一减才能保持不减), 即 b<0;<b>易错</b>: 只验 a−b=1 不够, 还要验系数符号。</span></div>
+<div class="step">$F(+\infty)=a\cdot 1-b\cdot 1=a-b=1$ 且 F 单调不减 $\Rightarrow a>0,\ -b>0 \Rightarrow b&lt;0$。选 (A): $3/5-(-2/5)=1,\ a>0,\ b&lt;0$ ✓<span class="why">分布函数必须 F(+∞)=1, 这条直接筛选项; 线性组合 aF₁−bF₂ 单调不减, 需两个系数 a 与 −b 同号非负(一增一减才能保持不减), 即 b<0;<b>易错</b>: 只验 a−b=1 不够, 还要验系数符号。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分布函数线性组合: 用 F(+∞)=1 与系数符号两条快速筛选, 考研真题。</div>
 </details>
 
@@ -788,23 +867,23 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#22分布函数必考高频">分布函数</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例151">例 15.1</a> 同为"四条件逐条验"的分布函数辨析 <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例102">例 10.2</a> 同用端点极限筛选项</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">检验: 必须 F(−∞)=0, F(+∞)=1, 单调不减, 右连续<span class="why">分布函数四充要条件: 前两条管端点取值, 第三条管单调形态, 第四条管分段点取值方式; 判断时逐条检验。</span></div>
-<div class="step">(A): F(+∞)=0, 错。 (B): F(−∞)=3/4−1/4=1/2≠0, 错。 (D): F(+∞)=2, 错。<span class="why">arctanx 的取值界是 ±π/2, 代入即得端点值——两端检查能排除大半选项。</span></div>
+<div class="step">检验: 必须 $F(−∞)=0, F(+∞)=1,$ 单调不减, 右连续<span class="why">分布函数四充要条件: 前两条管端点取值, 第三条管单调形态, 第四条管分段点取值方式; 判断时逐条检验。</span></div>
+<div class="step">$(A): F(+∞)=0,$ 错。 $(B): F(−∞)=3/4−1/4=1/2≠0,$ 错。 $(D): F(+∞)=2,$ 错。<span class="why">arctanx 的取值界是 ±π/2, 代入即得端点值——两端检查能排除大半选项。</span></div>
 <div class="step">(C): F(−∞)=0, F(+∞)=1, 且 $\frac{x}{1+x}$ 在 x>0 单调增、F(0+)=0=F(0) 右连续, 四个条件全满足 ✓<span class="why">$\frac{x}{1+x}=1-\frac1{1+x}$ 随 x 增大单调不减趋近 1; 分段点 0 处右连续: 右极限 F(0+)=0 等于 F(0)=0。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分布函数判定四条件: 两端极限 + 单调不减 + 右连续; 分段函数先查分段点取值。</div>
 </details>
 
-<p id="例104" class="prob"><b>例 10.4</b> 设随机变量 X 的分布函数为 F(x), x&lt;0 时为 0; 0≤x&lt;π/2 时为 Asinx; x≥π/2 时为 1, 则概率 P{|X|&lt;π/6}= 【0620(3)]</p>
+<p id="例104" class="prob"><b>例 10.4</b> 设随机变量 X 的分布函数为 F(x), x&lt;0 时为 $0; 0≤x&lt;π/2$ 时为 $Asinx; x≥π/2$ 时为 1, 则概率 P{|X|&lt;π/6}= 【0620(3)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#22分布函数必考高频">分布函数</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例105">例 10.5</a> 同为"由分布函数读概率": 本题区间 F(b)−F(a), 10.5 单点跳跃</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">由右连续性: F(π/2)=Asin(π/2)=A=1 ⇒ A=1 <span class="fill">【AI补全】</span><span class="why">分段点在 π/2: 右段 x≥π/2 取 1, 右连续要求 F(π/2) 也等于 1, 由此定出 A;<b>考点</b>: 分段分布函数用右连续性确定参数。</span></div>
+<div class="step">由右连续性$: F(π/2)=Asin(π/2)=A=1 ⇒ A=1$ <span class="fill">【AI补全】</span><span class="why">分段点在 π/2: 右段 x≥π/2 取 1, 右连续要求 F(π/2) 也等于 1, 由此定出 A;<b>考点</b>: 分段分布函数用右连续性确定参数。</span></div>
 <div class="step">P{|X|&lt;π/6} = P{−π/6&lt;X&lt;π/6} = F(π/6)−F(−π/6) = sin(π/6)−0 = 1/2<span class="why">连续点处 P{a&lt;X<b}=F(b)−F(a); π/6 落在 Asinx 段(F=sin(π/6)=1/2), −π/6 落在 0 段;<b>考点</b>: 由分布函数求区间概率是分布函数的核心用法。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 右连续性定参数 + F(b)−F(a) 求区间概率, 分布函数两大主线合一。</div>
 </details>
 
-<p id="例105" class="prob"><b>例 10.5</b> 设随机变量的分布函数 F(x), x&lt;0 时为 0; 0≤x&lt;1 时为 1/2; x≥1 时为 1−e^{−x}, 则 P{X=1}= 【0620(3)]</p>
+<p id="例105" class="prob"><b>例 10.5</b> 设随机变量的分布函数 F(x), x&lt;0 时为 $0; 0≤x&lt;1$ 时为 $1/2; x≥1$ 时为 $1−e^{−x},$ 则 P{X=1}= 【0620(3)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#22分布函数必考高频">分布函数</a> · <a href="数学_概率论.html#23离散型随机变量必考">离散型变量</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例104">例 10.4</a> 同为分布函数读概率: 10.4 读区间, 本题抓跳跃量</li>
 </ul>
@@ -836,6 +915,19 @@ main details .sum b{font-weight:700}
 </details>
 
 <p id="例108" class="prob"><b>例 10.8</b> 设随机变量 $X$ 服从 $[0,2]$ 上的均匀分布, 求随机变量 $Y=X^2$ 的概率密度 $f_Y(y)$。【0808(2) 页11, 电子版 27强化概率论第二章 例2.11】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0808-2-p11_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0808-2-p11_1.png" alt="Y=X² 的曲线图（0808(2) 页11）">
+<div class="figcap">📐 示意图（重绘）: Y=X² 的曲线图（0808(2) 页11）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0808-2-p11_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0808-2-p11_2.png" alt="Y=X² 函数关系曲线图（0808(2) 页11）">
+<div class="figcap">📐 示意图（重绘）: Y=X² 函数关系曲线图（0808(2) 页11）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#32连续型连续型重点">随机变量函数的分布(连续型)</a> · <a href="数学_概率论.html#22分布函数必考高频">分布函数法</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例107">例 10.7</a> 同为分布函数法, 本题是单调函数直接反解</li>
 </ul>
@@ -866,7 +958,7 @@ main details .sum b{font-weight:700}
 <div class="step">P{X=0} = C₈³/C₁₀³ = 56/120 = 7/15<span class="why">超几何计数: 3 件全从 8 件正品中取, 分母是从 10 件中任取 3 件的总取法 C₁₀³。</span></div>
 <div class="step">P{X=1} = (C₂¹·C₈²)/C₁₀³ = (2×28)/120 = 56/120 = 7/15<span class="why">1 件次品从 2 件中取(C₂¹), 2 件正品从 8 件中取(C₈²), 两类组合相乘。</span></div>
 <div class="step">P{X=2} = (C₂²·C₈¹)/C₁₀³ = (1×8)/120 = 8/120 = 1/15<span class="why">分布律必须满足概率和 = 1: 7/15+7/15+1/15=1, 可作验算;<b>易错</b>: 超几何是"不放回抽 n 件"的标准模型, 与二项(放回)区分。</span></div>
-<div class="step">F(x) = 0(x<0); 7/15(0≤x<1); 14/15(1≤x<2); 1(x≥2)<span class="why">分布函数是累积概率的阶梯函数: 每过一个取值点台阶累加该点概率(7/15→14/15→1);<b>易错</b>: 区间左闭右开(0≤x<1), 才能保证右连续。</span></div>
+<div class="step">$F(x) = 0(x&lt;0); 7/15(0≤x&lt;1); 14/15(1≤x&lt;2); 1(x≥2)$<span class="why">分布函数是累积概率的阶梯函数: 每过一个取值点台阶累加该点概率(7/15→14/15→1);<b>易错</b>: 区间左闭右开(0≤x<1), 才能保证右连续。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 超几何分布律 + 阶梯分布函数; 分段写法左闭右开、概率和验算两要点。</div>
 </details>
 
@@ -888,7 +980,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#23离散型随机变量必考">离散型变量</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例135">例 13.5</a> 同用"概率和=1"反解常数: 本题等差分母整体约分, 13.5 用幂级数 e^λ</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">分母 Σi = m(m+1)/2。ΣP = a·Σi/(Σi) = a = 1 ⇒ a=1<span class="why">分布律概率和 = 1: 每项分子都是 a×i, 分母是同一个和式 Σi=m(m+1)/2, 求和时分母整体约掉, 直接得 a=1;<b>易错</b>: 分母是等差数列和, 不必逐项展开, 整体约分即可。</span></div>
+<div class="step">分母 $Σi = m(m+1)/2$。$ΣP = a$·$Σi/(Σi) = a = 1 ⇒ a=1$<span class="why">分布律概率和 = 1: 每项分子都是 a×i, 分母是同一个和式 Σi=m(m+1)/2, 求和时分母整体约掉, 直接得 a=1;<b>易错</b>: 分母是等差数列和, 不必逐项展开, 整体约分即可。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 由"概率和=1"反解常数: 公共分母整体约分, 秒得 a=1 的送分套路。</div>
 </details>
 
@@ -902,6 +994,13 @@ main details .sum b{font-weight:700}
 </details>
 
 <p id="例115" class="prob"><b>例 11.5</b> 设随机变量 $X$ 的分布律为 $P\{X=k\}=\frac1{2^k},\ k=1,2,\cdots$, 求 $Y=\sin\left(\frac{\pi}{2}X\right)$ 的分布律。【0808(2) 页10, 电子版 27强化概率论第二章 例2.10】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0808-2-p10_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0808-2-p10_1.png" alt="Y=sin(πX/2) 的正弦曲线图（0808(2) 页10）">
+<div class="figcap">📐 示意图（重绘）: Y=sin(πX/2) 的正弦曲线图（0808(2) 页10）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#31离散型离散型">随机变量函数的分布(离散型)</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例114">例 11.4</a> 同为离散函数分布, 本题取值为周期函数需按模 4 合并</li>
 </ul>
@@ -922,42 +1021,49 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例153">例 15.3</a> 同为"组合式是否为密度"的判定: 本题验平均, 15.3 验凑导数</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(D): ∫(f₁+f₂)/2 dx = (1+1)/2 = 1, 且非负 ⇒ 是概率密度。选 (D)<span class="why">密度两个条件: 非负 + 全实数积分 1; 两个密度取平均后仍非负, 积分 = 两者积分之和的一半 = 1, 恰好满足。</span></div>
-<div class="step">(A) F₁(+∞)+F₂(+∞)=2≠1 错; (B) 可能负; (C) 积分不一定为 1<span class="why">(A) 端点超 1 且 F(+∞)=2; (B) F₁−F₂ 在 F₁&lt;F₂ 处下降, 违反单调不减; (C) 两密度乘积的积分一般不等于 1;<b>考点</b>: "平均"型运算保持密度性质, "差/积"型不保持——选择题高频结论。</span></div>
+<div class="step">$(D): ∫(f₁+f₂)/2 dx = (1+1)/2 = 1,$ 且非负 ⇒ 是概率密度。选 (D)<span class="why">密度两个条件: 非负 + 全实数积分 1; 两个密度取平均后仍非负, 积分 = 两者积分之和的一半 = 1, 恰好满足。</span></div>
+<div class="step">$(A) F₁(+∞)+F₂(+∞)=2≠1$ 错; (B) 可能负; (C) 积分不一定为 1<span class="why">(A) 端点超 1 且 F(+∞)=2; (B) F₁−F₂ 在 F₁&lt;F₂ 处下降, 违反单调不减; (C) 两密度乘积的积分一般不等于 1;<b>考点</b>: "平均"型运算保持密度性质, "差/积"型不保持——选择题高频结论。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 密度运算封闭性: 平均仍为密度, 差/积不保证; 四选项逐条检验套路。</div>
 </details>
 
-<p id="例122" class="prob"><b>例 12.2</b> 已知连续型随机变量 X 的概率密度为 f(x)=x(x∈[0,1)), f(x)=2−x(x∈[1,a)), 其他为 0。求: (1) a; (2) 分布函数 F(x); (3) P{1/2&lt;X&lt;3/2} 【0621(1), 题面经视觉核对修正(原笔记误读为三角密度 1−|x|)】</p>
+<p id="例122" class="prob"><b>例 12.2</b> 已知连续型随机变量 X 的概率密度为 $f(x)=x(x∈[0,1)), f(x)=2−x(x∈[1,a)),$ 其他为 0。求: (1) a; (2) 分布函数 F(x); (3) P{1/2&lt;X&lt;3/2} 【0621(1), 题面经视觉核对修正(原笔记误读为三角密度 $1−|x|)$】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> · <a href="数学_概率论.html#22分布函数必考高频">分布函数</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例123">例 12.3</a> 同为分段密度的积分操作: 本题"定参数→求F→区间概率"一条龙</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) ∫₀¹ xdx + ∫₁ᵃ (2−x)dx = 1 ⇒ 1/2 + [2x−x²/2]₁ᵃ = 1<span class="why">密度全积分 = 1 用于定参数 a: 两段分别积分再相加, 第一段得 1/2。</span></div>
-<div class="step">1/2 + (2a−a²/2) − (2−1/2) = 1 ⇒ 1/2 + 2a−a²/2 − 3/2 = 1 ⇒ 2a−a²/2 = 2 ⇒ a²−4a+4=0 ⇒ a=2<span class="why">代入端点时下限要整体代入: [2x−x²/2]₁ᵃ=(2a−a²/2)−(2−1/2);<b>易错</b>: 漏减下端点 (2−1/2) 是此类题第一错误点; 判别式为零得重根 a=2。</span></div>
-<div class="step">(2) F(x) = 0(x<0); ∫₀ˣ tdt = x²/2(0≤x<1); 1/2+∫₁ˣ(2−t)dt(1≤x<2); 1(x≥2)<span class="why">分布函数 = 从 −∞ 到 x 的累积积分: 第二段从 0 积到 x, 第三段要加上前段总面积 1/2 再续积;<b>易错</b>: 分段点处 F 必须连续衔接(F(1⁻)=1/2=F(1⁺))。</span></div>
+<div class="step">$(1) ∫₀¹ xdx + ∫₁ᵃ (2−x)dx = 1 ⇒ 1/2 + [2x−x²/2]₁ᵃ = 1$<span class="why">密度全积分 = 1 用于定参数 a: 两段分别积分再相加, 第一段得 1/2。</span></div>
+<div class="step">$1/2 + (2a−a²/2) − (2−1/2) = 1 ⇒ 1/2 + 2a−a²/2 − 3/2 = 1 ⇒ 2a−a²/2 = 2 ⇒ a²−4a+4=0 ⇒ a=2$<span class="why">代入端点时下限要整体代入: [2x−x²/2]₁ᵃ=(2a−a²/2)−(2−1/2);<b>易错</b>: 漏减下端点 (2−1/2) 是此类题第一错误点; 判别式为零得重根 a=2。</span></div>
+<div class="step">$(2) F(x) = 0(x&lt;0); ∫₀ˣ tdt = x²/2(0≤x&lt;1); 1/2+∫₁ˣ(2−t)dt(1≤x&lt;2); 1(x≥2)$<span class="why">分布函数 = 从 −∞ 到 x 的累积积分: 第二段从 0 积到 x, 第三段要加上前段总面积 1/2 再续积;<b>易错</b>: 分段点处 F 必须连续衔接(F(1⁻)=1/2=F(1⁺))。</span></div>
 <div class="step">(3) P{1/2&lt;X<3/2} = F(3/2)−F(1/2) = (1/2+∫₁^{3/2}(2−t)dt) − (1/2)(1/2)² = (1/2+3/8)−1/8 = 3/4 <b>【补全】</b><span class="why">F(3/2)=1/2+[2t−t²/2]₁^{3/2}=1/2+3/8=7/8, F(1/2)=x²/2 在 1/2 处 = 1/8, 差 6/8=3/4; 也可直接分段积分: ∫_{1/2}^1 xdx+∫₁^{3/2}(2−x)dx=3/8+3/8, 两法一致。<b>考点</b>: 分段密度"定参数→分布函数→区间概率"三件套, 一遍走完。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分段密度三问三件套: 积分=1 定参数, 累积求 F, F(b)−F(a) 求概率。</div>
 </details>
 
-<p id="例123" class="prob"><b>例 12.3</b> 连续型随机变量 X 的概率密度为 f(x)=2/(π√(1−x²)) (0&lt;x&lt;c), 其他为 0 【0621(1), 题面经视觉核对修正: 分子为 2, c 为积分上限(原笔记误作 c/π√(1−x²)、对称支撑)】
+<p id="例123" class="prob"><b>例 12.3</b> 连续型随机变量 X 的概率密度为 f(x)=2/(π√(1−x²)) (0&lt;x&lt;c), 其他为 0 【0621(1), 题面经视觉核对修正: 分子为 2, c 为积分上限(原笔记误作 $c/π√(1−x²)$、对称支撑)】
 (1) 确定常数 c 的值; (2) 求 X 的分布函数 F(x)</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例122">例 12.2</a> 同为"积分=1 定参数、累积求 F"流程(本题密度超纲, 方法通用)</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) ∫₀ᶜ 2/(π√(1−x²))dx = (2/π)[arcsinx]₀ᶜ = (2/π)arcsin c = 1 ⇒ arcsin c = π/2 ⇒ c=1 <span class="why">∫dx/√(1−x²)=arcsinx 是基本积分公式; 由"积分=1"得 (2/π)arcsin c=1, 故 c=1——c 是积分上限, 不是分子系数;<b>易错</b>: 原笔记把 c 当作密度分子系数(c/(π√(1−x²)))、支撑写成对称 (−1,1), 与课件不符; 本题支撑只在一侧 (0,c)。</span></div>
+<div class="step">$(1) ∫₀ᶜ 2/(π√(1−x²))dx = (2/π)[arcsinx]₀ᶜ = (2/π)arcsin c = 1 ⇒ arcsin c = π/2 ⇒ c=1$ <span class="why">∫dx/√(1−x²)=arcsinx 是基本积分公式; 由"积分=1"得 (2/π)arcsin c=1, 故 c=1——c 是积分上限, 不是分子系数;<b>易错</b>: 原笔记把 c 当作密度分子系数(c/(π√(1−x²)))、支撑写成对称 (−1,1), 与课件不符; 本题支撑只在一侧 (0,c)。</span></div>
 <div class="step">(2) F(x) = ∫₀ˣ 2/(π√(1−t²))dt = (2/π)arcsin x, 0&lt;x<1; F(x)=0(x≤0), F(x)=1(x≥1)<span class="why">F(x) 从支撑左端 0 积到 x: arcsin 从 0 起算, 得 (2/π)arcsin x; 端点 F(1⁻)=(2/π)(π/2)=1, 衔接自然。</span></div>
 <div class="sum skip"><b>※ 偏题</b>: 反正弦分布(超纲教材题): 记住 arcsin 积分公式, 参数-分布函数流程通用。</div>
 </details>
 
 <p id="例124" class="prob"><b>例 12.4</b> 设随机变量 X 的概率密度为 $f(x)=\begin{cases}1-|x|,&amp;|x|&lt;1\\0,&amp;\text{其他}\end{cases}$(三角密度), 求 P{−2&lt;X&lt;1/4} 【0621(1) 页4, 题面按视觉转写定稿】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-1-p04_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-1-p04_1.png" alt="三角密度 f(x)=1−|x| 的曲线图（0621(1) 页4）">
+<div class="figcap">📐 示意图（重绘）: 三角密度 f(x)=1−|x| 的曲线图（0621(1) 页4）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例122">例 12.2</a> 同为分段密度的区间概率: 12.2 定参数三件套, 本题单问概率 + "整体减补集"技巧</li>
 </ul>
 <details><summary>解答</summary>
 <div class="step">密度支撑为 (−1,1): P{−2&lt;X<1/4}=P{−1&lt;X<1/4}<span class="why">−2 落在密度为零的区域, 积分下限从 −2 提到 −1 不改变概率——先看支撑再定积分限。</span></div>
-<div class="step">直接积分: ∫₋₁⁰(1+x)dx+∫₀^{1/4}(1−x)dx = 1/2+7/32 = 23/32<span class="why">|x|<1 时 1−|x| 分段为 1+x(x<0) 与 1−x(x>0); [x+x²/2]₋₁⁰=1/2, [x−x²/2]₀^{1/4}=1/4−1/32=7/32。</span></div>
-<div class="step">技巧(整体减补集): 三角密度总面积 = (1/2)×2×1 = 1; P{X>1/4}=(1/2)(3/4)²=9/32, 故 P{X<1/4}=1−9/32=23/32<span class="why">x>1/4 的部分是直角边 3/4 的等腰直角三角形;<b>考点</b>: 三角/梯形密度用"总面积减补集三角形"比逐段积分快, 与例 8.1(2) 的补集思路同源。</span></div>
+<div class="step">直接积分$: ∫₋₁⁰(1+x)dx+∫₀^{1/4}(1−x)dx = 1/2+7/32 = 23/32$<span class="why">|x|<1 时 1−|x| 分段为 1+x(x<0) 与 1−x(x>0); [x+x²/2]₋₁⁰=1/2, [x−x²/2]₀^{1/4}=1/4−1/32=7/32。</span></div>
+<div class="step">技巧(整体减补集): 三角密度总面积 = (1/2)×2×1 = 1; P{X>1/4}=(1/2)(3/4)²=9/32, 故 $P{X&lt;1/4}=1−9/32=23/32$<span class="why">x>1/4 的部分是直角边 3/4 的等腰直角三角形;<b>考点</b>: 三角/梯形密度用"总面积减补集三角形"比逐段积分快, 与例 8.1(2) 的补集思路同源。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 三角密度区间概率: 分段积分与整体减补集两法互验, 得 23/32。</div>
 </details>
 
@@ -973,6 +1079,13 @@ main details .sum b{font-weight:700}
 </details>
 
 <p id="例126" class="prob"><b>例 12.6</b> 设随机变量 $X$ 的概率密度为 $f(x)=\begin{cases}\frac13,&amp;0\le x\le1\\\frac29,&amp;3\le x\le6\\0,&amp;\text{其他}\end{cases}$, 若 $k$ 使得 $P\{X\ge k\}=\frac23$, 则 $k$ 的取值范围是____。【0808(2) 页3, 电子版 27强化概率论第二章 例2.4】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0808-2-p03_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0808-2-p03_1.png" alt="分段密度 1/3、2/9 的曲线图（0808(2) 页3）">
+<div class="figcap">📐 示意图（重绘）: 分段密度 1/3、2/9 的曲线图（0808(2) 页3）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#24连续型随机变量必考">概率密度(面积法)</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例122">例 12.2</a> 同为分段密度求概率, 本题反解区间</li>
 </ul>
@@ -996,34 +1109,34 @@ main details .sum b{font-weight:700}
 <hr />
 <h2 id="十三八大常见分布">十三、八大常见分布</h2>
 <h3 id="131二项分布">13.1 二项分布</h3>
-<p id="例131" class="prob"><b>例 13.1</b> 设随机变量 X~B(2,p), 随机变量 Y~B(3,p), 若 P{X≥1}=5/9, 则 P{Y≥1}= 【0621(1)]</p>
+<p id="例131" class="prob"><b>例 13.1</b> 设随机变量 X~B(2,p), 随机变量 Y~B(3,p), 若 $P{X≥1}=5/9,$ 则 $P{Y≥1}=$ 【0621(1)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">二项分布</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例91">例 9.1</a> 同用"至少一次=1−(1−p)ⁿ"反解 p: 本题反解后再代入 B(3,p)</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">P{X≥1}=1−P{X=0}=1−(1−p)²=5/9 ⇒ (1−p)²=4/9 ⇒ 1−p=2/3 ⇒ p=1/3<span class="why">二项分布"至少一次"取对立"全不发生": B(2,p) 中 P{X=0}=(1−p)²; 开平方取正根 2/3, 得 p=1/3。</span></div>
-<div class="step">P{Y≥1}=1−(1−p)³=1−(2/3)³=1−8/27=19/27<span class="why">同一个 p 代入 B(3,p): 全不发生 (2/3)³=8/27, 对立即 19/27;<b>易错</b>: p 要先解出再代第二个分布, 不要重复设变量。</span></div>
+<div class="step">$P{X≥1}=1−P{X=0}=1−(1−p)²=5/9 ⇒ (1−p)²=4/9 ⇒ 1−p=2/3 ⇒ p=1/3$<span class="why">二项分布"至少一次"取对立"全不发生": B(2,p) 中 P{X=0}=(1−p)²; 开平方取正根 2/3, 得 p=1/3。</span></div>
+<div class="step">$P{Y≥1}=1−(1−p)³=1−(2/3)³=1−8/27=19/27$<span class="why">同一个 p 代入 B(3,p): 全不发生 (2/3)³=8/27, 对立即 19/27;<b>易错</b>: p 要先解出再代第二个分布, 不要重复设变量。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 二项分布"至少一次"=1−(1−p)ⁿ: 由一分布反解 p, 再求另一分布, 真题原题。</div>
 </details>
 
-<p id="例132" class="prob"><b>例 13.2</b> 设随机变量 X 的概率密度为 f(x)=2x(0&lt;x&lt;1), 其他为 0。以 Y 表示对 X 的三次独立重复观察中事件 {X≤1/2} 出现的次数, 则 P{Y=2}= 【0621(1)]</p>
+<p id="例132" class="prob"><b>例 13.2</b> 设随机变量 X 的概率密度为 f(x)=2x(0&lt;x&lt;1), 其他为 0。以 Y 表示对 X 的三次独立重复观察中事件 ${X≤1/2}$ 出现的次数, 则 P{Y=2}= 【0621(1)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">二项分布</a> · <a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例157">例 15.7</a> 同为"连续分布算单次概率 → 套二项分布"的衔接题</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">p = P{X≤1/2} = ∫₀^{1/2} 2xdx = [x²]₀^{1/2} = 1/4<span class="why">先由密度算"单次观察成功"的概率: 三角形密度在 [0,1/2] 上积分, x² 从 0 到 1/4。</span></div>
+<div class="step">$p = P{X≤1/2} = ∫₀^{1/2} 2xdx = [x²]₀^{1/2} = 1/4$<span class="why">先由密度算"单次观察成功"的概率: 三角形密度在 [0,1/2] 上积分, x² 从 0 到 1/4。</span></div>
 <div class="step">Y~B(3, 1/4), P{Y=2} = C₃²(1/4)²(3/4) = 3×(1/16)×(3/4) = 9/64<span class="why">三次独立重复观察 = 三重伯努利试验, Y 服从二项分布; 恰 2 次成功: C₃² 选位置, 成功概率² × 失败概率;<b>考点</b>: 连续型事件概率与二项分布衔接, 考研经典衔接题。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 密度积分得单次概率 p, 再套二项分布——连续与离散两大板块的衔接题。</div>
 </details>
 
 <h3 id="132泊松分布">13.2 泊松分布</h3>
-<p id="例133" class="prob"><b>例 13.3</b> 设某段时间内通过路口车流量服从泊松分布, 已知该时段内没有车通过的概率为 e^{−1}, 则这段时间内至多有两辆车通过的概率为 【0621(1)]</p>
+<p id="例133" class="prob"><b>例 13.3</b> 设某段时间内通过路口车流量服从泊松分布, 已知该时段内没有车通过的概率为 $e^{−1},$ 则这段时间内至多有两辆车通过的概率为 【0621(1)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">泊松分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例134">例 13.4</a> 同为泊松参数运用: 本题由 P{X=0} 反解 λ 再累加</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">P{X=0}=e^{−λ}=e^{−1} ⇒ λ=1<span class="why">泊松分布 P{X=0}=λ⁰e^{−λ}/0! = e^{−λ}; 与题给 e^{−1} 比对得参数 λ=1。</span></div>
-<div class="step">P{X≤2} = e^{−1}(1 + 1 + 1/2) = e^{−1}·5/2 = 5/(2e)<span class="why">λ=1 时 P{X=k}=e^{−1}/k!: 前三项 k=0,1,2 相加, 提出公因子 e^{−1} 得 1+1+1/2=5/2;<b>易错</b>: "至多两辆"含 k=0,1,2 三项, 别漏 k=0 项。</span></div>
+<div class="step">$P{X=0}=e^{−λ}=e^{−1} ⇒ λ=1$<span class="why">泊松分布 P{X=0}=λ⁰e^{−λ}/0! = e^{−λ}; 与题给 e^{−1} 比对得参数 λ=1。</span></div>
+<div class="step">$P{X≤2} = e^{−1}(1 + 1 + 1/2) = e^{−1}$·5/2 = 5/(2e)<span class="why">λ=1 时 P{X=k}=e^{−1}/k!: 前三项 k=0,1,2 相加, 提出公因子 e^{−1} 得 1+1+1/2=5/2;<b>易错</b>: "至多两辆"含 k=0,1,2 三项, 别漏 k=0 项。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 泊松分布: 由 P{X=0} 反解 λ, 再累加前几项——两步固定套路。</div>
 </details>
 
@@ -1032,8 +1145,8 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">泊松分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例133">例 13.3</a> 同为泊松两问套路: 点概率代公式、"至少一次"取对立</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">P{X=2} = (0.3²e^{−0.3})/2! = 0.045e^{−0.3} ≈ 0.0333<span class="why">泊松公式 P{X=k}=λᵏe^{−λ}/k! 直接代入 k=2、λ=0.3; 0.045×e^{−0.3}≈0.045×0.741≈0.0333。</span></div>
-<div class="step">P{X≥1} = 1−P{X=0} = 1−e^{−0.3}<span class="why">"至少一次"取对立"一次都没有": P{X=0}=e^{−λ}=e^{−0.3};<b>易错</b>: λ 是单位时间平均发生数 0.3, 别与概率本身混淆。</span></div>
+<div class="step">$P{X=2} = (0.3²e^{−0.3})/2! = 0.045e^{−0.3} ≈ 0.0333$<span class="why">泊松公式 P{X=k}=λᵏe^{−λ}/k! 直接代入 k=2、λ=0.3; 0.045×e^{−0.3}≈0.045×0.741≈0.0333。</span></div>
+<div class="step">$P{X≥1} = 1−P{X=0} = 1−e^{−0.3}$<span class="why">"至少一次"取对立"一次都没有": P{X=0}=e^{−λ}=e^{−0.3};<b>易错</b>: λ 是单位时间平均发生数 0.3, 别与概率本身混淆。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 泊松两问套路: 点概率直接代公式, "至少一次"取对立, 送分题。</div>
 </details>
 
@@ -1042,7 +1155,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">泊松分布</a> · <a href="数学_概率论.html#23离散型随机变量必考">离散型变量</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例113">例 11.3</a> 同用"分布律归一化反解常数"</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">Σ_{k=0}^{∞} a·λᵏ/k! = a·e^λ = 1 ⇒ a = e^{−λ} <b>【修正】</b><span class="why">Σλᵏ/k! = e^λ 是 e 的幂级数展开, 分布律概率和 = 1 直接定 a; 与标准泊松 P{X=k}=λᵏe^{−λ}/k! 对照, a=e^{−λ} 恰好吻合, 说明它本质就是泊松分布, 数值确定, 原<span class="mk warn">数值不清</span>标记解除。</span></div>
+<div class="step">$Σ_{k=0}^{∞} a$·λᵏ/k! = a·e^λ = 1 ⇒ a = e^{−λ} <b>【修正】</b><span class="why">Σλᵏ/k! = e^λ 是 e 的幂级数展开, 分布律概率和 = 1 直接定 a; 与标准泊松 P{X=k}=λᵏe^{−λ}/k! 对照, a=e^{−λ} 恰好吻合, 说明它本质就是泊松分布, 数值确定, 原<span class="mk warn">数值不清</span>标记解除。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 用幂级数 Σλᵏ/k!=e^λ 定常数: 识别泊松分布系数, 送分题。</div>
 </details>
 
@@ -1052,19 +1165,26 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">几何分布</a> · <a href="数学_概率论.html#18三大经典概型必考">伯努利概型</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1411">例 14.11</a> 同为伯努利序列"第几次"概率: 本题 k=1 即几何分布, 14.11 需组合数</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">每次抛掷, 至少一个 1 点的概率: 1−(5/6)² = 1−25/36 = 11/36<span class="why">两个骰子都不出 1 的概率 (5/6)², 取对立得"至少一个 1"= 11/36(36 种结果中 11 种含 1)。</span></div>
-<div class="step">P{X=k} = (25/36)^{k−1}·(11/36), k=1,2,... —— 几何分布 G(11/36)<span class="why">几何分布"首次成功": 前 k−1 次都失败(每次概率 25/36)且第 k 次首次成功(11/36);<b>易错</b>: 单次成功概率是 11/36(两骰至少一个 1), 不是 1/36(两骰都是 1)。</span></div>
+<div class="step">每次抛掷, 至少一个 1 点的概率$: 1−(5/6)² = 1−25/36 = 11/36$<span class="why">两个骰子都不出 1 的概率 (5/6)², 取对立得"至少一个 1"= 11/36(36 种结果中 11 种含 1)。</span></div>
+<div class="step">$P{X=k} = (25/36)^{k−1}$·(11/36), k=1,2,... —— 几何分布 G(11/36)<span class="why">几何分布"首次成功": 前 k−1 次都失败(每次概率 25/36)且第 k 次首次成功(11/36);<b>易错</b>: 单次成功概率是 11/36(两骰至少一个 1), 不是 1/36(两骰都是 1)。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 几何分布: "直到首次成功"的次数, 前 k−1 失败 × 第 k 次成功, 试验次数本身是变量。</div>
 </details>
 
 <h3 id="134均匀分布">13.4 均匀分布</h3>
 <p id="例137" class="prob"><b>例 13.7</b> 随机变量 K 在 [0,5] 上服从均匀分布, 则方程 4x²+4Kx+K+2=0 有实根的概率为 【0621(1)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-1-p19_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-1-p19_1.png" alt="均匀分布方程有实根的数轴图（0621(1) 页19）">
+<div class="figcap">📐 示意图（重绘）: 均匀分布方程有实根的数轴图（0621(1) 页19）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">均匀分布</a> · <a href="数学_概率论.html#18三大经典概型必考">几何概型</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例81">例 8.1</a> 同为区间长度比求概率: 本题先化判别式为随机事件</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">判别式 Δ = 16K²−16(K+2) = 16(K²−K−2) = 16(K−2)(K+1) ≥ 0<span class="why">一元二次方程有实根 ⇔ Δ≥0; 系数含随机变量 K, 判别式变成关于 K 的随机不等式, 概率随之化为几何概型长度比。</span></div>
-<div class="step">由于 K∈[0,5], K+1>0, 只需 K≥2。概率 = (5−2)/5 = 3/5<span class="why">Δ≥0 ⇔ (K−2)(K+1)≥0; K+1 在 [0,5] 上恒正, 故等价于 K≥2; 均匀分布按长度比 (5−2)/5=3/5。<b>易错</b>: 二次项系数 4>0 恒成立才敢直接用判别式, 且要先讨论因式正负。</span></div>
+<div class="step">判别式 $Δ = 16K²−16(K+2) = 16(K²−K−2) = 16(K−2)(K+1) ≥ 0$<span class="why">一元二次方程有实根 ⇔ Δ≥0; 系数含随机变量 K, 判别式变成关于 K 的随机不等式, 概率随之化为几何概型长度比。</span></div>
+<div class="step">由于 $K∈[0,5], K+1>0,$ 只需 K≥2。概率 $= (5−2)/5 = 3/5$<span class="why">Δ≥0 ⇔ (K−2)(K+1)≥0; K+1 在 [0,5] 上恒正, 故等价于 K≥2; 均匀分布按长度比 (5−2)/5=3/5。<b>易错</b>: 二次项系数 4>0 恒成立才敢直接用判别式, 且要先讨论因式正负。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 随机系数方程有实根: 判别式化随机事件 + 均匀分布长度比, 考研真题。</div>
 </details>
 
@@ -1078,13 +1198,13 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: 指数分布无记忆性: 条件概率化到与 a 无关的 P{Y<1}, 高频结论题。</div>
 </details>
 
-<p id="例139" class="prob"><b>例 13.9</b> 某仪器装有三只独立工作的同型号电子元件, 其寿命(单位: 小时)都服从同一指数分布, 分布密度为 f(x)=(1/600)e^{−x/600} (x&gt;0)。试求: 在仪器使用的最初 200 小时内, 至少有一只电子元件损坏的概率 【0621(1)]</p>
+<p id="例139" class="prob"><b>例 13.9</b> 某仪器装有三只独立工作的同型号电子元件, 其寿命(单位: 小时)都服从同一指数分布, 分布密度为 $f(x)=(1/600)e^{−x/600} (x>0)$。试求: 在仪器使用的最初 200 小时内, 至少有一只电子元件损坏的概率 【0621(1)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">指数分布</a> · <a href="数学_概率论.html#16事件的独立性必考易错">独立性</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例138">例 13.8</a> 同为指数分布应用: 本题"至少一只坏=1−全完好"</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">单只元件在 200h 内损坏概率: p = P{X≤200} = 1−e^{−200/600} = 1−e^{−1/3}<span class="why">指数分布寿命的分布函数: P{X≤t}=1−e^{−t/θ}(θ=600 是平均寿命), 代入 t=200。</span></div>
-<div class="step">三只独立, 至少一只损坏: 1−(1−p)³ = 1−(e^{−1/3})³ = 1−e^{−1}<span class="why">"至少一只"取对立"三只都完好": 独立同分布三只都完好的概率 (e^{−1/3})³=e^{−1};<b>考点</b>: 元件独立寿命题一律"至少一只坏 = 1−全完好"。</span></div>
+<div class="step">单只元件在 200h 内损坏概率$: p = P{X≤200} = 1−e^{−200/600} = 1−e^{−1/3}$<span class="why">指数分布寿命的分布函数: P{X≤t}=1−e^{−t/θ}(θ=600 是平均寿命), 代入 t=200。</span></div>
+<div class="step">三只独立, 至少一只损坏$: 1−(1−p)³ = 1−(e^{−1/3})³ = 1−e^{−1}$<span class="why">"至少一只"取对立"三只都完好": 独立同分布三只都完好的概率 (e^{−1/3})³=e^{−1};<b>考点</b>: 元件独立寿命题一律"至少一只坏 = 1−全完好"。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 指数寿命 + 独立元件"至少一只损坏"取对立; 指数幂运算 (e^{−1/3})³=e^{−1} 要熟。</div>
 </details>
 
@@ -1094,55 +1214,76 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">正态分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1312">例 13.12</a> 同为"由密度表达式反读正态参数": 本题多一步配方比归一化系数</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">配方: −x²+x = −(x²−x+1/4)+1/4 = −(x−1/2)²+1/4<span class="why">二次指数配成 −(x−μ)² 的形式是识别正态分布的第一步; 配方产生的常数项 1/4 提出来成为系数因子 e^{1/4}。</span></div>
-<div class="step">c·e^{−x²+x} = c·e^{1/4}·e^{−(x−1/2)²}。对比 N(1/2, 1/2) 的密度: (1/√(2π·1/2))·e^{−(x−1/2)²/(2·1/2)}<span class="fill">【AI补全】</span><span class="why">由指数部分 −(x−1/2)² 反推 2σ²=1 即 σ²=1/2, μ=1/2; 正态密度归一化系数 1/√(2πσ²)=1/√π。</span></div>
-<div class="step">2σ²=1 ⇒ σ²=1/2。密度: (1/√π)·e^{−(x−1/2)²} = c·e^{1/4}·e^{−(x−1/2)²} ⇒ c·e^{1/4}=1/√π ⇒ c=e^{−1/4}/√π<span class="why">指数部分完全一致后系数必须相等: c·e^{1/4}=1/√π;<b>易错</b>: 配方常数 e^{1/4} 不能丢, 否则 c 会差一个因子。</span></div>
+<div class="step">配方$: −x²+x = −(x²−x+1/4)+1/4 = −(x−1/2)²+1/4$<span class="why">二次指数配成 −(x−μ)² 的形式是识别正态分布的第一步; 配方产生的常数项 1/4 提出来成为系数因子 e^{1/4}。</span></div>
+<div class="step">c·$e^{−x²+x} = c$·$e^{1/4}$·$e^{−(x−1/2)²}$。对比 N(1/2, 1/2) 的密度$: (1/√(2π$·1/2))·$e^{−(x−1/2)²/(2$·1/2)}<span class="fill">【AI补全】</span><span class="why">由指数部分 −(x−1/2)² 反推 2σ²=1 即 σ²=1/2, μ=1/2; 正态密度归一化系数 1/√(2πσ²)=1/√π。</span></div>
+<div class="step">$2σ²=1 ⇒ σ²=1/2$。密度$: (1/√π)$·$e^{−(x−1/2)²} = c$·$e^{1/4}$·$e^{−(x−1/2)²} ⇒ c$·$e^{1/4}=1/√π ⇒ c=e^{−1/4}/√π$<span class="why">指数部分完全一致后系数必须相等: c·e^{1/4}=1/√π;<b>易错</b>: 配方常数 e^{1/4} 不能丢, 否则 c 会差一个因子。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 指数配方反求正态: 配 −(x−μ)² 定 μ、σ², 再比归一化系数, 高频技巧。</div>
 </details>
 
-<p id="例1311" class="prob"><b>例 13.11</b> 设随机变量 X 与 Y 均服从正态分布, X~N(μ,4²), Y~N(μ,5²), 记 p₁=P{X&lt;μ−4}, p₂=P{Y≥μ+5}, 则 【0621(2)]
-(A) 对任何实数 μ, 都有 p₁=p₂ (B) 对任何实数 μ, 都有 p₁<p₂ (C) 只对 μ 的个别值, p₁=p₂ (D) 对任何实数 μ, 都有 p₁>p₂</p>
+<p id="例1311" class="prob"><b>例 13.11</b> 设随机变量 X 与 Y 均服从正态分布, X~N(μ,4²), Y~N(μ,5²), 记 $p₁=P{X&lt;μ−4}, p₂=P{Y≥μ+5},$ 则 【0621(2)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-2-p04_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-2-p04_1.png" alt="两个正态密度曲线比较 p₁,p₂（0621(2) 页4）">
+<div class="figcap">📐 示意图（重绘）: 两个正态密度曲线比较 p₁,p₂（0621(2) 页4）</div>
+</div>
+</details>
+
+<p>(A) 对任何实数 μ, 都有 p₁=p₂ (B) 对任何实数 μ, 都有 p₁<p₂ (C) 只对 μ 的个别值, p₁=p₂ (D) 对任何实数 μ, 都有 p₁>p₂</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">正态分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1313">例 13.13</a> 同为正态对称性: 本题"距均值 k 个标准差与 μ 无关", 13.13 化为 F(μ+x)+F(μ−x)=1</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">标准化: (X−μ)/4~N(0,1), p₁ = P{X&lt;μ−4} = P{Z<−1} = Φ(−1) = 1−Φ(1)<span class="why">X&lt;μ−4 ⇔ (X−μ)/4<−1: 标准化把任意正态 N(μ,σ²) 平移到 N(0,1), 概率只依赖"几倍标准差"。</span></div>
-<div class="step">(Y−μ)/5~N(0,1), p₂ = P{Y≥μ+5} = P{Z≥1} = 1−Φ(1)<span class="why">Y≥μ+5 ⇔ Z≥1; P{Z≥1}=1−Φ(1) 是标准正态的上尾概率。</span></div>
+<div class="step">标准化$: (X−μ)/4~N(0,1), p₁ = P{X&lt;μ−4} = P{Z&lt;−1} = Φ(−1) = 1−Φ(1)$<span class="why">X&lt;μ−4 ⇔ (X−μ)/4<−1: 标准化把任意正态 N(μ,σ²) 平移到 N(0,1), 概率只依赖"几倍标准差"。</span></div>
+<div class="step">$(Y−μ)/5~N(0,1), p₂ = P{Y≥μ+5} = P{Z≥1} = 1−Φ(1)$<span class="why">Y≥μ+5 ⇔ Z≥1; P{Z≥1}=1−Φ(1) 是标准正态的上尾概率。</span></div>
 <div class="step">p₁=p₂ 恒成立(与 μ 无关)。选 (A)<span class="why">两概率都是 1−Φ(1): 距均值 1 个标准差的事件概率相同;<b>易错</b>: 概率与具体 μ 无关, 只与"到均值的距离 ÷ 标准差"有关, 这是标准化的意义。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 标准化思想: 距均值 k 个标准差的概率与 μ 无关, 考研真题原题。</div>
 </details>
 
-<p id="例1312" class="prob"><b>例 13.12</b> 设随机变量 X 的概率密度为 f(x)=(1/(2√π))·e^{−(x+3)²/4}, 则服从标准正态分布 N(0,1) 的随机变量为 【0621(2)]
+<p id="例1312" class="prob"><b>例 13.12</b> 设随机变量 X 的概率密度为 $f(x)=(1/(2√π))$·$e^{−(x+3)²/4},$ 则服从标准正态分布 N(0,1) 的随机变量为 【0621(2)]
 (A) (X+3)/2 (B) (X+3)/√2 (C) (X−3)/2 (D) (X−3)/√2</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">正态分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1310">例 13.10</a> 同为密度反读参数 <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例158">例 15.8</a> 同型真题重复, 附录 S.1 有速记版</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">对比 N(μ,σ²) 密度: 分母 2√π, (x+3)²/4 = (x−(−3))²/(2·2) ⇒ σ²=2, μ=−3<span class="why">指数分母 4=2σ² 得 σ²=2; x+3=x−(−3) 得 μ=−3; 归一化系数 1/(σ√(2π))=1/(2√π) 与分母 2√π 自洽验证。</span></div>
-<div class="step">标准化: (X−(−3))/√2 = (X+3)/√2。选 (B)<span class="why">标准化公式 (X−μ)/σ: 代入 μ=−3、σ=√2;<b>易错</b>: μ 是 −3 不是 3——看错符号会选成 (D)。</span></div>
+<div class="step">对比 N(μ,σ²) 密度: 分母 $2√π, (x+3)²/4 = (x−(−3))²/(2$·$2) ⇒ σ²=2, μ=−3$<span class="why">指数分母 4=2σ² 得 σ²=2; x+3=x−(−3) 得 μ=−3; 归一化系数 1/(σ√(2π))=1/(2√π) 与分母 2√π 自洽验证。</span></div>
+<div class="step">标准化$: (X−(−3))/√2 = (X+3)/√2$。选 (B)<span class="why">标准化公式 (X−μ)/σ: 代入 μ=−3、σ=√2;<b>易错</b>: μ 是 −3 不是 3——看错符号会选成 (D)。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 由密度反推 N(μ,σ²) 再标准化: 指数分母=2σ²、μ 的符号是两大易错点。</div>
 </details>
 
-<p id="例1313" class="prob"><b>例 13.13</b> 设随机变量 X 服从正态分布 N(μ,σ²), 其分布函数为 F(x), 则有 【0621(2)]
-(A) F(μ+x)+F(μ−x)=1 (B) F(μ+x)+F(μ−x)=0 (C) F(μ+x)+F(μ−x)&gt;0 (D) F(μ+x)−F(μ−x)=0</p>
+<p id="例1313" class="prob"><b>例 13.13</b> 设随机变量 X 服从正态分布 N(μ,σ²), 其分布函数为 F(x), 则有 【0621(2)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-2-p06_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-2-p06_1.png" alt="正态密度关于 μ 对称的曲线图（0621(2) 页6）">
+<div class="figcap">📐 示意图（重绘）: 正态密度关于 μ 对称的曲线图（0621(2) 页6）</div>
+</div>
+</details>
+
+<p>(A) F(μ+x)+F(μ−x)=1 (B) F(μ+x)+F(μ−x)=0 (C) F(μ+x)+F(μ−x)&gt;0 (D) F(μ+x)−F(μ−x)=0</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">正态分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1311">例 13.11</a> 同为 μ 对称性: 13.11 用标准化, 本题用分布函数对称公式</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">正态密度关于 μ 对称, 故 P{X≤μ+x}=P{X≥μ−x}=1−F(μ−x) <span class="fill">【AI补全】</span><span class="why">对称性: 落在 μ 左侧 x 处与右侧 x 处等概率; 右侧事件 {X≥μ−x} 的概率用 1−F(μ−x) 表示(连续型下端点等号无影响)。</span></div>
-<div class="step">F(μ+x) = 1−F(μ−x) ⇒ F(μ+x)+F(μ−x)=1。选 (A)<span class="why">把上一步等式换回分布函数记号即得结论;<b>考点</b>: 正态对称性在分布函数上的标准形式 F(μ+x)+F(μ−x)=1, 常考。</span></div>
+<div class="step">正态密度关于 μ 对称, 故 $P{X≤μ+x}=P{X≥μ−x}=1−F(μ−x)$ <span class="fill">【AI补全】</span><span class="why">对称性: 落在 μ 左侧 x 处与右侧 x 处等概率; 右侧事件 {X≥μ−x} 的概率用 1−F(μ−x) 表示(连续型下端点等号无影响)。</span></div>
+<div class="step">$F(μ+x) = 1−F(μ−x) ⇒ F(μ+x)+F(μ−x)=1$。选 (A)<span class="why">把上一步等式换回分布函数记号即得结论;<b>考点</b>: 正态对称性在分布函数上的标准形式 F(μ+x)+F(μ−x)=1, 常考。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 正态对称性: F(μ+x)+F(μ−x)=1, 分布函数层的对称公式, 高频。</div>
 </details>
 
-<p id="例1314" class="prob"><b>例 13.14</b> 设随机变量 X 服从正态分布 N(0,1), 对给定的 α∈(0,1), 数 u_α 满足 P{X&gt;u_α}=α, 若 P{|X|&lt;x}=α, 则 x 等于 【0621(2)]
-(A) u_{α/2} (B) u_{1−α/2} (C) u_{1−α} (D) u_{α}</p>
+<p id="例1314" class="prob"><b>例 13.14</b> 设随机变量 X 服从正态分布 N(0,1), 对给定的 $α∈(0,1),$ 数 u_α 满足 P{X&gt;u_α}=α, 若 P{|X|&lt;x}=α, 则 x 等于 【0621(2)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-2-p07_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-2-p07_1.png" alt="标准正态分位点 u_α 的尾区域图（0621(2) 页7）">
+<div class="figcap">📐 示意图（重绘）: 标准正态分位点 u_α 的尾区域图（0621(2) 页7）</div>
+</div>
+</details>
+
+<p>(A) u_{α/2} (B) u_{1−α/2} (C) u_{1−α} (D) u_{α}</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">正态分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例S2">例 S.2</a> 同题速记版收录于附录</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">P{|X|&lt;x}=α ⇒ P{X<−x 或 X>x}=1−α ⇒ 2P{X>x}=1−α ⇒ P{X>x}=(1−α)/2<span class="why">|X|≥x 是两尾事件(连续型端点无影响); 由标准正态对称性两尾概率相等, 各占 (1−α)/2。</span></div>
-<div class="step">即 x = u_{(1−α)/2}。注意 P{X>u_α}=α 的定义 <span class="fill">【AI补全】</span><span class="why">u_α 是上 α 分位点: 右侧尾概率为 α; 现在要求右侧尾概率 (1−α)/2 的分位点, 由定义直接对应。</span></div>
-<div class="step">选 (C)。注意选项 (C) 应印作 u_{(1−α)/2}, 本文件 OCR 丢了下标中的 "/2" <b>【修正】</b><span class="why">这是考研真题原题, 原四选项为 u_{α/2}、u_{1−α/2}、u_{(1−α)/2}、u_{1−α};<b>易错</b>: u_{α/2} 对应双侧各 α/2 的情形(P{|X|>u_{α/2}}=α), 与本题的 (1−α)/2 不同, 别混淆。</span></div>
+<div class="step">$P\{|X|&lt;x\}=\alpha\Rightarrow P\{X&lt;-x\ \text{或}\ X>x\}=1-\alpha\Rightarrow 2P\{X>x\}=1-\alpha\Rightarrow P\{X>x\}=(1-\alpha)/2$<span class="why">|X|≥x 是两尾事件(连续型端点无影响); 由标准正态对称性两尾概率相等, 各占 (1−α)/2。</span></div>
+<div class="step">即 $x = u_{(1−α)/2}$。注意 P{X>u_α}=α 的定义 <span class="fill">【AI补全】</span><span class="why">u_α 是上 α 分位点: 右侧尾概率为 α; 现在要求右侧尾概率 (1−α)/2 的分位点, 由定义直接对应。</span></div>
+<div class="step">选 (C)。注意选项 (C) 应印作 $u_{(1−α)/2},$ 本文件 OCR 丢了下标中的 "/2" <b>【修正】</b><span class="why">这是考研真题原题, 原四选项为 u_{α/2}、u_{1−α/2}、u_{(1−α)/2}、u_{1−α};<b>易错</b>: u_{α/2} 对应双侧各 α/2 的情形(P{|X|>u_{α/2}}=α), 与本题的 (1−α)/2 不同, 别混淆。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分位点语言: |X|&lt;x 拆两尾, x=u_{(1−α)/2}; 选项 (C) 的 "/2" 被 OCR 吞掉, 答案仍为 (C)。</div>
 </details>
 
@@ -1151,9 +1292,9 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">指数分布</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例139">例 13.9</a> 同为指数元件寿命: 13.9 用"至少一只坏"取对立, 本题直接求 min/max 分布 <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例188">例 18.8</a> min~E(nλ) 的期望方差在数字特征章节接续</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) 只要有一个元件工作即可 ⇒ 并联 ⇒ T₁=max{X₁,X₂,X₃}: F_{T₁}(t)=P{max≤t}=P{X₁≤t,X₂≤t,X₃≤t}=(1−e^{−λt})³ (t>0)<span class="why">"至少一个能工作"的系统坚持到最后一个元件损坏, 即最长寿命;<b>易错</b>: 先判模型再写公式——"只要一个"对应 max, "全部"对应 min, 方向反了整题全错。</span></div>
-<div class="step">f_{T₁}(t)=F'_{T₁}(t)=3λ(1−e^{−λt})²e^{−λt} (t>0)<span class="why">链式求导: 3(1−e^{−λt})²·λe^{−λt}; 推广到 n 个元件: f_{max}(t)=nλ(1−e^{−λt})^{n−1}e^{−λt}。</span></div>
-<div class="step">(2) 三个都无故障才工作 ⇒ 串联 ⇒ T₂=min{X₁,X₂,X₃}: P{T₂>t}=P{X₁>t,X₂>t,X₃>t}=(e^{−λt})³=e^{−3λt}, 故 f_{T₂}(t)=3λe^{−3λt} (t>0)<span class="why">min>t ⟺ 全部>t, 独立事件概率相乘;<b>考点</b>: 指数族 min 仍是指数, 参数 nλ——T₂~E(3λ), 与例 18.8 的结论一致。</span></div>
+<div class="step">(1) 只要有一个元件工作即可 ⇒ 并联 $⇒ T₁=max{X₁,X₂,X₃}: F_{T₁}(t)=P{max≤t}=P{X₁≤t,X₂≤t,X₃≤t}=(1−e^{−λt})³ (t>0)$<span class="why">"至少一个能工作"的系统坚持到最后一个元件损坏, 即最长寿命;<b>易错</b>: 先判模型再写公式——"只要一个"对应 max, "全部"对应 min, 方向反了整题全错。</span></div>
+<div class="step">$f_{T₁}(t)=F'_{T₁}(t)=3λ(1−e^{−λt})²e^{−λt} (t>0)$<span class="why">链式求导: 3(1−e^{−λt})²·λe^{−λt}; 推广到 n 个元件: f_{max}(t)=nλ(1−e^{−λt})^{n−1}e^{−λt}。</span></div>
+<div class="step">(2) 三个都无故障才工作 ⇒ 串联 $⇒ T₂=min{X₁,X₂,X₃}: P{T₂>t}=P{X₁>t,X₂>t,X₃>t}=(e^{−λt})³=e^{−3λt},$ 故 $f_{T₂}(t)=3λe^{−3λt} (t>0)$<span class="why">min>t ⟺ 全部>t, 独立事件概率相乘;<b>考点</b>: 指数族 min 仍是指数, 参数 nλ——T₂~E(3λ), 与例 18.8 的结论一致。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 电路可靠性: 并联 max、串联 min; min 仍指数(参数 nλ), max 密度由分布函数求导。</div>
 </details>
 
@@ -1195,10 +1336,10 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#15条件概率必考">条件概率</a> · <a href="数学_概率论.html#12事件的关系与运算必考">事件关系与运算</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例145">例 14.5</a> 同为"概率条件 ⇔ 事件包含"的互译: 本题 P(A|B)=1 ⇔ B⊂A</li>
 </ul>
 <p><details><summary>解答</summary></p>
-<div class="step">P(A|B)=P(AB)/P(B)=1 ⇒ P(AB)=P(B) ⇒ B⊂A (几乎处处)<span class="why">条件概率公式把"给定 B 下 A 必发生"翻译成事件包含关系 P(AB)=P(B), 即 B 的发生蕴含 A 的发生;<b>考点</b>: P(A|B)=1 ⇔ B⊂A, 常考转换。</span></div>
+<div class="step">$P(A|B)=P(AB)/P(B)=1 ⇒ P(AB)=P(B) ⇒ B⊂A$ (几乎处处)<span class="why">条件概率公式把"给定 B 下 A 必发生"翻译成事件包含关系 P(AB)=P(B), 即 B 的发生蕴含 A 的发生;<b>考点</b>: P(A|B)=1 ⇔ B⊂A, 常考转换。</span></div>
 <div class="step">(A) P(B|A)=P(AB)/P(A)=P(B)/P(A) 不一定为 1<span class="why">A 的"范围"比 B 大, 已知 A 发生不能保证 B 发生;<b>易错</b>: 条件概率的方向不能随意反转,P(A|B)=1 推不出 P(B|A)=1。</span></div>
-<div class="step">(B) P(Ā|B)=1−P(A|B)=0 ✓<span class="why">同一条件下两对立事件的条件概率互补: P(Ā|B)=1−P(A|B); 这是唯一恒成立的选项。</span></div>
-<div class="step">(C) P(A∪B)=P(A)+P(B)−P(AB)=P(A) 不一定为 1<span class="why">把 P(AB)=P(B) 代入并事件公式, 只剩 P(A); 题干没有 P(A)=1 的条件, (C) 不恒成立。</span></div>
+<div class="step">$(B) P(Ā|B)=1−P(A|B)=0 ✓$<span class="why">同一条件下两对立事件的条件概率互补: P(Ā|B)=1−P(A|B); 这是唯一恒成立的选项。</span></div>
+<div class="step">$(C) P(A∪B)=P(A)+P(B)−P(AB)=P(A)$ 不一定为 1<span class="why">把 P(AB)=P(B) 代入并事件公式, 只剩 P(A); 题干没有 P(A)=1 的条件, (C) 不恒成立。</span></div>
 <div class="step">选 (B)<span class="why">四选项逐一排除: 只有 (B) 由条件概率互补性恒等于 0, 与 P(A),P(B) 的具体取值无关。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: P(A|B)=1 ⇔ B⊂A 的翻译 + 条件概率互补性, 真题选择题, 送分。</div>
 </details>
@@ -1208,8 +1349,8 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#15条件概率必考">条件概率</a> · <a href="数学_概率论.html#16事件的独立性必考易错">独立性</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例143">例 14.3</a> 同为条件概率形式判据: 本题不等式 ⇔ 正相关, 14.3 等式 ⇔ 独立</li>
 </ul>
 <p><details><summary>解答</summary></p>
-<div class="step">P(A|B)>P(A|B̄) ⇔ P(AB)/P(B) > P(AB̄)/(1−P(B))<span class="why">条件概率定义展开: P(A|B)=P(AB)/P(B), P(A|B̄)=P(AB̄)/(1−P(B)); 其中 P(AB̄)=P(A)−P(AB) 是 A 中不含 B 的部分。</span></div>
-<div class="step">展开 ⇒ P(AB)(1−P(B)) > P(B)(P(A)−P(AB)) ⇒ P(AB) > P(A)P(B)<span class="why">两边同乘正数 P(B)(1−P(B)) 去分母, 移项后 ±P(AB)P(B) 抵消;<b>考点</b>: 条件概率不等式最终等价于 P(AB)>P(A)P(B), 即 A,B 正相关。</span></div>
+<div class="step">$P(A|B)>P(A|B̄) ⇔ P(AB)/P(B) > P(AB̄)/(1−P(B))$<span class="why">条件概率定义展开: P(A|B)=P(AB)/P(B), P(A|B̄)=P(AB̄)/(1−P(B)); 其中 P(AB̄)=P(A)−P(AB) 是 A 中不含 B 的部分。</span></div>
+<div class="step">展开 $⇒ P(AB)(1−P(B)) > P(B)(P(A)−P(AB)) ⇒ P(AB) > P(A)P(B)$<span class="why">两边同乘正数 P(B)(1−P(B)) 去分母, 移项后 ±P(AB)P(B) 抵消;<b>考点</b>: 条件概率不等式最终等价于 P(AB)>P(A)P(B), 即 A,B 正相关。</span></div>
 <div class="step">同样推导 P(B|A) > P(B|Ā) ⇔ P(AB) > P(A)P(B)。选 (A)<span class="why">对称展开 P(B|A)=P(AB)/P(A) 与 P(B|Ā)=(P(B)−P(AB))/(1−P(A)), 化简得到同一个不等式;<b>易错</b>: (B) 是 (A) 的反方向, (C)(D) 含 B̄ 的组合与目标式不等价。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 条件概率不等式 ⇔ P(AB)>P(A)P(B): 正相关的双向等价推导, 高频。</div>
 </details>
@@ -1219,8 +1360,8 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#16事件的独立性必考易错">独立性</a> · <a href="数学_概率论.html#15条件概率必考">条件概率</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例142">例 14.2</a> 同为条件概率判独立(等式/不等式对照) <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例41">例 4.1</a> 同为 P(A|B)=P(A|B̄) 型判据</li>
 </ul>
 <p><details><summary>解答</summary></p>
-<div class="step">P(A|B)+P(Ā|B̄)=1 ⇒ P(A|B)=1−P(Ā|B̄)=P(A|B̄)<span class="why">条件概率互补性: 给定 B̄ 时 P(Ā|B̄)=1−P(A|B̄); 代入题设即得 P(A|B)=P(A|B̄), 两个互斥条件下的概率相等。</span></div>
-<div class="step">P(A|B)=P(A|B̄) ⇔ P(AB)/P(B) = (P(A)−P(AB))/(1−P(B)) ⇔ P(AB)=P(A)P(B)<span class="why">交叉相乘化简: 两边乘 P(B)(1−P(B)) 后 P(AB)P(B) 抵消, 恰好得到独立判定式;<b>考点</b>: "知道 B 与否不影响 A 的概率"正是独立的定义。</span></div>
+<div class="step">$P(A|B)+P(Ā|B̄)=1 ⇒ P(A|B)=1−P(Ā|B̄)=P(A|B̄)$<span class="why">条件概率互补性: 给定 B̄ 时 P(Ā|B̄)=1−P(A|B̄); 代入题设即得 P(A|B)=P(A|B̄), 两个互斥条件下的概率相等。</span></div>
+<div class="step">$P(A|B)=P(A|B̄) ⇔ P(AB)/P(B) = (P(A)−P(AB))/(1−P(B)) ⇔ P(AB)=P(A)P(B)$<span class="why">交叉相乘化简: 两边乘 P(B)(1−P(B)) 后 P(AB)P(B) 抵消, 恰好得到独立判定式;<b>考点</b>: "知道 B 与否不影响 A 的概率"正是独立的定义。</span></div>
 <div class="step">选 (C)<span class="why">互不相容与互逆是事件关系层面的概念, 与这里的概率等式无关; 结论是 A 与 B 相互独立。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: P(A|B)=P(A|B̄) ⇔ 独立: 条件概率版的独立判定, 考研选择题常客。</div>
 </details>
@@ -1230,9 +1371,9 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#16事件的独立性必考易错">独立性</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例43">例 4.3</a> 同为三事件独立: 4.3 补 P(ABC) 充要条件, 本题用运算封闭性逐个验</li>
 </ul>
 <p><details><summary>解答</summary></p>
-<div class="step">(A) A∪B 与 C: P((A∪B)C)=P(AC∪BC)=P(AC)+P(BC)−P(ABC)=P(C)(P(A)+P(B)−P(AB))=P(C)P(A∪B), 独立 ✓<span class="why">相互独立时事件经交、并、差运算后仍与其余事件独立: 展开并事件后每一项都拆成乘积, 提出 P(C) 因子即验证等式;<b>考点</b>: 独立性的"代数封闭性"是判断这类选项的捷径。</span></div>
-<div class="step">(B) AC̄ 与 C: (AC̄)∩C=AC̄C=∅ ⇒ 概率为 0, 而 P(AC̄)P(C)=P(A)P(C̄)P(C)>0(一般情形), 不独立 ✓<span class="why">AC̄ 要求 C̄ 发生、C 要求 C 发生, 二者互斥不可能同时发生; 两个概率都为正时乘积为正, 与 0 不等即不独立。</span></div>
-<div class="step">(C) A−B 与 C: P((A−B)C)=P(AC)−P(ABC)=P(C)(P(A)−P(AB))=P(C)P(A−B), 独立 ✓<span class="why">差事件与 C 的交拆成两个交事件的概率差, 同样提出 P(C) 因子。</span></div>
+<div class="step">$(A) A∪B$ 与 $C: P((A∪B)C)=P(AC∪BC)=P(AC)+P(BC)−P(ABC)=P(C)(P(A)+P(B)−P(AB))=P(C)P(A∪B),$ 独立 ✓<span class="why">相互独立时事件经交、并、差运算后仍与其余事件独立: 展开并事件后每一项都拆成乘积, 提出 P(C) 因子即验证等式;<b>考点</b>: 独立性的"代数封闭性"是判断这类选项的捷径。</span></div>
+<div class="step">(B) AC̄ 与 $C: (AC̄)∩C=AC̄C=∅ ⇒$ 概率为 0, 而 P(AC̄)P(C)=P(A)P(C̄)P(C)>0(一般情形), 不独立 ✓<span class="why">AC̄ 要求 C̄ 发生、C 要求 C 发生, 二者互斥不可能同时发生; 两个概率都为正时乘积为正, 与 0 不等即不独立。</span></div>
+<div class="step">$(C) A−B$ 与 $C: P((A−B)C)=P(AC)−P(ABC)=P(C)(P(A)−P(AB))=P(C)P(A−B),$ 独立 ✓<span class="why">差事件与 C 的交拆成两个交事件的概率差, 同样提出 P(C) 因子。</span></div>
 <div class="step">(D) AB 与 C: P(ABC)=P(A)P(B)P(C)=P(AB)P(C), 独立 ✓<span class="why">相互独立的直接推论: 任意子事件组与其余事件独立, 乘积公式按组拆分即可。</span></div>
 <div class="step">选 (B)<span class="why">唯一"构造性破坏"独立性的是同时涉及 C 与 C̄ 的 (B): 交集为空而乘积为正;<b>易错</b>: "含 C 相关"的说法不严谨, 严格判据是 P(AC̄∩C)=0≠P(AC̄)P(C)。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 独立事件经交并差仍独立, 但涉及 C 与 C̄ 的配对破坏独立性, 经典辨析题。</div>
@@ -1243,19 +1384,26 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#14概率的基本性质高频">概率基本性质</a> · <a href="数学_概率论.html#12事件的关系与运算必考">事件关系与运算</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例22">例 2.2</a> 同为概率不等式放缩: 2.2 压上界, 本题放下界</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">AB⊂C ⇒ P(C) ≥ P(AB)<span class="why">"A、B 同时发生则 C 一定发生"即 AB⊂C; 概率单调性: 事件包含则概率不小于。</span></div>
-<div class="step">P(AB) = P(A)+P(B)−P(A∪B) ≥ P(A)+P(B)−1 (因为 P(A∪B)≤1)<span class="why">并事件公式移项, 用 P(A∪B)≤1 放缩出下界;<b>易错</b>: 方向是 ≥——P(A∪B) 越大、P(AB) 越小, 取最大概率 1 时得到 P(AB) 的最小下界。</span></div>
-<div class="step">故 P(C) ≥ P(AB) ≥ P(A)+P(B)−1。选 (B)<span class="why">两步不等式传递合并; (A) 的方向与结论相反;<b>考点</b>: 这个不等式是"两事件同时发生概率"的通用下界, 常考。</span></div>
+<div class="step">$AB⊂C ⇒ P(C) ≥ P(AB)$<span class="why">"A、B 同时发生则 C 一定发生"即 AB⊂C; 概率单调性: 事件包含则概率不小于。</span></div>
+<div class="step">$P(AB) = P(A)+P(B)−P(A∪B) ≥ P(A)+P(B)−1$ (因为 $P(A∪B)≤1)$<span class="why">并事件公式移项, 用 P(A∪B)≤1 放缩出下界;<b>易错</b>: 方向是 ≥——P(A∪B) 越大、P(AB) 越小, 取最大概率 1 时得到 P(AB) 的最小下界。</span></div>
+<div class="step">故 $P(C) ≥ P(AB) ≥ P(A)+P(B)−1$。选 (B)<span class="why">两步不等式传递合并; (A) 的方向与结论相反;<b>考点</b>: 这个不等式是"两事件同时发生概率"的通用下界, 常考。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: AB⊂C ⇒ P(C)≥P(A)+P(B)−1: 并事件公式 + 概率单调性两步放缩, 真题。</div>
 </details>
 
 <p id="例146" class="prob"><b>例 14.6</b> 设事件 A,B 仅发生一个的概率为 3/10, 且 P(A)+P(B)=1/2, 求 A,B 至少有一个不发生的概率 【0801(1)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0801-1-p06_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0801-1-p06_1.png" alt="仅发生一个事件的韦恩图（0801(1) 页6）">
+<div class="figcap">📐 示意图（重绘）: 仅发生一个事件的韦恩图（0801(1) 页6）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#14概率的基本性质高频">概率基本性质</a> · <a href="数学_概率论.html#12事件的关系与运算必考">事件关系与运算</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例51">例 5.1</a> 同为"德摩根取对立+和事件公式"组合: 5.1 用 ĀB̄, 本题用 Ā∪B̄</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">"仅发生一个": P(AB̄)+P(ĀB) = P(A)+P(B)−2P(AB) = 1/2 − 2P(AB) = 3/10 ⇒ P(AB)=1/10<span class="why">恰一个发生的概率 = 概率和 − 两倍的共同发生概率: AB 既在 A 中又在 B 中, 求和时被重复计了一次, 减掉两次;<b>易错</b>: 系数是 2P(AB) 不是 P(AB)。</span></div>
-<div class="step">"至少一个不发生" = P(Ā∪B̄) = P(\overline{AB}) = 1−P(AB) = 1−1/10 = 9/10<span class="why">德摩根律: "至少一个不发生"正是"AB 同时发生"的对立事件;<b>考点</b>: 两问共用同一个核心量 P(AB), 第一问算不出第二问无解。</span></div>
+<div class="step">"仅发生一个"$: P(AB̄)+P(ĀB) = P(A)+P(B)−2P(AB) = 1/2 − 2P(AB) = 3/10 ⇒ P(AB)=1/10$<span class="why">恰一个发生的概率 = 概率和 − 两倍的共同发生概率: AB 既在 A 中又在 B 中, 求和时被重复计了一次, 减掉两次;<b>易错</b>: 系数是 2P(AB) 不是 P(AB)。</span></div>
+<div class="step">"至少一个不发生" $= P(Ā∪B̄) = P(\overline{AB}) = 1−P(AB) = 1−1/10 = 9/10$<span class="why">德摩根律: "至少一个不发生"正是"AB 同时发生"的对立事件;<b>考点</b>: 两问共用同一个核心量 P(AB), 第一问算不出第二问无解。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 恰一个发生 = P(A)+P(B)−2P(AB), 配合德摩根律取对立, 小题送分。</div>
 </details>
 
@@ -1264,22 +1412,22 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#16事件的独立性必考易错">独立性</a> · <a href="数学_概率论.html#14概率的基本性质高频">概率基本性质</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例148">例 14.8</a> 同为"独立等式+已知概率"的方程组反解</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">独立: P(ĀB̄)=P(Ā)P(B̄)=(1−P(A))(1−P(B))=1/9<span class="why">独立事件取补集后仍独立: P(ĀB̄)=P(Ā)P(B̄); "都不发生"直接翻译成乘积式。</span></div>
-<div class="step">P(AB̄)=P(ĀB) ⇒ P(A)(1−P(B))=(1−P(A))P(B) ⇒ P(A)=P(B)<span class="why">"A 发生 B 不发生"与"B 发生 A 不发生"概率相等: 展开乘积后 −P(A)P(B) 两边抵消;<b>考点</b>: 对称性条件常推出两事件概率相等。</span></div>
-<div class="step">令 p=P(A)=P(B): (1−p)²=1/9 ⇒ 1−p=1/3 ⇒ p=2/3<span class="why">P(A)≤1 使 1−p 取正根 1/3;<b>易错</b>: 若取 1−p=−1/3 得 p=4/3 超出概率范围, 立即舍去。</span></div>
+<div class="step">独立$: P(ĀB̄)=P(Ā)P(B̄)=(1−P(A))(1−P(B))=1/9$<span class="why">独立事件取补集后仍独立: P(ĀB̄)=P(Ā)P(B̄); "都不发生"直接翻译成乘积式。</span></div>
+<div class="step">$P(AB̄)=P(ĀB) ⇒ P(A)(1−P(B))=(1−P(A))P(B) ⇒ P(A)=P(B)$<span class="why">"A 发生 B 不发生"与"B 发生 A 不发生"概率相等: 展开乘积后 −P(A)P(B) 两边抵消;<b>考点</b>: 对称性条件常推出两事件概率相等。</span></div>
+<div class="step">令 $p=P(A)=P(B): (1−p)²=1/9 ⇒ 1−p=1/3 ⇒ p=2/3$<span class="why">P(A)≤1 使 1−p 取正根 1/3;<b>易错</b>: 若取 1−p=−1/3 得 p=4/3 超出概率范围, 立即舍去。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 独立 + 对称条件解二元方程组: 先证 P(A)=P(B) 再代入 (1−p)², 两步走。</div>
 </details>
 
-<p id="例148" class="prob"><b>例 14.8</b> 设随机事件 A 与 B 相互独立, A 与 C 相互独立, BC=∅。若 P(A)=P(B)=1/2, P(AC|AB∪C)=1/4, 则 P(C)= 【0801(1)]</p>
+<p id="例148" class="prob"><b>例 14.8</b> 设随机事件 A 与 B 相互独立, A 与 C 相互独立, BC=∅。若 $P(A)=P(B)=1/2, P(AC|AB∪C)=1/4,$ 则 P(C)= 【0801(1)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#15条件概率必考">条件概率</a> · <a href="数学_概率论.html#16事件的独立性必考易错">独立性</a> · <a href="数学_概率论.html#12事件的关系与运算必考">事件关系与运算</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例147">例 14.7</a> 同为独立条件下的概率反解: 本题靠 BC=∅ 消项</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">P(AC|AB∪C) = P(AC∩(AB∪C))/P(AB∪C) = P(AC)/P(AB∪C)<span class="why">条件概率定义; 关键化简: AC⊂C⊂AB∪C, 故 AC∩(AB∪C)=AC, 分子直接就是 P(AC)。</span></div>
+<div class="step">$P(AC|AB∪C) = P(AC∩(AB∪C))/P(AB∪C) = P(AC)/P(AB∪C)$<span class="why">条件概率定义; 关键化简: AC⊂C⊂AB∪C, 故 AC∩(AB∪C)=AC, 分子直接就是 P(AC)。</span></div>
 <div class="step">P(AC) = P(A)P(C) = P(C)/2 (A,C 独立)<span class="why">题设 A 与 C 独立且 P(A)=1/2, 乘积拆开。</span></div>
-<div class="step">P(AB∪C) = P(AB)+P(C)−P(ABC)。由于 BC=∅ 且 AB⊂B, ABC⊂BC=∅ ⇒ P(ABC)=0<span class="why">并事件公式; 三次同时发生 ABC⊂BC=∅ 概率为零——BC=∅ 是题干给的唯一"消项开关", 缺了它公式多一项;<b>考点</b>: 空交条件直接削掉交集项。</span></div>
-<div class="step">P(AB) = P(A)P(B) = 1/4。故 P(AB∪C) = 1/4+P(C)<span class="why">A,B 独立且 P(A)=P(B)=1/2; 代入上一步, 分母化成只含 P(C) 的单变量。</span></div>
-<div class="step">1/4 = (P(C)/2) / (1/4+P(C)) ⇒ 1/4+P(C) = 2P(C) ⇒ P(C)=1/4<span class="why">条件概率值 1/4 代回构成关于 P(C) 的方程, 交叉相乘解出;<b>易错</b>: 等式两边的 1/4 含义不同(左边是条件概率值, 右边分母中含 P(C)), 不要乱约分。</span></div>
+<div class="step">$P(AB∪C) = P(AB)+P(C)−P(ABC)$。由于 BC=∅ 且 $AB⊂B, ABC⊂BC=∅ ⇒ P(ABC)=0$<span class="why">并事件公式; 三次同时发生 ABC⊂BC=∅ 概率为零——BC=∅ 是题干给的唯一"消项开关", 缺了它公式多一项;<b>考点</b>: 空交条件直接削掉交集项。</span></div>
+<div class="step">P(AB) = P(A)P(B) = 1/4。故 $P(AB∪C) = 1/4+P(C)$<span class="why">A,B 独立且 P(A)=P(B)=1/2; 代入上一步, 分母化成只含 P(C) 的单变量。</span></div>
+<div class="step">$1/4 = (P(C)/2) / (1/4+P(C)) ⇒ 1/4+P(C) = 2P(C) ⇒ P(C)=1/4$<span class="why">条件概率值 1/4 代回构成关于 P(C) 的方程, 交叉相乘解出;<b>易错</b>: 等式两边的 1/4 含义不同(左边是条件概率值, 右边分母中含 P(C)), 不要乱约分。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 条件概率 + 独立 + 空交三重条件: 分子化简 AC∩(AB∪C)=AC 是关键一步。</div>
 </details>
 
@@ -1298,13 +1446,20 @@ main details .sum b{font-weight:700}
 </details>
 
 <p id="例1410" class="prob"><b>例 14.10</b> 在区间 (0,1) 中随机地取两个数, 则这两数之差的绝对值小于 1/2 的概率为 【0801(1)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0801-1-p10_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0801-1-p10_1.png" alt="|x−y|<1/2 的几何概型区域图（0801(1) 页10）">
+<div class="figcap">📐 示意图（重绘）: |x−y|<1/2 的几何概型区域图（0801(1) 页10）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#18三大经典概型必考">几何概型</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例81">例 8.1</a> 同为单位正方形面积比: 8.1 求"和"、本题求"差", 都"整体减补集"互验</li>
 </ul>
 <details><summary>解答</summary>
 <div class="step">样本空间 1×1 正方形。|x−y|<1/2 ⇔ x−1/2&lt;y&lt;x+1/2<span class="why">两个独立均匀点 (x,y) 落在单位正方形上; 不等式 |x−y|<1/2 是两条斜线 y=x±1/2 夹出的带状区域。</span></div>
-<div class="step">取对立: |x−y|≥1/2 是两个腰长 1/2 的三角形, 总面积 2×(1/2)(1/2)²=1/4<span class="why">带状区域在正方形内的"缺口"是两个角落三角形: 左下角 y≤x−1/2、右上角 y≥x+1/2;<b>易错</b>: 带区超出正方形边界, 直接算交集复杂, 先算缺口更省事。</span></div>
-<div class="step">P = 1−1/4 = 3/4<span class="why">几何概型: 概率 = 目标面积 ÷ 总面积; 1−(1/2)² 中每个三角形面积是 (1/2)×(1/2)²。</span></div>
+<div class="step">取对立$: |x−y|≥1/2$ 是两个腰长 1/2 的三角形, 总面积 2×(1/2)(1/2)²=1/4<span class="why">带状区域在正方形内的"缺口"是两个角落三角形: 左下角 y≤x−1/2、右上角 y≥x+1/2;<b>易错</b>: 带区超出正方形边界, 直接算交集复杂, 先算缺口更省事。</span></div>
+<div class="step">$P = 1−1/4 = 3/4$<span class="why">几何概型: 概率 = 目标面积 ÷ 总面积; 1−(1/2)² 中每个三角形面积是 (1/2)×(1/2)²。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 两数之差的绝对值: 正方形上的带状区域, 取对立算三角形缺口, 高频几何概型。</div>
 </details>
 
@@ -1315,8 +1470,8 @@ main details .sum b{font-weight:700}
 </ul>
 <p><details><summary>解答</summary></p>
 <div class="step">第 4 次命中(第 2 次命中) = 前 3 次恰命中 1 次 且 第 4 次命中<span class="why">"恰好第 2 次命中"拆成两段独立事件: 第 4 次这一枪必须是命中的, 且此前总共只命中过 1 次——事件结构分析是本题的得分点。</span></div>
-<div class="step">前 3 次恰命中 1 次: C₃¹p(1−p)² = 3p(1−p)²; 第 4 次: p<span class="why">前 3 次是 n=3 重伯努利试验: C₃¹ 选哪一次命中, 命中 p¹、未中 (1−p)²; 第 4 次与之独立, 概率 p。</span></div>
-<div class="step">P = 3p(1−p)²·p = 3p²(1−p)²。选 (C)<span class="why">独立性使两段概率相乘;<b>易错</b>: 漏掉"第 4 次必须命中"会错选 (A); 把前 3 次误算成"恰 2 次命中"会错选 (D)——恰是"第 2 次命中"而非"命中 2 次"。</span></div>
+<div class="step">前 3 次恰命中 1 次$: C₃¹p(1−p)² = 3p(1−p)²;$ 第 4 次: p<span class="why">前 3 次是 n=3 重伯努利试验: C₃¹ 选哪一次命中, 命中 p¹、未中 (1−p)²; 第 4 次与之独立, 概率 p。</span></div>
+<div class="step">$P = 3p(1−p)²$·$p = 3p²(1−p)²$。选 (C)<span class="why">独立性使两段概率相乘;<b>易错</b>: 漏掉"第 4 次必须命中"会错选 (A); 把前 3 次误算成"恰 2 次命中"会错选 (D)——恰是"第 2 次命中"而非"命中 2 次"。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: "第 m 次恰好第 k 次成功": 前 m−1 次二项 × 第 m 次成功, 真题原题。</div>
 </details>
 <hr />
@@ -1327,10 +1482,10 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#22分布函数必考高频">分布函数</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例103">例 10.3</a> 同为分布函数判定: 10.3 判具体函数, 本题判 F 的复合变换</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(A) F(x²) 在 x<0 时与 x→−∞ 不符<span class="why">分布函数要求 x→−∞ 时趋于 0, 而 x<0 时 x²→+∞ 使 F(x²)→1; 且 x 取负时平方映射破坏单调不减与右连续性。</span></div>
-<div class="step">(B) F(−x) 当 x→−∞ 时 →1; 且整体关于 x 单调不增<span class="why">自变量取负号把分布函数左右翻转: 两端极限方向错、单调性反转, 双错。</span></div>
-<div class="step">(C) 1−F(x) 当 x→+∞→0; 且单调不增<span class="why">补事件形式把"不减"变"不增", 右端极限也变 0: 单调性与极限同时不合格。</span></div>
-<div class="step">(D) F(2x−1): x→−∞ 时 2x−1→−∞ 得 0, x→+∞ 时得 1; 2x−1 严格增且满射, 保单调性与右连续性。选 (D)<span class="why">分布函数与"严格增、R→R 满射"的连续函数复合仍是分布函数;<b>考点</b>: 验证分布函数三条件(两端极限 0/1、单调不减、右连续)须逐条检查。</span></div>
+<div class="step">(A) F(x²) 在 x<0 时与 $x→−∞$ 不符<span class="why">分布函数要求 x→−∞ 时趋于 0, 而 x<0 时 x²→+∞ 使 F(x²)→1; 且 x 取负时平方映射破坏单调不减与右连续性。</span></div>
+<div class="step">$(B) F(−x)$ 当 $x→−∞$ 时 →1; 且整体关于 x 单调不增<span class="why">自变量取负号把分布函数左右翻转: 两端极限方向错、单调性反转, 双错。</span></div>
+<div class="step">$(C) 1−F(x)$ 当 $x→+∞→0;$ 且单调不增<span class="why">补事件形式把"不减"变"不增", 右端极限也变 0: 单调性与极限同时不合格。</span></div>
+<div class="step">$(D) F(2x−1): x→−∞$ 时 $2x−1→−∞$ 得 $0, x→+∞$ 时得 $1; 2x−1$ 严格增且满射, 保单调性与右连续性。选 (D)<span class="why">分布函数与"严格增、R→R 满射"的连续函数复合仍是分布函数;<b>考点</b>: 验证分布函数三条件(两端极限 0/1、单调不减、右连续)须逐条检查。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分布函数复合变换辨析: 两端极限 + 单调性 + 右连续三条件逐条验, 真题选择题。</div>
 </details>
 
@@ -1341,7 +1496,7 @@ main details .sum b{font-weight:700}
 <details><summary>解答</summary>
 <div class="step">从甲箱(3 正 3 次)取 3 件, 次品数取值 0,1,2,3<span class="why">放入乙箱的次品数就是抽出的次品数: 总体 6 件含 3 件次品、不放回抽 3 件, 超几何概型。</span></div>
 <div class="step">P{X=0}=C₃³/C₆³=1/20; P{X=1}=C₃²C₃¹/C₆³=9/20; P{X=2}=C₃¹C₃²/C₆³=9/20; P{X=3}=C₃³/C₆³=1/20<span class="why">超几何公式: 抽出的 k 件次品 = 从 3 件次品中选 k 件 × 从 3 件正品中选 3−k 件; 分布关于 1.5 对称, 四值和 =1 可作校验。</span></div>
-<div class="step">F(x): 0(x<0); 1/20(0≤x<1); 1/2(1≤x<2); 19/20(2≤x<3); 1(x≥3)<span class="why">分布函数逐段累加概率质量: 每过一个取值点, 台阶升高该点概率;<b>易错</b>: 分段端点按"含左不含右"取(右连续), 端点半开区间写错全段错位。</span></div>
+<div class="step">$F(x): 0(x&lt;0); 1/20(0≤x&lt;1); 1/2(1≤x&lt;2); 19/20(2≤x&lt;3); 1(x≥3)$<span class="why">分布函数逐段累加概率质量: 每过一个取值点, 台阶升高该点概率;<b>易错</b>: 分段端点按"含左不含右"取(右连续), 端点半开区间写错全段错位。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 超几何分布求分布律 + 阶梯型分布函数: 分段累加与端点惯例是两大得分点。</div>
 </details>
 
@@ -1351,60 +1506,88 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例121">例 12.1</a> 同为"组合式是否密度"的判定: 本题靠凑 (F₁F₂)' 导数恒等式</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(D) ∫(f₁F₂+f₂F₁)dx = ∫(F₁F₂)'dx = F₁F₂|_{−∞}^{+∞}=1, 且非负。选 (D)<span class="why">乘积求导法则 (F₁F₂)'=f₁F₂+F₁f₂ 恰好凑出被积函数; 两端极限 F₁F₂ 从 0×0=0 到 1×1=1, 全增量恰为 1;<b>考点</b>: "凑导数"是判断密度组合的利器: 积分等于全增量、等于 1 即归一化。</span></div>
-<div class="step">(B) 陷阱: ∫2f₁F₂ dx = 2P{X₁≤X₂}, 其中 X₁,X₂ 分别按 f₁,f₂ 分布, 一般不等于 1<span class="why">E[F₂(X₁)]=P(X₁≤X₂): 两分布不同时该值不是 1/2, 只有同分布才对称相消;<b>易错</b>: 2f₁F₂ 与 2f₂F₁ 单独看都"像"密度, 但都不归一, 必须成对出现才恰好是导数。</span></div>
+<div class="step">$(D) ∫(f₁F₂+f₂F₁)dx = ∫(F₁F₂)'dx = F₁F₂|_{−∞}^{+∞}=1,$ 且非负。选 (D)<span class="why">乘积求导法则 (F₁F₂)'=f₁F₂+F₁f₂ 恰好凑出被积函数; 两端极限 F₁F₂ 从 0×0=0 到 1×1=1, 全增量恰为 1;<b>考点</b>: "凑导数"是判断密度组合的利器: 积分等于全增量、等于 1 即归一化。</span></div>
+<div class="step">(B) 陷阱$: ∫2f₁F₂ dx = 2P{X₁≤X₂},$ 其中 X₁,X₂ 分别按 f₁,f₂ 分布, 一般不等于 1<span class="why">E[F₂(X₁)]=P(X₁≤X₂): 两分布不同时该值不是 1/2, 只有同分布才对称相消;<b>易错</b>: 2f₁F₂ 与 2f₂F₁ 单独看都"像"密度, 但都不归一, 必须成对出现才恰好是导数。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 密度组合判断: 凑 (F₁F₂)' 导数恒等式, 真题选择题。</div>
 </details>
 
-<p id="例154" class="prob"><b>例 15.4</b> 设随机变量 X 的概率密度为 f(x)=1/3(0&lt;x&lt;1), f(x)=2/9(3≤x≤6), 其他为 0。若 k 使得 P{X≥k}=2/3, 则 k 的取值范围是 【0801(3), OCR 模糊】</p>
+<p id="例154" class="prob"><b>例 15.4</b> 设随机变量 X 的概率密度为 f(x)=1/3(0&lt;x&lt;1), f(x)=2/9(3≤x≤6), 其他为 0。若 k 使得 $P{X≥k}=2/3,$ 则 k 的取值范围是 【0801(3), OCR 模糊】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0801-3-p02_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0801-3-p02_1.png" alt="分段密度 1/3、2/9 的曲线图（0801(3) 页2）">
+<div class="figcap">📐 示意图（重绘）: 分段密度 1/3、2/9 的曲线图（0801(3) 页2）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#22分布函数必考高频">分布函数</a> · <a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例122">例 12.2</a> 同为分段密度的概率处理: 本题考点在空白区间给出区间解</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">∫₀¹(1/3)dx + ∫₃⁶(2/9)dx = 1/3+2/3=1<span class="why">先验证密度归一: (0,1) 段质量 1/3, [3,6] 段质量 2/3; 两段之间的 [1,3) 是概率为零的空白区间。</span></div>
-<div class="step">P{X≥k}=2/3 意味着 P{X&lt;k}=1/3<span class="why">取补事件把"右尾概率 2/3"换成"左尾概率 1/3", 左尾只在两段密度上有贡献。</span></div>
-<div class="step">由于 (0,1) 上的概率恰好是 1/3, 故 k∈[1,3]<span class="why">k≥1 才能完整覆盖 (0,1) 段的全部质量, k≤3 才不会吞入 [3,6] 段的质量;<b>易错</b>: 空白区间内概率不增加, 答案是区间 [1,3] 而非单点——k=1 与 k=3 处等号同样成立。</span></div>
+<div class="step">$∫₀¹(1/3)dx + ∫₃⁶(2/9)dx = 1/3+2/3=1$<span class="why">先验证密度归一: (0,1) 段质量 1/3, [3,6] 段质量 2/3; 两段之间的 [1,3) 是概率为零的空白区间。</span></div>
+<div class="step">$P{X≥k}=2/3$ 意味着 P{X&lt;k}=1/3<span class="why">取补事件把"右尾概率 2/3"换成"左尾概率 1/3", 左尾只在两段密度上有贡献。</span></div>
+<div class="step">由于 (0,1) 上的概率恰好是 1/3, 故 $k∈[1,3]$<span class="why">k≥1 才能完整覆盖 (0,1) 段的全部质量, k≤3 才不会吞入 [3,6] 段的质量;<b>易错</b>: 空白区间内概率不增加, 答案是区间 [1,3] 而非单点——k=1 与 k=3 处等号同样成立。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分段密度下 P{X&lt;k}=常数: 空白区间给出区间解 [1,3], 考点在"区间"而非"单点"。</div>
 </details>
 
-<p id="例155" class="prob"><b>例 15.5</b> 假设随机变量 X 的绝对值不大于 1, 且 P{X=−1}=1/8, P{X=1}=1/4; 在事件 {−1&lt;X&lt;1} 内, X 的任一子区间被取到的概率与该子区间长度成正比。试求: X 的分布函数 F(x) 【0801(3), 题面按视觉转写定稿(2000 真题版)】</p>
+<p id="例155" class="prob"><b>例 15.5</b> 假设随机变量 X 的绝对值不大于 1, 且 $P{X=−1}=1/8, P{X=1}=1/4;$ 在事件 {−1&lt;X&lt;1} 内, X 的任一子区间被取到的概率与该子区间长度成正比。试求: X 的分布函数 F(x) 【0801(3), 题面按视觉转写定稿(2000 真题版)】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0801-3-p03_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0801-3-p03_1.png" alt="混合型分布取值区间数轴图（0801(3) 页3）">
+<div class="figcap">📐 示意图（重绘）: 混合型分布取值区间数轴图（0801(3) 页3）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#22分布函数必考高频">分布函数</a> · <a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1512">例 15.12</a> 同为混合型分布: 本题点质量在端点, 15.12 在截断点</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">在 (−1,1) 内, 条件概率与子区间长度成正比 = 条件均匀分布, 条件密度 1/2, 实际密度 f(x)=P{−1&lt;X<1}·(1/2)=5/16<span class="why">混合型随机变量: 两端点有正概率(点质量), 中间有连续密度;"与该子区间长度成正比"是"条件均匀"的标准表述, 实际密度 = 条件密度 × 连续部分总概率 5/8。</span></div>
-<div class="step">P{−1&lt;X<1}=1−1/8−1/4=5/8; 校验 ∫_{−1}^{1}(5/16)dx=5/8 ✓<span class="why">点质量 1/8 与 1/4 先扣掉, 剩下 5/8 是连续段总质量; 密度为常数 5/16, 不随 x 变化——注意本题不是"与距离成正比"(那是 |x| 型密度), 是两个不同版本的真题。</span></div>
-<div class="step">F(x)=0(x<−1); 1/8+5(x+1)/16=(5x+7)/16(−1≤x<1); 1(x≥1)<span class="why">x∈[−1,1] 时 F=点质量 1/8 + 均匀段积分 (5/16)(x+1); 在 x=1 处左极限 (5+7)/16=3/4, 加点质量 1/4 跳满 1;<b>易错</b>: 混合型的分布函数在点质量处一定"跳", 端值要单独核对。</span></div>
+<div class="step">在 $(−1,1)$ 内, 条件概率与子区间长度成正比 = 条件均匀分布, 条件密度 1/2, 实际密度 f(x)=P{−1&lt;X<1}·(1/2)=5/16<span class="why">混合型随机变量: 两端点有正概率(点质量), 中间有连续密度;"与该子区间长度成正比"是"条件均匀"的标准表述, 实际密度 = 条件密度 × 连续部分总概率 5/8。</span></div>
+<div class="step">P{−1&lt;X<1}=1−1/8−1/4=5/8; 校验 $∫_{−1}^{1}(5/16)dx=5/8 ✓$<span class="why">点质量 1/8 与 1/4 先扣掉, 剩下 5/8 是连续段总质量; 密度为常数 5/16, 不随 x 变化——注意本题不是"与距离成正比"(那是 |x| 型密度), 是两个不同版本的真题。</span></div>
+<div class="step">$F(x)=0(x&lt;−1); 1/8+5(x+1)/16=(5x+7)/16(−1≤x&lt;1); 1(x≥1)$<span class="why">x∈[−1,1] 时 F=点质量 1/8 + 均匀段积分 (5/16)(x+1); 在 x=1 处左极限 (5+7)/16=3/4, 加点质量 1/4 跳满 1;<b>易错</b>: 混合型的分布函数在点质量处一定"跳", 端值要单独核对。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 混合型分布: 连续密度与点质量共存, 分段积分加跳跃; "条件均匀"的翻译是"与长度成正比"。</div>
 </details>
 
-<p id="例156" class="prob"><b>例 15.6</b> 设随机变量 X 的分布函数为 F(x), 其概率密度 f(x)=af₁(x)+bf₂(x), 其中 f₁(x) 是指数分布的概率密度, f₂(x) 是均匀分布 U[−2,2] 的概率密度, 如果 F(0)=1/2, 则 (A) a=0, b=1 (B) a=1, b=0 (C) a=1/4, b=3/4 (D) a=3/4, b=1/4 【0801(3), 题面按视觉转写定稿】</p>
+<p id="例156" class="prob"><b>例 15.6</b> 设随机变量 X 的分布函数为 F(x), 其概率密度 f(x)=af₁(x)+bf₂(x), 其中 f₁(x) 是指数分布的概率密度, f₂(x) 是均匀分布 $U[−2,2]$ 的概率密度, 如果 F(0)=1/2, 则 (A) a=0, b=1 (B) a=1, b=0 (C) a=1/4, b=3/4 (D) a=3/4, b=1/4 【0801(3), 题面按视觉转写定稿】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0801-3-p04_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0801-3-p04_1.png" alt="指数+均匀混合密度的区间数轴图（0801(3) 页4）">
+<div class="figcap">📐 示意图（重绘）: 指数+均匀混合密度的区间数轴图（0801(3) 页4）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> · <a href="数学_概率论.html#22分布函数必考高频">分布函数</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例121">例 12.1</a> 同为密度组合: 12.1 判哪种组合是密度, 本题给组合定系数</li>
 </ul>
 <details><summary>解答</summary>
 <div class="step">f₁(x)=λe^{−λx}(x>0); f₂(x)=1/4(−2&lt;x<2)。归一化: a+b=1<span class="why">两密度各自积分为 1, 故 ∫(af₁+bf₂)dx=a+b; f 是密度要求全积分等于 1, 得到第一个约束方程。</span></div>
-<div class="step">F(0)=P{X≤0}=∫_{−∞}^{0}(af₁+bf₂)dx = 0+∫_{−2}^{0}b/4 dx = b/2 = 1/2 ⇒ b=1, a=0, 选 (A)<span class="why">指数部分支撑在 x>0, 对 (−∞,0] 零贡献; 均匀部分 [−2,0] 半段质量 = (1/4)×2=b/2;<b>易错</b>: F(0)=1/2 直接推出 b=1, 意味着组合里根本没有指数项——题目这样设计, 逼你先从 F(0) 下手而不是猜系数。</span></div>
+<div class="step">$F(0)=P{X≤0}=∫_{−∞}^{0}(af₁+bf₂)dx = 0+∫_{−2}^{0}b/4 dx = b/2 = 1/2 ⇒ b=1, a=0,$ 选 (A)<span class="why">指数部分支撑在 x>0, 对 (−∞,0] 零贡献; 均匀部分 [−2,0] 半段质量 = (1/4)×2=b/2;<b>易错</b>: F(0)=1/2 直接推出 b=1, 意味着组合里根本没有指数项——题目这样设计, 逼你先从 F(0) 下手而不是猜系数。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 密度组合定系数: 全积分 =1 与 F(0)=1/2 两方程解 a,b, 支撑区间决定哪一项"活着"。</div>
 </details>
 
 <p id="例157" class="prob"><b>例 15.7</b> 设随机变量 X 在 [1,5] 上服从均匀分布, 现在对 X 进行三次独立观测, 试求至少有两次观测值大于 2 的概率 【0801(3)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0801-3-p05_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0801-3-p05_1.png" alt="U[1,5] 的区间数轴图（0801(3) 页5）">
+<div class="figcap">📐 示意图（重绘）: U[1,5] 的区间数轴图（0801(3) 页5）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">均匀分布</a> · <a href="数学_概率论.html#25八大常见分布必考">二项分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例132">例 13.2</a> 同为"单次概率→二项分布"的衔接题</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">p = P{X>2} = (5−2)/(5−1) = 3/4<span class="why">均匀分布按长度比: 区间 [1,5] 中 (2,5] 长 3、总长 4; 这是单次观测"成功"的概率。</span></div>
-<div class="step">Y~B(3, 3/4), P{Y≥2} = C₃²(3/4)²(1/4) + C₃³(3/4)³ = 27/64 + 27/64 = 27/32<span class="why">三次独立观测构成 n=3 重伯努利试验; "至少两次" = 恰 2 次 + 恰 3 次两项相加;<b>易错</b>: 成功概率是 P{X>2}=3/4 而非 P{X≤2}=1/4, (3/4) 与 (1/4) 的位置别对调。</span></div>
+<div class="step">$p = P{X>2} = (5−2)/(5−1) = 3/4$<span class="why">均匀分布按长度比: 区间 [1,5] 中 (2,5] 长 3、总长 4; 这是单次观测"成功"的概率。</span></div>
+<div class="step">$Y~B(3, 3/4), P{Y≥2} = C₃²(3/4)²(1/4) + C₃³(3/4)³ = 27/64 + 27/64 = 27/32$<span class="why">三次独立观测构成 n=3 重伯努利试验; "至少两次" = 恰 2 次 + 恰 3 次两项相加;<b>易错</b>: 成功概率是 P{X>2}=3/4 而非 P{X≤2}=1/4, (3/4) 与 (1/4) 的位置别对调。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 均匀分布长度比求单次概率 + 二项分布累加: 连续与离散衔接, 送分题。</div>
 </details>
 
-<p id="例158" class="prob"><b>例 15.8</b> 设随机变量 X 的概率密度函数为 f(x)=(1/(2√π))e^{−(x+3)²/4}, 则服从 N(0,1) 分布的随机变量为 【0801(3)]</p>
+<p id="例158" class="prob"><b>例 15.8</b> 设随机变量 X 的概率密度函数为 $f(x)=(1/(2√π))e^{−(x+3)²/4},$ 则服从 N(0,1) 分布的随机变量为 【0801(3)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">正态分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1312">例 13.12</a> 同型真题重复 <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例S1">例 S.1</a> 附录速记版同题</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">读参数: (x+3)²/4 = (x−(−3))²/(2·2) ⇒ σ²=2, μ=−3<span class="why">正态密度指数形如 −(x−μ)²/(2σ²): 分母 4=2σ² 得 σ²=2; x+3=x−(−3) 得 μ=−3; 系数 1/(2√π)=1/(σ√(2π)) 可作校验。</span></div>
-<div class="step">标准化: (X+3)/√2 ~ N(0,1)<span class="why">标准化公式 (X−μ)/σ: 代入 μ=−3、σ=√2;<b>易错</b>: μ 是 −3 不是 +3, 符号看错直接选错; 与例 13.12 完全同型(真题重复)。</span></div>
+<div class="step">读参数$: (x+3)²/4 = (x−(−3))²/(2$·$2) ⇒ σ²=2, μ=−3$<span class="why">正态密度指数形如 −(x−μ)²/(2σ²): 分母 4=2σ² 得 σ²=2; x+3=x−(−3) 得 μ=−3; 系数 1/(2√π)=1/(σ√(2π)) 可作校验。</span></div>
+<div class="step">标准化$: (X+3)/√2 ~ N(0,1)$<span class="why">标准化公式 (X−μ)/σ: 代入 μ=−3、σ=√2;<b>易错</b>: μ 是 −3 不是 +3, 符号看错直接选错; 与例 13.12 完全同型(真题重复)。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 密度反读参数再标准化: 与 13.12 同型真题, 答案为 (X+3)/√2。</div>
 </details>
 
@@ -1413,67 +1596,108 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#31离散型离散型">离散函数变换</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1510">例 15.10</a> 同为离散函数变换: 本题平方多对一合并, 15.10 周期分组求和</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">Y 取值: (−1)²=1, 0²=0, 1²=1, 2²=4。P{Y=0}=1/4, P{Y=1}=1/3+1/4=7/12, P{Y=4}=1/6<span class="why"><b>考点</b>: 平方映射多对一: X=±1 都映射到 Y=1, 概率相加; 校验: 1/4+7/12+1/6 = 3/12+7/12+2/12 = 1 ✓</span></div>
+<div class="step">Y 取值$: (−1)²=1, 0²=0, 1²=1, 2²=4$。P{Y=0}=1/4, P{Y=1}=1/3+1/4=7/12, P{Y=4}=1/6<span class="why"><b>考点</b>: 平方映射多对一: X=±1 都映射到 Y=1, 概率相加; 校验: 1/4+7/12+1/6 = 3/12+7/12+2/12 = 1 ✓</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 离散函数变换: 多对一映射合并同类值概率, 和恒为 1 作校验。</div>
 </details>
 
 <p id="例1510" class="prob"><b>例 15.10</b> 设随机变量 X 的分布律为 P{X=k}=1/2ᵏ (k=1,2,...), 求 Y=sin(πX/2) 的分布律 【0801(3)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0801-3-p08_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0801-3-p08_1.png" alt="Y=sin(πX/2) 的正弦曲线图（0801(3) 页8）">
+<div class="figcap">📐 示意图（重绘）: Y=sin(πX/2) 的正弦曲线图（0801(3) 页8）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#31离散型离散型">离散函数变换</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例159">例 15.9</a> 同为离散函数变换: 本题周期 4 分组合并+无穷等比求和</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">Y 可能的取值: sin(π/2)=1, sin(π)=0, sin(3π/2)=−1, sin(2π)=0, sin(5π/2)=1,...<span class="why">k 每取 4 个值循环一次: Y=1,0,−1,0 周期重复; 周期 4 是把无限项合并成三个值的分组依据。</span></div>
-<div class="step">Y=1 ⟺ k≡1(mod 4); Y=−1 ⟺ k≡3(mod 4); Y=0 ⟺ k 为偶数(k≡0 或 2 mod 4)【修正】<span class="why">sin 周期 2π 使 k 每 4 步重复: k=2,4,6,8… 全部对应 Y=0(含 k=4,8 等 k≡0 的情形, 原稿只列出 k=2 一支); 分组正确是本题成败关键。</span></div>
-<div class="step">P{Y=1}=Σ_{k=1,5,9,...} 1/2ᵏ = (1/2)/(1−1/16) = 8/15<span class="why">每隔 4 项取一项: 首项 1/2、公比 (1/2)⁴=1/16 的无穷等比求和。</span></div>
-<div class="step">P{Y=−1}=Σ_{k=3,7,11,...} 1/2ᵏ = (1/8)/(1−1/16) = 2/15<span class="why">k≡3(mod 4): 首项 1/8、公比同样 1/16。</span></div>
+<div class="step">Y 可能的取值$: sin(π/2)=1, sin(π)=0, sin(3π/2)=−1, sin(2π)=0, sin(5π/2)=1,...$<span class="why">k 每取 4 个值循环一次: Y=1,0,−1,0 周期重复; 周期 4 是把无限项合并成三个值的分组依据。</span></div>
+<div class="step">$Y=1 ⟺ k≡1(mod 4); Y=−1 ⟺ k≡3(mod 4); Y=0 ⟺ k$ 为偶数(k≡0 或 2 mod 4)【修正】<span class="why">sin 周期 2π 使 k 每 4 步重复: k=2,4,6,8… 全部对应 Y=0(含 k=4,8 等 k≡0 的情形, 原稿只列出 k=2 一支); 分组正确是本题成败关键。</span></div>
+<div class="step">$P{Y=1}=Σ_{k=1,5,9,...} 1/2ᵏ = (1/2)/(1−1/16) = 8/15$<span class="why">每隔 4 项取一项: 首项 1/2、公比 (1/2)⁴=1/16 的无穷等比求和。</span></div>
+<div class="step">$P{Y=−1}=Σ_{k=3,7,11,...} 1/2ᵏ = (1/8)/(1−1/16) = 2/15$<span class="why">k≡3(mod 4): 首项 1/8、公比同样 1/16。</span></div>
 <div class="step">P{Y=0}=Σ_{k=2,4,6,...} 1/2ᵏ = (1/4)/(1−1/4) = 1/3 <b>【修正】</b><span class="why">k 取全部偶数: 首项 1/4、公比 1/4 的等比和; 原稿只算 k≡2(mod 4) 一支且公比用错(1/16 对应隔 4 项, 偶数序列公比是 1/4); 校验: 8/15+1/3+2/15=1 ✓。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 周期函数变换 + 无穷等比求和: 按 k mod 4 分组, 三类等比各一支, 和恒为 1 作校验。</div>
 </details>
 
 <p id="例1511" class="prob"><b>例 15.11</b> 设随机变量 X 服从 [0,2] 上的均匀分布, 求随机变量 Y=X² 的概率密度函数 f_Y(y) 【0801(3)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0801-3-p09_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0801-3-p09_1.png" alt="Y=X² 函数分布曲线图（0801(3) 页9）">
+<div class="figcap">📐 示意图（重绘）: Y=X² 函数分布曲线图（0801(3) 页9）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0801-3-p09_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0801-3-p09_2.png" alt="Y=X² 函数关系曲线图（0801(3) 页9）">
+<div class="figcap">📐 示意图（重绘）: Y=X² 函数关系曲线图（0801(3) 页9）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#32连续型连续型重点">分布函数法</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1514">例 15.14</a> 同为 Y=X² 的分布函数法: 本题源分布单段, 15.14 分段</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">分布函数法: F_Y(y)=P{X²≤y}=P{−√y≤X≤√y}<span class="why">求函数分布的统一套路: 先算分布函数再求导; 平方不等式 |X|≤√y 给出 X 的取值区间。</span></div>
-<div class="step">由于 X∈[0,2], 当 0≤y≤4: F_Y(y)=P{0≤X≤√y}=√y/2<span class="why">X 非负, 左端自动截到 0; 均匀分布长度比: (√y−0)/2;<b>易错</b>: y<0 时 F=0、y>4 时 F=1, 定义域外的分段不能漏写。</span></div>
+<div class="step">分布函数法$: F_Y(y)=P{X²≤y}=P{−√y≤X≤√y}$<span class="why">求函数分布的统一套路: 先算分布函数再求导; 平方不等式 |X|≤√y 给出 X 的取值区间。</span></div>
+<div class="step">由于 $X∈[0,2],$ 当 $0≤y≤4: F_Y(y)=P{0≤X≤√y}=√y/2$<span class="why">X 非负, 左端自动截到 0; 均匀分布长度比: (√y−0)/2;<b>易错</b>: y<0 时 F=0、y>4 时 F=1, 定义域外的分段不能漏写。</span></div>
 <div class="step">f_Y(y)=F'_Y(y)=1/(4√y) (0&lt;y<4); 0 其他<span class="why">对 √y/2 求导: d(√y)/dy=1/(2√y); 端点 y=0 处密度用开区间; 检验 ∫₀⁴ 1/(4√y)dy=(1/2)√y|₀⁴=1 ✓。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分布函数法求 Y=X² 的密度: 先积后导, 均匀源 + 平方映射, 教材模板题。</div>
 </details>
 
 <p id="例1512" class="prob"><b>例 15.12</b> 假设一设备开机后无故障工作的时间 X 服从指数分布, 平均无故障工作的时间 E(X) 为 5 小时。设备定时开机, 出现故障时自动关机, 而在无故障的情况下工作两小时便关机。试求该设备每次开机无故障工作的时间 Y 的分布函数 F(y) 【0801(3)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0801-3-p11_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0801-3-p11_1.png" alt="设备无故障时间 Y 的曲线图（0801(3) 页11）">
+<div class="figcap">📐 示意图（重绘）: 设备无故障时间 Y 的曲线图（0801(3) 页11）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#32连续型连续型重点">分布函数法</a> · <a href="数学_概率论.html#25八大常见分布必考">指数分布</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1513">例 15.13</a> 同为混合型分布: 本题点质量来自截断 min(X,c), 15.13 来自分段定义</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">E(X)=5 ⇒ λ=1/5。Y = min(X, 2)<span class="why">指数分布参数 = 期望的倒数; "无故障工作两小时便关机" = 实际工作时间取 X 与 2 的较小者。</span></div>
-<div class="step">y<0: F(y)=0; y≥2: F(y)=1; 0≤y<2: F(y)=P{Y≤y}=P{X≤y}=1−e^{−y/5}<span class="why">y<2 时 min(X,2)≤y ⟺ X≤y, 代入指数分布函数 1−e^{−y/5}; y≥2 时 Y 恒 ≤2≤y, 概率为 1;<b>易错</b>: 截断上限 2 是"概率质量堆积点", 不是普通的分段点。</span></div>
-<div class="step">Y 是混合型: 在 y=2 处有概率质量 P{X≥2}=e^{−2/5}<span class="fill">【AI补全】</span><span class="why">P{Y=2}=P{X≥2}: 所有"撑过 2 小时"的样本都堆到 y=2 一个点上, 分布函数在 2 处从 1−e^{−2/5} 跳到 1;<b>考点</b>: 截断变量 min(X,c) 在 c 处产生点质量, 考研热点。</span></div>
+<div class="step">$E(X)=5 ⇒ λ=1/5$。Y = min(X, 2)<span class="why">指数分布参数 = 期望的倒数; "无故障工作两小时便关机" = 实际工作时间取 X 与 2 的较小者。</span></div>
+<div class="step">$y&lt;0: F(y)=0; y≥2: F(y)=1; 0≤y&lt;2: F(y)=P{Y≤y}=P{X≤y}=1−e^{−y/5}$<span class="why">y<2 时 min(X,2)≤y ⟺ X≤y, 代入指数分布函数 1−e^{−y/5}; y≥2 时 Y 恒 ≤2≤y, 概率为 1;<b>易错</b>: 截断上限 2 是"概率质量堆积点", 不是普通的分段点。</span></div>
+<div class="step">Y 是混合型: 在 y=2 处有概率质量 $P{X≥2}=e^{−2/5}$<span class="fill">【AI补全】</span><span class="why">P{Y=2}=P{X≥2}: 所有"撑过 2 小时"的样本都堆到 y=2 一个点上, 分布函数在 2 处从 1−e^{−2/5} 跳到 1;<b>考点</b>: 截断变量 min(X,c) 在 c 处产生点质量, 考研热点。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 指数寿命 + 定时关机截断: min(X,2) 混合型分布, 截断点的概率质量是考点。</div>
 </details>
 
-<p id="例1513" class="prob"><b>例 15.13</b> 设随机变量 X 的概率密度为 f(x)=x²/9(0&lt;x&lt;3), 其他为 0。令随机变量 Y: X≤1 时 Y=2; 1&lt;X&lt;2 时 Y=X; X≥2 时 Y=1。求: (1) Y 的分布函数; (2) P{X≤Y} 【0802(1), OCR 模糊】</p>
+<p id="例1513" class="prob"><b>例 15.13</b> 设随机变量 X 的概率密度为 f(x)=x²/9(0&lt;x&lt;3), 其他为 0。令随机变量 $Y: X≤1$ 时 Y=2; 1&lt;X&lt;2 时 $Y=X; X≥2$ 时 Y=1。求: (1) Y 的分布函数$; (2) P{X≤Y}$ 【0802(1), OCR 模糊】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0802-1-p01_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0802-1-p01_1.png" alt="分段 Y 的分布函数曲线图（0802(1) 页1）">
+<div class="figcap">📐 示意图（重绘）: 分段 Y 的分布函数曲线图（0802(1) 页1）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#32连续型连续型重点">分布函数法</a> · <a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1512">例 15.12</a> 同为混合型分布函数: 本题由分段定义把区间压成点质量</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) Y 是混合型: P{Y=2}=P{X≤1}=∫₀¹ x²/9 dx = 1/27; P{Y=1}=P{X≥2}=∫₂³ x²/9 dx = 19/27<span class="why">Y 的取值由 X 的分段定义: X≤1 全部压到 2、X≥2 全部压到 1, 形成两个点质量; 中间 1&lt;X<2 保持连续(质量 7/27, 与两端点合计 1 可检验)。</span></div>
-<div class="step">连续段 1&lt;X<2 上 Y=X, 密度仍为 x²/9; 故 1≤y<2 时 F_Y(y)=P{Y=1}+P{1&lt;Y≤y}=19/27+∫₁^y t²/9 dt = (y³+18)/27<span class="fill">【AI补全】</span><span class="why">分布函数 = 已过的点质量 19/27 + 连续段积分;<b>易错</b>: 先加完点质量再积分, 顺序颠倒会重复或漏计。</span></div>
-<div class="step">F_Y(y)=0(y<1); (y³+18)/27(1≤y<2); 1(y≥2)<span class="fill">【AI补全】</span><span class="why">三段拼合; 端值检验: F_Y(1)=19/27、F_Y(2−)=26/27, 在 y=2 处再叠加点质量 1/27 跳满 1, 与 P{Y=2}=1/27 吻合。</span></div>
-<div class="step">(2) P{X≤Y}: 分区域讨论。X<2 时 Y=2 或 Y=X, 均有 Y≥X; X≥2 时 Y=1&lt;X, 恒不满足<span class="fill">【AI补全】</span><span class="why">按 Y 的定义逐段翻译: (0,1] 上 Y=2≥X; (1,2) 上 Y=X 取等; [2,3) 上 Y=1&lt;X 失败; 边界点 X=2 概率为零, 不影响结果。</span></div>
-<div class="step">P{X≤Y}=P{X<2}=∫₀² x²/9 dx = 8/27<span class="fill">【AI补全】</span><span class="why">满足条件的区域恰好是 X<2: 复杂事件 P{X≤Y} 化回 X 的简单区间积分;<b>考点</b>: 混合型定义先分段翻译事件, 再决定积分区域。</span></div>
+<div class="step">(1) Y 是混合型$: P{Y=2}=P{X≤1}=∫₀¹ x²/9 dx = 1/27; P{Y=1}=P{X≥2}=∫₂³ x²/9 dx = 19/27$<span class="why">Y 的取值由 X 的分段定义: X≤1 全部压到 2、X≥2 全部压到 1, 形成两个点质量; 中间 1&lt;X<2 保持连续(质量 7/27, 与两端点合计 1 可检验)。</span></div>
+<div class="step">连续段 1&lt;X<2 上 Y=X, 密度仍为 x²/9; 故 $1≤y&lt;2$ 时 F_Y(y)=P{Y=1}+P{1&lt;Y≤y}=19/27+∫₁^y t²/9 dt = (y³+18)/27<span class="fill">【AI补全】</span><span class="why">分布函数 = 已过的点质量 19/27 + 连续段积分;<b>易错</b>: 先加完点质量再积分, 顺序颠倒会重复或漏计。</span></div>
+<div class="step">$F_Y(y)=0(y&lt;1); (y³+18)/27(1≤y&lt;2); 1(y≥2)$<span class="fill">【AI补全】</span><span class="why">三段拼合; 端值检验: F_Y(1)=19/27、F_Y(2−)=26/27, 在 y=2 处再叠加点质量 1/27 跳满 1, 与 P{Y=2}=1/27 吻合。</span></div>
+<div class="step">$(2) P{X≤Y}:$ 分区域讨论。X<2 时 Y=2 或 Y=X, 均有 $Y≥X; X≥2$ 时 Y=1&lt;X, 恒不满足<span class="fill">【AI补全】</span><span class="why">按 Y 的定义逐段翻译: (0,1] 上 Y=2≥X; (1,2) 上 Y=X 取等; [2,3) 上 Y=1&lt;X 失败; 边界点 X=2 概率为零, 不影响结果。</span></div>
+<div class="step">$P{X≤Y}=P{X&lt;2}=∫₀² x²/9 dx = 8/27$<span class="fill">【AI补全】</span><span class="why">满足条件的区域恰好是 X<2: 复杂事件 P{X≤Y} 化回 X 的简单区间积分;<b>考点</b>: 混合型定义先分段翻译事件, 再决定积分区域。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分段定义变换 + 混合型分布函数: 点质量与连续段拼接, P{X≤Y} 化区间积分, 综合题。</div>
 </details>
 
 <p id="例1514" class="prob"><b>例 15.14</b> 设随机变量 X 的密度函数为 f_X(x)=1/4(−1&lt;x&lt;0), f_X(x)=1/4(0≤x&lt;2), 其他为 0。令 Y=X², 求 Y 的概率密度 f_Y(y) 【0802(1)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0802-1-p02_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0802-1-p02_1.png" alt="Y=X² 的密度函数曲线图（0802(1) 页2）">
+<div class="figcap">📐 示意图（重绘）: Y=X² 的密度函数曲线图（0802(1) 页2）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#32连续型连续型重点">分布函数法</a> · <a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1511">例 15.11</a> 同为 Y=X² 的分布函数法: 本题分段支撑需分 y 区间截断积分</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">题干密度两段合计 1/4+1/2=3/4≠1, 不可能是密度; 2008 真题原题为 f_X(x)=1/2(−1&lt;x<0), 1/4(0≤x<2), 其他为 0(OCR 将 1/2 误作 1/4), 以下按原题计算 <b>【修正】</b><span class="why">密度必归一化, 这是校验题干的第一道工序: 总质量不为 1 必是录入错误; 两段密度 1/2 与 1/4 合计恰为 1, 与本题答案结构自洽。</span></div>
-<div class="step">分布函数法: F_Y(y)=P{X²≤y}=P{−√y≤X≤√y}<span class="why">平方映射先写分布函数再求导; |X|≤√y 的区间要与 f_X 的分段支撑求交。</span></div>
+<div class="step">题干密度两段合计 $1/4+1/2=3/4≠1,$ 不可能是密度; 2008 真题原题为 f_X(x)=1/2(−1&lt;x<0), 1/4(0≤x<2), 其他为 0(OCR 将 1/2 误作 1/4), 以下按原题计算 <b>【修正】</b><span class="why">密度必归一化, 这是校验题干的第一道工序: 总质量不为 1 必是录入错误; 两段密度 1/2 与 1/4 合计恰为 1, 与本题答案结构自洽。</span></div>
+<div class="step">分布函数法$: F_Y(y)=P{X²≤y}=P{−√y≤X≤√y}$<span class="why">平方映射先写分布函数再求导; |X|≤√y 的区间要与 f_X 的分段支撑求交。</span></div>
 <div class="step">0&lt;y<1: F_Y(y)=∫_{−√y}^{√y} f_X(x)dx = ∫_{−√y}^{0}(1/2)dx + ∫_{0}^{√y}(1/4)dx = √y/2+√y/4 = 3√y/4<span class="why">√y<1 时区间 (−√y,√y) 完整落在两段支撑内: 左段密度 1/2 积出 √y/2, 右段密度 1/4 积出 √y/4;<b>易错</b>: 左右两段密度不同, 不能合成一个密度。</span></div>
-<div class="step">1≤y<4: F_Y(y)=∫_{−1}^{0}(1/2)dx + ∫_{0}^{√y}(1/4)dx = 1/2+√y/4<span class="why">√y≥1 后左端超出支撑: X 最小到 −1, 左段积分封顶 1/2; 右端 √y<2 仍在右段支撑内, 积分继续增长。</span></div>
+<div class="step">$1≤y&lt;4: F_Y(y)=∫_{−1}^{0}(1/2)dx + ∫_{0}^{√y}(1/4)dx = 1/2+√y/4$<span class="why">√y≥1 后左端超出支撑: X 最小到 −1, 左段积分封顶 1/2; 右端 √y<2 仍在右段支撑内, 积分继续增长。</span></div>
 <div class="step">求导: f_Y(y)=3/(8√y)(0&lt;y<1); 1/(8√y)(1&lt;y<4); 0(其他)<span class="why">对分段线性函数 √y 求导, 系数 1/(2√y) 乘段内斜率; 检验: ∫₀¹ 3/(8√y)dy=3/4, ∫₁⁴ 1/(8√y)dy=1/4, 总质量 1 ✓;<b>考点</b>: 2008 真题标准答案正是 3/(8√y) 与 1/(8√y) 两段。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: Y=X² 的分段密度变换: 先校验归一化再分 y 区间积分, 2008 真题, 答案两段 3/8√y、1/8√y。</div>
 </details>
@@ -1483,10 +1707,10 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#32连续型连续型重点">分布函数法</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1511">例 15.11</a> 同为"先 F 后导": 本题反函数代回消成恒等, 得 F(X)~U(0,1) 经典结论</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">校验归一化: ∫₁⁸ (1/3)t^{−2/3} dt = (1/3)·3·t^{1/3}|₁⁸ = 2−1 = 1 ✓<span class="why">密度必须归一化——这是拿到题目先做的一步; $1/(3∛{x²})=(1/3)x^{−2/3}$, 积分恰为 1, 系数 1/3 是归一化系数, 不是 OCR 残片。</span></div>
-<div class="step">F(x)=∫₁^{x} (1/3)t^{−2/3} dt = x^{1/3}−1 (1≤x≤8)<span class="why">幂函数积分: (1/3)t^{−2/3} 的原函数 t^{1/3}; F(1)=0, F(8)=2−1=1 ✓。</span></div>
-<div class="step">Y=F(X), 值域 [F(1),F(8)] = [0,1]。P{Y≤y}=P{F(X)≤y}=P{X≤F^{−1}(y)}<span class="why">F 单调不减, 不等式 F(X)≤y 等价于 X≤F^{−1}(y), 把 Y 的概率翻译回 X。</span></div>
-<div class="step">由于 F 单调, P{X≤F^{−1}(y)} = F(F^{−1}(y)) = y。故 f_Y(y)=1(0&lt;y<1) —— Y~U(0,1)<span class="fill">【AI补全】</span><span class="why">F 是 X 自己的分布函数: P{X≤t}=F(t); 反函数代回恰好得到恒等函数 y, 即均匀分布的分布函数;<b>考点</b>: 概率积分变换是随机数生成的理论基础, 结论要记住。</span></div>
+<div class="step">校验归一化$: ∫₁⁸ (1/3)t^{−2/3} dt = (1/3)$·3·$t^{1/3}|₁⁸ = 2−1 = 1 ✓$<span class="why">密度必须归一化——这是拿到题目先做的一步; $1/(3∛{x²})=(1/3)x^{−2/3}$, 积分恰为 1, 系数 1/3 是归一化系数, 不是 OCR 残片。</span></div>
+<div class="step">$F(x)=∫₁^{x} (1/3)t^{−2/3} dt = x^{1/3}−1 (1≤x≤8)$<span class="why">幂函数积分: (1/3)t^{−2/3} 的原函数 t^{1/3}; F(1)=0, F(8)=2−1=1 ✓。</span></div>
+<div class="step">Y=F(X), 值域 [F(1),F(8)] = [0,1]。$P{Y≤y}=P{F(X)≤y}=P{X≤F^{−1}(y)}$<span class="why">F 单调不减, 不等式 F(X)≤y 等价于 X≤F^{−1}(y), 把 Y 的概率翻译回 X。</span></div>
+<div class="step">由于 F 单调$, P{X≤F^{−1}(y)} = F(F^{−1}(y)) = y$。故 f_Y(y)=1(0&lt;y<1) —— Y~U(0,1)<span class="fill">【AI补全】</span><span class="why">F 是 X 自己的分布函数: P{X≤t}=F(t); 反函数代回恰好得到恒等函数 y, 即均匀分布的分布函数;<b>考点</b>: 概率积分变换是随机数生成的理论基础, 结论要记住。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 概率积分变换: 任意连续型 X 的 F(X)~U(0,1), 结论与密度细节无关, 高频结论题。</div>
 </details>
 
@@ -1497,19 +1721,19 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#41联合分布函数必考">联合分布函数</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例162">例 16.2</a> 同为二维分布函数基础运用: 本题四条边界定常数, 16.2 边缘化判独立</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">F(+∞,+∞)=A(B+π/2)(C+π/2)=1<span class="why">分布函数在 (∞,∞) 的极限为 1: arctan(±∞)=±π/2; 这是约束常数 A 的第一个方程。</span></div>
-<div class="step">F(−∞,y)=A(B−π/2)(C+arctan(y/3))=0 ⇒ B=π/2 (或 A=0, 舍)<span class="why">对任意 y 恒为零, 只能取 B=π/2; 若取 B=−π/2, 则 (B+π/2)=0 使第一步左端为 0 矛盾, A=0 同样破坏第一步;<b>易错</b>: 每个边界条件的解都要回代其余方程检验相容性。</span></div>
-<div class="step">同理 C=π/2。代入: A(π/2+π/2)(π/2+π/2)=A·π²=1 ⇒ A=1/π²<span class="why">对称地由 F(x,−∞)=0 得 C=π/2, 再回代第一步解出 A;<b>考点</b>: 二维分布函数的四条边界(两变量各 ±∞)逐条使用, 是定常数的标准流程。</span></div>
+<div class="step">$F(+∞,+∞)=A(B+π/2)(C+π/2)=1$<span class="why">分布函数在 (∞,∞) 的极限为 1: arctan(±∞)=±π/2; 这是约束常数 A 的第一个方程。</span></div>
+<div class="step">$F(−∞,y)=A(B−π/2)(C+arctan(y/3))=0 ⇒ B=π/2$ (或 A=0, 舍)<span class="why">对任意 y 恒为零, 只能取 B=π/2; 若取 B=−π/2, 则 (B+π/2)=0 使第一步左端为 0 矛盾, A=0 同样破坏第一步;<b>易错</b>: 每个边界条件的解都要回代其余方程检验相容性。</span></div>
+<div class="step">同理 C=π/2。代入: A(π/2+π/2)(π/2+π/2)=A·$π²=1 ⇒ A=1/π²$<span class="why">对称地由 F(x,−∞)=0 得 C=π/2, 再回代第一步解出 A;<b>考点</b>: 二维分布函数的四条边界(两变量各 ±∞)逐条使用, 是定常数的标准流程。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 二维分布函数定常数: 四边界条件代入解 A,B,C, 先验相容性, 真题模式。</div>
 </details>
 
-<p id="例162" class="prob"><b>例 16.2</b> 设二维随机变量 (X,Y) 的分布函数为 F(x,y)=(1−e^{−2x})(1−e^{−y}) (x&gt;0,y&gt;0), 其他为 0。求: (1) X,Y 的边缘分布函数; (2) 判断 X 和 Y 是否独立 【0621(3)]</p>
+<p id="例162" class="prob"><b>例 16.2</b> 设二维随机变量 (X,Y) 的分布函数为 $F(x,y)=(1−e^{−2x})(1−e^{−y}) (x>0,y>0),$ 其他为 0。求: (1) X,Y 的边缘分布函数; (2) 判断 X 和 Y 是否独立 【0621(3)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#41联合分布函数必考">联合分布函数</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例171">例 17.1</a> 同为乘积型联合分布函数 ⇒ 独立: 本题边缘化, 17.1 再算存活概率</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) F_X(x)=lim_{y→∞}F(x,y)=1−e^{−2x}(x>0); F_Y(y)=lim_{x→∞}F(x,y)=1−e^{−y}(y>0)<span class="why">边缘分布函数 = 联合分布函数让另一变量趋于 +∞ 的极限: y→∞ 时 e^{−y}→0;<b>易错</b>: 支撑条件 x>0,y>0 在边缘化后保留, x≤0 时边缘为 0。</span></div>
-<div class="step">(2) F(x,y)=(1−e^{−2x})(1−e^{−y})=F_X(x)·F_Y(y) ⇒ X 与 Y 相互独立<span class="why">分布函数层面的独立性判据: 联合分布函数能拆成两边缘的乘积即独立; 两个边缘分别是参数 2 与 1 的指数分布;<b>考点</b>: F(x,y)=F_X(x)F_Y(y) 是比密度更直接的判定。</span></div>
+<div class="step">$(1) F_X(x)=lim_{y→∞}F(x,y)=1−e^{−2x}(x>0); F_Y(y)=lim_{x→∞}F(x,y)=1−e^{−y}(y>0)$<span class="why">边缘分布函数 = 联合分布函数让另一变量趋于 +∞ 的极限: y→∞ 时 e^{−y}→0;<b>易错</b>: 支撑条件 x>0,y>0 在边缘化后保留, x≤0 时边缘为 0。</span></div>
+<div class="step">$(2) F(x,y)=(1−e^{−2x})(1−e^{−y})=F_X(x)$·$F_Y(y) ⇒ X$ 与 Y 相互独立<span class="why">分布函数层面的独立性判据: 联合分布函数能拆成两边缘的乘积即独立; 两个边缘分别是参数 2 与 1 的指数分布;<b>考点</b>: F(x,y)=F_X(x)F_Y(y) 是比密度更直接的判定。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 边缘分布 = 令另一变量趋于无穷, 乘积型 F 即独立, 二维分布函数基础题。</div>
 </details>
 
@@ -1519,9 +1743,9 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">放回: P(0,0)=10/12×10/12=25/36, P(0,1)=10/12×2/12=5/36, P(1,0)=2/12×10/12=5/36, P(1,1)=2/12×2/12=1/36<span class="why">放回抽样使两次抽取独立: 每次次品率保持 2/12=1/6、正品率 5/6, 联合概率直接是两次概率之积。</span></div>
-<div class="step">边缘: P{X=0}=30/36=5/6, P{X=1}=1/6。检验: P(0,0)=25/36=5/6×5/6=25/36 ✓ ⇒ 独立<span class="why">放回时两次抽取条件完全相同, X,Y 独立: 每一格都满足"联合 = 边缘乘积";<b>考点</b>: 独立性表格检验要逐格验证。</span></div>
+<div class="step">边缘: P{X=0}=30/36=5/6, P{X=1}=1/6。检验$: P(0,0)=25/36=5/6×5/6=25/36 ✓ ⇒$ 独立<span class="why">放回时两次抽取条件完全相同, X,Y 独立: 每一格都满足"联合 = 边缘乘积";<b>考点</b>: 独立性表格检验要逐格验证。</span></div>
 <div class="step">不放回: P(0,0)=10/12×9/11=90/132, P(0,1)=10/12×2/11=20/132, P(1,0)=2/12×10/11=20/132, P(1,1)=2/12×1/11=2/132<span class="why">不放回使第二次的条件随第一次结果改变: 第一次取正品后次品率升为 2/11; 四格总和 132/132=1 可作校验。</span></div>
-<div class="step">P(0,0)=90/132=15/22 ≠ (5/6)²=25/36 ⇒ 不独立【修正】<span class="why">判定不独立要比较同一分布下的联合概率与边缘乘积: 不放回时 P{X=0}=P{Y=0}=110/132=5/6, 而 15/22≈0.682≠25/36≈0.694;<b>易错</b>: 原稿拿不放回的 90/132 与放回情形的 10/12×10/12 相比, 两个不同抽样方案之间没有可比性, 应改用本方案自己的边缘乘积。</span></div>
+<div class="step">$P(0,0)=90/132=15/22 ≠ (5/6)²=25/36 ⇒$ 不独立【修正】<span class="why">判定不独立要比较同一分布下的联合概率与边缘乘积: 不放回时 P{X=0}=P{Y=0}=110/132=5/6, 而 15/22≈0.682≠25/36≈0.694;<b>易错</b>: 原稿拿不放回的 90/132 与放回情形的 10/12×10/12 相比, 两个不同抽样方案之间没有可比性, 应改用本方案自己的边缘乘积。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 放回/不放回对照: 放回独立、不放回不独立, 独立性判定须用同方案边缘乘积, 经典对照题。</div>
 </details>
 
@@ -1542,41 +1766,55 @@ main details .sum b{font-weight:700}
 <details><summary>解答</summary>
 <div class="step">X~B(2,0.2): P{X=0}=0.64, P{X=1}=0.32, P{X=2}=0.04<span class="why">甲两枪独立: 二项公式 (0.8)²、2×0.2×0.8、(0.2)²; 三值和为 1。</span></div>
 <div class="step">Y~B(2,0.5): P{Y=0}=0.25, P{Y=1}=0.5, P{Y=2}=0.25<span class="why">乙同理按 B(2,0.5): 系数 1:2:1 对称分布。</span></div>
-<div class="step">独立 ⇒ P{X=i,Y=j}=P{X=i}P{Y=j}, 填 3×3 表格<span class="why">两人互不影响即 X,Y 独立: 联合分布 = 边缘乘积表, 例如 P{X=1,Y=1}=0.32×0.5=0.16;<b>易错</b>: 填表后九个格子总和应为 1, 这是整体校验。</span></div>
+<div class="step">独立 $⇒ P{X=i,Y=j}=P{X=i}P{Y=j},$ 填 3×3 表格<span class="why">两人互不影响即 X,Y 独立: 联合分布 = 边缘乘积表, 例如 P{X=1,Y=1}=0.32×0.5=0.16;<b>易错</b>: 填表后九个格子总和应为 1, 这是整体校验。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 独立二项变量的联合分布: 两边缘乘积填表, 基础综合题。</div>
 </details>
 
 <p id="例166" class="prob"><b>例 16.6</b> 已知随机变量 X₁ 和 X₂ 的概率分布为 $X_1\sim\begin{pmatrix} -1 &amp; 0 &amp; 1 \\ 1/4 &amp; 1/2 &amp; 1/4 \end{pmatrix}$, $X_2\sim\begin{pmatrix} 0 &amp; 1 \\ 1/2 &amp; 1/2 \end{pmatrix}$, 且 P{X₁X₂=0}=1。求: (1) X₁ 和 X₂ 的联合分布; (2) 问 X₁ 和 X₂ 是否独立? 为什么? 【0621(3), 边缘分布经视觉核对补全】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0621-3-p15_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0621-3-p15_1.png" alt="X₁X₂=0 约束下联合分布表示意（0621(3) 页15）">
+<div class="figcap">📐 示意图（重绘）: X₁X₂=0 约束下联合分布表示意（0621(3) 页15）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#42二维离散型必考">二维离散型</a> · <a href="数学_概率论.html#16事件的独立性必考易错">独立性</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例172">例 17.2</a> 同型题(17.2 数据完整): 零约束+边缘和反解联合表</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) P{X₁X₂=0}=1 意味着 P{X₁≠0 且 X₂≠0}=0: 联合分布中"两个都非零"的格子概率全为 0<span class="why">事件 X₁X₂=0 的补集是"两者都不为零": 补集概率为 0, 即零约束直接落在联合分布表的格子上。X₂ 只取 0,1, 故受约束的格子是 (X₁=±1, X₂=1)。</span></div>
-<div class="step">零约束 + 边缘和反解: P{X₁=1}=1/4 ⇒ (1,0)=1/4; P{X₁=−1}=1/4 ⇒ (−1,0)=1/4; P{X₂=1}=1/2 ⇒ (0,1)=1/2; 其余为 0(含 (0,0)=0) <span class="why">X₁=±1 的边缘概率只能落到 X₂=0 列(该行 X₂=1 格被约束清零); X₂=1 的边缘只能落到 X₁=0 行; 最后 P{X₂=0}=1/2 由 (1,0)+(−1,0)=1/4+1/4 配平, 故 (0,0)=0。<b>核对</b>: 视觉稿表中 (−1,1)=1/4 违反 P{X₁X₂=0}=1, 判为转写误读(应为 0), 按约束+边缘唯一解修正。</span></div>
-<div class="step">(2) 不独立。取 (X₁=−1, X₂=0): P{X₁=−1,X₂=0}=1/4, 而 P{X₁=−1}·P{X₂=0}=(1/4)·(1/2)=1/8≠1/4 <span class="why">独立性要求每个格子联合概率=边缘乘积; 一个反例即可否定(课件标准做法: 取 (−1,0) 格对比 1/4 与 1/8)。</span></div>
+<div class="step">(1) $P\{X_1X_2=0\}=1$ 意味着 $P\{X_1\ne 0,\ X_2\ne 0\}=0$: 联合分布中"两个都非零"的格子概率全为 0<span class="why">事件 X₁X₂=0 的补集是"两者都不为零": 补集概率为 0, 即零约束直接落在联合分布表的格子上。X₂ 只取 0,1, 故受约束的格子是 (X₁=±1, X₂=1)。</span></div>
+<div class="step">零约束 + 边缘和反解$: P{X₁=1}=1/4 ⇒ (1,0)=1/4; P{X₁=−1}=1/4 ⇒ (−1,0)=1/4; P{X₂=1}=1/2 ⇒ (0,1)=1/2;$ 其余为 0(含 (0,0)=0) <span class="why">X₁=±1 的边缘概率只能落到 X₂=0 列(该行 X₂=1 格被约束清零); X₂=1 的边缘只能落到 X₁=0 行; 最后 P{X₂=0}=1/2 由 (1,0)+(−1,0)=1/4+1/4 配平, 故 (0,0)=0。<b>核对</b>: 视觉稿表中 (−1,1)=1/4 违反 P{X₁X₂=0}=1, 判为转写误读(应为 0), 按约束+边缘唯一解修正。</span></div>
+<div class="step">(2) 不独立。取 $(X₁=−1, X₂=0): P{X₁=−1,X₂=0}=1/4,$ 而 $P{X₁=−1}$·P{X₂=0}=(1/4)·$(1/2)=1/8≠1/4$ <span class="why">独立性要求每个格子联合概率=边缘乘积; 一个反例即可否定(课件标准做法: 取 (−1,0) 格对比 1/4 与 1/8)。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: P{X₁X₂=0}=1 的零约束反解联合表: 边缘 1/4、1/2 各自"定位"到唯一可行格, 列和作校验; 独立性用单格反例否定。</div>
 </details>
 
 <hr />
 <h2 id="十七强化二维随机变量08021-3">十七、强化二维随机变量 【0802(1)-(3)】</h2>
-<p id="例171" class="prob"><b>例 17.1</b> 一电子仪器由两个部件构成, 以 X 和 Y 分别表示两个部件的寿命(单位: 千小时), 已知 X 和 Y 的联合分布函数为 F(x,y)=1−e^{−0.5x}−e^{−0.5y}+e^{−0.5(x+y)} (x≥0,y≥0), 其他为 0。问: (1) X 和 Y 是否独立? (2) 求两个部件的寿命都超过 100 小时的概率 α 【0802(1)-(2)]</p>
+<p id="例171" class="prob"><b>例 17.1</b> 一电子仪器由两个部件构成, 以 X 和 Y 分别表示两个部件的寿命(单位: 千小时), 已知 X 和 Y 的联合分布函数为 $F(x,y)=1−e^{−0.5x}−e^{−0.5y}+e^{−0.5(x+y)} (x≥0,y≥0),$ 其他为 0。问: (1) X 和 Y 是否独立? (2) 求两个部件的寿命都超过 100 小时的概率 α 【0802(1)-(2)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#41联合分布函数必考">联合分布函数</a> · <a href="数学_概率论.html#25八大常见分布必考">指数分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例162">例 16.2</a> 同为乘积型 F 判独立: 本题多一步存活概率与单位换算</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) F_X(x)=1−e^{−0.5x}(x≥0), F_Y(y)=1−e^{−0.5y}(y≥0)。F(x,y)=F_X(x)F_Y(y) ⇒ 独立<span class="why">展开式 1−e^{−0.5x}−e^{−0.5y}+e^{−0.5(x+y)} 恰好是 (1−e^{−0.5x})(1−e^{−0.5y}) 的展开: 两个边缘都是参数 0.5 的指数分布, 乘积形式即独立。</span></div>
-<div class="step">(2) α = P{X>0.1, Y>0.1} = [1−F_X(0.1)][1−F_Y(0.1)] = e^{−0.05}·e^{−0.05} = e^{−0.1}<span class="why">单位换算: 100 小时 = 0.1 千小时(寿命单位为千小时); 独立性使联合存活概率 = 两存活概率之积, 指数存活函数 1−F(t)=e^{−0.5t};<b>易错</b>: 100 小时不换单位直接代入, 指数会差 1000 倍。</span></div>
+<div class="step">$(1) F_X(x)=1−e^{−0.5x}(x≥0), F_Y(y)=1−e^{−0.5y}(y≥0)$。$F(x,y)=F_X(x)F_Y(y) ⇒$ 独立<span class="why">展开式 1−e^{−0.5x}−e^{−0.5y}+e^{−0.5(x+y)} 恰好是 (1−e^{−0.5x})(1−e^{−0.5y}) 的展开: 两个边缘都是参数 0.5 的指数分布, 乘积形式即独立。</span></div>
+<div class="step">$(2) α = P{X>0.1, Y>0.1} = [1−F_X(0.1)][1−F_Y(0.1)] = e^{−0.05}$·$e^{−0.05} = e^{−0.1}$<span class="why">单位换算: 100 小时 = 0.1 千小时(寿命单位为千小时); 独立性使联合存活概率 = 两存活概率之积, 指数存活函数 1−F(t)=e^{−0.5t};<b>易错</b>: 100 小时不换单位直接代入, 指数会差 1000 倍。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 乘积型联合分布函数 → 独立指数边缘: 存活概率拆乘积, 单位换算是易错点, 真题。</div>
 </details>
 
-<p id="例172" class="prob"><b>例 17.2</b> 设随机变量 Xᵢ (i=1,2) 的分布律: P{Xᵢ=−1}=P{Xᵢ=1}=1/4, P{Xᵢ=0}=1/2, 且满足 P{X₁X₂=0}=1, 则 P{X₁=X₂}= 【0802(2)]</p>
+<p id="例172" class="prob"><b>例 17.2</b> 设随机变量 Xᵢ (i=1,2) 的分布律$: P{Xᵢ=−1}=P{Xᵢ=1}=1/4, P{Xᵢ=0}=1/2,$ 且满足 P{X₁X₂=0}=1, 则 P{X₁=X₂}= 【0802(2)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0802-2-p02_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0802-2-p02_1.png" alt="X₁X₂=0 约束下概率分布示意（0802(2) 页2）">
+<div class="figcap">📐 示意图（重绘）: X₁X₂=0 约束下概率分布示意（0802(2) 页2）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#42二维离散型必考">二维离散型</a> · <a href="数学_概率论.html#16事件的独立性必考易错">独立性</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例166">例 16.6</a> 同为零约束反解联合表(本题数据完整) <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1710">例 17.10</a> 同为约束反解: 本题乘积=0 清零四格, 17.10 平方相等清非对角格</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">P{X₁X₂=0}=1 ⇒ P{X₁≠0,X₂≠0}=0 ⇒ (±1,±1) 四个格子概率为零<span class="why">乘积非零只可能来自"两者都非零": 该集合概率为零, 联合表中 (±1,±1) 格全部清零——这是与例 16.6 共用的约束骨架。</span></div>
-<div class="step">反解联合分布: P{X₂=1}=1/4 ⇒ (0,1)=1/4; P{X₂=−1}=1/4 ⇒ (0,−1)=1/4; P{X₁=1}=1/4 ⇒ (1,0)=1/4; P{X₁=−1}=1/4 ⇒ (−1,0)=1/4<span class="fill">【AI补全】</span><span class="why">每个 ±1 的边缘概率只能落到所在行/列唯一未被清零的格子上, 四个 1/4 直接定位; 剩余 (0,0) 由 P{X₁=0}=1/2 扣除 (0,1),(0,−1) 得 0;<b>考点</b>: "边缘 + 零约束"反解联合表的标准演示。</span></div>
-<div class="step">P{X₁=X₂}=P{(−1,−1)}+P{(0,0)}+P{(1,1)} = 0+0+0 = 0<span class="fill">【AI补全】</span><span class="why">X₁=X₂ 的三个对角格概率全为零: (±1,±1) 被约束清零, (0,0) 被边缘和挤成 0;<b>易错</b>: 不能按"边缘乘积"猜 P{X₁=0,X₂=0}=1/4——X₁,X₂ 并不独立, 本题该格恰好为 0。</span></div>
+<div class="step">$P{X₁X₂=0}=1 ⇒ P{X₁≠0,X₂≠0}=0 ⇒ (±1,±1)$ 四个格子概率为零<span class="why">乘积非零只可能来自"两者都非零": 该集合概率为零, 联合表中 (±1,±1) 格全部清零——这是与例 16.6 共用的约束骨架。</span></div>
+<div class="step">反解联合分布$: P{X₂=1}=1/4 ⇒ (0,1)=1/4; P{X₂=−1}=1/4 ⇒ (0,−1)=1/4; P{X₁=1}=1/4 ⇒ (1,0)=1/4; P{X₁=−1}=1/4 ⇒ (−1,0)=1/4$<span class="fill">【AI补全】</span><span class="why">每个 ±1 的边缘概率只能落到所在行/列唯一未被清零的格子上, 四个 1/4 直接定位; 剩余 (0,0) 由 P{X₁=0}=1/2 扣除 (0,1),(0,−1) 得 0;<b>考点</b>: "边缘 + 零约束"反解联合表的标准演示。</span></div>
+<div class="step">$P{X₁=X₂}=P{(−1,−1)}+P{(0,0)}+P{(1,1)} = 0+0+0 = 0$<span class="fill">【AI补全】</span><span class="why">X₁=X₂ 的三个对角格概率全为零: (±1,±1) 被约束清零, (0,0) 被边缘和挤成 0;<b>易错</b>: 不能按"边缘乘积"猜 P{X₁=0,X₂=0}=1/4——X₁,X₂ 并不独立, 本题该格恰好为 0。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 零约束 + 边缘反解联合表: 答案是 P{X₁=X₂}=0, 对角格逐格核验, 真题。</div>
 </details>
 
@@ -1585,72 +1823,93 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#42二维离散型必考">二维离散型</a> · <a href="数学_概率论.html#25八大常见分布必考">泊松分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例164">例 16.4</a> 同为"边缘×条件→联合"构造, 本题多问泊松稀释性</li>
 </ul>
 <p><details><summary>解答</summary></p>
-<div class="step">(1) P{Y=m | X=n} = Cₙᵐ pᵐ(1−p)^{n−m}<span class="why">给定上车 n 人, 每人独立下车概率 p: 下车人数是 n 重伯努利试验的成功次数, 即二项分布 B(n,p)。</span></div>
-<div class="step">(2) P{X=n,Y=m} = P{X=n}·P{Y=m|X=n} = (λⁿe^{−λ}/n!)·Cₙᵐ pᵐ(1−p)^{n−m}<span class="why">乘法定理: 联合分布 = 边缘泊松 × 条件二项; 成立范围 0≤m≤n, 其余组合概率为 0;<b>考点</b>: "泊松×条件二项"的复合结构是二维离散分布的标准构造。</span></div>
+<div class="step">$(1) P{Y=m | X=n} = Cₙᵐ pᵐ(1−p)^{n−m}$<span class="why">给定上车 n 人, 每人独立下车概率 p: 下车人数是 n 重伯努利试验的成功次数, 即二项分布 B(n,p)。</span></div>
+<div class="step">(2) P{X=n,Y=m} = P{X=n}·$P{Y=m|X=n} = (λⁿe^{−λ}/n!)$·$Cₙᵐ pᵐ(1−p)^{n−m}$<span class="why">乘法定理: 联合分布 = 边缘泊松 × 条件二项; 成立范围 0≤m≤n, 其余组合概率为 0;<b>考点</b>: "泊松×条件二项"的复合结构是二维离散分布的标准构造。</span></div>
 <div class="step">边缘: Y~P(λp) (泊松分布的稀释性: 每个乘客以概率 p 下车, 下车人数仍服从泊松)<span class="fill">【AI补全】</span><span class="why">对 n 求和或用稀释定理: 泊松流按概率 p 独立筛选后仍是泊松流, 参数 λ 缩为 λp;<b>易错</b>: 边缘是泊松而非二项——总人数本身随机时, 结果归为泊松。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 泊松×二项条件结构 + 泊松稀释定理: 联合分布与边缘分布一问到底, 真题。</div>
 </details>
-<p id="例174" class="prob"><b>例 17.4</b> 假设随机变量 X 和 Y 的联合概率密度为 f(x,y)=4xy(0≤x≤1,0≤y≤1), 其他为 0。求 X 和 Y 联合分布函数 【0802(2)]</p>
+<p id="例174" class="prob"><b>例 17.4</b> 假设随机变量 X 和 Y 的联合概率密度为 $f(x,y)=4xy(0≤x≤1,0≤y≤1),$ 其他为 0。求 X 和 Y 联合分布函数 【0802(2)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0802-2-p04_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0802-2-p04_1.png" alt="f(x,y)=4xy 的积分区域图（0802(2) 页4）">
+<div class="figcap">📐 示意图（重绘）: f(x,y)=4xy 的积分区域图（0802(2) 页4）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#43二维连续型必考高频">二维连续型</a> · <a href="数学_概率论.html#41联合分布函数必考">联合分布函数</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例175">例 17.5</a> 同为二维连续型积分: 本题积出 F 需截断支撑, 17.5 积边缘需移动下限</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">当 x<0 或 y<0: F(x,y)=0。当 x≥1 且 y≥1: F=1<span class="why">分布函数 F(x,y)=P{X≤x,Y≤y} = 密度在 (−∞,x]×(−∞,y] 上的积分: 该区域与支撑正方形 [0,1]² 交为空得 0, 完全覆盖得 1。</span></div>
-<div class="step">当 0≤x<1, 0≤y<1: F(x,y)=∫₀ˣ∫₀ʸ 4uv du dv = x²y²<span class="why">积分区域完全落在支撑内, 密度 4uv 可分离变量: 积分化为两个一维积分之积, (∫₀ˣ2u du)(∫₀ʸ2v dv)=x²y²;<b>考点</b>: 可分离密度使二维积分降为一维乘积。</span></div>
-<div class="step">当 0≤x<1, y≥1: F(x,y)=∫₀ˣ∫₀¹ 4uv du dv = x²<span class="why">y 方向已超出支撑上界, 积分上限封顶到 1: 内层 ∫₀¹2v dv=1;<b>易错</b>: 积分上限不能随变量"超界", 必须截断在支撑边界。</span></div>
-<div class="step">当 x≥1, 0≤y<1: F(x,y)=y²<span class="why">对称情形: x 方向封顶, 同理得 y²。</span></div>
+<div class="step">当 x<0 或 y<0: F(x,y)=0。当 x≥1 且 $y≥1: F=1$<span class="why">分布函数 F(x,y)=P{X≤x,Y≤y} = 密度在 (−∞,x]×(−∞,y] 上的积分: 该区域与支撑正方形 [0,1]² 交为空得 0, 完全覆盖得 1。</span></div>
+<div class="step">当 $0≤x&lt;1, 0≤y&lt;1: F(x,y)=∫₀ˣ∫₀ʸ 4uv du dv = x²y²$<span class="why">积分区域完全落在支撑内, 密度 4uv 可分离变量: 积分化为两个一维积分之积, (∫₀ˣ2u du)(∫₀ʸ2v dv)=x²y²;<b>考点</b>: 可分离密度使二维积分降为一维乘积。</span></div>
+<div class="step">当 $0≤x&lt;1, y≥1: F(x,y)=∫₀ˣ∫₀¹ 4uv du dv = x²$<span class="why">y 方向已超出支撑上界, 积分上限封顶到 1: 内层 ∫₀¹2v dv=1;<b>易错</b>: 积分上限不能随变量"超界", 必须截断在支撑边界。</span></div>
+<div class="step">当 $x≥1, 0≤y&lt;1: F(x,y)=y²$<span class="why">对称情形: x 方向封顶, 同理得 y²。</span></div>
 <div class="step">核验: f(x,y)=∂²F/∂x∂y = 4xy ✓<span class="why">分段求混合偏导回代密度, 是检查分段正确性的硬核手段; 边界上 F 连续(如 (1,1) 处各段均得 1)。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 由密度分段求联合分布函数: 四类区间 + 截断积分, 混合偏导回验, 必练模板。</div>
 </details>
 
 <p id="例175" class="prob"><b>例 17.5</b> 设 (X,Y) 是二维随机变量, X 的边缘概率密度为 f_X(x)=3x²(0&lt;x&lt;1), 其他为 0。在给定 X=x(0&lt;x&lt;1) 的条件下, Y 的条件概率密度为 f_{Y|X}(y|x)=3y²/x³(0&lt;y&lt;x)。求: (1) (X,Y) 的概率密度 f(x,y); (2) Y 的边缘概率密度 f_Y(y); (3) $P\left\{Y>\frac12\Big|X\ge\frac12\right\}$ 及 $P\left\{Y>\frac13\Big|X=\frac12\right\}$ 【0802(3), 题面按视觉转写定稿】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0802-3-p01_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0802-3-p01_1.png" alt="边缘密度对应的区域曲线图（0802(3) 页1）">
+<div class="figcap">📐 示意图（重绘）: 边缘密度对应的区域曲线图（0802(3) 页1）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#43二维连续型必考高频">二维连续型</a> · <a href="数学_概率论.html#24连续型随机变量必考">连续型密度</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例174">例 17.4</a> 同为二维连续型积分: 17.4 积出 F, 本题积出边缘, "截断/移动"同一难点</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) f(x,y) = f_X(x)·f_{Y|X}(y|x) = 3x²·3y²/x³ = 9y²/x (0&lt;y&lt;x<1)<span class="why">乘法定理: 联合密度 = 边缘密度 × 条件密度; 支撑由条件密度 0&lt;y&lt;x 与边缘 0&lt;x<1 的交集确定(三角形区域);<b>考点</b>: 由边缘与条件构造联合是考研高频操作。</span></div>
-<div class="step">(2) f_Y(y) = ∫_{y}^{1} 9y²/x dx = 9y²·[lnx]_{y}^{1} = −9y²·lny (0&lt;y<1)<span class="why">边缘密度 = 联合密度对另一变量全区间积分: 固定 y 后 x 从 y 积到 1(三角形支撑的右边界);<b>易错</b>: 积分下限是 y 而非 0——支撑 x>y 使下界随 y 移动; lny<0 保证密度非负。</span></div>
-<div class="step">(3) 第一问: P{X≥1/2}=∫_{1/2}^{1}3x²dx=7/8; P{X≥1/2,Y>1/2}=9∫_{1/2}^{1}\frac1x dx\int_{1/2}^{x}y²dy=3∫_{1/2}^{1}\left(x²-\frac{1}{8x}\right)dx=\frac78-\frac38\ln2<span class="why">条件概率分母是 X 的边缘概率, 分子是联合密度在区域 {x≥1/2, y>1/2} 上的二重积分——先积内层 y 再积外层 x。</span></div>
-<div class="step">故 P{Y>1/2|X≥1/2} = (7/8−3/8·ln2)/(7/8) = 1−(3/7)ln2 ✓<span class="why">条件概率 = 分子/分母, 7/8 相消, 剩 1−(3/7)ln2; 与课件答案一致。</span></div>
-<div class="step">第二问 P{Y>1/3|X=1/2}: 直接用条件密度 $f_{Y|X}(y|\frac12)=\frac{3y^2}{1/8}=24y^2$, 积分 ∫_{1/3}^{1/2}24y²dy = 8(y³|_{1/3}^{1/2}) = 8(1/8−1/27) = 19/27<span class="why"><b>易错</b>: "给定 X=1/2"是条件密度而不是条件概率——分母不再是 7/8, 直接对条件密度积分; 第二问比第一问多一个考点。</span></div>
+<div class="step">(1) $f(x,y) = f_X(x)\cdot f_{Y|X}(y|x) = 3x^2\cdot 3y^2/x^3 = 9y^2/x \ (0&lt;y&lt;x&lt;1)$<span class="why">乘法定理: 联合密度 = 边缘密度 × 条件密度; 支撑由条件密度 0&lt;y&lt;x 与边缘 0&lt;x<1 的交集确定(三角形区域);<b>考点</b>: 由边缘与条件构造联合是考研高频操作。</span></div>
+<div class="step">(2) $f_Y(y) = \int_y^1 \frac{9y^2}{x}\,dx = 9y^2[\ln x]_y^1 = -9y^2\ln y \ (0&lt;y&lt;1)$<span class="why">边缘密度 = 联合密度对另一变量全区间积分: 固定 y 后 x 从 y 积到 1(三角形支撑的右边界);<b>易错</b>: 积分下限是 y 而非 0——支撑 x>y 使下界随 y 移动; lny<0 保证密度非负。</span></div>
+<div class="step">(3) 第一问: $P\{X\ge 1/2\}=\int_{1/2}^{1}3x^2\,dx=7/8$; $P\{X\ge 1/2,\ Y>1/2\}=9\int_{1/2}^{1}\frac{1}{x}\,dx\int_{1/2}^{x}y^2\,dy=3\int_{1/2}^{1}\left(x^2-\frac{1}{8x}\right)dx=\frac{7}{8}-\frac{3}{8}\ln 2$<span class="why">条件概率分母是 X 的边缘概率, 分子是联合密度在区域 {x≥1/2, y>1/2} 上的二重积分——先积内层 y 再积外层 x。</span></div>
+<div class="step">故 $P{Y>1/2|X≥1/2} = (7/8−3/8$·$ln2)/(7/8) = 1−(3/7)ln2 ✓$<span class="why">条件概率 = 分子/分母, 7/8 相消, 剩 1−(3/7)ln2; 与课件答案一致。</span></div>
+<div class="step">第二问 $P\{Y>1/3|X=1/2\}$: 直接用条件密度 $f_{Y|X}(y|\frac12)=\frac{3y^2}{1/8}=24y^2$, 积分 $\int_{1/3}^{1/2}24y^2\,dy = 8\big(y^3|_{1/3}^{1/2}\big) = 8(1/8-1/27) = 19/27$<span class="why"><b>易错</b>: "给定 X=1/2"是条件密度而不是条件概率——分母不再是 7/8, 直接对条件密度积分; 第二问比第一问多一个考点。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 边缘×条件→联合, 再积分出另一边缘; 条件概率(用联合/边缘比)与条件密度(直接积分)两种问法对比考。</div>
 </details>
 
-<p id="例176" class="prob"><b>例 17.6</b> 设二维随机变量 (X,Y) 的概率密度为 f(x,y)=Ae^{−2x²+2xy−y²}。求常数 A 及条件概率密度 f_{Y|X}(y|x) 【0802(3)]</p>
+<p id="例176" class="prob"><b>例 17.6</b> 设二维随机变量 (X,Y) 的概率密度为 $f(x,y)=Ae^{−2x²+2xy−y²}$。求常数 A 及条件概率密度 f_{Y|X}(y|x) 【0802(3)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#43二维连续型必考高频">二维连续型</a> · <a href="数学_概率论.html#25八大常见分布必考">正态分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1310">例 13.10</a> 同为"指数配方→正态密度系数": 本题升级为二维并加高斯积分</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">配方: −2x²+2xy−y² = −(y²−2xy+2x²) = −[(y−x)²+x²] = −(y−x)²−x²<span class="why">以 y 为主元配平方: y²−2xy 配成 (y−x)², 余项 x² 由 −2x² 扣除 x² 得到; 目的是把指数拆成两个变量的平方和。</span></div>
-<div class="step">f(x,y)=A·e^{−(y−x)²}·e^{−x²}。积分: ∫∫ f dxdy = A·∫e^{−x²}dx·∫e^{−(y−x)²}dy = A·√π·√π = Aπ = 1 ⇒ A=1/π<span class="why">两个因子分别只是 x 与 y−x 的函数, 二重积分分离成两个高斯积分 ∫e^{−u²}du=√π(平移不改变积分值);<b>易错</b>: ∫e^{−x²}dx=√π 而非 1, 系数差 π 倍是高频失分点。</span></div>
-<div class="step">f_X(x)=∫f(x,y)dy = (1/π)e^{−x²}·√π = e^{−x²}/√π<span class="why">对 y 积分时 e^{−x²} 提出积分号, 剩下的 ∫e^{−(y−x)²}dy=√π;<b>考点</b>: 指数为平方和结构时, 边缘积分恒为高斯积分。</span></div>
-<div class="step">f_{Y|X}(y|x) = (1/π)e^{−(y−x)²−x²} / (e^{−x²}/√π) = (1/√π)e^{−(y−x)²} ⇒ Y|(X=x)~N(x, 1/2)<span class="fill">【AI补全】</span><span class="why">条件密度 = 联合密度 ÷ 边缘密度, e^{−x²} 相消; (1/√π)e^{−(y−x)²} 正是 N(x, 1/2) 的密度(2σ²=1);<b>易错</b>: 方差是 1/2 不是 1: 指数系数 1 对应 σ²=1/2。</span></div>
+<div class="step">配方$: −2x²+2xy−y² = −(y²−2xy+2x²) = −[(y−x)²+x²] = −(y−x)²−x²$<span class="why">以 y 为主元配平方: y²−2xy 配成 (y−x)², 余项 x² 由 −2x² 扣除 x² 得到; 目的是把指数拆成两个变量的平方和。</span></div>
+<div class="step">f(x,y)=A·$e^{−(y−x)²}$·$e^{−x²}$。积分$: ∫∫ f dxdy = A$·$∫e^{−x²}dx$·$∫e^{−(y−x)²}dy = A$·√π·$√π = Aπ = 1 ⇒ A=1/π$<span class="why">两个因子分别只是 x 与 y−x 的函数, 二重积分分离成两个高斯积分 ∫e^{−u²}du=√π(平移不改变积分值);<b>易错</b>: ∫e^{−x²}dx=√π 而非 1, 系数差 π 倍是高频失分点。</span></div>
+<div class="step">$f_X(x)=∫f(x,y)dy = (1/π)e^{−x²}$·$√π = e^{−x²}/√π$<span class="why">对 y 积分时 e^{−x²} 提出积分号, 剩下的 ∫e^{−(y−x)²}dy=√π;<b>考点</b>: 指数为平方和结构时, 边缘积分恒为高斯积分。</span></div>
+<div class="step">$f_{Y|X}(y|x) = (1/π)e^{−(y−x)²−x²} / (e^{−x²}/√π) = (1/√π)e^{−(y−x)²} ⇒ Y|(X=x)~N(x, 1/2)$<span class="fill">【AI补全】</span><span class="why">条件密度 = 联合密度 ÷ 边缘密度, e^{−x²} 相消; (1/√π)e^{−(y−x)²} 正是 N(x, 1/2) 的密度(2σ²=1);<b>易错</b>: 方差是 1/2 不是 1: 指数系数 1 对应 σ²=1/2。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 二次型指数配平方 + 高斯积分定系数: 联合/边缘/条件密度一路算到底, 综合题。</div>
 </details>
 
-<p id="例177" class="prob"><b>例 17.7</b> 已知 (X,Y) 在区域 G={(x,y)|−1&lt;x&lt;1,−1&lt;y&lt;1} 上服从均匀分布, 则 (D) 【0802(3), 题面按视觉转写定稿】
-(A) P{X+Y≥0}=1/4 (B) P{X−Y≥0}=1/4 (C) P{max(X,Y)≥0}=1/4 (D) P{min(X,Y)≥0}=1/4</p>
+<p id="例177" class="prob"><b>例 17.7</b> 已知 (X,Y) 在区域 G={(x,y)|−1&lt;x&lt;1,−1&lt;y&lt;1} 上服从均匀分布, 则 (D) 【0802(3), 题面按视觉转写定稿】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0802-3-p03_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0802-3-p03_1.png" alt="区域 G: −1&lt;x,y<1 的示意图（0802(3) 页3）">
+<div class="figcap">📐 示意图（重绘）: 区域 G: −1&lt;x,y<1 的示意图（0802(3) 页3）</div>
+</div>
+</details>
+
+<p>(A) P{X+Y≥0}=1/4 (B) P{X−Y≥0}=1/4 (C) P{max(X,Y)≥0}=1/4 (D) P{min(X,Y)≥0}=1/4</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#43二维连续型必考高频">二维连续型</a> · <a href="数学_概率论.html#18三大经典概型必考">几何概型</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例81">例 8.1</a> 同为正方形区域面积比: 本题靠对称性与 max/min 象限划分</li>
 </ul>
 <details><summary>解答</summary>
 <div class="step">G 为 2×2 正方形, 面积 4。均匀分布, 概率 = 区域面积/4<span class="why">二维均匀分布的概率 = 面积比, 直接做几何: 每个选项对应正方形内的一块区域。</span></div>
-<div class="step">(A)(B) 均错: P{X+Y≥0}=P{X−Y≥0}=1/2≠1/4<span class="why">直线 y=−x 与 y=x 都过正方形中心, 各把正方形平分——对角线对称性给出 1/2, 排除 1/4 的选项。</span></div>
-<div class="step">(C) P{max(X,Y)≥0}=1−P{X<0,Y<0}=1−1/4=3/4, 错<span class="why">max≥0 取对立"两个都负"= 左下 1×1 象限, 面积 1/4。</span></div>
-<div class="step">(D) P{min(X,Y)≥0}=P{X≥0,Y≥0}=1/4 ✓ 选 (D)<span class="why">min≥0 要求"两个都非负"= 右上象限, 面积恰 1/4;<b>易错</b>: max 与 min 的对立事件分别是"都<0"与"都≥0", 不要混成单个事件——四个选项值都是 1/4, 靠"哪个区域恰好是 1×1 象限"甄别。</span></div>
+<div class="step">(A)(B) 均错$: P{X+Y≥0}=P{X−Y≥0}=1/2≠1/4$<span class="why">直线 y=−x 与 y=x 都过正方形中心, 各把正方形平分——对角线对称性给出 1/2, 排除 1/4 的选项。</span></div>
+<div class="step">$(C) P{max(X,Y)≥0}=1−P{X&lt;0,Y&lt;0}=1−1/4=3/4,$ 错<span class="why">max≥0 取对立"两个都负"= 左下 1×1 象限, 面积 1/4。</span></div>
+<div class="step">$(D) P{min(X,Y)≥0}=P{X≥0,Y≥0}=1/4 ✓$ 选 (D)<span class="why">min≥0 要求"两个都非负"= 右上象限, 面积恰 1/4;<b>易错</b>: max 与 min 的对立事件分别是"都<0"与"都≥0", 不要混成单个事件——四个选项值都是 1/4, 靠"哪个区域恰好是 1×1 象限"甄别。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 正方形均匀分布的面积比: 四个 1/4 选项互坑, 只有 min 事件落在单一象限。</div>
 </details>
 
-<p id="例178" class="prob"><b>例 17.8</b> 设二维随机变量 (X,Y)~N(1,−1;4,9;0), 则下列结论中不正确的是(其中 a,b 是不全为零的常数) 【0802(3)]
+<p id="例178" class="prob"><b>例 17.8</b> 设二维随机变量 $(X,Y)~N(1,−1;4,9;0),$ 则下列结论中不正确的是(其中 a,b 是不全为零的常数) 【0802(3)]
 (A) X 和 Y 相互独立 (B) aX+bY 服从正态分布 (C) P{X+Y&lt;2}=1/2 (D) P{X−Y&lt;2}=1/2</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#44二维正态分布高频">二维正态</a> · <a href="数学_概率论.html#25八大常见分布必考">正态分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例179">例 17.9</a> 同为二维正态参数运用: 本题判性质, 17.9 构造组合</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(A) ρ=0 且 (X,Y) 为二维正态 ⇒ X 和 Y 独立 ✓。参数读法: N(1,−1;4,9;0) 中 μ_X=1, μ_Y=−1, σ_X²=4, σ_Y²=9, ρ=0<span class="why">对二维正态, 不相关(ρ=0)等价于独立——这是二维正态特有的性质;<b>易错</b>: 一般分布"不相关⇒独立"不成立, 只有正态例外。</span></div>
+<div class="step">(A) ρ=0 且 (X,Y) 为二维正态 ⇒ X 和 Y 独立 ✓。参数读法$: N(1,−1;4,9;0)$ 中 $μ_X=1, μ_Y=−1, σ_X²=4, σ_Y²=9, ρ=0$<span class="why">对二维正态, 不相关(ρ=0)等价于独立——这是二维正态特有的性质;<b>易错</b>: 一般分布"不相关⇒独立"不成立, 只有正态例外。</span></div>
 <div class="step">(B) 线性组合 aX+bY 仍服从正态 ✓<span class="why">二维正态的任何线性组合仍是一维正态, 期望与方差由线性运算给出。</span></div>
-<div class="step">(C) X+Y~N(1−1, 4+9)=N(0,13); P{X+Y<2}=Φ(2/√13)≠1/2, 错误。选 (C)<span class="why">独立正态之和: 期望相加 1+(−1)=0, 方差相加 4+9=13; Φ(2/√13)=Φ(0.55)>0.5 不是 1/2;<b>考点</b>: 判"概率是否恰为 1/2"看事件阈值是否等于分布均值(对称中心)。</span></div>
-<div class="step">(D) X−Y~N(1−(−1), 4+9)=N(2,13); P{X−Y<2}=Φ(0)=1/2 ✓<span class="why">X−Y 的期望是 μ_X−μ_Y=2, 阈值 2 恰为对称中心, 正态对称性给出概率 1/2。</span></div>
+<div class="step">$(C) X+Y~N(1−1, 4+9)=N(0,13); P{X+Y&lt;2}=Φ(2/√13)≠1/2,$ 错误。选 (C)<span class="why">独立正态之和: 期望相加 1+(−1)=0, 方差相加 4+9=13; Φ(2/√13)=Φ(0.55)>0.5 不是 1/2;<b>考点</b>: 判"概率是否恰为 1/2"看事件阈值是否等于分布均值(对称中心)。</span></div>
+<div class="step">$(D) X−Y~N(1−(−1), 4+9)=N(2,13); P{X−Y&lt;2}=Φ(0)=1/2 ✓$<span class="why">X−Y 的期望是 μ_X−μ_Y=2, 阈值 2 恰为对称中心, 正态对称性给出概率 1/2。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 二维正态性质辨析: ρ=0⇔独立、线性组合仍正态、阈值等于均值时概率 1/2, 真题。</div>
 </details>
 
@@ -1660,70 +1919,110 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#44二维正态分布高频">二维正态</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例178">例 17.8</a> 同为"ρ=0 ⇔ 独立"的二维正态性质: 本题用协方差双线性反解系数</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">σ_X²=1, σ_Y²=4, ρ=−1/2, Cov(X,Y)=ρ·σ_X·σ_Y=−1/2×1×2=−1<span class="why">二维正态参数: N(0,0;1,4;−1/2) 中前两数均值、中间两数方差、末位相关系数; 协方差 = 相关系数 × 两标准差之积, 本题为负。</span></div>
+<div class="step">$σ_X²=1, σ_Y²=4, ρ=−1/2, Cov(X,Y)=ρ$·$σ_X$·$σ_Y=−1/2×1×2=−1$<span class="why">二维正态参数: N(0,0;1,4;−1/2) 中前两数均值、中间两数方差、末位相关系数; 协方差 = 相关系数 × 两标准差之积, 本题为负。</span></div>
 <div class="step">要使 aX+bY~N(0,1) 且与 X 独立: 二维正态中独立 ⇔ 协方差为 0, 故先列 Cov(X, aX+bY)=0<span class="why">关键桥梁: 对二维正态,"与 X 独立"用不相关验证; aX+bY 与 X 的联合仍是二维正态, 该定理可直接使用。</span></div>
-<div class="step">Cov(X, aX+bY)=a·VarX+b·Cov(X,Y)=a·1+b·(−1)=a−b=0 ⇒ a=b<span class="why">协方差的双线性展开, 代入 VarX=1、Cov(X,Y)=−1; 负相关把约束从 b=−a 翻转成 a=b——符号看错整题全错。</span></div>
-<div class="step">Var(aX+aY)=a²(VarX+VarY+2Cov)=a²(1+4−2)=3a²=1 ⇒ a=1/√3<span class="why">a=b 代回方差公式; 标准正态要求方差为 1, 取正根;<b>易错</b>: 协方差项带 +2 倍系数(Cov<0 时反而相减), 漏符号会错得 a=1/√5。</span></div>
-<div class="step">(X+Y)/√3 ~ N(0,1) 且与 X 独立, 选 (C) <b>【修正】</b><span class="why">组合唯一: 独立条件逼出 a=b, 方差条件定 a=1/√3; 原稿"数值不清"标记解除——ρ=−1/2 是本题全部设计的支点。</span></div>
+<div class="step">Cov(X, aX+bY)=a·VarX+b·Cov(X,Y)=a·1+b·$(−1)=a−b=0 ⇒ a=b$<span class="why">协方差的双线性展开, 代入 VarX=1、Cov(X,Y)=−1; 负相关把约束从 b=−a 翻转成 a=b——符号看错整题全错。</span></div>
+<div class="step">$Var(aX+aY)=a²(VarX+VarY+2Cov)=a²(1+4−2)=3a²=1 ⇒ a=1/√3$<span class="why">a=b 代回方差公式; 标准正态要求方差为 1, 取正根;<b>易错</b>: 协方差项带 +2 倍系数(Cov<0 时反而相减), 漏符号会错得 a=1/√5。</span></div>
+<div class="step">$(X+Y)/√3 ~ N(0,1)$ 且与 X 独立, 选 (C) <b>【修正】</b><span class="why">组合唯一: 独立条件逼出 a=b, 方差条件定 a=1/√3; 原稿"数值不清"标记解除——ρ=−1/2 是本题全部设计的支点。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 协方差双线性 + 二维正态"独立⇔不相关": 负相关时构造 (X+Y)/√3, 真题。</div>
 </details>
 
-<p id="例1710" class="prob"><b>例 17.10</b> 已知 X 的分布律为 P{X=0}=1/3, P{X=1}=2/3; Y 的分布律为 P{Y=−1}=P{Y=0}=P{Y=1}=1/3, 且 P{X²=Y²}=1。求: (1) 二维随机变量 (X,Y) 的概率分布; (2) Z=XY 的概率分布 【0802(3), 数值经视觉核对补全】</p>
+<p id="例1710" class="prob"><b>例 17.10</b> 已知 X 的分布律为 P{X=0}=1/3, P{X=1}=2/3; Y 的分布律为 $P{Y=−1}=P{Y=0}=P{Y=1}=1/3,$ 且 P{X²=Y²}=1。求: (1) 二维随机变量 (X,Y) 的概率分布; (2) Z=XY 的概率分布 【0802(3), 数值经视觉核对补全】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0802-3-p06_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0802-3-p06_1.png" alt="X²=Y² 约束的二维网格概率图（0802(3) 页6）">
+<div class="figcap">📐 示意图（重绘）: X²=Y² 约束的二维网格概率图（0802(3) 页6）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#42二维离散型必考">二维离散型</a> · <a href="数学_概率论.html#31离散型离散型">离散函数变换</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例172">例 17.2</a> 同为"约束+边缘"反解联合表: 本题 |X|=|Y| 与 17.2 乘积=0 对照 <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1711">例 17.11</a> 同为 Z=XY 的分布</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) P{X²=Y²}=1 ⇒ |X|=|Y| 几乎必然: X=0 时只能 Y=0; X=1 时只能 Y=±1<span class="why">事件 X²=Y² 概率为 1, 全部概率质量集中在满足 |x|=|y| 的格子上: 与例 16.6/17.2 的"零约束"同理; X 取 0 或 1, 逐个枚举可行格。</span></div>
-<div class="step">零约束 + 边缘反解: P{X=0}=1/3 ⇒ (0,0)=1/3; P{Y=−1}=1/3 ⇒ (1,−1)=1/3; P{Y=1}=1/3 ⇒ (1,1)=1/3; 其余为 0 <span class="why">X=0 行的唯一可行格是 (0,0), 吃掉 X=0 的全部概率; Y=±1 的边缘只能落在 X=1 行; 校验: P{X=1}=(1,−1)+(1,1)=2/3 ✓, 总概率=1 ✓。</span></div>
-<div class="step">(2) Z=XY: (0,0)→Z=0; (1,−1)→Z=−1; (1,1)→Z=1, 故 P{Z=−1}=P{Z=0}=P{Z=1}=1/3 —— Z 服从均匀分布 <span class="why">每个联合格概率 1/3 对应一个不同的 Z 值, 合并后三值等概;<b>易错</b>: Z 的三个取值互不相同, 没有同值合并, 概率直接抄联合表。</span></div>
+<div class="step">$(1) P{X²=Y²}=1 ⇒ |X|=|Y|$ 几乎必然: X=0 时只能 Y=0; X=1 时只能 Y=±1<span class="why">事件 X²=Y² 概率为 1, 全部概率质量集中在满足 |x|=|y| 的格子上: 与例 16.6/17.2 的"零约束"同理; X 取 0 或 1, 逐个枚举可行格。</span></div>
+<div class="step">零约束 + 边缘反解$: P{X=0}=1/3 ⇒ (0,0)=1/3; P{Y=−1}=1/3 ⇒ (1,−1)=1/3; P{Y=1}=1/3 ⇒ (1,1)=1/3;$ 其余为 0 <span class="why">X=0 行的唯一可行格是 (0,0), 吃掉 X=0 的全部概率; Y=±1 的边缘只能落在 X=1 行; 校验: P{X=1}=(1,−1)+(1,1)=2/3 ✓, 总概率=1 ✓。</span></div>
+<div class="step">$(2) Z=XY: (0,0)→Z=0; (1,−1)→Z=−1; (1,1)→Z=1,$ 故 $P{Z=−1}=P{Z=0}=P{Z=1}=1/3$ —— Z 服从均匀分布 <span class="why">每个联合格概率 1/3 对应一个不同的 Z 值, 合并后三值等概;<b>易错</b>: Z 的三个取值互不相同, 没有同值合并, 概率直接抄联合表。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: |X|=|Y| 对角线约束反解联合表(零约束变体), 再按 Z=XY 合并得均匀分布; 边缘 1/3、2/3 逐格定位。</div>
 </details>
 
-<p id="例1711" class="prob"><b>例 17.11</b> 设随机变量 X 与 Y 相互独立, X 的概率分布为 P{X=1}=P{X=−1}=1/2, Y 服从参数为 λ 的泊松分布。令 Z=XY。求: (1) Cov(X,Z); (2) Z 的概率分布 【0802(3)]</p>
+<p id="例1711" class="prob"><b>例 17.11</b> 设随机变量 X 与 Y 相互独立, X 的概率分布为 $P{X=1}=P{X=−1}=1/2, Y$ 服从参数为 λ 的泊松分布。令 Z=XY。求: (1) Cov(X,Z); (2) Z 的概率分布 【0802(3)]</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#42二维离散型必考">二维离散型</a> · <a href="数学_概率论.html#31离散型离散型">离散函数变换</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1710">例 17.10</a> 同为 Z=XY 分布: 本题符号随机化+泊松边缘, 多一步协方差</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) Cov(X,Z) = Cov(X, XY) = E[X·XY]−E[X]·E[XY] = E[X²Y]−0 = E[X²]·E[Y] = 1·λ = λ<span class="why">协方差定义式展开: E[X]=0(X 对称分布)使第二项消失; X 与 Y 独立使 E[X²Y]=E[X²]E[Y]; X²≡1 故 E[X²]=1;<b>易错</b>: E[X²]≠(E[X])², X 虽对称但 E[X²]=1。</span></div>
-<div class="step">(2) 对 k≥1: P{Z=k}=P{X=1,Y=k}=(1/2)λᵏe^{−λ}/k!; P{Z=−k}=P{X=−1,Y=k}=(1/2)λᵏe^{−λ}/k!<span class="fill">【AI补全】</span><span class="why">X=1 时 Z=Y≥0 给出正侧, X=−1 时 Z=−Y≤0 给出负侧; Y 不取负值, 求正 k 时另一支概率为 0;<b>易错</b>: 不要给 P{Z=k} 加"X=−1,Y=−k"的项——泊松变量不可能取负值。</span></div>
-<div class="step">Z=0: P{Z=0}=P{Y=0}=e^{−λ}(X=±1 两支都回到 Y=0 这一事件)<span class="why">XY=0 仅当 Y=0; X 的两个取值对应同一个事件, 概率不翻倍。</span></div>
-<div class="step">检验: P{Z=0}+Σ_{k≥1}[P{Z=k}+P{Z=−k}] = e^{−λ}+Σ_{k≥1}λᵏe^{−λ}/k! = e^{−λ}+(1−e^{−λ}) = 1 ✓<span class="why">正负两侧各 (1/2)λᵏe^{−λ}/k!, 合成 Σλᵏe^{−λ}/k!=1−e^{−λ}; 归一化无误才收尾。</span></div>
+<div class="step">(1) Cov(X,Z) = Cov(X, XY) = E[X·$XY]−E[X]$·$E[XY] = E[X²Y]−0 = E[X²]$·E[Y] = 1·λ = λ<span class="why">协方差定义式展开: E[X]=0(X 对称分布)使第二项消失; X 与 Y 独立使 E[X²Y]=E[X²]E[Y]; X²≡1 故 E[X²]=1;<b>易错</b>: E[X²]≠(E[X])², X 虽对称但 E[X²]=1。</span></div>
+<div class="step">(2) 对 $k≥1: P{Z=k}=P{X=1,Y=k}=(1/2)λᵏe^{−λ}/k!; P{Z=−k}=P{X=−1,Y=k}=(1/2)λᵏe^{−λ}/k!$<span class="fill">【AI补全】</span><span class="why">X=1 时 Z=Y≥0 给出正侧, X=−1 时 Z=−Y≤0 给出负侧; Y 不取负值, 求正 k 时另一支概率为 0;<b>易错</b>: 不要给 P{Z=k} 加"X=−1,Y=−k"的项——泊松变量不可能取负值。</span></div>
+<div class="step">$Z=0: P{Z=0}=P{Y=0}=e^{−λ}(X=±1$ 两支都回到 Y=0 这一事件)<span class="why">XY=0 仅当 Y=0; X 的两个取值对应同一个事件, 概率不翻倍。</span></div>
+<div class="step">检验$: P{Z=0}+Σ_{k≥1}[P{Z=k}+P{Z=−k}] = e^{−λ}+Σ_{k≥1}λᵏe^{−λ}/k! = e^{−λ}+(1−e^{−λ}) = 1 ✓$<span class="why">正负两侧各 (1/2)λᵏe^{−λ}/k!, 合成 Σλᵏe^{−λ}/k!=1−e^{−λ}; 归一化无误才收尾。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 符号随机变量 × 泊松: 协方差双线性展开 + Z 的分支合并, 归一化检验, 综合题。</div>
 </details>
 
 <p id="例1712" class="prob"><b>例 17.12</b> 设 X,Y 相互独立且都服从正态分布 N(0,σ²), 试求 Z=X²+Y² 的概率密度 【0802(3)]</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0802-3-p08_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0802-3-p08_1.png" alt="Z=X²+Y² 的积分区域图（0802(3) 页8）">
+<div class="figcap">📐 示意图（重绘）: Z=X²+Y² 的积分区域图（0802(3) 页8）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#32连续型连续型重点">分布函数法</a> · <a href="数学_概率论.html#43二维连续型必考高频">二维连续型</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1511">例 15.11</a> 同为"平方和"的分布函数法: 15.11 一维开方, 本题二维极坐标, 得 χ²(2)⇔指数</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">X/σ~N(0,1), Y/σ~N(0,1), 独立 ⇒ Z/σ² ~ χ²(2) (卡方分布, df=2)<span class="why">两个独立标准正态的平方和服从自由度 2 的卡方分布——这是卡方分布的定义式;<b>考点</b>: 先标准化再识别卡方, 是这类题的第一反应。</span></div>
-<div class="step">推导: F_Z(z)=∫_{x²+y²≤z} (1/(2πσ²))e^{−(x²+y²)/(2σ²)}dxdy, 极坐标 x=rcosθ, y=rsinθ: = (1/(2πσ²))∫₀^{2π}∫₀^{√z} re^{−r²/(2σ²)} dr dθ<span class="fill">【AI补全】</span><span class="why">圆域积分必用极坐标: 面积元 dxdy=rdrdθ, 指数部分化为 −r²/(2σ²); 角度积出 2π 与系数中的 2π 相消。</span></div>
-<div class="step">= ∫₀^{√z} (r/σ²)e^{−r²/(2σ²)} dr = [−e^{−r²/(2σ²)}]₀^{√z} = 1−e^{−z/(2σ²)}<span class="why">内层是 −e^{−r²/(2σ²)} 的凑微分, 一步得到分布函数。</span></div>
-<div class="step">f_Z(z)=F'_Z(z)=(1/(2σ²))e^{−z/(2σ²)} (z>0) —— 即参数 1/(2σ²) 的指数分布<span class="fill">【AI补全】</span><span class="why">χ²(2) 恰好等于参数 1/2 的指数分布, 尺度放回 σ² 得此结果;<b>易错</b>: χ²(2)=Exp(1/2) 中的"2"是自由度, 与 σ² 的尺度变换别混。</span></div>
+<div class="step">X/σ~N(0,1), Y/σ~N(0,1), 独立 $⇒ Z/σ² ~ χ²(2)$ (卡方分布, df=2)<span class="why">两个独立标准正态的平方和服从自由度 2 的卡方分布——这是卡方分布的定义式;<b>考点</b>: 先标准化再识别卡方, 是这类题的第一反应。</span></div>
+<div class="step">推导$: F_Z(z)=∫_{x²+y²≤z} (1/(2πσ²))e^{−(x²+y²)/(2σ²)}dxdy,$ 极坐标 $x=rcosθ, y=rsinθ: = (1/(2πσ²))∫₀^{2π}∫₀^{√z} re^{−r²/(2σ²)} dr dθ$<span class="fill">【AI补全】</span><span class="why">圆域积分必用极坐标: 面积元 dxdy=rdrdθ, 指数部分化为 −r²/(2σ²); 角度积出 2π 与系数中的 2π 相消。</span></div>
+<div class="step">$= ∫₀^{√z} (r/σ²)e^{−r²/(2σ²)} dr = [−e^{−r²/(2σ²)}]₀^{√z} = 1−e^{−z/(2σ²)}$<span class="why">内层是 −e^{−r²/(2σ²)} 的凑微分, 一步得到分布函数。</span></div>
+<div class="step">$f_Z(z)=F'_Z(z)=(1/(2σ²))e^{−z/(2σ²)} (z>0)$ —— 即参数 1/(2σ²) 的指数分布<span class="fill">【AI补全】</span><span class="why">χ²(2) 恰好等于参数 1/2 的指数分布, 尺度放回 σ² 得此结果;<b>易错</b>: χ²(2)=Exp(1/2) 中的"2"是自由度, 与 σ² 的尺度变换别混。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 平方和 → 卡方 → 指数: 极坐标推导全程, 正态平方和的经典结论, 真题。</div>
 </details>
 
 <p id="例1713" class="prob"><b>例 17.13</b> 设随机变量 (X,Y) 的概率密度为 $f(x,y)=\begin{cases}x+y,&amp;0&lt;x&lt;1,0&lt;y&lt;1\\0,&amp;\text{其他}\end{cases}$, 分别求: (1) Z=X+Y 的概率密度; (2) Z=XY 的概率密度 【0803(1) 页4-5, 题面按视觉转写定稿】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0803-1-p04_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0803-1-p04_1.png" alt="Z=X+Y 的积分区域图（0803(1) 页4）">
+<div class="figcap">📐 示意图（重绘）: Z=X+Y 的积分区域图（0803(1) 页4）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0803-1-p04_2.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0803-1-p04_2.png" alt="Z=XY 的积分区域图（0803(1) 页4）">
+<div class="figcap">📐 示意图（重绘）: Z=XY 的积分区域图（0803(1) 页4）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0803-1-p05_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0803-1-p05_1.png" alt="定限画图象: 0&lt;z−x<1 区域（0803(1) 页5）">
+<div class="figcap">📐 示意图（重绘）: 定限画图象: 0&lt;z−x<1 区域（0803(1) 页5）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#45二维随机变量函数的分布必考">二维随机变量函数的分布</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1712">例 17.12</a> 同为二维函数分布: 17.12 极坐标算平方和, 本题卷积/替换公式算和与积</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) Z=X+Y 用卷积公式: f_Z(z)=∫f(x, z−x)dx, 支撑由 0&lt;x<1, 0&lt;z−x<1 取交, 即 max(0, z−1)&lt;x&lt;min(1, z)<span class="why">卷积公式是"和分布"的万能起点: 代入 y=z−x 后对 x 积分, 关键是画支撑确定 x 的积分区间。</span></div>
-<div class="step">0&lt;z<1 时 x∈(0,z): f_Z(z)=∫₀ᶻ(x+z−x)dx=∫₀ᶻ z dx=z²<span class="why">被积函数 x+y 代入 y=z−x 后恰为常数 z, 积分 = z × 区间长 z。</span></div>
-<div class="step">1&lt;z<2 时 x∈(z−1,1): f_Z(z)=∫_{z−1}^1 z dx=z(2−z)=2z−z²; 其余为 0<span class="why">区间右移成 (z−1,1), 长度 2−z;<b>易错</b>: 两段分界在 z=1, 每段都要画支撑重新定限, 别把 0&lt;z<1 的公式硬套到 1&lt;z<2。</span></div>
-<div class="step">(2) Z=XY 用替换公式: f_Z(z)=∫f(x, z/x)·(1/x)dx, 支撑 0&lt;x<1, 0&lt;z/x<1 ⇒ z&lt;x<1 (0&lt;z<1): f_Z(z)=∫_z^1(x+z/x)(1/x)dx=∫_z^1(1+z/x²)dx=[x−z/x]_z^1=2−2z<span class="why">y=z/x 的 Jacobi 因子 |∂y/∂z|=1/x 必须乘进被积函数;<b>考点</b>: 积型函数分布的替换公式, 定限靠"z/x<1 ⟺ x>z"。</span></div>
+<div class="step">(1) Z=X+Y 用卷积公式$: f_Z(z)=∫f(x, z−x)dx,$ 支撑由 0&lt;x<1, 0&lt;z−x<1 取交, 即 max(0, z−1)&lt;x&lt;min(1, z)<span class="why">卷积公式是"和分布"的万能起点: 代入 y=z−x 后对 x 积分, 关键是画支撑确定 x 的积分区间。</span></div>
+<div class="step">0&lt;z<1 时 $x∈(0,z): f_Z(z)=∫₀ᶻ(x+z−x)dx=∫₀ᶻ z dx=z²$<span class="why">被积函数 x+y 代入 y=z−x 后恰为常数 z, 积分 = z × 区间长 z。</span></div>
+<div class="step">1&lt;z<2 时 $x∈(z−1,1): f_Z(z)=∫_{z−1}^1 z dx=z(2−z)=2z−z²;$ 其余为 0<span class="why">区间右移成 (z−1,1), 长度 2−z;<b>易错</b>: 两段分界在 z=1, 每段都要画支撑重新定限, 别把 0&lt;z<1 的公式硬套到 1&lt;z<2。</span></div>
+<div class="step">(2) Z=XY 用替换公式$: f_Z(z)=∫f(x, z/x)$·(1/x)dx, 支撑 0&lt;x<1, 0&lt;z/x<1 ⇒ z&lt;x<1 (0&lt;z<1): f_Z(z)=∫_z^1(x+z/x)(1/x)dx=∫_z^1(1+z/x²)dx=[x−z/x]_z^1=2−2z<span class="why">y=z/x 的 Jacobi 因子 |∂y/∂z|=1/x 必须乘进被积函数;<b>考点</b>: 积型函数分布的替换公式, 定限靠"z/x<1 ⟺ x>z"。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 卷积公式算 X+Y、替换公式算 XY: 支撑分段定限 + Jacobi 因子, 二维函数分布两模板。</div>
 </details>
 
 <p id="例1714" class="prob"><b>例 17.14</b> 设随机变量 X 与 Y 相互独立, X 的概率分布为 P{X=i}=1/3 (i=−1,0,1), Y 的概率密度为 $f_Y(y)=\begin{cases}1,&amp;0\le y&lt;1\\0,&amp;\text{其他}\end{cases}$, 记 Z=X+Y。(1) 求 P{Z≤1/2 | X=0}; (2) 求 Z 的概率密度 【0803(1) 页6-7, 题面按视觉转写定稿】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0803-1-p07_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0803-1-p07_1.png" alt="Z=X+Y 取值区间的数轴图（0803(1) 页7）">
+<div class="figcap">📐 示意图（重绘）: Z=X+Y 取值区间的数轴图（0803(1) 页7）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#45二维随机变量函数的分布必考">二维随机变量函数的分布</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1713">例 17.13</a> 同为 Z=X+Y: 一个全连续型, 本题离散×连续混合型</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) P{Z≤1/2|X=0}=P{Y≤1/2|X=0}=P{Y≤1/2}=1/2(X 与 Y 独立)<span class="why">条件固定在 X=0 上, Z 退化为 Y; 独立性使条件概率无条件化, Y~U[0,1) 的区间概率 = 长度比 1/2。</span></div>
-<div class="step">(2) 按 X 的三个取值做全概率: F_Z(z)=P{X+Y≤z}=(1/3)[P{Y≤z+1}+P{Y≤z}+P{Y≤z−1}]<span class="why">混合型 Z=X+Y: 对离散分支加权求和, 每个分支是 Y 的平移区间概率——离散用全概率、连续部分用长度比。</span></div>
-<div class="step">逐段代入: −1≤z<0 时 F=(1/3)(z+1); 0≤z<1 时 F=(1/3)(1+z); 1≤z<2 时 F=(1/3)(2+z−1)=(1+z)/3<span class="why">z+1、z、z−1 落在 [0,1) 内取自身, 超出取 0 或 1;<b>易错</b>: 三段拼出的线性式 (1+z)/3 相同, 说明 F 连续——若某段跳变, 说明漏了 X 的某个分支。</span></div>
-<div class="step">f_Z(z)=F'_Z(z)=1/3 (−1&lt;z<2), 即 Z~U(−1,2); D(Z)=(2−(−1))²/12=9/12=3/4<span class="why">分布函数是斜线 (1+z)/3 ⇒ 密度常数 1/3;<b>考点</b>: 均匀分布的方差 (b−a)²/12, 长度 3 给 3/4。</span></div>
+<div class="step">$(1) P{Z≤1/2|X=0}=P{Y≤1/2|X=0}=P{Y≤1/2}=1/2(X$ 与 Y 独立)<span class="why">条件固定在 X=0 上, Z 退化为 Y; 独立性使条件概率无条件化, Y~U[0,1) 的区间概率 = 长度比 1/2。</span></div>
+<div class="step">(2) 按 X 的三个取值做全概率$: F_Z(z)=P{X+Y≤z}=(1/3)[P{Y≤z+1}+P{Y≤z}+P{Y≤z−1}]$<span class="why">混合型 Z=X+Y: 对离散分支加权求和, 每个分支是 Y 的平移区间概率——离散用全概率、连续部分用长度比。</span></div>
+<div class="step">逐段代入$: −1≤z&lt;0$ 时 $F=(1/3)(z+1); 0≤z&lt;1$ 时 $F=(1/3)(1+z); 1≤z&lt;2$ 时 $F=(1/3)(2+z−1)=(1+z)/3$<span class="why">z+1、z、z−1 落在 [0,1) 内取自身, 超出取 0 或 1;<b>易错</b>: 三段拼出的线性式 (1+z)/3 相同, 说明 F 连续——若某段跳变, 说明漏了 X 的某个分支。</span></div>
+<div class="step">f_Z(z)=F'_Z(z)=1/3 (−1&lt;z<2), 即 $Z~U(−1,2); D(Z)=(2−(−1))²/12=9/12=3/4$<span class="why">分布函数是斜线 (1+z)/3 ⇒ 密度常数 1/3;<b>考点</b>: 均匀分布的方差 (b−a)²/12, 长度 3 给 3/4。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 离散×连续混合的 Z=X+Y: 分支全概率 + 长度比, 得 Z~U(−1,2), 混合型经典题。</div>
 </details>
 
@@ -1767,7 +2066,7 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: 泊松可加 + $E(X^2)=D(X)+[E(X)]^2$ 一步到位。</div>
 </details>
 
-<p id="例185" class="prob"><b>例 18.5</b>(课件例4.5) 设 X~N(0,1), 求 E(Xe^{2X}) 【0803(3) 页5】</p>
+<p id="例185" class="prob"><b>例 18.5</b>(课件例4.5) 设 X~N(0,1), 求 $E(Xe^{2X})$ 【0803(3) 页5】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#51数学期望必考">数学期望(函数期望)</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1814">例 18.14</a> 同为指数型因子配正态(矩母函数), 一个一次项、一个完整定参数</li>
 </ul>
@@ -1777,6 +2076,13 @@ main details .sum b{font-weight:700}
 </details>
 
 <p id="例186" class="prob"><b>例 18.6</b>(课件例4.6) 设随机变量 X~E(1), 记 $Y=\max\{X,1\}$, 则 E(Y)= 【0803(3), 题面+解法经视觉核对】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0803-3-p06_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0803-3-p06_1.png" alt="Y=max{X,1} 的折线图（0803(3) 页6）">
+<div class="figcap">📐 示意图（重绘）: Y=max{X,1} 的折线图（0803(3) 页6）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#51数学期望必考">数学期望(函数期望)</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例187">例 18.7</a> 同为"截断型函数期望", 一个 max 截断、一个 min 极值</li>
 </ul>
@@ -1787,6 +2093,13 @@ main details .sum b{font-weight:700}
 </details>
 
 <p id="例187" class="prob"><b>例 18.7</b>(课件例4.7) 设 X,Y 相互独立, X 的概率密度 $f_X(x)=3x^2\ (0&lt;x&lt;1)$, Y 的概率密度 $f_Y(y)=2y\ (0&lt;y&lt;1)$, 求 E|X−Y| 【0803(3), 题面+答案按视觉转写定稿】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0803-3-p07_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0803-3-p07_1.png" alt="会面时间区域 D₁、D₂ 图（0803(3) 页7）">
+<div class="figcap">📐 示意图（重绘）: 会面时间区域 D₁、D₂ 图（0803(3) 页7）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#51数学期望必考">数学期望(二维函数期望)</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例188">例 18.8</a> 同为"极值/差值期望", 一个 min、一个 |X−Y|</li>
 </ul>
@@ -1877,14 +2190,14 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: 配方识别正态 + 正态矩母函数; 双条件定参数。</div>
 </details>
 
-<p id="例1816" class="prob"><b>例 18.16</b>(作业解析 例4.13) 设随机变量 X 的概率密度为 f(x), 已知 D(X)=1, 而随机变量 Y 的概率密度为 f(−y), 且 ρ(X,Y)=−1/4, 记 Z=X+Y, 求 E(Z) 与 D(Z) 【概率论作业解析 页1, 题面按视觉转写定稿】</p>
+<p id="例1816" class="prob"><b>例 18.16</b>(作业解析 例4.13) 设随机变量 X 的概率密度为 f(x), 已知 D(X)=1, 而随机变量 Y 的概率密度为 $f(−y),$ 且 $ρ(X,Y)=−1/4,$ 记 Z=X+Y, 求 E(Z) 与 D(Z) 【概率论作业解析 页1, 题面按视觉转写定稿】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#51数学期望必考">数学期望</a> · <a href="数学_概率论.html#53协方差与相关系数必考">协方差与相关系数</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1814">例 18.14</a> 同为"和变量"的协方差/方差: 18.14 判不相关条件, 本题用密度对称性反推 E(Y)=−E(X)</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">E(Y)=∫y f(−y)dy, 换元 t=−y: =∫(−t)f(t)dt=−E(X); E(Z)=E(X)+E(Y)=0<span class="why">t=−y 时 dy=−dt, 积分限翻转与负号相消;<b>易错</b>: 密度 f(−y) 表示 Y 与 −X 同分布, 期望取负号, 别写成 E(Y)=E(X)。</span></div>
-<div class="step">E(Y²)=∫y²f(−y)dy=∫t²f(t)dt=E(X²), 故 D(Y)=E(Y²)−[E(Y)]²=E(X²)−[E(X)]²=D(X)=1<span class="why">y²f(−y) 换元不变(平方消符号); 方差不受符号翻转影响, D(Y)=D(X)=1。</span></div>
-<div class="step">Cov(X,Y)=ρ√(D(X)D(Y))=−(1/4)·1=−1/4; D(Z)=D(X)+D(Y)+2Cov(X,Y)=1+1+2(−1/4)=3/2<span class="why">和变量方差公式带 +2Cov;<b>考点</b>: Cov=ρ√(D_XD_Y), 本题 D 均为 1 使协方差直接等于 ρ。</span></div>
+<div class="step">$E(Y)=∫y f(−y)dy,$ 换元 $t=−y: =∫(−t)f(t)dt=−E(X); E(Z)=E(X)+E(Y)=0$<span class="why">t=−y 时 dy=−dt, 积分限翻转与负号相消;<b>易错</b>: 密度 f(−y) 表示 Y 与 −X 同分布, 期望取负号, 别写成 E(Y)=E(X)。</span></div>
+<div class="step">$E(Y²)=∫y²f(−y)dy=∫t²f(t)dt=E(X²),$ 故 $D(Y)=E(Y²)−[E(Y)]²=E(X²)−[E(X)]²=D(X)=1$<span class="why">y²f(−y) 换元不变(平方消符号); 方差不受符号翻转影响, D(Y)=D(X)=1。</span></div>
+<div class="step">$Cov(X,Y)=ρ√(D(X)D(Y))=−(1/4)$·$1=−1/4; D(Z)=D(X)+D(Y)+2Cov(X,Y)=1+1+2(−1/4)=3/2$<span class="why">和变量方差公式带 +2Cov;<b>考点</b>: Cov=ρ√(D_XD_Y), 本题 D 均为 1 使协方差直接等于 ρ。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 对称密度构造: E(Y)=−E(X) 相消、D(Y)=D(X); D(Z)=3/2 的完整链条。</div>
 </details>
 
@@ -1893,10 +2206,10 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#53协方差与相关系数必考">协方差与相关系数</a> · <a href="数学_概率论.html#16事件的独立性必考易错">独立性</a> <span class="mk xref">碰撞</span><a href="数学_概率论_例题.html#例1812">例 18.12</a> 同为相关系数计算: 一个线性组合, 本题零协方差不相关——"不相关≠独立"的经典反例</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(1) E(X)=∫(1/2)xe^{−|x|}dx=0, E(X|X|)=∫(1/2)x|x|e^{−|x|}dx=0(被积函数均为奇函数)<span class="why">拉普拉斯密度关于 0 对称: 奇函数 x 与 x|x| 在 (−∞,+∞) 上的积分为 0;<b>考点</b>: 对称分布下奇函数期望为 0, 免积分。</span></div>
-<div class="step">Cov(X,|X|)=E(X|X|)−E(X)E(|X|)=0−0=0 ⇒ ρ=0, X 与 |X| 不相关<span class="why">协方差定义式两项均为 0;<b>易错</b>: 不能凭"|X| 显然是 X 的函数"的直觉判相关——协方差只度量线性关系, 这里恰好为 0。</span></div>
-<div class="step">(2) 取 A={|X|<1}, B={X<1}, 则 A⊂B: P(A)=∫₋₁¹(1/2)e^{−|x|}dx=1−e^{−1}; P(B)=∫_{−∞}^1(1/2)e^{−|x|}dx=1−e^{−1}/2; P(AB)=P(A)(因 A⊂B)<span class="why">指数分段积分: ∫₀^t e^{−x}dx=1−e^{−t}; P(B) 拆 (−∞,0) 与 (0,1) 两段, 得 1/2+(1−e^{−1})/2=1−e^{−1}/2。</span></div>
-<div class="step">P(A)P(B)=(1−e^{−1})(1−e^{−1}/2)≠1−e^{−1}=P(AB) ⇒ X 与 |X| 不独立<span class="why">P(B)≈0.816<1, 故 P(A)P(B)≈0.516≠P(A)≈0.632;<b>考点</b>: "不相关 ≠ 独立"的教科书反例——零协方差只排除线性关系, |X| 与 X 的非线性(平方级)依赖完全不被协方差捕获。</span></div>
+<div class="step">$(1) E(X)=∫(1/2)xe^{−|x|}dx=0, E(X|X|)=∫(1/2)x|x|e^{−|x|}dx=0$(被积函数均为奇函数)<span class="why">拉普拉斯密度关于 0 对称: 奇函数 x 与 x|x| 在 (−∞,+∞) 上的积分为 0;<b>考点</b>: 对称分布下奇函数期望为 0, 免积分。</span></div>
+<div class="step">$Cov(X,|X|)=E(X|X|)−E(X)E(|X|)=0−0=0 ⇒ ρ=0, X$ 与 |X| 不相关<span class="why">协方差定义式两项均为 0;<b>易错</b>: 不能凭"|X| 显然是 X 的函数"的直觉判相关——协方差只度量线性关系, 这里恰好为 0。</span></div>
+<div class="step">(2) 取 A={|X|<1}, B={X<1}, 则 $A⊂B: P(A)=∫₋₁¹(1/2)e^{−|x|}dx=1−e^{−1}; P(B)=∫_{−∞}^1(1/2)e^{−|x|}dx=1−e^{−1}/2; P(AB)=P(A)$(因 A⊂B)<span class="why">指数分段积分: ∫₀^t e^{−x}dx=1−e^{−t}; P(B) 拆 (−∞,0) 与 (0,1) 两段, 得 1/2+(1−e^{−1})/2=1−e^{−1}/2。</span></div>
+<div class="step">$P(A)P(B)=(1−e^{−1})(1−e^{−1}/2)≠1−e^{−1}=P(AB) ⇒ X$ 与 |X| 不独立<span class="why">P(B)≈0.816<1, 故 P(A)P(B)≈0.516≠P(A)≈0.632;<b>考点</b>: "不相关 ≠ 独立"的教科书反例——零协方差只排除线性关系, |X| 与 X 的非线性(平方级)依赖完全不被协方差捕获。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 不相关≠独立经典反例: 奇函数对称性造零协方差, 事件包含关系破独立性, 考研必背。</div>
 </details>
 
@@ -1906,8 +2219,8 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">(1) $Y_i=(1-\frac1n)X_i-\frac1n\sum_{j\ne i}X_j$, 各项独立, 方差相加: D(Y_i)=((n−1)/n)²·1+(n−1)·(1/n)²=(n−1)/n<span class="why">把 X̄ 拆开使 Y_i 表示为 X_i 与其余项的独立线性组合;<b>易错</b>: Y_i 之间并不独立(都含 X̄), 但单算方差只需组合内各项独立。</span></div>
-<div class="step">(2) Cov(Y₁,Yₙ)=Cov(X₁−X̄, Xₙ−X̄)=0−Cov(X₁,X̄)−Cov(X̄,Xₙ)+D(X̄)=−1/n−1/n+1/n=−1/n<span class="why">协方差双线性展开: Cov(X₁,Xₙ)=0(独立), Cov(X₁,X̄)=(1/n)D(X₁)=1/n, D(X̄)=1/n;<b>考点</b>: 残差 Yᵢ 两两负相关——ΣYᵢ=0 总量固定, 此消彼长。</span></div>
-<div class="step">(3) Y₁+Yₙ=X₁+Xₙ−2X̄ 是正态变量的线性组合 ⇒ 正态, 且 E(Y₁+Yₙ)=0 ⇒ P{Y₁+Yₙ≤0}=1/2<span class="why">期望为 0 的正态分布关于 0 对称;<b>易错</b>: 不必算出方差——只要均值 0, 左右概率各半。</span></div>
+<div class="step">$(2) Cov(Y₁,Yₙ)=Cov(X₁−X̄, Xₙ−X̄)=0−Cov(X₁,X̄)−Cov(X̄,Xₙ)+D(X̄)=−1/n−1/n+1/n=−1/n$<span class="why">协方差双线性展开: Cov(X₁,Xₙ)=0(独立), Cov(X₁,X̄)=(1/n)D(X₁)=1/n, D(X̄)=1/n;<b>考点</b>: 残差 Yᵢ 两两负相关——ΣYᵢ=0 总量固定, 此消彼长。</span></div>
+<div class="step">$(3) Y₁+Yₙ=X₁+Xₙ−2X̄$ 是正态变量的线性组合 ⇒ 正态, 且 $E(Y₁+Yₙ)=0 ⇒ P{Y₁+Yₙ≤0}=1/2$<span class="why">期望为 0 的正态分布关于 0 对称;<b>易错</b>: 不必算出方差——只要均值 0, 左右概率各半。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 残差统计量三问: D(Y_i)=(n−1)/n、Cov(Y₁,Yₙ)=−1/n、对称正态给 1/2, 全套模板。</div>
 </details>
 
@@ -2011,6 +2324,13 @@ main details .sum b{font-weight:700}
 </details>
 
 <p id="例205" class="prob"><b>例 20.5</b>(课件例6.7, 数三) 设 F(x) 是总体 X 的分布函数, Fₙ(x) 是基于来自总体 X 的容量为 n 的简单随机样本的经验分布函数, 对于任意给定的 x, 试求 Fₙ(x) 的概率分布、数学期望和方差 【0804(1), 题面经视觉核对】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/概率论/0804-1-p13_1.png" alt="图"> 📐 示意图</summary>
+<div class="fig">
+<img src="figures/概率论/0804-1-p13_1.png" alt="经验分布函数分位点数轴图（0804(1) 页13）">
+<div class="figcap">📐 示意图（重绘）: 经验分布函数分位点数轴图（0804(1) 页13）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#71总体样本与统计量">统计量</a></li>
 </ul>
@@ -2129,11 +2449,11 @@ main details .sum b{font-weight:700}
 
 <hr />
 <h2 id="附录强化正态分布补充题">附录: 强化正态分布补充题</h2>
-<p id="例S1" class="prob"><b>例 S.1</b> 设随机变量 X 的概率密度为 f(x)=(1/(2√π))e^{−(x+3)²/4}, 则标准化为 N(0,1) 需变换 (X+3)/√2 【0801(3), 同 例15.8】</p>
+<p id="例S1" class="prob"><b>例 S.1</b> 设随机变量 X 的概率密度为 $f(x)=(1/(2√π))e^{−(x+3)²/4},$ 则标准化为 N(0,1) 需变换 $(X+3)/√2$ 【0801(3), 同 例15.8】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">正态分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例158">例 15.8</a> 同题: 完整解答见 15.8</li>
 </ul>
-<p id="例S2" class="prob"><b>例 S.2</b> 设 X~N(0,1), P{|X|&lt;x}=α, 则 x=u_{(1−α)/2} 【0621(2), 同 例13.14】</p>
+<p id="例S2" class="prob"><b>例 S.2</b> 设 X~N(0,1), P{|X|&lt;x}=α, 则 $x=u_{(1−α)/2}$ 【0621(2), 同 例13.14】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_概率论.html#25八大常见分布必考">正态分布</a> <span class="mk xref">相关</span><a href="数学_概率论_例题.html#例1314">例 13.14</a> 同题: 完整解答与分位点辨析见 13.14</li>
 </ul></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_概率论.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 概率论</b></span></a><a class="next" href="数学_练习与测试.html"><span class="pg-t"><small>下一篇</small><b>数学 · 练习与测试</b></span><span class="pg-ic">→</span></a></nav></main>

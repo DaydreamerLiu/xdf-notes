@@ -58,10 +58,11 @@ button{font-family:inherit}
   z-index:120;transition:width .08s linear;border-radius:0 2px 2px 0}
 
 /* ---------- 侧栏 ---------- */
-nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
+/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
+.layout > nav{width:288px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--line);
   position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin}
-nav::-webkit-scrollbar{width:8px}
-nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.layout > nav::-webkit-scrollbar{width:8px}
+.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
 nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem 1.15rem .95rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
 nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
   background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
@@ -151,6 +152,28 @@ main tr:nth-child(even) td{background:var(--bg2)}
 main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
   background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
 main img{max-width:100%;height:auto;border-radius:8px}
+.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
+  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
+.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
+.fig .figcap b{color:var(--accent2)}
+/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
+.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
+  background:var(--bg2);overflow:hidden}
+.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
+  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
+.figbox>summary::-webkit-details-marker{display:none}
+.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
+.figbox[open]>summary::before{transform:rotate(90deg)}
+.figbox>summary:hover{color:var(--accent2)}
+.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
+  background:#fff}
+.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
+  background:var(--bg2);padding:.6rem .8rem .75rem}
+.figbox .fig img{max-width:min(100%,460px)}
+@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
+@media print{.fig img{max-width:70%}}
 code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
   font-family:var(--mono);font-size:.86em}
 pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
@@ -938,6 +961,31 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例62" class="prob"><b>例 6.2</b> 强化 设 $D=\{(x,y)\mid |x|+|y|\le\frac{\pi}{2}\}$, $I_1=\iint_D\sqrt{x^2+y^2}dxdy$, $I_2=\iint_D\sin\sqrt{x^2+y^2}dxdy$, $I_3=\iint_D(1-\cos\sqrt{x^2+y^2})dxdy$, 比较大小 【0725（1）】【题面按视觉转写定稿】(0725(1) 页1 例7.1)</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-1-p01_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-1-p01_1.png" alt="菱形区域 |x|+|y|≤π/2（0725(1) 页1）">
+<div class="figcap">📐 课件原图: 菱形区域 |x|+|y|≤π/2（0725(1) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-1-p01_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-1-p01_2.png" alt="立体区域示意（0725(1) 页1）">
+<div class="figcap">📐 课件原图: 立体区域示意（0725(1) 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/二重积分-p04_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/二重积分-p04_1.png" alt="|x|+|y|≤π/2 与圆域图形（二重积分 页4）">
+<div class="figcap">📐 课件原图: |x|+|y|≤π/2 与圆域图形（二重积分 页4）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/二重积分-p04_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/二重积分-p04_2.png" alt="圆 x²+y²=1 象限划分（二重积分 页4）">
+<div class="figcap">📐 课件原图: 圆 x²+y²=1 象限划分（二重积分 页4）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例61">例 6.1</a> 同为"同区域比大小", 本题化成单变量逐点比较</li>
 </ul>
@@ -962,6 +1010,25 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例64" class="prob"><b>例 6.4</b> 强化 使 $I(D)=\iint_D(4-x^2-y^2)dxdy$ 取得最大值的 $D_1$, 求 $I(D_1)$ 【0725（1）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-1-p07_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-1-p07_1.png" alt="I(D)=∬(4−x²−y²) 最大区域 D₁（0725(1) 页7）">
+<div class="figcap">📐 课件原图: I(D)=∬(4−x²−y²) 最大区域 D₁（0725(1) 页7）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-1-p07_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-1-p07_2.png" alt="区域比较示意（0725(1) 页7）">
+<div class="figcap">📐 课件原图: 区域比较示意（0725(1) 页7）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/二重积分-p06_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/二重积分-p06_1.png" alt="圆域积分区域（二重积分 页6）">
+<div class="figcap">📐 课件原图: 圆域积分区域（二重积分 页6）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> · <a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例83">例 8.3</a> 同为"先做区域/对称性判断, 再极坐标收尾"</li>
 </ul>
@@ -986,6 +1053,13 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例66" class="prob"><b>例 6.6</b> 强化 区域 $D=\{(x,y)\mid x^2+y^2\le4, x\ge0, y\ge0\}$, $f(x)$ 为 $D$ 上正值连续函数, $a,b$ 为常数, 求 $\iint_D\frac{a\sqrt{f(x)}+b\sqrt{f(y)}}{\sqrt{f(x)}+\sqrt{f(y)}}d\sigma$ 【0725（1）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-1-p09_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-1-p09_1.png" alt="第一象限四分之一圆区域 D（0725(1) 页9）">
+<div class="figcap">📐 课件原图: 第一象限四分之一圆区域 D（0725(1) 页9）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例63">例 6.3</a> 同为轮换对称, 本题两式相加约分得 $\frac{a+b}{2}S_D$</li>
 </ul>
@@ -999,6 +1073,25 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例67" class="prob"><b>例 6.7</b> 强化 区域 $D$ 由 $y=\sin x$, $x=\pm\frac{\pi}{2}$, $y=1$ 围成, 求 $\iint_D(x^5y-1)dxdy$ 【0725（1）】【题面按视觉转写定稿】(0725(1) 页10 例7.6、二重积分.txt 页7)</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-1-p10_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-1-p10_1.png" alt="y=sin x 与 y=1、x=±π/2 围成区域（0725(1) 页10）">
+<div class="figcap">📐 课件原图: y=sin x 与 y=1、x=±π/2 围成区域（0725(1) 页10）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/二重积分-p07_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/二重积分-p07_1.png" alt="y=sin x 积分区域（二重积分 页7）">
+<div class="figcap">📐 课件原图: y=sin x 积分区域（二重积分 页7）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/二重积分-p07_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/二重积分-p07_2.png" alt="√(x/a)+√(y/b)=1 区域（二重积分 页7）">
+<div class="figcap">📐 课件原图: √(x/a)+√(y/b)=1 区域（二重积分 页7）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> · <a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例65">例 6.5</a> 同为对称性判定, 本题区域不对称是陷阱, 但奇函数项仍可单独消掉</li>
 </ul>
@@ -1013,6 +1106,13 @@ main details .sum b{font-weight:700}
 <hr />
 <h2 id="七二重积分直角坐标计算">七、二重积分: 直角坐标计算</h2>
 <p id="例71" class="prob"><b>例 7.1</b> 计算 $\iint_D (x+y)dxdy$, $D$ 由 $x+y=1$ 与 $x$ 轴、$y$ 轴围成 【二重积分】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p17_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p17_1.png" alt="x+y=1 与坐标轴围成区域（0523(3) 页17）">
+<div class="figcap">📐 课件原图: x+y=1 与坐标轴围成区域（0523(3) 页17）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例72">例 7.2</a> 同为直角坐标定限, 本题靠对称性省一半计算</li>
 </ul>
@@ -1026,6 +1126,13 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例72" class="prob"><b>例 7.2</b> 计算 $\iint_D xy\,dxdy$, $D$ 由 $y^2=x$ 及 $y=x-2$ 围成 【二重积分】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p09_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p09_1.png" alt="抛物线 y²=x 与 y=x−2 围成区域（0523(3) 页9）">
+<div class="figcap">📐 课件原图: 抛物线 y²=x 与 y=x−2 围成区域（0523(3) 页9）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例71">例 7.1</a> 同为化二次积分, 本题演示"先解交点选 $y$ 型"</li>
 </ul>
@@ -1039,6 +1146,19 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例73" class="prob"><b>例 7.3</b> 计算 $\iint_D x\,dxdy$, $D$ 为: (1) $x^2+y^2\le1$; (2) $x^2+y^2\le2x$ ($y\ge0$) 与 $x$ 轴围成 【二重积分】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p18_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p18_1.png" alt="x²+y²=1 区域（0523(3) 页18）">
+<div class="figcap">📐 课件原图: x²+y²=1 区域（0523(3) 页18）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0523-3-p18_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0523-3-p18_2.png" alt="x²+y²=2x (y≥0) 与 x 轴区域（0523(3) 页18）">
+<div class="figcap">📐 课件原图: x²+y²=2x (y≥0) 与 x 轴区域（0523(3) 页18）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> · <a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例81">例 8.1</a> 同为 $x^2+y^2=2x$ 圆域极坐标, 本题先用对称性秒杀 (1)</li>
 </ul>
@@ -1053,6 +1173,13 @@ main details .sum b{font-weight:700}
 <hr />
 <h2 id="八二重积分极坐标计算">八、二重积分: 极坐标计算</h2>
 <p id="例81" class="prob"><b>例 8.1</b> 计算 $\iint_D x^2dxdy$, $D$ 由 $x^2+y^2=2x$ 与两坐标轴在第一象限围成 【0530（1）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p02_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p02_1.png" alt="圆 x²+y²=2x 与坐标轴区域（0530(1) 页2）">
+<div class="figcap">📐 课件原图: 圆 x²+y²=2x 与坐标轴区域（0530(1) 页2）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例73">例 7.3</a> 同域 $x^2+y^2=2x$, 本题升级成 $x^2$ 配华里士</li>
 </ul>
@@ -1077,6 +1204,13 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例83" class="prob"><b>例 8.3</b> 计算 $\iint_D\frac{1+xy}{1+x^2+y^2}dxdy$, $D=\{(x,y)\mid x^2+y^2\le1, x\ge0\}$ 【0530（1）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p04_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p04_1.png" alt="右半圆 x²+y²≤1, x≥0（0530(1) 页4）">
+<div class="figcap">📐 课件原图: 右半圆 x²+y²≤1, x≥0（0530(1) 页4）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> · <a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例65">例 6.5</a> 同为"先对称性消项再积分"结构</li>
 </ul>
@@ -1089,6 +1223,13 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例84" class="prob"><b>例 8.4</b> 计算 $\iint_D y\,dxdy$, $D$ 由 $x=-2$, $y=0$, $y=2$ 及 $x=-\sqrt{2y-y^2}$ 围成 【0530（1）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p06_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p06_1.png" alt="x=−2、y=0、y=2 与 x=−√(2y−y²) 区域（0530(1) 页6）">
+<div class="figcap">📐 课件原图: x=−2、y=0、y=2 与 x=−√(2y−y²) 区域（0530(1) 页6）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> · <a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例91">例 9.1</a> 同为"整体减局部"拆分区域, 本题再用形心公式省积分</li>
 </ul>
@@ -1102,6 +1243,13 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例85" class="prob"><b>例 8.5</b> 计算 $\iint_D x\,dxdy$, $D=\{(x,y)\mid x^2+y^2\le4,\; x^2+y^2\ge2y,\; x\ge0,\; y\ge0\}$ 【0530（1）】【题面按视觉转写定稿】(0530(1) 页5 例8.6(3), 原笔记误写 $2x$)</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p05_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p05_1.png" alt="圆环区域 x²+y²≤4、x²+y²≥2y（0530(1) 页5）">
+<div class="figcap">📐 课件原图: 圆环区域 x²+y²≤4、x²+y²≥2y（0530(1) 页5）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例81">例 8.1</a> 同为圆域极坐标, 本题 $\rho$ 上下限成对 ($2\sin\theta\le\rho\le2$)</li>
 </ul>
@@ -1129,6 +1277,13 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例87" class="prob"><b>例 8.7</b> 强化 计算 $\iint_D\frac{x^2-xy-y^2}{x^2+y^2}dxdy$, $D$ 由 $y=1$, $y=x$, $y=-x$ 围成 【0725（1）】【题面按视觉转写定稿】(0725(1) 页13 例7.9, 原笔记漏 $-xy$ 项)</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-1-p13_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-1-p13_1.png" alt="y=1、y=x、y=−x 围成区域（0725(1) 页13）">
+<div class="figcap">📐 课件原图: y=1、y=x、y=−x 围成区域（0725(1) 页13）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> · <a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例86">例 8.6</a> 同为射线围成的角形区域: 例 8.6 走极坐标角度区间, 本题走 $y$ 型+比例换元</li>
 </ul>
@@ -1145,6 +1300,13 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例88" class="prob"><b>例 8.8</b> 强化 已知 $D$ 满足 $|x|\le y$, $(x^2+y^2)^3\le y^4$, 求 $\iint_D\frac{x+y}{\sqrt{x^2+y^2}}dxdy$ 【0725（2）】【题面按视觉转写定稿】(0725(2) 页1 例7.10、二重积分.txt 页9)</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-2-p01_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-2-p01_1.png" alt="区域 |x|≤y、(x²+y²)³≤y⁴（0725(2) 页1）">
+<div class="figcap">📐 课件原图: 区域 |x|≤y、(x²+y²)³≤y⁴（0725(2) 页1）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例105">例 10.5</a> 同为"由边界不等式反解 $r$ 上下限"</li>
 </ul>
@@ -1159,6 +1321,13 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例89" class="prob"><b>例 8.9</b> 强化 设 $D=\{(x,y)\mid x^2+y^2\le1, y\ge0\}$, $f(x,y)=y\sqrt{1-x^2}+x\iint_D fdxdy$, 求 $\iint_D xfdxdy$ 【0725（2）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-2-p02_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-2-p02_1.png" alt="上半圆 x²+y²≤1, y≥0（0725(2) 页2）">
+<div class="figcap">📐 课件原图: 上半圆 x²+y²≤1, y≥0（0725(2) 页2）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> · <a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例65">例 6.5</a> 同为对称性消项, 本题核心是"记 $A=\iint f$ 代入"的自洽方程</li>
 </ul>
@@ -1176,6 +1345,25 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例810" class="prob"><b>例 8.10</b> 强化 (数一数二) 平面区域 $D$ 由摆线 $\begin{cases}x=t-\sin t\\y=1-\cos t\end{cases}$ ($0\le t\le2\pi$) 与 $x$ 轴围成, 求 $\iint_D(x+2y)dxdy$ 【0725（2）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-2-p03_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-2-p03_1.png" alt="摆线一拱与 x 轴围成区域（0725(2) 页3）">
+<div class="figcap">📐 课件原图: 摆线一拱与 x 轴围成区域（0725(2) 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/二重积分-p10_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/二重积分-p10_1.png" alt="摆线区域示意（二重积分 页10）">
+<div class="figcap">📐 课件原图: 摆线区域示意（二重积分 页10）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/二重积分-p10_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/二重积分-p10_2.png" alt="圆与坐标轴区域（二重积分 页10）">
+<div class="figcap">📐 课件原图: 圆与坐标轴区域（二重积分 页10）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例105">例 10.5</a> 同为换元法把二重积分化成新变量积分</li>
 </ul>
@@ -1192,6 +1380,13 @@ main details .sum b{font-weight:700}
 <hr />
 <h2 id="九二重积分分段函数与绝对值">九、二重积分: 分段函数与绝对值</h2>
 <p id="例91" class="prob"><b>例 9.1</b> 计算 $\iint_D|x^2+y^2-1|d\sigma$, $D=\{(x,y)\mid 0\le x\le1, 0\le y\le1\}$ 【0725（2）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-2-p05_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-2-p05_1.png" alt="D₁、D₂ 分块区域（0725(2) 页5）">
+<div class="figcap">📐 课件原图: D₁、D₂ 分块区域（0725(2) 页5）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> · <a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例84">例 8.4</a> 同为"整体减局部"拆分策略</li>
 </ul>
@@ -1206,6 +1401,19 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例92" class="prob"><b>例 9.2</b> 计算 $\iint_D e^{\max\{x^2,y^2\}}dxdy$, $D=\{(x,y)\mid 0\le x\le1, 0\le y\le1\}$ 【0725（2）、一元微积分证明题】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/一元微积分证明题-p01_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/一元微积分证明题-p01_1.png" alt="y=x 分割单位正方形区域（一元微积分证明题 页1）">
+<div class="figcap">📐 课件原图: y=x 分割单位正方形区域（一元微积分证明题 页1）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/一元微积分证明题-p01_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/一元微积分证明题-p01_2.png" alt="积分区域示意（一元微积分证明题 页1）">
+<div class="figcap">📐 课件原图: 积分区域示意（一元微积分证明题 页1）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#25对称性化简利器高频">对称性</a> · <a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例66">例 6.6</a> 同为"$y=x$ 分割+对称性"思路, 本题按 $\max$ 分块</li>
 </ul>
@@ -1231,6 +1439,19 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例102" class="prob"><b>例 10.2</b> 强化 已知 $f(t)=\int_1^{t^2}dx\int_{\sqrt{x}}^{t}\sin\frac{x}{y}\,dy$, 求 $f'(\frac{\pi}{2})$ 【0725（2）】【题面按视觉转写定稿】(0725(2) 页8 例7.16)</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/一元微积分证明题-p02_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/一元微积分证明题-p02_1.png" alt="交换积分次序区域示意（一元微积分证明题 页2）">
+<div class="figcap">📐 课件原图: 交换积分次序区域示意（一元微积分证明题 页2）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/一元微积分证明题-p02_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/一元微积分证明题-p02_2.png" alt="y=sin x 等曲线区域（一元微积分证明题 页2）">
+<div class="figcap">📐 课件原图: y=sin x 等曲线区域（一元微积分证明题 页2）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例38">例 3.8</a> 同为变上限积分求导, 例 3.8 是二元版需先走莱布尼茨</li>
 </ul>
@@ -1255,6 +1476,19 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例104" class="prob"><b>例 10.4</b> 计算 $\int_0^1 dy\int_y^1\left(\frac{e^{x^2}}{x}-e^{y^2}\right)dx$ (交换次序) 【0725（2）】【题面按视觉转写定稿】(0725(2) 页10 例7.18)</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/一元微积分证明题-p03_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/一元微积分证明题-p03_1.png" alt="交换积分次序区域（一元微积分证明题 页3）">
+<div class="figcap">📐 课件原图: 交换积分次序区域（一元微积分证明题 页3）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/一元微积分证明题-p03_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/一元微积分证明题-p03_2.png" alt="2xy=1、4xy=1 区域（一元微积分证明题 页3）">
+<div class="figcap">📐 课件原图: 2xy=1、4xy=1 区域（一元微积分证明题 页3）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#23直角坐标下的计算必考">直角坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例103">例 10.3</a> 同为换序题, 本题换序后两次对消不可积函数</li>
 </ul>
@@ -1283,6 +1517,13 @@ main details .sum b{font-weight:700}
 <hr />
 <h2 id="十一无界区域二重积分">十一、无界区域二重积分</h2>
 <p id="例111" class="prob"><b>例 11.1</b> 计算 $\iint_D xe^x y\,dxdy$, $D$ 以 $y=\sqrt{x}$, $y=\frac{1}{\sqrt{x}}$ 及 $y$ 轴为边界的无界区域 【0530（1）】【题面按视觉转写定稿】(0530(1) 页7 例8.8)</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0530-1-p07_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0530-1-p07_1.png" alt="y=√x 与 y=1/√x 无界区域（0530(1) 页7）">
+<div class="figcap">📐 课件原图: y=√x 与 y=1/√x 无界区域（0530(1) 页7）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#26无界区域上的二重积分数学三">无界区域二重积分</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例112">例 11.2</a> 同为无界区域二重积分, 本题被积函数简单、直接累次积分</li>
 </ul>
@@ -1296,6 +1537,13 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例112" class="prob"><b>例 11.2</b> 强化 计算 $\iint_D\frac{y^3}{(1+x^2+y^4)^2}dxdy$, $D$ 是第一象限中以 $y=\sqrt{x}$ 与 $x$ 轴为边界的无界区域 【0725（2）】【题面按视觉转写定稿】(0725(2) 页14 例7.21)</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/0725-2-p14_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/0725-2-p14_1.png" alt="第一象限 y=√x 无界区域（0725(2) 页14）">
+<div class="figcap">📐 课件原图: 第一象限 y=√x 无界区域（0725(2) 页14）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#26无界区域上的二重积分数学三">无界区域二重积分</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例111">例 11.1</a> 同为无界区域二重积分, 本题靠 $y^3dy$ 与 $y^4$ 的凑微分</li>
 </ul>
@@ -1309,6 +1557,19 @@ main details .sum b{font-weight:700}
 
 <hr />
 <p id="例113" class="prob"><b>例 11.3</b> 强化 计算 $\iint_D r^2\sin\theta\sqrt{1-r^2\cos2\theta}\,drd\theta$, $D=\{(\theta,r)\mid 0\le\theta\le\pi/4, 0\le r\le\sec\theta\}$ 【0725（2）】</p>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/一元微积分证明题-p04_1.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/一元微积分证明题-p04_1.png" alt="极坐标积分区域（一元微积分证明题 页4）">
+<div class="figcap">📐 课件原图: 极坐标积分区域（一元微积分证明题 页4）</div>
+</div>
+</details>
+<details class="figbox"><summary><img class="thumb" src="figures/多元与二重/一元微积分证明题-p04_2.png" alt="图"> 📐 课件原图</summary>
+<div class="fig">
+<img src="figures/多元与二重/一元微积分证明题-p04_2.png" alt="y=√x 曲线（一元微积分证明题 页4）">
+<div class="figcap">📐 课件原图: y=√x 曲线（一元微积分证明题 页4）</div>
+</div>
+</details>
+
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例86">例 8.6</a> 同为坐标翻译: 例 8.6 直角→极坐标, 本题极坐标→直角坐标</li>
 </ul>
