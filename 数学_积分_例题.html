@@ -374,7 +374,7 @@ main details .sum b{font-weight:700}
 </details>
 
 <h3 id="例13">例 1.3 分段函数求不定积分 【0425（3）】</h3>
-<p>设 $f(x) = \begin{cases} x, & x>0 \\ \sin x, & x \leq 0 \end{cases}$, 求 $\int f(x)dx$。</p>
+<p>设 $f(x) = \begin{cases} x, &amp; x>0 \\ \sin x, &amp; x \leq 0 \end{cases}$, 求 $\int f(x)dx$。</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_积分.html#11原函数定义与存在性">原函数定义</a> · <a href="数学_积分.html#12不定积分的定义与性质">不定积分定义</a> <span class="mk xref">碰撞</span><a href="数学_积分_例题.html#例86">例 8.6</a> 同为分段点处的连续拼接: 一个借连续性定常数、一个借左右导数判可导</li>
 </ul>
@@ -382,7 +382,7 @@ main details .sum b{font-weight:700}
 <div class="step">① 分段积分: $x>0$ 时 $\int x\,dx = \frac{x^2}{2} + C_1$<span class="why">分段函数逐段求原函数, 每段各带自己的积分常数 $C_1, C_2$</span></div>
 <div class="step">② $x \leq 0$ 时 $\int \sin x\,dx = -\cos x + C_2$<span class="why">$\int\sin x\,dx=-\cos x$; 分段点 $x=0$ 归入 $x\le 0$ 这一段</span></div>
 <div class="step">③ 由原函数连续性, 在 $x=0$ 处: $0 + C_1 = -1 + C_2$, 即 $C_2 = C_1 + 1$<span class="why">原函数必连续: 两段在分段点的左、右极限必须相等, 由此定出常数间关系</span></div>
-<div class="step">④ <span class="fill">【AI补全】</span>结果: $\int f(x)dx = \begin{cases} \frac{x^2}{2}+C, & x>0 \\ -\cos x+1+C, & x \leq 0 \end{cases}$<span class="why">取 $C_1=C$ 则 $C_2=C+1$; $-\cos x+1$ 是"分段点处补上函数值差 $-1$"后的连续拼接</span></div>
+<div class="step">④ <span class="fill">【AI补全】</span>结果: $\int f(x)dx = \begin{cases} \frac{x^2}{2}+C, &amp; x>0 \\ -\cos x+1+C, &amp; x \leq 0 \end{cases}$<span class="why">取 $C_1=C$ 则 $C_2=C+1$; $-\cos x+1$ 是"分段点处补上函数值差 $-1$"后的连续拼接</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分段函数求原函数: 各段积分后在分段点处用连续性"接上", 常数差由端点处函数值差决定。</div>
 </details>
 
@@ -712,7 +712,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_积分.html#41有理函数积分必考">有理函数积分</a> <span class="mk xref">碰撞</span><a href="数学_积分_例题.html#例35">例 3.5</a> 配方思路一脉相承: $a^2-u^2$ 套 $\arcsin$, $u^2+a^2$ 套 $\arctan$</li>
 </ul>
 <details><summary>解答过程</summary>
-<div class="step">① 分子凑成分母的导数: $(x^2+2x+3)' = 2x+2$<span class="why">分母二次不可约 (判别式 $4-12<0$), 目标是拆成"分母导数倍"($\ln$) 与"常数倍"($\arctan$) 两项</span></div>
+<div class="step">① 分子凑成分母的导数: $(x^2+2x+3)' = 2x+2$<span class="why">分母二次不可约 (判别式 $4-12&lt;0$), 目标是拆成"分母导数倍"($\ln$) 与"常数倍"($\arctan$) 两项</span></div>
 <div class="step">② $x-1 = \frac{1}{2}(2x+2) - 2 = \frac{1}{2}(x^2+2x+3)' - 2$<span class="why">配凑: $x-1$ 与 $\frac{1}{2}(2x+2)=x+1$ 相差常数 $2$</span></div>
 <div class="step">③ 原式 $= \frac{1}{2}\int \frac{d(x^2+2x+3)}{x^2+2x+3} - 2\int \frac{dx}{x^2+2x+3}$<span class="why">第一项"分子=分母微分"得 $\ln$; 第二项配方后是 $\arctan$</span></div>
 <div class="step">④ 对第二项配方: $x^2+2x+3 = (x+1)^2+2$<span class="why">配方成 $(x+1)^2+(\sqrt2)^2$, 对应 $\int\frac{du}{u^2+a^2}$</span></div>
@@ -844,10 +844,10 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_积分.html#53定积分的性质">定积分性质</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例101">例 10.1</a> 同为"被积函数逐点比大小→积分保持同序", 本例还需 $\ln$ 单调性</li>
 </ul>
 <details><summary>解答过程</summary>
-<div class="step">① 在 $[0,\frac{\pi}{4}]$ 上: $0 < \sin x < \cos x$, 且 $\cot x = \frac{\cos x}{\sin x} > 1$<span class="why">$[0,\frac{\pi}{4}]$ 上 $\tan x\le 1$ 故 $\sin x\le\cos x$, 而 $\cot x\ge 1$</span></div>
-<div class="step">② $\ln x$ 递增: $\ln\sin x < 0$, $\ln\cos x < 0$, $\ln\cot x = \ln\cos x - \ln\sin x > 0$<span class="why">真数小于 1 时对数取负, 大于 1 时取正; $\ln\cot x$ 用对数性质拆开</span></div>
-<div class="step">③ 所以 $J > 0$, 且 $\sin x < \cos x \Rightarrow \ln\sin x < \ln\cos x \Rightarrow I < K < 0$<span class="why">$\ln$ 单调递增保持不等号方向, 两负值之间再比大小</span></div>
-<div class="step">④ 综合: $I < K < J$ <span class="fill">【AI补全】</span><span class="why">符号分布: $I,K$ 为负且 $I<K$, $J$ 为正; 被积函数处处可比较, 定积分保持同序</span></div>
+<div class="step">① 在 $[0,\frac{\pi}{4}]$ 上: $0 &lt; \sin x &lt; \cos x$, 且 $\cot x = \frac{\cos x}{\sin x} > 1$<span class="why">$[0,\frac{\pi}{4}]$ 上 $\tan x\le 1$ 故 $\sin x\le\cos x$, 而 $\cot x\ge 1$</span></div>
+<div class="step">② $\ln x$ 递增: $\ln\sin x &lt; 0$, $\ln\cos x &lt; 0$, $\ln\cot x = \ln\cos x - \ln\sin x > 0$<span class="why">真数小于 1 时对数取负, 大于 1 时取正; $\ln\cot x$ 用对数性质拆开</span></div>
+<div class="step">③ 所以 $J > 0$, 且 $\sin x &lt; \cos x \Rightarrow \ln\sin x &lt; \ln\cos x \Rightarrow I &lt; K &lt; 0$<span class="why">$\ln$ 单调递增保持不等号方向, 两负值之间再比大小</span></div>
+<div class="step">④ 综合: $I &lt; K &lt; J$ <span class="fill">【AI补全】</span><span class="why">符号分布: $I,K$ 为负且 $I&lt;K$, $J$ 为正; 被积函数处处可比较, 定积分保持同序</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 比较积分大小不比积分值: 比被积函数的符号与大小, 配合 $\ln$ 单调性一步到位。</div>
 </details>
 
@@ -888,7 +888,7 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答过程</summary>
 <div class="step">① $\cos x - \cos^3 x = \cos x(1-\cos^2 x) = \cos x\sin^2 x$<span class="why">提公因式后用 $\sin^2+\cos^2=1$ 化简, 根号内化成平方乘积</span></div>
-<div class="step">② $\sqrt{\cos x\sin^2 x} = |\sin x|\sqrt{\cos x}$<span class="why"><b>易错</b> 开方必带绝对值! $\sqrt{\sin^2 x}=|\sin x|$, 在 $[-\frac{\pi}{2},0]$ 上 $\sin x<0$ 时符号才体现</span></div>
+<div class="step">② $\sqrt{\cos x\sin^2 x} = |\sin x|\sqrt{\cos x}$<span class="why"><b>易错</b> 开方必带绝对值! $\sqrt{\sin^2 x}=|\sin x|$, 在 $[-\frac{\pi}{2},0]$ 上 $\sin x&lt;0$ 时符号才体现</span></div>
 <div class="step">③ 被积函数是偶函数, 原式 $= 2\int_0^{\pi/2} \sin x\sqrt{\cos x}\,dx$ <span class="fill">【AI补全】</span><span class="why">$|\sin x|\sqrt{\cos x}$ 中两因子皆偶函数; 减半到 $[0,\frac{\pi}{2}]$ 后 $\sin x\ge 0$, 绝对值可去</span></div>
 <div class="step">④ 凑 $d\cos x = -\sin x\,dx$: $= -2\int_1^0 \sqrt{u}\,du = 2\int_0^1 \sqrt{u}\,du = 2\cdot\frac{2}{3} = \frac{4}{3}$ <span class="fill">【AI补全】</span><span class="why">令 $u=\cos x$, 上下限同步换: $x=0\to u=1$, $x=\frac{\pi}{2}\to u=0$; $\int u^{1/2}du=\frac{2}{3}u^{3/2}$</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 开方去绝对值 + 偶函数减半 + 凑微分三步连环; $\sqrt{\sin^2 x}=|\sin x|$ 是本题最大陷阱。</div>
@@ -1008,7 +1008,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_积分.html#71定义与性质必考">变上限·定义与性质</a> · <a href="数学_积分.html#52定积分的几何意义">定积分几何意义</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例88">例 8.8</a> 同为"变上限=带符号面积", 本例算关键点值、彼处画整体图形</li>
 </ul>
 <details><summary>解答过程</summary>
-<div class="step">① 利用圆的面积公式: 上半圆面积 $= \frac{\pi}{2}r^2$, 下半圆面积 $= -\frac{\pi}{2}r^2$<span class="why">$F(x)=\int_0^x f(t)dt$ 是 $f$ 的带符号面积: $f>0$ 段加正面积, $f<0$ 段加负面积; 直径 1 半径 $\frac12$, 直径 2 半径 1</span></div>
+<div class="step">① 利用圆的面积公式: 上半圆面积 $= \frac{\pi}{2}r^2$, 下半圆面积 $= -\frac{\pi}{2}r^2$<span class="why">$F(x)=\int_0^x f(t)dt$ 是 $f$ 的带符号面积: $f>0$ 段加正面积, $f&lt;0$ 段加负面积; 直径 1 半径 $\frac12$, 直径 2 半径 1</span></div>
 <div class="step">② $F(3) = \int_0^3 f$: 从 $0\to 2$ 是以 2 为直径的上半圆(面积 $+\frac{\pi}{2}$), $2\to 3$ 是以 1 为直径的下半圆(面积 $-\frac{\pi}{8}$) 【AI补全, 半径计算】<span class="why">$F(3)=\frac{\pi}{2}\cdot1^2-\frac{\pi}{2}\cdot(\frac12)^2=\frac{\pi}{2}-\frac{\pi}{8}=\frac{3\pi}{8}$; 沿 $x$ 增方向逐段累加</span></div>
 <div class="step">③ 类似计算 $F(-2),F(-3)$: $F(-2)=\int_0^{-2}f=-\int_{-2}^0f=-(-\frac{\pi}{2})=\frac{\pi}{2}$; $F(-3)=F(-2)-\int_{-3}^{-2}f=\frac{\pi}{2}-\frac{\pi}{8}=\frac{3\pi}{8}$ <span class="fill">【AI补全】</span><span class="why">往左积分是反向累加: 先取 $-2\to0$ 段下半圆面积 $-\frac{\pi}{2}$ 取负得 $\frac{\pi}{2}$, 再减 $-3\to-2$ 段上半圆面积 $\frac{\pi}{8}$</span></div>
 <div class="step">④ 【注】OCR 选项模糊: 已算出 $F(\pm2)=\frac{\pi}{2}$, $F(\pm3)=\frac{3\pi}{8}$, 按此值对照选项即可<span class="why">选项缺失不影响方法: 各关键点值都是几何面积, 对得上哪个选项就选哪个</span></div>
@@ -1032,7 +1032,7 @@ main details .sum b{font-weight:700}
 </details>
 
 <h3 id="例86">例 8.6 分段函数变上限 【0715（2）例 4.11】</h3>
-<p>$f(x) = \begin{cases} \sin x, & 0 \leq x < \pi \\ 2, & \pi \leq x \leq 2\pi \end{cases}$, $F(x)=\int_0^x f(t)dt$, 则 $x=\pi$ 处?</p>
+<p>$f(x) = \begin{cases} \sin x, &amp; 0 \leq x &lt; \pi \\ 2, &amp; \pi \leq x \leq 2\pi \end{cases}$, $F(x)=\int_0^x f(t)dt$, 则 $x=\pi$ 处?</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_积分.html#71定义与性质必考">变上限·定义与性质</a> <span class="mk xref">碰撞</span><a href="数学_积分_例题.html#例13">例 1.3</a> 同为分段点处原函数的连续与可导, 一个求常数关系、一个判可导性</li>
 </ul>
@@ -1065,7 +1065,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_积分.html#71定义与性质必考">变上限·定义与性质</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例84">例 8.4</a> 同"由 $f$ 图形看 $F$", 本例专注单调与凹凸走向</li>
 </ul>
 <details><summary>解答过程</summary>
-<div class="step">① $F'(x) = f(x)$, 所以 $f(x)>0$ 时 $F$ 递增, $f(x)<0$ 时 $F$ 递减<span class="why">导数符号决定单调性: $F$ 的增减区间与 $f$ 的正负区间一一对应, 极值点出现在 $f=0$ 处</span></div>
+<div class="step">① $F'(x) = f(x)$, 所以 $f(x)>0$ 时 $F$ 递增, $f(x)&lt;0$ 时 $F$ 递减<span class="why">导数符号决定单调性: $F$ 的增减区间与 $f$ 的正负区间一一对应, 极值点出现在 $f=0$ 处</span></div>
 <div class="step">② $F(0)=0$, 积分的正负决定 $F$ 值的正负<span class="why">起点 $F(0)=0$ 固定; $F(x)$ 是 $[0,x]$ 上带符号面积, $f$ 正面积多于负面积则 $F>0$</span></div>
 <div class="step">③ 结合图形判断 $F$ 的走向和关键点值<span class="why"><b>考点</b> 图形题四要素: 单调性 ($f$ 符号)、凹凸性 ($f'$ 符号)、起点 $F(0)=0$、对称性</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 由 $f$ 图形画 $F$ 图形: 单调看 $f$ 符号, 凹凸看 $f'$, 起点 $F(0)=0$。</div>
@@ -1113,7 +1113,7 @@ main details .sum b{font-weight:700}
 <div class="step">② 分部: $= 2\left[\sqrt{x}f(x)\right]_0^1 - 2\int_0^1 \sqrt{x}f'(x)dx$<span class="why">分部公式 $\int u\,dv=uv-\int v\,du$: 取 $u=f(x)$, 把 $f'$ 引进积分, 好利用变上限求导</span></div>
 <div class="step">③ $f(1)=0$ ($\sqrt{1}=1$, 上下限相同), $\sqrt{x}f(x)\to 0$ ($x\to 0$), 第一项为 0<span class="why">$f(1)=\int_1^1=0$; 在 $x\to0$ 时 $f(x)$ 有界 (固定区间上的积分值有限), 乘 $\sqrt{x}\to0$, 边界项整体消失</span></div>
 <div class="step">④ $f'(x) = \frac{\ln(\sqrt{x}+1)}{\sqrt{x}}\cdot\frac{1}{2\sqrt{x}} = \frac{\ln(\sqrt{x}+1)}{2x}$ <span class="fill">【AI补全】</span><span class="why">变上限求导: 内层 $\sqrt{x}$ 代入被积函数, 再乘链式因子 $\frac{1}{2\sqrt{x}}$</span></div>
-<div class="step">⑤ 代入: 原式 $= -2\int_0^1\sqrt{x}\cdot\frac{\ln(1+\sqrt{x})}{2x}dx = -\int_0^1\frac{\ln(1+\sqrt{x})}{\sqrt{x}}dx$, 换元 $u=\sqrt{x}$: $= -2\int_0^1\ln(1+u)du = -2\big[(1+u)\ln(1+u)-u\big]_0^1 = 2-4\ln 2$ 【修正: 原稿 $8-4\ln 2-2\pi$ 与重算不符; 且 $x\in(0,1)$ 时 $f(x)<0$, 积分必为负, 原值也违背符号】<span class="why">换元 $u=\sqrt{x}$ 后 $\frac{1}{\sqrt{x}}dx=2du$; $\int\ln(1+u)du$ 分部得 $(1+u)\ln(1+u)-u$; 数值验证 $2-4\ln2\approx-0.77<0$ ✓</span></div>
+<div class="step">⑤ 代入: 原式 $= -2\int_0^1\sqrt{x}\cdot\frac{\ln(1+\sqrt{x})}{2x}dx = -\int_0^1\frac{\ln(1+\sqrt{x})}{\sqrt{x}}dx$, 换元 $u=\sqrt{x}$: $= -2\int_0^1\ln(1+u)du = -2\big[(1+u)\ln(1+u)-u\big]_0^1 = 2-4\ln 2$ 【修正: 原稿 $8-4\ln 2-2\pi$ 与重算不符; 且 $x\in(0,1)$ 时 $f(x)&lt;0$, 积分必为负, 原值也违背符号】<span class="why">换元 $u=\sqrt{x}$ 后 $\frac{1}{\sqrt{x}}dx=2du$; $\int\ln(1+u)du$ 分部得 $(1+u)\ln(1+u)-u$; 数值验证 $2-4\ln2\approx-0.77&lt;0$ ✓</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 变上限复合 + 分部 + 换元三步连环: 边界为零后代入 $f'$, 换元 $u=\sqrt{x}$, 得 $2-4\ln2$。</div>
 </details>
 
@@ -1125,12 +1125,12 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_积分.html#53定积分的性质">定积分性质</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例64">例 6.4</a> 同为"逐点比大小→积分保持同序", 本例还靠单调性定上界</li>
 </ul>
 <details><summary>解答过程</summary>
-<div class="step">① $x\in(0,\frac{\pi}{4})$ 时, $\tan x > x$, 所以 $\frac{\tan x}{x} > 1$, $\frac{x}{\tan x} < 1$<span class="why">$\tan x>x$ 是常用不等式: 由 $f(x)=\tan x-x$, $f'(x)=\sec^2x-1>0$, $f(0)=0$ 推出</span></div>
-<div class="step">② $I_1 > \int_0^{\pi/4} 1\,dx = \frac{\pi}{4} < 1$, $I_2 < \frac{\pi}{4}$<span class="why">被积函数逐点大于 (或小于) 1, 积分保持同向大小关系; 但 $\frac{\pi}{4}$ 还不足以定出 $I_1$ 与 1 的大小</span></div>
+<div class="step">① $x\in(0,\frac{\pi}{4})$ 时, $\tan x > x$, 所以 $\frac{\tan x}{x} > 1$, $\frac{x}{\tan x} &lt; 1$<span class="why">$\tan x>x$ 是常用不等式: 由 $f(x)=\tan x-x$, $f'(x)=\sec^2x-1>0$, $f(0)=0$ 推出</span></div>
+<div class="step">② $I_1 > \int_0^{\pi/4} 1\,dx = \frac{\pi}{4} &lt; 1$, $I_2 &lt; \frac{\pi}{4}$<span class="why">被积函数逐点大于 (或小于) 1, 积分保持同向大小关系; 但 $\frac{\pi}{4}$ 还不足以定出 $I_1$ 与 1 的大小</span></div>
 <div class="step">③ 实际上 $\int_0^{\pi/4} \frac{\tan x}{x}dx > \int_0^{\pi/4} dx = \frac{\pi}{4}$<span class="why">同 ②: $\tan x/x>1$ 在 $(0,\frac{\pi}{4})$ 上严格成立, 积分严格大于区间长</span></div>
-<div class="step">④ 而 $\int_0^{\pi/4} \frac{x}{\tan x}dx < \int_0^{\pi/4} dx = \frac{\pi}{4} < 1$<span class="why">$\frac{x}{\tan x}\in(0,1)$, 故 $I_2<\frac{\pi}{4}<1$; 至此 $I_2$ 与 $1$ 的关系已定</span></div>
-<div class="step">⑤ 再看 $I_1$ 与 1: $\left(\frac{\tan x}{x}\right)'=\frac{2x-\sin 2x}{2x^2\cos^2x}>0$, 故 $\frac{\tan x}{x}$ 单调增, 在 $[0,\frac{\pi}{4}]$ 上最大值 $\frac{\tan\frac{\pi}{4}}{\frac{\pi}{4}}=\frac{4}{\pi}$, 于是 $I_1<\frac{4}{\pi}\cdot\frac{\pi}{4}=1$; 综上 $I_2<\frac{\pi}{4}<I_1<1$ 【修正: 原"$I_1>1$"有误, 数值验证 $I_1\approx0.85<1$】<span class="why">$2x>\sin2x$ (因 $\sin t<t$ 对 $t>0$) 保证分子为正; 积分不超过最大值乘区间长, 且取不到, 严格小于 1</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 逐点不等式定积分大小: $\tan x>x$ 推出 $I_2<\frac{\pi}{4}<I_1$, 再用单调性上界 $\frac{4}{\pi}$ 推出 $I_1<1$。</div>
+<div class="step">④ 而 $\int_0^{\pi/4} \frac{x}{\tan x}dx &lt; \int_0^{\pi/4} dx = \frac{\pi}{4} &lt; 1$<span class="why">$\frac{x}{\tan x}\in(0,1)$, 故 $I_2&lt;\frac{\pi}{4}&lt;1$; 至此 $I_2$ 与 $1$ 的关系已定</span></div>
+<div class="step">⑤ 再看 $I_1$ 与 1: $\left(\frac{\tan x}{x}\right)'=\frac{2x-\sin 2x}{2x^2\cos^2x}>0$, 故 $\frac{\tan x}{x}$ 单调增, 在 $[0,\frac{\pi}{4}]$ 上最大值 $\frac{\tan\frac{\pi}{4}}{\frac{\pi}{4}}=\frac{4}{\pi}$, 于是 $I_1&lt;\frac{4}{\pi}\cdot\frac{\pi}{4}=1$; 综上 $I_2&lt;\frac{\pi}{4}&lt;I_1&lt;1$ 【修正: 原"$I_1>1$"有误, 数值验证 $I_1\approx0.85&lt;1$】<span class="why">$2x>\sin2x$ (因 $\sin t&lt;t$ 对 $t>0$) 保证分子为正; 积分不超过最大值乘区间长, 且取不到, 严格小于 1</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 逐点不等式定积分大小: $\tan x>x$ 推出 $I_2&lt;\frac{\pi}{4}&lt;I_1$, 再用单调性上界 $\frac{4}{\pi}$ 推出 $I_1&lt;1$。</div>
 </details>
 
 <h3 id="例102">例 10.2 【0715（2）例 4.4】</h3>
@@ -1140,11 +1140,11 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答过程</summary>
 <div class="step">① $I_2 = I_1 + \int_\pi^{2\pi} e^{x^2}\sin x\,dx$, 在 $[\pi,2\pi]$ 上 $\sin x \leq 0$, 所以第二项 $\leq 0$<span class="why">区间拆分 $[0,2\pi]=[0,\pi]\cup[\pi,2\pi]$: 第二段 $\sin$ 恒负, 贡献负面积</span></div>
-<div class="step">② 且 $e^{x^2}$ 单调增 → 后段负面积绝对值更大 → $I_2 < I_1$<span class="why">严格化: 换元 $t=x-\pi$, $\int_\pi^{2\pi}e^{x^2}\sin x\,dx=-\int_0^\pi e^{(t+\pi)^2}\sin t\,dt<-\int_0^\pi e^{t^2}\sin t\,dt=-I_1<0$, 故 $I_2<0<I_1$</span></div>
+<div class="step">② 且 $e^{x^2}$ 单调增 → 后段负面积绝对值更大 → $I_2 &lt; I_1$<span class="why">严格化: 换元 $t=x-\pi$, $\int_\pi^{2\pi}e^{x^2}\sin x\,dx=-\int_0^\pi e^{(t+\pi)^2}\sin t\,dt&lt;-\int_0^\pi e^{t^2}\sin t\,dt=-I_1&lt;0$, 故 $I_2&lt;0&lt;I_1$</span></div>
 <div class="step">③ $I_3 = I_2 + \int_{2\pi}^{3\pi} e^{x^2}\sin x\,dx$, 在 $[2\pi,3\pi]$ 上 $\sin x \geq 0$, 正面积更大 → $I_3 > I_2$<span class="why">第三段 $\sin$ 恒正, 加上的项严格大于 0</span></div>
 <div class="step">④ 比较 $I_3$ 与 $I_1$: $I_3-I_1=-\int_\pi^{2\pi}e^{x^2}|\sin x|dx+\int_{2\pi}^{3\pi}e^{x^2}\sin x\,dx=\int_0^\pi\big[e^{(t+2\pi)^2}-e^{(t+\pi)^2}\big]\sin t\,dt>0$<span class="why">两段都换到 $[0,\pi]$ 对齐被积函数 $\sin t$: 正段权重 $e^{(t+2\pi)^2}$ 大于负段 $e^{(t+\pi)^2}$, 逐点差为正, 所以 $I_3>I_1$</span></div>
-<div class="step">⑤ 结论: $I_2 < I_1 < I_3$ 【修正: OCR 两种猜测中取后者; 权重 $e^{x^2}$ 随 $x$ 增大, 正段在后收益更大】<span class="why">合并: $I_2<I_1$ (②), $I_3>I_2$ (③), $I_3>I_1$ (④), 排序唯一</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 周期正负分段比大小: $\sin$ 定号分段, 换元对齐后靠 $e^{x^2}$ 的增减性比权重, 得 $I_2<I_1<I_3$。</div>
+<div class="step">⑤ 结论: $I_2 &lt; I_1 &lt; I_3$ 【修正: OCR 两种猜测中取后者; 权重 $e^{x^2}$ 随 $x$ 增大, 正段在后收益更大】<span class="why">合并: $I_2&lt;I_1$ (②), $I_3>I_2$ (③), $I_3>I_1$ (④), 排序唯一</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 周期正负分段比大小: $\sin$ 定号分段, 换元对齐后靠 $e^{x^2}$ 的增减性比权重, 得 $I_2&lt;I_1&lt;I_3$。</div>
 </details>
 
 <h3 id="例103">例 10.3 【0715（2）例 4.5】</h3>
@@ -1155,9 +1155,9 @@ main details .sum b{font-weight:700}
 <details><summary>解答过程</summary>
 <div class="step">① $M$: 被积函数 $\frac{\sin x}{1+x^2}\cos^4 x$ 是奇函数(分子奇, 分母偶, $\cos^4 x$ 偶 ⇒ 奇), $M=0$<span class="why"><b>考点</b> 奇函数在对称区间 $[-a,a]$ 上的积分为 0; 奇偶性按"奇×偶=奇"逐因子判断</span></div>
 <div class="step">② $N$: $\sin^3 x$ 奇 ⇒ 积分为 0, $\cos^4 x$ 偶 ⇒ $N = 2\int_0^{\pi/2}\cos^4 x\,dx > 0$<span class="why">偶函数在 $[-a,a]$ 的积分是 $[0,a]$ 上的两倍; 两部分拆开分别用奇偶性</span></div>
-<div class="step">③ $P$: $x^2\sin^3 x$ 奇 ⇒ 0, $-\cos^4 x$ 偶 ⇒ $P = -2\int_0^{\pi/2}\cos^4 x\,dx < 0$<span class="why">$x^2$ 偶、$\sin^3x$ 奇 ⇒ 乘积奇; $-\cos^4x$ 偶, 故 $P$ 是 $N$ 中偶部的相反数</span></div>
-<div class="step">④ 所以 $P < M < N$ (即 $P < 0 = M < N$), 选 (D) <span class="fill">【AI补全】</span><span class="why">三数定号即排序; 若需数值: $\int_0^{\pi/2}\cos^4x\,dx=\frac{3\pi}{16}$ (点火公式), $N=\frac{3\pi}{8}$</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 对称区间定号比大小: 奇函数积分为 0 是主武器, 偶部拆出后定正负, 得 $P<M<N$。</div>
+<div class="step">③ $P$: $x^2\sin^3 x$ 奇 ⇒ 0, $-\cos^4 x$ 偶 ⇒ $P = -2\int_0^{\pi/2}\cos^4 x\,dx &lt; 0$<span class="why">$x^2$ 偶、$\sin^3x$ 奇 ⇒ 乘积奇; $-\cos^4x$ 偶, 故 $P$ 是 $N$ 中偶部的相反数</span></div>
+<div class="step">④ 所以 $P &lt; M &lt; N$ (即 $P &lt; 0 = M &lt; N$), 选 (D) <span class="fill">【AI补全】</span><span class="why">三数定号即排序; 若需数值: $\int_0^{\pi/2}\cos^4x\,dx=\frac{3\pi}{16}$ (点火公式), $N=\frac{3\pi}{8}$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 对称区间定号比大小: 奇函数积分为 0 是主武器, 偶部拆出后定正负, 得 $P&lt;M&lt;N$。</div>
 </details>
 
 <hr />
@@ -1165,13 +1165,13 @@ main details .sum b{font-weight:700}
 <h3 id="例111">例 11.1 p-积分 【0510（1）例 5.16】</h3>
 <p>证明 $\displaystyle\int_a^{+\infty} \frac{dx}{x^p}$ $(a>0)$ 当 $p>1$ 时收敛, $p \leq 1$ 时发散。</p>
 <ul>
-<li><span class="mk theory">理论</span><a href="数学_积分.html#81无穷限的反常积分">无穷限反常积分</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例113">例 11.3</a> 与瑕积分 $q$ 结论 ($q<1$ 收敛) 互补记忆</li>
+<li><span class="mk theory">理论</span><a href="数学_积分.html#81无穷限的反常积分">无穷限反常积分</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例113">例 11.3</a> 与瑕积分 $q$ 结论 ($q&lt;1$ 收敛) 互补记忆</li>
 </ul>
 <details><summary>解答过程</summary>
 <div class="step">① $p \neq 1$: $\int_a^b x^{-p}dx = \frac{x^{1-p}}{1-p}\big|_a^b = \frac{b^{1-p}-a^{1-p}}{1-p}$<span class="why">反常积分收敛 ⟺ 极限存在: 先算定积分再令 $b\to+\infty$; $a>0$ 保证 $x=0$ 不是瑕点</span></div>
-<div class="step">② $b\to+\infty$: 若 $p>1$, $b^{1-p}\to 0$, 收敛; 若 $p<1$, $b^{1-p}\to\infty$, 发散<span class="why">$1-p<0$ 时负指数幂趋于 0; $1-p>0$ 时趋于无穷; 收敛性由指数符号唯一决定</span></div>
+<div class="step">② $b\to+\infty$: 若 $p>1$, $b^{1-p}\to 0$, 收敛; 若 $p&lt;1$, $b^{1-p}\to\infty$, 发散<span class="why">$1-p&lt;0$ 时负指数幂趋于 0; $1-p>0$ 时趋于无穷; 收敛性由指数符号唯一决定</span></div>
 <div class="step">③ $p=1$: $\int_a^b \frac{dx}{x} = \ln b - \ln a \to \infty$, 发散<span class="why">$p=1$ 是临界情形, 对数发散; 结论记忆: 无穷限 $p$-积分 $p>1$ 收敛、$p\le1$ 发散</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 无穷限 $p$-积分: 先积后代上限取极限, 收敛 ⟺ $p>1$; 与瑕积分结论 ($q<1$ 收敛) 互补记忆。</div>
+<div class="sum hot"><b>⭐ 经典</b>: 无穷限 $p$-积分: 先积后代上限取极限, 收敛 ⟺ $p>1$; 与瑕积分结论 ($q&lt;1$ 收敛) 互补记忆。</div>
 </details>
 
 <h3 id="例112">例 11.2 无穷限反常积分计算 【0510（1）】</h3>
@@ -1189,16 +1189,16 @@ main details .sum b{font-weight:700}
 </details>
 
 <h3 id="例113">例 11.3 瑕积分判敛 【0510（2）例 5.18】</h3>
-<p>证明 $\displaystyle\int_a^b \frac{dx}{(x-a)^q}$ 当 $q<1$ 时收敛, $q \geq 1$ 时发散。</p>
+<p>证明 $\displaystyle\int_a^b \frac{dx}{(x-a)^q}$ 当 $q&lt;1$ 时收敛, $q \geq 1$ 时发散。</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_积分.html#82无界函数的反常积分瑕积分易错">瑕积分</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例111">例 11.1</a> 与无穷限 $p$ 结论 ($p>1$ 收敛) 互补, 方向相反</li>
 </ul>
 <details><summary>解答过程</summary>
 <div class="step">① $x=a$ 为瑕点, 考虑 $\lim_{t\to a^+}\int_t^b (x-a)^{-q}dx$<span class="why">被积函数在 $x=a$ 无界, 反常积分定义为 $t\to a^+$ 的极限; 收敛 ⟺ 极限存在且有限</span></div>
 <div class="step">② $q \neq 1$: $= \frac{(b-a)^{1-q} - (t-a)^{1-q}}{1-q}$<span class="why">原函数 $\frac{(x-a)^{1-q}}{1-q}$, 代上下限 $b$ 与 $t$ 后只需关注 $t\to a^+$ 时的行为</span></div>
-<div class="step">③ $t\to a^+$: 若 $q<1$, $(t-a)^{1-q}\to 0$, 收敛; 若 $q>1$, $1-q<0$, $(t-a)^{1-q}\to\infty$, 发散<span class="why">与无穷限 $p$-积分结论相反: 瑕点在左端要求指数 $<1$ 才收敛</span></div>
-<div class="step">④ $q=1$: $\int \frac{dx}{x-a} = \ln(x-a)$, $t\to a^+$ 时发散<span class="why">$\ln(x-a)\to-\infty$; 临界情形 $q=1$ 发散; 结论: 瑕积分 $q<1$ 收敛、$q\ge1$ 发散</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 左端瑕积分: 先积出原函数再代 $t\to a^+$ 取极限, 收敛 ⟺ $q<1$。</div>
+<div class="step">③ $t\to a^+$: 若 $q&lt;1$, $(t-a)^{1-q}\to 0$, 收敛; 若 $q>1$, $1-q&lt;0$, $(t-a)^{1-q}\to\infty$, 发散<span class="why">与无穷限 $p$-积分结论相反: 瑕点在左端要求指数 $&lt;1$ 才收敛</span></div>
+<div class="step">④ $q=1$: $\int \frac{dx}{x-a} = \ln(x-a)$, $t\to a^+$ 时发散<span class="why">$\ln(x-a)\to-\infty$; 临界情形 $q=1$ 发散; 结论: 瑕积分 $q&lt;1$ 收敛、$q\ge1$ 发散</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 左端瑕积分: 先积出原函数再代 $t\to a^+$ 取极限, 收敛 ⟺ $q&lt;1$。</div>
 </details>
 
 <h3 id="例114">例 11.4 双瑕点判敛 【0715（2）例 4.20】</h3>
@@ -1208,10 +1208,10 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答过程</summary>
 <div class="step">① 需要检查两个瑕点: $x\to 0^+$ 和 $x\to +\infty$<span class="why"><b>易错</b> 双瑕点必须两段分别判敛, 只查一端会漏条件; 两段各自收敛才整体收敛</span></div>
-<div class="step">② $x\to 0^+$ 时: $\frac{1}{x^a(1+x)^b} \sim \frac{1}{x^a}$, $x=0$ 是瑕点; 收敛条件: $a<1$<span class="why">等价无穷小: $x\to0$ 时 $(1+x)^b\to1$, 主部是 $x^{-a}$; 对照瑕 $p$-积分 $q=a<1$</span></div>
+<div class="step">② $x\to 0^+$ 时: $\frac{1}{x^a(1+x)^b} \sim \frac{1}{x^a}$, $x=0$ 是瑕点; 收敛条件: $a&lt;1$<span class="why">等价无穷小: $x\to0$ 时 $(1+x)^b\to1$, 主部是 $x^{-a}$; 对照瑕 $p$-积分 $q=a&lt;1$</span></div>
 <div class="step">③ $x\to +\infty$ 时: $\frac{1}{x^a(1+x)^b} \sim \frac{1}{x^{a+b}}$, 收敛条件: $a+b>1$<span class="why">$x\to\infty$ 时 $1+x\sim x$, 主部 $x^{-(a+b)}$; 对照无穷限 $p$-积分 $p=a+b>1$</span></div>
-<div class="step">④ 综上: $a<1$ 且 $a+b>1$, 选 (C)<span class="why">两条件缺一不可; 结论直接背: 幂乘积型双端判敛看两端指数</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 双瑕点分段判敛: 两端各自化标准幂型, $a<1$ 且 $a+b>1$ 同时满足才收敛。</div>
+<div class="step">④ 综上: $a&lt;1$ 且 $a+b>1$, 选 (C)<span class="why">两条件缺一不可; 结论直接背: 幂乘积型双端判敛看两端指数</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 双瑕点分段判敛: 两端各自化标准幂型, $a&lt;1$ 且 $a+b>1$ 同时满足才收敛。</div>
 </details>
 
 <h3 id="例115">例 11.5 三角瑕积分判敛 【0715（2）例 4.21】</h3>
@@ -1221,10 +1221,10 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答过程</summary>
 <div class="step">① 检查两个端点: $x\to 0^+$ 和 $x\to \frac{\pi}{2}^-$<span class="why">两个端点都是瑕点 ($\sin^a x$ 在 0 为零、$\cos^b x$ 在 $\frac{\pi}{2}$ 为零), 分段判敛</span></div>
-<div class="step">② $x\to 0^+$: $\sin x \sim x$, 被积函数 $\sim \frac{1}{x^a}$, 收敛需要 $a<1$<span class="why">$\cos^b x\to1$ 不影响主部; 化标准瑕 $p$-积分 $q=a$</span></div>
-<div class="step">③ $x\to \frac{\pi}{2}^-$: 令 $t=\frac{\pi}{2}-x$, $\cos x = \sin t \sim t$, 被积函数 $\sim \frac{1}{t^b}$, 收敛需要 $b<1$<span class="why">诱导公式 $\cos x=\sin(\frac{\pi}{2}-x)$; 与左端对称地要求 $b<1$</span></div>
-<div class="step">④ 所以 $a<1$ 且 $b<1$, 选 (B)<span class="why">两个指数各自小于 1, 与例 11.4 的双端判敛思路相同</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 三角式瑕积分: 两端各用等价无穷小化幂型, $\sin x\sim x$、$\cos x\sim\frac{\pi}{2}-x$, 得 $a<1$ 且 $b<1$。</div>
+<div class="step">② $x\to 0^+$: $\sin x \sim x$, 被积函数 $\sim \frac{1}{x^a}$, 收敛需要 $a&lt;1$<span class="why">$\cos^b x\to1$ 不影响主部; 化标准瑕 $p$-积分 $q=a$</span></div>
+<div class="step">③ $x\to \frac{\pi}{2}^-$: 令 $t=\frac{\pi}{2}-x$, $\cos x = \sin t \sim t$, 被积函数 $\sim \frac{1}{t^b}$, 收敛需要 $b&lt;1$<span class="why">诱导公式 $\cos x=\sin(\frac{\pi}{2}-x)$; 与左端对称地要求 $b&lt;1$</span></div>
+<div class="step">④ 所以 $a&lt;1$ 且 $b&lt;1$, 选 (B)<span class="why">两个指数各自小于 1, 与例 11.4 的双端判敛思路相同</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 三角式瑕积分: 两端各用等价无穷小化幂型, $\sin x\sim x$、$\cos x\sim\frac{\pi}{2}-x$, 得 $a&lt;1$ 且 $b&lt;1$。</div>
 </details>
 
 <h3 id="例116">例 11.6 含对数与幂的瑕积分 【0715（2）例 4.22】</h3>
@@ -1241,13 +1241,13 @@ main details .sum b{font-weight:700}
 </details>
 
 <h3 id="例117">例 11.7 微分方程+反常积分 【0715（2）例 4.23】</h3>
-<p>$y(x)$ 满足 $y''+2y'+ky=0$ $(0<k<1)$, (1) 证明 $\int_0^{+\infty} y(x)dx$ 收敛; (2) $y(0)=1$, $y'(0)=1$ 时求积分值。</p>
+<p>$y(x)$ 满足 $y''+2y'+ky=0$ $(0&lt;k&lt;1)$, (1) 证明 $\int_0^{+\infty} y(x)dx$ 收敛; (2) $y(0)=1$, $y'(0)=1$ 时求积分值。</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_积分.html#81无穷限的反常积分">无穷限反常积分</a> · <a href="数学_积分.html#84反常积分的计算">反常积分计算</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例87">例 8.7</a> 同"把未知积分当常数列方程求解", 本例对方程整体积分</li>
 </ul>
 <details><summary>解答过程</summary>
-<div class="step">① 特征方程 $r^2+2r+k=0$, $r = -1\pm\sqrt{1-k}$, 因 $0<k<1$, 两根均负<span class="why">判别式 $\Delta=4-4k>0$, 两根为实根; $-1+\sqrt{1-k}<0$ 因 $\sqrt{1-k}<1$</span></div>
-<div class="step">② 通解: $y = C_1e^{r_1x} + C_2e^{r_2x}$, $r_1,r_2<0$, $x\to+\infty$ 时指数衰减 → 积分收敛 ✓<span class="why">指数衰减保证反常积分收敛: $|y|\le Ce^{r_2x}$ 且 $r_2<0$, 与 $\int_0^\infty e^{-x}dx$ 同敛散</span></div>
+<div class="step">① 特征方程 $r^2+2r+k=0$, $r = -1\pm\sqrt{1-k}$, 因 $0&lt;k&lt;1$, 两根均负<span class="why">判别式 $\Delta=4-4k>0$, 两根为实根; $-1+\sqrt{1-k}&lt;0$ 因 $\sqrt{1-k}&lt;1$</span></div>
+<div class="step">② 通解: $y = C_1e^{r_1x} + C_2e^{r_2x}$, $r_1,r_2&lt;0$, $x\to+\infty$ 时指数衰减 → 积分收敛 ✓<span class="why">指数衰减保证反常积分收敛: $|y|\le Ce^{r_2x}$ 且 $r_2&lt;0$, 与 $\int_0^\infty e^{-x}dx$ 同敛散</span></div>
 <div class="step">③ 不求具体解: 对 $y''+2y'+ky=0$ 在 $[0,+\infty)$ 上积分<span class="why">只需求 $\int y\,dx$: 对微分方程本身逐项积分, 各阶导数项化为边界值, 不必解出 $y$</span></div>
 <div class="step">④ $\int_0^{+\infty}y''dx + 2\int_0^{+\infty}y'dx + k\int_0^{+\infty}ydx = 0$<span class="why">线性方程逐项积分, $k\int y$ 就是目标量</span></div>
 <div class="step">⑤ $[y']_0^\infty + 2[y]_0^\infty + k\int_0^\infty y\,dx = 0$<span class="why">$\int y''=y'\big|_0^\infty$, $\int y'=y\big|_0^\infty$; 上下限对应 $y',y$ 在 $\infty$ 与 0 的值</span></div>
@@ -1319,7 +1319,7 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答过程</summary>
 <div class="step">① 化为极坐标: $r^4 = r^2(\cos^2\theta - \sin^2\theta) = r^2\cos 2\theta$<span class="why">代入 $x=r\cos\theta$, $y=r\sin\theta$: $x^2+y^2=r^2$, $x^2-y^2=r^2\cos2\theta$</span></div>
-<div class="step">② $r^2 = \cos 2\theta$ (要求 $\cos 2\theta \geq 0$, 即 $|\theta| \leq \frac{\pi}{4}$ 或 $|\theta-\pi| \leq \frac{\pi}{4}$)<span class="why"><b>易错</b> 半径平方必须非负: $\cos2\theta<0$ 的区间无图形, 双纽线只在对角线夹的四个扇区内</span></div>
+<div class="step">② $r^2 = \cos 2\theta$ (要求 $\cos 2\theta \geq 0$, 即 $|\theta| \leq \frac{\pi}{4}$ 或 $|\theta-\pi| \leq \frac{\pi}{4}$)<span class="why"><b>易错</b> 半径平方必须非负: $\cos2\theta&lt;0$ 的区间无图形, 双纽线只在对角线夹的四个扇区内</span></div>
 <div class="step">③ 由对称性, 总面积 $= 4$ × 第一象限面积<span class="why">图形关于两坐标轴都对称, 四瓣全等, 只算第一象限再乘 4</span></div>
 <div class="step">④ $S = 4\cdot\frac{1}{2}\int_0^{\pi/4} \cos 2\theta\,d\theta = 2\int_0^{\pi/4}\cos 2\theta\,d\theta = [\sin 2\theta]_0^{\pi/4} = 1$<span class="why">系数整理: $4\cdot\frac12=2$; $\int\cos2\theta\,d\theta=\frac{\sin2\theta}{2}$, 常数 $\frac12$ 与系数 2 相抵; 代限 $\sin\frac{\pi}{2}-\sin0=1$</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 双纽线面积: 极坐标化 $r^2=\cos2\theta$, 四倍第一象限面积, 结果恰为 1。</div>
@@ -1360,7 +1360,7 @@ main details .sum b{font-weight:700}
 <details><summary>解答过程</summary>
 <div class="step">① 同例 12.2, 切点 $(e,1)$, 切线 $y=\frac{x}{e}$, 面积 $S = \frac{e}{2}-1$<span class="why">沿用例 12.2 结论: $D$ 在 $y\in[0,1]$ 内夹于 $x=ey$ (切线) 与 $x=e^y$ (曲线) 之间</span></div>
 <div class="step">② 绕 $x=e$ 旋转: 注意这是绕平行于 $y$ 轴的直线旋转<span class="why"><b>易错</b> 轴是竖线 $x=e$: 不能用对 $x$ 的垫片法, 要对 $y$ 切片, 半径看 $x$ 方向的距离</span></div>
-<div class="step">③ 用 Y 型: $x=e$ 为旋转轴, 半径 $R = |e - x(y)|$<span class="why">区域内 $x(y)\le e$ ($y<1$ 时 $e^y<e$), 半径即 $e-x(y)$, 无需取绝对值</span></div>
+<div class="step">③ 用 Y 型: $x=e$ 为旋转轴, 半径 $R = |e - x(y)|$<span class="why">区域内 $x(y)\le e$ ($y&lt;1$ 时 $e^y&lt;e$), 半径即 $e-x(y)$, 无需取绝对值</span></div>
 <div class="step">④ $V = \pi\int_0^1 (e-ey)^2 dy - \pi\int_0^1 (e-e^y)^2 dy$ <span class="fill">【AI补全】</span><span class="why">对 $y$ 切片: 外半径 $e-ey$ (离轴最远的切线侧), 内半径 $e-e^y$ (曲线侧), 大圆盘减小圆盘</span></div>
 <div class="step">⑤ $= \frac{\pi}{6}(5e^2-12e+3)$ 【AI补全, 依 OCR 答案】<span class="why">逐项核对: $\int_0^1(e-ey)^2dy=\frac{e^2}{3}$; $\int_0^1(e-e^y)^2dy=-\frac{e^2}{2}+2e-\frac12$; 差 $=\frac{5e^2}{6}-2e+\frac12=\frac{5e^2-12e+3}{6}$, 与 OCR 答案一致 ✓</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 绕竖轴 $x=e$: 对 $y$ 切片外减内, $(e-ey)^2-(e-e^y)^2$ 积分, 结果 $\frac{\pi}{6}(5e^2-12e+3)$。</div>
@@ -1375,14 +1375,14 @@ main details .sum b{font-weight:700}
 <div class="step">① 体积: $V = \pi\int_0^1 (y_1^2 - y_2^2)dx$, 其中 $y_1=\sqrt{1-x^2}$, $y_2$ 由参数方程给出<span class="why">圆 $y_1$ 在星形线 $y_2$ 上方 (同 $x$ 处 $y_1>y_2$, 如 $x=0.5$ 处 $0.866>0.225$), 垫片法外圆减内圆</span></div>
 <div class="step">② $V = \pi\left[\int_0^1 (1-x^2)dx - \int_0^1 y_2^2 dx\right]$<span class="why">$y_1^2=1-x^2$ 直接写; 内层 $y_2$ 是 $x$ 的隐函数, 需借参数方程换元</span></div>
 <div class="step">③ 第一项 $= \pi\left[x-\frac{x^3}{3}\right]_0^1 = \frac{2\pi}{3}$<span class="why">外层圆旋转部分体积: $\pi\cdot\frac23$; 最终结果必小于此值 (被减内圆)</span></div>
-<div class="step">④ 第二项: 参数化 $dx=-3\cos^2t\sin t\,dt$, $y_2^2=\sin^6t$, $\int_0^1y_2^2dx=3\int_0^{\pi/2}\sin^7t\cos^2t\,dt=3\cdot\frac{16}{315}=\frac{16}{105}$, 故 $V=\pi\left(\frac23-\frac{16}{105}\right)=\frac{18\pi}{35}$ 【修正: OCR 的 $\frac{8\pi}{5}\approx5.03$ 大于外层体积 $\frac{2\pi}{3}\approx2.09$, 不可能; 已重算】<span class="why">点火公式推广: $\int_0^{\pi/2}\sin^7t\cos^2t\,dt=\frac{6!!\cdot1!!}{9!!}=\frac{48}{945}=\frac{16}{315}$; 自检 $V=\frac{18\pi}{35}\approx1.62<\frac{2\pi}{3}$ ✓</span></div>
+<div class="step">④ 第二项: 参数化 $dx=-3\cos^2t\sin t\,dt$, $y_2^2=\sin^6t$, $\int_0^1y_2^2dx=3\int_0^{\pi/2}\sin^7t\cos^2t\,dt=3\cdot\frac{16}{315}=\frac{16}{105}$, 故 $V=\pi\left(\frac23-\frac{16}{105}\right)=\frac{18\pi}{35}$ 【修正: OCR 的 $\frac{8\pi}{5}\approx5.03$ 大于外层体积 $\frac{2\pi}{3}\approx2.09$, 不可能; 已重算】<span class="why">点火公式推广: $\int_0^{\pi/2}\sin^7t\cos^2t\,dt=\frac{6!!\cdot1!!}{9!!}=\frac{48}{945}=\frac{16}{315}$; 自检 $V=\frac{18\pi}{35}\approx1.62&lt;\frac{2\pi}{3}$ ✓</span></div>
 <div class="step">⑤ 表面积: 外侧面 $2\pi\int_0^1 y_1ds_1=2\pi\int_0^1dx=2\pi$; 内侧面 $2\pi\int y_2ds_2=2\pi\cdot3\int_0^{\pi/2}\sin^4t\cos t\,dt=\frac{6\pi}{5}$; 合计 $A=\frac{16\pi}{5}$ 【AI补全, 与 OCR 一致】<span class="why">旋转侧面积公式 $A=2\pi\int y\,ds$ 两段曲线分别算: 圆段 $ds=\frac{dx}{\sqrt{1-x^2}}$ 与 $y_1$ 相消; 星形线段 $ds=3\sin t\cos t\,dt$</span></div>
-<div class="step">⑥ 【注】OCR 体积答案自相矛盾 (第二项 $\frac{8\pi}{15}$ 与 $V=\frac{8\pi}{5}$ 对不上), 已修正为 $V=\frac{18\pi}{35}$; 表面积 $\frac{16\pi}{5}$ 经核对正确<span class="why">修正依据: $V<\frac{2\pi}{3}$ (外圆体积) 是硬性上界, 任何大于它的答案必错; 侧面积两步分别验算与 OCR 吻合</span></div>
+<div class="step">⑥ 【注】OCR 体积答案自相矛盾 (第二项 $\frac{8\pi}{15}$ 与 $V=\frac{8\pi}{5}$ 对不上), 已修正为 $V=\frac{18\pi}{35}$; 表面积 $\frac{16\pi}{5}$ 经核对正确<span class="why">修正依据: $V&lt;\frac{2\pi}{3}$ (外圆体积) 是硬性上界, 任何大于它的答案必错; 侧面积两步分别验算与 OCR 吻合</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 参数曲线旋转体: 体积外圆减内线, 参数化+点火公式得 $\frac{18\pi}{35}$; 侧面积 $\frac{16\pi}{5}$。</div>
 </details>
 
 <h3 id="例129">例 12.9 广义积分+旋转体 【0715（3）例 4.28】</h3>
-<p>$D$ 是 $y = x^a \cdot a^{-\frac{x^2}{a}}$ $(a>1,0\leq x<+\infty)$ 下方、$x$ 轴上方的无界区域。
+<p>$D$ 是 $y = x^a \cdot a^{-\frac{x^2}{a}}$ $(a>1,0\leq x&lt;+\infty)$ 下方、$x$ 轴上方的无界区域。
 (1) 求 $D$ 绕 $x$ 轴旋转的体积 $V(a)$; (2) $a$ 为何值时 $V(a)$ 最小?</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_积分.html#92旋转体体积必考">旋转体体积</a> · <a href="数学_积分.html#81无穷限的反常积分">无穷限反常积分</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例125">例 12.5</a> 垫片法原型, 本例积分区间换成无穷限</li>
@@ -1422,7 +1422,7 @@ main details .sum b{font-weight:700}
 </details>
 
 <h3 id="例133">例 13.3 旋转曲面面积 【0510（2）例 5.26】</h3>
-<p>$D$ 由 $y=\sqrt{1-x^2}$ $(0\leq x<1)$ 与坐标轴在第一象限围成, 绕 $x$ 轴旋转的侧面积。</p>
+<p>$D$ 由 $y=\sqrt{1-x^2}$ $(0\leq x&lt;1)$ 与坐标轴在第一象限围成, 绕 $x$ 轴旋转的侧面积。</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_积分.html#94旋转曲面面积数一数二">旋转曲面面积</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例128">例 12.8</a> 侧面积公式 $2\pi\int y\,ds$ 同源, 彼处与体积同台计算</li>
 </ul>
@@ -1518,17 +1518,17 @@ main details .sum b{font-weight:700}
 </details>
 
 <h3 id="例153">例 15.3 凹函数积分不等式 【0715（2）例 4.17】</h3>
-<p>$f''(x)<0$, 证明: $\int_a^b f(x)dx < (b-a)f\!\left(\frac{a+b}{2}\right)$。</p>
+<p>$f''(x)&lt;0$, 证明: $\int_a^b f(x)dx &lt; (b-a)f\!\left(\frac{a+b}{2}\right)$。</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_积分.html#104积分不等式证明策略">积分不等式策略</a> <span class="mk xref">相关</span><a href="数学_积分_例题.html#例65">例 6.5</a> 不等式左右正是"中点值×区间长" vs 积分, 与平均值 $\frac1{b-a}\int_a^b f$ 直接对决</li>
 </ul>
 <details><summary>解答过程</summary>
-<div class="step">① $f''<0$ ⇒ $f$ 是凹函数(上凸)<span class="why">二阶导符号定凹凸: $f''<0$ 曲线开口向下 (上凸)</span></div>
+<div class="step">① $f''&lt;0$ ⇒ $f$ 是凹函数(上凸)<span class="why">二阶导符号定凹凸: $f''&lt;0$ 曲线开口向下 (上凸)</span></div>
 <div class="step">② 凹函数的几何意义: 曲线在弦的下方, 而中点 $f(\frac{a+b}{2})$ 处切线在曲线上方<span class="why">直观: 中点值 $f(\frac{a+b}{2})$ 高于区间平均 $\frac{1}{b-a}\int_a^b f$, 正是要证的不等式</span></div>
-<div class="step">③ 构造 $F(x) = \int_a^x f(t)dt - (x-a)f\!\left(\frac{a+x}{2}\right)$<span class="why">把结论 (积分 ≤ 中点值乘区间长) 改写成辅助函数: 证 $F(b)<0$; 固定 $a$, 上限 $x$ 变动, 中点 $\frac{a+x}{2}$ 跟着动</span></div>
+<div class="step">③ 构造 $F(x) = \int_a^x f(t)dt - (x-a)f\!\left(\frac{a+x}{2}\right)$<span class="why">把结论 (积分 ≤ 中点值乘区间长) 改写成辅助函数: 证 $F(b)&lt;0$; 固定 $a$, 上限 $x$ 变动, 中点 $\frac{a+x}{2}$ 跟着动</span></div>
 <div class="step">④ $F'(x) = f(x) - f(\frac{a+x}{2}) - \frac{x-a}{2}f'(\frac{a+x}{2})$<span class="why">乘积求导: $(x-a)f(\frac{a+x}{2})$ 的导数为 $f(\frac{a+x}{2})+(x-a)\cdot\frac12 f'(\frac{a+x}{2})$</span></div>
-<div class="step">⑤ 由 $f''<0$ 可得 $F'(x) < 0$, $F(b) < F(a) = 0$, 得证<span class="why">泰勒展开: 记 $m=\frac{a+x}{2}$, $f(x)=f(m)+f'(m)(x-m)+\frac12f''(\xi)(x-m)^2<f(m)+f'(m)(x-m)$, 而 $x-m=\frac{x-a}{2}$, 恰为 $F'$ 的符号; $F(a)=0$ 因两项都为零</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 凹函数积分不等式: 辅助函数 $F$ 求导, 泰勒展开判符号, $F$ 递减证 $F(b)<0$。</div>
+<div class="step">⑤ 由 $f''&lt;0$ 可得 $F'(x) &lt; 0$, $F(b) &lt; F(a) = 0$, 得证<span class="why">泰勒展开: 记 $m=\frac{a+x}{2}$, $f(x)=f(m)+f'(m)(x-m)+\frac12f''(\xi)(x-m)^2&lt;f(m)+f'(m)(x-m)$, 而 $x-m=\frac{x-a}{2}$, 恰为 $F'$ 的符号; $F(a)=0$ 因两项都为零</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 凹函数积分不等式: 辅助函数 $F$ 求导, 泰勒展开判符号, $F$ 递减证 $F(b)&lt;0$。</div>
 </details>
 
 <h3 id="例154">例 15.4 乘积导数不等式 【0715（2）例 4.18】</h3>

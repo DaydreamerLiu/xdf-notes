@@ -355,7 +355,7 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答过程</summary>
 <div class="step">① $y'=2^x+x\cdot 2^x\ln 2 = 2^x(1+x\ln 2)$。由于 $2^x>0$, $y'=0\iff 1+x\ln 2=0\iff x=-\frac{1}{\ln 2}$<span class="why">乘积求导 $(uv)'=u'v+uv'$: $(x)'=1$, $(2^x)'=2^x\ln 2$, 再提公因式 $2^x$。<b>易错</b>: 常数底指数函数求导别忘乘 $\ln 2$。</span></div>
-<div class="step">② 当 $x<-\frac{1}{\ln 2}$ 时, $1+x\ln 2<0$, $y'<0$; 当 $x>-\frac{1}{\ln 2}$ 时, $y'>0$<span class="why">$\ln 2>0$, 故 $1+x\ln 2$ 随 $x$ 增大而增大, 恰在驻点处变号; 也可代代表点定号(如 $x=-2$ 处为负, $x=0$ 处为正)。</span></div>
+<div class="step">② 当 $x&lt;-\frac{1}{\ln 2}$ 时, $1+x\ln 2&lt;0$, $y'&lt;0$; 当 $x>-\frac{1}{\ln 2}$ 时, $y'>0$<span class="why">$\ln 2>0$, 故 $1+x\ln 2$ 随 $x$ 增大而增大, 恰在驻点处变号; 也可代代表点定号(如 $x=-2$ 处为负, $x=0$ 处为正)。</span></div>
 <div class="step">③ $y'$ 由负变正 → $x=-\frac{1}{\ln 2}$ 处取得<b>极小值</b><span class="why">第一充分条件: $y'$ 左负右正, 函数先减后增, 该驻点为极小值点。<b>考点</b>: 判极值先看驻点处导函数是否变号, 变号方向决定极大/极小。</span></div>
 <div class="step">④ 极小值为 $y_{\min}= -\frac{1}{\ln 2}\cdot 2^{-1/\ln 2} = -\frac{1}{e\ln 2}$ <span class="fill">【AI补全】</span><span class="why">驻点代回 $y$ 后用恒等式 $a^b=e^{b\ln a}$ 化简: $2^{-1/\ln 2}=e^{(-1/\ln 2)\ln 2}=e^{-1}$。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 乘积函数求导 + 第一充分条件求极值点的小题模板, $(a^x)'=a^x\ln a$ 与"变号判极值"都是必考点。</div>
@@ -370,7 +370,7 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答过程</summary>
 <div class="step">① $f'(x)=3x^2-9x+6=3(x-1)(x-2)$。驻点: $x=1,\ x=2$<span class="why">多项式逐项求导后十字相乘分解: $x^2-3x+2=(x-1)(x-2)$; 三次多项式全平面可导, 极值点只可能出现在驻点。</span></div>
-<div class="step">② 区间判别: $x<1$: $f'>0$ ↗; $1<x<2$: $f'<0$ ↘; $x>2$: $f'>0$ ↗<span class="why">$f'$ 是开口向上的二次函数, 两根之外为正、两根之间为负; 也可代代表点验证(如 $0,\ 1.5,\ 3$)。</span></div>
+<div class="step">② 区间判别: $x&lt;1$: $f'>0$ ↗; $1&lt;x&lt;2$: $f'&lt;0$ ↘; $x>2$: $f'>0$ ↗<span class="why">$f'$ 是开口向上的二次函数, 两根之外为正、两根之间为负; 也可代代表点验证(如 $0,\ 1.5,\ 3$)。</span></div>
 <div class="step">③ 极大值 $f(1)=\frac{5}{2}$, 极小值 $f(2)=2$。第一充分条件: $x=1$ 处 $f'$ 由正变负(极大); $x=2$ 处由负变正(极小)<span class="why">代值计算: $f(1)=1-\frac92+6=\frac52$, $f(2)=8-18+12=2$; 单调区间以驻点为分界, 导数变号处对应极值。<b>考点</b>: 三次函数单调性与极值的标准流程, 写极值务必算函数值。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 三次多项式求单调区间与极值的标准流程: 求导、分解因式、列表判号, 考研基础必练。</div>
 </details>
@@ -403,7 +403,7 @@ main details .sum b{font-weight:700}
 <div class="step">④ 得两个驻点: $(1,2)$ 和 $(-1,-2)$<span class="why">$x$ 代回 $y=2x$ 得纵坐标; 该隐式方程实为椭圆 $y^2-xy+x^2=3$, 左右顶点处切线水平, 局部满足隐函数存在条件, 可解出 $y=f(x)$。</span></div>
 <div class="step">⑤ 二次求导(在原求导式 $2yy'-y-xy'+2x=0$ 上再求导): $2(y')^2+2yy''-y'-y'-xy''+2=0$<span class="why">再对 $x$ 求导一次, $y,\ y'$ 都是 $x$ 的函数: $(yy')'=(y')^2+yy''$, $(xy')'=y'+xy''$。<b>考点</b>: 驻点处再求二阶导, 为第二充分条件做准备。</span></div>
 <div class="step">⑥ 代 $y'=0$ 得: $y''(2y-x)+2=0$, 即 $y''=-\frac{2}{2y-x}$<span class="why">驻点处 $y'=0$, 含 $y'$ 的项全部消失; 因 $2y-x\ne0$ 可解出 $y''$ 的显式表达式。</span></div>
-<div class="step">⑦ 在 $(1,2)$: $y''=-\frac{2}{4-1}=-\frac{2}{3}<0$ → <b>极大值</b><span class="why">第二充分条件: 二阶导为负 ⇒ 取极大。<b>易错</b>: 第二充分条件仅在 $y''\ne0$ 时成立, 本题两驻点处均非零。</span></div>
+<div class="step">⑦ 在 $(1,2)$: $y''=-\frac{2}{4-1}=-\frac{2}{3}&lt;0$ → <b>极大值</b><span class="why">第二充分条件: 二阶导为负 ⇒ 取极大。<b>易错</b>: 第二充分条件仅在 $y''\ne0$ 时成立, 本题两驻点处均非零。</span></div>
 <div class="step">⑧ 在 $(-1,-2)$: $y''=-\frac{2}{-4+1}=\frac{2}{3}>0$ → <b>极小值</b><span class="why">二阶导为正 ⇒ 取极小; 一极大一极小与椭圆"右顶点高、左顶点低"的形态一致, 可互相印证。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 隐函数求极值四步走: 隐求导→$y'=0$ 得 $y$-$x$ 关系→回代原方程求点→二次隐求导判号, 考研常规考点。</div>
 </details>
@@ -437,9 +437,9 @@ main details .sum b{font-weight:700}
 <details><summary>解答过程</summary>
 <div class="step">① 代入 $x=0$: $f''(0)-[f'(0)]^2=0$, 得 $f''(0)=0$<span class="why">题给恒等式对一切 $x$ 成立, 直接代 $x=0$ 并利用 $f'(0)=0$ 得 $f''(0)=0$; 二阶导为零只是拐点的必要条件, 须继续求三阶导定性。</span></div>
 <div class="step">② 对方程两边求导: $f'''(x)-2f'(x)f''(x)=2$。代入 $x=0$: $f'''(0)-0=2$, 得 $f'''(0)=2>0$<span class="why">恒等式逐项对 $x$ 求导: $[f'(x)]^2$ 的导数为 $2f'(x)f''(x)$, $(2x)'=2$。<b>考点</b>: 题给微分恒等式可反复求导, 逐次提取各阶导数在一点的值。</span></div>
-<div class="step">③ $f''(0)=0$ 且 $f'''(0)>0$ → $f''$ 在 $x=0$ 处由负变正(零点且递增) → $x=0$ 是 $f''$ 的变号点<span class="why">$f'''(0)=2>0$ 说明 $f''$ 在 0 点递增地穿过横轴: 左侧 $f''<0$、右侧 $f''>0$。</span></div>
+<div class="step">③ $f''(0)=0$ 且 $f'''(0)>0$ → $f''$ 在 $x=0$ 处由负变正(零点且递增) → $x=0$ 是 $f''$ 的变号点<span class="why">$f'''(0)=2>0$ 说明 $f''$ 在 0 点递增地穿过横轴: 左侧 $f''&lt;0$、右侧 $f''>0$。</span></div>
 <div class="step">④ $f''$ 变号 + $f$ 连续 → $(0,f(0))$ 是<b>拐点</b><span class="why">拐点判定: 二阶导在 $x_0$ 两侧异号且函数连续。$f''$ 存在 ⇒ $f'$ 可导 ⇒ $f$ 连续, 条件齐备。</span></div>
-<div class="step">⑤ 检验极值: $f'(0)=0$, $f''(0)=0$, 需看 $f'$ 是否变号。$f''$ 在 0 处由负变正 → $f'$ 先减后增, 在 $x=0$ 处 $f'$ 取极小值(即 $f'(0)=0$ 是 $f'$ 的极小值)。由于 $f'(0)=0$ 且 $f'$ 在 0 两侧均为正(因为 $f'$ 在 0 处取到最小值 0), 故 $f'(x)\ge0$, $f$ 单调不减, $x=0$ <b>不是</b>极值点<span class="why">$f''<0$(左侧)⇒ $f'$ 在左侧递减、$f''>0$(右侧)⇒ $f'$ 在右侧递增, 故 $f'$ 在 0 两侧都取正值(不小于 $f'(0)=0$), 不穿越横轴: $f$ 在该邻域单调不减, 0 非极值点。<b>易错</b>: $f'(0)=f''(0)=0$ 时须靠变号信息定性, 不能凭一阶二阶都为零就断为非极值。</span></div>
+<div class="step">⑤ 检验极值: $f'(0)=0$, $f''(0)=0$, 需看 $f'$ 是否变号。$f''$ 在 0 处由负变正 → $f'$ 先减后增, 在 $x=0$ 处 $f'$ 取极小值(即 $f'(0)=0$ 是 $f'$ 的极小值)。由于 $f'(0)=0$ 且 $f'$ 在 0 两侧均为正(因为 $f'$ 在 0 处取到最小值 0), 故 $f'(x)\ge0$, $f$ 单调不减, $x=0$ <b>不是</b>极值点<span class="why">$f''&lt;0$(左侧)⇒ $f'$ 在左侧递减、$f''>0$(右侧)⇒ $f'$ 在右侧递增, 故 $f'$ 在 0 两侧都取正值(不小于 $f'(0)=0$), 不穿越横轴: $f$ 在该邻域单调不减, 0 非极值点。<b>易错</b>: $f'(0)=f''(0)=0$ 时须靠变号信息定性, 不能凭一阶二阶都为零就断为非极值。</span></div>
 <div class="step">⑥ 答案: <b>(C)</b><span class="why">综合: 拐点成立(④)、极值不成立(⑤), 与选项 (C) 一致。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 对题给微分恒等式逐次求导提取 $f''(0)$、$f'''(0)$, 用二阶导变号同时判拐点与极值, 考研经典综合题。</div>
 </details>
@@ -456,7 +456,7 @@ main details .sum b{font-weight:700}
 <div class="step">① $y=\frac{x}{(x-1)^2}$, 定义域 $x\neq1$<span class="why">分母 $(x-1)^2$ 不能为零; 讨论凹凸与拐点前必须先定定义域, 断点处 $y''$ 无定义但不可算作拐点。</span></div>
 <div class="step">② $y'=\frac{(x-1)^2-x\cdot2(x-1)}{(x-1)^4}=\frac{-(x+1)}{(x-1)^3}$<span class="why">商法则 $\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}$: $u=x$, $v=(x-1)^2$; 分子提公因式 $(x-1)$ 约分得 $-(x+1)$。</span></div>
 <div class="step">③ $y''=\frac{2(x+2)}{(x-1)^4}$。$y''=0\iff x=-2$; $y''$ 在 $x=1$ 处不存在(但 $x=1$ 不在定义域)<span class="why">对 $y'=-(x+1)(x-1)^{-3}$ 用乘积法则再求导, 通分后分子恰为 $2(x+2)$; 分母 $(x-1)^4$ 恒正, 故 $y''$ 符号由分子 $x+2$ 决定。</span></div>
-<div class="step">④ $x<-2$: $y''<0$ → <b>凸</b>; $x>-2$ 且 $x\neq1$: $y''>0$ → <b>凹</b><span class="why">$x=1$ 两侧分子同号, $(-2,1)$ 与 $(1,+\infty)$ 同为凹区间; 凹区间分段时必须把定义域外的 $x=1$ 断开。<b>易错</b>: 区间端点须取自定义域, 凹凸性描述以 $y''$ 符号为准。</span></div>
+<div class="step">④ $x&lt;-2$: $y''&lt;0$ → <b>凸</b>; $x>-2$ 且 $x\neq1$: $y''>0$ → <b>凹</b><span class="why">$x=1$ 两侧分子同号, $(-2,1)$ 与 $(1,+\infty)$ 同为凹区间; 凹区间分段时必须把定义域外的 $x=1$ 断开。<b>易错</b>: 区间端点须取自定义域, 凹凸性描述以 $y''$ 符号为准。</span></div>
 <div class="step">⑤ 拐点: $x=-2$, $y(-2)=-\frac{2}{9}$, 拐点为 $(-2,-\frac{2}{9})$<span class="why">$y''$ 在 $x=-2$ 两侧变号且该点在定义域内, 故为拐点; 纵坐标代回 $y=\frac{x}{(x-1)^2}$: $\frac{-2}{9}$。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分式函数凹凸性与拐点: 商法则求两阶导、分子定号、$y''$ 变号点判拐点, 标准流程。</div>
 </details>
@@ -475,7 +475,7 @@ main details .sum b{font-weight:700}
 <div class="step">① $f(x)=x^3(1-x)^3$。$f'(x)=3x^2(1-x)^3-3x^3(1-x)^2=3x^2(1-x)^2[(1-x)-x]=3x^2(1-x)^2(1-2x)$<span class="why">乘积法则: $(x^3)'=3x^2$, $[(1-x)^3]'=-3(1-x)^2$; 提取公因式 $3x^2(1-x)^2$ 后括号内合并: $(1-x)-x=1-2x$。</span></div>
 <div class="step">② 在 $x=0$ 附近: $x^2>0$, $(1-x)^2>0$, $1-2x$ 在 $0$ 附近恒正 → $f'(x)>0$ 在 $x=0$ 两侧不变号<span class="why">三个因子在 0 的邻域内均恒正($x^2>0$ 对 $x\ne0$; $1-2x\to1$), 故 $f'$ 在 0 两侧同号——0 是 $f'$ 的二重零点, 只"蹭"不"穿"。</span></div>
 <div class="step">③ $f'$ 不变号 → $x=0$ <b>不是极值点</b><span class="why">第一充分条件要求 $f'$ 变号; 此处 $f'$ 两侧皆正, 函数在 0 附近单调递增, 0 非极值点。</span></div>
-<div class="step">④ 再求导: $f''(x)=6x(1-x)(1-5x+5x^2)$。在 $x=0$ 附近 $1-x>0$ 且 $1-5x+5x^2>0$, 故 $f''(x)$ 符号与 $x$ 相同: 左侧 $f''<0$, 右侧 $f''>0$<span class="why">对 $f'=3x^2(1-x)^2(1-2x)$ 再求导并提取公因式 $3x(1-x)$ 化简; 在 0 附近 $f''\sim6x$, 主项定号, 故 $f''$ 在 0 两侧异号。</span></div>
+<div class="step">④ 再求导: $f''(x)=6x(1-x)(1-5x+5x^2)$。在 $x=0$ 附近 $1-x>0$ 且 $1-5x+5x^2>0$, 故 $f''(x)$ 符号与 $x$ 相同: 左侧 $f''&lt;0$, 右侧 $f''>0$<span class="why">对 $f'=3x^2(1-x)^2(1-2x)$ 再求导并提取公因式 $3x(1-x)$ 化简; 在 0 附近 $f''\sim6x$, 主项定号, 故 $f''$ 在 0 两侧异号。</span></div>
 <div class="step">⑤ $f''$ 在 $x=0$ 处变号 → $(0,0)$ <b>是拐点</b><span class="why">拐点看 $f''$ 是否变号(且函数连续), 与 $f'$ 是否变号互不相干, 需分别考察。<b>易错</b>: $f''(0)=0$ 只是必要条件, 变号才是判据。</span></div>
 <div class="step">⑥ 答案: <b>(B)</b><span class="why">0 不是极值点、$(0,0)$ 是拐点, 对应 (B); 补充: $f''$ 在 $x=1$ 处也变号, $(1,0)$ 同为拐点, 但本题只问 $x=0$。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 极值与拐点独立判定: $f'$ 变号管极值、$f''$ 变号管拐点, 两个判据互不替代, 考研经典辨析题。</div>
@@ -514,7 +514,7 @@ main details .sum b{font-weight:700}
 <div class="step">④ $f(x)$ 在 $(0,1)$ 上严格递增<span class="why">开区间内 $f'>0$ 恒成立 ⇒ 严格递增; 递增函数的值域由两端极限刻画。</span></div>
 <div class="step">⑤ $\lim_{x\to0^+}f(x)=\lim_{x\to0^+}\frac{x}{\ln(1+x)}=\lim\frac{x}{x}=1$ (等价无穷小 $\ln(1+x)\sim x$)<span class="why">$\ln(1+x)\sim x$ 是 $x\to0$ 的基本等价无穷小。<b>易错</b>: $x=0$ 不在定义域, 只能取右极限, 值域左端点 1 取不到。</span></div>
 <div class="step">⑥ $f(1)=\frac{1}{\ln2}$。值域: $(1,\ \frac{1}{\ln2}]$<span class="why">严格递增 ⇒ 值域为 $(\lim_{x\to0^+}f,\ f(1)]$: 右端点 $x=1$ 在定义域内可以取到, 故值域右端闭。</span></div>
-<div class="step">⑦ 要使 $\frac{x}{\ln(1+x)}=k$ 在 $(0,1)$ 内有根, 需 $k$ 在值域内: $k\in(1,\ \frac{1}{\ln2})$<span class="why">根须落在<b>开区间</b> $(0,1)$ 内: $k=\frac1{\ln2}$ 时唯一根在端点 $x=1$, 不合题意, 故答案右端取开; $k=1$ 时方程 $x=\ln(1+x)$ 在 $x>0$ 恒无解(因 $\ln(1+x)<x$), 左端也取开。<b>易错</b>: 端点开闭由"根是否落在区间内部"决定, 值域闭端点未必可用。</span></div>
+<div class="step">⑦ 要使 $\frac{x}{\ln(1+x)}=k$ 在 $(0,1)$ 内有根, 需 $k$ 在值域内: $k\in(1,\ \frac{1}{\ln2})$<span class="why">根须落在<b>开区间</b> $(0,1)$ 内: $k=\frac1{\ln2}$ 时唯一根在端点 $x=1$, 不合题意, 故答案右端取开; $k=1$ 时方程 $x=\ln(1+x)$ 在 $x>0$ 恒无解(因 $\ln(1+x)&lt;x$), 左端也取开。<b>易错</b>: 端点开闭由"根是否落在区间内部"决定, 值域闭端点未必可用。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 方程有根 ⇔ 参数落在值域: 单调性 + 两端极限求值域, 端点开闭按根的位置细抠, 经典题型。</div>
 </details>
 
@@ -527,12 +527,12 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答过程</summary>
 <div class="step">① $f'(x)=a-\frac{b}{x}=\frac{ax-b}{x}$, 定义域 $x>0$。有两零点 → $f$ 须先减后增 → 须 $b>0$<span class="why">若 $b\le0$ 则 $f'>0$ 恒成立, $f$ 严格递增至多一个零点; 两零点要求函数先降后升, 故 $b>0$ 是前提。</span></div>
-<div class="step">② 驻点 $x=\frac{b}{a}$: $(0,\frac{b}{a})$ 上 $f'<0$ ↘; $(\frac{b}{a},+\infty)$ 上 $f'>0$ ↗<span class="why">驻点 $x=\frac ba$ 由 $f'=a-\frac bx=0$ 解出; 分母 $x>0$, 符号由分子 $ax-b$ 决定, 恰在驻点处由负变正。</span></div>
+<div class="step">② 驻点 $x=\frac{b}{a}$: $(0,\frac{b}{a})$ 上 $f'&lt;0$ ↘; $(\frac{b}{a},+\infty)$ 上 $f'>0$ ↗<span class="why">驻点 $x=\frac ba$ 由 $f'=a-\frac bx=0$ 解出; 分母 $x>0$, 符号由分子 $ax-b$ 决定, 恰在驻点处由负变正。</span></div>
 <div class="step">③ $f(\frac{b}{a})=a\cdot\frac{b}{a}-b\ln\frac{b}{a}=b(1-\ln\frac{b}{a})$ 为全局最小值<span class="why">先减后增 ⇒ 驻点是唯一极小值点, 也就是全局最小值点; 代入化简得 $b-b\ln\frac ba$。</span></div>
-<div class="step">④ 有两个零点 $\iff$ 最小值 $<0$ 且两端极限 $>0$: $b(1-\ln\frac{b}{a})<0$<span class="why">严格先减后增的连续函数, 当最小值低于横轴、两端趋于 $+\infty$ 时, 与横轴在驻点两侧各交一次, 恰好两个零点。<b>考点</b>: 零点个数 = 单调性 + 极值符号 + 两端极限三要素。</span></div>
-<div class="step">⑤ $b>0$ ⇒ $1-\ln\frac{b}{a}<0$ ⇒ $\ln\frac{b}{a}>1$ ⇒ $\frac{b}{a}>e$<span class="why">除以正数 $b$ 不等号方向不变; $\ln t>1$ 即 $t>e$。</span></div>
+<div class="step">④ 有两个零点 $\iff$ 最小值 $&lt;0$ 且两端极限 $>0$: $b(1-\ln\frac{b}{a})&lt;0$<span class="why">严格先减后增的连续函数, 当最小值低于横轴、两端趋于 $+\infty$ 时, 与横轴在驻点两侧各交一次, 恰好两个零点。<b>考点</b>: 零点个数 = 单调性 + 极值符号 + 两端极限三要素。</span></div>
+<div class="step">⑤ $b>0$ ⇒ $1-\ln\frac{b}{a}&lt;0$ ⇒ $\ln\frac{b}{a}>1$ ⇒ $\frac{b}{a}>e$<span class="why">除以正数 $b$ 不等号方向不变; $\ln t>1$ 即 $t>e$。</span></div>
 <div class="step">⑥ 验证: $\lim_{x\to0^+}f(x)=+\infty>0$; $\lim_{x\to+\infty}f(x)=+\infty>0$ (一次函数主导)。条件满足<span class="why">$x\to0^+$ 时 $-b\ln x\to+\infty$ 主导($b>0$); $x\to+\infty$ 时 $ax$ 主导对数项; 两端极限为正保证零点各居驻点一侧且不缺失。</span></div>
-<div class="step">⑦ 答案: <b>(A)</b> $(e,+\infty)$<span class="why">由 $\frac ba>e$ 直接对应选项 (A); 数值验证: $a=1,\ b=3>e$ 时 $f(x)=x-3\ln x$ 在 $x=3$ 取最小值 $3(1-\ln3)\approx-0.296<0$, 恰有两个零点。</span></div>
+<div class="step">⑦ 答案: <b>(A)</b> $(e,+\infty)$<span class="why">由 $\frac ba>e$ 直接对应选项 (A); 数值验证: $a=1,\ b=3>e$ 时 $f(x)=x-3\ln x$ 在 $x=3$ 取最小值 $3(1-\ln3)\approx-0.296&lt;0$, 恰有两个零点。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 含参函数零点个数问题: 单调性定位唯一极值, 最小值符号定参数范围, 考研高频。</div>
 </details>
 
@@ -550,9 +550,9 @@ main details .sum b{font-weight:700}
 <div class="step">① 拆开积分: $f(x)=x^2\int_0^x e^{-t^2}dt-\int_0^x te^{-t^2}dt$<span class="why">被积函数含参数 $x$, 先按 $x$ 拆成"积分外因子 × 纯上限积分"与"纯变限积分"两项, 使 $x$ 只出现在积分限与外因子中, 才便于求导——此即"含参积分拆分"的处理手法。</span></div>
 <div class="step">② 求导(注意第一项含 $x^2$ 因子与上限 $x$): $f'(x)=2x\int_0^x e^{-t^2}dt+x^2 e^{-x^2}-x e^{-x^2}$<span class="why">乘积法则: 第一项 $\left(x^2\int_0^x e^{-t^2}dt\right)'=2x\int_0^x e^{-t^2}dt+x^2e^{-x^2}$(上限代入); 第二项由变限积分基本公式 $(\int_0^x te^{-t^2}dt)'=xe^{-x^2}$。<b>考点</b>: 变限积分求导 = 上限代入被积函数, 有外因子时勿忘乘积法则。</span></div>
 <div class="step">③ $f'(x)=2x\int_0^x e^{-t^2}dt+e^{-x^2}(x^2-x)=2x\int_0^x e^{-t^2}dt+x(x-1)e^{-x^2}$<span class="why">合并同类项: $x^2e^{-x^2}-xe^{-x^2}=x(x-1)e^{-x^2}$; 提取公因式 $x$ 后 $f'=x\cdot h(x)$, 为下面定号做准备。</span></div>
-<div class="step">④ 令 $h(x)=2\int_0^x e^{-t^2}dt-(1-x)e^{-x^2}$, 则 $f'(x)=x\cdot h(x)$。$x<0$ 时 $f'$ 的两项均正, $x\ge1$ 时 $f'$ 的两项均非负(第一项恒正), 故驻点只可能出现在 $[0,1]$ 内【修正】<span class="why">$x<0$: $\int_0^x e^{-t^2}dt<0$, 故 $2x\int_0^x e^{-t^2}dt>0$(两负相乘); $x(x-1)$ 亦为正。$x\ge1$: $x(x-1)\ge0$。先把无驻点的区间排除, 缩小搜索范围。</span></div>
-<div class="step">⑤ $h'(x)=e^{-x^2}(-2x^2+2x+3)>0$ 在 $[0,1]$ 上恒成立, 且 $h(0)=-1<0$, $h(1)=2\int_0^1 e^{-t^2}dt>0$, 故 $h$ 在 $(0,1)$ 内有唯一零点 $x^*$, 即方程 $2\int_0^{x^*}e^{-t^2}dt=(1-x^*)e^{-(x^*)^2}$ 的唯一解, $x^*\approx0.318$【修正】<span class="why">$-2x^2+2x+3$ 在 $[0,1]$ 上的最小值为 3, 恒正, 故 $h$ 严格递增; 两端异号由介值定理得零点存在, 严格递增得唯一。该方程无初等闭式解, 数值求解得 $x^*\approx0.318$。</span></div>
-<div class="step">⑥ 符号表: $(-\infty,0)$: $f'>0$ ↗; $(0,x^*)$: $f'<0$ ↘; $(x^*,+\infty)$: $f'>0$ ↗【修正】<span class="why">$f'=x\cdot h(x)$: $x<0$ 时由第④步两项直接判 $f'>0$; $0<x<x^*$ 时 $x>0$ 而 $h(x)<0$($h$ 在 $[0,1]$ 递增且 $h(x^*)=0$); $x>x^*$ 时 $x>0$ 且 $h(x)>0$, 对 $x\ge1$ 又回到第④步的直接判法。<b>说明</b>: 原稿称驻点为 $x=\pm1$, 直接代入 $f'(1)=2\int_0^1 e^{-t^2}dt>0$、$f'(-1)\approx2.23>0$ 均不为零, 与符号表自相矛盾, 按题面重新推导如上。</span></div>
+<div class="step">④ 令 $h(x)=2\int_0^x e^{-t^2}dt-(1-x)e^{-x^2}$, 则 $f'(x)=x\cdot h(x)$。$x&lt;0$ 时 $f'$ 的两项均正, $x\ge1$ 时 $f'$ 的两项均非负(第一项恒正), 故驻点只可能出现在 $[0,1]$ 内【修正】<span class="why">$x&lt;0$: $\int_0^x e^{-t^2}dt&lt;0$, 故 $2x\int_0^x e^{-t^2}dt>0$(两负相乘); $x(x-1)$ 亦为正。$x\ge1$: $x(x-1)\ge0$。先把无驻点的区间排除, 缩小搜索范围。</span></div>
+<div class="step">⑤ $h'(x)=e^{-x^2}(-2x^2+2x+3)>0$ 在 $[0,1]$ 上恒成立, 且 $h(0)=-1&lt;0$, $h(1)=2\int_0^1 e^{-t^2}dt>0$, 故 $h$ 在 $(0,1)$ 内有唯一零点 $x^*$, 即方程 $2\int_0^{x^*}e^{-t^2}dt=(1-x^*)e^{-(x^*)^2}$ 的唯一解, $x^*\approx0.318$【修正】<span class="why">$-2x^2+2x+3$ 在 $[0,1]$ 上的最小值为 3, 恒正, 故 $h$ 严格递增; 两端异号由介值定理得零点存在, 严格递增得唯一。该方程无初等闭式解, 数值求解得 $x^*\approx0.318$。</span></div>
+<div class="step">⑥ 符号表: $(-\infty,0)$: $f'>0$ ↗; $(0,x^*)$: $f'&lt;0$ ↘; $(x^*,+\infty)$: $f'>0$ ↗【修正】<span class="why">$f'=x\cdot h(x)$: $x&lt;0$ 时由第④步两项直接判 $f'>0$; $0&lt;x&lt;x^*$ 时 $x>0$ 而 $h(x)&lt;0$($h$ 在 $[0,1]$ 递增且 $h(x^*)=0$); $x>x^*$ 时 $x>0$ 且 $h(x)>0$, 对 $x\ge1$ 又回到第④步的直接判法。<b>说明</b>: 原稿称驻点为 $x=\pm1$, 直接代入 $f'(1)=2\int_0^1 e^{-t^2}dt>0$、$f'(-1)\approx2.23>0$ 均不为零, 与符号表自相矛盾, 按题面重新推导如上。</span></div>
 <div class="step">⑦ 极大值 $f(0)=0$; 极小值 $f(x^*)=\frac{1}{2}\left[\left(1+x^{*2}(1-x^*)\right)e^{-(x^*)^2}-1\right]\approx-0.017$<span class="why">$x=0$ 处 $f'$ 由正变负 → 极大, $f(0)=\int_0^0(\cdots)dt=0$; $x^*$ 处由负变正 → 极小。用驻点条件 $2\int_0^{x^*}e^{-t^2}dt=(1-x^*)e^{-(x^*)^2}$ 与 $\int_0^{x^*}te^{-t^2}dt=\frac{1-e^{-(x^*)^2}}{2}$ 消去积分即得闭式; 原稿的 $f(\pm1)$ 数值不清标记随之失效($\pm1$ 非驻点)。</span></div>
 <div class="sum skip"><b>※ 偏题</b>: 拆分 + 变限积分求导本身是常规考点, 但本题驻点需解超越方程(无初等闭式解), 且原<span class="fill">【AI补全】</span>的 $x=\pm1$ 经代入检验有误——这类"驻点算不出来"的题考研极少见, 疑为 OCR 转录失真, 掌握拆分、求导、判号框架即可。</div>
 </details>
@@ -572,10 +572,10 @@ main details .sum b{font-weight:700}
 <div class="step">① 曲率圆 $x^2+y^2=2$: 中心在原点, 半径 $R=\sqrt2$, 曲率 $K=\frac{1}{R}=\frac{1}{\sqrt2}$<span class="why">圆 $x^2+y^2=R^2$ 上任一点曲率恒为 $\frac1R$; 曲率圆是在切点处与曲线贴合最紧密的圆, 蕴含该点 $f,f',f''$ 的信息。</span></div>
 <div class="step">② 曲率圆与曲线在 $(1,1)$ 有一阶和二阶接触。对圆隐函数求导: $2x+2yy'=0$, 得 $y'=-\frac{x}{y}$。在 $(1,1)$: $y'=-1$<span class="why">曲率圆与曲线在切点相切(一阶接触), 故切线斜率相同: $f'(1)=-1$。</span></div>
 <div class="step">③ 再求导: $2+2(y')^2+2yy''=0$, 代入 $y'=-1$: $2+2+2y''=0$, $y''=-2$。故 $f'(1)=-1$, $f''(1)=-2$<span class="why">二阶接触使二阶导也相同: $f''(1)=-2$。<b>考点</b>: 曲率圆在切点给出 $f$, $f'$, $f''$ 三个数值, 是把几何条件转成导数条件的桥梁。</span></div>
-<div class="step">④ $f''(x)$ 不变号且 $f''(1)=-2<0$ → $f''(x)<0$ 恒成立 → $f$ 在 $\mathbb{R}$ 上<b>上凸</b>, $f'$ 严格递减<span class="why">连续函数不变号, 一处为负则处处为负; $f''<0$ ⇒ $f'$ 严格递减、$f$ 上凸。<b>易错</b>: 判 $f'$ 单调看 $f''$ 的符号, 与 $f$ 本身的增减无关。</span></div>
-<div class="step">⑤ 在 $(1,2)$ 上: $f'(x)<f'(1)=-1<0$ → $f$ 严格递减 → <b>无极值点</b><span class="why">$f'$ 严格递减 ⇒ $x>1$ 时 $f'(x)<-1$; 导函数恒负 ⇒ $f$ 严格递减, 区间内无驻点更无极值点。</span></div>
-<div class="step">⑥ $f(1)=1$。$f(2)=f(1)+\int_1^2 f'(t)dt<1+\int_1^2(-1)dt=1-1=0$。故 $f(2)<0$<span class="why">牛顿–莱布尼茨公式联系函数增量与导函数积分; 因 $f'(t)<-1$ 严格成立, 积分才严格小于 $-1$。<b>易错</b>: 定号时须用严格不等式。</span></div>
-<div class="step">⑦ $f(1)=1>0$, $f(2)<0$, $f$ 连续 → 由零点定理, 在 $(1,2)$ 内<b>有唯一零点</b><span class="why">两端异号 + 连续 ⇒ 至少一个零点; 又 $f$ 严格递减 ⇒ 至多一个, 合起来恰有一个。</span></div>
+<div class="step">④ $f''(x)$ 不变号且 $f''(1)=-2&lt;0$ → $f''(x)&lt;0$ 恒成立 → $f$ 在 $\mathbb{R}$ 上<b>上凸</b>, $f'$ 严格递减<span class="why">连续函数不变号, 一处为负则处处为负; $f''&lt;0$ ⇒ $f'$ 严格递减、$f$ 上凸。<b>易错</b>: 判 $f'$ 单调看 $f''$ 的符号, 与 $f$ 本身的增减无关。</span></div>
+<div class="step">⑤ 在 $(1,2)$ 上: $f'(x)&lt;f'(1)=-1&lt;0$ → $f$ 严格递减 → <b>无极值点</b><span class="why">$f'$ 严格递减 ⇒ $x>1$ 时 $f'(x)&lt;-1$; 导函数恒负 ⇒ $f$ 严格递减, 区间内无驻点更无极值点。</span></div>
+<div class="step">⑥ $f(1)=1$。$f(2)=f(1)+\int_1^2 f'(t)dt&lt;1+\int_1^2(-1)dt=1-1=0$。故 $f(2)&lt;0$<span class="why">牛顿–莱布尼茨公式联系函数增量与导函数积分; 因 $f'(t)&lt;-1$ 严格成立, 积分才严格小于 $-1$。<b>易错</b>: 定号时须用严格不等式。</span></div>
+<div class="step">⑦ $f(1)=1>0$, $f(2)&lt;0$, $f$ 连续 → 由零点定理, 在 $(1,2)$ 内<b>有唯一零点</b><span class="why">两端异号 + 连续 ⇒ 至少一个零点; 又 $f$ 严格递减 ⇒ 至多一个, 合起来恰有一个。</span></div>
 <div class="step">⑧ 答案: <b>(B)</b> 无极值点, 有零点<span class="why">与选项逐一对应: ⑤给"无极值", ⑥⑦给"有零点", 即 (B)。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 曲率圆反推 $f'(1)$、$f''(1)$, 再借 $f''$ 不变号控制 $f'$ 单调性, 用零点定理断零点, 考研经典综合题。</div>
 </details>

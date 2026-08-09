@@ -373,7 +373,7 @@ main details .sum b{font-weight:700}
 
 $X, Y$ 独立且各服从 $U(0,1)$，故联合概率密度:
 
-$$f(x,y) = \begin{cases} 1, & 0 < x < 1, 0 < y < 1 \\ 0, & \text{其他} \end{cases}$$
+$$f(x,y) = \begin{cases} 1, &amp; 0 &lt; x &lt; 1, 0 &lt; y &lt; 1 \\ 0, &amp; \text{其他} \end{cases}$$
 
 $(X,Y)$ 为单位正方形上的二维均匀分布。<span class="why">独立随机变量的联合密度等于两边缘密度相乘: $1 \times 1 = 1$, 全区域上密度为常数——常数密度正是二维均匀分布的判据, 概率才能化为面积比。<b>考点</b>: 二维均匀分布的标志是"密度为常数", 见到它优先想几何概型。</span>
 
@@ -390,7 +390,7 @@ $(X,Y)$ 为单位正方形上的二维均匀分布。<span class="why">独立随
 
 $$S_{\text{事件}} = \frac{1}{4} \cdot \pi \cdot 1^2 = \frac{\pi}{4}$$
 
-<span class="why">$X^2+Y^2 \le 1$ 是以原点为圆心、半径 1 的圆盘; 它与正方形 $\{0<x<1, 0<y<1\}$ 的交集正是 $x>0, y>0$ 的第一象限部分, 占整圆的 $\frac{1}{4}$, 面积 $=\frac{1}{4}\pi r^2$。</span>
+<span class="why">$X^2+Y^2 \le 1$ 是以原点为圆心、半径 1 的圆盘; 它与正方形 $\{0&lt;x&lt;1, 0&lt;y&lt;1\}$ 的交集正是 $x>0, y>0$ 的第一象限部分, 占整圆的 $\frac{1}{4}$, 面积 $=\frac{1}{4}\pi r^2$。</span>
 
 </div>
 <div class="step">
@@ -415,7 +415,7 @@ $$P\{X^2 + Y^2 \leq 1\} = \frac{S_{\text{事件}}}{S_{\text{总}}} = \frac{\pi/4
 <h2 id="概率卷填空T2拉普拉斯分布求分布函数">概率卷 填空T2: 拉普拉斯分布求分布函数</h2>
 <p><b><span class="src">【来源: 概率基础阶段测试卷（解析版）】</span></b></p>
 <blockquote>
-<p><b>题干</b>: 已知随机变量 $X$ 的概率密度函数 $f(x) = \frac{1}{2}e^{-|x|}, -\infty < x < +\infty$，则 $X$ 的概率分布函数 $F(x) =$ ______。
+<p><b>题干</b>: 已知随机变量 $X$ 的概率密度函数 $f(x) = \frac{1}{2}e^{-|x|}, -\infty &lt; x &lt; +\infty$，则 $X$ 的概率分布函数 $F(x) =$ ______。
 <span class="mk theory">理论</span><a href="数学_概率论.html#22分布函数必考高频">分布函数</a> · <a href="数学_概率论.html#24连续型随机变量必考">连续型随机变量</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#prob-f3">概率卷 填空T3</a> 互为"密度↔分布函数"互转: 本题由密度分段积分得 F, T3 由 F 求导回 f</p>
 </blockquote>
 <details><summary>解答过程</summary><div class="step">
@@ -433,7 +433,7 @@ $$F(x) = P\{X \leq x\} = \int_{-\infty}^x f(t) \, dt = \int_{-\infty}^x \frac{1}
 
 绝对值使得积分需要按 $x$ 的正负分段处理。
 
-<b>当 $x < 0$ 时</b>: $t \in (-\infty, x]$ 上 $t < 0$，$|t| = -t$。
+<b>当 $x &lt; 0$ 时</b>: $t \in (-\infty, x]$ 上 $t &lt; 0$，$|t| = -t$。
 
 $$F(x) = \int_{-\infty}^x \frac{1}{2}e^t \, dt = \frac{1}{2}e^t\Big|_{-\infty}^x = \frac{1}{2}e^x$$
 
@@ -444,14 +444,14 @@ $$F(x) = \int_{-\infty}^x \frac{1}{2}e^t \, dt = \frac{1}{2}e^t\Big|_{-\infty}^x
 
 $$F(x) = \frac{1}{2} + \frac{1}{2}(1 - e^{-x}) = 1 - \frac{1}{2}e^{-x}$$
 
-<span class="why">$x<0$ 时整个积分区间都在 $t<0$ 一侧, 绝对值直接去掉, 下限代 $-\infty$ 处为 0; $x\ge 0$ 时区间必须拆成 $(-\infty,0)$ 与 $(0,x]$ 两段, 分别按 $|t|=-t$ 与 $|t|=t$ 积分, 再把两段拼起来。<b>易错</b>: 写第二段时容易漏掉前半段已累积的 $\frac{1}{2}$。</span>
+<span class="why">$x&lt;0$ 时整个积分区间都在 $t&lt;0$ 一侧, 绝对值直接去掉, 下限代 $-\infty$ 处为 0; $x\ge 0$ 时区间必须拆成 $(-\infty,0)$ 与 $(0,x]$ 两段, 分别按 $|t|=-t$ 与 $|t|=t$ 积分, 再把两段拼起来。<b>易错</b>: 写第二段时容易漏掉前半段已累积的 $\frac{1}{2}$。</span>
 
 </div>
 <div class="step">
 
 <b>Step 3: 写出最终答案</b>
 
-$$F(x) = \begin{cases} \dfrac{1}{2}e^x, & x < 0 \\[8pt] 1 - \dfrac{1}{2}e^{-x}, & x \geq 0 \end{cases}$$
+$$F(x) = \begin{cases} \dfrac{1}{2}e^x, &amp; x &lt; 0 \\[8pt] 1 - \dfrac{1}{2}e^{-x}, &amp; x \geq 0 \end{cases}$$
 
 <span class="why">分段函数要过三关: 分界点衔接 $F(0^-)=\frac{1}{2}=F(0^+)$、两端归一 $F(-\infty)=0$、$F(+\infty)=1$; 三关都过才是合法的分布函数。</span>
 
@@ -476,7 +476,7 @@ $$F(x) = \begin{cases} \dfrac{1}{2}e^x, & x < 0 \\[8pt] 1 - \dfrac{1}{2}e^{-x}, 
 
 <b>Step 1: $X$ 的密度</b>
 
-$$f_X(x) = \begin{cases} \dfrac{1}{2}, & 0 < x < 2 \\[4pt] 0, & \text{其他} \end{cases}$$
+$$f_X(x) = \begin{cases} \dfrac{1}{2}, &amp; 0 &lt; x &lt; 2 \\[4pt] 0, &amp; \text{其他} \end{cases}$$
 
 <span class="why">$U(0,2)$ 的密度等于区间长度的倒数 $\frac{1}{2}$, 区间之外为 0; 写清支撑 $(0,2)$ 是后面回代判断 $\sqrt{y}$ 落点的前提。</span>
 
@@ -489,7 +489,7 @@ $Y = X^2$ 在 $x \in (0,2)$ 上严格单调递增，可直接用单调变换公�
 
 $$f_Y(y) = f_X\big(h(y)\big) \cdot |h'(y)|$$
 
-其中 $h(y)$ 是 $y = x^2$ 的反函数: $x = h(y) = \sqrt{y}$（$0 < y < 4$）。
+其中 $h(y)$ 是 $y = x^2$ 的反函数: $x = h(y) = \sqrt{y}$（$0 &lt; y &lt; 4$）。
 
 $$h'(y) = \frac{1}{2\sqrt{y}}$$
 
@@ -500,11 +500,11 @@ $$h'(y) = \frac{1}{2\sqrt{y}}$$
 
 <b>Step 3: 代入公式</b>
 
-当 $0 < y < 4$ 时，$0 < \sqrt{y} < 2$，故 $f_X(\sqrt{y}) = \frac{1}{2}$。
+当 $0 &lt; y &lt; 4$ 时，$0 &lt; \sqrt{y} &lt; 2$，故 $f_X(\sqrt{y}) = \frac{1}{2}$。
 
 $$f_Y(y) = \frac{1}{2} \cdot \frac{1}{2\sqrt{y}} = \frac{1}{4\sqrt{y}}$$
 
-$$f_Y(y) = \begin{cases} \dfrac{1}{4\sqrt{y}}, & 0 < y < 4 \\[6pt] 0, & \text{其他} \end{cases}$$
+$$f_Y(y) = \begin{cases} \dfrac{1}{4\sqrt{y}}, &amp; 0 &lt; y &lt; 4 \\[6pt] 0, &amp; \text{其他} \end{cases}$$
 
 <span class="why">回代前先确认 $\sqrt{y}$ 落在 $X$ 密度的非零区间 $(0,2)$ 内, 对应 $y \in (0,4)$, 此时才取 $f_X=\frac{1}{2}$; 定义域外一律为 0。<b>易错</b>: $y=0,4$ 端点取不取不影响概率, 分段写开区间即可。</span>
 
@@ -528,7 +528,7 @@ $$f_Y(y) = \begin{cases} \dfrac{1}{4\sqrt{y}}, & 0 < y < 4 \\[6pt] 0, & \text{�
 <p><b><span class="src">【来源: 概率基础阶段测试卷（解析版）】</span></b></p>
 <blockquote>
 <p><b>题干</b>: 设二维随机变量 $(X,Y)$ 的概率密度为
-$$f(x,y) = \begin{cases} e^{-y}, & 0 < x < y \\ 0, & \text{其他} \end{cases}$$
+$$f(x,y) = \begin{cases} e^{-y}, &amp; 0 &lt; x &lt; y \\ 0, &amp; \text{其他} \end{cases}$$
 (1) 求随机变量 $X$ 的概率密度 $f_X(x)$；
 (2) 求概率 $P\{X + Y \leq 1\}$。
 <span class="mk theory">理论</span><a href="数学_概率论.html#43二维连续型必考高频">二维连续型</a> · <a href="数学_概率论.html#41联合分布函数必考">联合分布函数</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#prob-t2">概率卷 T2</a> 区域概率两条路线对比: T2 均匀密度用面积比秒杀, 本题非均匀密度必须定限积分</p>
@@ -539,33 +539,33 @@ $$f(x,y) = \begin{cases} e^{-y}, & 0 < x < y \\ 0, & \text{其他} \end{cases}$$
 
 边缘密度公式: $f_X(x) = \int_{-\infty}^{\infty} f(x,y) \, dy$
 
-由于 $f(x,y)$ 非零区域为 $\{0 < x < y\}$，对固定的 $x$，$y$ 的积分范围是 $(x, +\infty)$。
+由于 $f(x,y)$ 非零区域为 $\{0 &lt; x &lt; y\}$，对固定的 $x$，$y$ 的积分范围是 $(x, +\infty)$。
 
 <b>当 $x > 0$ 时</b>:
 
 $$f_X(x) = \int_x^{\infty} e^{-y} \, dy = -e^{-y}\Big|_x^{\infty} = 0 - (-e^{-x}) = e^{-x}$$
 
-<b>当 $x \leq 0$ 时</b>: 对任何 $y$，$x \leq 0$ 不满足 $0 < x < y$（因为 $x$ 必须 $>0$），所以 $f_X(x) = 0$。
+<b>当 $x \leq 0$ 时</b>: 对任何 $y$，$x \leq 0$ 不满足 $0 &lt; x &lt; y$（因为 $x$ 必须 $>0$），所以 $f_X(x) = 0$。
 
-$$\boxed{f_X(x) = \begin{cases} e^{-x}, & x > 0 \\ 0, & x \leq 0 \end{cases}}$$
+$$\boxed{f_X(x) = \begin{cases} e^{-x}, &amp; x > 0 \\ 0, &amp; x \leq 0 \end{cases}}$$
 
-> 即 $X$ 的边际分布为指数分布 $Exp(1)$。<span class="why">边缘密度 = 固定 $x$ 后对 $y$ 全区间积分(把 $y$ "扫"掉); 支撑 $\{0<x<y\}$ 中 $x$ 是 $y$ 的下界, 所以 $y$ 从 $x$ 积到 $+\infty$; $x\le 0$ 时该层区域为空, 密度为 0——支撑 $x>0$ 别漏写。<b>考点</b>: 先画区域再定限、边缘密度的支撑, 是二维题基本功。</span>
+> 即 $X$ 的边际分布为指数分布 $Exp(1)$。<span class="why">边缘密度 = 固定 $x$ 后对 $y$ 全区间积分(把 $y$ "扫"掉); 支撑 $\{0&lt;x&lt;y\}$ 中 $x$ 是 $y$ 的下界, 所以 $y$ 从 $x$ 积到 $+\infty$; $x\le 0$ 时该层区域为空, 密度为 0——支撑 $x>0$ 别漏写。<b>考点</b>: 先画区域再定限、边缘密度的支撑, 是二维题基本功。</span>
 
 </div>
 <div class="step">
 
 <b>(2) 求 $P\{X + Y \leq 1\}$</b>
 
-$$P\{X + Y \leq 1\} = \iint_{\substack{x+y \leq 1 \\ 0 < x < y}} e^{-y} \, dx \, dy$$
+$$P\{X + Y \leq 1\} = \iint_{\substack{x+y \leq 1 \\ 0 &lt; x &lt; y}} e^{-y} \, dx \, dy$$
 
 确定积分限:
 
-① 从 $x + y \leq 1$ 和 $x < y$ 的交集: $x < y$ 且 $x < 1 - x$ → $2x < 1$ → $x < \frac{1}{2}$
+① 从 $x + y \leq 1$ 和 $x &lt; y$ 的交集: $x &lt; y$ 且 $x &lt; 1 - x$ → $2x &lt; 1$ → $x &lt; \frac{1}{2}$
 ② 对固定的 $x$，$y$ 的范围: $\max(x, 0) = x$ 到 $\min(1-x, \infty) = 1-x$
 
 $$P = \int_0^{\frac{1}{2}} dx \int_x^{1-x} e^{-y} \, dy$$
 
-<span class="why">事件 $\{x+y\le 1\}$ 要与密度支撑 $\{0<x<y\}$ 取交集再积分: 由 $x<y$ 且 $x<1-x$ 推出 $x<\frac{1}{2}$; 固定 $x$ 后, $y$ 的下界是支撑给的 $x$, 上界是事件给的 $1-x$。<b>易错</b>: 上界取 $1-x$ 而不是 $+\infty$——事件区域把积分截断了, 截断正是本问与第(1)问的区别。</span>
+<span class="why">事件 $\{x+y\le 1\}$ 要与密度支撑 $\{0&lt;x&lt;y\}$ 取交集再积分: 由 $x&lt;y$ 且 $x&lt;1-x$ 推出 $x&lt;\frac{1}{2}$; 固定 $x$ 后, $y$ 的下界是支撑给的 $x$, 上界是事件给的 $1-x$。<b>易错</b>: 上界取 $1-x$ 而不是 $+\infty$——事件区域把积分截断了, 截断正是本问与第(1)问的区别。</span>
 
 </div>
 <div class="step">
@@ -680,7 +680,7 @@ $$\boxed{\hat{\theta} = \left(\frac{1}{n}\sum_{i=1}^n t_i^m\right)^{1/m}}$$
 </blockquote>
 <details><summary>解答过程</summary><div class="step">
 
-<b>核心方法</b>: 新向量组 $= [\alpha_1, \alpha_2, \alpha_3] \times K$，其中 $K$ 是系数矩阵。若 $K$ 的列向量线性相关（$r(K) <$ 向量个数），则新向量组线性相关。
+<b>核心方法</b>: 新向量组 $= [\alpha_1, \alpha_2, \alpha_3] \times K$，其中 $K$ 是系数矩阵。若 $K$ 的列向量线性相关（$r(K) &lt;$ 向量个数），则新向量组线性相关。
 
 <span class="why">因为 $\alpha_1,\alpha_2,\alpha_3$ 线性无关构成一组基底, 组合组的线性关系完全由系数矩阵 $K$ 决定: 存在不全为零的 $c$ 使 $Kc=0$ ⇔ $\sum c_j\beta_j = 0$ 有非零解 ⇔ 新向量组线性相关。<b>考点</b>: "无关组经线性组合后的相关性 ⇔ 系数矩阵列的相关性"是本题的本质结论。</span>
 
@@ -689,7 +689,7 @@ $$\boxed{\hat{\theta} = \left(\frac{1}{n}\sum_{i=1}^n t_i^m\right)^{1/m}}$$
 
 <b>分析各选项</b>:
 
-<b>A</b>: 3 个向量，系数矩阵 $K_A = \begin{bmatrix} 1 & 0 & 1 \\ 1 & 1 & 0 \\ 0 & 1 & 1 \end{bmatrix}$
+<b>A</b>: 3 个向量，系数矩阵 $K_A = \begin{bmatrix} 1 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1 \end{bmatrix}$
 
 $\det K_A = 1 \cdot 1 \cdot 1 + 1 \cdot 1 \cdot 1 = 2 \neq 0$ → 满秩 → 线性无关。<span class="why">3 个向量 ⇔ $K$ 是 3×3 方阵, 行列式非零 ⇔ 满秩 ⇔ 列线性无关; 萨鲁斯法则(或按第一行展开)只剩两个非零项 $1\cdot1\cdot1$ 与 $1\cdot1\cdot1$, 和为 2。</span>
 
@@ -703,11 +703,11 @@ $\det K_A = 1 \cdot 1 \cdot 1 + 1 \cdot 1 \cdot 1 = 2 \neq 0$ → 满秩 → 线
 </div>
 <div class="step">
 
-<b>C</b>: 3 个向量，$K_C = \begin{bmatrix} 1 & 0 & 1 \\ 2 & 2 & 0 \\ 0 & 3 & 3 \end{bmatrix}$
+<b>C</b>: 3 个向量，$K_C = \begin{bmatrix} 1 &amp; 0 &amp; 1 \\ 2 &amp; 2 &amp; 0 \\ 0 &amp; 3 &amp; 3 \end{bmatrix}$
 
 $\det K_C = 1 \cdot 2 \cdot 3 + 1 \cdot 2 \cdot 3 = 12 \neq 0$ → 无关。
 
-<b>D</b>: 3 个向量，$K_D = \begin{bmatrix} 1 & 2 & 3 \\ 1 & 3 & 5 \\ 1 & 22 & -5 \end{bmatrix}$
+<b>D</b>: 3 个向量，$K_D = \begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 1 &amp; 3 &amp; 5 \\ 1 &amp; 22 &amp; -5 \end{bmatrix}$
 
 $\det K_D = 1 \cdot (-15-110) - 2\cdot(-5-5) + 3\cdot(22-3) = -125 + 20 + 57 = -48 \neq 0$ → 无关。<span class="why">C: 萨鲁斯法则非零项 $1\cdot2\cdot3+1\cdot2\cdot3=12\neq 0$, 满秩无关; D: 按第一行展开, $1(-15-110)-2(-5-5)+3(22-3)=-48\neq 0$, 满秩无关——数字大不要怕, 按行展开逐项算即可。<b>考点</b>: 满秩系数矩阵 ⇒ 组合组仍线性无关。</span>
 
@@ -738,11 +738,11 @@ $\det K_D = 1 \cdot (-15-110) - 2\cdot(-5-5) + 3\cdot(22-3) = -125 + 20 + 57 = -
 
 $$AP_0 = [A\alpha_1, A\alpha_2] = [\alpha_2, -2\alpha_1 + 3\alpha_2]$$
 
-$$= [\alpha_1, \alpha_2] \begin{bmatrix} 0 & -2 \\ 1 & 3 \end{bmatrix} = P_0 \begin{bmatrix} 0 & -2 \\ 1 & 3 \end{bmatrix}$$
+$$= [\alpha_1, \alpha_2] \begin{bmatrix} 0 &amp; -2 \\ 1 &amp; 3 \end{bmatrix} = P_0 \begin{bmatrix} 0 &amp; -2 \\ 1 &amp; 3 \end{bmatrix}$$
 
-所以 $P_0^{-1}AP_0 = \begin{bmatrix} 0 & -2 \\ 1 & 3 \end{bmatrix} \triangleq B$。$A$ 与 $B$ 相似，特征值相同。
+所以 $P_0^{-1}AP_0 = \begin{bmatrix} 0 &amp; -2 \\ 1 &amp; 3 \end{bmatrix} \triangleq B$。$A$ 与 $B$ 相似，特征值相同。
 
-$B$ 的特征多项式: $|\lambda E - B| = \begin{vmatrix} \lambda & 2 \\ -1 & \lambda-3 \end{vmatrix} = \lambda(\lambda-3) + 2 = \lambda^2 - 3\lambda + 2 = (\lambda-1)(\lambda-2)$
+$B$ 的特征多项式: $|\lambda E - B| = \begin{vmatrix} \lambda &amp; 2 \\ -1 &amp; \lambda-3 \end{vmatrix} = \lambda(\lambda-3) + 2 = \lambda^2 - 3\lambda + 2 = (\lambda-1)(\lambda-2)$
 
 特征值: $\boxed{\lambda_1 = 1, \lambda_2 = 2}$。<span class="why">把基底拼成 $P_0$ 后, $A$ 对基底的作用 $[A\alpha_1, A\alpha_2]$ 恰好写成 $P_0B$——$B$ 的列就是各像在基底下的坐标, 即 $A$ 在基底 $\{\alpha_1,\alpha_2\}$ 下的表示矩阵; 相似矩阵特征值相同, 抽象矩阵 $A$ 的问题变成具体矩阵 $B$ 的问题。<b>考点</b>: "抽象基底上的线性变换 ⇔ 表示矩阵"是核心翻译, 直接由 $\alpha$ 的系数读矩阵。</span>
 
@@ -753,18 +753,18 @@ $B$ 的特征多项式: $|\lambda E - B| = \begin{vmatrix} \lambda & 2 \\ -1 & \
 
 先求 $B$ 的特征向量:
 
-$\lambda = 1$: $(B - I)x = \begin{bmatrix} -1 & -2 \\ 1 & 2 \end{bmatrix}x = 0$，取 $x_1 = \begin{bmatrix} 2 \\ -1 \end{bmatrix}$。
+$\lambda = 1$: $(B - I)x = \begin{bmatrix} -1 &amp; -2 \\ 1 &amp; 2 \end{bmatrix}x = 0$，取 $x_1 = \begin{bmatrix} 2 \\ -1 \end{bmatrix}$。
 
-$\lambda = 2$: $(B - 2I)x = \begin{bmatrix} -2 & -2 \\ 1 & 1 \end{bmatrix}x = 0$，取 $x_2 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$。<span class="why">特征向量解齐次方程组 $(B-\lambda E)x=0$: 对 $\lambda=1$, 方程 $-x_1-2x_2=0$, 取 $x_2=-1$ 得 $(2,-1)^T$; 对 $\lambda=2$, $x_1+x_2=0$, 取 $(1,-1)^T$。<b>易错</b>: 特征向量不唯一, 取最简整数解即可, 但 $Q$ 的列必须与 $\Lambda$ 的对角元一一对应。</span>
+$\lambda = 2$: $(B - 2I)x = \begin{bmatrix} -2 &amp; -2 \\ 1 &amp; 1 \end{bmatrix}x = 0$，取 $x_2 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$。<span class="why">特征向量解齐次方程组 $(B-\lambda E)x=0$: 对 $\lambda=1$, 方程 $-x_1-2x_2=0$, 取 $x_2=-1$ 得 $(2,-1)^T$; 对 $\lambda=2$, $x_1+x_2=0$, 取 $(1,-1)^T$。<b>易错</b>: 特征向量不唯一, 取最简整数解即可, 但 $Q$ 的列必须与 $\Lambda$ 的对角元一一对应。</span>
 
 </div>
 <div class="step">
 
-则 $B = Q\Lambda Q^{-1}$，其中 $Q = \begin{bmatrix} 2 & 1 \\ -1 & -1 \end{bmatrix}$，$\Lambda = \operatorname{diag}(1, 2)$。
+则 $B = Q\Lambda Q^{-1}$，其中 $Q = \begin{bmatrix} 2 &amp; 1 \\ -1 &amp; -1 \end{bmatrix}$，$\Lambda = \operatorname{diag}(1, 2)$。
 
 回到 $A$: $A = P_0 B P_0^{-1} = (P_0 Q)\Lambda (P_0 Q)^{-1}$
 
-所以对角化矩阵 $P = P_0 Q = [\alpha_1, \alpha_2] \begin{bmatrix} 2 & 1 \\ -1 & -1 \end{bmatrix}$。
+所以对角化矩阵 $P = P_0 Q = [\alpha_1, \alpha_2] \begin{bmatrix} 2 &amp; 1 \\ -1 &amp; -1 \end{bmatrix}$。
 
 $$P = [2\alpha_1 - \alpha_2,\; \alpha_1 - \alpha_2]$$
 
@@ -790,7 +790,7 @@ $$P = [2\alpha_1 - \alpha_2,\; \alpha_1 - \alpha_2]$$
 <h2 id="线代卷T10正交矩阵与特征值">线代卷 T10: 正交矩阵与特征值</h2>
 <p><b><span class="src">【来源: 线代测试题3、线代测试题解析3】</span></b></p>
 <blockquote>
-<p><b>题干</b>: 已知 $\lambda = 2$ 是矩阵 $A = \begin{bmatrix} 4 & 2 & 2 \\ 2 & 4 & a \\ 2 & a & a+2 \end{bmatrix}$ 的二重特征值，求 $a$ 的值并求正交矩阵 $Q$ 使 $Q^{-1}AQ = \Lambda$。
+<p><b>题干</b>: 已知 $\lambda = 2$ 是矩阵 $A = \begin{bmatrix} 4 &amp; 2 &amp; 2 \\ 2 &amp; 4 &amp; a \\ 2 &amp; a &amp; a+2 \end{bmatrix}$ 的二重特征值，求 $a$ 的值并求正交矩阵 $Q$ 使 $Q^{-1}AQ = \Lambda$。
 <span class="mk theory">理论</span><a href="数学_线性代数.html#63实对称矩阵线代最乖的一类矩阵必考">实对称矩阵</a> · <a href="数学_线性代数.html#62相似对角化矩阵变对角阵必考">相似对角化</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#la-t11">线代卷 T11</a> 共用"几何重数=代数重数"验证: T10 由二重反推 r(A-2E), T11 验 r(B-3E) 证可对角化</p>
 </blockquote>
 <details><summary>解答过程</summary><div class="step">
@@ -799,20 +799,20 @@ $$P = [2\alpha_1 - \alpha_2,\; \alpha_1 - \alpha_2]$$
 
 $\lambda = 2$ 是二重特征值 → 几何重数 = 2 → $r(A-2E) \leq 1$。
 
-$$A - 2E = \begin{bmatrix} 2 & 2 & 2 \\ 2 & 2 & a \\ 2 & a & a \end{bmatrix}$$
+$$A - 2E = \begin{bmatrix} 2 &amp; 2 &amp; 2 \\ 2 &amp; 2 &amp; a \\ 2 &amp; a &amp; a \end{bmatrix}$$
 
 要使 $r(A-2E) \leq 1$，三行必须成比例。第二行 - 第一行: $(0, 0, a-2)$，第三行 - 第一行: $(0, a-2, a-2)$。
 
 要求 $(0,0,a-2)$ 与 $(2,2,2)$ 成比例 → $a-2 = 0$ → $\boxed{a = 2}$。
 
-此时 $A-2E = \begin{bmatrix} 2 & 2 & 2 \\ 2 & 2 & 2 \\ 2 & 2 & 2 \end{bmatrix}$，$r = 1$，nullity $= 2$。✓<span class="why">实对称矩阵必可对角化, 所以 $\lambda=2$ 的几何重数 = 代数重数 = 2, 即 $r(A-2E)=3-2=1$——三行全成比例; 用"第 2、3 行减第 1 行"得到差分行, 它们必须为零向量, 于是 $a-2=0$。<b>考点</b>: "二重特征值 ⇔ nullity=2 ⇔ r(A-2E)=1"是含参矩阵定参数题的标准入口。</span>
+此时 $A-2E = \begin{bmatrix} 2 &amp; 2 &amp; 2 \\ 2 &amp; 2 &amp; 2 \\ 2 &amp; 2 &amp; 2 \end{bmatrix}$，$r = 1$，nullity $= 2$。✓<span class="why">实对称矩阵必可对角化, 所以 $\lambda=2$ 的几何重数 = 代数重数 = 2, 即 $r(A-2E)=3-2=1$——三行全成比例; 用"第 2、3 行减第 1 行"得到差分行, 它们必须为零向量, 于是 $a-2=0$。<b>考点</b>: "二重特征值 ⇔ nullity=2 ⇔ r(A-2E)=1"是含参矩阵定参数题的标准入口。</span>
 
 </div>
 <div class="step">
 
 <b>Step 2: 确定全部特征值</b>
 
-$A = \begin{bmatrix} 4 & 2 & 2 \\ 2 & 4 & 2 \\ 2 & 2 & 4 \end{bmatrix}$，$\operatorname{tr}(A) = 4+4+4 = 12 = 2+2+\lambda_3$ → $\lambda_3 = 8$。
+$A = \begin{bmatrix} 4 &amp; 2 &amp; 2 \\ 2 &amp; 4 &amp; 2 \\ 2 &amp; 2 &amp; 4 \end{bmatrix}$，$\operatorname{tr}(A) = 4+4+4 = 12 = 2+2+\lambda_3$ → $\lambda_3 = 8$。
 
 特征值: $\boxed{\lambda_1 = \lambda_2 = 2,\; \lambda_3 = 8}$。<span class="why">特征值之和等于迹 $tr(A)=12$, 已知两个 2, 第三个即 $12-4=8$。<b>易错</b>: "二重"条件只能定重数, 定不了第三个特征值的数值, 必须配迹(或行列式)才能求出 $\lambda_3$。</span>
 
@@ -825,7 +825,7 @@ $\lambda = 2$: 解 $(A-2E)x = 0$ → $x_1 + x_2 + x_3 = 0$。
 
 取正交基: $v_1 = (1, -1, 0)^T$，$v_2 = (1, 1, -2)^T$（已正交化）。
 
-$\lambda = 8$: 解 $(A-8E)x = 0$，$\begin{bmatrix} -4 & 2 & 2 \\ 2 & -4 & 2 \\ 2 & 2 & -4 \end{bmatrix} x = 0$ → $x_1 = x_2 = x_3$。
+$\lambda = 8$: 解 $(A-8E)x = 0$，$\begin{bmatrix} -4 &amp; 2 &amp; 2 \\ 2 &amp; -4 &amp; 2 \\ 2 &amp; 2 &amp; -4 \end{bmatrix} x = 0$ → $x_1 = x_2 = x_3$。
 
 取 $v_3 = (1, 1, 1)^T$。注意 $v_3$ 与前两个正交（对称矩阵不同特征值的特征向量自动正交）。<span class="why">$\lambda=2$ 的特征子空间是平面 $x_1+x_2+x_3=0$, 先取 $v_1=(1,-1,0)$, 再配一个与之正交的解 $v_2=(1,1,-2)$(内积 $1-1+0=0$); $\lambda=8$ 的三条方程都等价于 $x_1=x_2=x_3$。<b>易错</b>: 同一特征值的特征向量不自动正交, 需手动配正交; 不同特征值的特征向量由对称性保证正交, 不用再验。</span>
 
@@ -836,7 +836,7 @@ $\lambda = 8$: 解 $(A-8E)x = 0$，$\begin{bmatrix} -4 & 2 & 2 \\ 2 & -4 & 2 \\ 
 
 $$q_1 = \frac{1}{\sqrt{2}}(1, -1, 0)^T,\; q_2 = \frac{1}{\sqrt{6}}(1, 1, -2)^T,\; q_3 = \frac{1}{\sqrt{3}}(1, 1, 1)^T$$
 
-$$Q = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{3}} \\[3pt] -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{3}} \\[3pt] 0 & -\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{3}} \end{bmatrix}, \quad Q^{-1}AQ = Q^TAQ = \begin{bmatrix} 2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 8 \end{bmatrix}$$
+$$Q = \begin{bmatrix} \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}} &amp; \frac{1}{\sqrt{3}} \\[3pt] -\frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}} &amp; \frac{1}{\sqrt{3}} \\[3pt] 0 &amp; -\frac{2}{\sqrt{6}} &amp; \frac{1}{\sqrt{3}} \end{bmatrix}, \quad Q^{-1}AQ = Q^TAQ = \begin{bmatrix} 2 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 8 \end{bmatrix}$$
 
 > <b>关键步骤</b>: 利用二重特征值的条件 $r(A-2E) \leq 1$ 定参数 $a$。这是常见考法。<span class="why">特征向量已两两正交, 只需除以模长 $\|v_1\|=\sqrt{2}, \|v_2\|=\sqrt{6}, \|v_3\|=\sqrt{3}$ 再排成列; 正交矩阵满足 $Q^{-1}=Q^T$, 所以 $Q^{-1}AQ=Q^TAQ=\Lambda$。<b>考点</b>: 实对称矩阵的正交对角化 = "正交化 + 单位化 + 排成列", 是必考大题模板。</span>
 
@@ -849,7 +849,7 @@ $$Q = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{3
 <h2 id="线代卷T11矩阵相似性证明">线代卷 T11: 矩阵相似性证明</h2>
 <p><b><span class="src">【来源: 线代测试题3、线代测试题解析3】</span></b></p>
 <blockquote>
-<p><b>题干</b>: 证明矩阵 $A = \begin{bmatrix} 2 & 1 & -1 \\ 1 & 2 & 1 \\ -1 & 1 & 2 \end{bmatrix}$ 与 $B = \begin{bmatrix} 2 & 0 & 1 \\ -1 & 3 & 1 \\ 2 & 0 & 1 \end{bmatrix}$ 相似。
+<p><b>题干</b>: 证明矩阵 $A = \begin{bmatrix} 2 &amp; 1 &amp; -1 \\ 1 &amp; 2 &amp; 1 \\ -1 &amp; 1 &amp; 2 \end{bmatrix}$ 与 $B = \begin{bmatrix} 2 &amp; 0 &amp; 1 \\ -1 &amp; 3 &amp; 1 \\ 2 &amp; 0 &amp; 1 \end{bmatrix}$ 相似。
 <span class="mk theory">理论</span><a href="数学_线性代数.html#61相似矩阵必考">相似矩阵</a> · <a href="数学_线性代数.html#62相似对角化矩阵变对角阵必考">相似对角化</a> <span class="mk xref">相关</span><a href="数学_练习与测试_例题.html#la-t10">线代卷 T10</a> 同一判据双向用: T11 验几何重数证可对角化, T10 由二重特征值反推秩定参数</p>
 </blockquote>
 <details><summary>解答过程</summary><div class="step">
@@ -858,7 +858,7 @@ $$Q = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{3
 
 <b>Step 1: 求 $A$ 的特征多项式</b>
 
-$$|\lambda E - A| = \begin{vmatrix} \lambda-2 & -1 & 1 \\ -1 & \lambda-2 & -1 \\ 1 & -1 & \lambda-2 \end{vmatrix}$$
+$$|\lambda E - A| = \begin{vmatrix} \lambda-2 &amp; -1 &amp; 1 \\ -1 &amp; \lambda-2 &amp; -1 \\ 1 &amp; -1 &amp; \lambda-2 \end{vmatrix}$$
 
 令 $c = \lambda - 2$，按第一行展开: $|\lambda E - A| = c(c^2-1) + (1-c) + (1-c) = c^3 - 3c + 2 = (c-1)^2(c+2)$
 
@@ -873,7 +873,7 @@ $$|\lambda E - A| = (\lambda-3)^2 \cdot \lambda = \lambda(\lambda-3)^2$$
 
 <b>Step 2: 求 $B$ 的特征多项式</b>
 
-$$|\lambda E - B| = \begin{vmatrix} \lambda-2 & 0 & -1 \\ 1 & \lambda-3 & -1 \\ -2 & 0 & \lambda-1 \end{vmatrix} = (\lambda-3)\begin{vmatrix} \lambda-2 & -1 \\ -2 & \lambda-1 \end{vmatrix}$$
+$$|\lambda E - B| = \begin{vmatrix} \lambda-2 &amp; 0 &amp; -1 \\ 1 &amp; \lambda-3 &amp; -1 \\ -2 &amp; 0 &amp; \lambda-1 \end{vmatrix} = (\lambda-3)\begin{vmatrix} \lambda-2 &amp; -1 \\ -2 &amp; \lambda-1 \end{vmatrix}$$
 
 $$= (\lambda-3)[(\lambda-2)(\lambda-1) - 2] = (\lambda-3)(\lambda^2 - 3\lambda) = \lambda(\lambda-3)^2$$
 
@@ -888,7 +888,7 @@ $A$ 是实对称矩阵 → 必然可对角化。✓
 
 对于 $B$，需验证 $\lambda=3$（二重）的几何重数 = 2:
 
-$$B - 3E = \begin{bmatrix} -1 & 0 & 1 \\ -1 & 0 & 1 \\ 2 & 0 & -2 \end{bmatrix}$$
+$$B - 3E = \begin{bmatrix} -1 &amp; 0 &amp; 1 \\ -1 &amp; 0 &amp; 1 \\ 2 &amp; 0 &amp; -2 \end{bmatrix}$$
 
 第二行 = 第一行，第三行 = $-2$ × 第一行。$r(B-3E) = 1$，nullity $= 3-1 = 2$。✓
 
@@ -934,9 +934,9 @@ $$A \sim \operatorname{diag}(0, 2, 2)$$
 
 用谱分解: $A = 0 \cdot \frac{\alpha_1\alpha_1^T}{\|\alpha_1\|^2} + 2 \cdot \left(I - \frac{\alpha_1\alpha_1^T}{\|\alpha_1\|^2}\right) = 2I - 2\frac{\alpha_1\alpha_1^T}{\|\alpha_1\|^2}$
 
-$$\frac{\alpha_1\alpha_1^T}{\|\alpha_1\|^2} = \frac{1}{2}\begin{bmatrix} 0 \\ 1 \\ 1 \end{bmatrix}\begin{bmatrix} 0 & 1 & 1 \end{bmatrix} = \frac{1}{2}\begin{bmatrix} 0 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 1 & 1 \end{bmatrix}$$
+$$\frac{\alpha_1\alpha_1^T}{\|\alpha_1\|^2} = \frac{1}{2}\begin{bmatrix} 0 \\ 1 \\ 1 \end{bmatrix}\begin{bmatrix} 0 &amp; 1 &amp; 1 \end{bmatrix} = \frac{1}{2}\begin{bmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \end{bmatrix}$$
 
-$$A = 2\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} - 2 \cdot \frac{1}{2}\begin{bmatrix} 0 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 1 & 1 \end{bmatrix} = \begin{bmatrix} 2 & 0 & 0 \\ 0 & 1 & -1 \\ 0 & -1 & 1 \end{bmatrix}$$
+$$A = 2\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix} - 2 \cdot \frac{1}{2}\begin{bmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1 \end{bmatrix} = \begin{bmatrix} 2 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; -1 &amp; 1 \end{bmatrix}$$
 
 $$\boxed{f(x_1, x_2, x_3) = 2x_1^2 + x_2^2 + x_3^2 - 2x_2x_3}$$
 
@@ -958,7 +958,7 @@ $A+kE$ 的特征值为: $0+k = k$, $2+k$, $2+k$。
 
 在三个特征值 $\{k, 2+k, 2+k\}$ 中，必须恰好有一个为负，两个为正:
 
-$$k < 0 < 2+k \quad \Rightarrow \quad -2 < k < 0$$
+$$k &lt; 0 &lt; 2+k \quad \Rightarrow \quad -2 &lt; k &lt; 0$$
 
 $$\boxed{k \in (-2, 0)}$$
 

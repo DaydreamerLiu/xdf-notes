@@ -430,7 +430,7 @@ $$ d(u\pm v)=du\pm dv,\qquad d(uv)=v\,du+u\,dv,\qquad d\left(\frac uv\right)=\fr
 </ul>
 <p><b>由 $f(x)/x^\alpha$ 的极限判 $f'(0)$</b> <span class="mk freq">高频</span> $\lim\frac{f(x)}x$ 存在 ⇒ $f'(0)$ 存在; $\lim\frac{f(x)}{x^2}$、$\lim\frac{f(x)}{\sqrt[3]{x}}$ 存在则<b>不一定</b>。<b>单侧陷阱</b>: $\lim\frac{f(x^2)}{x^2}$ 只扫 $x^2>0$ 一侧 ⇒ 只推右导数; $\lim\frac{f(x^3)}{x^3}$ 双侧都扫 ⇒ 可推导数; $\lim\frac{f(1-\cos x)}{x^2}$ 只扫右侧(因 $1-\cos x\ge0$) ⇒ 只推右导。口诀: <b>换元后能否从两侧趋于 0</b> 决定能否推出导数存在。</p>
 <details><summary>例题 2.2: 讨论可导性 (0418(3))</summary>
-<div class="step">讨论 $f(x)=\begin{cases}x\sin\frac1x,&x\neq0\\ 0,&x=0\end{cases}$ 在 $x=0$ 的可导性</div>
+<div class="step">讨论 $f(x)=\begin{cases}x\sin\frac1x,&amp;x\neq0\\ 0,&amp;x=0\end{cases}$ 在 $x=0$ 的可导性</div>
 <div class="step">① 连续性: $\lim_{x\to0}x\sin\frac1x=0=f(0)$, 连续 ✓</div>
 <div class="step">② 用定义求导数: $f'(0)=\lim_{x\to0}\frac{x\sin\frac1x-0}{x}=\lim_{x\to0}\sin\frac1x$ —— 不存在!</div>
 <div class="step">③ 结论: 连续但不可导(振荡)。这题是"连续 ⇏ 可导"的经典例 ∎</div>

@@ -370,7 +370,7 @@ main details .sum b{font-weight:700}
 <p><b>核心结论</b> 设 $f(x)$ 在 $[a,b]$ 上连续, 在 $(a,b)$ 内可导, 则存在 $ξ\in(a,b)$, 使得
 $$ \frac{f(b)-f(a)}{b-a}=f'(ξ) $$</p>
 <p><b>直觉</b> 全程的平均速度, 等于某一瞬间的瞬时速度(物理直觉)。几何: 弦 $AB$ 的斜率 $=$ 某点切线斜率——存在一条与弦平行的切线。</p>
-<p><b>等价形式(常用)</b> $f(x+Δx)-f(x)=f'(x+θΔx)·Δx$, 其中 $0<θ<1$。 把"增量"写成"某点的导数乘以步长", 这是处理误差估计的核心工具。</p>
+<p><b>等价形式(常用)</b> $f(x+Δx)-f(x)=f'(x+θΔx)·Δx$, 其中 $0&lt;θ&lt;1$。 把"增量"写成"某点的导数乘以步长", 这是处理误差估计的核心工具。</p>
 <p><b>两个重要推论</b></p>
 <ul>
 <li>$f'(x)\equiv0$ 于区间 $I$ $\Rightarrow$ $f(x)\equiv$ 常数。<b>恒等式证明的根</b>。</li>
@@ -475,7 +475,7 @@ $$ f'(x)+P(x)f(x)=0 \iff \frac{f'(x)}{f(x)}=-P(x) \iff \ln|f(x)|+\int P(x)\,dx=C
 <p><b>两种标准动作</b></p>
 <ul>
 <li><b>估计型</b>(结论是数值界): 见 §2.2, 在目标点或中点展开 + 相加减 + 三角不等式;</li>
-<li><b>符号型</b>(结论是 $\int f < (b-a)f(\cdot)$ 类): 展开到二阶, 余项符号由 $f''$ 的符号决定(如 $f''<0 \Rightarrow f(x)\le f(x_0)+f'(x_0)(x-x_0)$, 即<b>凸函数图像在切线下方</b>), 两边积分。</li>
+<li><b>符号型</b>(结论是 $\int f &lt; (b-a)f(\cdot)$ 类): 展开到二阶, 余项符号由 $f''$ 的符号决定(如 $f''&lt;0 \Rightarrow f(x)\le f(x_0)+f'(x_0)(x-x_0)$, 即<b>凸函数图像在切线下方</b>), 两边积分。</li>
 </ul>
 <p><b>直觉</b> 泰勒给了函数的"二次近似", 二阶导的符号就是凹凸性, 凹凸性又给积分不等式——这条链(泰勒→凹凸→积分不等式)是证明题的常见出口。</p>
 <h3 id="45恒等式与不等式单调性与最值高频">4.5 恒等式与不等式: 单调性与最值 <span class="mk freq">高频</span></h3>
@@ -487,7 +487,7 @@ $$ f'(x)+P(x)f(x)=0 \iff \frac{f'(x)}{f(x)}=-P(x) \iff \ln|f(x)|+\int P(x)\,dx=C
 <p><b>不等式三大方法</b>(按"先想什么"排序):</p>
 <ol>
 <li><b>单调性法</b>: $F(x)=$ 左边 $-$ 右边, 证 $F'(x)$ 定号 + $F(0)=0$(或端点值); 一阶导定不了号就求二阶导再定(套娃到能定号为止);</li>
-<li><b>中值定理法</b>: 结论形如"$\frac{f(b)-f(a)}{b-a}$ 夹在两个值之间", 如 $\frac{b-a}{b}<\ln\frac ba<\frac{b-a}{a}$——取 $f=\ln x$, $\frac1b<f'(ξ)=\frac1ξ<\frac1a$;</li>
+<li><b>中值定理法</b>: 结论形如"$\frac{f(b)-f(a)}{b-a}$ 夹在两个值之间", 如 $\frac{b-a}{b}&lt;\ln\frac ba&lt;\frac{b-a}{a}$——取 $f=\ln x$, $\frac1b&lt;f'(ξ)=\frac1ξ&lt;\frac1a$;</li>
 <li><b>最值法</b>: 证 $\min f\ge0$(如 $\sin x>\frac{2x}{\pi}$, 用二阶导判凹性 + 端点值)。</li>
 </ol>
 <p><b>实用技巧</b></p>
@@ -496,8 +496,8 @@ $$ f'(x)+P(x)f(x)=0 \iff \frac{f'(x)}{f(x)}=-P(x) \iff \ln|f(x)|+\int P(x)\,dx=C
 <li>分段讨论: 定义域分成端点两侧分别处理;</li>
 <li>证明"≥"时先找等号点(往往是端点或 $\frac12$), 用 $\min=0$ 定位。</li>
 </ul>
-<p><b>套娃判号(二阶不够就三阶)</b> <span class="mk warn">易错</span> 一阶导定不了号时求二阶, 二阶还定不了就求三阶——但每步都要"从底往上递推", 别只写一半。完整链示例: 已知 $g''<0$, 要证 $f'(x)<0$:
-$$ g''(x)<0 \Rightarrow g'(x) \text{ 单调减} \Rightarrow g'(x)<g'(0)=0 \Rightarrow g(x) \text{ 单调减} \Rightarrow g(x)<g(0)=0 \Rightarrow f'(x)=g(x)<0 $$
+<p><b>套娃判号(二阶不够就三阶)</b> <span class="mk warn">易错</span> 一阶导定不了号时求二阶, 二阶还定不了就求三阶——但每步都要"从底往上递推", 别只写一半。完整链示例: 已知 $g''&lt;0$, 要证 $f'(x)&lt;0$:
+$$ g''(x)&lt;0 \Rightarrow g'(x) \text{ 单调减} \Rightarrow g'(x)&lt;g'(0)=0 \Rightarrow g(x) \text{ 单调减} \Rightarrow g(x)&lt;g(0)=0 \Rightarrow f'(x)=g(x)&lt;0 $$
 关键是<b>每一步都把结论接到上一步的端点值/初值上</b>, 环环相扣才能下推。(0715(1) 例3.17 三阶套娃完整演示)</p>
 <hr />
 <h2 id="五易错点与考法总结易错">五、易错点与考法总结 <span class="mk warn">易错</span></h2>
@@ -515,7 +515,7 @@ $$ g''(x)<0 \Rightarrow g'(x) \text{ 单调减} \Rightarrow g'(x)<g'(0)=0 \Right
 <li><b>与导数应用</b>: 本板块的 §4.5 不等式方法, 与"导数应用"板块的单调性/凹凸/最值是同一套工具的两个侧面(那边管求极值与画图, 这边管证明); 课件 0425（1） 两半分别对应这两个板块。</li>
 <li><b>与极限</b>: 泰勒公式是求极限的"终极武器"(麦克劳林展开), 极限板块的 $\frac00$ 型未定式均可下放到这里。</li>
 <li><b>与积分</b>: 积分中值定理、柯西-施瓦茨不等式($[\int fg]^2\le\int f^2\int g^2$)是积分板块的证明题地基, 其中柯西-施瓦茨的证法(构造 $F(t)=\int f^2\int g^2-[\int fg]^2$, 证 $F\ge0$ 用平方和)是"导数 + 积分"双拼的典范, 详见积分板块。</li>
-<li><b>与级数</b>: 拉格朗日中值定理给出 $\frac{1}{n+1}<\ln(1+\frac1n)<\frac1n$, 是正项级数与数列极限(如 $\sum\ln$ 求和、单调有界)的重要工具——极限与数列板块已用过。</li>
+<li><b>与级数</b>: 拉格朗日中值定理给出 $\frac{1}{n+1}&lt;\ln(1+\frac1n)&lt;\frac1n$, 是正项级数与数列极限(如 $\sum\ln$ 求和、单调有界)的重要工具——极限与数列板块已用过。</li>
 </ul>
 <p><span class="src">【来源: 0419（2）、0425（1）、一元微积分证明题、0714（2）、0714（3）、0715（1）】</span></p></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_导数与微分_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 导数与微分_例题</b></span></a><a class="next" href="数学_中值定理_例题.html"><span class="pg-t"><small>下一篇</small><b>数学 · 中值定理_例题</b></span><span class="pg-ic">→</span></a></nav></main>
 <button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>

@@ -371,11 +371,11 @@ $$ \det A = \sum_{(p_1,\dots,p_n)}(-1)^{\tau(p_1,\dots,p_n)} a_{1p_1}a_{2p_2}\cd
 <h3 id="12特殊行列式必考">1.2 特殊行列式 <span class="mk biz">必考</span></h3>
 <p><b>核心结论</b></p>
 <p><b>(1) 上下三角行列式</b>: 等于主对角线元素之积。
-$$ \begin{vmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ 0 & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & a_{nn} \end{vmatrix} = a_{11}a_{22}\cdots a_{nn} $$</p>
+$$ \begin{vmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ 0 &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; a_{nn} \end{vmatrix} = a_{11}a_{22}\cdots a_{nn} $$</p>
 <p>副对角线三角: 结果为 $(-1)^{\frac{n(n-1)}{2}}a_{1n}a_{2,n-1}\cdots a_{n1}$</p>
 <p><span class="mk res">线代救命</span> 这个符号 $(-1)^{\frac{n(n-1)}{2}}$ 必须写——"一旦这个小细节没注意到, 考到了五分就没了"(仅副对角线下方全为零时适用)。</p>
 <p><b>(2) 范德蒙行列式</b>:
-$$ \begin{vmatrix} 1 & 1 & \cdots & 1 \\ a_1 & a_2 & \cdots & a_n \\ a_1^2 & a_2^2 & \cdots & a_n^2 \\ \vdots & \vdots & \ddots & \vdots \\ a_1^{n-1} & a_2^{n-1} & \cdots & a_n^{n-1} \end{vmatrix} = \prod_{1 \le i < j \le n}(a_j - a_i) $$</p>
+$$ \begin{vmatrix} 1 &amp; 1 &amp; \cdots &amp; 1 \\ a_1 &amp; a_2 &amp; \cdots &amp; a_n \\ a_1^2 &amp; a_2^2 &amp; \cdots &amp; a_n^2 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_1^{n-1} &amp; a_2^{n-1} &amp; \cdots &amp; a_n^{n-1} \end{vmatrix} = \prod_{1 \le i &lt; j \le n}(a_j - a_i) $$</p>
 <p><b>直觉</b>: 结果就是所有"后减前"的差再全部乘起来。记住口诀: 每个数"挨个打巴掌"——右边的数依次"欺负"左边的数, 全部做(右 − 左)<span class="mk res">线代救命</span>。</p>
 <p><b>易错点</b> <span class="mk warn">易错</span> 结果是 $\prod(a_j - a_i)$(后减前), 不是任意差; 顺序反了差一个符号。</p>
 <p><b>(3) 爪形行列式</b>: 消去爪边元素化为上三角。<span class="src">【来源: 0530（3）】</span></p>
@@ -416,7 +416,7 @@ $$ D = \sum_{j=1}^n a_{ij}A_{ij} \quad (\text{按第 } i \text{ 行展开}) = \s
 <p><b>注意</b> <span class="mk info">注意</span> 克拉默法则只适用于<b>方阵且系数行列式不为零</b>。不是方阵或行列式为零时不能用, 要用秩的方法。<span class="src">【来源: 0606（1-2）】</span></p>
 <h3 id="16分块方阵的行列式高频">1.6 分块方阵的行列式 <span class="mk freq">高频</span></h3>
 <p>设 $A$ 是 $m$ 阶, $B$ 是 $n$ 阶方阵:
-$$ \begin{vmatrix} A & C \\ 0 & B \end{vmatrix} = |A|\cdot|B|, \quad \begin{vmatrix} 0 & A \\ B & 0 \end{vmatrix} = (-1)^{mn}|A|\cdot|B| $$</p>
+$$ \begin{vmatrix} A &amp; C \\ 0 &amp; B \end{vmatrix} = |A|\cdot|B|, \quad \begin{vmatrix} 0 &amp; A \\ B &amp; 0 \end{vmatrix} = (-1)^{mn}|A|\cdot|B| $$</p>
 <p><b>考法视角</b> 分块行列式常在抽象行列式题中出现, 关键是把矩阵分块后利用上述公式直接求行列式。</p>
 <hr />
 <h2 id="二矩阵">二、矩阵</h2>
@@ -503,7 +503,7 @@ $$ |A^{\mathrm{T}}| = |A|, \quad |kA| = k^n|A|, \quad |AB| = |A|\cdot|B|, \quad 
 <p><b>注意</b> <span class="mk info">注意</span> $|A+B| \neq |A| + |B|$(一般不等)。$|kA| = k^n|A|$ 中的 n 是阶数, 不是系数前多了个 k, 这是高频考点。</p>
 <h3 id="24伴随矩阵必考">2.4 伴随矩阵 <span class="mk biz">必考</span></h3>
 <p><b>定义</b> $A^*$ 是由 $|A|$ 各元素代数余子式<b>转置排列</b>而成的矩阵:
-$$ A^* = \begin{pmatrix} A_{11} & A_{21} & \cdots & A_{n1} \\ A_{12} & A_{22} & \cdots & A_{n2} \\ \vdots & \vdots & \ddots & \vdots \\ A_{1n} & A_{2n} & \cdots & A_{nn} \end{pmatrix} $$</p>
+$$ A^* = \begin{pmatrix} A_{11} &amp; A_{21} &amp; \cdots &amp; A_{n1} \\ A_{12} &amp; A_{22} &amp; \cdots &amp; A_{n2} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ A_{1n} &amp; A_{2n} &amp; \cdots &amp; A_{nn} \end{pmatrix} $$</p>
 <p><b>记忆</b>: 主对换(行标=列标的 $A_{ij}$, 位置和 $a_{ij}$ 相同), 副变号(行和列互换)。</p>
 <p><b>核心公式</b> $$ AA^* = A^*A = |A|E $$</p>
 <p><b>性质</b>:</p>
@@ -536,7 +536,7 @@ $$ A^* = \begin{pmatrix} A_{11} & A_{21} & \cdots & A_{n1} \\ A_{12} & A_{22} & 
 <h3 id="26分块矩阵高频">2.6 分块矩阵 <span class="mk freq">高频</span></h3>
 <p>分块乘法法则和普通矩阵乘法相同, 要求<b>左边矩阵的列分法与右边矩阵的行分法一致</b>。</p>
 <p>分块方阵的逆(设 $A, B$ 可逆):
-$$ \begin{pmatrix} A & 0 \\ 0 & B \end{pmatrix}^{-1} = \begin{pmatrix} A^{-1} & 0 \\ 0 & B^{-1} \end{pmatrix}, \quad \begin{pmatrix} 0 & A \\ B & 0 \end{pmatrix}^{-1} = \begin{pmatrix} 0 & B^{-1} \\ A^{-1} & 0 \end{pmatrix} $$</p>
+$$ \begin{pmatrix} A &amp; 0 \\ 0 &amp; B \end{pmatrix}^{-1} = \begin{pmatrix} A^{-1} &amp; 0 \\ 0 &amp; B^{-1} \end{pmatrix}, \quad \begin{pmatrix} 0 &amp; A \\ B &amp; 0 \end{pmatrix}^{-1} = \begin{pmatrix} 0 &amp; B^{-1} \\ A^{-1} &amp; 0 \end{pmatrix} $$</p>
 <h3 id="27初等变换与初等矩阵必考">2.7 初等变换与初等矩阵 <span class="mk biz">必考</span></h3>
 <p><b>三种初等行(列)变换</b>:</p>
 <ol>
@@ -572,7 +572,7 @@ $$ \begin{pmatrix} A & 0 \\ 0 & B \end{pmatrix}^{-1} = \begin{pmatrix} A^{-1} & 
 <li><b>$AB = O \Rightarrow r(A) + r(B) \le n$</b>(n 是 A 的列数 = B 的行数) <span class="mk biz">必考</span></li>
 <li>
 <p>伴随矩阵的秩:
-   $$ r(A^*) = \begin{cases} n, & r(A) = n \\ 1, & r(A) = n-1 \\ 0, & r(A) < n-1 \end{cases} $$</p>
+   $$ r(A^*) = \begin{cases} n, &amp; r(A) = n \\ 1, &amp; r(A) = n-1 \\ 0, &amp; r(A) &lt; n-1 \end{cases} $$</p>
 </li>
 <li>
 <p>$r(AB) \le \min\{r(A), r(B)\}$(矩阵越乘秩越小)</p>
@@ -604,7 +604,7 @@ $$ \iff r(\alpha_1, \dots, \alpha_s) = r(\alpha_1, \dots, \alpha_s, \beta) $$</p
 <p><b>直觉</b> 相关 = "向量中有冗余, 某个向量可由其他拼出"; 无关 = "每个向量都给系统带来新信息(新维度)"。</p>
 <p><b>判定方法</b>(n 维向量组 $\alpha_1, \dots, \alpha_s$):</p>
 <ul>
-<li><b>相关</b> $\iff$ 至少一个向量可由其余向量表示 $\iff$ $r(\alpha_1,\dots,\alpha_s) < s$ $\iff$ (当 $s = n$ 时) $|\alpha_1,\dots,\alpha_n| = 0$</li>
+<li><b>相关</b> $\iff$ 至少一个向量可由其余向量表示 $\iff$ $r(\alpha_1,\dots,\alpha_s) &lt; s$ $\iff$ (当 $s = n$ 时) $|\alpha_1,\dots,\alpha_n| = 0$</li>
 <li><b>无关</b> $\iff$ 任一向量均不能由其余表示 $\iff$ $r(\alpha_1,\dots,\alpha_s) = s$ $\iff$ (当 $s = n$ 时) $|\alpha_1,\dots,\alpha_n| \neq 0$</li>
 </ul>
 <p><b>相关性 7 条性质</b> <span class="mk biz">必考</span><span class="src">【来源: 0607（1）】</span></p>
@@ -639,20 +639,20 @@ $$ \iff r(\alpha_1, \dots, \alpha_s) = r(\alpha_1, \dots, \alpha_s, \beta) $$</p
 <p><b>齐次 $A\mathbf{x} = \mathbf{0}$</b>(m 个方程, n 个未知量):</p>
 <ul>
 <li>$r(A) = n$ → <b>只有零解</b></li>
-<li>$r(A) < n$ → <b>有非零解</b>(无穷多解)</li>
+<li>$r(A) &lt; n$ → <b>有非零解</b>(无穷多解)</li>
 </ul>
 <p><b>非齐次 $A\mathbf{x} = \mathbf{b}$</b>:</p>
 <ul>
-<li>$r(A) < r(A, \mathbf{b})$ → <b>无解</b></li>
+<li>$r(A) &lt; r(A, \mathbf{b})$ → <b>无解</b></li>
 <li>$r(A) = r(A, \mathbf{b}) = n$ → <b>唯一解</b></li>
-<li>$r(A) = r(A, \mathbf{b}) < n$ → <b>无穷多解</b></li>
+<li>$r(A) = r(A, \mathbf{b}) &lt; n$ → <b>无穷多解</b></li>
 </ul>
 <p><b>方阵特殊情况</b>: 若 A 是 n 阶方阵:</p>
 <ul>
 <li>$|A| \neq 0$ → 齐次只有零解, 非齐次唯一解(克拉默法则)</li>
 <li>$|A| = 0$ → 齐次有非零解, 非齐次无解或无穷多解(需进一步看秩)</li>
 </ul>
-<p><b>考法视角</b> <span class="mk freq">高频</span> 含有参数的方程组, 分三种情况讨论: ① $|A| \neq 0$ 时唯一解; ② $|A| = 0$ 时分两种情况: $r(A) \neq r(A,\mathbf{b})$ 无解, $r(A) = r(A,\mathbf{b}) < n$ 无穷多解。</p>
+<p><b>考法视角</b> <span class="mk freq">高频</span> 含有参数的方程组, 分三种情况讨论: ① $|A| \neq 0$ 时唯一解; ② $|A| = 0$ 时分两种情况: $r(A) \neq r(A,\mathbf{b})$ 无解, $r(A) = r(A,\mathbf{b}) &lt; n$ 无穷多解。</p>
 <h3 id="43解的结构n-rA掌控一切">4.3 解的结构: n-r(A) 掌控一切</h3>
 <p><b>基础解系</b>: 齐次方程 $A\mathbf{x} = \mathbf{0}$ 的解集的极大线性无关组。</p>
 <p><b>解向量的个数</b> = $n - r(A)$(自由变量的个数)</p>

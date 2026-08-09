@@ -571,17 +571,17 @@ $$ \lim_{n\to\infty} C_n^k p_n^k (1-p_n)^{n-k} = \frac{\lambda^k e^{-\lambda}}{k
 <p>$$ P\{X=k\} = \frac{C_M^k C_{N-M}^{n-k}}{C_N^n} $$
 N 件产品中 M 件次品, 不放回抽 n 件, 次品数 X 的分布。当 N 很大时可用二项分布近似。</p>
 <h4>(6) 均匀分布 U(a,b) <span class="mk biz">必考</span></h4>
-<p>$$ f(x) = \begin{cases} \frac{1}{b-a}, & a<x<b \\ 0, & \text{其他} \end{cases} $$
-$$ F(x) = \begin{cases} 0, & x<a \\ \frac{x-a}{b-a}, & a\leq x<b \\ 1, & x\geq b \end{cases} $$</p>
+<p>$$ f(x) = \begin{cases} \frac{1}{b-a}, &amp; a&lt;x&lt;b \\ 0, &amp; \text{其他} \end{cases} $$
+$$ F(x) = \begin{cases} 0, &amp; x&lt;a \\ \frac{x-a}{b-a}, &amp; a\leq x&lt;b \\ 1, &amp; x\geq b \end{cases} $$</p>
 <p><b>直觉</b> [a,b] 上的等可能性: 落在任一子区间的概率只取决于子区间的长度, 与位置无关。</p>
 <h4>(7) 指数分布 E(λ) <span class="mk biz">必考</span></h4>
-<p>$$ f(x) = \begin{cases} \lambda e^{-\lambda x}, & x>0 \\ 0, & x\leq0 \end{cases} $$
-$$ F(x) = \begin{cases} 1-e^{-\lambda x}, & x\geq0 \\ 0, & x<0 \end{cases} $$</p>
+<p>$$ f(x) = \begin{cases} \lambda e^{-\lambda x}, &amp; x>0 \\ 0, &amp; x\leq0 \end{cases} $$
+$$ F(x) = \begin{cases} 1-e^{-\lambda x}, &amp; x\geq0 \\ 0, &amp; x&lt;0 \end{cases} $$</p>
 <p><b><span class="mk ok">重点</span>无记忆性</b>: P{X &gt; s+t | X &gt; s} = P{X &gt; t} = e^{−λt}。这是指数分布独有的性质(连续型中), 用于描述"寿命": 已经活了 s 小时, 再活 t 小时的概率等于从头再活 t 小时的概率。</p>
 <p><b>应用</b>: 电子元件寿命、等待时间、排队论。</p>
 <h4>(8) 正态分布 N(μ,σ²) <span class="mk biz">必考</span><span class="mk freq">高频</span></h4>
 <p><b>概率密度</b>:
-$$ f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad -\infty<x<+\infty $$</p>
+$$ f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad -\infty&lt;x&lt;+\infty $$</p>
 <p><b>标准正态分布</b> N(0,1): μ=0, σ=1, 密度记为 φ(x), 分布函数记为 Φ(x)。</p>
 <p><b>标准化</b>: 若 X~N(μ,σ²), 则 Z = (X−μ)/σ ~ N(0,1)
 $$ P\{X \leq a\} = \Phi\!\left(\frac{a-\mu}{\sigma}\right) $$</p>

@@ -399,7 +399,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_极限与数列.html#37抓大头与有理化高频">抓大头与有理化(含符号陷阱)</a></li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">分子 $\sim|x|=-x$; 分母 $\sim\sqrt2|x|-x=(-\sqrt2-1)x$; 比值 $=\frac{-1}{-\sqrt2-1}=\sqrt2-1$<span class="why">$x\to-\infty$ 时根号内 $x^2-2\cos x\sim x^2$($\cos x$ 有界, 可忽略), 开方取 $|x|=-x$; 分母根号内抓大头得 $\sqrt{2x^2}=\sqrt2|x|$。分子分母同为 $-x$ 的一次阶, 比系数得 $\frac{1}{\sqrt2+1}=\sqrt2-1$, 数学上确定。<b>易错</b>: $x<0$ 时 $\sqrt{x^2}=|x|=-x$ 而非 $x$; 分母 $-x+1$ 中的常数 1 是低阶, 忽略。</span></div>
+<div class="step">分子 $\sim|x|=-x$; 分母 $\sim\sqrt2|x|-x=(-\sqrt2-1)x$; 比值 $=\frac{-1}{-\sqrt2-1}=\sqrt2-1$<span class="why">$x\to-\infty$ 时根号内 $x^2-2\cos x\sim x^2$($\cos x$ 有界, 可忽略), 开方取 $|x|=-x$; 分母根号内抓大头得 $\sqrt{2x^2}=\sqrt2|x|$。分子分母同为 $-x$ 的一次阶, 比系数得 $\frac{1}{\sqrt2+1}=\sqrt2-1$, 数学上确定。<b>易错</b>: $x&lt;0$ 时 $\sqrt{x^2}=|x|=-x$ 而非 $x$; 分母 $-x+1$ 中的常数 1 是低阶, 忽略。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: $x\to-\infty$ 根号抓大头, $\sqrt{x^2}=|x|=-x$ 的符号陷阱。</div>
 </details>
 
@@ -589,13 +589,13 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: 含参数 $n$ 次根号极限按 $|x|$ 分段, 提主导因子+夹逼。</div>
 </details>
 
-<p><b>压缩映像定理</b> 设 $|x_{n+1}-a|\le r|x_n-a|$, $0\le r<1$, 则 $x_n\to a$ 【数列极限的计算.pdf】</p>
+<p><b>压缩映像定理</b> 设 $|x_{n+1}-a|\le r|x_n-a|$, $0\le r&lt;1$, 则 $x_n\to a$ 【数列极限的计算.pdf】</p>
 <ul>
 <li>用途: 递推数列收敛的快速判定</li>
 <li><span class="mk theory">理论</span><a href="数学_极限与数列.html#44压缩映像定理拓展了解">压缩映像定理</a></li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">递推 $|x_n-a|\le r^n|x_0-a|\to0$ ∎<span class="why">把条件当递推不等式: 每迭代一次误差乘 $r$, $|x_n-a|\le r|x_{n-1}-a|\le\cdots\le r^n|x_0-a|$; 因 $0\le r<1$, $r^n\to0$, 误差被压到 0, 即 $x_n\to a$。<b>考点</b>: 压缩映像(不动点)思想的数列版, 递推数列收敛的快速判定, 常用于 $x_{n+1}=f(x_n)$ 型。</span></div>
+<div class="step">递推 $|x_n-a|\le r^n|x_0-a|\to0$ ∎<span class="why">把条件当递推不等式: 每迭代一次误差乘 $r$, $|x_n-a|\le r|x_{n-1}-a|\le\cdots\le r^n|x_0-a|$; 因 $0\le r&lt;1$, $r^n\to0$, 误差被压到 0, 即 $x_n\to a$。<b>考点</b>: 压缩映像(不动点)思想的数列版, 递推数列收敛的快速判定, 常用于 $x_{n+1}=f(x_n)$ 型。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 压缩条件直接压出收敛——$r^n|x_0-a|\to0$, 递推数列判敛的通用结论。</div>
 </details>
 
@@ -605,9 +605,9 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_极限与数列.html#43单调有界收敛准则高频">单调有界收敛准则</a> <span class="mk xref">相关</span><a href="数学_极限与数列_例题.html#例118">例 1.18</a> 同为"数列极限存在性证明", 一个压缩递推、一个根方程反推</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">(Ⅰ) 令 $f(x)=x^n+x^{n-1}+\cdots+x-1$: $f(\frac12)=1-(\frac12)^n-1=-(\frac12)^n<0$, $f(1)=n-1>0$, 且 $f'(x)=nx^{n-1}+\cdots+1>0$ 严格增<span class="why">等比求和: $\frac12+\cdots+(\frac12)^n=1-(\frac12)^n$; 零点定理给存在性, 单调性给唯一性——"存在+单调"是证唯一根的固定组合。</span></div>
-<div class="step">(Ⅱ) 比较 $x_{n+1}$ 与 $x_n$: 由定义 $\sum_{k=1}^{n+1}x_{n+1}^k=1$, 而 $f(x_{n+1})=\sum_{k=1}^{n+1}x_{n+1}^k-1=0$; 且 $f(x_{n+1})=\sum_{k=1}^{n}x_{n+1}^k+x_{n+1}^{n+1}-1=x_{n+1}^{n+1}<0$ 代回 $f$ 的定义… 关键: $f_n(x_{n+1})=\sum_{k=1}^{n}x_{n+1}^k-1=-x_{n+1}^{n+1}<0=f_n(x_n)$, 由 $f_n$ 单调增得 $x_{n+1}<x_n$, 数列单调减<span class="why"><b>考点</b>: 把 $x_{n+1}$ 代入"第 n 个方程"的函数值, 符号负说明它比根 $x_n$ 小——"同函数代值比大小"是方程根数列单调性的标准手法。</span></div>
-<div class="step">单调减且有下界 $0$ ⟹ $\lim x_n=a$ 存在; 由 $x_n(1-x_n^n)/(1-x_n)=1$ 即 $2x_n=1+x_n^{n+1}$, 令 $n\to\infty$: $x_n^{n+1}\to0$(因 $a<1$ 时 $\sim a^{n+1}$), 得 $2a=1$ ⟹ $a=\frac12$<span class="why">等比求和反推 $x_n$ 的隐式方程; 极限落在区间端点的"开边界" $\frac12$ 上——所以 (Ⅰ) 特意强调根在 $(\frac12,1)$ 内, 提示极限就是 $\frac12$。</span></div>
+<div class="step">(Ⅰ) 令 $f(x)=x^n+x^{n-1}+\cdots+x-1$: $f(\frac12)=1-(\frac12)^n-1=-(\frac12)^n&lt;0$, $f(1)=n-1>0$, 且 $f'(x)=nx^{n-1}+\cdots+1>0$ 严格增<span class="why">等比求和: $\frac12+\cdots+(\frac12)^n=1-(\frac12)^n$; 零点定理给存在性, 单调性给唯一性——"存在+单调"是证唯一根的固定组合。</span></div>
+<div class="step">(Ⅱ) 比较 $x_{n+1}$ 与 $x_n$: 由定义 $\sum_{k=1}^{n+1}x_{n+1}^k=1$, 而 $f(x_{n+1})=\sum_{k=1}^{n+1}x_{n+1}^k-1=0$; 且 $f(x_{n+1})=\sum_{k=1}^{n}x_{n+1}^k+x_{n+1}^{n+1}-1=x_{n+1}^{n+1}&lt;0$ 代回 $f$ 的定义… 关键: $f_n(x_{n+1})=\sum_{k=1}^{n}x_{n+1}^k-1=-x_{n+1}^{n+1}&lt;0=f_n(x_n)$, 由 $f_n$ 单调增得 $x_{n+1}&lt;x_n$, 数列单调减<span class="why"><b>考点</b>: 把 $x_{n+1}$ 代入"第 n 个方程"的函数值, 符号负说明它比根 $x_n$ 小——"同函数代值比大小"是方程根数列单调性的标准手法。</span></div>
+<div class="step">单调减且有下界 $0$ ⟹ $\lim x_n=a$ 存在; 由 $x_n(1-x_n^n)/(1-x_n)=1$ 即 $2x_n=1+x_n^{n+1}$, 令 $n\to\infty$: $x_n^{n+1}\to0$(因 $a&lt;1$ 时 $\sim a^{n+1}$), 得 $2a=1$ ⟹ $a=\frac12$<span class="why">等比求和反推 $x_n$ 的隐式方程; 极限落在区间端点的"开边界" $\frac12$ 上——所以 (Ⅰ) 特意强调根在 $(\frac12,1)$ 内, 提示极限就是 $\frac12$。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 方程根数列极限 = 零点+单调证存在 → 根方程反推 $2x_n=1+x_n^{n+1}$ → 舍高阶项得极限; (Ⅰ) 的区间端点就是答案预告。</div>
 </details></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_极限与数列.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 极限与数列</b></span></a><a class="next" href="数学_导数与微分.html"><span class="pg-t"><small>下一篇</small><b>数学 · 导数与微分</b></span><span class="pg-ic">→</span></a></nav></main>
 <button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>

@@ -372,8 +372,8 @@ $$ \sum_{n=1}^{\infty} u_n \text{ 收敛} \iff \lim_{n\to\infty} S_n \text{ 存�
 <h3 id="12三类基准级数必考">1.2 三类基准级数 <span class="mk biz">必考</span></h3>
 <p>考试中几乎所有正项级数判别都以这些为"标尺"做比较。</p>
 <p><b>几何级数 (等比级数)</b>
-$$ \sum_{n=0}^{\infty} aq^n \quad (a\neq0):\quad \begin{cases} |q|<1 \text{ 时收敛, 和 } = \dfrac{a}{1-q} \\ |q|\geq1 \text{ 时发散} \end{cases} $$</p>
-<p><b>直觉</b> 几何级数是比值/根值判别法的"原型"。$|q|<1$ 意味着每一项至少按比例缩小, 项最终"指数级衰减", 和有限。</p>
+$$ \sum_{n=0}^{\infty} aq^n \quad (a\neq0):\quad \begin{cases} |q|&lt;1 \text{ 时收敛, 和 } = \dfrac{a}{1-q} \\ |q|\geq1 \text{ 时发散} \end{cases} $$</p>
+<p><b>直觉</b> 几何级数是比值/根值判别法的"原型"。$|q|&lt;1$ 意味着每一项至少按比例缩小, 项最终"指数级衰减", 和有限。</p>
 <p><b>p 级数</b>
 $$ \sum_{n=1}^{\infty} \frac{1}{n^p} \quad (p>0):\quad \begin{cases} p>1 \text{ 时收敛} \\ p\leq1 \text{ 时发散} \end{cases} $$</p>
 <p><b>为什么是 p=1 分界?</b> <span class="mk ok">重点</span> 可通过积分判别法理解: $\sum 1/n^p$ 与 $\int_1^\infty dx/x^p$ 同敛散。$\int x^{-p}dx$ 的原函数是 $\frac{x^{1-p}}{1-p}$ ($p\neq1$) 或 $\ln x$ ($p=1$)。$p>1$ 时 $x^{1-p}\to0$, 积分收敛; $p\leq1$ 时积分发散。所以 <b>p=1 不是人为划分, 是积分判别的自然结果</b>。</p>
@@ -441,7 +441,7 @@ $$ \sum u_n \text{ 收敛} \iff S_n \text{ 有上界} $$</p>
 <h3 id="23比较判别法的极限形式必考">2.3 比较判别法的极限形式 <span class="mk biz">必考</span></h3>
 <p><b>核心结论</b> 设 $u_n, v_n > 0$, $\displaystyle\lim_{n\to\infty}\frac{u_n}{v_n} = l$:</p>
 <ul>
-<li>$0 < l < \infty$: $\sum u_n$ 与 $\sum v_n$ <b>同敛散</b> (最常用情况)</li>
+<li>$0 &lt; l &lt; \infty$: $\sum u_n$ 与 $\sum v_n$ <b>同敛散</b> (最常用情况)</li>
 <li>$l = 0$: $\sum v_n$ 收敛 $\Rightarrow$ $\sum u_n$ 收敛 ("$u_n$ 比 $v_n$ 更高阶的无穷小")</li>
 <li>$l = \infty$: $\sum v_n$ 发散 $\Rightarrow$ $\sum u_n$ 发散 ("$u_n$ 比 $v_n$ 更低阶")</li>
 </ul>
@@ -450,14 +450,14 @@ $$ \sum u_n \text{ 收敛} \iff S_n \text{ 有上界} $$</p>
 <p><span class="src">【来源: 0524（1）、0726（1）】</span></p>
 <h3 id="24比值判别法达朗贝尔必考">2.4 比值判别法 (达朗贝尔) <span class="mk biz">必考</span></h3>
 <p><b>核心结论</b> 设 $\displaystyle\lim_{n\to\infty}\frac{u_{n+1}}{u_n} = \rho$:
-$$ \rho<1 \text{ 收敛},\quad \rho>1 \text{ 发散},\quad \rho=1 \text{ 不确定} $$</p>
-<p><b>直觉</b> 当 n 很大时, $u_{n+1} \approx \rho u_n$, 即通项近似于几何级数的项。$\rho<1$ 意味着"等比衰减", 当然收敛; $\rho>1$ 意味着通项不但不衰减还增大, 发散。</p>
+$$ \rho&lt;1 \text{ 收敛},\quad \rho>1 \text{ 发散},\quad \rho=1 \text{ 不确定} $$</p>
+<p><b>直觉</b> 当 n 很大时, $u_{n+1} \approx \rho u_n$, 即通项近似于几何级数的项。$\rho&lt;1$ 意味着"等比衰减", 当然收敛; $\rho>1$ 意味着通项不但不衰减还增大, 发散。</p>
 <p><b>适用场景</b> 通项含 $n!$、$a^n$、$n^n$ 等"乘法型"结构时优先考虑——这些项的比值能约分得很干净。</p>
 <p><b>为什么 $\rho=1$ 不确定?</b> p 级数 $\sum 1/n^p$ 用比值判别法: $\frac{u_{n+1}}{u_n}=(\frac{n}{n+1})^p\to1$, 但 p 级数的敛散性取决于 p。所以 $\rho=1$ 时比值判别法"失灵", 需换其他方法。</p>
 <p><span class="src">【来源: 0524（1）】</span></p>
 <h3 id="25根值判别法柯西高频">2.5 根值判别法 (柯西) <span class="mk freq">高频</span></h3>
 <p><b>核心结论</b> 设 $\displaystyle\lim_{n\to\infty}\sqrt[n]{u_n} = \rho$:
-$$ \rho<1 \text{ 收敛},\quad \rho>1 \text{ 发散},\quad \rho=1 \text{ 不确定} $$</p>
+$$ \rho&lt;1 \text{ 收敛},\quad \rho>1 \text{ 发散},\quad \rho=1 \text{ 不确定} $$</p>
 <p><b>直觉</b> $\sqrt[n]{u_n}\approx\rho$ 意味着 $u_n\approx\rho^n$, 又是几何级数在做"标尺"。</p>
 <p><b>适用场景</b> 通项为 n 次方结构如 $(\frac{n}{2n+1})^n$ 时, 根值法比比值法更方便。</p>
 <p><span class="mk info">注意</span> 根值法的适用范围<b>比</b>比值法更宽: 根值极限存在 ⇒ 比值极限存在且相等; 反之不成立。但实际操作中, 比值法更常用(因为求导方便)。</p>
@@ -549,20 +549,20 @@ $$ \sum_{n=1}^{\infty} f(n) \text{ 与 } \int_1^{+\infty} f(x)\,dx \text{ 同敛
 <h3 id="52阿贝尔定理为什么收敛域总是区间必考">5.2 阿贝尔定理——为什么收敛域总是区间? <span class="mk biz">必考</span></h3>
 <p><b>核心结论</b></p>
 <ul>
-<li>若 $\sum a_n x^n$ 在 $x=x_0\,(\neq0)$ 处收敛, 则对所有 $|x|<|x_0|$ 绝对收敛</li>
+<li>若 $\sum a_n x^n$ 在 $x=x_0\,(\neq0)$ 处收敛, 则对所有 $|x|&lt;|x_0|$ 绝对收敛</li>
 <li>若 $\sum a_n x^n$ 在 $x=x_0$ 处发散, 则对所有 $|x|>|x_0|$ 发散</li>
 </ul>
 <p><b>推论</b> 若在 $x=x_0$ 处<b>条件收敛</b>, 则收敛半径 $R=|x_0|$。</p>
-<p><b>直觉</b> 幂级数的收敛域一定是以 0 为中心的对称区间(可能含端点)。收敛半径 R: $|x|<R$ 绝对收敛, $|x|>R$ 发散, $|x|=R$ 处需单独判断。</p>
+<p><b>直觉</b> 幂级数的收敛域一定是以 0 为中心的对称区间(可能含端点)。收敛半径 R: $|x|&lt;R$ 绝对收敛, $|x|>R$ 发散, $|x|=R$ 处需单独判断。</p>
 <p><b>为什么?</b> $x$ 离原点越近, $x^n$ 衰减越快, 级数越容易收敛。阿贝尔定理保证了这个"单调性": 不存在"中间发散, 两端收敛"的奇怪情况。</p>
 <h3 id="53收敛半径的求法必考">5.3 收敛半径的求法 <span class="mk biz">必考</span></h3>
 <p><b>公式法</b> (适用于<b>不缺项</b>的幂级数):
-$$ \lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|=\rho \quad\Rightarrow\quad R=\begin{cases} \dfrac{1}{\rho}, & \rho\neq0,\infty \\ +\infty, & \rho=0 \\ 0, & \rho=+\infty \end{cases} $$</p>
+$$ \lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|=\rho \quad\Rightarrow\quad R=\begin{cases} \dfrac{1}{\rho}, &amp; \rho\neq0,\infty \\ +\infty, &amp; \rho=0 \\ 0, &amp; \rho=+\infty \end{cases} $$</p>
 <p>也可以用根值: $\lim\sqrt[n]{|a_n|}=\rho$, $R=1/\rho$。</p>
 <p><b>两个等价便捷公式</b><span class="mk freq">高频</span> ① $R=\lim\left|\frac{a_n}{a_{n+1}}\right|$(比值公式的反写, 跳过 $\rho$ 一步到位); ② 若收敛区间已知为 $(a,b)$, 则 $R=\frac{b-a}{2}$——<b>半径 = 区间半宽</b>。</p>
 <p><b>aₙ 未知时走阿贝尔定理</b><span class="mk info">注意</span> 系数通项给不出的(抽象题), 用阿贝尔定理: 在 $x_1$ 绝对收敛 ⇒ $R\ge|x_1|$; 在 $x_2$ 发散 ⇒ $R\le|x_2|$; 条件收敛点恰在 $|x|=R$ 处。数轴图: 发散/绝对收敛/条件收敛/发散 关于 $|x|=R$ 对称。</p>
 <p><b>比值法直接求区间</b> (适用于<b>任何</b>幂级数, 包括缺项):
-$$ \lim_{n\to\infty}\left|\frac{u_{n+1}(x)}{u_n(x)}\right| < 1 $$</p>
+$$ \lim_{n\to\infty}\left|\frac{u_{n+1}(x)}{u_n(x)}\right| &lt; 1 $$</p>
 <p>解此不等式即得收敛区间。<b>这是最通用的方法, 缺项级数只能用这个。</b></p>
 <p><b>易错点</b> <span class="mk warn">易错</span></p>
 <ul>
@@ -592,12 +592,12 @@ $$ \lim_{n\to\infty}\left|\frac{u_{n+1}(x)}{u_n(x)}\right| < 1 $$</p>
 <h3 id="56和函数求解方法必考重点">5.6 和函数求解方法 <span class="mk biz">必考</span><span class="mk ok">重点</span></h3>
 <p><b>基本思路</b>: 利用已知展开式(几何级数的和 $1/(1-x)=\sum x^n$) + 逐项求导/积分, 把待求级数"拼"出来。</p>
 <p><b>常用已知和函数</b>(收敛域略写端点):
-$$ \frac{1}{1-x}=\sum_{n=0}^{\infty} x^n,\ |x|<1 $$
+$$ \frac{1}{1-x}=\sum_{n=0}^{\infty} x^n,\ |x|&lt;1 $$
 $$ e^x=\sum_{n=0}^{\infty} \frac{x^n}{n!},\ x\in\mathbb{R} $$
-$$ \ln(1+x)=\sum_{n=1}^{\infty} (-1)^{n-1}\frac{x^n}{n},\ -1<x\leq1 $$
+$$ \ln(1+x)=\sum_{n=1}^{\infty} (-1)^{n-1}\frac{x^n}{n},\ -1&lt;x\leq1 $$
 $$ \sin x=\sum_{n=0}^{\infty} (-1)^n\frac{x^{2n+1}}{(2n+1)!},\ x\in\mathbb{R} $$
 $$ \cos x=\sum_{n=0}^{\infty} (-1)^n\frac{x^{2n}}{(2n)!},\ x\in\mathbb{R} $$
-$$ (1+x)^\alpha = 1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2+\cdots,\ |x|<1 $$</p>
+$$ (1+x)^\alpha = 1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2+\cdots,\ |x|&lt;1 $$</p>
 <p><b>求解技巧总结</b>:</p>
 <ol>
 <li><b>系数含 n</b>: 先积分消去 n → 得到简单级数求和 → 再求导回来</li>

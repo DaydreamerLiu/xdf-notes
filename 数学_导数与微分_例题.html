@@ -387,7 +387,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_导数与微分.html#11定义">1.1 定义</a> · <a href="数学_导数与微分.html#12可导可微连续的关系必考">1.2 可导、可微、连续的关系</a> <span class="mk xref">相关</span><a href="数学_导数与微分_例题.html#例26">例 2.6</a> 同为"判可导性", 一个用充要条件、一个用分段点定义</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">选 (B): $\frac{f(1-e^h)}{h}=\frac{f(1-e^h)-f(0)}{1-e^h}\cdot\frac{1-e^h}{h}\to -f'(0)$<span class="why">$h>0$ 时 $1-e^h<0$, $h<0$ 时 $1-e^h>0$——增量 $1-e^h$ 从 0 两侧逼近 0, 且 $1-e^h\sim-h$, 比例因子 $\to-1$。所以该极限存在 $\iff$ $f'(0)$ 存在。<b>考点</b>: 充要条件题必须"增量双侧覆盖"。</span></div>
+<div class="step">选 (B): $\frac{f(1-e^h)}{h}=\frac{f(1-e^h)-f(0)}{1-e^h}\cdot\frac{1-e^h}{h}\to -f'(0)$<span class="why">$h>0$ 时 $1-e^h&lt;0$, $h&lt;0$ 时 $1-e^h>0$——增量 $1-e^h$ 从 0 两侧逼近 0, 且 $1-e^h\sim-h$, 比例因子 $\to-1$。所以该极限存在 $\iff$ $f'(0)$ 存在。<b>考点</b>: 充要条件题必须"增量双侧覆盖"。</span></div>
 <div class="step">(A) 错: $1-\cos h\sim\frac{h^2}{2}\ge0$ 只扫右侧; (C) 错: $h-\sin h\sim\frac{h^3}{6}$, 商 $=\frac{f(h-\sin h)}{h-\sin h}\cdot\frac{h}{6}\to0$ 恒成立(即使 $f'(0)$ 不存在, 如 $f(x)=|x|^{2/3}$ 也能使该极限存在); (D) 错: 反例 $f(x)=x^2\sin\frac1{x^2}$<span class="why">(A) 反例 $f(x)=|x|$: $f(1-\cos h)/h^2=(1-\cos h)/h^2\to\frac12$ 存在, 但 $f'(0)$ 不存在。(C) 是"可导 $\Rightarrow$ 极限为 0"成立、反过来不成立的典型——凡极限被压低一阶的都只给"弱条件"。(D) 反例中 $[f(2h)-f(h)]/h=4h\sin\frac1{4h^2}-h\sin\frac1{h^2}\to0$, 但 $f'(0)=\lim x\sin\frac1{x^2}$ 不存在。<b>易错</b>: 充要条件只认"增量形式 + 双侧 + 比例因子非零"三者齐备的选项。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 充要条件选 (B)——$1-e^h\sim-h$ 且双侧变号; (A)(C)(D) 各给一个反例。</div>
 </details>
@@ -405,7 +405,7 @@ main details .sum b{font-weight:700}
 </details>
 
 <h2 id="二可导性的讨论分段函数含参">二、可导性的讨论(分段函数/含参)</h2>
-<p id="例26" class="prob"><b>例 2.6</b> 设 $f(x)=\begin{cases}\dfrac{1-\cos x}{x},&x>0\\ x^2g(x),&x\le0\end{cases}$, 其中 $g(x)$ 是有界函数, 则 $f(x)$ 在 $x=0$ 处 ( ) (A) 极限不存在; (B) 极限存在但不连续; (C) 连续但不可导; (D) 可导 【0418（3）】</p>
+<p id="例26" class="prob"><b>例 2.6</b> 设 $f(x)=\begin{cases}\dfrac{1-\cos x}{x},&amp;x>0\\ x^2g(x),&amp;x\le0\end{cases}$, 其中 $g(x)$ 是有界函数, 则 $f(x)$ 在 $x=0$ 处 ( ) (A) 极限不存在; (B) 极限存在但不连续; (C) 连续但不可导; (D) 可导 【0418（3）】</p>
 <ul>
 <li>考点: 分段点连续性用极限、导数用定义, 有界量×无穷小</li>
 <li><span class="mk theory">理论</span><a href="数学_导数与微分.html#四可导性的讨论分段函数含参必考">四、可导性的讨论(分段函数/含参)</a> · <a href="数学_导数与微分.html#12可导可微连续的关系必考">1.2 可导、可微、连续的关系</a> · <a href="数学_极限与数列.html#38有界量无穷小必考">有界量 × 无穷小</a> <span class="mk xref">相关</span><a href="数学_导数与微分_例题.html#例27">例 2.7</a> 同为分段点用定义, 本题靠"有界"控制左导数</li>
@@ -417,7 +417,7 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: 分段点"先判连续、再按定义判左右导", 有界函数因子是左导数为 0 的开关。</div>
 </details>
 
-<p id="例27" class="prob"><b>例 2.7</b> 设 $f(x)=\begin{cases}\dfrac{\varphi(x)-\cos x}{x},&x\neq0\\ a,&x=0\end{cases}$, 其中 $\varphi(x)$ 具有二阶导数, $\varphi(0)=1,\ \varphi'(0)=0$. (1) 确定 $a$ 的值, 使 $f(x)$ 在 $x=0$ 处连续; (2) 在(1)的基础上求 $f'(x)$ 【0418（2）】</p>
+<p id="例27" class="prob"><b>例 2.7</b> 设 $f(x)=\begin{cases}\dfrac{\varphi(x)-\cos x}{x},&amp;x\neq0\\ a,&amp;x=0\end{cases}$, 其中 $\varphi(x)$ 具有二阶导数, $\varphi(0)=1,\ \varphi'(0)=0$. (1) 确定 $a$ 的值, 使 $f(x)$ 在 $x=0$ 处连续; (2) 在(1)的基础上求 $f'(x)$ 【0418（2）】</p>
 <ul>
 <li>考点: 含参分段函数——定参保连续, 再分"非分段点用公式、分段点用定义"</li>
 <li><span class="mk theory">理论</span><a href="数学_导数与微分.html#四可导性的讨论分段函数含参必考">四、可导性的讨论(分段函数/含参)</a> · <a href="数学_极限与数列.html#34洛必达法则必考">洛必达法则</a> <span class="mk xref">碰撞</span><a href="数学_导数与微分_例题.html#例28">例 2.8</a> 同为分段点求导, 本题参数来自"人为分段"</li>
@@ -429,15 +429,15 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: $a=0$; 非分段点公式求导, 分段点定义 + 两次洛必达得 $f'(0)=\frac{\varphi''(0)+1}{2}$。</div>
 </details>
 
-<p id="例28" class="prob"><b>例 2.8</b> 设 $f(x)=\begin{cases}x^{2x},&x>0\\ xe^x+1,&x\le0\end{cases}$, 求 $f'(x)$ 【0713（2）、0713（3）】</p>
+<p id="例28" class="prob"><b>例 2.8</b> 设 $f(x)=\begin{cases}x^{2x},&amp;x>0\\ xe^x+1,&amp;x\le0\end{cases}$, 求 $f'(x)$ 【0713（2）、0713（3）】</p>
 <ul>
 <li>考点: 幂指函数的分段点求导——右侧导数发散则整体不可导</li>
 <li><span class="mk theory">理论</span><a href="数学_导数与微分.html#四可导性的讨论分段函数含参必考">四、可导性的讨论(分段函数/含参)</a> · <a href="数学_导数与微分.html#25对数求导法高频">2.5 对数求导法</a> <span class="mk xref">碰撞</span><a href="数学_导数与微分_例题.html#例218">例 2.18</a> 同为幂指函数, 一个分段一个直接对数求导</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">$x>0$: $f'(x)=x^{2x}(2\ln x+2)$; $x<0$: $f'(x)=(1+x)e^x$<span class="why">右支 $x^{2x}=e^{2x\ln x}$, 链式得 $e^{2x\ln x}(2\ln x+2)$; 左支 $xe^x$ 乘积法则。非分段点直接套公式。</span></div>
+<div class="step">$x>0$: $f'(x)=x^{2x}(2\ln x+2)$; $x&lt;0$: $f'(x)=(1+x)e^x$<span class="why">右支 $x^{2x}=e^{2x\ln x}$, 链式得 $e^{2x\ln x}(2\ln x+2)$; 左支 $xe^x$ 乘积法则。非分段点直接套公式。</span></div>
 <div class="step">$x=0$: 左导 $=\lim_{x\to0^-}\frac{xe^x+1-1}{x}=1$; 右导 $=\lim_{x\to0^+}\frac{x^{2x}-1}{x}=\lim\frac{e^{2x\ln x}-1}{x}$<span class="why">左支代 $f(0)=1$; 右支 $2x\ln x\to0$ 使 $e^{2x\ln x}-1\sim2x\ln x$, 除以 $x$ 得 $2\ln x\to-\infty$, 右导数不存在。</span></div>
-<div class="step">$f'(0)$ 不存在: $f'(x)=\begin{cases}(1+x)e^x,&x<0\\ x^{2x}(2\ln x+2),&x>0\end{cases}$<span class="why">右导 $-\infty$ 与左导 1 不等。<b>易错</b>: 幂指函数 $x^{2x}$ 在 0 点右侧"太平滑地陡峭"——$x^{2x}$ 本身连续但在此处导数发散, 靠的是 $\ln x$ 的阶; 分段点一定要定义验算。</span></div>
+<div class="step">$f'(0)$ 不存在: $f'(x)=\begin{cases}(1+x)e^x,&amp;x&lt;0\\ x^{2x}(2\ln x+2),&amp;x>0\end{cases}$<span class="why">右导 $-\infty$ 与左导 1 不等。<b>易错</b>: 幂指函数 $x^{2x}$ 在 0 点右侧"太平滑地陡峭"——$x^{2x}$ 本身连续但在此处导数发散, 靠的是 $\ln x$ 的阶; 分段点一定要定义验算。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 分段函数求导——两侧公式 + 分段点定义, 右导数 $2\ln x\to-\infty$ 判不可导。</div>
 </details>
 
@@ -464,13 +464,13 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: 乘积法则证明的"增一项减一项"技巧, 推广到 $n$ 因子"轮流求导相加"。</div>
 </details>
 
-<p id="例211" class="prob"><b>例 2.11</b> 设 $f(x)=\begin{cases}\ln\sqrt{x},&x\ge1\\ 2x-1,&x<1\end{cases}$, $y=f[f(x)]$, 求 $\dfrac{dy}{dx}\Big|_{x=e}$ 【0713（2）、0713（3）】</p>
+<p id="例211" class="prob"><b>例 2.11</b> 设 $f(x)=\begin{cases}\ln\sqrt{x},&amp;x\ge1\\ 2x-1,&amp;x&lt;1\end{cases}$, $y=f[f(x)]$, 求 $\dfrac{dy}{dx}\Big|_{x=e}$ 【0713（2）、0713（3）】</p>
 <ul>
 <li>考点: 复合链式 + 先算内层函数值确定用哪支</li>
 <li><span class="mk theory">理论</span><a href="数学_导数与微分.html#22求导法则必考">2.2 求导法则</a> <span class="mk xref">相关</span><a href="数学_导数与微分_例题.html#例212">例 2.12</a> 同为复合求导, 本题复合的是分段函数</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">$f(e)=\ln\sqrt{e}=\frac12$, $f'(e)=\frac{1}{2e}$; $f(\tfrac12)=0$, $f'(\tfrac12)=2$<span class="why">先算内层取值: $e>1$ 用 $\ln\sqrt{x}$ 支; $\frac12<1$ 用 $2x-1$ 支。每层导数都要按对应支取。</span></div>
+<div class="step">$f(e)=\ln\sqrt{e}=\frac12$, $f'(e)=\frac{1}{2e}$; $f(\tfrac12)=0$, $f'(\tfrac12)=2$<span class="why">先算内层取值: $e>1$ 用 $\ln\sqrt{x}$ 支; $\frac12&lt;1$ 用 $2x-1$ 支。每层导数都要按对应支取。</span></div>
 <div class="step">$y'(e)=f'[f(e)]\cdot f'(e)=f'(\tfrac12)\cdot f'(e)=2\cdot\frac1{2e}=\frac1e$<span class="why">链式法则从外到内剥: $y'=f'(f(x))\cdot f'(x)$。<b>易错</b>: 外层导数要在 $f(e)=\frac12$ 处取值, 不是 $e$ 处。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 复合分段函数——先定内层值落在哪一支, 再链式求值, 答案 $\frac1e$。</div>
 </details>
@@ -635,8 +635,8 @@ main details .sum b{font-weight:700}
 <details><summary>解答</summary>
 <div class="step">(1) 设切点 $(x_0,e^{x_0})$: 切线 $y-e^{x_0}=e^{x_0}(x-x_0)$, 过原点 $-e^{x_0}=e^{x_0}(0-x_0)\Rightarrow x_0=1$, 切线 $y=ex$<span class="why">过曲线外一点求切线, 一定要"设切点、写切线、代入定点", 不能拿 $x=0$ 处导数当斜率。</span></div>
 <div class="step">(2) 设切点横坐标 $t$: 切线过原点 $\iff e^t+(a+2)t+b=(e^t+a+2)t$, 即 $b=e^t(t-1)$<span class="why">切线斜率 $e^t+a+2$, 过原点要求"切点纵坐标 = 斜率$\times t$", $a+2$ 恰好抵消, 分离出 $b=g(t)=e^t(t-1)$。<b>考点</b>: 把"有几条切线"翻译成"方程 $b=g(t)$ 有几个根"。</span></div>
-<div class="step">$g(t)=e^t(t-1)$, $g'(t)=te^t$: $t=0$ 取最小值 $-1$, 且 $t\to-\infty$ 时 $g\to0^-$, $t\to+\infty$ 时 $g\to+\infty$; 两个交点 $\iff -1<b<0$<span class="why">$g$ 在 $(-\infty,0)$ 递减、$(0,+\infty)$ 递增, 值域 $[-1,+\infty)$。对 $b\in(-1,0)$: 左支与右支各一个根(右支 $t\in(0,1)$); $b=0$ 只有 $t=1$ 一个根(左支极限 0 取不到), $b>0$ 一个根。<b>易错</b>: 端点是开区间——$b=-1$ 与 $b=0$ 都只有一条切线。</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 切线过定点→设切点反解; 双切线问题→分离参数看 $g(t)$ 值域, 答案 $y=ex$ 与 $-1<b<0$。</div>
+<div class="step">$g(t)=e^t(t-1)$, $g'(t)=te^t$: $t=0$ 取最小值 $-1$, 且 $t\to-\infty$ 时 $g\to0^-$, $t\to+\infty$ 时 $g\to+\infty$; 两个交点 $\iff -1&lt;b&lt;0$<span class="why">$g$ 在 $(-\infty,0)$ 递减、$(0,+\infty)$ 递增, 值域 $[-1,+\infty)$。对 $b\in(-1,0)$: 左支与右支各一个根(右支 $t\in(0,1)$); $b=0$ 只有 $t=1$ 一个根(左支极限 0 取不到), $b>0$ 一个根。<b>易错</b>: 端点是开区间——$b=-1$ 与 $b=0$ 都只有一条切线。</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 切线过定点→设切点反解; 双切线问题→分离参数看 $g(t)$ 值域, 答案 $y=ex$ 与 $-1&lt;b&lt;0$。</div>
 </details>
 
 <p id="例226" class="prob"><b>例 2.26</b> 已知 $f(x)$ 是周期为 5 的连续函数, 在 $x=0$ 的某邻域内满足 $f(1+\sin x)-3f(1-\sin x)=8x+\alpha(x)$, 其中 $\alpha(x)$ 是 $x\to0$ 时比 $x$ 高阶的无穷小, 且 $f(x)$ 在 $x=1$ 处可导, 求曲线 $y=f(x)$ 在点 $(6,f(6))$ 处的切线方程 【0713（2）、0418（3）】</p>
@@ -675,7 +675,7 @@ main details .sum b{font-weight:700}
 </details>
 
 <h2 id="十综合应用">十、综合应用</h2>
-<p id="例229" class="prob"><b>例 2.29</b> 设 $g(x)$ 在 $x=0$ 处存在二阶导数, 且 $g(0)=1,\ g'(0)=2,\ g''(0)=1$, 设 $f(x)=\begin{cases}\dfrac{g(x)-e^{2x}}{x},&x\neq0\\ 0,&x=0\end{cases}$. 求 $f'(0)$, 并讨论 $f'(x)$ 在 $x=0$ 处的连续性 【0714（1）、一元函数微分学】</p>
+<p id="例229" class="prob"><b>例 2.29</b> 设 $g(x)$ 在 $x=0$ 处存在二阶导数, 且 $g(0)=1,\ g'(0)=2,\ g''(0)=1$, 设 $f(x)=\begin{cases}\dfrac{g(x)-e^{2x}}{x},&amp;x\neq0\\ 0,&amp;x=0\end{cases}$. 求 $f'(0)$, 并讨论 $f'(x)$ 在 $x=0$ 处的连续性 【0714（1）、一元函数微分学】</p>
 <ul>
 <li>考点: 分段点定义求导 + 泰勒展开比较主部判连续</li>
 <li><span class="mk theory">理论</span><a href="数学_导数与微分.html#四可导性的讨论分段函数含参必考">四、可导性的讨论(分段函数/含参)</a> · <a href="数学_极限与数列.html#35泰勒公式麦克劳林求极限高频">泰勒公式求极限</a> <span class="mk xref">碰撞</span><a href="数学_导数与微分_例题.html#例27">例 2.7</a> 同为分段点用定义, 本题还多一步"$f'$ 连续性的讨论"</li>

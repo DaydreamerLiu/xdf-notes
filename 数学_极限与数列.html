@@ -354,7 +354,7 @@ main details .sum b{font-weight:700}
 <h2 id="一极限的定义">一、极限的定义</h2>
 <h3 id="11数列极限ε-N语言必考">1.1 数列极限(ε-N 语言) <span class="mk biz">必考</span></h3>
 <p><b>核心结论</b>
-$$ \lim_{n\to\infty} x_n = A \iff \forall\varepsilon>0,\ \exists N\in\mathbb{N}^*,\ \text{当 } n>N \text{ 时},\ |x_n-A|<\varepsilon $$</p>
+$$ \lim_{n\to\infty} x_n = A \iff \forall\varepsilon>0,\ \exists N\in\mathbb{N}^*,\ \text{当 } n>N \text{ 时},\ |x_n-A|&lt;\varepsilon $$</p>
 <p><b>直觉</b> 极限 = "最终接近"。无论你要求的误差 $\varepsilon$ 多小, 总能找到一项 $x_N$, 从它之后的所有项都落进 $(A-\varepsilon,\ A+\varepsilon)$ 这条误差带里。<b>前有限项不影响极限</b>——改掉前 100 万项, 极限不变。</p>
 <details><summary>详解: 为什么"存在 N"就够了?</summary>
 <div class="step">① 误差带 $(A-\varepsilon,A+\varepsilon)$ 之外只有有限多项(至多 $N$ 项)</div>
@@ -365,13 +365,13 @@ $$ \lim_{n\to\infty} x_n = A \iff \forall\varepsilon>0,\ \exists N\in\mathbb{N}^
 <p><b>易错点</b> <span class="mk warn">易错</span> 顺序不能反: 先给 $\varepsilon$, 再找 $N$。$\varepsilon$ 是"任意给定的", $N$ 依赖 $\varepsilon$ (通常写 $N(\varepsilon)$)。</p>
 <h3 id="12函数极限ε-δ语言必考">1.2 函数极限(ε-δ 语言) <span class="mk biz">必考</span></h3>
 <p><b>核心结论</b>
-$$ \lim_{x\to x_0} f(x) = A \iff \forall\varepsilon>0,\ \exists\delta>0,\ \text{当 } 0<|x-x_0|<\delta \text{ 时},\ |f(x)-A|<\varepsilon $$</p>
+$$ \lim_{x\to x_0} f(x) = A \iff \forall\varepsilon>0,\ \exists\delta>0,\ \text{当 } 0&lt;|x-x_0|&lt;\delta \text{ 时},\ |f(x)-A|&lt;\varepsilon $$</p>
 <p><b>直觉</b> 把数列的"从某项之后"换成"进入 $x_0$ 的某去心邻域 $(x_0-\delta,x_0+\delta)\setminus\{x_0\}$"。注意 <b>去心</b> 二字: 极限与 $f(x_0)$ 的值<b>无关</b>——甚至 $f(x_0)$ 可以没定义。</p>
 <p><b>三个变形</b>(都要会写):</p>
 <ul>
-<li>$x\to\infty$: $\forall\varepsilon>0,\ \exists X>0$, 当 $|x|>X$ 时 $|f(x)-A|<\varepsilon$</li>
-<li>$x\to x_0^+$ (右极限): 把 $0<|x-x_0|<\delta$ 换成 $0<x-x_0<\delta$</li>
-<li>$x\to x_0^-$ (左极限): 换成 $-\delta<x-x_0<0$</li>
+<li>$x\to\infty$: $\forall\varepsilon>0,\ \exists X>0$, 当 $|x|>X$ 时 $|f(x)-A|&lt;\varepsilon$</li>
+<li>$x\to x_0^+$ (右极限): 把 $0&lt;|x-x_0|&lt;\delta$ 换成 $0&lt;x-x_0&lt;\delta$</li>
+<li>$x\to x_0^-$ (左极限): 换成 $-\delta&lt;x-x_0&lt;0$</li>
 </ul>
 <p><b>易错点</b> <span class="mk warn">易错</span> 极限存在 $\iff$ 左右极限存在且相等。分段函数、含 $|x|$、取整函数必须先分左右。</p>
 <p><b>分左右触发器(完整清单)</b> <span class="mk warn">易错</span> ① 分段函数分界点; ② $e^\infty$: $e^{+\infty}\to+\infty$, $e^{-\infty}\to0$(如 $\lim_{x\to0}e^{1/x}$ 左右不同); ③ $\arctan\infty$: $x\to+\infty$ 时 $\to\frac\pi2$, $x\to-\infty$ 时 $\to-\frac\pi2$。看到 $e^{1/x}$、$\arctan\frac1x$ 这类, 条件反射分左右。</p>
@@ -416,7 +416,7 @@ $$ \lim(f\pm g)=A\pm B,\quad \lim(fg)=AB,\quad \lim\frac{f}{g}=\frac{A}{B}\ (B\n
 <p><b>易错点</b> <span class="mk warn">易错</span> <b>逆用不成立</b>: $\lim(f+g)$ 存在推不出 $\lim f,\lim g$ 分别存在(反例: $f=x,\ g=-x+c$)。
 <span class="mk info">注意</span> 出现 $\infty-\infty$、$0\cdot\infty$、$\frac{\infty}{\infty}$ 等未定式时不能直接拆。</p>
 <h3 id="32复合运算法则高频">3.2 复合运算法则 <span class="mk freq">高频</span></h3>
-<p><b>核心结论</b> 如果 $\lim\limits_{x\to x_0} g(x)=u_0$, $\lim\limits_{u\to u_0} f(u)=A$, 且存在 $\delta>0$, 当 $0<|x-x_0|<\delta$ 时 $g(x)\ne u_0$, 那么
+<p><b>核心结论</b> 如果 $\lim\limits_{x\to x_0} g(x)=u_0$, $\lim\limits_{u\to u_0} f(u)=A$, 且存在 $\delta>0$, 当 $0&lt;|x-x_0|&lt;\delta$ 时 $g(x)\ne u_0$, 那么
 $$ \lim_{x\to x_0} f[g(x)]=\lim_{u\to u_0} f(u)=A $$</p>
 <p><b>直觉</b> 复合求极限 = <b>换元</b>: 先算内层 $g(x)$ 的极限 $u_0$, 再令 $u=g(x)$ 作为新变量代入外层极限。条件"去心邻域内 $g(x)\ne u_0$"是为了不让内层取值恰好落在外层极限的"目标点"上——若 $f$ 在 $u_0$ 处连续, 该条件自动满足、可省。</p>
 <p><b>使用规则(老师原话)</b>: "拆分后各自极限可求"。复合函数求极限 = 拆成内外两层分别求: 内层极限存在、外层极限存在、内层不恒等于外层自变量极限值, 即可换序。</p>
@@ -516,7 +516,7 @@ $$ e^x \gg x^n \gg (\ln x)^m \quad (n,m>0) $$
 <p>$$ \lim_{x\to0}\frac{\sin x}{x}=1,\qquad \lim_{x\to\infty}\left(1+\frac1x\right)^x=e $$</p>
 <details><summary>详解: 为什么 $\lim_{x\to0}\dfrac{\sin x}{x}=1$?</summary>
 <div class="step">① 几何: 单位圆上, 弧长 $x$ 夹在 $\sin x$ 与 $\tan x$ 之间</div>
-<div class="step">② 不等式: $\sin x < x < \tan x$, 同除 $\sin x$: $1 < \frac{x}{\sin x} < \frac1{\cos x}$</div>
+<div class="step">② 不等式: $\sin x &lt; x &lt; \tan x$, 同除 $\sin x$: $1 &lt; \frac{x}{\sin x} &lt; \frac1{\cos x}$</div>
 <div class="step">③ 夹逼: $\cos x\to1$, 得 $\frac{x}{\sin x}\to1$ ∎</div>
 </details>
 
@@ -536,11 +536,11 @@ $$ e^x \gg x^n \gg (\ln x)^m \quad (n,m>0) $$
 <p><b>核心结论</b> 单调不减且有上界(或单调不增且有下界) ⇒ 极限存在。</p>
 <p><b>补充结论</b> 单调数列要么收敛要么趋于 $\pm\infty$: 单调不减收敛 ⟺ 有上界——"有界"是收敛的唯一障碍。</p>
 <p><b>证明递推数列收敛流程</b>: ① 证有界(归纳) → ② 证单调 → ③ 设极限 $A$ 代回递推式解方程。</p>
-<p><b>欧拉常数型(经典构造)</b> <span class="mk freq">高频</span> 由拉格朗日中值定理: $\frac1{n+1}<\ln(1+\frac1n)<\frac1n$; 于是 $a_n=1+\frac12+\cdots+\frac1n-\ln n$ 单调减且有下界 0 → 收敛, 极限记为欧拉常数 $\gamma\approx0.577$。这套"裂项夹逼 + 单调有界"是递推数列证明题的模板(例: 数列 $\sum\frac1k-\ln n$ 型)。</p>
+<p><b>欧拉常数型(经典构造)</b> <span class="mk freq">高频</span> 由拉格朗日中值定理: $\frac1{n+1}&lt;\ln(1+\frac1n)&lt;\frac1n$; 于是 $a_n=1+\frac12+\cdots+\frac1n-\ln n$ 单调减且有下界 0 → 收敛, 极限记为欧拉常数 $\gamma\approx0.577$。这套"裂项夹逼 + 单调有界"是递推数列证明题的模板(例: 数列 $\sum\frac1k-\ln n$ 型)。</p>
 <p><b>易错点</b> <span class="mk warn">易错</span> 必须先证"极限存在"再设 $A$ 代回——不能先设后证。</p>
 <h3 id="44压缩映像定理拓展了解">4.4 压缩映像定理(拓展) 【了解】</h3>
-<p><b>核心结论</b> 若 $|x_{n+1}-a|\le r|x_n-a|$ 且 $0\le r<1$, 则 $x_n\to a$。
-推论: 若 $f$ 可导且 $|f'(x)|\le r<1$, 令 $x_n=f(x_{n-1})$, 则 $x_n\to a$ 且 $a=f(a)$。</p>
+<p><b>核心结论</b> 若 $|x_{n+1}-a|\le r|x_n-a|$ 且 $0\le r&lt;1$, 则 $x_n\to a$。
+推论: 若 $f$ 可导且 $|f'(x)|\le r&lt;1$, 令 $x_n=f(x_{n-1})$, 则 $x_n\to a$ 且 $a=f(a)$。</p>
 <p><b>直觉</b> 每步误差至少缩小 $r$ 倍, 误差等比收敛到 0。 【数列极限的计算.pdf】</p>
 <hr />
 <h2 id="五定积分定义求极限高频">五、定积分定义求极限 <span class="mk freq">高频</span></h2>
@@ -560,7 +560,7 @@ $$ \lim_{n\to\infty}\frac1n\sum_{k=1}^{n} f\!\left(\frac{k}{n}\right) = \int_0^1
 <h2 id="六连续与间断必考">六、连续与间断 <span class="mk biz">必考</span></h2>
 <h3 id="61连续的定义与性质">6.1 连续的定义与性质</h3>
 <p><b>核心结论</b> $f$ 在 $x_0$ 连续 $\iff \lim_{x\to x_0}f(x)=f(x_0)$。</p>
-<p><b>闭区间连续函数四大性质</b>: 有界性、最值定理、零点定理($f(a)f(b)<0\Rightarrow\exists\xi\in(a,b),f(\xi)=0$)、介值定理。</p>
+<p><b>闭区间连续函数四大性质</b>: 有界性、最值定理、零点定理($f(a)f(b)&lt;0\Rightarrow\exists\xi\in(a,b),f(\xi)=0$)、介值定理。</p>
 <h3 id="62间断点分类必考">6.2 间断点分类 <span class="mk biz">必考</span></h3>
 <table>
 <thead>
@@ -614,7 +614,7 @@ $$ \int_0^x f(x-t)\,dt \xlongequal{u=x-t} \int_0^x f(u)\,du \quad\text{(含 $x$ 
 <p><b>变上限积分的两个等价替换定理</b>(函数极限的计算 课核心方法) <span class="mk biz">必考</span></p>
 <ol>
 <li><b>被积函数可换</b>: $f\sim g$($f,g$ 连续正) $\Rightarrow \int_0^x f\sim\int_0^x g$(对换元积分同样成立)——积出来的东西也等价;</li>
-<li><b>上限可换</b>: 若 $u(x)\sim v(x)$ 且 $f^{(k)}(0)=0\ (k<n)$, $f^{(n)}(0)\ne0$, 则 $\int_0^{u(x)}f\sim\int_0^{v(x)}f$——上限同阶时积分同阶。</li>
+<li><b>上限可换</b>: 若 $u(x)\sim v(x)$ 且 $f^{(k)}(0)=0\ (k&lt;n)$, $f^{(n)}(0)\ne0$, 则 $\int_0^{u(x)}f\sim\int_0^{v(x)}f$——上限同阶时积分同阶。</li>
 </ol>
 <p><b>直觉</b> 定理 1 说"等价替换在积分号里照样能用"; 定理 2 说"上限换成同阶的等价量, 积分阶数不变"。两者合起来能把变上限积分极限直接换成简单积分比。</p>
 <p><b>解题模式</b>: $\frac00$ 型变上限积分极限 → 洛必达 → 等价无穷小。含 $x-t$ 的先换元 $u=x-t$。</p>

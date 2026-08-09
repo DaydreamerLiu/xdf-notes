@@ -430,7 +430,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_曲线曲面积分.html#三第二型曲线积分对坐标了解">第二型曲线积分</a></li>
 </ul>
 <details><summary>解答过程</summary>
-<div class="step">分两段: $L_1: y=x+1$ ($x$ 从 $-1\to 0$), $L_2: y=-x+1$ ($x$ 从 $0\to 1$)。<span class="why">$1-|x|$ 在 $x<0$ 为 $1+x$、$x>0$ 为 $1-x$; 折线从 $(-1,0)$ 经顶点 $(0,1)$ 到 $(1,0)$。</span></div>
+<div class="step">分两段: $L_1: y=x+1$ ($x$ 从 $-1\to 0$), $L_2: y=-x+1$ ($x$ 从 $0\to 1$)。<span class="why">$1-|x|$ 在 $x&lt;0$ 为 $1+x$、$x>0$ 为 $1-x$; 折线从 $(-1,0)$ 经顶点 $(0,1)$ 到 $(1,0)$。</span></div>
 <div class="step">$L_1$: $\int_{-1}^{0} [x(x+1) + (x+1)^2\cdot1]\,dx$; $L_2$: $\int_{0}^{1} [x(-x+1) + (-x+1)^2\cdot(-1)]\,dx$。<span class="fill">【AI补全】</span><span class="why">参数化 $y=y(x)$, $dy = y'(x)dx$; $L_1$ 上 $y'=1$, $L_2$ 上 $y'=-1$。<b>考点</b>: 第二型曲线积分参数化后按 $x$ 积分, 下限=起点 $x$ 坐标。</span></div>
 <div class="step">计算: $L_1$: $\int_{-1}^0(x^2+x+x^2+2x+1)dx = \int_{-1}^0(2x^2+3x+1)dx = \frac{2}{3}-\frac32+1 = \frac16$; $L_2$: $\int_0^1(-x^2+x - (x^2-2x+1))dx = \int_0^1(-2x^2+3x-1)dx = -\frac23+\frac32-1 = -\frac16$; 总和 $= \frac16-\frac16 = 0$。<span class="why">两段积分互为相反数。<b>核对</b>: 课件标注两段分别 $\frac16$ 与 $-\frac16$, 和为零 ✓。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 折线分段参数化, 每段按 $dy=y'dx$ 代入; 注意起点终点对应的积分限。</div>

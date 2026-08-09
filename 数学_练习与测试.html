@@ -461,7 +461,7 @@ main details .sum b{font-weight:700}
 <h3 id="22核心考点精讲">2.2 核心考点精讲</h3>
 <h4>2.2.1 条件概率的等价变换（选择T1）<span class="mk warn">易错</span></h4>
 <blockquote>
-<p><b>题干</b>: 设 $A,B$ 为随机事件，$0 < P(A) < 1$，$0 < P(B) < 1$，则 $P(A|B) > P(A|\bar{B})$ 的充要条件是？</p>
+<p><b>题干</b>: 设 $A,B$ 为随机事件，$0 &lt; P(A) &lt; 1$，$0 &lt; P(B) &lt; 1$，则 $P(A|B) > P(A|\bar{B})$ 的充要条件是？</p>
 </blockquote>
 <p><b>核心结论</b>: $P(A|B) > P(A|\bar{B}) \iff P(AB) > P(A)P(B) \iff P(B|A) > P(B|\bar{A})$</p>
 <blockquote>
@@ -616,7 +616,7 @@ $$P(AB)(1-P(B)) > P(B)(P(A) - P(AB))$$
 <tr>
 <td>C. $Ax=0$ 有非零解 → $Ax=b$ 有无穷多解</td>
 <td><b>错</b></td>
-<td>$r(A)<n$ 时 $Ax=b$ 可能无解</td>
+<td>$r(A)&lt;n$ 时 $Ax=b$ 可能无解</td>
 </tr>
 <tr>
 <td><b>D. $Ax=b$ 有两个不同解 → $Ax=0$ 有无穷多解</b></td>
@@ -630,7 +630,7 @@ $$P(AB)(1-P(B)) > P(B)(P(A) - P(AB))$$
 <p><b>Sylvester准则</b>: 实对称矩阵正定 $\iff$ 所有顺序主子式 $> 0$。</p>
 <p>选项逐检:</p>
 <ul>
-<li>A: $a_{33}=-3<0$，一票否决（对角元必须全正）</li>
+<li>A: $a_{33}=-3&lt;0$，一票否决（对角元必须全正）</li>
 <li>B: $\Delta_2 = 1 \cdot 9 - 3^2 = 0$，不满足 $>0$</li>
 <li>C: $\Delta_3 = \det A = 0$（可验证），不满足 $>0$</li>
 <li><b>D</b>: $\Delta_1=2>0$, $\Delta_2=10-4=6>0$, $\Delta_3=\det D=10>0$ ✓</li>
@@ -655,7 +655,7 @@ $$P(AB)(1-P(B)) > P(B)(P(A) - P(AB))$$
 <blockquote>
 <p>题干: $f = 5x_1^2 + x_2^2 + tx_3^2 + 4x_1x_2 - 2x_1x_3 - 2x_2x_3$ 正定，求 $t$。</p>
 </blockquote>
-<p>矩阵: $A = \begin{bmatrix} 5 & 2 & -1 \\ 2 & 1 & -1 \\ -1 & -1 & t \end{bmatrix}$</p>
+<p>矩阵: $A = \begin{bmatrix} 5 &amp; 2 &amp; -1 \\ 2 &amp; 1 &amp; -1 \\ -1 &amp; -1 &amp; t \end{bmatrix}$</p>
 <p>顺序主子式:</p>
 <ul>
 <li>$\Delta_1 = 5 > 0$</li>
@@ -668,7 +668,7 @@ $$P(AB)(1-P(B)) > P(B)(P(A) - P(AB))$$
 </blockquote>
 <h4>3.2.6 矩阵相似性证明（解答T11）<span class="mk ok">重点</span></h4>
 <blockquote>
-<p>题干: 证明 $A = \begin{bmatrix} 2 & 1 & -1 \\ 1 & 2 & 1 \\ -1 & 1 & 2 \end{bmatrix}$ 与 $B = \begin{bmatrix} 2 & 0 & 1 \\ -1 & 3 & 1 \\ 2 & 0 & 1 \end{bmatrix}$ 相似。</p>
+<p>题干: 证明 $A = \begin{bmatrix} 2 &amp; 1 &amp; -1 \\ 1 &amp; 2 &amp; 1 \\ -1 &amp; 1 &amp; 2 \end{bmatrix}$ 与 $B = \begin{bmatrix} 2 &amp; 0 &amp; 1 \\ -1 &amp; 3 &amp; 1 \\ 2 &amp; 0 &amp; 1 \end{bmatrix}$ 相似。</p>
 </blockquote>
 <p><b>证明策略</b>: 相似 $\Leftarrow$ 特征多项式相同 + 均可对角化。</p>
 <p>$A$ 是对称矩阵，必然可对角化。只需证 $|\lambda E - A| = |\lambda E - B|$ 且 $B$ 也可对角化。</p>
@@ -772,13 +772,13 @@ $$A^{-1} = \frac{1}{|A|}A^*$$</p>
 <p><b>(1) 数乘与转置</b>
 $$\lambda A = (\lambda A_{ij}), \quad A^T = (A_{ji}^T)$$</p>
 <p><b>(2) 分块三角阵的行列式</b>（$A$: $m$ 阶, $B$: $n$ 阶）【必背】
-$$\begin{vmatrix} A & O \\ C & B \end{vmatrix} = \begin{vmatrix} A & C \\ O & B \end{vmatrix} = |A| \cdot |B|$$
-$$\begin{vmatrix} O & A \\ B & C \end{vmatrix} = \begin{vmatrix} C & A \\ B & O \end{vmatrix} = (-1)^{mn}|A| \cdot |B|$$</p>
+$$\begin{vmatrix} A &amp; O \\ C &amp; B \end{vmatrix} = \begin{vmatrix} A &amp; C \\ O &amp; B \end{vmatrix} = |A| \cdot |B|$$
+$$\begin{vmatrix} O &amp; A \\ B &amp; C \end{vmatrix} = \begin{vmatrix} C &amp; A \\ B &amp; O \end{vmatrix} = (-1)^{mn}|A| \cdot |B|$$</p>
 <p><b>(3) 分块对角阵的逆</b>（$A,B$ 均可逆）【必背】
-$$\begin{bmatrix} A & O \\ O & B \end{bmatrix}^{-1} = \begin{bmatrix} A^{-1} & O \\ O & B^{-1} \end{bmatrix}, \quad
-\begin{bmatrix} O & A \\ B & O \end{bmatrix}^{-1} = \begin{bmatrix} O & B^{-1} \\ A^{-1} & O \end{bmatrix}$$
-$$\begin{bmatrix} A & C \\ O & B \end{bmatrix}^{-1} = \begin{bmatrix} A^{-1} & -A^{-1}CB^{-1} \\ O & B^{-1} \end{bmatrix}, \quad
-\begin{bmatrix} A & O \\ C & B \end{bmatrix}^{-1} = \begin{bmatrix} A^{-1} & O \\ -B^{-1}CA^{-1} & B^{-1} \end{bmatrix}$$</p>
+$$\begin{bmatrix} A &amp; O \\ O &amp; B \end{bmatrix}^{-1} = \begin{bmatrix} A^{-1} &amp; O \\ O &amp; B^{-1} \end{bmatrix}, \quad
+\begin{bmatrix} O &amp; A \\ B &amp; O \end{bmatrix}^{-1} = \begin{bmatrix} O &amp; B^{-1} \\ A^{-1} &amp; O \end{bmatrix}$$
+$$\begin{bmatrix} A &amp; C \\ O &amp; B \end{bmatrix}^{-1} = \begin{bmatrix} A^{-1} &amp; -A^{-1}CB^{-1} \\ O &amp; B^{-1} \end{bmatrix}, \quad
+\begin{bmatrix} A &amp; O \\ C &amp; B \end{bmatrix}^{-1} = \begin{bmatrix} A^{-1} &amp; O \\ -B^{-1}CA^{-1} &amp; B^{-1} \end{bmatrix}$$</p>
 <h3 id="45矩阵的秩必背">4.5 矩阵的秩【必背】</h3>
 <table>
 <thead>
@@ -818,7 +818,7 @@ $$\begin{bmatrix} A & C \\ O & B \end{bmatrix}^{-1} = \begin{bmatrix} A^{-1} & -
 <td>⑨</td>
 <td>若 $A$ 可逆，则 $r(AB) = r(B)$</td>
 <td>⑩</td>
-<td>$r(A^*) = \begin{cases} n, & r(A) = n \\ 1, & r(A) = n-1 \\ 0, & r(A) < n-1 \end{cases}$</td>
+<td>$r(A^*) = \begin{cases} n, &amp; r(A) = n \\ 1, &amp; r(A) = n-1 \\ 0, &amp; r(A) &lt; n-1 \end{cases}$</td>
 </tr>
 </tbody>
 </table>

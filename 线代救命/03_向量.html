@@ -450,7 +450,7 @@ main details .sum b{font-weight:700}
 <tr>
 <td>线性相关</td>
 <td>$A\boldsymbol{k} = \boldsymbol{0}$ 有非零解</td>
-<td>$r(A) < s$(列不满秩)</td>
+<td>$r(A) &lt; s$(列不满秩)</td>
 </tr>
 <tr>
 <td>线性无关</td>
@@ -480,7 +480,7 @@ main details .sum b{font-weight:700}
 <h3 id="定理3以少表多多的相关必考">定理 3: 以少表多, 多的相关 <span class="mk biz">必考</span></h3>
 <p>若向量组 $\boldsymbol{\beta}_1, \dots, \boldsymbol{\beta}_t$ 可由 $\boldsymbol{\alpha}_1, \dots, \boldsymbol{\alpha}_s$ 线性表出, 且 $t > s$, 则 $\boldsymbol{\beta}_1, \dots, \boldsymbol{\beta}_t$ 线性相关。</p>
 <p>口诀: "以少表多, 多的相关"。直觉: s 个向量张出的空间容不下 t 个无关向量——多出来的必然是"废"的。</p>
-<p>证明(反证 + 秩): 设 $\boldsymbol{\beta}$ 组无关 ⟹ $r(\boldsymbol{\beta}_1,\dots,\boldsymbol{\beta}_t) = t$; 能被 $\boldsymbol{\alpha}$ 组表出 ⟹ $r(\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s) \ge t$(能表出别人的, 信息量不小); 但向量组的秩超不过向量个数, $r(\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s) \le s < t$, 矛盾。</p>
+<p>证明(反证 + 秩): 设 $\boldsymbol{\beta}$ 组无关 ⟹ $r(\boldsymbol{\beta}_1,\dots,\boldsymbol{\beta}_t) = t$; 能被 $\boldsymbol{\alpha}$ 组表出 ⟹ $r(\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s) \ge t$(能表出别人的, 信息量不小); 但向量组的秩超不过向量个数, $r(\boldsymbol{\alpha}_1,\dots,\boldsymbol{\alpha}_s) \le s &lt; t$, 矛盾。</p>
 <h3 id="秩的语言三个常用不等式必考">秩的语言: 三个常用不等式 <span class="mk biz">必考</span></h3>
 <ol>
 <li>向量组的秩 ≤ 向量个数("个数 ≥ 秩"——处理"向量个数比较"问题的万能桥梁, 例 2.8 ③④ 全靠它)</li>

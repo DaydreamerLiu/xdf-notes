@@ -368,7 +368,7 @@ main details .sum b{font-weight:700}
 <li><b>倍乘</b>: 某一行 (或某一列) 乘以非零常数 k</li>
 <li><b>倍加</b>: 某一行的 k 倍加到另一行 (或某一列的 k 倍加到另一列)</li>
 </ul>
-<p><b>直觉</b> <span class="mk info">注意</span>"一次"是关键词。比如 $\begin{pmatrix}0&2&0\\1&0&0\\0&0&1\end{pmatrix}$ 这长相很"初等", 但它是先换行再把某元素放大, 单位阵一次初等变换怎么都变不到它——<b>它不是初等矩阵</b>。老师强调: 这个务必要注意。</p>
+<p><b>直觉</b> <span class="mk info">注意</span>"一次"是关键词。比如 $\begin{pmatrix}0&amp;2&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix}$ 这长相很"初等", 但它是先换行再把某元素放大, 单位阵一次初等变换怎么都变不到它——<b>它不是初等矩阵</b>。老师强调: 这个务必要注意。</p>
 <p><b>记号</b></p>
 <ul>
 <li>$E_{ij}$: 交换第 i 行与第 j 行 (或交换第 i 列与第 j 列)。行、列写法出来是同一个矩阵, 无争议。</li>
@@ -379,9 +379,9 @@ main details .sum b{font-weight:700}
 <p><b>核心结论</b> 矩阵 $A$ <b>左乘</b>初等矩阵 $P$ (得 $PA$), 等价于对 $A$ 做了一次与 $P$ <b>完全相同</b>的初等<b>行</b>变换; 矩阵 $A$ <b>右乘</b>初等矩阵 $P$ (得 $AP$), 等价于对 $A$ 做了一次与 $P$ 完全相同的初等<b>列</b>变换。</p>
 <p><b>直觉</b> 左乘 = 行变换 (左边对应行), 右乘 = 列变换 (右边对应列)——"左行右列"四个字就是全部。</p>
 <p><b>例</b> (讲义 1.4):</p>
-<p>$$ \begin{pmatrix}1&0&0\\2&1&0\\0&0&1\end{pmatrix}\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix} = \begin{pmatrix}1&2&3\\6&9&12\\7&8&9\end{pmatrix} $$</p>
+<p>$$ \begin{pmatrix}1&amp;0&amp;0\\2&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix}\begin{pmatrix}1&amp;2&amp;3\\4&amp;5&amp;6\\7&amp;8&amp;9\end{pmatrix} = \begin{pmatrix}1&amp;2&amp;3\\6&amp;9&amp;12\\7&amp;8&amp;9\end{pmatrix} $$</p>
 <p>左边矩阵表示"第一行的 2 倍加到第二行", 左乘后结果第二行正是 $r_2+2r_1$。</p>
-<p>$$ \begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\begin{pmatrix}1&0&0\\2&1&0\\0&0&1\end{pmatrix} = \begin{pmatrix}5&2&3\\14&5&6\\23&8&9\end{pmatrix} $$</p>
+<p>$$ \begin{pmatrix}1&amp;2&amp;3\\4&amp;5&amp;6\\7&amp;8&amp;9\end{pmatrix}\begin{pmatrix}1&amp;0&amp;0\\2&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix} = \begin{pmatrix}5&amp;2&amp;3\\14&amp;5&amp;6\\23&amp;8&amp;9\end{pmatrix} $$</p>
 <p>右乘后第一列变成 $c_1+2c_2$ (第二列的 2 倍加到第一列), 得 $(5,14,23)^{\mathrm{T}}$。</p>
 <p><b>考法视角</b> <span class="mk biz">必考</span>左行右列定理的全部用途就是一句话: <b>把初等变换的过程翻译成矩阵乘法, 建立等式关系</b>。题目描述"把第一行多少倍加到第二行, 又把某一列乘 k 倍……最后等于单位阵", 你就写 $P_1 A P_2 \cdots = E$, 进而解出 $A$。例 1.24、1.25 就是这道菜。</p>
 <h3 id="13初等矩阵的行列式逆转置必考">1.3 初等矩阵的行列式、逆、转置 <span class="mk biz">必考</span></h3>
@@ -420,11 +420,11 @@ main details .sum b{font-weight:700}
 <ul>
 <li>行列式: 换一次行 → 行列式乘 $-1$; 一行乘 k 倍 → 行列式乘 k; 倍加不改变行列式 (行列式性质)。</li>
 <li>逆矩阵: 互换的再互换一次就回单位阵 → $E_{ij}^{-1}=E_{ij}$; 乘 k 倍的再乘 $\frac1k$ 缩回去 → $E_i(\frac1k)$; 倍加 c 的再用 $-c$ 加回去, "相当于没加" → $E_{ij}(-c)$。</li>
-<li>转置: 前两个是对称矩阵, 转置等于本身, 也不用记; <b>要记的只有第三个——下标互换</b> $E_{ij}(c)^{\mathrm{T}}=E_{ji}(c)$。例: $E_{12}(2)=\begin{pmatrix}1&2&0\\0&1&0\\0&0&1\end{pmatrix}$ 表示"第 2 行的 2 倍加到第 1 行", 转置后 $E_{21}(2)=\begin{pmatrix}1&0&0\\2&1&0\\0&0&1\end{pmatrix}$ 含义变成"第 1 行的 2 倍加到第 2 行", 下标正好倒过来。<b><span class="mk warn">易错</span> 下标互换是唯一要背的点。</b></li>
+<li>转置: 前两个是对称矩阵, 转置等于本身, 也不用记; <b>要记的只有第三个——下标互换</b> $E_{ij}(c)^{\mathrm{T}}=E_{ji}(c)$。例: $E_{12}(2)=\begin{pmatrix}1&amp;2&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix}$ 表示"第 2 行的 2 倍加到第 1 行", 转置后 $E_{21}(2)=\begin{pmatrix}1&amp;0&amp;0\\2&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix}$ 含义变成"第 1 行的 2 倍加到第 2 行", 下标正好倒过来。<b><span class="mk warn">易错</span> 下标互换是唯一要背的点。</b></li>
 </ul>
 <p><b>知识连接</b> 三种初等矩阵都是可逆矩阵; 而初等矩阵的伴随, 永远走 $A^*=|A|A^{-1}$ 这条路 (例 1.24 就这么干)。</p>
 <h3 id="14互换型初等矩阵的幂重点">1.4 互换型初等矩阵的幂 <span class="mk ok">重点</span></h3>
-<p><b>核心结论</b> $E_{ij}^{\,n}=\begin{cases}E, & n \text{ 为偶数} \\ E_{ij}, & n \text{ 为奇数}\end{cases}$</p>
+<p><b>核心结论</b> $E_{ij}^{\,n}=\begin{cases}E, &amp; n \text{ 为偶数} \\ E_{ij}, &amp; n \text{ 为奇数}\end{cases}$</p>
 <p><b>直觉</b> 换一次再换一次就回单位阵: 换两次回原位, 换三次等于换一次。奇数拆成 $1+$ 偶数, 偶数部分变单位阵, 剩下本身。</p>
 <p><b>考法视角</b> 例 1.23 第 4 空: $E_{12}^{2024}$ 直接等于单位阵——"左边其实就是迷惑你的, 看起来很吓人, 它没用, 就只用右边" (2024 是偶数, 顺带祝各位一战成硕)。</p>
 <h3 id="15应用用初等行变换求逆">1.5 应用: 用初等行变换求逆</h3>
@@ -463,11 +463,11 @@ main details .sum b{font-weight:700}
 </ul>
 <p>老师: "这两条结论的证明过程给大家讲一下……大家可以自己去试一下, 这是对前面结论很好的练习。"</p>
 <p><b>⑩ 伴随矩阵的秩三情形</b> <span class="mk freq">高频</span></p>
-<p>$$ r(A^*)=\begin{cases} n, & r(A)=n \\ 1, & r(A)=n-1 \\ 0, & r(A)<n-1 \end{cases} $$</p>
-<p><b>直觉</b> $r(A)=n$ 时可逆, $A^*=|A|A^{-1}$ 也可逆, 秩 n; $r(A)=n-1$ 时 $|A|=0$ 但至少一个 $n-1$ 阶子式非零, 即 $A^*$ 非零, 又 $AA^*=|A|E=O$ 推 $r(A)+r(A^*)\le n$ 得 $r(A^*)\le1$, 合起来等于 1; $r(A)<n-1$ 时所有代数余子式全为零, $A^*=O$。例 1.27 靠它拿分。</p>
+<p>$$ r(A^*)=\begin{cases} n, &amp; r(A)=n \\ 1, &amp; r(A)=n-1 \\ 0, &amp; r(A)&lt;n-1 \end{cases} $$</p>
+<p><b>直觉</b> $r(A)=n$ 时可逆, $A^*=|A|A^{-1}$ 也可逆, 秩 n; $r(A)=n-1$ 时 $|A|=0$ 但至少一个 $n-1$ 阶子式非零, 即 $A^*$ 非零, 又 $AA^*=|A|E=O$ 推 $r(A)+r(A^*)\le n$ 得 $r(A^*)\le1$, 合起来等于 1; $r(A)&lt;n-1$ 时所有代数余子式全为零, $A^*=O$。例 1.27 靠它拿分。</p>
 <p><b>⑪ $A\mathbf{x}=\mathbf{0}$ 的基础解系所含向量的个数 $= n-r(A)$</b> — 齐次方程组解空间的维数。到方程组章节展开, 先记住。</p>
 <p><b>⑫ 分块矩阵的秩</b> <span class="mk biz">必考</span></p>
-<p>$$ r\begin{pmatrix}A&O\\O&B\end{pmatrix}=r(A)+r(B), \qquad r\begin{pmatrix}A&C\\O&B\end{pmatrix}\ge r(A)+r(B) $$</p>
+<p>$$ r\begin{pmatrix}A&amp;O\\O&amp;B\end{pmatrix}=r(A)+r(B), \qquad r\begin{pmatrix}A&amp;C\\O&amp;B\end{pmatrix}\ge r(A)+r(B) $$</p>
 <p>对角分块 (含副对角) 好记: 各自相加。分块三角加了一块 $C$, 结构变复杂, 秩只会更大, 所以是 $\ge$; <b>当 $A$ 可逆时取等号</b> (能用行变换把 $C$ 消成零, 见 3.7 节)。</p>
 <p><b>知识连接</b> 后面特征值章节还有两条 (本讲不展开): 若 $A$ 可对角化, 则 $r(A)=\text{非零特征值的个数}$ (重根按重数算), 且 $r(A-\lambda E)=n-r_i$, 其中 $\lambda$ 是 $r_i$ 重特征根。</p>
 <h3 id="23秩的考法总览">2.3 秩的考法总览</h3>
@@ -483,20 +483,20 @@ main details .sum b{font-weight:700}
 </blockquote>
 <h3 id="31拉普拉斯公式分块矩阵的行列式高频">3.1 拉普拉斯公式: 分块矩阵的行列式 <span class="mk freq">高频</span></h3>
 <p>设 $A$ 是 $m$ 阶, $B$ 是 $n$ 阶:</p>
-<p>$$ \begin{vmatrix}A&*\\O&B\end{vmatrix}=|A|\cdot|B|, \qquad \begin{vmatrix}O&A\\B&O\end{vmatrix}=(-1)^{mn}|A|\cdot|B| $$</p>
+<p>$$ \begin{vmatrix}A&amp;*\\O&amp;B\end{vmatrix}=|A|\cdot|B|, \qquad \begin{vmatrix}O&amp;A\\B&amp;O\end{vmatrix}=(-1)^{mn}|A|\cdot|B| $$</p>
 <p>(主对角线型上三角、下三角都等于对角块行列式之积; 副对角线型多一个 $(-1)^{mn}$。)</p>
 <p><b><span class="mk warn">易错</span> 副对角线那个 $(-1)^{mn}$ 千万不要丢</b>, 它和行列式里"副对角线乘积带 $(-1)^{\frac{n(n-1)}{2}}$"是同一类问题。例 1.30 专门考它。</p>
 <h3 id="32分块对角矩阵的幂注意">3.2 分块对角矩阵的幂 <span class="mk info">注意</span></h3>
-<p>$$ \begin{pmatrix}A_1&&\\&A_2&\\&&A_n\end{pmatrix}^{k}=\begin{pmatrix}A_1^{k}&&\\&A_2^{k}&\\&&A_n^{k}\end{pmatrix} $$</p>
+<p>$$ \begin{pmatrix}A_1&amp;&amp;\\&amp;A_2&amp;\\&amp;&amp;A_n\end{pmatrix}^{k}=\begin{pmatrix}A_1^{k}&amp;&amp;\\&amp;A_2^{k}&amp;\\&amp;&amp;A_n^{k}\end{pmatrix} $$</p>
 <p><b><span class="mk warn">易错</span> 只有主对角线分块有这个规律, 副对角线分块没有</b>——副对角线分块的高次幂会"换位", 无此规律。</p>
 <h3 id="33分块对角矩阵的逆高频">3.3 分块对角矩阵的逆 <span class="mk freq">高频</span></h3>
 <p>设 $B$、$C$ 分别可逆:</p>
-<p>$$ \begin{pmatrix}B&O\\O&C\end{pmatrix}^{-1}=\begin{pmatrix}B^{-1}&O\\O&C^{-1}\end{pmatrix} \qquad \text{(各自求逆, 各自安好)} $$</p>
-<p>$$ \begin{pmatrix}O&B\\C&O\end{pmatrix}^{-1}=\begin{pmatrix}O&C^{-1}\\B^{-1}&O\end{pmatrix} \qquad \text{(各自求逆, 还要换位置)} $$</p>
+<p>$$ \begin{pmatrix}B&amp;O\\O&amp;C\end{pmatrix}^{-1}=\begin{pmatrix}B^{-1}&amp;O\\O&amp;C^{-1}\end{pmatrix} \qquad \text{(各自求逆, 各自安好)} $$</p>
+<p>$$ \begin{pmatrix}O&amp;B\\C&amp;O\end{pmatrix}^{-1}=\begin{pmatrix}O&amp;C^{-1}\\B^{-1}&amp;O\end{pmatrix} \qquad \text{(各自求逆, 还要换位置)} $$</p>
 <p><b><span class="mk warn">易错</span> 副对角线分块求逆要换位置</b>——这是老师点名的易错点。例 1.30 靠它拿分。</p>
 <h3 id="34分块矩阵的转置大转加小转注意">3.4 分块矩阵的转置: 大转加小转 <span class="mk info">注意</span></h3>
 <p><b>核心结论</b> 转置分两步: 每个小块自己转置 (小转), 同时小块的相对位置也转置 (大转):</p>
-<p>$$ \begin{pmatrix}A&B\end{pmatrix}^{\mathrm{T}}=\begin{pmatrix}A^{\mathrm{T}}\\B^{\mathrm{T}}\end{pmatrix}, \qquad \begin{pmatrix}A&B\\C&D\end{pmatrix}^{\mathrm{T}}=\begin{pmatrix}A^{\mathrm{T}}&C^{\mathrm{T}}\\B^{\mathrm{T}}&D^{\mathrm{T}}\end{pmatrix} $$</p>
+<p>$$ \begin{pmatrix}A&amp;B\end{pmatrix}^{\mathrm{T}}=\begin{pmatrix}A^{\mathrm{T}}\\B^{\mathrm{T}}\end{pmatrix}, \qquad \begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}^{\mathrm{T}}=\begin{pmatrix}A^{\mathrm{T}}&amp;C^{\mathrm{T}}\\B^{\mathrm{T}}&amp;D^{\mathrm{T}}\end{pmatrix} $$</p>
 <p><b>记忆</b> "大转加小转"五个字。<b>反例预警</b> $r(AB)$ 的转置是 $r(B^{\mathrm{T}}A^{\mathrm{T}})$, 不是 $r(A^{\mathrm{T}}B^{\mathrm{T}})$——例 1.31 的 D 选项就死在这。</p>
 <h3 id="35矩阵乘法的进一步解读必考重中之重">3.5 矩阵乘法的进一步解读 <span class="mk biz">必考</span>【重中之重】</h3>
 <p>老师: "这个非常重要, 非常非常重要, 希望大家竖起耳朵来听。"一共三条结论, 后面同解方程组、向量部分要反复用到, "把这个结论要记得滚瓜烂熟"。</p>
@@ -516,22 +516,22 @@ main details .sum b{font-weight:700}
 </blockquote>
 <p><b>行变换 (左乘)</b>:</p>
 <ul>
-<li><b>行互换</b>: $\begin{pmatrix}O&E\\E&O\end{pmatrix}\begin{pmatrix}A&B\\C&D\end{pmatrix}=\begin{pmatrix}C&D\\A&B\end{pmatrix}$ (把单位阵想成 1, 就是两行互换)</li>
-<li><b>行倍加</b>: $\begin{pmatrix}E&M\\O&E\end{pmatrix}\begin{pmatrix}A&B\\C&D\end{pmatrix}=\begin{pmatrix}A+MC&B+MD\\C&D\end{pmatrix}$ (把第二行的 $M$ 倍加到第一行)</li>
-<li><b>行倍乘</b>: $\begin{pmatrix}M&O\\O&E\end{pmatrix}\begin{pmatrix}A&B\\C&D\end{pmatrix}=\begin{pmatrix}MA&MB\\C&D\end{pmatrix}$ (第一行左乘 $M$)</li>
+<li><b>行互换</b>: $\begin{pmatrix}O&amp;E\\E&amp;O\end{pmatrix}\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}=\begin{pmatrix}C&amp;D\\A&amp;B\end{pmatrix}$ (把单位阵想成 1, 就是两行互换)</li>
+<li><b>行倍加</b>: $\begin{pmatrix}E&amp;M\\O&amp;E\end{pmatrix}\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}=\begin{pmatrix}A+MC&amp;B+MD\\C&amp;D\end{pmatrix}$ (把第二行的 $M$ 倍加到第一行)</li>
+<li><b>行倍乘</b>: $\begin{pmatrix}M&amp;O\\O&amp;E\end{pmatrix}\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}=\begin{pmatrix}MA&amp;MB\\C&amp;D\end{pmatrix}$ (第一行左乘 $M$)</li>
 </ul>
 <p><b>列变换 (右乘)</b>:</p>
 <ul>
-<li><b>列互换</b>: $\begin{pmatrix}A&B\\C&D\end{pmatrix}\begin{pmatrix}O&E\\E&O\end{pmatrix}=\begin{pmatrix}B&A\\D&C\end{pmatrix}$</li>
-<li><b>列倍加</b>: $\begin{pmatrix}A&B\\C&D\end{pmatrix}\begin{pmatrix}E&O\\M&E\end{pmatrix}=\begin{pmatrix}A+BM&B\\C+DM&D\end{pmatrix}$ (把第二列的 $M$ 倍加到第一列)</li>
-<li><b>列倍乘</b>: $\begin{pmatrix}A&B\\C&D\end{pmatrix}\begin{pmatrix}M&O\\O&E\end{pmatrix}=\begin{pmatrix}AM&B\\CM&D\end{pmatrix}$ (第一列右乘 $M$)</li>
+<li><b>列互换</b>: $\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}\begin{pmatrix}O&amp;E\\E&amp;O\end{pmatrix}=\begin{pmatrix}B&amp;A\\D&amp;C\end{pmatrix}$</li>
+<li><b>列倍加</b>: $\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}\begin{pmatrix}E&amp;O\\M&amp;E\end{pmatrix}=\begin{pmatrix}A+BM&amp;B\\C+DM&amp;D\end{pmatrix}$ (把第二列的 $M$ 倍加到第一列)</li>
+<li><b>列倍乘</b>: $\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}\begin{pmatrix}M&amp;O\\O&amp;E\end{pmatrix}=\begin{pmatrix}AM&amp;B\\CM&amp;D\end{pmatrix}$ (第一列右乘 $M$)</li>
 </ul>
 <p><b><span class="mk warn">易错</span> 行倍加时 $M$ 在左边 (左乘), 列倍加时 $M$ 在右边 (右乘)——列倍加是 $BM$ 不是 $MB$!</b> 老师强调 "这点区别务必务必要搞清楚, 这个很容易错的"。</p>
 <p><b><span class="mk info">注意</span></b> 行/列倍加、倍乘时, 矩阵 $M$ 要保证<b>可乘</b> (尺寸匹配)。行/列倍乘时: 若 $M$ <b>可逆</b>, 倍乘后秩不变; 若 $M$ <b>不可逆</b>, 倍乘后秩变小 (证明不用掌握, 理解这句话就行)。</p>
 <p><b>验证方式</b> 以上公式全部可用分块矩阵乘法直接验证, 比如行互换: 左上角 $O\cdot A+E\cdot C=C$, 左下角 $E\cdot A+O\cdot C=A$, 换行效果一目了然。</p>
 <h3 id="37分块矩阵的秩往标准形上凑必考">3.7 分块矩阵的秩: 往标准形上凑 <span class="mk biz">必考</span></h3>
 <p><b>核心结论</b> 广义初等变换的目的只有一个: <b>把复杂的分块矩阵化成能套用秩结论的标准形</b>:</p>
-<p>$$ r\begin{pmatrix}A&O\\O&B\end{pmatrix}=r(A)+r(B), \qquad r\begin{pmatrix}A&O\\C&B\end{pmatrix}\ge r(A)+r(B) \ (\text{副对角同理}) $$</p>
+<p>$$ r\begin{pmatrix}A&amp;O\\O&amp;B\end{pmatrix}=r(A)+r(B), \qquad r\begin{pmatrix}A&amp;O\\C&amp;B\end{pmatrix}\ge r(A)+r(B) \ (\text{副对角同理}) $$</p>
 <p><b>题型套路</b> (例 1.34-1.36 全部是这个套路):</p>
 <ul>
 <li>哪个块可逆就先动哪个块? <b>恰恰相反</b>: 哪个块不能动, 就看哪个块是单位阵。</li>

@@ -375,7 +375,7 @@ main details .sum b{font-weight:700}
 </ol>
 <p><b>易错点</b> <span class="mk warn">易错</span> 第 2、5 条是老师专门点名的"大家比较容易错的地方", 与矩阵行为对比:</p>
 <ul>
-<li><b>行列式提 k 只针对一行或一列</b>; 矩阵提 k 是所有元素一起提, 即 $|kA| = k^n|A|$ (n 为阶数)。例如 $A = \begin{pmatrix}6&6\\6&6\end{pmatrix}$ 想提 6: 行列式是 $6\begin{vmatrix}1&1\\1&1\end{vmatrix}$, 矩阵是 $6\begin{pmatrix}1&1\\1&1\end{pmatrix}$ 且 $|kA| = k^2|A|$。老师: "搞清楚这个区别。"</li>
+<li><b>行列式提 k 只针对一行或一列</b>; 矩阵提 k 是所有元素一起提, 即 $|kA| = k^n|A|$ (n 为阶数)。例如 $A = \begin{pmatrix}6&amp;6\\6&amp;6\end{pmatrix}$ 想提 6: 行列式是 $6\begin{vmatrix}1&amp;1\\1&amp;1\end{vmatrix}$, 矩阵是 $6\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}$ 且 $|kA| = k^2|A|$。老师: "搞清楚这个区别。"</li>
 <li><b>行列式拆分只拆一行(列)</b>, 其余行(列)不动; 矩阵加减 $A \pm B$ 是<b>所有元素</b>相加减。这是两者最根本的区别。</li>
 </ul>
 <p><b>直觉</b> 性质 2-5 的全部用途只有一个: 把任意行列式化成上三角/下三角, 然后取对角线乘积。</p>
@@ -393,13 +393,13 @@ main details .sum b{font-weight:700}
 <p><b>题型与考法</b> <span class="mk freq">高频</span> 凡是遇到"代数余子式的线性组合" $k_1A_{i1} + \cdots + k_nA_{in}$(例 1.2), 标准手段就是<b>凑新行列式</b>: 系数 $k_1, \dots, k_n$ 就是替换后第 $i$ 行的元素。老师: "以后再碰到这种含大 A 的问题, 很好用的处理手段就是凑一个新的行列式; 后面还会学一个手段——往 A 的伴随上去靠, 比如算 tr(A$^{*}$) 就和特征值联系起来。"</p>
 <h3 id="特殊行列式必考">特殊行列式 <span class="mk biz">必考</span></h3>
 <p><b>(1) 上(下)三角行列式 = 主对角线元素之积</b></p>
-<p>$$ \begin{vmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ 0 & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & a_{nn} \end{vmatrix} = a_{11}a_{22}\cdots a_{nn} $$</p>
+<p>$$ \begin{vmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ 0 &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; a_{nn} \end{vmatrix} = a_{11}a_{22}\cdots a_{nn} $$</p>
 <p><b>(2) 副对角线行列式 <span class="mk warn">易错</span></b></p>
-<p>$$ \begin{vmatrix} 0 & \cdots & 0 & a_{1n} \\ 0 & \cdots & a_{2,n-1} & * \\ \vdots & \bullet & \vdots & \vdots \\ a_{n1} & \cdots & * & * \end{vmatrix} = (-1)^{\frac{n(n-1)}{2}}a_{1n}a_{2,n-1}\cdots a_{n1} $$</p>
+<p>$$ \begin{vmatrix} 0 &amp; \cdots &amp; 0 &amp; a_{1n} \\ 0 &amp; \cdots &amp; a_{2,n-1} &amp; * \\ \vdots &amp; \bullet &amp; \vdots &amp; \vdots \\ a_{n1} &amp; \cdots &amp; * &amp; * \end{vmatrix} = (-1)^{\frac{n(n-1)}{2}}a_{1n}a_{2,n-1}\cdots a_{n1} $$</p>
 <p>(副对角线下方全为零时适用)</p>
 <p><b>易错点</b> <span class="mk warn">易错</span> 副对角线前面<b>一定要添</b> $(-1)^{\frac{n(n-1)}{2}}$。老师反复强调: "一旦这个小细节没注意到, 考到了, 五分就没了, 务必要引起重视。" 例 1.4 的两个方法最后都栽在这个符号上。</p>
 <p><b>(3) 范德蒙行列式 <span class="mk freq">高频</span></b></p>
-<p>$$ \begin{vmatrix} 1 & 1 & \cdots & 1 \\ x_1 & x_2 & \cdots & x_n \\ x_1^2 & x_2^2 & \cdots & x_n^2 \\ \vdots & \vdots & \ddots & \vdots \\ x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1} \end{vmatrix} = \prod_{1 \le i < j \le n}(x_j - x_i) $$</p>
+<p>$$ \begin{vmatrix} 1 &amp; 1 &amp; \cdots &amp; 1 \\ x_1 &amp; x_2 &amp; \cdots &amp; x_n \\ x_1^2 &amp; x_2^2 &amp; \cdots &amp; x_n^2 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ x_1^{n-1} &amp; x_2^{n-1} &amp; \cdots &amp; x_n^{n-1} \end{vmatrix} = \prod_{1 \le i &lt; j \le n}(x_j - x_i) $$</p>
 <p><b>直觉</b> 老师教的计算原则(不用背公式): 把第二行这个"主体"拎出来排成一条线 $x_1, x_2, \dots, x_n$, 然后<b>挨个打巴掌</b>——右边的每个数都去"欺负"左边每一个数, 全部做(右 − 左)后乘起来。例 1.5 会演示怎么"打", 保证听一次再也不忘。</p>
 <p><b>题型与考法</b> 识别要点: 每行是 $(1, x_i, x_i^2, \dots, x_i^{n-1})$ 的列向排列; 若是"横着次数变高"(如例 1.5), 先转置。例 1.6 里范德蒙以"系数矩阵"的身份藏在矩阵乘法里。</p>
 <p><b>(4) 爪形(箭形)行列式 <span class="mk freq">高频</span></b></p>
@@ -455,8 +455,8 @@ main details .sum b{font-weight:700}
 <h3 id="矩阵乘法的三个不易错">矩阵乘法的三个"不" <span class="mk warn">易错</span></h3>
 <p><b>核心结论</b> (老师强调的易错三连):</p>
 <ol>
-<li><b>无交换律</b>: 一般 $AB \neq BA$。例: $A = \begin{pmatrix}0&1\\1&0\end{pmatrix}$, $B = \begin{pmatrix}1&2\\3&4\end{pmatrix}$, 则 $AB = \begin{pmatrix}3&4\\1&2\end{pmatrix}$, $BA = \begin{pmatrix}2&1\\4&3\end{pmatrix}$。</li>
-<li><b>无消去律</b>: $AB = O$ <b>推不出</b> $A = O$ 或 $B = O$。例: $A = \begin{pmatrix}1&1\\2&2\end{pmatrix}$, $B = \begin{pmatrix}1&-3\\-1&3\end{pmatrix}$ 均非零, 但 $AB = O$。"这跟数不一样: 数是 $ab = 0$ 必有 $a = 0$ 或 $b = 0$。"</li>
+<li><b>无交换律</b>: 一般 $AB \neq BA$。例: $A = \begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}$, $B = \begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}$, 则 $AB = \begin{pmatrix}3&amp;4\\1&amp;2\end{pmatrix}$, $BA = \begin{pmatrix}2&amp;1\\4&amp;3\end{pmatrix}$。</li>
+<li><b>无消去律</b>: $AB = O$ <b>推不出</b> $A = O$ 或 $B = O$。例: $A = \begin{pmatrix}1&amp;1\\2&amp;2\end{pmatrix}$, $B = \begin{pmatrix}1&amp;-3\\-1&amp;3\end{pmatrix}$ 均非零, 但 $AB = O$。"这跟数不一样: 数是 $ab = 0$ 必有 $a = 0$ 或 $b = 0$。"</li>
 <li><b>展开不同</b>: $(A+B)^2 = A^2 + AB + BA + B^2 \neq A^2 + 2AB + B^2$(因无交换律, 两项不能合并)。</li>
 </ol>
 <h3 id="矩阵的高次幂四套路必考">矩阵的高次幂: 四套路 <span class="mk biz">必考</span></h3>
@@ -490,10 +490,10 @@ main details .sum b{font-weight:700}
 </ul>
 <h3 id="伴随矩阵易错">伴随矩阵 <span class="mk warn">易错</span></h3>
 <p><b>定义</b> 把代数余子式 $A_{ij}$ 转置摆放:</p>
-<p>$$ A^{*} = \begin{pmatrix} A_{11} & A_{21} & \cdots & A_{n1} \\ A_{12} & A_{22} & \cdots & A_{n2} \\ \vdots & \vdots & \ddots & \vdots \\ A_{1n} & A_{2n} & \cdots & A_{nn} \end{pmatrix} $$</p>
+<p>$$ A^{*} = \begin{pmatrix} A_{11} &amp; A_{21} &amp; \cdots &amp; A_{n1} \\ A_{12} &amp; A_{22} &amp; \cdots &amp; A_{n2} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ A_{1n} &amp; A_{2n} &amp; \cdots &amp; A_{nn} \end{pmatrix} $$</p>
 <p>即 $a_{ij}$ 的代数余子式放在<b>第 j 行第 i 列</b>——下标"竖着"的, 伴随里"横着"放。</p>
 <p><b>易错点</b> <span class="mk warn">易错</span> 老师三大提醒: ① 求代数余子式别忘 $(-1)^{i+j}$; ② <b>组装别排错位</b>——"$a_{ij}$ 的伴随位置是反的", 很多人学到后面把这种基础的东西忘了, 导致做错, 非常难受; ③ 求逆别忘除以 $|A|$。</p>
-<p><b>二阶口诀</b> <span class="mk freq">高频</span> "主对调, 副变号": $A = \begin{pmatrix}a&b\\c&d\end{pmatrix}$ 的伴随 = $\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$。</p>
+<p><b>二阶口诀</b> <span class="mk freq">高频</span> "主对调, 副变号": $A = \begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}$ 的伴随 = $\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}$。</p>
 <p><b>十条公式: 记基准, 其余推 <span class="mk biz">必考</span></b></p>
 <p>老师:"公式看起来特别多, 直接蒙圈了, 实际上并不都是二记。" 前几条重复同一意思, 只记基准, 其余全部由它推(推导见视频讲解):</p>
 <ul>
@@ -534,7 +534,7 @@ main details .sum b{font-weight:700}
 </ul>
 <p><b>性质</b></p>
 <ul>
-<li>$|A| = \pm 1$: 由 $A^{\mathrm{T}}A = E$ 取行列式即得(故 $|A| < 0$ 时必 $|A| = -1$, 例 1.8)</li>
+<li>$|A| = \pm 1$: 由 $A^{\mathrm{T}}A = E$ 取行列式即得(故 $|A| &lt; 0$ 时必 $|A| = -1$, 例 1.8)</li>
 <li>行向量组(或列向量组)是<b>规范正交基</b>: 每个向量都是单位向量, 不同向量两两正交(数一说法: 由规范正交基组成)</li>
 <li><b>同阶正交矩阵的乘积仍是正交矩阵</b>(可推广到任意多个): $(AB)^{\mathrm{T}}(AB) = B^{\mathrm{T}}A^{\mathrm{T}}AB = B^{\mathrm{T}}EB = E$。老师:"两个乘完还是正交矩阵, 它再去乘一个还是正交矩阵, 套娃式地推广。"</li>
 <li>例 1.18 的推论: 若 $a_{ij} + A_{ij} = 0$(三阶非零), 则不仅 $|A| = -1$, 还能推出 <b>A 是正交矩阵</b>: 由 $A^{*} = -A^{\mathrm{T}}$ 左乘 A 得 $|A|E = -AA^{\mathrm{T}}$, 代入 $|A| = -1$ 即 $AA^{\mathrm{T}} = E$。</li>

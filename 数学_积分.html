@@ -376,26 +376,26 @@ $$ \frac{d}{dx}\left[\int f(x)dx\right] = f(x), \qquad \int F'(x)dx = F(x) + C $
 <p>这些公式是<b>凑微分</b>的基础——每个公式都是求导公式的逆写:</p>
 <p>$$
 \begin{aligned}
-&\int x^\alpha dx = \frac{x^{\alpha+1}}{\alpha+1}+C \;(\alpha \neq -1) \quad &
-&\int \frac{1}{x}dx = \ln|x|+C \\[4pt]
-&\int a^x dx = \frac{a^x}{\ln a}+C \; (a>0,a\neq 1) \quad &
-&\int e^x dx = e^x+C \\[4pt]
-&\int \sin x\,dx = -\cos x+C \quad &
-&\int \cos x\,dx = \sin x+C \\[4pt]
-&\int \tan x\,dx = -\ln|\cos x|+C \quad &
-&\int \cot x\,dx = \ln|\sin x|+C \\[4pt]
-&\int \sec^2 x\,dx = \tan x+C \quad &
-&\int \csc^2 x\,dx = -\cot x+C \\[4pt]
-&\int \sec x\tan x\,dx = \sec x+C \quad &
-&\int \csc x\cot x\,dx = -\csc x+C \\[4pt]
-&\int \sec x\,dx = \ln|\sec x+\tan x|+C \quad &
-&\int \csc x\,dx = \ln|\csc x-\cot x|+C \\[4pt]
-&\int \frac{dx}{1+x^2} = \arctan x+C \quad &
-&\int \frac{dx}{\sqrt{1-x^2}} = \arcsin x+C \\[4pt]
-&\int \frac{dx}{a^2+x^2} = \frac{1}{a}\arctan\frac{x}{a}+C \quad &
-&\int \frac{dx}{\sqrt{a^2-x^2}} = \arcsin\frac{x}{a}+C \\[4pt]
-&\int \frac{dx}{a^2-x^2} = \frac{1}{2a}\ln\left|\frac{a+x}{a-x}\right|+C \quad &
-&\int \frac{dx}{\sqrt{x^2\pm a^2}} = \ln|x+\sqrt{x^2\pm a^2}|+C
+&amp;\int x^\alpha dx = \frac{x^{\alpha+1}}{\alpha+1}+C \;(\alpha \neq -1) \quad &amp;
+&amp;\int \frac{1}{x}dx = \ln|x|+C \\[4pt]
+&amp;\int a^x dx = \frac{a^x}{\ln a}+C \; (a>0,a\neq 1) \quad &amp;
+&amp;\int e^x dx = e^x+C \\[4pt]
+&amp;\int \sin x\,dx = -\cos x+C \quad &amp;
+&amp;\int \cos x\,dx = \sin x+C \\[4pt]
+&amp;\int \tan x\,dx = -\ln|\cos x|+C \quad &amp;
+&amp;\int \cot x\,dx = \ln|\sin x|+C \\[4pt]
+&amp;\int \sec^2 x\,dx = \tan x+C \quad &amp;
+&amp;\int \csc^2 x\,dx = -\cot x+C \\[4pt]
+&amp;\int \sec x\tan x\,dx = \sec x+C \quad &amp;
+&amp;\int \csc x\cot x\,dx = -\csc x+C \\[4pt]
+&amp;\int \sec x\,dx = \ln|\sec x+\tan x|+C \quad &amp;
+&amp;\int \csc x\,dx = \ln|\csc x-\cot x|+C \\[4pt]
+&amp;\int \frac{dx}{1+x^2} = \arctan x+C \quad &amp;
+&amp;\int \frac{dx}{\sqrt{1-x^2}} = \arcsin x+C \\[4pt]
+&amp;\int \frac{dx}{a^2+x^2} = \frac{1}{a}\arctan\frac{x}{a}+C \quad &amp;
+&amp;\int \frac{dx}{\sqrt{a^2-x^2}} = \arcsin\frac{x}{a}+C \\[4pt]
+&amp;\int \frac{dx}{a^2-x^2} = \frac{1}{2a}\ln\left|\frac{a+x}{a-x}\right|+C \quad &amp;
+&amp;\int \frac{dx}{\sqrt{x^2\pm a^2}} = \ln|x+\sqrt{x^2\pm a^2}|+C
 \end{aligned}
 $$</p>
 <p><b>易错点</b> <span class="mk warn">易错</span> $\int \frac{1}{x}dx = \ln|x|+C$ 的绝对值不能丢(定义域包含负半轴时); $\int \tan x\,dx$ 和 $\int \cot x\,dx$ 易混淆符号。</p>
@@ -493,7 +493,7 @@ $$ \int u\,dv = uv - \int v\,du $$
 $$ \int e^{ax}\sin bx\,dx = \frac{e^{ax}(a\sin bx - b\cos bx)}{a^2+b^2} + C $$
 $$ \int e^{ax}\cos bx\,dx = \frac{e^{ax}(a\cos bx + b\sin bx)}{a^2+b^2} + C $$</p>
 <p><b>行列式记忆法</b><span class="mk info">注意</span> 循环型结果可写成行列式:
-$$ \int e^{ax}\sin bx\,dx=\frac{e^{ax}}{a^2+b^2}\begin{vmatrix}(e^{ax})' & (\sin bx)'\\ e^{ax} & \sin bx\end{vmatrix}+C $$
+$$ \int e^{ax}\sin bx\,dx=\frac{e^{ax}}{a^2+b^2}\begin{vmatrix}(e^{ax})' &amp; (\sin bx)'\\ e^{ax} &amp; \sin bx\end{vmatrix}+C $$
 分子 = "第一行导数、第二行原函数"的行列式——两行交叉项自动带符号, 一次写完, 免去循环解方程。题型带 $a=0$ 或 $b=0$ 时退化为普通公式, 也适用。</p>
 <p><b>递推型</b>: $\int \sec^n x\,dx$ 或 $\int \tan^n x\,dx$, 分部后得到同类但次数更低的形式, 建立递推公式。</p>
 <p><b><span class="mk warn">易错</span></b> 定积分分部: $\int_a^b u\,dv = uv\big|_a^b - \int_a^b v\,du$, 别忘了第一项代入上下限。</p>
@@ -501,10 +501,10 @@ $$ \int e^{ax}\sin bx\,dx=\frac{e^{ax}}{a^2+b^2}\begin{vmatrix}(e^{ax})' & (\sin
 <hr />
 <h2 id="四有理函数与三角函数的积分">四、有理函数与三角函数的积分</h2>
 <h3 id="41有理函数积分必考">4.1 有理函数积分 <span class="mk biz">必考</span></h3>
-<p><b>定义</b> 有理函数 = 两个多项式的商 $\frac{P(x)}{Q(x)}$。若 $\deg P < \deg Q$ 称<b>真分式</b>, 否则为<b>假分式</b>。</p>
+<p><b>定义</b> 有理函数 = 两个多项式的商 $\frac{P(x)}{Q(x)}$。若 $\deg P &lt; \deg Q$ 称<b>真分式</b>, 否则为<b>假分式</b>。</p>
 <p><b>步骤</b>: 假分式先做多项式除法化为"多项式 + 真分式"; 真分式分解为部分分式。</p>
 <p><b>部分分式分解定理</b>:
-若 $Q(x)=b_0(x-a)^\alpha\cdots(x-b)^\beta(x^2+px+q)^\mu\cdots$ ($p^2-4q<0$), 则:
+若 $Q(x)=b_0(x-a)^\alpha\cdots(x-b)^\beta(x^2+px+q)^\mu\cdots$ ($p^2-4q&lt;0$), 则:
 $$ \frac{P(x)}{Q(x)} = \frac{A_1}{x-a} + \frac{A_2}{(x-a)^2} + \cdots + \frac{A_\alpha}{(x-a)^\alpha} + \cdots + \frac{P_1x+Q_1}{x^2+px+q} + \cdots $$</p>
 <p><b>系数的求法</b>:</p>
 <ul>
@@ -549,7 +549,7 @@ $$ \lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n f\!\left(\frac{k}{n}\right) = \int_0
 <p>更一般: $\lim_{n\to\infty}\frac{b-a}{n}\sum_{k=1}^n f\!\left(a+k\frac{b-a}{n}\right) = \int_a^b f(x)dx$。</p>
 <p><span class="src">【来源: 0505（2）、定积分作业解析】</span></p>
 <h3 id="52定积分的几何意义">5.2 定积分的几何意义</h3>
-<p>$\int_a^b f(x)dx$ 表示曲线 $y=f(x)$ 与 $x=a$, $x=b$, $x$ 轴围成图形的<b>面积的代数和</b>: $x$ 轴上方取正, 下方取负 ($a<b$)。</p>
+<p>$\int_a^b f(x)dx$ 表示曲线 $y=f(x)$ 与 $x=a$, $x=b$, $x$ 轴围成图形的<b>面积的代数和</b>: $x$ 轴上方取正, 下方取负 ($a&lt;b$)。</p>
 <p><b>利用几何意义简化</b>: 如 $\int_0^2 \sqrt{2x-x^2}dx$ —— 这是半圆 $(x-1)^2+y^2=1$ (上半) 的面积 $= \frac{\pi}{2}$ <span class="fill">【AI补全】</span>, 无需积分计算。</p>
 <p><span class="src">【来源: 0505（2）】</span></p>
 <h3 id="53定积分的性质">5.3 定积分的性质</h3>
@@ -557,11 +557,11 @@ $$ \lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n f\!\left(\frac{k}{n}\right) = \int_0
 $$ \int_a^b f(x)dx = -\int_b^a f(x)dx, \quad \int_a^a f(x)dx = 0 $$
 $$ \int_a^b [k_1f(x)+k_2g(x)]dx = k_1\int_a^b f(x)dx + k_2\int_a^b g(x)dx $$
 $$ \int_a^b f(x)dx = \int_a^c f(x)dx + \int_c^b f(x)dx \quad (\text{区间可加性}) $$</p>
-<p><b>(2) 保序性</b>: 若 $f(x) \leq g(x)$ 在 $[a,b]$ 上, 则 $\int_a^b f(x)dx \leq \int_a^b g(x)dx$ ($a<b$)。</p>
+<p><b>(2) 保序性</b>: 若 $f(x) \leq g(x)$ 在 $[a,b]$ 上, 则 $\int_a^b f(x)dx \leq \int_a^b g(x)dx$ ($a&lt;b$)。</p>
 <p><b>(3) 绝对值不等式</b>:
-$$ \left|\int_a^b f(x)dx\right| \leq \int_a^b |f(x)|dx \quad (a<b) $$</p>
+$$ \left|\int_a^b f(x)dx\right| \leq \int_a^b |f(x)|dx \quad (a&lt;b) $$</p>
 <p><b>(4) 估值不等式</b>: 若 $m \leq f(x) \leq M$ 在 $[a,b]$ 上, 则
-$$ m(b-a) \leq \int_a^b f(x)dx \leq M(b-a) \quad (a<b) $$</p>
+$$ m(b-a) \leq \int_a^b f(x)dx \leq M(b-a) \quad (a&lt;b) $$</p>
 <p><b><span class="mk ok">重点</span>函数比较大小题</b>: 在区间内比较 $f$ 和 $g$ 的大小 → 积分也保持大小关系。常用在选择题中判断积分的大小排序。</p>
 <p><span class="src">【来源: 0505（2）、定积分作业解析】</span></p>
 <h3 id="54积分中值定理必考">5.4 积分中值定理 <span class="mk biz">必考</span></h3>
@@ -597,8 +597,8 @@ $$ \int_a^{a+nT} f(x)dx = n\int_0^T f(x)dx $$</p>
 <h3 id="63点火公式Wallis公式必考">6.3 点火公式 (Wallis 公式) <span class="mk biz">必考</span></h3>
 <p><b>核心结论</b>
 $$ \int_0^{\frac{\pi}{2}} \sin^n x\,dx = \int_0^{\frac{\pi}{2}} \cos^n x\,dx = \begin{cases}
-\dfrac{n-1}{n} \cdot \dfrac{n-3}{n-2} \cdots \dfrac{1}{2} \cdot \dfrac{\pi}{2}, & n \text{ 为正偶数} \\[10pt]
-\dfrac{n-1}{n} \cdot \dfrac{n-3}{n-2} \cdots \dfrac{2}{3} \cdot 1, & n \text{ 为大于 1 的正奇数}
+\dfrac{n-1}{n} \cdot \dfrac{n-3}{n-2} \cdots \dfrac{1}{2} \cdot \dfrac{\pi}{2}, &amp; n \text{ 为正偶数} \\[10pt]
+\dfrac{n-1}{n} \cdot \dfrac{n-3}{n-2} \cdots \dfrac{2}{3} \cdot 1, &amp; n \text{ 为大于 1 的正奇数}
 \end{cases} $$</p>
 <p><b>记忆</b>: 从 $n$ 开始每次减 2 乘下去, 偶数以 $\frac{\pi}{2}$ 结尾, 奇数以 $1$ 结尾。<b>名字来源</b>: 像导火线一样"引燃"降次。</p>
 <p><b>何时用</b>: 看到 $\int_0^{\pi/2} \sin^n x\,dx$ 或 $\int_0^{\pi/2} \cos^n x\,dx$, 直接代公式, 不用分部积分。</p>
@@ -648,7 +648,7 @@ $$ \int_{-\infty}^{+\infty} f(x)dx = \lim_{a\to-\infty}\int_a^c f(x)dx + \lim_{b
 <p>极限存在 → <b>收敛</b>; 不存在 → <b>发散</b>。</p>
 <p><b><span class="mk info">注意</span></b> $\int_{-\infty}^{+\infty}$ 必须两个极限<b>同时</b>存在才收敛; 但凡一个不存在, 整体发散。</p>
 <p><b>重要结论 (p-积分)</b>:
-$$ \int_a^{+\infty} \frac{dx}{x^p} \;(a>0) \quad \begin{cases} \text{收敛}, & p>1 \\ \text{发散}, & p \leq 1 \end{cases} $$
+$$ \int_a^{+\infty} \frac{dx}{x^p} \;(a>0) \quad \begin{cases} \text{收敛}, &amp; p>1 \\ \text{发散}, &amp; p \leq 1 \end{cases} $$
 <b>特别地</b>, $p=1$ 时 $\int_a^{+\infty}\frac{dx}{x} = \ln x\big|_a^{+\infty}$ 发散。</p>
 <p><span class="src">【来源: 0510（1）】</span></p>
 <h3 id="82无界函数的反常积分瑕积分易错">8.2 无界函数的反常积分 (瑕积分) <span class="mk warn">易错</span></h3>
@@ -659,7 +659,7 @@ $$ \int_a^{+\infty} \frac{dx}{x^p} \;(a>0) \quad \begin{cases} \text{收敛}, & 
 <li>$c\in(a,b)$ 为瑕点: $\int_a^b = \lim_{t\to c^-}\int_a^t + \lim_{t\to c^+}\int_t^b$, 两个极限<b>同时存在</b>才收敛</li>
 </ul>
 <p><b>重要结论 (q-积分)</b>:
-$$ \int_a^b \frac{dx}{(x-a)^q} \;(a<b) \quad \begin{cases} \text{收敛}, & q<1 \\ \text{发散}, & q \geq 1 \end{cases} $$</p>
+$$ \int_a^b \frac{dx}{(x-a)^q} \;(a&lt;b) \quad \begin{cases} \text{收敛}, &amp; q&lt;1 \\ \text{发散}, &amp; q \geq 1 \end{cases} $$</p>
 <p><b><span class="mk warn">易错</span></b> 瑕积分<b>看起来像普通定积分但被积函数在某处无穷</b>! 如 $\int_0^1 \frac{dx}{\sqrt{x}}$ 看起来是定积分, 实则在 $x=0$ 处是瑕积分。一定要先检查被积函数在积分区间内是否有瑕点。</p>
 <p><span class="src">【来源: 0510（2）】</span></p>
 <h3 id="83反常积分的判敛必考">8.3 反常积分的判敛 <span class="mk biz">必考</span></h3>
@@ -668,7 +668,7 @@ $$ \int_a^b \frac{dx}{(x-a)^q} \;(a<b) \quad \begin{cases} \text{收敛}, & q<1 
 <li>$\int_a^{+\infty} g(x)dx$ 收敛 ⇒ $\int_a^{+\infty} f(x)dx$ 收敛</li>
 <li>$\int_a^{+\infty} f(x)dx$ 发散 ⇒ $\int_a^{+\infty} g(x)dx$ 发散</li>
 </ul>
-<p><b>极限形式 (同阶同敛散)</b>: 若 $\lim_{x\to+\infty}\frac{f(x)}{g(x)} = \lambda$ ($0<\lambda<+\infty$), 则 $\int_a^{+\infty}f(x)dx$ 与 $\int_a^{+\infty}g(x)dx$ <b>同时收敛或同时发散</b>。</p>
+<p><b>极限形式 (同阶同敛散)</b>: 若 $\lim_{x\to+\infty}\frac{f(x)}{g(x)} = \lambda$ ($0&lt;\lambda&lt;+\infty$), 则 $\int_a^{+\infty}f(x)dx$ 与 $\int_a^{+\infty}g(x)dx$ <b>同时收敛或同时发散</b>。</p>
 <p><b>极限形式的两个边界</b><span class="mk info">注意</span> $\lambda=0$: $f$ 被 $g$ 控制, <b>小者随大者</b>: $g$ 收敛 ⇒ $f$ 收敛; $\lambda=+\infty$: $f$ 控制 $g$, <b>大者随小者</b>: $g$ 发散 ⇒ $f$ 发散。极限形式可以放宽到 $0\le\lambda\le+\infty$ 用。</p>
 <p><b>判敛策略</b>:</p>
 <ol>
@@ -678,7 +678,7 @@ $$ \int_a^b \frac{dx}{(x-a)^q} \;(a<b) \quad \begin{cases} \text{收敛}, & q<1 
 </ol>
 <p><b>常见比较基准</b>:
 $$ \int_1^{+\infty}\frac{dx}{x^p}: p>1 \text{ 收敛}, p\leq 1 \text{ 发散} $$
-$$ \int_0^1\frac{dx}{x^q}: q<1 \text{ 收敛}, q\geq 1 \text{ 发散} $$
+$$ \int_0^1\frac{dx}{x^q}: q&lt;1 \text{ 收敛}, q\geq 1 \text{ 发散} $$
 $$ \int_2^{+\infty}\frac{dx}{x(\ln x)^p}: p>1 \text{ 收敛}, p\leq1 \text{ 发散}\ \ \text{【对数标尺, 必考】} $$</p>
 <p><b>直觉</b> 对数标尺的 $p$ 判据方向与 $x^p$ 相反? 不, 完全同向: 都是"<b>分母越强越收敛</b>"。$x(\ln x)^p$ 里 $x$ 已经保证了比 $1/x$ 略强, 剩下比拼 $(\ln x)^p$ 的力度——$p>1$ 才压得住。它与 $p$ 级数 $\sum\frac1{n(\ln n)^p}$ 是同一族(级数板块同款标尺)。</p>
 <p><span class="src">【来源: 0510（1）、0510（2）、0715（2）、0716（2）】</span></p>

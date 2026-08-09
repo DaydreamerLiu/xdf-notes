@@ -949,7 +949,7 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">① 设 $M(x_0,f(x_0))$, 切线: $Y-f(x_0)=f'(x_0)(X-x_0)$<span class="why">过 $M$ 的切线方程, 斜率 $f'(x_0)$</span></div>
-<div class="step">② $T$: 令 $Y=0$, $X_T=x_0-\frac{f(x_0)}{f'(x_0)}$<span class="why">切线在 $x$ 轴上的截距; 由 $f(x)>0,\ x\ge0$ 且 $f'>0$ 知 $X_T<x_0$, 三角形位于 $M$ 正下方</span></div>
+<div class="step">② $T$: 令 $Y=0$, $X_T=x_0-\frac{f(x_0)}{f'(x_0)}$<span class="why">切线在 $x$ 轴上的截距; 由 $f(x)>0,\ x\ge0$ 且 $f'>0$ 知 $X_T&lt;x_0$, 三角形位于 $M$ 正下方</span></div>
 <div class="step">③ $\triangle MTP$ 面积: $\frac12\cdot|MP|\cdot|TP|=\frac12 f(x_0)\cdot\frac{f(x_0)}{f'(x_0)}=\frac{f^2(x_0)}{2f'(x_0)}$<span class="why">底 $TP=x_0-X_T=\frac{f}{f'}$, 高 $MP=f$</span></div>
 <div class="step">④ 曲线下面积: $\int_0^{x_0} f(x)dx$<span class="why">曲线过原点, 与 $MP$ 及 $x$ 轴围成的区域面积即定积分</span></div>
 <div class="step">⑤ 条件: $\frac{\int_0^{x} f(t)dt}{f^2(x)/(2f'(x))}=\frac32$ ⇒ $3f^2=4f'\int_0^x f(t)dt$<span class="why">面积比 3:2 交叉相乘; 记 $f=f(x)$, 注意两边都含 $f'$ 与积分</span></div>
@@ -968,7 +968,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_微分方程.html#72物理应用牛顿冷却定律等">牛顿冷却定律</a> · <a href="数学_微分方程.html#21可分离变量的微分方程必考">可分离变量</a> <span class="mk xref">相关</span><a href="数学_微分方程_例题.html#例22">例 2.2</a> 同为分离变量+初值定常数, 本题用两组温度数据定 $C,k$</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① 设 $T(t)$ 为 $t$ 时刻温度: $\frac{dT}{dt}=k(T-20)$<span class="why">牛顿冷却定律: 变化率与温差成正比; 温度高于介质故 $k<0$(冷却)</span></div>
+<div class="step">① 设 $T(t)$ 为 $t$ 时刻温度: $\frac{dT}{dt}=k(T-20)$<span class="why">牛顿冷却定律: 变化率与温差成正比; 温度高于介质故 $k&lt;0$(冷却)</span></div>
 <div class="step">② 分离: $\frac{dT}{T-20}=k\,dt$ ⇒ $\ln|T-20|=kt+\ln C$<span class="why">可分离变量; 全程 $T-20>0$, 绝对值可直接去掉</span></div>
 <div class="step">③ $T=Ce^{kt}+20$<span class="why">指数化: 温差按指数衰减, $t\to\infty$ 时趋于介质温度 20</span></div>
 <div class="step">④ $T(0)=120$: $120=C+20$ ⇒ $C=100$ ⇒ $T=100e^{kt}+20$<span class="why">初始条件定常数 $C$, 即初始温差 100</span></div>
@@ -981,7 +981,7 @@ main details .sum b{font-weight:700}
 
 <p id="例116" class="prob"><b>例 11.6</b> 设函数 $f(x)$ 在 $[0,1]$ 上有连续导数, $f(0)=1$, 且满足
 $\iint_D f'(x+y)\,dxdy = \iint_D f(t)\,dxdy$,
-其中 $D=\{(x,y)\mid 0\le y\le t-x,\ 0\le x\le t\}$ ($0<t\le1$), 求 $f(x)$ 的表达式。【0723（1）】</p>
+其中 $D=\{(x,y)\mid 0\le y\le t-x,\ 0\le x\le t\}$ ($0&lt;t\le1$), 求 $f(x)$ 的表达式。【0723（1）】</p>
 <ul>
 <li>考点: 二重积分化累次 → 求导 → 微分方程</li>
 <li><span class="mk theory">理论</span><a href="数学_微分方程.html#73积分方程化为微分方程">积分方程化为微分方程</a> · <a href="数学_微分方程.html#21可分离变量的微分方程必考">可分离变量</a> <span class="mk xref">相关</span><a href="数学_微分方程_例题.html#例111">例 11.1</a> 同"求导消积分、原式取初值", 本题积分藏于二重形式</li>
@@ -994,7 +994,7 @@ $\iint_D f'(x+y)\,dxdy = \iint_D f(t)\,dxdy$,
 <div class="step">⑤ 等式: $t f(t)-\int_0^t f(x)dx=\frac{t^2}{2}f(t)$<span class="why">左右相等, 这就是含积分与 $f$ 的方程</span></div>
 <div class="step">⑥ 两边对 $t$ 求导: $f(t)+t f'(t)-f(t)=t f(t)+\frac{t^2}{2}f'(t)$<span class="why">$\frac{d}{dt}\int_0^t f(x)dx=f(t)$(变上限求导)与左端 $-f(t)$ 前的 $f(t)$ 对消; 右端用乘积法则</span></div>
 <div class="step">⑦ 化简: $t f'=t f+\frac{t^2}{2}f'$ ⇒ $f'-\frac{t}{2}f'=f$ ⇒ $(1-\frac{t}{2})f'=f$<span class="why">移项后把 $f'$ 的系数合并到一侧</span></div>
-<div class="step">⑧ $\frac{f'}{f}=\frac{1}{1-t/2}=\frac{2}{2-t}$ ⇒ $\ln|f|=-2\ln|2-t|+\ln C$<span class="why">分离变量; $\int\frac{2}{2-t}dt=-2\ln(2-t)$; 在 $0<t\le1$ 内 $2-t>0$, 绝对值可去</span></div>
+<div class="step">⑧ $\frac{f'}{f}=\frac{1}{1-t/2}=\frac{2}{2-t}$ ⇒ $\ln|f|=-2\ln|2-t|+\ln C$<span class="why">分离变量; $\int\frac{2}{2-t}dt=-2\ln(2-t)$; 在 $0&lt;t\le1$ 内 $2-t>0$, 绝对值可去</span></div>
 <div class="step">⑨ $f=\frac{C}{(2-t)^2}$; $f(0)=1$ ⇒ $C=4$ ⇒ $f(x)=\frac{4}{(2-x)^2}$ <span class="fill">【AI补全】</span><span class="why">指数化后由 $f(0)=\frac{C}{4}=1$ 定 $C=4$; 最后把变量名 $t$ 换回 $x$</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 二重积分里 $f'(x+y)$ 用内层换元积出 $f(t)-f(x)$; 求导消积分化一阶可分离, 初值定常数。</div>
 </details></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_微分方程.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 微分方程</b></span></a><a class="next" href="数学_多元与二重.html"><span class="pg-t"><small>下一篇</small><b>数学 · 多元与二重</b></span><span class="pg-ic">→</span></a></nav></main>

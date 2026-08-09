@@ -384,7 +384,7 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: $P$ 含 $\frac1x$ 时积分因子自带 $x$; 端点凑不出等值就让"因子归零"(本题 $F(0)=0$ 由 $x$ 因子保证)</div>
 </details>
 
-<p id="例A4" class="prob"><b>例 A4</b> 设 $f(x)$ 在 $[a,b]$ 上连续($0<a<b$)、$(a,b)$ 内可导, 且 $af(b)=bf(a)$, 证明存在 $\xi\in(a,b)$ 使 $f'(\xi)=\dfrac{f(\xi)}{\xi}$ 【0419（2）】</p>
+<p id="例A4" class="prob"><b>例 A4</b> 设 $f(x)$ 在 $[a,b]$ 上连续($0&lt;a&lt;b$)、$(a,b)$ 内可导, 且 $af(b)=bf(a)$, 证明存在 $\xi\in(a,b)$ 使 $f'(\xi)=\dfrac{f(\xi)}{\xi}$ 【0419（2）】</p>
 <ul>
 <li>考点: 端点等值藏在比例式里 → 同除 $ab$ 即 $F(a)=F(b)$; 辅助函数 $F=\frac{f(x)}x$</li>
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#41辅助函数构造法解微分方程必考">辅助函数构造法</a> <span class="mk xref">相关</span><a href="数学_中值定理_例题.html#例A1">例 A1</a> 同"解微分方程求 $F$": 本题结论 $xf'-f=0$ 对应 $P=-\frac1x$, 积分因子 $x^{-1}$</li>
@@ -404,9 +404,9 @@ main details .sum b{font-weight:700}
 <details><summary>解答</summary>
 <div class="step">① 目标函数: 结论 $f'=(1-\frac1x)f\iff \frac{f'}f=1-\frac1x$, 积分得 $\ln f=x-\ln x$, 取 $F(x)=\frac{xf(x)}{e^x}$ <span class="why">$F'=\frac{e^x(f+xf')-xfe^x}{e^{2x}}=\frac{(1-x)f+xf'}{e^x}$, 分子 $=(1-x)f+xf'\iff f'=(1-\frac1x)f$——构造思路与前例相同</span></div>
 <div class="step">② 积分中值定理处理题设: $\exists x_0\in(0,\frac1k)$ 使 $f(1)=k\cdot\frac1k\cdot x_0e^{1-x_0}f(x_0)=x_0e^{1-x_0}f(x_0)$ <span class="why">积分中值把"积分等式"变成"单点等式", 这是此类题的灵魂一步——积分条件永远先用积分中值定理打散</span></div>
-<div class="step">③ 两端同除 $e$: $\frac{f(1)}e=\frac{x_0f(x_0)}{e^{x_0}}$, 即 $F(1)=F(x_0)$, 且 $0<x_0<\frac1k<1$ <span class="why">同除 $e$ 是为了让两边都凑成 $F$ 的形态: $F(x)=\frac{xf(x)}{e^x}$, 而 $\frac{f(1)}e=F(1)$</span></div>
+<div class="step">③ 两端同除 $e$: $\frac{f(1)}e=\frac{x_0f(x_0)}{e^{x_0}}$, 即 $F(1)=F(x_0)$, 且 $0&lt;x_0&lt;\frac1k&lt;1$ <span class="why">同除 $e$ 是为了让两边都凑成 $F$ 的形态: $F(x)=\frac{xf(x)}{e^x}$, 而 $\frac{f(1)}e=F(1)$</span></div>
 <div class="step">④ 罗尔于 $[x_0,1]$: $\exists\xi\in(x_0,1)\subset(0,1)$ 使 $F'(\xi)=0$, 即 $f'(\xi)=(1-\frac1\xi)f(\xi)$ ✓</div>
-<div class="sum hot"><b>⭐ 经典</b>: <b>积分条件化归三步</b>: ① 积分中值定理把积分等式变单点等式 → ② 变形凑出 $F(a)=F(b)$ → ③ 罗尔。$k>1$ 的作用是保证 $\frac1k<1$ 且 $x_0$ 落在区间内部</div>
+<div class="sum hot"><b>⭐ 经典</b>: <b>积分条件化归三步</b>: ① 积分中值定理把积分等式变单点等式 → ② 变形凑出 $F(a)=F(b)$ → ③ 罗尔。$k>1$ 的作用是保证 $\frac1k&lt;1$ 且 $x_0$ 落在区间内部</div>
 </details>
 
 <p><b>小结</b> <span class="mk ok">重点</span> 结论是 $f'(\xi)+P(\xi)f(\xi)=0$ → 辅助函数必为 $F(x)=f(x)e^{\int P(x)dx}$(含 $k/x$ 型即 $x^k$, 含 $\frac{f}x$ 型即 $P=-\frac1x$ 积分因子 $x^{-1}$); 端点条件写不出 $F(a)=F(b)$ 时, 检查是否题设给 $f=0$、区间端点本身让因子归零(如例 A3 的 $F(0)$)、<b>比例式同除</b>(例 A4)、或<b>积分等式经积分中值化归</b>(例 A5)。</p>
@@ -423,25 +423,25 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: 证拉格朗日定理的固定套路是 $g=f-$弦, 弦即 $(x-a)$ 乘平均斜率; 后续凡"斜率型"结论都可用它过渡</div>
 </details>
 
-<p id="例B2" class="prob"><b>例 B2</b> 设 $b>a>0$, 证明 $\dfrac{b-a}{b}<\ln\dfrac{b}{a}<\dfrac{b-a}{a}$ 【0419（2）】</p>
+<p id="例B2" class="prob"><b>例 B2</b> 设 $b>a>0$, 证明 $\dfrac{b-a}{b}&lt;\ln\dfrac{b}{a}&lt;\dfrac{b-a}{a}$ 【0419（2）】</p>
 <ul>
 <li>考点: 平均变化率夹逼 → 取 $f=\ln x$, 中值点在两端点导数之间</li>
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#12拉格朗日中值定理必考">拉格朗日中值定理</a> <span class="mk xref">相关</span><a href="数学_中值定理_例题.html#例B3">例 B3</a> 同不等式换区间 $[n,n+1]$, 驱动数列收敛</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① 对 $f(x)=\ln x$ 于 $[a,b]$ 用拉格朗日: $\frac{\ln b-\ln a}{b-a}=\frac1\xi$, $a<\xi<b$ <span class="why">$\ln x$ 的导数 $\frac1x$ 单调递减, 中值 $\frac1\xi$ 能被两端点导数夹住——夹逼的来源</span></div>
-<div class="step">② $\frac1b<\frac1\xi<\frac1a$ ⇒ 两边同乘 $b-a>0$ 即得 ✓ <span class="why">乘正数不改变不等式方向; 若把 $a<b$ 颠倒, $\frac1a<\frac1\xi<\frac1b$, 不等号全反</span></div>
+<div class="step">① 对 $f(x)=\ln x$ 于 $[a,b]$ 用拉格朗日: $\frac{\ln b-\ln a}{b-a}=\frac1\xi$, $a&lt;\xi&lt;b$ <span class="why">$\ln x$ 的导数 $\frac1x$ 单调递减, 中值 $\frac1\xi$ 能被两端点导数夹住——夹逼的来源</span></div>
+<div class="step">② $\frac1b&lt;\frac1\xi&lt;\frac1a$ ⇒ 两边同乘 $b-a>0$ 即得 ✓ <span class="why">乘正数不改变不等式方向; 若把 $a&lt;b$ 颠倒, $\frac1a&lt;\frac1\xi&lt;\frac1b$, 不等号全反</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: "平均变化率介于两端点导数之间"是拉格朗日的直接推论, 对数、指数类不等式全靠它</div>
 </details>
 
-<p id="例B3" class="prob"><b>例 B3</b> 证明 $\dfrac1{n+1}<\ln(1+\frac1n)<\dfrac1n$, 并说明数列 $a_n=1+\frac12+\cdots+\frac1n-\ln n$ 收敛 【0419（2）】</p>
+<p id="例B3" class="prob"><b>例 B3</b> 证明 $\dfrac1{n+1}&lt;\ln(1+\frac1n)&lt;\dfrac1n$, 并说明数列 $a_n=1+\frac12+\cdots+\frac1n-\ln n$ 收敛 【0419（2）】</p>
 <ul>
 <li>考点: 拉格朗日于 $[\;n,n+1\;]$ + 单调有界(与极限与数列板块例 1.28 呼应)</li>
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#12拉格朗日中值定理必考">拉格朗日中值定理</a> · <a href="数学_中值定理.html#45恒等式与不等式单调性与最值高频">恒等式与不等式</a> <span class="mk xref">相关</span><a href="数学_中值定理_例题.html#例B2">例 B2</a> 直接复用 B2 不等式于 $[n,n+1]$</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① 对 $\ln x$ 于 $[n,n+1]$ 用拉格朗日: $\ln(n+1)-\ln n=\frac1\xi$, $n<\xi<n+1$ ⇒ 不等式成立 <span class="why">$\frac1{n+1}<\frac1\xi<\frac1n$ 即 $\frac1\xi$ 被 $n<\xi<n+1$ 夹住($\frac1x$ 递减)</span></div>
-<div class="step">② $a_{n+1}-a_n=\frac1{n+1}-\ln(1+\frac1n)<0$ → 单调递减 <span class="why">差式正负号恰由 ① 的不等式决定——把数列单调性转嫁给已知结论</span></div>
+<div class="step">① 对 $\ln x$ 于 $[n,n+1]$ 用拉格朗日: $\ln(n+1)-\ln n=\frac1\xi$, $n&lt;\xi&lt;n+1$ ⇒ 不等式成立 <span class="why">$\frac1{n+1}&lt;\frac1\xi&lt;\frac1n$ 即 $\frac1\xi$ 被 $n&lt;\xi&lt;n+1$ 夹住($\frac1x$ 递减)</span></div>
+<div class="step">② $a_{n+1}-a_n=\frac1{n+1}-\ln(1+\frac1n)&lt;0$ → 单调递减 <span class="why">差式正负号恰由 ① 的不等式决定——把数列单调性转嫁给已知结论</span></div>
 <div class="step">③ 又 $a_n=\sum_{k=1}^n\frac1k-\ln n>\sum_{k=1}^n\ln\frac{k+1}{k}-\ln n=\ln\frac{n+1}{n}>0$ → 有下界 <span class="why">每项 $1/k>\ln\frac{k+1}{k}$ 使部分和裂项相消得 $\ln(n+1)$, 下界呼之欲出</span></div>
 <div class="step">④ 单调有界 ⇒ 收敛(极限 $\gamma\approx0.5772$ 为欧拉常数) ✓ <span class="why">证收敛只需单调有界, 不必求极限值; 数列与级数板块例 1.28 正是同一数列</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 用拉格朗日不等式驱动数列单调性, 再裂项找下界——"数列收敛+常数识别"的完整样板</div>
@@ -466,14 +466,14 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#12拉格朗日中值定理必考">拉格朗日中值定理</a> <span class="mk xref">相关</span><a href="数学_中值定理_例题.html#例B4">例 B4</a> 同为"差值中值化": 反解 vs 夹逼</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① 对 $\arctan t$ 于 $[x,x+1]$ 用拉格朗日: $\arctan(x+1)-\arctan x=\frac1{1+\xi^2}$, $x<\xi<x+1$ <span class="why">差值型表达式先中值化: 函数差换成可直接处理的导数值 $\frac1{1+\xi^2}$</span></div>
-<div class="step">② 原式 $=\frac{x^2}{1+\xi^2}$, 而 $\frac{x^2}{1+(x+1)^2}<\frac{x^2}{1+\xi^2}<\frac{x^2}{1+x^2}$ <span class="why">$\frac1{1+t^2}$ 随 $t$ 递减, 故 $\xi$ 的上下界 $x+1$、$x$ 分别给出上下界</span></div>
+<div class="step">① 对 $\arctan t$ 于 $[x,x+1]$ 用拉格朗日: $\arctan(x+1)-\arctan x=\frac1{1+\xi^2}$, $x&lt;\xi&lt;x+1$ <span class="why">差值型表达式先中值化: 函数差换成可直接处理的导数值 $\frac1{1+\xi^2}$</span></div>
+<div class="step">② 原式 $=\frac{x^2}{1+\xi^2}$, 而 $\frac{x^2}{1+(x+1)^2}&lt;\frac{x^2}{1+\xi^2}&lt;\frac{x^2}{1+x^2}$ <span class="why">$\frac1{1+t^2}$ 随 $t$ 递减, 故 $\xi$ 的上下界 $x+1$、$x$ 分别给出上下界</span></div>
 <div class="step">③ 夹逼: 两端均 $\to1$ ⇒ 原极限 $=1$ ✓ <span class="why">两端之差 $\sim\frac{2x}{x^4}\to0$, 夹逼条件自动满足</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: "差值型极限"先中值化, 再用中值点夹逼估计——$\xi$ 与 $x$ 同阶是放缩的落点</div>
 </details>
 
 <h2 id="三柯西中值定理高频">三、柯西中值定理 <span class="mk freq">高频</span></h2>
-<p id="例C1" class="prob"><b>例 C1</b> 设 $0<a<b$, $f(x)$ 在 $[a,b]$ 上连续、$(a,b)$ 内可导, 证明存在 $\xi\in(a,b)$ 使 $f(b)-f(a)=\xi f'(\xi)\ln\frac{b}{a}$ 【0419（2）】</p>
+<p id="例C1" class="prob"><b>例 C1</b> 设 $0&lt;a&lt;b$, $f(x)$ 在 $[a,b]$ 上连续、$(a,b)$ 内可导, 证明存在 $\xi\in(a,b)$ 使 $f(b)-f(a)=\xi f'(\xi)\ln\frac{b}{a}$ 【0419（2）】</p>
 <ul>
 <li>考点: 结论里同时有 $f$ 与 $\ln x$ 的增量 → 柯西, 取 $g(x)=\ln x$</li>
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#13柯西中值定理高频">柯西中值定理</a> <span class="mk xref">碰撞</span><a href="数学_中值定理_例题.html#例B2">例 B2</a> 同为 "ln 的增量": 单函数拉格朗日 vs 双函数柯西</li>
@@ -493,23 +493,23 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#11罗尔定理必考">罗尔定理</a> · <a href="数学_中值定理.html#41辅助函数构造法解微分方程必考">辅助函数构造法</a> <span class="mk xref">相关</span><a href="数学_中值定理_例题.html#例D4">例 D4</a> 同为 "f−x" 直线差: 本题介值+罗尔证等式, D4 拉格朗日证不等式</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① 取 $F(x)=f(x)-x$: $F(0)=f(0)-0=0$, $F(\frac12)=f(\frac12)-\frac12=\frac12>0$, $F(1)=f(1)-1=-1<0$ <span class="why">目标是 $f'(\xi)=1$ 即 $(f-x)'=0$: 目标是斜率 $k$ 就把直线 $kx$ 减掉, 化为找导零点。<b>注意</b>: 直接 $F(0)\ne F(1)$, 罗尔不能一步到位——中点条件 $f(\frac12)=1$ 让 $F(\frac12)>0$ 而 $F(1)<0$, 先由介值找零点。</span></div>
-<div class="step">② 由 $F(\frac12)=\frac12>0$, $F(1)=-1<0$ 及 $F$ 连续, 介值定理: $\exists c\in(\frac12,1)$ 使 $F(c)=0$ <span class="why">$F$ 在 $(\frac12,1)$ 上从正变负, 必穿零; $c$ 严格落在 $(\frac12,1)\subset(0,1)$。<b>考点</b>: 端点不等值时的经典补救——先用介值制造一个与已知零点等值的点。</span></div>
+<div class="step">① 取 $F(x)=f(x)-x$: $F(0)=f(0)-0=0$, $F(\frac12)=f(\frac12)-\frac12=\frac12>0$, $F(1)=f(1)-1=-1&lt;0$ <span class="why">目标是 $f'(\xi)=1$ 即 $(f-x)'=0$: 目标是斜率 $k$ 就把直线 $kx$ 减掉, 化为找导零点。<b>注意</b>: 直接 $F(0)\ne F(1)$, 罗尔不能一步到位——中点条件 $f(\frac12)=1$ 让 $F(\frac12)>0$ 而 $F(1)&lt;0$, 先由介值找零点。</span></div>
+<div class="step">② 由 $F(\frac12)=\frac12>0$, $F(1)=-1&lt;0$ 及 $F$ 连续, 介值定理: $\exists c\in(\frac12,1)$ 使 $F(c)=0$ <span class="why">$F$ 在 $(\frac12,1)$ 上从正变负, 必穿零; $c$ 严格落在 $(\frac12,1)\subset(0,1)$。<b>考点</b>: 端点不等值时的经典补救——先用介值制造一个与已知零点等值的点。</span></div>
 <div class="step">③ 罗尔于 $[0,c]$: $F(0)=F(c)=0$ ⇒ $\exists\xi\in(0,c)\subset(0,1)$ 使 $F'(\xi)=f'(\xi)-1=0$, 即 $f'(\xi)=1$ ✓ <span class="why">$F$ 连续可导由 $f$ 继承; $\xi\in(0,c)$ 严格在 $(0,1)$ 内。<b>易错</b>: 原笔记曾推断题设应为 $f(0)=0,f(1)=1$——视觉核对确认真实题面含中点条件 $f(\frac12)=1$, 且 $f(0)=f(1)=0$ 并不矛盾(函数先升后降), 命题成立。</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 目标导数等于常数 $k$ → 作差 $F=f-kx$; 端点不等值时"介值造等值点 + 罗尔"两步走。</div>
 </details>
 
-<p id="例D2" class="prob"><b>例 D2</b> 设 $f(x)$ 在 $[0,1]$ 上具有二阶导数, $f(1)>0$, $\displaystyle\lim_{x\to0^+}\frac{f(x)}{x}<0$。 证明: (1) 方程 $f(x)=0$ 在 $(0,1)$ 内至少有一个实根; (2) 方程 $f(x)f''(x)+[f'(x)]^2=0$ 在 $(0,1)$ 内至少有两个不同实根 【0714（3）、一元微积分证明题】</p>
+<p id="例D2" class="prob"><b>例 D2</b> 设 $f(x)$ 在 $[0,1]$ 上具有二阶导数, $f(1)>0$, $\displaystyle\lim_{x\to0^+}\frac{f(x)}{x}&lt;0$。 证明: (1) 方程 $f(x)=0$ 在 $(0,1)$ 内至少有一个实根; (2) 方程 $f(x)f''(x)+[f'(x)]^2=0$ 在 $(0,1)$ 内至少有两个不同实根 【0714（3）、一元微积分证明题】</p>
 <ul>
 <li>考点: 极限保号性 + 零点定理 + $F=ff'$ 三零点两次罗尔</li>
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#42根的存在性找乘积函数的零点高频">根的存在性·乘积函数</a> · <a href="数学_中值定理.html#11罗尔定理必考">罗尔定理</a> <span class="mk xref">相关</span><a href="数学_中值定理_例题.html#例D3">例 D3</a> 乘积函数技巧的另一形态: "商的导数分子"</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① 由 $\lim_{x\to0^+}\frac{f(x)}{x}<0$, 存在 $\delta>0$ 使 $x\in(0,\delta)$ 时 $f(x)<0$; 又 $f(1)>0$ <span class="why">极限保号性: 极限为负则充分靠近 $0$ 时 $\frac{f(x)}x<0$, 而 $x>0$, 故 $f(x)<0$</span></div>
+<div class="step">① 由 $\lim_{x\to0^+}\frac{f(x)}{x}&lt;0$, 存在 $\delta>0$ 使 $x\in(0,\delta)$ 时 $f(x)&lt;0$; 又 $f(1)>0$ <span class="why">极限保号性: 极限为负则充分靠近 $0$ 时 $\frac{f(x)}x&lt;0$, 而 $x>0$, 故 $f(x)&lt;0$</span></div>
 <div class="step">② 零点定理: $\exists\alpha\in(0,1)$, $f(\alpha)=0$ <span class="why">$f$ 在 $(0,\delta)$ 内为负、在 $1$ 处为正, 连续函数中间必穿零</span></div>
-<div class="step">③ 由 ① 极限有限 ⇒ $f(0)=0$ 且 $f'(0)=\lim_{x\to0^+}\frac{f(x)}{x}<0$(导数定义) <span class="why">若 $f(0)\neq0$ 则 $\frac{f(x)}x\sim\frac{f(0)}x$ 发散, 与极限有限矛盾; 故 $f(0)=0$, 该极限就是 $f$ 在 $0$ 处的右导数——这是 (2) 里 $F(0)=0$ 的来源</span></div>
+<div class="step">③ 由 ① 极限有限 ⇒ $f(0)=0$ 且 $f'(0)=\lim_{x\to0^+}\frac{f(x)}{x}&lt;0$(导数定义) <span class="why">若 $f(0)\neq0$ 则 $\frac{f(x)}x\sim\frac{f(0)}x$ 发散, 与极限有限矛盾; 故 $f(0)=0$, 该极限就是 $f$ 在 $0$ 处的右导数——这是 (2) 里 $F(0)=0$ 的来源</span></div>
 <div class="step">④ $f(0)=f(\alpha)=0$ → 拉格朗日于 $[0,\alpha]$: $\exists\gamma\in(0,\alpha)$, $f'(\gamma)=0$ <span class="why">两端点同为 $0$, 拉格朗日(端点等值时与罗尔等价)给出内部导零点 $\gamma$</span></div>
-<div class="step">⑤ 令 $F(x)=f(x)f'(x)$: $F(0)=0\cdot f'(0)=0$, $F(\gamma)=f(\gamma)\cdot0=0$, $F(\alpha)=0\cdot f'(\alpha)=0$ —— 三个零点 $0<\gamma<\alpha<1$ <span class="why">关键观察: $F'=ff''+(f')^2$ 正是 (2) 的式子——所以证 $F'=0$ 有两根即可, 而 $F$ 有三个零点可用两次罗尔</span></div>
+<div class="step">⑤ 令 $F(x)=f(x)f'(x)$: $F(0)=0\cdot f'(0)=0$, $F(\gamma)=f(\gamma)\cdot0=0$, $F(\alpha)=0\cdot f'(\alpha)=0$ —— 三个零点 $0&lt;\gamma&lt;\alpha&lt;1$ <span class="why">关键观察: $F'=ff''+(f')^2$ 正是 (2) 的式子——所以证 $F'=0$ 有两根即可, 而 $F$ 有三个零点可用两次罗尔</span></div>
 <div class="step">⑥ $F'=ff''+(f')^2$, 罗尔两次 ⇒ $F'=0$ 在 $(\gamma,\alpha)$ 与 $(0,\gamma)$ 内各有一根 ⇒ (2) 得证 ✓ <span class="why">两次罗尔分别落在 $[0,\gamma]$、$[\gamma,\alpha]$, 零点分居 $\gamma$ 两侧, 两根必互异</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 证 $ff''+(f')^2=0$ 有两根 ⟺ 证 $(ff')'=0$ 有两根 ⟸ $ff'$ 有三个零点; 三零点的来历(端点 $0$ + 导零点 $\gamma$ + 零点 $\alpha$)是本题精髓</div>
 </details>
@@ -540,19 +540,19 @@ main details .sum b{font-weight:700}
 <div class="sum hot"><b>⭐ 经典</b>: 不等式型结论"$f'(\xi)>g(\xi)$"→ 减 $g$ 的原函数构造 $F=f-G$, 拉格朗日给出一点导数的符号; 与 D1 的"直线差"构造同源, 直线 $kx$ 只是 $g$ 为常数的特例</div>
 </details>
 
-<p id="例D5" class="prob"><b>例 D5</b> 已知 $f(x)$ 在 $[0,1]$ 上具有二阶导数, $f(0)=0$, $f(1)=1$, $\displaystyle\int_0^1 f(x)\,dx=1$。 证明: (1) 存在 $\xi\in(0,1)$ 使 $f'(\xi)=0$; (2) 存在 $\eta\in(0,1)$ 使 $f''(\eta)<-2$ 【一元微积分证明题】</p>
+<p id="例D5" class="prob"><b>例 D5</b> 已知 $f(x)$ 在 $[0,1]$ 上具有二阶导数, $f(0)=0$, $f(1)=1$, $\displaystyle\int_0^1 f(x)\,dx=1$。 证明: (1) 存在 $\xi\in(0,1)$ 使 $f'(\xi)=0$; (2) 存在 $\eta\in(0,1)$ 使 $f''(\eta)&lt;-2$ 【一元微积分证明题】</p>
 <ul>
 <li>考点: 积分中值定理 + 罗尔 + 凸性反证</li>
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#三积分中值定理高频">积分中值定理</a> · <a href="数学_中值定理.html#44泰勒估计不等式必考">泰勒估计不等式</a> <span class="mk xref">相关</span><a href="数学_中值定理_例题.html#例E2">例 E2</a> 同是先找中间点再中值定理: 积分中值 vs 零点定理</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① (1) 积分中值定理: $\exists c\in[0,1]$ 使 $f(c)=\int_0^1 f=1=f(1)$ <span class="fill">【AI补全】</span> 端点情形 $c=1$ 时由 $\int(f-1)=0$ 与 $f(0)=0$ 知 $(0,1)$ 内另有零点, 可归入 $c\in(0,1)$ <span class="why">连续函数取到平均值 $1$, 而 $f(1)=1$ 已是等值点; 若 $f<1$ 处处成立则 $\int(f-1)<0$, 故 $f$ 必越过 $1$, 内部另有取 $1$ 的点</span></div>
+<div class="step">① (1) 积分中值定理: $\exists c\in[0,1]$ 使 $f(c)=\int_0^1 f=1=f(1)$ <span class="fill">【AI补全】</span> 端点情形 $c=1$ 时由 $\int(f-1)=0$ 与 $f(0)=0$ 知 $(0,1)$ 内另有零点, 可归入 $c\in(0,1)$ <span class="why">连续函数取到平均值 $1$, 而 $f(1)=1$ 已是等值点; 若 $f&lt;1$ 处处成立则 $\int(f-1)&lt;0$, 故 $f$ 必越过 $1$, 内部另有取 $1$ 的点</span></div>
 <div class="step">② 罗尔于 $[c,1]$: $\exists\xi\in(c,1)\subset(0,1)$ 使 $f'(\xi)=0$ ✓ <span class="why">$f(c)=f(1)=1$, 端点等值即罗尔条件; 中值点严格落在 $(0,1)$ 内</span></div>
 <div class="step">③ (2) 反设 $f''(x)\ge-2$ 于 $[0,1]$ 恒成立。 令 $F(x)=f(x)+x^2$, 则 $F''(x)\ge0$, $F$ 为凸函数 <span class="why">配 $+x^2$ 使 $F''\ge0$——把"导数下界"假设翻译成凸性, 凸函数有现成的弦上界可用</span></div>
 <div class="step">④ 凸函数图像在弦下方: $F(x)\le(1-x)F(0)+xF(1)=2x$, 即 $f(x)\le2x-x^2$ <span class="why">$F(0)=f(0)=0$, $F(1)=f(1)+1=2$; 弦估值是反证的核心不等式</span></div>
 <div class="step">⑤ 积分: $1=\int_0^1 f(x)\,dx\le\int_0^1(2x-x^2)\,dx=\frac23$, 矛盾 <span class="why">积分保号性把逐点不等式传到积分, 与题设 $\int f=1$ 撞车</span></div>
-<div class="step">⑥ 故 $\exists\eta\in(0,1)$: $f''(\eta)<-2$ ✓ <span class="fill">【AI补全】</span> 反证思路为标准解答, 课件 OCR 未完整呈现 <span class="why">反设"处处 $\ge-2$"被推翻, 所以至少有一点必须 $<-2$</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 证"存在某点 $f''<-2$"→ 反设恒 $\ge-2$ → 配凸函数 $f+x^2$ 得逐点上界 → 积分矛盾; 常数来源 $\int_0^1(2x-x^2)=\frac23<1$</div>
+<div class="step">⑥ 故 $\exists\eta\in(0,1)$: $f''(\eta)&lt;-2$ ✓ <span class="fill">【AI补全】</span> 反证思路为标准解答, 课件 OCR 未完整呈现 <span class="why">反设"处处 $\ge-2$"被推翻, 所以至少有一点必须 $&lt;-2$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 证"存在某点 $f''&lt;-2$"→ 反设恒 $\ge-2$ → 配凸函数 $f+x^2$ 得逐点上界 → 积分矛盾; 常数来源 $\int_0^1(2x-x^2)=\frac23&lt;1$</div>
 </details>
 
 <h2 id="五双中值问题高频">五、双中值问题 <span class="mk freq">高频</span></h2>
@@ -576,11 +576,11 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#43双中值问题两次中值定理组合消元高频">双中值问题</a> <span class="mk xref">碰撞</span><a href="数学_中值定理_例题.html#例E1">例 E1</a> 切分两段相乘 vs 同一区间达布配对</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① (1) $F(x)=f(x)+x-1$: $F(0)=-1<0$, $F(1)=1>0$, 零点定理 ⇒ $\exists c\in(0,1)$: $F(c)=0$, 即 $f(c)=1-c$ <span class="why">$c$ 是"切分点": 把 $[0,1]$ 切成两段, 让 $f(c)$ 与 $1-c$ 衔接</span></div>
+<div class="step">① (1) $F(x)=f(x)+x-1$: $F(0)=-1&lt;0$, $F(1)=1>0$, 零点定理 ⇒ $\exists c\in(0,1)$: $F(c)=0$, 即 $f(c)=1-c$ <span class="why">$c$ 是"切分点": 把 $[0,1]$ 切成两段, 让 $f(c)$ 与 $1-c$ 衔接</span></div>
 <div class="step">② (2) 拉格朗日于 $[0,c]$: $\exists\xi\in(0,c)$, $f'(\xi)=\frac{f(c)-f(0)}{c}=\frac{1-c}{c}$ <span class="why">用 $f(c)=1-c$ 与 $f(0)=0$ 把左段斜率写成只含 $c$ 的量</span></div>
 <div class="step">③ 拉格朗日于 $[c,1]$: $\exists\eta\in(c,1)$, $f'(\eta)=\frac{f(1)-f(c)}{1-c}=\frac{c}{1-c}$ <span class="why">右段斜率 $\frac{1-(1-c)}{1-c}$, 恰是左段斜率的倒数</span></div>
-<div class="step">④ 相乘: $f'(\xi)f'(\eta)=1$, 且 $\xi<c<\eta$ 故两点不同 ✓ <span class="why">互为倒数即乘积 $1$; 两中值点分居 $c$ 两侧, 互异性由区间不重叠自动保证</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 双中值三步: 找切分点 $c$(零点定理) → 两段各拉格朗日 → 相乘消去 $c$; 互异性由 $\xi<c<\eta$ 保证</div>
+<div class="step">④ 相乘: $f'(\xi)f'(\eta)=1$, 且 $\xi&lt;c&lt;\eta$ 故两点不同 ✓ <span class="why">互为倒数即乘积 $1$; 两中值点分居 $c$ 两侧, 互异性由区间不重叠自动保证</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 双中值三步: 找切分点 $c$(零点定理) → 两段各拉格朗日 → 相乘消去 $c$; 互异性由 $\xi&lt;c&lt;\eta$ 保证</div>
 </details>
 
 <p id="例E3" class="prob"><b>例 E3</b> 设 $f(x)$ 在 $[a,b]$ 上连续、$(a,b)$ 内可导, $f'(x)\neq0$, 证明存在 $\xi,\eta\in(a,b)$ 使 $f'(\xi)=f'(\eta)\dfrac{(b-a)e^{\xi}}{e^{b}-e^{a}}$ 【0715（1）、一元微积分证明题】</p>
@@ -652,9 +652,9 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#45恒等式与不等式单调性与最值高频">恒等式与不等式</a> <span class="mk xref">相关</span><a href="数学_中值定理_例题.html#例G3">例 G3</a> 同为差值函数最值法, 本题一次求导定号, G3 需因式分解+二阶导</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① (1) $f(x)=x-\ln(1+x)$, $f'(x)=\frac{x}{1+x}$; $x>0$ 时 $f'>0$, $-1<x<0$ 时 $f'<0$ <span class="why">定义域 $x>-1$ 保证 $1+x>0$, 分母恒正故 $f'$ 符号由分子 $x$ 决定</span></div>
+<div class="step">① (1) $f(x)=x-\ln(1+x)$, $f'(x)=\frac{x}{1+x}$; $x>0$ 时 $f'>0$, $-1&lt;x&lt;0$ 时 $f'&lt;0$ <span class="why">定义域 $x>-1$ 保证 $1+x>0$, 分母恒正故 $f'$ 符号由分子 $x$ 决定</span></div>
 <div class="step">② $f$ 于 $(-1,0)$ 递减、$(0,+\infty)$ 递增 ⇒ $\min f=f(0)=0$ ⇒ $x-\ln(1+x)\ge0$ ✓ <span class="why">$f\to+\infty$ 于两端, 唯一驻点 $x=0$ 即全局最小; 差值函数端点为零的"最值法"</span></div>
-<div class="step">③ (2) $g(x)=e^x-1-x$, $g'(x)=e^x-1$; 同理 $g(0)=0$ 为全局最小值 ⇒ $e^x-1\ge x$ ✓ <span class="why">$g'$ 于 $x<0$ 为负、$x>0$ 为正; 两个不等式同归一招: 作差、求导、在 $0$ 处取最小</span></div>
+<div class="step">③ (2) $g(x)=e^x-1-x$, $g'(x)=e^x-1$; 同理 $g(0)=0$ 为全局最小值 ⇒ $e^x-1\ge x$ ✓ <span class="why">$g'$ 于 $x&lt;0$ 为负、$x>0$ 为正; 两个不等式同归一招: 作差、求导、在 $0$ 处取最小</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 常用不等式 $e^x\ge1+x$ 与 $\ln(1+x)\le x$ 同出一招, 可直接当结论用</div>
 </details>
 
@@ -666,13 +666,13 @@ main details .sum b{font-weight:700}
 <details><summary>解答</summary>
 <div class="step">① 移项分解: $(x^2-1)\ln x-(x-1)^2=(x-1)\big[(x+1)\ln x-(x-1)\big]=(x-1)g(x)$ <span class="why">$(x^2-1)=(x-1)(x+1)$, 提出公因子 $(x-1)$ 后剩下部分记为 $g$——降次减负、符号分析清晰</span></div>
 <div class="step">② $g(x)=(x+1)\ln x-x+1$, $g'(x)=\ln x+\frac1x$, $g''(x)=\frac{x-1}{x^2}$ <span class="why">$g'=\ln x+1+\frac1x-1=\ln x+\frac1x$; 为判 $g'$ 的符号还需再求一次导</span></div>
-<div class="step">③ $x<1$ 时 $g''<0$、$x>1$ 时 $g''>0$ ⇒ $g'$ 先减后增, 在 $x=1$ 处取最小值 $g'(1)=\ln1+1=1>0$ ⇒ $g'(x)\ge1>0$, $g$ 严格增 <span class="why">修正原稿的犹豫式推导: $g''$ 在 $x=1$ 变号, $g'$ 的极小值点为 $1$ 且极小值 $1>0$——$g'$ 的最小值都为正, 单调性一步到位</span></div>
-<div class="step">④ $g(1)=0$: $x<1$ 时 $g<0$, $x>1$ 时 $g>0$ <span class="why">严格增函数在零点 $1$ 两侧必然异号</span></div>
-<div class="step">⑤ $x<1$: $(x-1)<0$ 与 $g<0$ 同号 ⇒ 乘积 $\ge0$; $x>1$: 均 $\ge0$ ⇒ 乘积 $\ge0$; $x=1$ 时两边为 $0$。 证毕 ✓ <span class="fill">【AI补全】</span> ②③④为重建的严谨版, 课件只列草图 <span class="why">两个同号因子相乘必非负——"积式不等式"分区间看符号的通用收尾</span></div>
+<div class="step">③ $x&lt;1$ 时 $g''&lt;0$、$x>1$ 时 $g''>0$ ⇒ $g'$ 先减后增, 在 $x=1$ 处取最小值 $g'(1)=\ln1+1=1>0$ ⇒ $g'(x)\ge1>0$, $g$ 严格增 <span class="why">修正原稿的犹豫式推导: $g''$ 在 $x=1$ 变号, $g'$ 的极小值点为 $1$ 且极小值 $1>0$——$g'$ 的最小值都为正, 单调性一步到位</span></div>
+<div class="step">④ $g(1)=0$: $x&lt;1$ 时 $g&lt;0$, $x>1$ 时 $g>0$ <span class="why">严格增函数在零点 $1$ 两侧必然异号</span></div>
+<div class="step">⑤ $x&lt;1$: $(x-1)&lt;0$ 与 $g&lt;0$ 同号 ⇒ 乘积 $\ge0$; $x>1$: 均 $\ge0$ ⇒ 乘积 $\ge0$; $x=1$ 时两边为 $0$。 证毕 ✓ <span class="fill">【AI补全】</span> ②③④为重建的严谨版, 课件只列草图 <span class="why">两个同号因子相乘必非负——"积式不等式"分区间看符号的通用收尾</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 积式不等式先因式分解成 $(x-1)\cdot g(x)$, 再用二阶导判 $g$ 的单调与符号——两因子同号相乘的思路可迁移</div>
 </details>
 
-<p id="例G4" class="prob"><b>例 G4</b> 证明: 当 $|x|<1$ 时, $x\ln\dfrac{1+x}{1-x}+\cos x\ge1+\dfrac{x^2}{2}$ 【0425（1）】</p>
+<p id="例G4" class="prob"><b>例 G4</b> 证明: 当 $|x|&lt;1$ 时, $x\ln\dfrac{1+x}{1-x}+\cos x\ge1+\dfrac{x^2}{2}$ 【0425（1）】</p>
 <ul>
 <li>考点: 直接求导到二阶判号(需"套娃"两阶)</li>
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#45恒等式与不等式单调性与最值高频">恒等式与不等式</a> <span class="mk xref">相关</span><a href="数学_中值定理_例题.html#例G3">例 G3</a> 同为"套娃求导到能判号", 本题系数更繁</li>
@@ -680,31 +680,31 @@ main details .sum b{font-weight:700}
 <details><summary>解答</summary>
 <div class="step">① 令 $f(x)=x\ln\frac{1+x}{1-x}+\cos x-1-\frac{x^2}{2}$, 目标是 $f(x)\ge0$, 且 $f(0)=0$ <span class="why">差值函数法: 若 $f$ 在 $0$ 处取全局最小, 不等式即证</span></div>
 <div class="step">② $f'(x)=\ln\frac{1+x}{1-x}+\frac{2x}{1-x^2}-x-\sin x$; $f''(x)=\frac2{1-x^2}+\frac{2+2x^2}{(1-x^2)^2}-1-\cos x$ <span class="why">修正: $\cos$ 的导数是 $-\sin x$, 二阶项相应为 $-1-\cos x$(原文两处符号有误); 一阶判不了号, 继续求到二阶("套娃"); 其中 $\big[\ln\frac{1+x}{1-x}\big]'=\frac1{1+x}+\frac1{1-x}=\frac2{1-x^2}$, $\big[\frac{2x}{1-x^2}\big]'=\frac{2+2x^2}{(1-x^2)^2}$</span></div>
-<div class="step">③ $|x|<1$ 时 $\frac2{1-x^2}\ge2$, $\frac{2+2x^2}{(1-x^2)^2}\ge2$, 故 $f''(x)\ge2+2-1-\cos x\ge4-2=2>0$ <span class="why">逐项给下界: 两分式的分母 $<1$ 故分式值 $\ge2$, 且 $-1-\cos x\ge-2$</span></div>
-<div class="step">④ $f'$ 严格增, $f'(0)=0$: $x<0$ 时 $f'(x)<0$(f 减), $x>0$ 时 $f'(x)>0$(f 增) ⇒ $f(x)\ge f(0)=0$ ✓ <span class="fill">【AI补全】</span> 系数按导数重算, 课件 OCR 仅存 $f''>0$ 结论 <span class="why">$f''>0$ ⇒ $f'$ 严格增; $f'$ 在 $0$ 处过零变号, $f$ 于 $0$ 处取全局最小</span></div>
+<div class="step">③ $|x|&lt;1$ 时 $\frac2{1-x^2}\ge2$, $\frac{2+2x^2}{(1-x^2)^2}\ge2$, 故 $f''(x)\ge2+2-1-\cos x\ge4-2=2>0$ <span class="why">逐项给下界: 两分式的分母 $&lt;1$ 故分式值 $\ge2$, 且 $-1-\cos x\ge-2$</span></div>
+<div class="step">④ $f'$ 严格增, $f'(0)=0$: $x&lt;0$ 时 $f'(x)&lt;0$(f 减), $x>0$ 时 $f'(x)>0$(f 增) ⇒ $f(x)\ge f(0)=0$ ✓ <span class="fill">【AI补全】</span> 系数按导数重算, 课件 OCR 仅存 $f''>0$ 结论 <span class="why">$f''>0$ ⇒ $f'$ 严格增; $f'$ 在 $0$ 处过零变号, $f$ 于 $0$ 处取全局最小</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 一阶导判不了号就继续求导("套娃到能判号为止"); $\frac{2x}{1-x^2}$ 这类分式导数模板要能直接背出</div>
 </details>
 
-<p id="例G5" class="prob"><b>例 G5</b> 证明: 当 $0<x<\dfrac\pi2$ 时, $\sin x>\dfrac{2x}{\pi}$ 【0715（1）】</p>
+<p id="例G5" class="prob"><b>例 G5</b> 证明: 当 $0&lt;x&lt;\dfrac\pi2$ 时, $\sin x>\dfrac{2x}{\pi}$ 【0715（1）】</p>
 <ul>
 <li>考点: 最值法(端点同为 0, 中间先增后减)</li>
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#45恒等式与不等式单调性与最值高频">恒等式与不等式</a> · <a href="数学_中值定理.html#44泰勒估计不等式必考">泰勒估计不等式</a> <span class="mk xref">碰撞</span><a href="数学_中值定理_例题.html#例G2">例 G2</a> 同为差值函数证不等式: G2 极值在驻点, 本题最值在端点(凹函数弦上方)</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① $f(x)=\sin x-\frac{2x}{\pi}$: $f(0)=0$, $f(\frac\pi2)=0$; $f'(x)=\cos x-\frac2\pi$, $f''(x)=-\sin x<0$ <span class="why">两端点同为 $0$: 若 $f$ 中间"先增后减"(严格凹), 最小值必在端点</span></div>
-<div class="step">② $f'$ 单调递减, 从 $f'(0)=1-\frac2\pi>0$ 到 $f'(\frac\pi2)=-\frac2\pi<0$ ⇒ 存在唯一 $x_0$ 使 $f'(x_0)=0$, 且 $f$ 先增后减 <span class="why">$f''<0$ ⇒ $f'$ 严格递减; $1-\frac2\pi>0$ 因 $\pi>2$; 端点导数异号 + 严格递减 ⇒ 唯一驻点</span></div>
+<div class="step">① $f(x)=\sin x-\frac{2x}{\pi}$: $f(0)=0$, $f(\frac\pi2)=0$; $f'(x)=\cos x-\frac2\pi$, $f''(x)=-\sin x&lt;0$ <span class="why">两端点同为 $0$: 若 $f$ 中间"先增后减"(严格凹), 最小值必在端点</span></div>
+<div class="step">② $f'$ 单调递减, 从 $f'(0)=1-\frac2\pi>0$ 到 $f'(\frac\pi2)=-\frac2\pi&lt;0$ ⇒ 存在唯一 $x_0$ 使 $f'(x_0)=0$, 且 $f$ 先增后减 <span class="why">$f''&lt;0$ ⇒ $f'$ 严格递减; $1-\frac2\pi>0$ 因 $\pi>2$; 端点导数异号 + 严格递减 ⇒ 唯一驻点</span></div>
 <div class="step">③ $f$ 的最小值在端点: $\min\{f(0),f(\frac\pi2)\}=0$ ⇒ $f(x)>0$ 于 $(0,\frac\pi2)$ ✓ <span class="why">先增后减 ⇒ 内部值全在端点最小值之上, 且严格大于(内部点非端点); 等价说法: 凹函数图像在弦上方</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: "端点同为 $0$ + 严格凹" → 最值在端点; $\sin x$ 于 $(0,\frac\pi2)$ 高于弦 $y=\frac{2x}\pi$, 可配图记忆</div>
 </details>
 
-<p id="例G6" class="prob"><b>例 G6</b> 设 $e<a<b<e^2$, 证明 $\ln^2 b-\ln^2 a>\dfrac{4(b-a)}{e^2}$ 【0715（1）】</p>
+<p id="例G6" class="prob"><b>例 G6</b> 设 $e&lt;a&lt;b&lt;e^2$, 证明 $\ln^2 b-\ln^2 a>\dfrac{4(b-a)}{e^2}$ 【0715（1）】</p>
 <ul>
 <li>考点: 拉格朗日 + 辅助函数单调性夹住中值点</li>
 <li><span class="mk theory">理论</span><a href="数学_中值定理.html#12拉格朗日中值定理必考">拉格朗日中值定理</a> · <a href="数学_中值定理.html#45恒等式与不等式单调性与最值高频">恒等式与不等式</a> <span class="mk xref">相关</span><a href="数学_中值定理_例题.html#例B2">例 B2</a> 拉格朗日夹逼的进阶: 中值点还需辅助函数单调性再夹</li>
 </ul>
 <details><summary>解答</summary>
 <div class="step">① 对 $f(x)=\ln^2 x$ 于 $[a,b]$ 用拉格朗日: $\ln^2 b-\ln^2 a=\frac{2\ln\xi}{\xi}(b-a)$, $\xi\in(a,b)\subset(e,e^2)$ <span class="why">$(\ln^2 x)'=\frac{2\ln x}{x}$; 中值点被区间约束在 $(e,e^2)$ 内——区间的选法是为夹逼铺路</span></div>
-<div class="step">② 令 $h(x)=\frac{\ln x}{x}$: $h'(x)=\frac{1-\ln x}{x^2}<0$ 于 $(e,e^2)$ ⇒ $h$ 递减 ⇒ $h(\xi)>h(e^2)=\frac2{e^2}$ <span class="why">$x>e$ 时 $\ln x>1$ 故 $h'<0$; $\xi<e^2$ 且 $h$ 递减, 故用右端点值 $h(e^2)$ 作下界</span></div>
+<div class="step">② 令 $h(x)=\frac{\ln x}{x}$: $h'(x)=\frac{1-\ln x}{x^2}&lt;0$ 于 $(e,e^2)$ ⇒ $h$ 递减 ⇒ $h(\xi)>h(e^2)=\frac2{e^2}$ <span class="why">$x>e$ 时 $\ln x>1$ 故 $h'&lt;0$; $\xi&lt;e^2$ 且 $h$ 递减, 故用右端点值 $h(e^2)$ 作下界</span></div>
 <div class="step">③ $\frac{2\ln\xi}{\xi}>2\cdot\frac2{e^2}=\frac4{e^2}$ ⇒ 原不等式成立 ✓ <span class="why">$\frac{2\ln\xi}{\xi}=2h(\xi)$ 整体替换, 常数 $\frac4{e^2}$ 正是 $2h(e^2)$</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 拉格朗日给出含 $\xi$ 的表达式后, 再对"系数函数" $h$ 作单调性分析夹住 $\xi$——中值定理+单调夹逼的组合拳</div>
 </details>
@@ -716,9 +716,9 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">① $f'(x)=a-\frac bx$, 唯一驻点 $x_0=\frac ba$; $f''(x)=\frac b{x^2}>0$ ⇒ $x_0$ 为唯一极小值点 <span class="why">$f''>0$ 需 $b>0$, 而这由"两个零点"隐含: 若 $b\le0$ 则 $f'\ge a>0$, $f$ 严格增至多一个零点</span></div>
-<div class="step">② 两零点(且 $f(0+)=+\infty$, $f(+\infty)=+\infty$)⇔ 极小值 $<0$: $f(\frac ba)=b-b\ln\frac ba=b(1-\ln\frac ba)<0$ <span class="why">两端都趋于 $+\infty$ 且中间唯一极小: 极小值取负则穿过 $x$ 轴两次, 取正则一次不穿——零点个数与极值符号挂钩</span></div>
+<div class="step">② 两零点(且 $f(0+)=+\infty$, $f(+\infty)=+\infty$)⇔ 极小值 $&lt;0$: $f(\frac ba)=b-b\ln\frac ba=b(1-\ln\frac ba)&lt;0$ <span class="why">两端都趋于 $+\infty$ 且中间唯一极小: 极小值取负则穿过 $x$ 轴两次, 取正则一次不穿——零点个数与极值符号挂钩</span></div>
 <div class="step">③ $\ln\frac ba>1$ ⇒ $\frac ba>e$, 即 $\frac ba\in(e,+\infty)$ ✓ <span class="why">$b>0$ 可同除 $b$; 临界情形 $\frac ba=e$ 时极小值为 $0$, 只有一个二重根, 不算两个零点</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: "零点个数 ⇔ 极值符号": 两端 $+\infty$ 时, 两个零点等价于唯一极小值 $<0$——参数取值范围题的标准归约</div>
+<div class="sum hot"><b>⭐ 经典</b>: "零点个数 ⇔ 极值符号": 两端 $+\infty$ 时, 两个零点等价于唯一极小值 $&lt;0$——参数取值范围题的标准归约</div>
 </details>
 
 <p id="例G8" class="prob"><b>例 G8</b> 已知方程 $\dfrac{x}{\ln(1+x)}=k$ 在 $(0,1)$ 内有实根, 求常数 $k$ 的取值范围 【0715（1）】</p>
@@ -742,8 +742,8 @@ main details .sum b{font-weight:700}
 <details><summary>解答</summary>
 <div class="step">① 拆分: $f(x)=x^2\int_0^x e^{-t}dt-\int_0^x te^{-t}dt$ <span class="why">被积函数含 $x$, 先把 $x^2$ 提出积分号外——变限积分求导时 $x$ 只能出现在积分限和"系数"两个位置</span></div>
 <div class="step">② $f'(x)=2x\int_0^x e^{-t}dt+x^2e^{-x}-xe^{-x}=2x(1-e^{-x})+x(x-1)e^{-x}=x\big[2-(3-x)e^{-x}\big]$ <span class="why">$\big[x^2\int_0^x e^{-t}dt\big]'=2x\int_0^x e^{-t}dt+x^2e^{-x}$(乘法法则+微积分基本定理), 第二项 $\int_0^x te^{-t}dt$ 的导数恰为 $xe^{-x}$</span></div>
-<div class="step">③ 记 $\phi(x)=2-(3-x)e^{-x}$: $\phi(0)=-1<0$, $\phi(1)=2-\frac2e>0$, 且 $\phi'(x)=(4-x)e^{-x}>0$ 于 $(0,1)$ ⇒ $\phi$ 严格增, 存在唯一 $x_0\in(0,1)$ 使 $\phi(x_0)=0$ <span class="why">修正: $\phi$ 在 $(0,1)$ 上单调增而非减——$\phi'(x)=(4-x)e^{-x}>0$; 由负到正穿过零一次, 零点 $x_0$ 满足 $e^{x_0}=\frac{3-x_0}2$(约 $0.30$), 不必解出</span></div>
-<div class="step">④ $f'(x)=x\phi(x)$ 的符号即 $\phi$ 的符号: $x<x_0$ 时 $f'<0$, $x>x_0$ 时 $f'>0$ ⇒ $f$ 在 $(0,x_0)$ 单调递减、$(x_0,+\infty)$ 单调递增, $x=x_0$ 处取唯一极小值(全局最小, 无极大值) <span class="fill">【AI补全】</span> 符号判断按导数重算 <span class="why">修正: 原稿"在 $x=1$ 处取极小"有误——$f'(1)=2-\frac2e>0$, $x=1$ 处 $f$ 正在上升; $x>0$ 不影响符号, 划分点只有 $x_0$</span></div>
+<div class="step">③ 记 $\phi(x)=2-(3-x)e^{-x}$: $\phi(0)=-1&lt;0$, $\phi(1)=2-\frac2e>0$, 且 $\phi'(x)=(4-x)e^{-x}>0$ 于 $(0,1)$ ⇒ $\phi$ 严格增, 存在唯一 $x_0\in(0,1)$ 使 $\phi(x_0)=0$ <span class="why">修正: $\phi$ 在 $(0,1)$ 上单调增而非减——$\phi'(x)=(4-x)e^{-x}>0$; 由负到正穿过零一次, 零点 $x_0$ 满足 $e^{x_0}=\frac{3-x_0}2$(约 $0.30$), 不必解出</span></div>
+<div class="step">④ $f'(x)=x\phi(x)$ 的符号即 $\phi$ 的符号: $x&lt;x_0$ 时 $f'&lt;0$, $x>x_0$ 时 $f'>0$ ⇒ $f$ 在 $(0,x_0)$ 单调递减、$(x_0,+\infty)$ 单调递增, $x=x_0$ 处取唯一极小值(全局最小, 无极大值) <span class="fill">【AI补全】</span> 符号判断按导数重算 <span class="why">修正: 原稿"在 $x=1$ 处取极小"有误——$f'(1)=2-\frac2e>0$, $x=1$ 处 $f$ 正在上升; $x>0$ 不影响符号, 划分点只有 $x_0$</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 含 $x$ 变限积分先拆出 $x$ 再求导; 驻点由隐式方程 $e^{x_0}=\frac{3-x_0}2$ 给出, 只需定性不必解出——单调区间按 $x_0$ 划分即可</div>
 </details></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="数学_中值定理.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>数学 · 中值定理</b></span></a><a class="next" href="数学_积分.html"><span class="pg-t"><small>下一篇</small><b>数学 · 积分</b></span><span class="pg-ic">→</span></a></nav></main>
 <button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button></div>

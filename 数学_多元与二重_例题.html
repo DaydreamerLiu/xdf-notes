@@ -399,7 +399,7 @@ main details .sum b{font-weight:700}
 </details>
 
 <hr />
-<p id="例13" class="prob"><b>例 1.3</b> 设 $f(x,y)=\begin{cases} y\arctan\frac{1}{\sqrt{x^2+y^2}}, & (x,y)\neq(0,0) \\ 0, & (x,y)=(0,0) \end{cases}$, 判断在 $(0,0)$ 是否连续 【0516（3）】【题面按视觉转写定稿】</p>
+<p id="例13" class="prob"><b>例 1.3</b> 设 $f(x,y)=\begin{cases} y\arctan\frac{1}{\sqrt{x^2+y^2}}, &amp; (x,y)\neq(0,0) \\ 0, &amp; (x,y)=(0,0) \end{cases}$, 判断在 $(0,0)$ 是否连续 【0516（3）】【题面按视觉转写定稿】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#13二元函数的连续性">二元函数连续性</a> · <a href="数学_多元与二重.html#12二元函数的极限必考">二元函数极限</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例14">例 1.4</a> 同为分段函数判定连续性</li>
 </ul>
@@ -410,7 +410,7 @@ main details .sum b{font-weight:700}
 </details>
 
 <hr />
-<p id="例14" class="prob"><b>例 1.4</b> (强化) 已知 $f(x,y)=\begin{cases} \frac{\sin(xy)}{\sqrt{x^2+y^2}}, & (x,y)\neq(0,0) \\ 0, & (x,y)=(0,0) \end{cases}$, 判断在 $(0,0)$ 处的性质 【0724（1）】</p>
+<p id="例14" class="prob"><b>例 1.4</b> (强化) 已知 $f(x,y)=\begin{cases} \frac{\sin(xy)}{\sqrt{x^2+y^2}}, &amp; (x,y)\neq(0,0) \\ 0, &amp; (x,y)=(0,0) \end{cases}$, 判断在 $(0,0)$ 处的性质 【0724（1）】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#13二元函数的连续性">二元函数连续性</a> · <a href="数学_多元与二重.html#14偏导数必考">偏导数</a> · <a href="数学_多元与二重.html#15全微分必考">全微分</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例23">例 2.3</a> 同为"连续+偏导存在+不可微"反例结构, 定义式检验路径相同</li>
 </ul>
@@ -430,26 +430,26 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">① $f_x(0,0)=\lim_{x\to0}\frac{e^{|x|}-1}{x}$<span class="why">偏导定义: $f(x,0)=e^{|x|}$, $f(0,0)=e^0=1$, 差商即 $\frac{e^{|x|}-1}{x}$</span></div>
-<div class="step">② $x\to0^+$: $\frac{e^x-1}{x}\to1$; $x\to0^-$: $\frac{e^{-x}-1}{x}=-\frac{e^{-x}-1}{-x}\to-1$<span class="why"><b>易错</b> $x<0$ 时 $|x|=-x$: 令 $t=-x\to0^+$, 则 $\frac{e^{-x}-1}{x}=-\frac{e^t-1}{t}\to-1$, 即左侧极限为 $-1$ (原 OCR 该步残缺, 已补全)</span></div>
+<div class="step">② $x\to0^+$: $\frac{e^x-1}{x}\to1$; $x\to0^-$: $\frac{e^{-x}-1}{x}=-\frac{e^{-x}-1}{-x}\to-1$<span class="why"><b>易错</b> $x&lt;0$ 时 $|x|=-x$: 令 $t=-x\to0^+$, 则 $\frac{e^{-x}-1}{x}=-\frac{e^t-1}{t}\to-1$, 即左侧极限为 $-1$ (原 OCR 该步残缺, 已补全)</span></div>
 <div class="step">③ 左右极限不等, $f_x(0,0)$ 不存在<span class="why">左极限 $-1$、右极限 $1$ 不一致, 差商极限不存在; $e^{|x|}$ 在原点呈"尖点"</span></div>
 <div class="step">④ $f_y(0,0)=\lim_{y\to0}\frac{f(0,y)-f(0,0)}{y}=\lim_{y\to0}\frac{e^{y^2}-1}{y}=0$, $f_y(0,0)$ 存在且为 0<span class="why">$f(0,y)=e^{\sqrt{y^4}}=e^{y^2}$, $e^{y^2}-1\sim y^2$, 差商 $\sim y\to0$。原笔记误判"$f_y$ 也不存在"——那是 $e^{\sqrt{x^2+y^2}}$ 题面下的结论; 视觉稿 $y^4$ 使 $f_y$ 光滑存在</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 带绝对值的函数在分段点求偏导, 必须分左右; 同一函数 $x$ 方向"尖点"不可导、$y$ 方向光滑可导, 偏导存在性随方向而变。</div>
 </details>
 
 <hr />
-<p id="例22" class="prob"><b>例 2.2</b> 已知 $f_x>0$, $f_y<0$, 则使 $f(x_1,y_1)<f(x_2,y_2)$ 成立的充分条件是? 【0523（1）】【题面按视觉转写定稿】</p>
+<p id="例22" class="prob"><b>例 2.2</b> 已知 $f_x>0$, $f_y&lt;0$, 则使 $f(x_1,y_1)&lt;f(x_2,y_2)$ 成立的充分条件是? 【0523（1）】【题面按视觉转写定稿】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#14偏导数必考">偏导数</a></li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① $f_x>0$ 说明 $f$ 关于 $x$ 单调递增: $x_1<x_2$ 时 $f(x_1,y)<f(x_2,y)$<span class="why">偏导符号决定一元方向的单调性: $f_x>0$ 表示固定 $y$ 时 $f$ 随 $x$ 增大而增大</span></div>
-<div class="step">② $f_y<0$ 说明 $f$ 关于 $y$ 单调递减: $y_1>y_2$ 时 $f(x,y_1)<f(x,y_2)$<span class="why">同理, $f_y<0$ 表示固定 $x$ 时 $f$ 随 $y$ 增大而减小</span></div>
-<div class="step">③ 综合: $x_1<x_2$ 且 $y_1>y_2$, 选 (D)<span class="why">两步串接: $f(x_1,y_1)<f(x_2,y_1)<f(x_2,y_2)$ (先小 $x$ 再大 $y$), 两个方向的条件缺一不可; 原笔记把偏导符号与选项方向都写反, 视觉稿核实为 $f_x>0, f_y<0$, 答案 D</span></div>
+<div class="step">① $f_x>0$ 说明 $f$ 关于 $x$ 单调递增: $x_1&lt;x_2$ 时 $f(x_1,y)&lt;f(x_2,y)$<span class="why">偏导符号决定一元方向的单调性: $f_x>0$ 表示固定 $y$ 时 $f$ 随 $x$ 增大而增大</span></div>
+<div class="step">② $f_y&lt;0$ 说明 $f$ 关于 $y$ 单调递减: $y_1>y_2$ 时 $f(x,y_1)&lt;f(x,y_2)$<span class="why">同理, $f_y&lt;0$ 表示固定 $x$ 时 $f$ 随 $y$ 增大而减小</span></div>
+<div class="step">③ 综合: $x_1&lt;x_2$ 且 $y_1>y_2$, 选 (D)<span class="why">两步串接: $f(x_1,y_1)&lt;f(x_2,y_1)&lt;f(x_2,y_2)$ (先小 $x$ 再大 $y$), 两个方向的条件缺一不可; 原笔记把偏导符号与选项方向都写反, 视觉稿核实为 $f_x>0, f_y&lt;0$, 答案 D</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 偏导符号与单调性的转化: 需要哪个变量变大, 先看该方向偏导的正负, 再逐步传递不等式。</div>
 </details>
 
 <hr />
-<p id="例23" class="prob"><b>例 2.3</b> 判断 $f(x,y)=\begin{cases} \frac{xy}{\sqrt{x^2+y^2}}, & (x,y)\neq(0,0) \\ 0, & (x,y)=(0,0) \end{cases}$ 在 $(0,0)$ 是否可微 【0523（1）】</p>
+<p id="例23" class="prob"><b>例 2.3</b> 判断 $f(x,y)=\begin{cases} \frac{xy}{\sqrt{x^2+y^2}}, &amp; (x,y)\neq(0,0) \\ 0, &amp; (x,y)=(0,0) \end{cases}$ 在 $(0,0)$ 是否可微 【0523（1）】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#15全微分必考">全微分</a> · <a href="数学_多元与二重.html#14偏导数必考">偏导数</a> <span class="mk xref">碰撞</span><a href="数学_多元与二重_例题.html#例14">例 1.4</a> 同为"连续+偏导存在+不可微"综合判定 <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例24">例 2.4</a> 同为定义式检验不可微</li>
 </ul>
@@ -779,7 +779,7 @@ main details .sum b{font-weight:700}
 <div class="step">① $f_x=3x^2+6x-9=3(x+3)(x-1)=0$ ⇒ $x=-3$ 或 $1$; $f_y=-3y^2+6y=-3y(y-2)=0$ ⇒ $y=0$ 或 $2$<span class="why">驻点条件: 两个一阶偏导同时为 0, 各自因式分解</span></div>
 <div class="step">② 驻点: $(-3,0)$, $(1,2)$, $(1,0)$, $(-3,2)$<span class="why">$x$ 两个候选 $\times$ $y$ 两个候选, 共 4 个驻点</span></div>
 <div class="step">③ $A=f_{xx}=6x+6$, $B=f_{xy}=0$, $C=f_{yy}=-6y+6$, $\Delta=AC-B^2$<span class="why">二阶偏导: 交叉项 $f_{xy}=0$ 使 $\Delta=AC$ 简化</span></div>
-<div class="step">④ 逐点判定: $(-3,0)$: $A=-12, C=6$, $\Delta=-72<0$ 非极值; $(1,2)$: $A=12, C=-6$, $\Delta=-72<0$ 非极值; $(1,0)$: $A=12, C=6$, $\Delta=72>0$ 且 $A>0$ ⇒ 极小值 $f(1,0)=1+3-9=-5$; $(-3,2)$: $A=-12, C=-6$, $\Delta=72>0$ 且 $A<0$ ⇒ 极大值 $f(-3,2)=-27-8+27+12+27=31$<span class="why">$\Delta>0$ 且 $A>0$ 为极小, $\Delta>0$ 且 $A<0$ 为极大, $\Delta<0$ 非极值</span></div>
+<div class="step">④ 逐点判定: $(-3,0)$: $A=-12, C=6$, $\Delta=-72&lt;0$ 非极值; $(1,2)$: $A=12, C=-6$, $\Delta=-72&lt;0$ 非极值; $(1,0)$: $A=12, C=6$, $\Delta=72>0$ 且 $A>0$ ⇒ 极小值 $f(1,0)=1+3-9=-5$; $(-3,2)$: $A=-12, C=-6$, $\Delta=72>0$ 且 $A&lt;0$ ⇒ 极大值 $f(-3,2)=-27-8+27+12+27=31$<span class="why">$\Delta>0$ 且 $A>0$ 为极小, $\Delta>0$ 且 $A&lt;0$ 为极大, $\Delta&lt;0$ 非极值</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 驻点 + $AC-B^2$ 全流程判定; 原笔记误读 $x^4-y^4$ 导致驻点数值矛盾而标"偏题", 视觉稿 $x^3-y^3$ 下 4 驻点与极值 $f(1,0)=-5$, $f(-3,2)=31$ 完全自洽。</div>
 </details>
 
@@ -820,8 +820,8 @@ main details .sum b{font-weight:700}
 <div class="step">② 由 $f_y=0$: $y=\frac{x^2+x^3}{2}$; 代入 $f_x=0$: $(1+x)(2+3x)=10x$ ⇒ $3x^2-5x+2=0$ ⇒ $x=0,1,\frac23$<span class="why">$x=0$ 时 $f_y=0$ 自动成立; $x\neq0$ 时两边同除 $x^2$ 化一元二次方程</span></div>
 <div class="step">③ 驻点: $(0,0)$, $(1,1)$, $(\frac23,\frac{10}{27})$<span class="why">回代 $y=\frac{x^2+x^3}{2}$: $x=1$ 得 $y=1$, $x=\frac23$ 得 $y=\frac{\frac49+\frac8{27}}2=\frac{20}{54}=\frac{10}{27}$</span></div>
 <div class="step">④ $A=f_{xx}=-2y-6xy+20x^3$, $B=f_{xy}=-2x-3x^2$, $C=f_{yy}=2$<span class="why">对 $f_x$ 再求导: $-2xy$ 与 $-3x^2y$ 对 $x$ 求导分别得 $-2y$ 与 $-6xy$, $5x^4$ 得 $20x^3$</span></div>
-<div class="step">⑤ $(0,0)$: $A=0,B=0,C=2$, $\Delta=0$ 无法判断, 用定义: 沿 $y=0$: $f(x,0)=x^5$, $x<0$ 时 $f<0$、$x>0$ 时 $f>0$, 任意小邻域内符号不定 ⇒ 非极值<span class="why">$x^5$ 是奇函数, 原点两侧变号, 直接否掉极值 (若 $f(x,0)=2x^4$ 则反而判别出极小——这正是新旧题面的差异)</span></div>
-<div class="step">⑥ $(1,1)$: $A=12$, $B=-5$, $C=2$, $\Delta=24-25=-1<0$ ⇒ 非极值(鞍点)<span class="why">判别式负, 驻点只是鞍点</span></div>
+<div class="step">⑤ $(0,0)$: $A=0,B=0,C=2$, $\Delta=0$ 无法判断, 用定义: 沿 $y=0$: $f(x,0)=x^5$, $x&lt;0$ 时 $f&lt;0$、$x>0$ 时 $f>0$, 任意小邻域内符号不定 ⇒ 非极值<span class="why">$x^5$ 是奇函数, 原点两侧变号, 直接否掉极值 (若 $f(x,0)=2x^4$ 则反而判别出极小——这正是新旧题面的差异)</span></div>
+<div class="step">⑥ $(1,1)$: $A=12$, $B=-5$, $C=2$, $\Delta=24-25=-1&lt;0$ ⇒ 非极值(鞍点)<span class="why">判别式负, 驻点只是鞍点</span></div>
 <div class="step">⑦ $(\frac23,\frac{10}{27})$: $A=\frac{100}{27}>0$, $B=-\frac83$, $C=2$, $\Delta=\frac{200}{27}-\frac{64}{9}=\frac{8}{27}>0$ ⇒ 极小值 $f=-\frac{4}{729}$<span class="why">$y-x^2=-\frac{2}{27}$, $y-x^3=\frac{2}{27}$, 乘积 $=-\frac4{729}$; 原笔记误读 $(y-x^2)(y-2x^2)$ 致驻点矛盾, 视觉稿 $(y-x^3)$ 下三驻点结论如上</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 展开式求导 + 逐驻点 $AC-B^2$, $\Delta=0$ 转定义沿 $y=0$ 看符号; 三驻点分别落在"非极值/鞍点/极小"三种情形。</div>
 </details>
@@ -841,7 +841,7 @@ main details .sum b{font-weight:700}
 </details>
 
 <hr />
-<p id="例56" class="prob"><b>例 5.6</b> (强化) $f(x),g(x)$ 有二阶连续导数, $f(0)>0,g(0)<0$, $f'(0)=g'(0)=0$, $z=f(x)g(y)$ 在 $(0,0)$ 取得极小值的充分条件是? 【0724（2）】</p>
+<p id="例56" class="prob"><b>例 5.6</b> (强化) $f(x),g(x)$ 有二阶连续导数, $f(0)>0,g(0)&lt;0$, $f'(0)=g'(0)=0$, $z=f(x)g(y)$ 在 $(0,0)$ 取得极小值的充分条件是? 【0724（2）】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例51">例 5.1</a> 同为 $AC-B^2$ 判别, 本题交叉项 $B$ 自动为 0, 退化为符号分析</li>
 </ul>
@@ -849,8 +849,8 @@ main details .sum b{font-weight:700}
 <div class="step">① $z_x=f'(x)g(y)$, $z_y=f(x)g'(y)$; 在 $(0,0)$: $z_x(0,0)=0$, $z_y(0,0)=0$<span class="why">乘积函数偏导; 用 $f'(0)=g'(0)=0$ 得驻点条件成立</span></div>
 <div class="step">② $A=z_{xx}=f''(0)g(0)$, $B=z_{xy}=f'(0)g'(0)=0$, $C=z_{yy}=f(0)g''(0)$<span class="why">二阶偏导在 $(0,0)$ 的取值: 交叉项因 $f'(0)=g'(0)=0$ 消失</span></div>
 <div class="step">③ 极小需 $A>0$ 且 $AC-B^2>0$: $f''(0)g(0)>0$ 且 $f''(0)g(0)\cdot f(0)g''(0)>0$<span class="why">$AC-B^2=AC>0$ 且 $A>0$ 等价于 $C>0$, 即两式均正</span></div>
-<div class="step">④ 已知 $f(0)>0$, $g(0)<0$, 故 $f''(0)<0$ (使 $f''(0)g(0)>0$) 且 $g''(0)>0$ (使 $f(0)g''(0)>0$)<span class="why">符号逐项分析: 负 $\times$ 负为正, 正 $\times$ 正为正, 两条同时成立</span></div>
-<div class="step">⑤ 选 (A): $f''(0)<0$, $g''(0)>0$<span class="why">对照选项确认 (A) 为唯一同时满足的组合</span></div>
+<div class="step">④ 已知 $f(0)>0$, $g(0)&lt;0$, 故 $f''(0)&lt;0$ (使 $f''(0)g(0)>0$) 且 $g''(0)>0$ (使 $f(0)g''(0)>0$)<span class="why">符号逐项分析: 负 $\times$ 负为正, 正 $\times$ 正为正, 两条同时成立</span></div>
+<div class="step">⑤ 选 (A): $f''(0)&lt;0$, $g''(0)>0$<span class="why">对照选项确认 (A) 为唯一同时满足的组合</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 乘积型二元函数的极值判别: 交叉项 $B$ 自动为 0, 条件退化为"$f$ 与 $g$ 各自二阶导符号相反"。</div>
 </details>
 
@@ -864,8 +864,8 @@ main details .sum b{font-weight:700}
 <div class="step">② 对 $y$: $2yz+(x^2+y^2)z_y+\frac{z_y}{z}+2=0$<span class="why">与对 $x$ 完全对称, 轮换 $x\leftrightarrow y$</span></div>
 <div class="step">③ 令 $z_x=z_y=0$: $2xz+2=0 \Rightarrow x=-\frac{1}{z}$; $2yz+2=0 \Rightarrow y=-\frac{1}{z}$<span class="why">极值点处一阶偏导为 0, 代入后方程退化为只含 $xz$ 与 $yz$ 的项</span></div>
 <div class="step">④ 得 $x=y$, 代入原方程: $2x^2z+\ln z+2(2x+1)=0$, 联立 $x=-1/z$ 解得 $x=y=-1$, $z=1$<span class="why">把 $x=-1/z$ 代入得 $\ln z-\frac2z+2=0$; 验证 $z=1$ 是解, 原方程化为 $2-2=0$ 吻合</span></div>
-<div class="step">⑤ 二阶偏导判定: 对一阶方程再求导, 在 $(-1,-1,1)$ 处得 $z_{xx}=z_{yy}=-\frac23$, $z_{xy}=0$; 故 $A=-\frac23$, $AC-B^2=\frac49>0$ 且 $A<0$, $z(-1,-1)=1$ 为极大值<span class="why"><b>修正</b> $AC-B^2>0$ 且 $A<0$ 才是极大 (原解写 $<0$ 有误); 如 $z_{xx}$: 对第①式再对 $x$ 求导后代入 $z_x=0$ 得 $2z+(x^2+y^2)z_{xx}+z_{xx}/z=0$, 即 $2+2z_{xx}+z_{xx}=0$</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 隐函数极值: 一阶条件求驻点, 对"一阶方程"再求导求二阶偏导, 别忘 $\Delta>0$ 与 $A<0$ 的方向。</div>
+<div class="step">⑤ 二阶偏导判定: 对一阶方程再求导, 在 $(-1,-1,1)$ 处得 $z_{xx}=z_{yy}=-\frac23$, $z_{xy}=0$; 故 $A=-\frac23$, $AC-B^2=\frac49>0$ 且 $A&lt;0$, $z(-1,-1)=1$ 为极大值<span class="why"><b>修正</b> $AC-B^2>0$ 且 $A&lt;0$ 才是极大 (原解写 $&lt;0$ 有误); 如 $z_{xx}$: 对第①式再对 $x$ 求导后代入 $z_x=0$ 得 $2z+(x^2+y^2)z_{xx}+z_{xx}/z=0$, 即 $2+2z_{xx}+z_{xx}=0$</span></div>
+<div class="sum hot"><b>⭐ 经典</b>: 隐函数极值: 一阶条件求驻点, 对"一阶方程"再求导求二阶偏导, 别忘 $\Delta>0$ 与 $A&lt;0$ 的方向。</div>
 </details>
 
 <hr />
@@ -898,15 +898,15 @@ main details .sum b{font-weight:700}
 </details>
 
 <hr />
-<p id="例510" class="prob"><b>例 5.10</b> (强化) 设 $u(x,y)$ 在有界闭区域 $D$ 内 $\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}\neq0$ 且 $\frac{\partial^2 u}{\partial x^2}\frac{\partial^2 u}{\partial y^2}-\left(\frac{\partial^2 u}{\partial x\partial y}\right)^2<0$, 则 $u$ 的最值在何处取得? 【0724（2）】</p>
+<p id="例510" class="prob"><b>例 5.10</b> (强化) 设 $u(x,y)$ 在有界闭区域 $D$ 内 $\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}\neq0$ 且 $\frac{\partial^2 u}{\partial x^2}\frac{\partial^2 u}{\partial y^2}-\left(\frac{\partial^2 u}{\partial x\partial y}\right)^2&lt;0$, 则 $u$ 的最值在何处取得? 【0724（2）】</p>
 <ul>
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例511">例 5.11</a> 同为"最值必在边界"结论, 例 5.11 是边界取最值的实操版本</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① $AC-B^2<0$ 说明 $D$ 内部处处不是极值(都是鞍点特征)<span class="why">判别式 $\Delta<0$ 在每个内点都成立 ⇒ 内点即使驻点也是鞍点, 不可能取到局部极值</span></div>
+<div class="step">① $AC-B^2&lt;0$ 说明 $D$ 内部处处不是极值(都是鞍点特征)<span class="why">判别式 $\Delta&lt;0$ 在每个内点都成立 ⇒ 内点即使驻点也是鞍点, 不可能取到局部极值</span></div>
 <div class="step">② 无极值 ⇒ 最值必在边界上取得<span class="why">有界闭区域上连续函数最值必达; 若最值在内点, 该点必为局部极值, 与①矛盾</span></div>
 <div class="step">③ 选 (A): 最大值和最小值都在 $D$ 的边界上取得<span class="why">大前提: $u$ 在有界闭域上连续 (题面隐含), 才能保证最值存在</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 内点处处 $\Delta<0$ 时"最值上边界"是秒杀结论: 内部既无峰也无谷, 最值只能挂在边界。</div>
+<div class="sum hot"><b>⭐ 经典</b>: 内点处处 $\Delta&lt;0$ 时"最值上边界"是秒杀结论: 内部既无峰也无谷, 最值只能挂在边界。</div>
 </details>
 
 <hr />
@@ -915,8 +915,8 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#18多元函数极值与最值必考">多元函数极值</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例510">例 5.10</a> 内部驻点+边界代入化一元函数, 正是例 5.10 结论的展开</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① $D$ 内部 ($x^2+y^2<4, y>0$): $f_x=2x-2xy^2=0$, $f_y=4y-2yx^2=0$<span class="why">内部区域不含边界, 用 $f_x=f_y=0$ 找驻点</span></div>
-<div class="step">② 解得驻点 $(\pm\sqrt2,1)$, $f=2+2-2=2$<span class="why">$f_x=2x(1-y^2)=0$ 且 $f_y=2y(2-x^2)=0$: $x=0$ 分支与 $y>0$ 内部冲突, 只剩 $x^2=2,y=1$; 检查 $2+1=3<4$ 确在内部</span></div>
+<div class="step">① $D$ 内部 ($x^2+y^2&lt;4, y>0$): $f_x=2x-2xy^2=0$, $f_y=4y-2yx^2=0$<span class="why">内部区域不含边界, 用 $f_x=f_y=0$ 找驻点</span></div>
+<div class="step">② 解得驻点 $(\pm\sqrt2,1)$, $f=2+2-2=2$<span class="why">$f_x=2x(1-y^2)=0$ 且 $f_y=2y(2-x^2)=0$: $x=0$ 分支与 $y>0$ 内部冲突, 只剩 $x^2=2,y=1$; 检查 $2+1=3&lt;4$ 确在内部</span></div>
 <div class="step">③ 边界 $y=0$, $-2\le x\le2$: $f(x,0)=x^2$, 最小值 $0$ (at $x=0$), 最大值 $4$ (at $x=\pm2$)<span class="why">直径上的函数就是 $x^2$</span></div>
 <div class="step">④ 边界 $x^2+y^2=4$: 代入 $f=x^4-5x^2+8$; 令 $t=x^2\in[0,4]$, $g(t)=t^2-5t+8$: 顶点 $t=\frac52$ 处 $g=\frac74$, 端点 $g(0)=8$, $g(4)=4$<span class="why">把二元的圆边界化为一元二次函数: $y^2=4-x^2$ 代入消元; 注意 $g$ 在 $t=\frac52\in[0,4]$ 内取最小</span></div>
 <div class="step">⑤ 综合: $f_{\max}=8$, $f_{\min}=0$<span class="why">候选值: 内部 $2$, 直径边界 $[0,4]$, 圆弧边界 $[\frac74,8]$; 取最大最小 (原 OCR 该步残缺, 已补全)</span></div>
@@ -933,7 +933,7 @@ main details .sum b{font-weight:700}
 <div class="step">① 三个被积函数都只依赖 $t=x^2+y^2$, 且在单位圆内 $0\le t\le1$<span class="why">化单变量: 三个被积函数 $\sqrt t$, $t$, $t^2$ 逐点比较</span></div>
 <div class="step">② $0\le t\le1$ 时 $\sqrt t \ge t \ge t^2$<span class="why">幂函数在 $(0,1)$ 内指数越大值越小: $t^{1/2}>t^1>t^2$ (等号仅在 $t=0$ 或 $1$ 处)</span></div>
 <div class="step">③ 积分保序性: $I_1>I_2>I_3$<span class="why">被积函数逐点大的, 同一区域上积分也大。原笔记误读为 $(x+y),(x+y)^2,(x+y)^3$ 的对称性题, 视觉稿为 $\sqrt{x^2+y^2},(x^2+y^2),(x^2+y^2)^2$</span></div>
-<div class="sum hot"><b>⭐ 经典</b>: 同区域比积分大小: 把被积函数化成同一变量逐点比较, 再按保序性排序; 单位圆内 $t<1$ 的幂次排序是机关。</div>
+<div class="sum hot"><b>⭐ 经典</b>: 同区域比积分大小: 把被积函数化成同一变量逐点比较, 再按保序性排序; 单位圆内 $t&lt;1$ 的幂次排序是机关。</div>
 </details>
 
 <hr />
@@ -955,8 +955,8 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">① $y-x>0$ 在 $y>x$ 区域(第 I 象限中 $y>x$ 部分, 第 II 象限几乎全部)<span class="why">$y-x$ 的符号由直线 $y=x$ 划分: 线上方为正</span></div>
-<div class="step">② 第 II 象限: $x<0,y>0$, $y-x>0$ 恒成立, 故 $I_2>0$<span class="why">第 II 象限整体都在 $y=x$ 上方, 被积函数处处为正</span></div>
-<div class="step">③ 第 I、III 象限区域关于 $y=x$ 对称, $y-x$ 关于 $x\leftrightarrow y$ 反对称 ⇒ $I_1=I_3=0$; 第 IV 象限 $y-x<0$ 为主 ⇒ $I_4<0$; 故选 (B): $I_2$ 最大<span class="why">完整排序为 $I_2>I_1=I_3>I_4$; 对称性 (轮换后变号) 是这类题的通用工具 (原解只给了部分推理, 已补全)</span></div>
+<div class="step">② 第 II 象限: $x&lt;0,y>0$, $y-x>0$ 恒成立, 故 $I_2>0$<span class="why">第 II 象限整体都在 $y=x$ 上方, 被积函数处处为正</span></div>
+<div class="step">③ 第 I、III 象限区域关于 $y=x$ 对称, $y-x$ 关于 $x\leftrightarrow y$ 反对称 ⇒ $I_1=I_3=0$; 第 IV 象限 $y-x&lt;0$ 为主 ⇒ $I_4&lt;0$; 故选 (B): $I_2$ 最大<span class="why">完整排序为 $I_2>I_1=I_3>I_4$; 对称性 (轮换后变号) 是这类题的通用工具 (原解只给了部分推理, 已补全)</span></div>
 <div class="sum hot"><b>⭐ 经典</b>: 象限对称性: 区域关于 $y=x$ 对称时, 被积函数 $y-x$ 轮换变号, 积分自动为 0。</div>
 </details>
 
@@ -966,7 +966,7 @@ main details .sum b{font-weight:700}
 <li><span class="mk theory">理论</span><a href="数学_多元与二重.html#22二重积分的性质">二重积分性质</a> · <a href="数学_多元与二重.html#24极坐标下的计算必考">极坐标计算</a> <span class="mk xref">相关</span><a href="数学_多元与二重_例题.html#例83">例 8.3</a> 同为"先做区域/对称性判断, 再极坐标收尾"</li>
 </ul>
 <details><summary>解答</summary>
-<div class="step">① 被积函数 $4-x^2-y^2$ 在 $x^2+y^2\le4$ 时为正, 之外为负<span class="why">$4-x^2-y^2>0\iff x^2+y^2<4$: 半径为 2 的圆盘内正外负</span></div>
+<div class="step">① 被积函数 $4-x^2-y^2$ 在 $x^2+y^2\le4$ 时为正, 之外为负<span class="why">$4-x^2-y^2>0\iff x^2+y^2&lt;4$: 半径为 2 的圆盘内正外负</span></div>
 <div class="step">② 要使积分最大, $D$ 应取被积函数为正的区域: $D_1=\{(x,y)\mid x^2+y^2\le4\}$<span class="why">多取负值区只会减小积分: 最优区域就是被积函数的正区域 (取满正区域, 不取负区域)</span></div>
 <div class="step">③ $I(D_1)=\iint_{x^2+y^2\le4}(4-x^2-y^2)dxdy$<span class="why">把最优区域代回积分</span></div>
 <div class="step">④ 极坐标: $\int_0^{2\pi}d\theta\int_0^2(4-r^2)r\,dr=2\pi[2r^2-\frac{r^4}{4}]_0^2=2\pi(8-4)=8\pi$<span class="why">圆域用极坐标, $dxdy=rdrd\theta$; 内层 $\int_0^2(4r-r^3)dr=8-4=4$</span></div>
@@ -1197,7 +1197,7 @@ main details .sum b{font-weight:700}
 </ul>
 <details><summary>解答</summary>
 <div class="step">① 在 $D$ 内, $x^2+y^2=1$ 是四分之一圆弧, 分割 $D$ 为两部分: $D_1$ (圆内, $x^2+y^2\le1$) 和 $D_2$ (外部)<span class="why">绝对值处理第一步: 找变号分界线, 单位圆把正方形切成圆内、外两块</span></div>
-<div class="step">② $D_1$ 上: $|x^2+y^2-1| = 1-x^2-y^2$; $D_2$ 上: $=x^2+y^2-1$<span class="why">圆内 $x^2+y^2<1$ 取反号, 圆外保持</span></div>
+<div class="step">② $D_1$ 上: $|x^2+y^2-1| = 1-x^2-y^2$; $D_2$ 上: $=x^2+y^2-1$<span class="why">圆内 $x^2+y^2&lt;1$ 取反号, 圆外保持</span></div>
 <div class="step">③ 原式 $= \iint_{D_1}(1-x^2-y^2)d\sigma + \iint_{D_2}(x^2+y^2-1)d\sigma$<span class="why">分块去绝对值</span></div>
 <div class="step">④ 用 $\iint_D(x^2+y^2-1)d\sigma = \iint_{D_1} + \iint_{D_2}$; 则原式 $= 2\iint_{D_1}(1-x^2-y^2)d\sigma - \iint_D(1-x^2-y^2)d\sigma$<span class="why">关键技巧: $D_2$ 上的积分用"整体减 $D_1$"表示, 从而只算 $D_1$ 与整个 $D$ 两个积分</span></div>
 <div class="step">⑤ 计算: $\iint_{D_1}(1-x^2-y^2)d\sigma = \int_0^{\pi/2}d\theta\int_0^1(1-r^2)r\,dr = \frac{\pi}{2}\cdot\frac14 = \frac{\pi}{8}$; $\iint_D(1-x^2-y^2)d\sigma = \int_0^1\int_0^1(1-x^2-y^2)dydx = 1-\frac13-\frac13 = \frac13$; 原式 $=2\cdot\frac{\pi}{8}-\frac13 = \frac{\pi}{4}-\frac13$<span class="why">$D_1$ 是四分之一圆用极坐标 ($\int_0^1(r-r^3)dr=\frac14$); $D$ 是单位正方形用直角坐标逐项积; 数值复核 $0.452$ 与 $\frac\pi4-\frac13$ 一致 (原 OCR 该步残缺, 已补全)</span></div>
