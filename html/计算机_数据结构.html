@@ -360,6 +360,10 @@ main details .sum b{font-weight:700}
   cursor:pointer;flex-shrink:0}
 #navpin:hover{border-color:var(--accent);color:var(--accent2)}
 #navpin[aria-pressed="true"]{color:var(--accent2);border-color:var(--accent);background:var(--accent-soft)}
+#navclose{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
+  cursor:pointer;flex-shrink:0}
+#navclose:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
 #navscrim{position:fixed;inset:0;z-index:190;background:rgba(15,18,23,.45);
   opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s}
 @media (min-width:921px){
@@ -409,7 +413,7 @@ main details .sum b{font-weight:700}
 @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
 </style>
 <script>document.documentElement.dataset.nav='collapsed';</script></head><body>
-<div class="layout"><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span><button id="navpin" type="button" title="钉住目录" aria-pressed="false"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg></button></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="../知识笔记首页.html">全部板块</a><div class="navbody"><div class="sec cur">计算机</div><details class="brd" data-k="brd-文件管理"><summary><a class="b" href="计算机_文件管理.html">文件管理</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="计算机_文件管理.html#板块总览">板块总览</a><a class="c" href="计算机_文件管理.html#一文件与文件控制块FCB">一、文件与文件控制块(FCB)</a><a class="c" href="计算机_文件管理.html#二文件的基本操作">二、文件的基本操作</a><a class="c" href="计算机_文件管理.html#三打开文件与关闭文件必考">三、打开文件与关闭文件 【必考】</a><a class="c" href="计算机_文件管理.html#四文件保护高频">四、文件保护 【高频】</a><a class="c" href="计算机_文件管理.html#五知识连接">五、知识连接</a></details><details class="brd" open><summary><a class="b on" aria-current="page" href="计算机_数据结构.html">数据结构</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="计算机_数据结构.html#板块总览">板块总览</a><a class="c" href="计算机_数据结构.html#一查找Search">一、查找 (Search)</a><a class="d" href="计算机_数据结构.html#11查找的基本概念必考">1.1 查找的基本概念 【必考】</a><a class="d" href="计算机_数据结构.html#12线性表的查找">1.2 线性表的查找</a><a class="d" href="计算机_数据结构.html#13树形查找">1.3 树形查找</a><a class="d" href="计算机_数据结构.html#14B树与B树必考重点">1.4 B 树与 B+ 树 【必考】【重点】</a><a class="d" href="计算机_数据结构.html#15散列表HashTable必考高频">1.5 散列表 (Hash Table) 【必考】【高频】</a><a class="c" href="计算机_数据结构.html#二排序Sorting">二、排序 (Sorting)</a><a class="d" href="计算机_数据结构.html#21排序的基本概念">2.1 排序的基本概念</a><a class="d" href="计算机_数据结构.html#22插入排序">2.2 插入排序</a><a class="d" href="计算机_数据结构.html#23交换排序">2.3 交换排序</a><a class="d" href="计算机_数据结构.html#24选择排序">2.4 选择排序</a><a class="d" href="计算机_数据结构.html#25归并排序MergeSort">2.5 归并排序 (Merge Sort)</a><a class="d" href="计算机_数据结构.html#26基数排序RadixSort">2.6 基数排序 (Radix Sort)</a><a class="d" href="计算机_数据结构.html#27内部排序算法全景对比必考">2.7 内部排序算法全景对比 【必考】</a><a class="d" href="计算机_数据结构.html#28外部排序">2.8 外部排序</a><a class="c" href="计算机_数据结构.html#三查漏补缺清单">三、查漏补缺清单</a><a class="c x" href="计算机_数据结构_例题.html">▸ 例题集</a></details></div></nav>
+<div class="layout"><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span><button id="navpin" type="button" title="钉住目录" aria-pressed="false"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg></button><button id="navclose" type="button" title="收起目录" aria-label="收起目录"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="../知识笔记首页.html">全部板块</a><div class="navbody"><div class="sec cur">计算机</div><details class="brd" data-k="brd-文件管理"><summary><a class="b" href="计算机_文件管理.html">文件管理</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="计算机_文件管理.html#板块总览">板块总览</a><a class="c" href="计算机_文件管理.html#一文件与文件控制块FCB">一、文件与文件控制块(FCB)</a><a class="c" href="计算机_文件管理.html#二文件的基本操作">二、文件的基本操作</a><a class="c" href="计算机_文件管理.html#三打开文件与关闭文件必考">三、打开文件与关闭文件 【必考】</a><a class="c" href="计算机_文件管理.html#四文件保护高频">四、文件保护 【高频】</a><a class="c" href="计算机_文件管理.html#五知识连接">五、知识连接</a></details><details class="brd" open><summary><a class="b on" aria-current="page" href="计算机_数据结构.html">数据结构</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="计算机_数据结构.html#板块总览">板块总览</a><a class="c" href="计算机_数据结构.html#一查找Search">一、查找 (Search)</a><a class="d" href="计算机_数据结构.html#11查找的基本概念必考">1.1 查找的基本概念 【必考】</a><a class="d" href="计算机_数据结构.html#12线性表的查找">1.2 线性表的查找</a><a class="d" href="计算机_数据结构.html#13树形查找">1.3 树形查找</a><a class="d" href="计算机_数据结构.html#14B树与B树必考重点">1.4 B 树与 B+ 树 【必考】【重点】</a><a class="d" href="计算机_数据结构.html#15散列表HashTable必考高频">1.5 散列表 (Hash Table) 【必考】【高频】</a><a class="c" href="计算机_数据结构.html#二排序Sorting">二、排序 (Sorting)</a><a class="d" href="计算机_数据结构.html#21排序的基本概念">2.1 排序的基本概念</a><a class="d" href="计算机_数据结构.html#22插入排序">2.2 插入排序</a><a class="d" href="计算机_数据结构.html#23交换排序">2.3 交换排序</a><a class="d" href="计算机_数据结构.html#24选择排序">2.4 选择排序</a><a class="d" href="计算机_数据结构.html#25归并排序MergeSort">2.5 归并排序 (Merge Sort)</a><a class="d" href="计算机_数据结构.html#26基数排序RadixSort">2.6 基数排序 (Radix Sort)</a><a class="d" href="计算机_数据结构.html#27内部排序算法全景对比必考">2.7 内部排序算法全景对比 【必考】</a><a class="d" href="计算机_数据结构.html#28外部排序">2.8 外部排序</a><a class="c" href="计算机_数据结构.html#三查漏补缺清单">三、查漏补缺清单</a><a class="c x" href="计算机_数据结构_例题.html">▸ 例题集</a></details></div></nav>
 <div id="navscrim" aria-hidden="true"></div>
 <main data-subj="计算机"><div class="crumbline"><a href="../知识笔记首页.html">首页</a><span class="sep">/</span><b>计算机 · 数据结构</b></div><div class="article"><h1>数据结构</h1><div class="board-meta">💻 计算机 · <span class="pill">理论笔记</span><span class="pill">4 节</span></div><blockquote>
 <p>覆盖课件 2 份:
@@ -1130,13 +1134,38 @@ document.addEventListener("DOMContentLoaded",function(){
       store('xnNavPin', pinned ? '1' : '0');
       if (pinBtn) pinBtn.setAttribute('aria-pressed', pinned ? 'true' : 'false');
     }
+    /* 桌面收回计时: 鼠标不在浮层上(或 ☰ 刚展开鼠标未进入)则 1.2s 后自动收回 */
+    var retractTimer = null;
+    function scheduleRetract(){
+      if (touchNav) return;
+      clearTimeout(retractTimer);
+      retractTimer = setTimeout(function(){
+        if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'collapsed');
+      }, 1200);
+    }
+    function keepOpen(){
+      if (touchNav) return;
+      clearTimeout(retractTimer);
+      if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'open');
+    }
     if (pinBtn) pinBtn.addEventListener('click', function(){ setPin(root.getAttribute('data-nav') !== 'pinned'); });
+    var navclose = document.getElementById('navclose');
+    if (navclose) navclose.addEventListener('click', function(){
+      /* 手动收起: 无论钉住与否都回到折叠态, 并清掉钉住记忆 */
+      root.setAttribute('data-nav', 'collapsed');
+      store('xnNavPin', '0');
+      if (pinBtn) pinBtn.setAttribute('aria-pressed', 'false');
+    });
     if (navbtn) navbtn.addEventListener('click', function(){
       if (window.matchMedia('(max-width: 920px)').matches) { nav.classList.toggle('show'); return; }
       if (touchNav) {
         root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
       } else {
-        setPin(root.getAttribute('data-nav') !== 'pinned');
+        /* 桌面 ☰ 只在折叠态可见(展开态被浮层隐藏): 只展开不钉住;
+           浮层展开动画期间鼠标未进入浮层时 mouseleave 不触发 → 主动启动收回计时
+           (鼠标在浮层上则 mouseenter 的 keepOpen 会取消计时) */
+        root.setAttribute('data-nav', 'open');
+        scheduleRetract();
       }
     });
     sideNav.addEventListener('click', function(e){
@@ -1148,17 +1177,6 @@ document.addEventListener("DOMContentLoaded",function(){
       if (scrim) scrim.addEventListener('click', function(){ root.setAttribute('data-nav', 'collapsed'); });
     } else {
       /* 桌面: 悬停/聚焦展开, 移出延迟 1.2s 自动收回(钉住时保持) */
-      var retractTimer = null;
-      function keepOpen(){
-        clearTimeout(retractTimer);
-        if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'open');
-      }
-      function scheduleRetract(){
-        clearTimeout(retractTimer);
-        retractTimer = setTimeout(function(){
-          if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'collapsed');
-        }, 1200);
-      }
       sideNav.addEventListener('mouseenter', keepOpen);
       sideNav.addEventListener('mouseleave', scheduleRetract);
       sideNav.addEventListener('focusin', keepOpen);
