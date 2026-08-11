@@ -1,421 +1,17 @@
 <!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>英语 · 阅读_无忧_例题</title>
-<link rel="stylesheet" href="../katex/katex.min.css">
-<style>
-:root{
-  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
-  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
-  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
-  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
-  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
-  --red:#DC2626; --red-soft:#FDEBEA;
-  --amber:#B45309; --amber-soft:#FDF1DC;
-  --green:#15803D; --green-soft:#E7F4EA;
-  --violet:#7C3AED; --violet-soft:#F1EBFC;
-  --teal:#0F766E; --teal-soft:#DFF2EF;
-  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
-  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
-  --r-sm:8px; --r-md:12px; --r-lg:16px;
-  color-scheme:light;
-}
-html[data-theme="dark"]{
-  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
-  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
-  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
-  --red:#F87171; --red-soft:rgba(248,113,113,.13);
-  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
-  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
-  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
-  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
-  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
-  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
-  color-scheme:dark;
-}
-main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
-main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
-main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
-section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
-section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
-section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
-html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
-html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
-html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%}
-body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.9;color:var(--ink);background:var(--bg);
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:26px 26px;background-attachment:fixed}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-::selection{background:var(--accent-soft)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-button{font-family:inherit}
-.layout{display:flex;min-height:100vh}
-
-/* ---------- 侧栏 ---------- */
-/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
-.layout > nav{width:288px;flex-shrink:0;background:rgba(251,250,246,.82);border-right:1px solid #EDEAE0;
-  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin;
-  transition:width .22s ease,background .2s ease}
-html[data-theme="dark"] .layout > nav{background:rgba(20,25,34,.78);border-right-color:#232A37}
-.layout > nav::-webkit-scrollbar{width:8px}
-.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
-nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem .6rem .95rem 1.15rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
-nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
-  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
-nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
-nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
-nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
-#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
-  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
-#navq::placeholder{color:var(--ink3)}
-#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.8rem;
-  letter-spacing:.06em;border-radius:8px}
-nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
-nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
-  color:var(--ink3);letter-spacing:.18em}
-nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.86rem;border-radius:8px;
-  border-left:3px solid transparent;line-height:1.45}
-nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
-nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
-nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.8rem;
-  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-nav a.c.x{color:var(--violet)}
-nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
-nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
-nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.76rem;
-  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-nav details.grp{margin:.2rem 0}
-nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
-  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
-nav details.grp>summary::-webkit-details-marker{display:none}
-nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
-nav details.grp[open]>summary::before{transform:rotate(90deg)}
-nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
-  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
-nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
-/* 板块级折叠块(2026-08-09: 全站统一; 行尾 .tog 箭头负责折叠, 点板块名 = 跳转) */
-nav details.brd{margin:.05rem .3rem .15rem}
-nav details.brd>summary{list-style:none;cursor:default;display:flex;align-items:center;gap:.4rem;
-  padding:.12rem .35rem .12rem .45rem;margin:0;border-radius:8px;user-select:none}
-nav details.brd>summary::-webkit-details-marker{display:none}
-nav details.brd>summary:hover{background:var(--accent-soft)}
-nav details.brd>summary a.b{flex:1;min-width:0;margin:.02rem 0;padding:.3rem .42rem;cursor:pointer}
-nav details.brd>summary a.b:hover{background:none;text-decoration:none}
-nav details.brd>summary a.b.on:hover{background:var(--accent-soft)}
-nav details.brd>summary .tog{flex:none;width:1.55rem;text-align:center;color:var(--ink3);
-  font-size:.66rem;cursor:pointer;padding:.35rem 0;border-radius:6px}
-nav details.brd>summary .tog:hover{color:var(--accent2);background:var(--accent-soft)}
-nav details.brd>summary .tog::before{content:"▸";display:inline-block;transition:transform .15s ease}
-nav details.brd[open]>summary .tog::before{transform:rotate(90deg)}
-nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
-
-/* ---------- 顶部(无容器框, 2026-08-09): ☰ 左上悬浮 / 操作按钮右上悬浮 / 面包屑随正文流 ---------- */
-main{flex:1;min-width:0;max-width:800px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
-#navbtn{position:fixed;top:.7rem;left:.7rem;z-index:110;display:inline-flex;align-items:center;justify-content:center;
-  width:2.1rem;height:2.1rem;padding:0;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
-  border-radius:9px;cursor:pointer;font-size:.98rem;flex-shrink:0;line-height:1;box-shadow:var(--shadow-sm);
-  transition:all .15s}
-#navbtn:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
-#tbtools{position:fixed;top:.7rem;right:.7rem;z-index:110;display:flex;gap:.4rem}
-#tbtools button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
-  border-radius:8px;padding:.36rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
-  box-shadow:var(--shadow-sm);transition:all .15s}
-#tbtools button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
-.crumbline{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--ink3);
-  padding:1.5rem 0 .1rem;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.crumbline a{color:var(--ink2)}
-.crumbline a:hover{color:var(--accent2);text-decoration:none}
-.crumbline .sep{color:var(--ink3)}
-.crumbline b{color:var(--ink);font-weight:600}
-
-/* ---------- 正文区 ---------- */
-.article{padding-top:2.15rem}
-main h1{font-family:var(--serif);font-size:2rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
-.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
-.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
-  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
-main h2{font-family:var(--serif);font-size:1.4rem;margin:3rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
-  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
-  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
-main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
-main h2:hover .anc,main h3:hover .anc{opacity:1}
-main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
-main h3{font-size:1.15rem;margin:2.3rem 0 .7rem;color:var(--accent2);line-height:1.6}
-main h3 .mk{margin-left:.25em}
-main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
-main p{line-height:2.05;margin:.8rem 0}
-main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
-main ul{list-style:none}
-main ul>li{position:relative;padding-left:1.05rem}
-main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
-main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
-main ol>li::marker{color:var(--accent2);font-weight:700}
-main li{line-height:1.95;margin:.26rem 0}
-main li>strong{color:var(--accent2)}
-/* 宽表格由 JS 包一层 .table-wrap 横向滚动, 防止撑破 800px 行宽 */
-.table-wrap{overflow-x:auto;margin:1.15rem 0;border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
-main table{border-collapse:separate;border-spacing:0;width:100%;margin:0;background:var(--surface);
-  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.92rem}
-main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
-main th:last-child,main td:last-child{border-right:none}
-main tr:last-child th,main tr:last-child td{border-bottom:none}
-main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
-main tr:nth-child(even) td{background:var(--bg2)}
-main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
-  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
-main img{max-width:100%;height:auto;border-radius:8px}
-.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
-  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
-  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
-.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
-.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
-.fig .figcap b{color:var(--accent2)}
-/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
-.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
-  background:var(--bg2);overflow:hidden}
-.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
-  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
-.figbox>summary::-webkit-details-marker{display:none}
-.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
-.figbox[open]>summary::before{transform:rotate(90deg)}
-.figbox>summary:hover{color:var(--accent2)}
-.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
-  background:#fff}
-.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
-  background:var(--bg2);padding:.6rem .8rem .75rem}
-.figbox .fig img{max-width:min(100%,460px)}
-@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
-@media print{.fig img{max-width:70%}}
-code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
-  font-family:var(--mono);font-size:.86em}
-pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
-  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
-pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
-.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
-  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
-.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
-
-/* ---------- 笔迹批注 ---------- */
-.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
-  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
-.mk.biz{color:var(--red);background:var(--red-soft)}
-.mk.freq{color:var(--amber);background:var(--amber-soft)}
-.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
-.mk.ok{color:var(--green);background:var(--green-soft)}
-.mk.info{color:var(--violet);background:var(--violet-soft)}
-.mk.theory{color:var(--accent2);background:var(--accent-soft)}
-.mk.xref{color:var(--violet);background:var(--violet-soft)}
-.mk.res{color:var(--teal);background:var(--teal-soft)}
-.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
-  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
-.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
-  border-radius:5px;font-weight:700;font-size:.88em}
-
-/* ---------- 例题 ---------- */
-.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
-  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
-  line-height:2;color:var(--ink)}
-.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
-  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
-  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
-.prob .src{margin-left:.35em}
-
-/* ---------- 英语题型 ---------- */
-.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
-  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
-  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
-.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
-  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
-.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
-  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
-.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
-  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
-.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
-  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
-  margin:.12em .4em .12em 0}
-.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
-  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
-.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
-  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
-.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
-.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
-  background:var(--red-soft);border-radius:3px}
-.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
-  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
-.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
-  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
-.vn b{color:var(--accent2)}
-.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
-  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
-
-/* ---------- 词汇卡片 ---------- */
-.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
-  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
-.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
-.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
-.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
-.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
-  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
-.w .wl2 .mk{margin-left:.35em}
-
-/* ---------- 折叠 ---------- */
-main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
-main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
-  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
-main details>summary::-webkit-details-marker{display:none}
-main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
-main details[open]>summary::before{transform:rotate(90deg)}
-main details>summary:hover{color:var(--accent2);background:none}
-main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
-main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
-  line-height:2.05;font-size:.97em;color:var(--ink)}
-main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
-  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
-  background:none;border-radius:0}
-main details .step .why b{color:var(--ink);font-weight:600}
-main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
-  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
-main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
-main details .sum.skip{color:var(--ink3)}
-main details .sum b{font-weight:700}
-@supports (interpolate-size: allow-keywords){
-  :root{interpolate-size:allow-keywords}
-  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
-  main details[open]::details-content{block-size:auto}
-}
-
-/* ---------- KaTeX ---------- */
-.katex{color:var(--ink);font-size:1.06em}
-.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
-
-/* ---------- 翻页 ---------- */
-.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
-.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
-  transition:all .16s;text-decoration:none}
-.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
-.pager a.next{flex-direction:row-reverse;text-align:right}
-.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
-  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
-.pager .pg-t{min-width:0}
-.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
-.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pager span:empty{flex:1}
-
-/* ---------- 首页 ---------- */
-.hero{padding:3.2rem 0 1.6rem;text-align:center}
-.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
-.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
-.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
-.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
-  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
-.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
-#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
-  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
-#homeq::placeholder{color:var(--ink3)}
-#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin:0 auto 1.4rem}
-.tabs button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
-  border-radius:20px;padding:.4rem 1.05rem;font-size:.84rem;cursor:pointer;transition:all .15s}
-.tabs button:hover{border-color:var(--accent);color:var(--accent2)}
-.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
-.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
-  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
-.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
-.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
-.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
-.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
-.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
-.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
-.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
-  opacity:0;transition:opacity .16s}
-.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
-.board-card:hover::before{opacity:1}
-.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
-.board-card span{font-size:.75rem;color:var(--ink3)}
-.board-card.ex{border-style:dashed}
-.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
-  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
-#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
-
-/* ---------- 回到顶部 / 汉堡 ---------- */
-#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
-  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
-  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
-#topbtn.show{opacity:1;visibility:visible;transform:none}
-#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
-/* ---------- 侧栏收起(2026-08-09): 折叠态 = 8px 边缘热区零内容; 桌面悬停滑出(JS 控制,
-   移出 1.2s 后自动收回); ☰ 顶栏按钮展开并钉住; 触屏 ☰ 弹浮层 + 遮罩 ---------- */
-#navpin{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
-  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
-  cursor:pointer;flex-shrink:0}
-#navpin:hover{border-color:var(--accent);color:var(--accent2)}
-#navpin[aria-pressed="true"]{color:var(--accent2);border-color:var(--accent);background:var(--accent-soft)}
-#navclose{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
-  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
-  cursor:pointer;flex-shrink:0}
-#navclose:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
-#navscrim{position:fixed;inset:0;z-index:190;background:rgba(15,18,23,.45);
-  opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s}
-@media (min-width:921px){
-  /* 折叠态: 8px 热区(sticky 占位保持正文宽度), 内容全隐藏(鼠标移入 / ☰ / 键盘聚焦展开) */
-  html[data-nav="collapsed"] .layout > nav{width:8px;overflow:hidden;padding:0;background:transparent}
-  html[data-nav="collapsed"] .layout > nav .brand,
-  html[data-nav="collapsed"] .layout > nav #navq,
-  html[data-nav="collapsed"] .layout > nav a.subj,
-  html[data-nav="collapsed"] .layout > nav .navbody,
-  html[data-nav="collapsed"] .layout > nav #navpin{display:none}
-  /* 展开态 = 浮层覆盖在正文上方(用户要求: 侧栏伸缩时正文不重排);
-     折叠态 8px 占位保持不变 → main 宽度恒定; ☰ 被浮层覆盖, 展开时隐藏(收起靠图钉/移出) */
-  html[data-nav]:not([data-nav="collapsed"]) .layout > nav{position:fixed;left:0;top:0;height:100vh;
-    z-index:180;box-shadow:8px 0 28px rgba(0,0,0,.18)}
-  html[data-nav]:not([data-nav="collapsed"]) #navbtn{display:none}
-  /* 触屏(平板): ☰ 展开为浮层 + 遮罩, 点遮罩/链接收回; 无钉住 */
-  html[data-touch][data-nav="open"] #navscrim{opacity:1;visibility:visible}
-  html[data-touch] #navpin{display:none}
-}
-@media(max-width:920px){#navpin{display:none}}
-
-/* ---------- 窄屏 ---------- */
-@media(max-width:920px){
-  .layout > nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
-    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
-  .layout > nav.show{transform:none}
-  main{padding:0 1.15rem 4rem}
-  .pager{flex-direction:column}
-  .pager a{justify-content:flex-start}
-  .pager a.next{justify-content:flex-end}
-  .hero{padding-top:2.6rem}
-}
-
-/* ---------- 打印 ---------- */
-@media print{
-  nav,#tbtools,#navbtn,#topbtn,.pager{display:none!important}
-  body{background:#fff;background-image:none}
-  main{max-width:none;padding:0}
-  .article{padding-top:0}
-  .hero{padding:0 0 1rem;text-align:left}
-  .subject-h{margin-top:1.2rem}
-  a{color:inherit}
-  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
-  main details{border-color:#ddd;box-shadow:none}
-}
-@page{margin:14mm}
-@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
-</style>
-<script>document.documentElement.dataset.nav='collapsed';</script></head><body>
-<div class="layout"><nav><div class="brand"><span class="logo">筆</span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span><button id="navpin" type="button" title="钉住目录" aria-pressed="false"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg></button><button id="navclose" type="button" title="收起目录" aria-label="收起目录"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="../知识笔记首页.html">全部板块</a><div class="navbody"><div class="sec cur">英语</div><details class="brd" data-k="brd-写作"><summary><a class="b" href="英语_写作.html">写作</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_写作.html#一考试概览">一、考试概览</a><a class="c" href="英语_写作.html#二小作文">二、小作文</a><a class="c" href="英语_写作.html#三图表作文英语二大作文">三、图表作文（英语二大作文）</a><a class="c" href="英语_写作.html#四图画作文英语一大作文">四、图画作文（英语一大作文）</a><a class="c" href="英语_写作.html#五文字材料题">五、文字材料题</a><a class="c" href="英语_写作.html#六功能句与素材库">六、功能句与素材库</a><a class="c" href="英语_写作.html#七常见语法错误与丢分点">七、常见语法错误与丢分点</a><a class="c" href="英语_写作.html#八模板的合理使用">八、模板的合理使用</a><a class="c" href="英语_写作.html#九知识连接">九、知识连接</a><a class="c" href="英语_写作.html#十写作实战策略">十、写作实战策略</a><a class="c x" href="英语_写作_例题.html">▸ 例题集</a></details><details class="brd" open><summary><a class="b" href="英语_阅读.html">阅读</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_阅读_无忧_例题.html#一态度题例题">一、态度题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1公众对当前经济形势的态度2004英一Text3">例1. 公众对当前经济形势的态度 (2004 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例2Donahue对公共部门系统的态度2012英一Text4">例2. Donahue 对公共部门系统的态度 (2012 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例3作者对AAAS报告的态度2014英一Text4">例3. 作者对 AAAS 报告的态度 (2014 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例4作者对英国政府体育政策的态度2017英二Text1">例4. 作者对英国政府体育政策的态度 (2017 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例5作者对米尔顿弗里德曼关于CSR观点的态度2016英一Text3">例5. 作者对米尔顿·弗里德曼关于 CSR 观点的态度 (2016 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例6作者对BrendonLynch博客言论的态度2013英一Text2">例6. 作者对 Brendon Lynch 博客言论的态度 (2013 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例7作者对逆转高速趋势的态度2013英二Text3">例7. 作者对逆转高速趋势的态度 (2013 英二 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例8作者对美国看电视行为的态度2014英二Text1">例8. 作者对美国看电视行为的态度 (2014 英二 Text1)</a><a class="c" href="英语_阅读_无忧_例题.html#二例证题例题">二、例证题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1EgyptAir空难例子的论证目的2017英一Text1">例1. EgyptAir 空难例子的论证目的 (2017 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例2自行车链条例子的论证目的2018英二Text1">例2. 自行车链条例子的论证目的 (2018 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例3OrinKerr比较的引用目的2015英一Text2">例3. Orin Kerr 比较的引用目的 (2015 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例4祖先例子说明教育的起源2009英一Text3">例4. 祖先例子说明教育的起源 (2009 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例5McRib例子的论证目的2014英二Text1">例5. McRib 例子的论证目的 (2014 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例6WiltChamberlain例子的论证目的2008英一Text3">例6. Wilt Chamberlain 例子的论证目的 (2008 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例7RobertFKennedy引用的论证目的2017英一Text3">例7. Robert F. Kennedy 引用的论证目的 (2017 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例8GeorgeWashington拔牙故事的引用目的2008英一Text4">例8. George Washington 拔牙故事的引用目的 (2008 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例9Donovan故事的开篇功能2003英一Text1">例9. Donovan 故事的开篇功能 (2003 英一 Text1)</a><a class="c" href="英语_阅读_无忧_例题.html#三语义题例题">三、语义题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1homogenizing的含义2006英一Text1">例1. &quot;homogenizing&quot; 的含义 (2006 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例2moola的含义2015英二Text1">例2. &quot;moola&quot; 的含义 (2015 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例3tipservice的含义2004英一Text1">例3. &quot;tip service&quot; 的含义 (2004 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例4plummeting的含义2018英二Text2">例4. &quot;plummeting&quot; 的含义 (2018 英二 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例5gizmos的含义2002英一Text2">例5. &quot;gizmos&quot; 的含义 (2002 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例6bummer的含义2006英一Text4">例6. &quot;bummer&quot; 的含义 (2006 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例7paralysisbyanalysis的含义2005英一Text2">例7. &quot;paralysis by analysis&quot; 的含义 (2005 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例8Birdsofpassage指谁2013英二Text2">例8. &quot;Birds of passage&quot; 指谁 (2013 英二 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例9arbiters指谁2003英一Text3">例9. &quot;arbiters&quot; 指谁 (2003 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例10holdingitsnose的隐含态度2017英一Text4">例10. &quot;holding its nose&quot; 的隐含态度 (2017 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例11chroniclingtheirowndoom的含义2011英二Text2">例11. &quot;chronicling their own doom&quot; 的含义 (2011 英二 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例12livedfrompaychecktopaycheck的含义2008英一Text1">例12. &quot;lived from paycheck to paycheck&quot; 的含义 (2008 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例13coax的含义2016英二Text1">例13. &quot;coax&quot; 的含义 (2016 英二 Text1)</a><a class="c" href="英语_阅读_无忧_例题.html#四细节题例题精选代表">四、细节题例题（精选代表）</a><a class="d" href="英语_阅读_无忧_例题.html#焦点明确型问原因">焦点明确型 —— 问原因</a><a class="d" href="英语_阅读_无忧_例题.html#焦点明确型问特点">焦点明确型 —— 问特点</a><a class="d" href="英语_阅读_无忧_例题.html#焦点模糊型">焦点模糊型</a><a class="d" href="英语_阅读_无忧_例题.html#是非判断型">是非判断型</a><a class="c" href="英语_阅读_无忧_例题.html#五推断题例题精选代表">五、推断题例题（精选代表）</a><a class="d" href="英语_阅读_无忧_例题.html#焦点明确型">焦点明确型</a><a class="d" href="英语_阅读_无忧_例题.html#焦点模糊型-2">焦点模糊型</a><a class="d" href="英语_阅读_无忧_例题.html#线索全无型">线索全无型</a><a class="c" href="英语_阅读_无忧_例题.html#六主旨题例题">六、主旨题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1全文主旨2004英二Text2字母排序歧视">例1. 全文主旨 (2004 英二 Text2) —— 字母排序歧视</a><a class="c" href="英语_阅读_无忧_例题.html#七篇章精读">七、篇章精读</a><a class="d" href="英语_阅读_无忧_例题.html#篇章1报纸公信力危机2001Passage3">篇章1. 报纸公信力危机 (2001 Passage 3)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章2反智主义在美国2004Text4">篇章2. 反智主义在美国 (2004 Text 4)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章3IQ测试的局限性2007Text2">篇章3. IQ 测试的局限性 (2007 Text 2)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章4学术期刊出版的变革2008Text2">篇章4. 学术期刊出版的变革 (2008 Text 2)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章5科学奖项的反思2014英一Text3">篇章5. 科学奖项的反思 (2014 英一 Text 3)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章6人机赛跑2014英二Text3">篇章6. 人机赛跑 (2014 英二 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章72011英语一Text4育儿与幸福感">篇章7. 2011 英语一 Text 4 · 育儿与幸福感</a><a class="d" href="英语_阅读_无忧_例题.html#篇章82011英语二Text4欧盟危机与德法之争">篇章8. 2011 英语二 Text 4 · 欧盟危机与德法之争</a><a class="c x" href="英语_阅读_暑假_例题.html">▸ 暑假例题集</a><a class="c x on" href="英语_阅读_无忧_例题.html">▸ 无忧例题集</a></details><details class="brd" data-k="brd-翻译"><summary><a class="b" href="英语_翻译.html">翻译</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_翻译.html#一考试概览">一、考试概览</a><a class="c" href="英语_翻译.html#二翻译流程从英语到汉语的四步法">二、翻译流程: 从英语到汉语的四步法</a><a class="c" href="英语_翻译.html#三词法翻译词义选择与搭配">三、词法翻译: 词义选择与搭配</a><a class="c" href="英语_翻译.html#四翻译技巧">四、翻译技巧</a><a class="c" href="英语_翻译.html#五易错点与避坑指南">五、易错点与避坑指南</a><a class="c" href="英语_翻译.html#六知识连接">六、知识连接</a><a class="c x" href="英语_翻译_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-长难句翻译"><summary><a class="b" href="英语_长难句翻译.html">长难句翻译</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_长难句翻译.html#一长难句处理五步法必考">一、长难句处理五步法 【必考】</a><a class="c" href="英语_长难句翻译.html#二按结构类型处理">二、按结构类型处理</a><a class="c" href="英语_长难句翻译.html#三翻译技巧">三、翻译技巧</a><a class="c" href="英语_长难句翻译.html#四易错点易错">四、易错点 【易错】</a><a class="c" href="英语_长难句翻译.html#五知识连接">五、知识连接</a><a class="c x" href="英语_长难句翻译_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-语法"><summary><a class="b" href="英语_语法.html">语法</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_语法.html#一句子成分与五大基本句型">一、句子成分与五大基本句型</a><a class="c" href="英语_语法.html#二状语成分与状语从句必考">二、状语成分与状语从句 【必考】</a><a class="c" href="英语_语法.html#三特殊结构必考">三、特殊结构 【必考】</a><a class="c" href="英语_语法.html#四三大从句概述">四、三大从句概述</a><a class="c" href="英语_语法.html#五长难句分析方法重点">五、长难句分析方法 【重点】</a><a class="c" href="英语_语法.html#六易错点与考点">六、易错点与考点</a><a class="c" href="英语_语法.html#七知识连接">七、知识连接</a><a class="c x" href="英语_语法_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-完形"><summary><a class="b" href="英语_完形.html">完形</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_完形.html#一题型概览">一、题型概览</a><a class="c" href="英语_完形.html#二解题总流程">二、解题总流程</a><a class="c" href="英语_完形.html#三选项词性考点">三、选项词性考点</a><a class="c" href="英语_完形.html#四词组搭配考点">四、词组搭配考点</a><a class="c" href="英语_完形.html#五常考逻辑关系">五、常考逻辑关系</a><a class="c" href="英语_完形.html#八高频易错点">八、高频易错点</a><a class="c" href="英语_完形.html#六考点类型表做完题对考点用重点">六、考点类型表(做完题对考点用)【重点】</a><a class="c" href="英语_完形.html#七新题型小标题四方法">七、新题型(小标题)四方法</a><a class="c" href="英语_完形.html#九考前准备建议">九、考前准备建议</a></details><details class="brd" data-k="brd-无忧0802_测试卷"><summary><a class="b" href="英语_无忧0802_测试卷.html">无忧0802_测试卷</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_无忧0802_测试卷.html#一试卷总览">一、试卷总览</a><a class="c" href="英语_无忧0802_测试卷.html#二SectionI完形填空20分">二、Section I：完形填空（20 分）</a><a class="c" href="英语_无忧0802_测试卷.html#三SectionII阅读理解60分">三、Section II：阅读理解（60 分）</a><a class="c" href="英语_无忧0802_测试卷.html#四SectionIII新题型20分">四、Section III：新题型（20 分）</a><a class="c" href="英语_无忧0802_测试卷.html#五备考启示">五、备考启示</a></details><details class="brd" data-k="brd-词汇"><summary><a class="b" href="英语_词汇.html">词汇</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_词汇.html#一态度题真题例句重点词">一、态度题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#二例证题真题例句重点词">二、例证题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#三语义题真题例句重点词">三、语义题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#四细节题真题例句重点词">四、细节题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#五推断题真题例句重点词">五、推断题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#六主旨题真题例句重点词">六、主旨题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#七篇章精读全文重点词">七、篇章精读 · 全文重点词</a><a class="c" href="英语_词汇.html#八写作重点词与阅读分离">八、写作重点词(与阅读分离)</a><a class="c" href="英语_词汇.html#九新题型PartB重点词">九、新题型（Part B）重点词</a></details></div></nav>
+<script>try{var d=document.documentElement;
+d.dataset.style=localStorage.getItem('xnStyle')||'minimal';
+var _t=localStorage.getItem('xnTheme');
+d.dataset.theme=(_t==='light'||_t==='dark')?_t:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+d.dataset.nav=matchMedia('(hover: none), (max-width: 920px)').matches?'hidden':(localStorage.getItem('xnNavDock')==='0'?'hidden':'docked');
+}catch(e){}</script><link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../katex/katex.min.css"></head><body>
+<header id="topbar"><button id="navbtn" class="tbtn" type="button" aria-label="目录" title="目录"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 4h11M2.5 8h11M2.5 12h11"/></svg></button><div class="crumbline"><a href="../知识笔记首页.html">首页</a><span class="sep">/</span><b>英语 · 阅读_无忧_例题</b></div><div id="tbtools" role="toolbar"><button id="expandBtn" class="tbtn tbtn-text" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="styleBtn" class="tbtn" type="button" title="界面风格" aria-label="界面风格"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="5.6"/><path d="M8 2.4a5.6 5.6 0 0 1 0 11.2z" fill="currentColor" stroke="none"/></svg></button><button id="themeBtn" class="tbtn" type="button" title="切换深色模式" aria-label="切换深色模式"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 9.7A5.6 5.6 0 1 1 6.3 2.6a4.5 4.5 0 0 0 7.1 7.1z"/></svg></button><button id="printBtn" class="tbtn" type="button" title="打印 / 导出 PDF" aria-label="打印 / 导出 PDF"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6V2.6h7V6"/><path d="M4.5 11.5h-2v-5h11v5h-2"/><path d="M4.6 9.6h6.8v3.8H4.6z"/></svg></button></div></header>
+<div class="layout"><nav><div class="brand"><span class="logo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.4c1.5-.7 3.3-.9 5.5-.2v9.6c-2.2-.7-4-.5-5.5.2z"/><path d="M13.5 3.4c-1.5-.7-3.3-.9-5.5-.2v9.6c2.2-.7 4-.5 5.5.2z"/></svg></span><span class="bt"><b>复习笔记</b><small>KNOWLEDGE NOTES</small></span><button id="navclose" type="button" title="收起目录" aria-label="收起目录"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button></div><input id="navq" type="search" placeholder="筛选板块 / 小节…" aria-label="筛选目录"><a class="subj" href="../知识笔记首页.html">全部板块</a><div class="navbody"><div class="sec cur">英语</div><details class="brd" data-k="brd-写作"><summary><a class="b" href="英语_写作.html">写作</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_写作.html#一考试概览">一、考试概览</a><a class="c" href="英语_写作.html#二小作文">二、小作文</a><a class="c" href="英语_写作.html#三图表作文英语二大作文">三、图表作文（英语二大作文）</a><a class="c" href="英语_写作.html#四图画作文英语一大作文">四、图画作文（英语一大作文）</a><a class="c" href="英语_写作.html#五文字材料题">五、文字材料题</a><a class="c" href="英语_写作.html#六功能句与素材库">六、功能句与素材库</a><a class="c" href="英语_写作.html#七常见语法错误与丢分点">七、常见语法错误与丢分点</a><a class="c" href="英语_写作.html#八模板的合理使用">八、模板的合理使用</a><a class="c" href="英语_写作.html#九知识连接">九、知识连接</a><a class="c" href="英语_写作.html#十写作实战策略">十、写作实战策略</a><a class="c x" href="英语_写作_例题.html">▸ 例题集</a></details><details class="brd" open><summary><a class="b" href="英语_阅读.html">阅读</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_阅读_无忧_例题.html#一态度题例题">一、态度题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1公众对当前经济形势的态度2004英一Text3">例1. 公众对当前经济形势的态度 (2004 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例2Donahue对公共部门系统的态度2012英一Text4">例2. Donahue 对公共部门系统的态度 (2012 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例3作者对AAAS报告的态度2014英一Text4">例3. 作者对 AAAS 报告的态度 (2014 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例4作者对英国政府体育政策的态度2017英二Text1">例4. 作者对英国政府体育政策的态度 (2017 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例5作者对米尔顿弗里德曼关于CSR观点的态度2016英一Text3">例5. 作者对米尔顿·弗里德曼关于 CSR 观点的态度 (2016 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例6作者对BrendonLynch博客言论的态度2013英一Text2">例6. 作者对 Brendon Lynch 博客言论的态度 (2013 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例7作者对逆转高速趋势的态度2013英二Text3">例7. 作者对逆转高速趋势的态度 (2013 英二 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例8作者对美国看电视行为的态度2014英二Text1">例8. 作者对美国看电视行为的态度 (2014 英二 Text1)</a><a class="c" href="英语_阅读_无忧_例题.html#二例证题例题">二、例证题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1EgyptAir空难例子的论证目的2017英一Text1">例1. EgyptAir 空难例子的论证目的 (2017 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例2自行车链条例子的论证目的2018英二Text1">例2. 自行车链条例子的论证目的 (2018 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例3OrinKerr比较的引用目的2015英一Text2">例3. Orin Kerr 比较的引用目的 (2015 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例4祖先例子说明教育的起源2009英一Text3">例4. 祖先例子说明教育的起源 (2009 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例5McRib例子的论证目的2014英二Text1">例5. McRib 例子的论证目的 (2014 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例6WiltChamberlain例子的论证目的2008英一Text3">例6. Wilt Chamberlain 例子的论证目的 (2008 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例7RobertFKennedy引用的论证目的2017英一Text3">例7. Robert F. Kennedy 引用的论证目的 (2017 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例8GeorgeWashington拔牙故事的引用目的2008英一Text4">例8. George Washington 拔牙故事的引用目的 (2008 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例9Donovan故事的开篇功能2003英一Text1">例9. Donovan 故事的开篇功能 (2003 英一 Text1)</a><a class="c" href="英语_阅读_无忧_例题.html#三语义题例题">三、语义题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1homogenizing的含义2006英一Text1">例1. &quot;homogenizing&quot; 的含义 (2006 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例2moola的含义2015英二Text1">例2. &quot;moola&quot; 的含义 (2015 英二 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例3tipservice的含义2004英一Text1">例3. &quot;tip service&quot; 的含义 (2004 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例4plummeting的含义2018英二Text2">例4. &quot;plummeting&quot; 的含义 (2018 英二 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例5gizmos的含义2002英一Text2">例5. &quot;gizmos&quot; 的含义 (2002 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例6bummer的含义2006英一Text4">例6. &quot;bummer&quot; 的含义 (2006 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例7paralysisbyanalysis的含义2005英一Text2">例7. &quot;paralysis by analysis&quot; 的含义 (2005 英一 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例8Birdsofpassage指谁2013英二Text2">例8. &quot;Birds of passage&quot; 指谁 (2013 英二 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例9arbiters指谁2003英一Text3">例9. &quot;arbiters&quot; 指谁 (2003 英一 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#例10holdingitsnose的隐含态度2017英一Text4">例10. &quot;holding its nose&quot; 的隐含态度 (2017 英一 Text4)</a><a class="d" href="英语_阅读_无忧_例题.html#例11chroniclingtheirowndoom的含义2011英二Text2">例11. &quot;chronicling their own doom&quot; 的含义 (2011 英二 Text2)</a><a class="d" href="英语_阅读_无忧_例题.html#例12livedfrompaychecktopaycheck的含义2008英一Text1">例12. &quot;lived from paycheck to paycheck&quot; 的含义 (2008 英一 Text1)</a><a class="d" href="英语_阅读_无忧_例题.html#例13coax的含义2016英二Text1">例13. &quot;coax&quot; 的含义 (2016 英二 Text1)</a><a class="c" href="英语_阅读_无忧_例题.html#四细节题例题精选代表">四、细节题例题（精选代表）</a><a class="d" href="英语_阅读_无忧_例题.html#焦点明确型问原因">焦点明确型 —— 问原因</a><a class="d" href="英语_阅读_无忧_例题.html#焦点明确型问特点">焦点明确型 —— 问特点</a><a class="d" href="英语_阅读_无忧_例题.html#焦点模糊型">焦点模糊型</a><a class="d" href="英语_阅读_无忧_例题.html#是非判断型">是非判断型</a><a class="c" href="英语_阅读_无忧_例题.html#五推断题例题精选代表">五、推断题例题（精选代表）</a><a class="d" href="英语_阅读_无忧_例题.html#焦点明确型">焦点明确型</a><a class="d" href="英语_阅读_无忧_例题.html#焦点模糊型-2">焦点模糊型</a><a class="d" href="英语_阅读_无忧_例题.html#线索全无型">线索全无型</a><a class="c" href="英语_阅读_无忧_例题.html#六主旨题例题">六、主旨题例题</a><a class="d" href="英语_阅读_无忧_例题.html#例1全文主旨2004英二Text2字母排序歧视">例1. 全文主旨 (2004 英二 Text2) —— 字母排序歧视</a><a class="c" href="英语_阅读_无忧_例题.html#七篇章精读">七、篇章精读</a><a class="d" href="英语_阅读_无忧_例题.html#篇章1报纸公信力危机2001Passage3">篇章1. 报纸公信力危机 (2001 Passage 3)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章2反智主义在美国2004Text4">篇章2. 反智主义在美国 (2004 Text 4)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章3IQ测试的局限性2007Text2">篇章3. IQ 测试的局限性 (2007 Text 2)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章4学术期刊出版的变革2008Text2">篇章4. 学术期刊出版的变革 (2008 Text 2)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章5科学奖项的反思2014英一Text3">篇章5. 科学奖项的反思 (2014 英一 Text 3)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章6人机赛跑2014英二Text3">篇章6. 人机赛跑 (2014 英二 Text3)</a><a class="d" href="英语_阅读_无忧_例题.html#篇章72011英语一Text4育儿与幸福感">篇章7. 2011 英语一 Text 4 · 育儿与幸福感</a><a class="d" href="英语_阅读_无忧_例题.html#篇章82011英语二Text4欧盟危机与德法之争">篇章8. 2011 英语二 Text 4 · 欧盟危机与德法之争</a><a class="c x" href="英语_阅读_暑假_例题.html">▸ 暑假例题集</a><a class="c x on" href="英语_阅读_无忧_例题.html">▸ 无忧例题集</a></details><details class="brd" data-k="brd-翻译"><summary><a class="b" href="英语_翻译.html">翻译</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_翻译.html#一考试概览">一、考试概览</a><a class="c" href="英语_翻译.html#二翻译流程从英语到汉语的四步法">二、翻译流程: 从英语到汉语的四步法</a><a class="c" href="英语_翻译.html#三词法翻译词义选择与搭配">三、词法翻译: 词义选择与搭配</a><a class="c" href="英语_翻译.html#四翻译技巧">四、翻译技巧</a><a class="c" href="英语_翻译.html#五易错点与避坑指南">五、易错点与避坑指南</a><a class="c" href="英语_翻译.html#六知识连接">六、知识连接</a><a class="c x" href="英语_翻译_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-长难句翻译"><summary><a class="b" href="英语_长难句翻译.html">长难句翻译</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_长难句翻译.html#一长难句处理五步法必考">一、长难句处理五步法 【必考】</a><a class="c" href="英语_长难句翻译.html#二按结构类型处理">二、按结构类型处理</a><a class="c" href="英语_长难句翻译.html#三翻译技巧">三、翻译技巧</a><a class="c" href="英语_长难句翻译.html#四易错点易错">四、易错点 【易错】</a><a class="c" href="英语_长难句翻译.html#五知识连接">五、知识连接</a><a class="c x" href="英语_长难句翻译_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-语法"><summary><a class="b" href="英语_语法.html">语法</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_语法.html#一句子成分与五大基本句型">一、句子成分与五大基本句型</a><a class="c" href="英语_语法.html#二状语成分与状语从句必考">二、状语成分与状语从句 【必考】</a><a class="c" href="英语_语法.html#三特殊结构必考">三、特殊结构 【必考】</a><a class="c" href="英语_语法.html#四三大从句概述">四、三大从句概述</a><a class="c" href="英语_语法.html#五长难句分析方法重点">五、长难句分析方法 【重点】</a><a class="c" href="英语_语法.html#六易错点与考点">六、易错点与考点</a><a class="c" href="英语_语法.html#七知识连接">七、知识连接</a><a class="c x" href="英语_语法_例题.html">▸ 例题集</a></details><details class="brd" data-k="brd-完形"><summary><a class="b" href="英语_完形.html">完形</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_完形.html#一题型概览">一、题型概览</a><a class="c" href="英语_完形.html#二解题总流程">二、解题总流程</a><a class="c" href="英语_完形.html#三选项词性考点">三、选项词性考点</a><a class="c" href="英语_完形.html#四词组搭配考点">四、词组搭配考点</a><a class="c" href="英语_完形.html#五常考逻辑关系">五、常考逻辑关系</a><a class="c" href="英语_完形.html#八高频易错点">八、高频易错点</a><a class="c" href="英语_完形.html#六考点类型表做完题对考点用重点">六、考点类型表(做完题对考点用)【重点】</a><a class="c" href="英语_完形.html#七新题型小标题四方法">七、新题型(小标题)四方法</a><a class="c" href="英语_完形.html#九考前准备建议">九、考前准备建议</a></details><details class="brd" data-k="brd-无忧0802_测试卷"><summary><a class="b" href="英语_无忧0802_测试卷.html">无忧0802_测试卷</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_无忧0802_测试卷.html#一试卷总览">一、试卷总览</a><a class="c" href="英语_无忧0802_测试卷.html#二SectionI完形填空20分">二、Section I：完形填空（20 分）</a><a class="c" href="英语_无忧0802_测试卷.html#三SectionII阅读理解60分">三、Section II：阅读理解（60 分）</a><a class="c" href="英语_无忧0802_测试卷.html#四SectionIII新题型20分">四、Section III：新题型（20 分）</a><a class="c" href="英语_无忧0802_测试卷.html#五备考启示">五、备考启示</a></details><details class="brd" data-k="brd-词汇"><summary><a class="b" href="英语_词汇.html">词汇</a><span class="tog" aria-hidden="true"></span></summary><a class="c" href="英语_词汇.html#一态度题真题例句重点词">一、态度题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#二例证题真题例句重点词">二、例证题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#三语义题真题例句重点词">三、语义题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#四细节题真题例句重点词">四、细节题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#五推断题真题例句重点词">五、推断题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#六主旨题真题例句重点词">六、主旨题 · 真题例句重点词</a><a class="c" href="英语_词汇.html#七篇章精读全文重点词">七、篇章精读 · 全文重点词</a><a class="c" href="英语_词汇.html#八写作重点词与阅读分离">八、写作重点词(与阅读分离)</a><a class="c" href="英语_词汇.html#九新题型PartB重点词">九、新题型（Part B）重点词</a></details></div></nav>
 <div id="navscrim" aria-hidden="true"></div>
-<main data-subj="english"><div class="crumbline"><a href="../知识笔记首页.html">首页</a><span class="sep">/</span><b>英语 · 阅读_无忧_例题</b></div><div class="article"><h1>阅读_无忧_例题</h1><div class="board-meta">📖 英语 · <span class="pill">例题集</span><span class="pill">0 道例题</span></div><blockquote>
+<main data-subj="english"><div class="article"><div class="a-kick">英语 · 例题集</div><h1>阅读_无忧_例题</h1><div class="board-meta">英语 · 例题集 · 0 道例题</div><blockquote>
 <p>全量收录无忧阶段阅读课件例题, 分"题型例题"与"篇章精读"两节。
 来源课件: 考研阅读-7.22~7.30、真题精读 4.25、真题精读 4.26、真题精读 5.31
 暑假阶段对应内容见 <a href="英语_阅读_暑假_例题.html">阅读 · 暑假例题</a>
@@ -425,7 +21,7 @@ main details .sum b{font-weight:700}
 <h2 id="一态度题例题">一、态度题例题</h2>
 <h3 id="例1公众对当前经济形势的态度2004英一Text3">例1. 公众对当前经济形势的态度 (2004 英一 Text3)</h3>
 <div class="q"><b>Q</b> 32. How do the public feel about the current economic situation?</div>
-<div class="opts"><span class="opt">A.</span> Optimistic. <br><span class="opt">B.</span> Confused. <br><span class="opt">C.</span> Carefree. <br><span class="opt">D.</span> Panicked.</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> Optimistic. </div><div class="op"><span class="opt">B.</span> Confused. </div><div class="op"><span class="opt">C.</span> Carefree. </div><div class="op"><span class="opt">D.</span> Panicked.</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Even before Alan Greenspan's admission that America's red-hot economy is cooling, lots of working folks had already seen signs of the slowdown themselves. ②From car dealerships to Gap outlets, sales have been lagging for months as shoppers temper their spending. ③For retailers, who last year took in 24 percent of their revenue between Thanksgiving and Christmas, the cautious approach is coming at a crucial time. ④Already, experts say, holiday sales are off 7 percent from last year's pace. ⑤But don't sound any alarms just yet. ⑥Consumers seem only <b class="kw">mildly concerned, not panicked</b>, and many say they <b class="kw">remain optimistic</b> about the economy's long-term prospects, even as they do some modest belt-tightening.
 </div></div>
@@ -439,7 +35,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例2Donahue对公共部门系统的态度2012英一Text4">例2. Donahue 对公共部门系统的态度 (2012 英一 Text4)</h3>
 <div class="q"><b>Q</b> 40. John Donahue's attitude towards the public-sector system is one of _____.</div>
-<div class="opts"><span class="opt">A.</span> disapproval <br><span class="opt">B.</span> appreciation <br><span class="opt">C.</span> tolerance <br><span class="opt">D.</span> indifference</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> disapproval </div><div class="op"><span class="opt">B.</span> appreciation </div><div class="op"><span class="opt">C.</span> tolerance </div><div class="op"><span class="opt">D.</span> indifference</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①John Donahue at Harvard's Kennedy School points out that the norms of culture in Western civil services suit those who want to stay put but is <b class="kw">bad for high achievers</b>. ②The only American public-sector workers who earn well above \$\150,000 a year are university sports coaches and the president of the United States. ③Bankers' fat pay packets have attracted much criticism, but a public-sector system that <b class="kw">does not reward high achievers</b> may be <b class="kw">a much bigger problem</b> for America.
 </div></div>
@@ -453,7 +49,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例3作者对AAAS报告的态度2014英一Text4">例3. 作者对 AAAS 报告的态度 (2014 英一 Text4)</h3>
 <div class="q"><b>Q</b> 36. According to Paragraph 1, what is the author's attitude toward the AAAS's report?</div>
-<div class="opts"><span class="opt">A.</span> Critical. <br><span class="opt">B.</span> Appreciative. <br><span class="opt">C.</span> Contemptuous. <br><span class="opt">D.</span> Tolerant.</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> Critical. </div><div class="op"><span class="opt">B.</span> Appreciative. </div><div class="op"><span class="opt">C.</span> Contemptuous. </div><div class="op"><span class="opt">D.</span> Tolerant.</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①"The Heart of the Matter", the just-released report by the American Academy of Arts and Sciences (AAAS), <b class="kw">deserves praise</b> for affirming the importance of the humanities and social sciences to the prosperity and security of liberal democracy in America. ②<b class="kw">Regrettably, however</b>, the report's failure to address the true nature of the crisis facing liberal education <b class="kw">may cause more harm than good</b>.
 </div></div>
@@ -467,7 +63,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例4作者对英国政府体育政策的态度2017英二Text1">例4. 作者对英国政府体育政策的态度 (2017 英二 Text1)</h3>
 <div class="q"><b>Q</b> 25. The author's attitude to what UK governments have done for sports is _____.</div>
-<div class="opts"><span class="opt">A.</span> tolerant <br><span class="opt">B.</span> critical <br><span class="opt">C.</span> uncertain <br><span class="opt">D.</span> sympathetic</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> tolerant </div><div class="op"><span class="opt">B.</span> critical </div><div class="op"><span class="opt">C.</span> uncertain </div><div class="op"><span class="opt">D.</span> sympathetic</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Indeed, there is something a little absurd in the state getting involved in the planning of such a fundamentally "grassroots" concept as community sports associations. ②If there is a role for government, it should really be getting involved in providing common goods — making sure there is space for playing fields and the money to pave tennis and netball courts, and encouraging the provision of all these activities in schools. ③<b class="kw">But successive governments have presided over selling green spaces, squeezing money from local authorities and declining attention on sport in education</b>. ④Instead of wordy, worthy strategies, future governments need to do more to provide the conditions for sport to thrive. ⑤Or at least not make them worse.
 </div></div>
@@ -481,7 +77,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例5作者对米尔顿弗里德曼关于CSR观点的态度2016英一Text3">例5. 作者对米尔顿·弗里德曼关于 CSR 观点的态度 (2016 英一 Text3)</h3>
 <div class="q"><b>Q</b> 31. The author views Milton Friedman's statement about CSR with _____.</div>
-<div class="opts"><span class="opt">A.</span> tolerance <br><span class="opt">B.</span> skepticism <br><span class="opt">C.</span> uncertainty <br><span class="opt">D.</span> approval</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> tolerance </div><div class="op"><span class="opt">B.</span> skepticism </div><div class="op"><span class="opt">C.</span> uncertainty </div><div class="op"><span class="opt">D.</span> approval</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①"There is one and only one social responsibility of business", wrote Milton Friedman, a Nobel Prize-winning economist, "That is, to use its resources and engage in activities designed to increase its profits." But even if you accept Friedman's premise and regard corporate social responsibility (CSR) policies as a waste of shareholders' money, things may not be absolutely clear-cut. ②New research suggests that CSR may create monetary value for companies — at least when they are prosecuted for corruption.
 </div></div>
@@ -495,7 +91,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例6作者对BrendonLynch博客言论的态度2013英一Text2">例6. 作者对 Brendon Lynch 博客言论的态度 (2013 英一 Text2)</h3>
 <div class="q"><b>Q</b> 30. The author's attitude towards what Brendon Lynch said in his blog is one of _____.</div>
-<div class="opts"><span class="opt">A.</span> indulgence <br><span class="opt">B.</span> understanding <br><span class="opt">C.</span> appreciation <br><span class="opt">D.</span> skepticism</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> indulgence </div><div class="op"><span class="opt">B.</span> understanding </div><div class="op"><span class="opt">C.</span> appreciation </div><div class="op"><span class="opt">D.</span> skepticism</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Also unclear is why Microsoft has gone it alone. ②After all, it has an ad business too, which it says will comply with DNT requests, though it is still working out how. ③If it is trying to upset Google, which relies almost wholly on advertising, it has chosen an indirect method: There is no guarantee that DNT by default will become the norm. ④DNT does not seem an obviously huge selling point for Windows 8—though the firm has compared some of its other products favorably with Google's on that count before. ⑤Brendon Lynch, Microsoft's chief privacy officer, blogged: "We believe consumers should have more control." <b class="kw">Could it really be that simple</b>?
 </div></div>
@@ -509,7 +105,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例7作者对逆转高速趋势的态度2013英二Text3">例7. 作者对逆转高速趋势的态度 (2013 英二 Text3)</h3>
 <div class="q"><b>Q</b> 35. The author's attitude toward reversing the high-speed trend is _____.</div>
-<div class="opts"><span class="opt">A.</span> tolerant <br><span class="opt">B.</span> uncertain <br><span class="opt">C.</span> optimistic <br><span class="opt">D.</span> doubtful</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> tolerant </div><div class="op"><span class="opt">B.</span> uncertain </div><div class="op"><span class="opt">C.</span> optimistic </div><div class="op"><span class="opt">D.</span> doubtful</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Our ability to mute our hard-wired reactions by pausing is what differentiates us from animals: dogs can think about the future only intermittently or for a few minutes. ②But historically we have spent about 12 percent of our days contemplating the longer term. ③Although technology might change the way we react, it hasn't changed our nature. ④<b class="kw">We still have the imaginative capacity to rise above temptation and reverse the high-speed trend</b>.
 </div></div>
@@ -523,7 +119,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例8作者对美国看电视行为的态度2014英二Text1">例8. 作者对美国看电视行为的态度 (2014 英二 Text1)</h3>
 <div class="q"><b>Q</b> 22. The author's attitude toward Americans' watching TV is _____.</div>
-<div class="opts"><span class="opt">A.</span> critical <br><span class="opt">B.</span> supportive <br><span class="opt">C.</span> sympathetic <br><span class="opt">D.</span> ambiguous</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> critical </div><div class="op"><span class="opt">B.</span> supportive </div><div class="op"><span class="opt">C.</span> sympathetic </div><div class="op"><span class="opt">D.</span> ambiguous</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第三段 ②③句 —— "It seems most people would be better off if they could shorten their commutes to work, spend more time with friends and family and <b class="kw">less of it watching television</b> (something the average American spends <b class="kw">a whopping two months a year doing, and is hardly jollier for it</b>)."
 </div></div>
@@ -554,7 +150,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例2自行车链条例子的论证目的2018英二Text1">例2. 自行车链条例子的论证目的 (2018 英二 Text1)</h3>
 <div class="q"><b>Q</b> 21. A broken bike chain is mentioned to show student's lack of _____.</div>
-<div class="opts"><span class="opt">A.</span> academic training <br><span class="opt">B.</span> practical ability <br><span class="opt">C.</span> pioneering spirit <br><span class="opt">D.</span> mechanical memorization</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> academic training </div><div class="op"><span class="opt">B.</span> practical ability </div><div class="op"><span class="opt">C.</span> pioneering spirit </div><div class="op"><span class="opt">D.</span> mechanical memorization</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Mr. Koziatek is part of something pioneering. ②He is a teacher at a New Hampshire high school where <b class="kw">learning is not something of books and tests and mechanical memorization, but practical</b>. ③When did it become accepted wisdom that students should be able to name the 13th president of the United States but be utterly overwhelmed by a broken bike chain?
 </div></div>
@@ -681,7 +277,7 @@ main details .sum b{font-weight:700}
 <h2 id="三语义题例题">三、语义题例题</h2>
 <h3 id="例1homogenizing的含义2006英一Text1">例1. "homogenizing" 的含义 (2006 英一 Text1)</h3>
 <div class="q"><b>Q</b> 21. The word "homogenizing" (Line 2, Paragraph 1) most probably means _____.</div>
-<div class="opts"><span class="opt">A.</span> identifying <br><span class="opt">B.</span> associating <br><span class="opt">C.</span> assimilating <br><span class="opt">D.</span> monopolizing</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> identifying </div><div class="op"><span class="opt">B.</span> associating </div><div class="op"><span class="opt">C.</span> assimilating </div><div class="op"><span class="opt">D.</span> monopolizing</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①In spite of "endless talk of difference", American society is an amazing machine for homogenizing people. ②There is "the democratizing uniformity of dress and discourse, and the casualness and absence of deference" characteristic of popular culture. ③People are absorbed into "a culture of consumption" launched by the 19th- century department stores that offered "vast arrays of goods in an elegant atmosphere. ④Instead of intimate shops catering to a knowledgeable elite" these were stores "anyone could enter, regardless of class or background. ⑤This turned shopping into a public and democratic act." The mass media, advertising and sports are other forces for homogenization.
 </div></div>
@@ -695,7 +291,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例2moola的含义2015英二Text1">例2. "moola" 的含义 (2015 英二 Text1)</h3>
 <div class="q"><b>Q</b> 24. The word "moola" (Line 3, Para 4) most probably means _____.</div>
-<div class="opts"><span class="opt">A.</span> energy <br><span class="opt">B.</span> skills <br><span class="opt">C.</span> earnings <br><span class="opt">D.</span> nutrition</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> energy </div><div class="op"><span class="opt">B.</span> skills </div><div class="op"><span class="opt">C.</span> earnings </div><div class="op"><span class="opt">D.</span> nutrition</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①But it's not just a gender thing. ②At work, people pretty much know what they're supposed to be doing: working, making money, doing the tasks they have to do in order to draw an income. ③The bargain is very pure: <b class="kw">Employee puts in hours of physical or mental labor and employee draws out life-sustaining moola</b>.
 </div></div>
@@ -709,7 +305,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例3tipservice的含义2004英一Text1">例3. "tip service" 的含义 (2004 英一 Text1)</h3>
 <div class="q"><b>Q</b> 43. The expression "tip service" (Line 4, Paragraph 3) most probably means _____.</div>
-<div class="opts"><span class="opt">A.</span> advisory <br><span class="opt">B.</span> compensation <br><span class="opt">C.</span> interaction <br><span class="opt">D.</span> reminder</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> advisory </div><div class="op"><span class="opt">B.</span> compensation </div><div class="op"><span class="opt">C.</span> interaction </div><div class="op"><span class="opt">D.</span> reminder</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①For any job search, you should start with a narrow concept—what you think you want to do—then broaden it. ②"None of these programs do that," says another expert. ③"There's no career counseling implicit in all of this." Instead, the best strategy is to use the agent as a kind of <b class="kw">tip service</b> to keep abreast of jobs in a particular database; when you get E-mail, <b class="kw">consider it a reminder to check the database again</b>. ④"I would not rely on agents for finding everything that is added to a database that might interest me," says the author of a job-searching guide.
 </div></div>
@@ -723,7 +319,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例4plummeting的含义2018英二Text2">例4. "plummeting" 的含义 (2018 英二 Text2)</h3>
 <div class="q"><b>Q</b> 26. The word "plummeting" (Line 2, Para. 2) is closest in meaning to _____.</div>
-<div class="opts"><span class="opt">A.</span> stabilizing <br><span class="opt">B.</span> changing <br><span class="opt">C.</span> falling <br><span class="opt">D.</span> rising</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> stabilizing </div><div class="op"><span class="opt">B.</span> changing </div><div class="op"><span class="opt">C.</span> falling </div><div class="op"><span class="opt">D.</span> rising</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Some growth stems from a commitment by governments and farsighted businesses to fund cleaner energy sources. ②But increasingly the story is about the plummeting prices of renewables, especially wind and solar. ③The cost of solar panels has <b class="kw">dropped by 80 percent</b> and the cost of wind turbines by close to one-third in the past eight years.
 </div></div>
@@ -737,7 +333,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例5gizmos的含义2002英一Text2">例5. "gizmos" 的含义 (2002 英一 Text2)</h3>
 <div class="q"><b>Q</b> 47. The word "gizmos" (line1, paragraph2) most probably means _____.</div>
-<div class="opts"><span class="opt">A.</span> programs <br><span class="opt">B.</span> experts <br><span class="opt">C.</span> devices <br><span class="opt">D.</span> creatures</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> programs </div><div class="op"><span class="opt">B.</span> experts </div><div class="op"><span class="opt">C.</span> devices </div><div class="op"><span class="opt">D.</span> creatures</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①As a result, the modern world is increasingly populated by intelligent gizmos whose presence we barely notice but whose universal existence has <b class="kw">removed much human labor</b>. ②Our factories hum to the rhythm of robot assembly arms. ③Our banking is done at automated teller terminals that thank us with mechanical politeness for the transaction. ④Our subway trains are controlled by tireless robot-drivers. ⑤And thanks to the continual miniaturization of electronics and micro-mechanics, there are already robot systems that can perform some kinds of brain and bone surgery with submillimeter accuracy—far greater precision than highly skilled physicians can achieve with their hands alone.
 </div></div>
@@ -751,7 +347,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例6bummer的含义2006英一Text4">例6. "bummer" 的含义 (2006 英一 Text4)</h3>
 <div class="q"><b>Q</b> 37. The word "bummer" (Line 5, Paragraph 5) most probably means something _____.</div>
-<div class="opts"><span class="opt">A.</span> religious <br><span class="opt">B.</span> unpleasant <br><span class="opt">C.</span> entertaining <br><span class="opt">D.</span> commercial</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> religious </div><div class="op"><span class="opt">B.</span> unpleasant </div><div class="op"><span class="opt">C.</span> entertaining </div><div class="op"><span class="opt">D.</span> commercial</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①People in earlier eras were surrounded by reminders of misery. ②They worked until exhausted, lived with few protections and died young. ③In the West, before mass communication and literacy, the most powerful mass medium was the church, which reminded worshippers that their souls were in peril and that they would someday be meat for worms. ④<b class="kw">Given all this, they did not exactly need their art to be a bummer too</b>.
 </div></div>
@@ -861,7 +457,7 @@ main details .sum b{font-weight:700}
 <hr />
 <h3 id="例13coax的含义2016英二Text1">例13. "coax" 的含义 (2016 英二 Text1)</h3>
 <div class="q"><b>Q</b> 25. The word "coax" (Line 4, Para. 6) is closest in meaning to _____.</div>
-<div class="opts"><span class="opt">A.</span> persuade <br><span class="opt">B.</span> frighten <br><span class="opt">C.</span> misguide <br><span class="opt">D.</span> challenge</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> persuade </div><div class="op"><span class="opt">B.</span> frighten </div><div class="op"><span class="opt">C.</span> misguide </div><div class="op"><span class="opt">D.</span> challenge</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第六段 ④句 —— "The younger they learn how computers think, how to <b class="kw">coax the machine into producing what they want</b> — the earlier they learn that they have the power to do that — the better."
 </div></div>
@@ -877,7 +473,7 @@ main details .sum b{font-weight:700}
 <h3 id="焦点明确型问原因">焦点明确型 —— 问原因</h3>
 <p><b>例: Priestly 批评她的助理是因为什么</b> (2013 英一 Text1)</p>
 <div class="q"><b>Q</b> 21. Priestly criticizes her assistant for her _____.</div>
-<div class="opts"><span class="opt">A.</span> poor bargaining skill <br><span class="opt">B.</span> insensitivity to fashion <br><span class="opt">C.</span> obsession with high fashion <br><span class="opt">D.</span> lack of imagination</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> poor bargaining skill </div><div class="op"><span class="opt">B.</span> insensitivity to fashion </div><div class="op"><span class="opt">C.</span> obsession with high fashion </div><div class="op"><span class="opt">D.</span> lack of imagination</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①In the 2006 film version of The Devil Wears Prada, Miranda Priestly, played by Meryl Streep, scolds her unattractive assistant <b class="kw">for imagining that high fashion doesn't affect her</b>. ②Priestly explains how the deep blue color of the assistant's sweater descended over the years from fashion shows to departments stores and to the bargain bin in which the poor girl doubtless found her garment.
 </div></div>
@@ -892,7 +488,7 @@ main details .sum b{font-weight:700}
 <h3 id="焦点明确型问特点">焦点明确型 —— 问特点</h3>
 <p><b>例: 科学发现过程的特征</b> (2012 英一 Text3)</p>
 <div class="q"><b>Q</b> 31. According to the first paragraph, the process of discovery is characterized by its _____.</div>
-<div class="opts"><span class="opt">A.</span> uncertainty and complexity <br><span class="opt">B.</span> misconception and deceptiveness <br><span class="opt">C.</span> logicality and objectivity <br><span class="opt">D.</span> systematicness and regularity</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> uncertainty and complexity </div><div class="op"><span class="opt">B.</span> misconception and deceptiveness </div><div class="op"><span class="opt">C.</span> logicality and objectivity </div><div class="op"><span class="opt">D.</span> systematicness and regularity</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①In the <b class="kw">idealized version</b> of how science is done, facts about the world are waiting to be observed and collected by objective researchers who use the scientific method to carry out their work. ②<b class="kw">But in the everyday practice of science, discovery frequently follows an ambiguous and complicated route</b>. ③We aim to be objective, but we cannot escape the context of our unique life experience. ④Prior knowledge and interest influence what we experience, what we think our experiences mean, and the subsequent actions we take. ⑤Opportunities for misinterpretation, error, and self-deception abound.
 </div></div>
@@ -907,7 +503,7 @@ main details .sum b{font-weight:700}
 <h3 id="焦点模糊型">焦点模糊型</h3>
 <p><b>例: Mies 认为建筑设计的优雅</b> (2011 英二 Text3)</p>
 <div class="q"><b>Q</b> 33. Mies held that elegance of architectural design _____.</div>
-<div class="opts"><span class="opt">A.</span> was related to large space <br><span class="opt">B.</span> was identified with emptiness <br><span class="opt">C.</span> was not reliant on abundant decoration <br><span class="opt">D.</span> was not associated with efficiency</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> was related to large space </div><div class="op"><span class="opt">B.</span> was identified with emptiness </div><div class="op"><span class="opt">C.</span> was not reliant on abundant decoration </div><div class="op"><span class="opt">D.</span> was not associated with efficiency</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Mies's signature phrase means that less decoration, properly organized, has more impact than a lot. ②Elegance, he believed, did not derive from abundance. ③Like other modern architects, he employed metal, glass and laminated wood—materials that we take for granted today but that in the 1940s symbolized the future. ④Mies's sophisticated presentation masked the fact that the spaces he designed <b class="kw">were small and efficient</b>, <b class="kw">rather than big and often empty</b>.
 </div></div>
@@ -922,7 +518,7 @@ main details .sum b{font-weight:700}
 <h3 id="是非判断型">是非判断型</h3>
 <p><b>例: 关于 Mies 建的公寓，哪个正确</b> (2011 英二 Text3)</p>
 <div class="q"><b>Q</b> 34. What is true about the apartments Mies built on Chicago's Lake Shore Drive?</div>
-<div class="opts"><span class="opt">A.</span> They ignored details and proportions. <br><span class="opt">B.</span> They were built with materials popular at that time. <br><span class="opt">C.</span> They were more spacious than neighboring buildings. <br><span class="opt">D.</span> They shared some characteristics of abstract art.</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> They ignored details and proportions. </div><div class="op"><span class="opt">B.</span> They were built with materials popular at that time. </div><div class="op"><span class="opt">C.</span> They were more spacious than neighboring buildings. </div><div class="op"><span class="opt">D.</span> They shared some characteristics of abstract art.</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①The apartments in the elegant towers Mies built on Chicago's Lake Shore Drive, for example, <b class="kw">were smaller</b>—two-bedroom units under 1,000 square feet—than those in their older neighbors along the city's Gold Coast. ②But they were popular because of their airy glass walls, the views they afforded and the elegance of the buildings' details and proportions, <b class="kw">the architectural equivalent of the abstract art so popular</b> at the time.
 </div></div>
@@ -970,7 +566,7 @@ main details .sum b{font-weight:700}
 <h3 id="焦点明确型">焦点明确型</h3>
 <p><b>例: Facebook 是自我提升者的天堂因为可以做什么</b> (2014 英二 Text2)</p>
 <div class="q"><b>Q</b> 30. It can be inferred that Facebook is self-enhancer's paradise because people can _____.</div>
-<div class="opts"><span class="opt">A.</span> present their dishonest profiles <br><span class="opt">B.</span> define their traditional life styles <br><span class="opt">C.</span> share their intellectual pursuits <br><span class="opt">D.</span> withhold their unflattering sides</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> present their dishonest profiles </div><div class="op"><span class="opt">B.</span> define their traditional life styles </div><div class="op"><span class="opt">C.</span> share their intellectual pursuits </div><div class="op"><span class="opt">D.</span> withhold their unflattering sides</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Knowing the results of Epley's study, it makes sense that why people hate photographs of themselves viscerally—on one level, they don't even recognize the person in the picture as themselves. ②Facebook, therefore, is a self-enhancer's paradise, where people can <b class="kw">share only the most flattering photos</b>, the cream of their wit, style, beauty, intellect and lifestyle. ③"It's not that people's profiles are dishonest", says Catalina Toma of Wisconsin- Madison University, "but they portray an idealized version of themselves".
 </div></div>
@@ -985,7 +581,7 @@ main details .sum b{font-weight:700}
 <h3 id="焦点模糊型-2">焦点模糊型</h3>
 <p><b>例: 从第三段可推断出 Bauhaus</b> (2011 英二 Text3)</p>
 <div class="q"><b>Q</b> 32. Which of the following can be inferred from Paragraph 3 about Bauhaus?</div>
-<div class="opts"><span class="opt">A.</span> It was founded by Ludwig Mies van der Rohe. <br><span class="opt">B.</span> Its designing concept was affected by World War II. <br><span class="opt">C.</span> Most American architects used to be associated with it. <br><span class="opt">D.</span> It had a great influence upon American architecture.</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> It was founded by Ludwig Mies van der Rohe. </div><div class="op"><span class="opt">B.</span> Its designing concept was affected by World War II. </div><div class="op"><span class="opt">C.</span> Most American architects used to be associated with it. </div><div class="op"><span class="opt">D.</span> It had a great influence upon American architecture.</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> ①Economic condition was only a stimulus for the trend toward efficient living. ②The phrase "less is more" was actually first popularized by a German, the architect Ludwig Mies van der Rohe, who like other people <b class="kw">associated with the Bauhaus</b>, a school of design, emigrated to the United States before World War II and took up posts at American architecture schools. ③<b class="kw">These designers came to exert enormous influence on the course of American architecture</b>, but none more so than Mies.
 </div></div>
@@ -1195,7 +791,7 @@ main details .sum b{font-weight:700}
 </div></div>
 <p><b>文章结构</b>: P1: 引出 Senior 观点——幸福是"过去时"的回顾式幸福 → P2: 名人妈妈报道泛滥 → P3: 社会赞美生育，无子女者被舆论绑架 → P4: 名人形象极不真实（单亲最不幸福）→ P5: 完美育儿形象在悄悄加深我们对真实体验的不满。</p>
 <div class="q"><b>Q</b> 36. Jennifer Senior suggests in her article that raising a child can bring ______.</div>
-<div class="opts"><span class="opt">A.</span> temporary delight <br><span class="opt">B.</span> enjoyment in progress <br><span class="opt">C.</span> happiness in retrospect <br><span class="opt">D.</span> lasting reward</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> temporary delight </div><div class="op"><span class="opt">B.</span> enjoyment in progress </div><div class="op"><span class="opt">C.</span> happiness in retrospect </div><div class="op"><span class="opt">D.</span> lasting reward</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第一段 ②③句 —— "we should consider being happy as a <b class="kw">past-tense condition</b>"；"the very things that in the moment dampen our moods can later be sources of intense gratification and delight."
 </div></div>
@@ -1232,7 +828,7 @@ main details .sum b{font-weight:700}
 </details>
 
 <div class="q"><b>Q</b> 39. According to Paragraph 4, the message conveyed by celebrity magazines is _____.</div>
-<div class="opts"><span class="opt">A.</span> soothing <br><span class="opt">B.</span> ambiguous <br><span class="opt">C.</span> compensatory <br><span class="opt">D.</span> misleading</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> soothing </div><div class="op"><span class="opt">B.</span> ambiguous </div><div class="op"><span class="opt">C.</span> compensatory </div><div class="op"><span class="opt">D.</span> misleading</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第四段 ①句 —— "the image of parenthood that celebrity magazines present is <b class="kw">hugely unrealistic</b>."
 </div></div>
@@ -1319,7 +915,7 @@ main details .sum b{font-weight:700}
 </details>
 
 <div class="q"><b>Q</b> 40. Regarding the future of the EU, the author seems to feel _______.</div>
-<div class="opts"><span class="opt">A.</span> pessimistic <br><span class="opt">B.</span> desperate <br><span class="opt">C.</span> conceited <br><span class="opt">D.</span> hopeful</div>
+<div class="opts"><div class="op"><span class="opt">A.</span> pessimistic </div><div class="op"><span class="opt">B.</span> desperate </div><div class="op"><span class="opt">C.</span> conceited </div><div class="op"><span class="opt">D.</span> hopeful</div></div>
 
 <div class="loc"><span class="loc-tag">定位原文</span><div class="loc-text"> 第六段 ①④句 —— "<b class="kw">It is too soon to write off the EU</b>."；"an ambitious attempt to <b class="kw">blunt the sharpest edges of globalization, and make capitalism benign</b>."
 </div></div>
@@ -1331,10 +927,8 @@ main details .sum b{font-weight:700}
 
 <p><span class="src">【来源: 考研阅读-7.30（8月4日暑假课又精讲此篇，见暑假册篇章2，含课堂讲解）】</span></p>
 <hr />
-<p><em>无忧册完 —— 例题与篇章全部收录。</em></p></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="英语_阅读_暑假_例题.html"><span class="pg-ic">←</span><span class="pg-t"><small>上一篇</small><b>英语 · 阅读_暑假_例题</b></span></a><a class="next" href="英语_翻译.html"><span class="pg-t"><small>下一篇</small><b>英语 · 翻译</b></span><span class="pg-ic">→</span></a></nav></main>
-<button id="topbtn" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
-<button id="navbtn" type="button" aria-label="打开目录" title="目录">☰</button>
-<div id="tbtools" role="toolbar"><button id="expandBtn" type="button" title="展开 / 收起全部解答" hidden>展开全部</button><button id="themeBtn" type="button" title="切换深色模式">深色</button><button id="printBtn" type="button" title="打印 / 导出 PDF">打印</button></div></div>
+<p><em>无忧册完 —— 例题与篇章全部收录。</em></p></div><nav class="pager" aria-label="上一篇 / 下一篇"><a class="prev" href="英语_阅读_暑假_例题.html"><small>← 上一篇</small><b>英语 · 阅读_暑假_例题</b></a><a class="next" href="英语_翻译.html"><small>下一篇 →</small><b>英语 · 翻译</b></a></nav></main>
+<button id="topbtn" class="tbtn" type="button" aria-label="回到顶部" title="回到顶部"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></button></div>
 
 <script src="../katex/katex.min.js"></script>
 <script src="../katex/contrib/auto-render.min.js"></script>
@@ -1345,364 +939,4 @@ document.addEventListener("DOMContentLoaded",function(){
   ],throwOnError:false});}catch(e){}
 });
 </script>
-
-<script>
-(function(){
-  /* file:// 双击打开时 pathname 是百分号编码(如 %E6%95%B0...), 必须解码才能和
-     导航里原始中文 href 比较(滚动定位/已读标记依赖)。 */
-  var PAGE = location.pathname.split('/').pop() || '';
-  try { PAGE = decodeURIComponent(PAGE); } catch (e) {}
-  var root = document.documentElement;
-  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
-  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
-  function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } }
-
-  /* ---------- 深色模式 ---------- */
-  var themeBtn = document.getElementById('themeBtn');
-  var theme = load('xnTheme');
-  if (theme === 'light' || theme === 'dark') { root.setAttribute('data-theme', theme); }
-  else {
-    var dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    root.setAttribute('data-theme', dark ? 'dark' : 'light');
-  }
-  function themeIcon(){ if (themeBtn) themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '浅色' : '深色'; }
-  if (themeBtn) {
-    themeBtn.addEventListener('click', function(){
-      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', cur); store('xnTheme', cur); themeIcon();
-    });
-  }
-  themeIcon();
-
-  /* ---------- 折叠状态跨页记忆 ---------- */
-  var NAV_KEY = 'xnNav_' + PAGE;
-  var saved = loadJSON(NAV_KEY) || {};
-  var grps = document.querySelectorAll('nav details.grp[data-k]');
-  for (var i = 0; i < grps.length; i++) {
-    var k = grps[i].getAttribute('data-k');
-    if (Object.prototype.hasOwnProperty.call(saved, k)) grps[i].open = !!saved[k];
-  }
-  var nav = document.querySelector('nav');
-  if (nav) {
-    nav.addEventListener('toggle', function(e){
-      var d = e.target;
-      if (!d || !d.hasAttribute('data-k')) return;
-      var s = loadJSON(NAV_KEY) || {};
-      s[d.getAttribute('data-k')] = d.open;
-      store(NAV_KEY, JSON.stringify(s));
-    }, true); /* toggle 不冒泡, 必须 capture */
-  }
-
-  /* ---------- 侧栏收起/展开(2026-08-09): 折叠态 = 8px 边缘热区零内容;
-     桌面: 悬停/键盘聚焦滑出, 移出 1.2s 自动收回(未钉住), ☰/图钉按钮钉住;
-     触屏(平板): ☰ 弹浮层 + 遮罩; 手机(≤920px): ☰ = 汉堡滑入 overlay ---------- */
-  var touchNav = !!(window.matchMedia && window.matchMedia('(hover: none)').matches);
-  var sideNav = document.querySelector('.layout > nav');
-  var navbtn = document.getElementById('navbtn');
-  if (sideNav) {
-    if (touchNav) root.setAttribute('data-touch', '1');
-    var pinSt = load('xnNavPin') === '1';
-    root.setAttribute('data-nav', (pinSt && !touchNav) ? 'pinned' : 'collapsed');
-    var pinBtn = document.getElementById('navpin');
-    if (pinBtn) pinBtn.setAttribute('aria-pressed', pinSt && !touchNav ? 'true' : 'false');
-    function setPin(pinned){
-      root.setAttribute('data-nav', pinned ? 'pinned' : 'collapsed');
-      store('xnNavPin', pinned ? '1' : '0');
-      if (pinBtn) pinBtn.setAttribute('aria-pressed', pinned ? 'true' : 'false');
-    }
-    /* 桌面收回计时: 鼠标不在浮层上(或 ☰ 刚展开鼠标未进入)则 1.2s 后自动收回 */
-    var retractTimer = null;
-    function scheduleRetract(){
-      if (touchNav) return;
-      clearTimeout(retractTimer);
-      retractTimer = setTimeout(function(){
-        if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'collapsed');
-      }, 1200);
-    }
-    function keepOpen(){
-      if (touchNav) return;
-      clearTimeout(retractTimer);
-      if (root.getAttribute('data-nav') !== 'pinned') root.setAttribute('data-nav', 'open');
-    }
-    if (pinBtn) pinBtn.addEventListener('click', function(){ setPin(root.getAttribute('data-nav') !== 'pinned'); });
-    var navclose = document.getElementById('navclose');
-    if (navclose) navclose.addEventListener('click', function(){
-      /* 手动收起: 无论钉住与否都回到折叠态, 并清掉钉住记忆 */
-      root.setAttribute('data-nav', 'collapsed');
-      store('xnNavPin', '0');
-      if (pinBtn) pinBtn.setAttribute('aria-pressed', 'false');
-    });
-    if (navbtn) navbtn.addEventListener('click', function(){
-      if (window.matchMedia('(max-width: 920px)').matches) { nav.classList.toggle('show'); return; }
-      if (touchNav) {
-        root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
-      } else {
-        /* 桌面 ☰ 只在折叠态可见(展开态被浮层隐藏): 只展开不钉住;
-           浮层展开动画期间鼠标未进入浮层时 mouseleave 不触发 → 主动启动收回计时
-           (鼠标在浮层上则 mouseenter 的 keepOpen 会取消计时) */
-        root.setAttribute('data-nav', 'open');
-        scheduleRetract();
-      }
-    });
-    sideNav.addEventListener('click', function(e){
-      if (e.target.closest('a')) { nav.classList.remove('show'); root.setAttribute('data-nav', 'collapsed'); return; }
-      if (touchNav) root.setAttribute('data-nav', root.getAttribute('data-nav') === 'open' ? 'collapsed' : 'open');
-    });
-    if (touchNav) {
-      var scrim = document.getElementById('navscrim');
-      if (scrim) scrim.addEventListener('click', function(){ root.setAttribute('data-nav', 'collapsed'); });
-    } else {
-      /* 桌面: 悬停/聚焦展开, 移出延迟 1.2s 自动收回(钉住时保持) */
-      sideNav.addEventListener('mouseenter', keepOpen);
-      sideNav.addEventListener('mouseleave', scheduleRetract);
-      sideNav.addEventListener('focusin', keepOpen);
-      sideNav.addEventListener('focusout', scheduleRetract);
-    }
-  }
-
-  /* ---------- 目录筛选 ---------- */
-  var navq = document.getElementById('navq');
-  if (navq && nav) {
-    var navLinks = nav.querySelectorAll('a[href]');
-    var navGrps = nav.querySelectorAll('details.grp');
-    var navBrds = nav.querySelectorAll('details.brd');
-    var navSecs = nav.querySelectorAll('.sec');
-    navq.addEventListener('input', function(){
-      var t = navq.value.trim().toLowerCase();
-      for (var i2 = 0; i2 < navLinks.length; i2++) {
-        var a = navLinks[i2];
-        var hit = !t || (a.textContent.toLowerCase().indexOf(t) >= 0) ||
-                  ((a.getAttribute('href') || '').toLowerCase().indexOf(t) >= 0);
-        a.style.display = hit ? '' : 'none';
-      }
-      for (var j = 0; j < navGrps.length; j++) {
-        var g = navGrps[j], gLinks = g.querySelectorAll('a[href]'), gVis = false;
-        for (var m = 0; m < gLinks.length; m++) { if (gLinks[m].style.display !== 'none') { gVis = true; break; } }
-        g.style.display = gVis ? '' : 'none';
-        if (t && gVis) g.open = true;
-      }
-      for (var k2 = 0; k2 < navBrds.length; k2++) {
-        var bd = navBrds[k2], bdLinks = bd.querySelectorAll('a[href]'), bdVis = false;
-        for (var n2 = 0; n2 < bdLinks.length; n2++) { if (bdLinks[n2].style.display !== 'none') { bdVis = true; break; } }
-        bd.style.display = bdVis ? '' : 'none';
-        if (t && bdVis) bd.open = true;
-      }
-      for (var s = 0; s < navSecs.length; s++) {
-        var sec = navSecs[s], el = sec.nextElementSibling, secVis = false;
-        while (el && !(el.classList && el.classList.contains('sec'))) {
-          var sLinks = el.querySelectorAll ? el.querySelectorAll('a[href]') : [];
-          for (var q2 = 0; q2 < sLinks.length; q2++) {
-            if (sLinks[q2].style.display !== 'none') { secVis = true; break; }
-          }
-          if (secVis) break;
-          el = el.nextElementSibling;
-        }
-        sec.style.display = secVis ? '' : 'none';
-      }
-    });
-  }
-
-  /* ---------- 滚动定位(scrollspy) ---------- */
-  var spyAnchors = [];
-  if (nav) {
-    var spyLinks = nav.querySelectorAll('a.c, a.d');
-    for (var i3 = 0; i3 < spyLinks.length; i3++) {
-      var h = spyLinks[i3].getAttribute('href') || '';
-      var pp = h.split('#');
-      if (pp.length < 2 || !pp[1]) continue;
-      if (pp[0] && pp[0] !== PAGE) continue; /* 只看当前页锚点 */
-      spyAnchors.push({ el: spyLinks[i3], id: pp[1] });
-    }
-  }
-  var spyHeads = [], spyMap = {};
-  for (var j2 = 0; j2 < spyAnchors.length; j2++) {
-    var hd = document.getElementById(spyAnchors[j2].id);
-    if (hd && /^H[1-4]$/.test(hd.tagName)) { spyHeads.push(hd); spyMap[hd.id] = spyAnchors[j2].el; }
-  }
-  var lastSpy = null;
-  function spyUpdate(){
-    var pos = window.scrollY + 170, cur = null;
-    for (var i4 = 0; i4 < spyHeads.length; i4++) {
-      var r = spyHeads[i4].getBoundingClientRect();
-      if (r.top + window.scrollY <= pos) cur = spyHeads[i4];
-    }
-    var id = cur ? cur.id : '';
-    if (id !== lastSpy) {
-      if (lastSpy && spyMap[lastSpy]) spyMap[lastSpy].classList.remove('on');
-      lastSpy = id;
-      if (id && spyMap[id]) spyMap[id].classList.add('on');
-    }
-  }
-  if (spyHeads.length) { window.addEventListener('scroll', spyUpdate, {passive:true}); spyUpdate(); }
-
-  /* ---------- 回到顶部 ---------- */
-  var topbtn = document.getElementById('topbtn');
-  if (topbtn) {
-    window.addEventListener('scroll', function(){ topbtn.classList.toggle('show', window.scrollY > 500); }, {passive:true});
-    topbtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
-  }
-  var printBtn = document.getElementById('printBtn');
-  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
-
-  /* ---------- 展开 / 收起全部 ---------- */
-  var exp = document.getElementById('expandBtn');
-  if (exp) {
-    var mainDetails = document.querySelectorAll('main details');
-    if (!mainDetails.length) { exp.style.display = 'none'; }
-    else {
-      exp.hidden = false;
-      function detailsState(){ var o = 0; for (var i5 = 0; i5 < mainDetails.length; i5++) if (mainDetails[i5].open) o++; return o; }
-      function expRefresh(){ exp.textContent = (mainDetails.length === detailsState()) ? '收起全部' : '展开全部'; }
-      exp.addEventListener('click', function(){
-        var all = mainDetails.length === detailsState();
-        for (var i6 = 0; i6 < mainDetails.length; i6++) mainDetails[i6].open = !all;
-        expRefresh();
-      });
-      expRefresh();
-    }
-  }
-
-  /* ---------- 代码复制 ---------- */
-  var pres = document.querySelectorAll('main pre');
-  for (var i7 = 0; i7 < pres.length; i7++) {
-    (function(pre){
-      var cb = document.createElement('button');
-      cb.className = 'copy-btn'; cb.type = 'button'; cb.textContent = '复制';
-      cb.setAttribute('aria-label', '复制代码');
-      pre.appendChild(cb);
-      cb.addEventListener('click', function(){
-        var codeEl = pre.querySelector('code');
-        var txt = codeEl ? codeEl.innerText : pre.innerText;
-        function done(){ cb.textContent = '已复制'; setTimeout(function(){ cb.textContent = '复制'; }, 1600); }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(txt).then(done, function(){ done(); });
-        } else { done(); }
-      });
-    })(pres[i7]);
-  }
-
-  /* ---------- 表格横向滚动包裹 ---------- */
-  var tables = document.querySelectorAll('main table');
-  for (var iT = 0; iT < tables.length; iT++) {
-    var tw = document.createElement('div');
-    tw.className = 'table-wrap';
-    tables[iT].parentNode.insertBefore(tw, tables[iT]);
-    tw.appendChild(tables[iT]);
-  }
-
-  /* ---------- 标题锚点链接 ---------- */
-  var heads2 = document.querySelectorAll('main h2[id], main h3[id]');
-  for (var i8 = 0; i8 < heads2.length; i8++) {
-    if (heads2[i8].querySelector('.anc')) continue;
-    var anc = document.createElement('a');
-    anc.className = 'anc'; anc.href = '#' + heads2[i8].id; anc.textContent = '¶';
-    anc.setAttribute('aria-label', '链接到本小节');
-    heads2[i8].appendChild(anc);
-  }
-
-  /* ---------- 打印时展开全部 ---------- */
-  var prevOpen = [];
-  window.addEventListener('beforeprint', function(){
-    var ds = document.querySelectorAll('main details');
-    prevOpen = [];
-    for (var i9 = 0; i9 < ds.length; i9++) { prevOpen.push(ds[i9].open); ds[i9].open = true; }
-  });
-  window.addEventListener('afterprint', function(){
-    var ds = document.querySelectorAll('main details');
-    for (var iA = 0; iA < ds.length && iA < prevOpen.length; iA++) ds[iA].open = prevOpen[iA];
-  });
-
-  /* ---------- 已读标记 + 最近学习 ---------- */
-  var VKEY = 'xnVisited';
-  var visited = loadJSON(VKEY) || [];
-  function remember(f){
-    if (f && visited.indexOf(f) < 0) {
-      visited.push(f);
-      if (visited.length > 80) visited = visited.slice(-80);
-      store(VKEY, JSON.stringify(visited));
-    }
-  }
-  if (PAGE) remember(PAGE);
-  var markLinks = document.querySelectorAll('a.board-card[href$=".html"], nav a[href$=".html"]');
-  for (var iB = 0; iB < markLinks.length; iB++) {
-    var fB = (markLinks[iB].getAttribute('href') || '').split('/').pop();
-    if (visited.indexOf(fB) >= 0) markLinks[iB].classList.add('vis');
-  }
-  var recentSec = document.getElementById('recent');
-  var recentBox = document.getElementById('recentCards');
-  if (recentSec && recentBox) {
-    var cardMap = {}, cardsAll = document.querySelectorAll('a.board-card[href$=".html"]');
-    for (var iC = 0; iC < cardsAll.length; iC++) {
-      var fC = (cardsAll[iC].getAttribute('href') || '').split('/').pop();
-      if (!cardMap[fC]) cardMap[fC] = cardsAll[iC];
-    }
-    var shown = {}, frag = document.createDocumentFragment(), added = 0;
-    for (var iD = visited.length - 1; iD >= 0 && added < 8; iD--) {
-      var fD = visited[iD];
-      if (fD === PAGE || shown[fD] || !cardMap[fD]) continue;
-      shown[fD] = 1; added++;
-      var clone = cardMap[fD].cloneNode(true);
-      clone.classList.add('vis');
-      frag.appendChild(clone);
-    }
-    if (added) { recentSec.hidden = false; recentBox.appendChild(frag); }
-  }
-
-  /* ---------- 首页搜索 + 学科 Tab(2026-08-09: homeFilter 统一入口, Tab 只控 section 显隐) ---------- */
-  var homeq = document.getElementById('homeq');
-  var hometabs = document.getElementById('hometabs');
-  var homeTab = 'all';
-  function homeFilter(){
-    if (!homeq) return;
-    var t = homeq.value.trim().toLowerCase();
-    var cards = document.querySelectorAll('.board-card');
-    var secs2 = document.querySelectorAll('section[data-subj]');
-    var grpHs = document.querySelectorAll('.grp-h');
-    for (var iE = 0; iE < cards.length; iE++) {
-      cards[iE].style.display = (!t || cards[iE].textContent.toLowerCase().indexOf(t) >= 0) ? '' : 'none';
-    }
-    for (var iF = 0; iF < secs2.length; iF++) {
-      var sec = secs2[iF], cardList = sec.querySelectorAll('.board-card'), vis = false;
-      for (var iG = 0; iG < cardList.length; iG++) { if (cardList[iG].style.display !== 'none') { vis = true; break; } }
-      sec.style.display = ((homeTab === 'all' || sec.dataset.subj === homeTab) && vis) ? '' : 'none';
-    }
-    for (var iH = 0; iH < grpHs.length; iH++) {
-      var grp = grpHs[iH], next = grp.nextElementSibling, vis2 = false;
-      if (next && next.classList && next.classList.contains('cards')) {
-        var c2 = next.querySelectorAll('.board-card');
-        for (var iI = 0; iI < c2.length; iI++) { if (c2[iI].style.display !== 'none') { vis2 = true; break; } }
-      }
-      grp.style.display = vis2 ? '' : 'none';
-    }
-    var recentSec2 = document.getElementById('recent');
-    if (recentSec2) {
-      var rCards = recentSec2.querySelectorAll('.board-card'), rVis = false;
-      for (var iJ = 0; iJ < rCards.length; iJ++) { if (rCards[iJ].style.display !== 'none') { rVis = true; break; } }
-      recentSec2.style.display = (t && !rVis) ? 'none' : '';
-    }
-  }
-  if (homeq) homeq.addEventListener('input', homeFilter);
-  if (hometabs) {
-    hometabs.addEventListener('click', function(e){
-      var btn = e.target.closest('button[data-tab]');
-      if (!btn) return;
-      homeTab = btn.getAttribute('data-tab');
-      var bs = hometabs.querySelectorAll('button[data-tab]');
-      for (var iK = 0; iK < bs.length; iK++) bs[iK].classList.toggle('on', bs[iK] === btn);
-      homeFilter();
-    });
-  }
-
-  /* ---------- 键盘翻页 ---------- */
-  function go(sel){ var a = document.querySelector(sel); if (a) a.click(); }
-  document.addEventListener('keydown', function(e){
-    if (e.altKey && e.key === 'ArrowLeft') { go('.pager a.prev'); }
-    else if (e.altKey && e.key === 'ArrowRight') { go('.pager a.next'); }
-    else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
-      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
-      if (e.key === '[') go('.pager a.prev');
-      else if (e.key === ']') go('.pager a.next');
-    }
-  });
-})();
-</script></body></html>
+<script src="../assets/app.js" defer></script></body></html>

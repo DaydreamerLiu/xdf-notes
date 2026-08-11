@@ -1,418 +1,15 @@
 <!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>行列式与矩阵_例题 · 线代救命 · 成册</title>
-<link rel="stylesheet" href="../katex/katex.min.css">
-<style>
-:root{
-  --serif:"KaiTi","STKaiti","楷体","Kaiti SC","Noto Serif CJK SC",serif;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
-  --mono:ui-monospace,Consolas,"Cascadia Mono",Menlo,monospace;
-  --bg:#F6F5F0; --bg2:#FBFAF6; --surface:#FFFFFF; --ink:#22262F; --ink2:#5F6672; --ink3:#8C929E;
-  --line:#E6E3D8; --line2:#EFEDE4; --grid:rgba(34,38,47,.035);
-  --accent:#2563EB; --accent2:#1D4ED8; --accent-soft:rgba(37,99,235,.08);
-  --red:#DC2626; --red-soft:#FDEBEA;
-  --amber:#B45309; --amber-soft:#FDF1DC;
-  --green:#15803D; --green-soft:#E7F4EA;
-  --violet:#7C3AED; --violet-soft:#F1EBFC;
-  --teal:#0F766E; --teal-soft:#DFF2EF;
-  --shadow-sm:0 1px 2px rgba(24,28,38,.05),0 2px 8px rgba(24,28,38,.04);
-  --shadow:0 1px 2px rgba(24,28,38,.05),0 10px 30px rgba(24,28,38,.07);
-  --r-sm:8px; --r-md:12px; --r-lg:16px;
-  color-scheme:light;
-}
-html[data-theme="dark"]{
-  --bg:#0F1217; --bg2:#141922; --surface:#1A202B; --ink:#E7EAF0; --ink2:#9CA5B4; --ink3:#707987;
-  --line:#2A3140; --line2:#232A37; --grid:rgba(231,234,240,.03);
-  --accent:#5B8CFF; --accent2:#7AA4FF; --accent-soft:rgba(91,140,255,.14);
-  --red:#F87171; --red-soft:rgba(248,113,113,.13);
-  --amber:#E5A94B; --amber-soft:rgba(229,169,75,.14);
-  --green:#4ADE80; --green-soft:rgba(74,222,128,.13);
-  --violet:#B79CFF; --violet-soft:rgba(183,156,255,.14);
-  --teal:#5EEAD4; --teal-soft:rgba(94,234,212,.12);
-  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.25);
-  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 34px rgba(0,0,0,.38);
-  color-scheme:dark;
-}
-main[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
-main[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
-main[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
-section[data-subj="english"]{--accent:#7C3AED;--accent2:#6D28D9;--accent-soft:rgba(124,58,237,.09)}
-section[data-subj="zhengzhi"]{--accent:#DC2626;--accent2:#B91C1C;--accent-soft:rgba(220,38,38,.08)}
-section[data-subj="计算机"]{--accent:#0D9488;--accent2:#0F766E;--accent-soft:rgba(13,148,136,.09)}
-html[data-theme="dark"] main[data-subj="english"],html[data-theme="dark"] section[data-subj="english"]{--accent-soft:rgba(183,156,255,.15)}
-html[data-theme="dark"] main[data-subj="zhengzhi"],html[data-theme="dark"] section[data-subj="zhengzhi"]{--accent-soft:rgba(248,113,113,.14)}
-html[data-theme="dark"] main[data-subj="计算机"],html[data-theme="dark"] section[data-subj="计算机"]{--accent-soft:rgba(94,234,212,.13)}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%}
-body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.9;color:var(--ink);background:var(--bg);
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:26px 26px;background-attachment:fixed}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-::selection{background:var(--accent-soft)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-button{font-family:inherit}
-.layout{display:flex;min-height:100vh}
-
-/* ---------- 侧栏 ---------- */
-/* 用 .layout > nav 精确命中侧栏, 避免误伤 main 里的 <nav class="pager">(翻页栏) */
-.layout > nav{width:288px;flex-shrink:0;background:rgba(251,250,246,.82);border-right:1px solid #EDEAE0;
-  position:sticky;top:0;height:100vh;overflow-y:auto;padding:1rem 0 4rem;scrollbar-width:thin;
-  transition:width .22s ease,background .2s ease}
-html[data-theme="dark"] .layout > nav{background:rgba(20,25,34,.78);border-right-color:#232A37}
-.layout > nav::-webkit-scrollbar{width:8px}
-.layout > nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
-nav .brand{display:flex;align-items:center;gap:.65rem;padding:.3rem .6rem .95rem 1.15rem;border-bottom:2px solid var(--ink);margin-bottom:.7rem}
-nav .brand .logo{display:inline-flex;align-items:center;justify-content:center;width:2.05rem;height:2.05rem;border-radius:10px;
-  background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.05rem;flex-shrink:0;box-shadow:var(--shadow-sm)}
-nav .brand .bt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
-nav .brand b{font-family:var(--serif);font-size:1.22rem;letter-spacing:.05em;color:var(--ink)}
-nav .brand small{font-size:.64rem;color:var(--ink3);letter-spacing:.2em;margin-top:2px}
-#navq{display:block;width:calc(100% - 1.5rem);margin:0 .75rem .7rem;padding:.52rem .85rem;
-  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:.85rem;outline:none}
-#navq::placeholder{color:var(--ink3)}
-#navq:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-nav a.subj{display:block;margin:.1rem .6rem .4rem;padding:.42rem .68rem;color:var(--ink);font-weight:700;font-size:.8rem;
-  letter-spacing:.06em;border-radius:8px}
-nav a.subj:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
-nav .sec{display:flex;align-items:center;gap:.4rem;padding:.9rem 1.2rem .3rem;font-size:.68rem;font-weight:700;
-  color:var(--ink3);letter-spacing:.18em}
-nav a.b{display:block;margin:.06rem .55rem;padding:.4rem .62rem;color:var(--ink);font-size:.86rem;border-radius:8px;
-  border-left:3px solid transparent;line-height:1.45}
-nav a.b:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
-nav a.b.on{background:var(--accent-soft);color:var(--accent2);font-weight:700;border-left-color:var(--accent)}
-nav a.c{display:block;margin:.04rem .55rem .04rem 1.35rem;padding:.3rem .6rem;color:var(--ink2);font-size:.8rem;
-  border-left:1px solid var(--line);border-radius:0 7px 7px 0;line-height:1.5;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-nav a.c.x{color:var(--violet)}
-nav a.c:hover,nav a.d:hover{background:var(--accent-soft);color:var(--accent2);text-decoration:none}
-nav a.c.on,nav a.d.on{color:var(--accent2);font-weight:700;background:var(--accent-soft);border-left-color:var(--accent)}
-nav a.d{display:block;margin:.03rem .55rem .03rem 2.3rem;padding:.26rem .6rem;color:var(--ink3);font-size:.76rem;
-  border-left:1px dashed var(--line);border-radius:0 7px 7px 0;line-height:1.5;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-nav details.grp{margin:.2rem 0}
-nav details.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;
-  padding:.45rem 1.2rem .32rem;color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.08em}
-nav details.grp>summary::-webkit-details-marker{display:none}
-nav details.grp>summary::before{content:"›";font-size:.95rem;color:var(--ink3);display:inline-block;transition:transform .18s ease}
-nav details.grp[open]>summary::before{transform:rotate(90deg)}
-nav details.grp>summary em{font-style:normal;font-size:.64rem;color:var(--ink3);background:var(--surface);
-  border:1px solid var(--line);border-radius:20px;padding:.06em .6em}
-nav details.grp[open]>summary{border-bottom:1px dashed var(--line2);margin-bottom:.25rem;padding-bottom:.4rem}
-/* 板块级折叠块(2026-08-09: 全站统一; 行尾 .tog 箭头负责折叠, 点板块名 = 跳转) */
-nav details.brd{margin:.05rem .3rem .15rem}
-nav details.brd>summary{list-style:none;cursor:default;display:flex;align-items:center;gap:.4rem;
-  padding:.12rem .35rem .12rem .45rem;margin:0;border-radius:8px;user-select:none}
-nav details.brd>summary::-webkit-details-marker{display:none}
-nav details.brd>summary:hover{background:var(--accent-soft)}
-nav details.brd>summary a.b{flex:1;min-width:0;margin:.02rem 0;padding:.3rem .42rem;cursor:pointer}
-nav details.brd>summary a.b:hover{background:none;text-decoration:none}
-nav details.brd>summary a.b.on:hover{background:var(--accent-soft)}
-nav details.brd>summary .tog{flex:none;width:1.55rem;text-align:center;color:var(--ink3);
-  font-size:.66rem;cursor:pointer;padding:.35rem 0;border-radius:6px}
-nav details.brd>summary .tog:hover{color:var(--accent2);background:var(--accent-soft)}
-nav details.brd>summary .tog::before{content:"▸";display:inline-block;transition:transform .15s ease}
-nav details.brd[open]>summary .tog::before{transform:rotate(90deg)}
-nav a.vis::after{content:"✓";font-size:.62rem;color:var(--green);margin-left:.4em;font-weight:700}
-
-/* ---------- 顶部(无容器框, 2026-08-09): ☰ 左上悬浮 / 操作按钮右上悬浮 / 面包屑随正文流 ---------- */
-main{flex:1;min-width:0;max-width:800px;margin:0 auto;padding:0 2.3rem 5rem;width:100%}
-#navbtn{position:fixed;top:.7rem;left:.7rem;z-index:110;display:inline-flex;align-items:center;justify-content:center;
-  width:2.1rem;height:2.1rem;padding:0;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
-  border-radius:9px;cursor:pointer;font-size:.98rem;flex-shrink:0;line-height:1;box-shadow:var(--shadow-sm);
-  transition:all .15s}
-#navbtn:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
-#tbtools{position:fixed;top:.7rem;right:.7rem;z-index:110;display:flex;gap:.4rem}
-#tbtools button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
-  border-radius:8px;padding:.36rem .72rem;font-size:.78rem;cursor:pointer;line-height:1.5;
-  box-shadow:var(--shadow-sm);transition:all .15s}
-#tbtools button:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
-.crumbline{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--ink3);
-  padding:1.5rem 0 .1rem;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.crumbline a{color:var(--ink2)}
-.crumbline a:hover{color:var(--accent2);text-decoration:none}
-.crumbline .sep{color:var(--ink3)}
-.crumbline b{color:var(--ink);font-weight:600}
-
-/* ---------- 正文区 ---------- */
-.article{padding-top:2.15rem}
-main h1{font-family:var(--serif);font-size:2rem;margin:.1rem 0 .5rem;letter-spacing:.02em;line-height:1.35;color:var(--ink)}
-.board-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--ink3);font-size:.82rem;margin-bottom:2rem}
-.board-meta .pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-soft);color:var(--accent2);
-  border-radius:20px;padding:.14em .8em;font-weight:700;font-size:.76rem}
-main h2{font-family:var(--serif);font-size:1.4rem;margin:3rem 0 .95rem;padding:.28rem 0 .32rem .9rem;
-  border-left:4px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.5;
-  background:linear-gradient(90deg,var(--accent-soft),transparent 72%)}
-main h2 .anc,main h3 .anc{opacity:0;margin-left:.4rem;color:var(--ink3);font-weight:400;font-size:.62em;text-decoration:none;transition:opacity .15s}
-main h2:hover .anc,main h3:hover .anc{opacity:1}
-main h2 .anc:hover,main h3 .anc:hover{color:var(--accent)}
-main h3{font-size:1.15rem;margin:2.3rem 0 .7rem;color:var(--accent2);line-height:1.6}
-main h3 .mk{margin-left:.25em}
-main h4{font-size:1rem;margin:1.35rem 0 .5rem;color:var(--ink)}
-main p{line-height:2.05;margin:.8rem 0}
-main ul,main ol{padding-left:1.4rem;margin:.75rem 0}
-main ul{list-style:none}
-main ul>li{position:relative;padding-left:1.05rem}
-main ul>li::before{content:"▸";position:absolute;left:0;top:.05em;color:var(--accent);font-size:.78em}
-main ul ul>li::before{content:"◦";font-size:.95em;color:var(--ink3)}
-main ol>li::marker{color:var(--accent2);font-weight:700}
-main li{line-height:1.95;margin:.26rem 0}
-main li>strong{color:var(--accent2)}
-/* 宽表格由 JS 包一层 .table-wrap 横向滚动, 防止撑破 800px 行宽 */
-.table-wrap{overflow-x:auto;margin:1.15rem 0;border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
-main table{border-collapse:separate;border-spacing:0;width:100%;margin:0;background:var(--surface);
-  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:.92rem}
-main th,main td{border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);padding:.58rem .85rem;text-align:left;vertical-align:top}
-main th:last-child,main td:last-child{border-right:none}
-main tr:last-child th,main tr:last-child td{border-bottom:none}
-main th{background:var(--accent-soft);color:var(--accent2);font-family:var(--serif);font-size:.96rem;font-weight:700}
-main tr:nth-child(even) td{background:var(--bg2)}
-main blockquote{color:var(--ink2);border-left:3px solid var(--accent);margin:1rem 0;padding:.5rem 0 .5rem 1.1rem;
-  background:var(--bg2);border-radius:0 var(--r-sm) var(--r-sm) 0}
-main img{max-width:100%;height:auto;border-radius:8px}
-.fig{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;margin:.85rem 0 1.05rem;
-  padding:.75rem .85rem .7rem;background:var(--bg2);border:1px solid var(--line2);
-  border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
-.fig img{max-width:min(100%,520px);border:1px solid var(--line);border-radius:6px;background:#fff}
-.fig .figcap{color:var(--ink2);font-size:.82em;line-height:1.7}
-.fig .figcap b{color:var(--accent2)}
-/* 图折叠块: 默认收起, 只露小缩略图+标签, 展开看大图 */
-.figbox{margin:.85rem 0;border:1px solid var(--line2);border-radius:var(--r-sm);
-  background:var(--bg2);overflow:hidden}
-.figbox>summary{cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.42rem .7rem;
-  list-style:none;color:var(--ink2);font-size:.84rem;font-weight:600;user-select:none;transition:color .15s}
-.figbox>summary::-webkit-details-marker{display:none}
-.figbox>summary::before{content:"▸";font-size:.72rem;color:var(--ink3);transition:transform .2s}
-.figbox[open]>summary::before{transform:rotate(90deg)}
-.figbox>summary:hover{color:var(--accent2)}
-.figbox .thumb{width:58px;height:auto;border-radius:5px;border:1px solid var(--line);flex:none;
-  background:#fff}
-.figbox .fig{margin:0;border-top:1px solid var(--line2);border-radius:0;box-shadow:none;
-  background:var(--bg2);padding:.6rem .8rem .75rem}
-.figbox .fig img{max-width:min(100%,460px)}
-@media print{.figbox .fig{display:block}.figbox .thumb{display:none}}
-@media print{.fig img{max-width:70%}}
-code{background:var(--accent-soft);color:var(--accent2);padding:.12em .42em;border-radius:5px;
-  font-family:var(--mono);font-size:.86em}
-pre{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
-  padding:1rem 1.1rem;overflow-x:auto;box-shadow:var(--shadow-sm);margin:1rem 0}
-pre code{background:none;padding:0;color:var(--ink);font-size:.9rem;line-height:1.7}
-.copy-btn{position:absolute;top:.5rem;right:.6rem;appearance:none;border:1px solid var(--line);background:var(--bg2);
-  color:var(--ink2);border-radius:6px;padding:.18rem .55rem;font-size:.72rem;cursor:pointer;transition:all .15s}
-.copy-btn:hover{border-color:var(--accent);color:var(--accent2)}
-
-/* ---------- 笔迹批注 ---------- */
-.mk{display:inline-flex;align-items:center;padding:.05em .62em;border-radius:20px;font-size:.74em;font-weight:700;
-  line-height:1.6;margin:0 .22em .08em 0;vertical-align:.14em;letter-spacing:.02em}
-.mk.biz{color:var(--red);background:var(--red-soft)}
-.mk.freq{color:var(--amber);background:var(--amber-soft)}
-.mk.warn{color:var(--red);background:var(--red-soft);font-weight:800}
-.mk.ok{color:var(--green);background:var(--green-soft)}
-.mk.info{color:var(--violet);background:var(--violet-soft)}
-.mk.theory{color:var(--accent2);background:var(--accent-soft)}
-.mk.xref{color:var(--violet);background:var(--violet-soft)}
-.mk.res{color:var(--teal);background:var(--teal-soft)}
-.src{color:var(--ink3);font-size:.76em;font-weight:600;background:var(--bg2);border:1px solid var(--line2);
-  border-radius:20px;padding:.08em .7em;margin-left:.3em;white-space:nowrap}
-.fill{background:var(--amber-soft);color:var(--amber);border-bottom:2px dashed currentColor;padding:.05em .38em;
-  border-radius:5px;font-weight:700;font-size:.88em}
-
-/* ---------- 例题 ---------- */
-.prob{position:relative;margin:1.55rem 0 .55rem;padding:.1rem 0 .15rem 1rem;border-left:2px solid var(--line);
-  border-left-color:color-mix(in srgb,var(--accent) 30%,transparent);
-  line-height:2;color:var(--ink)}
-.prob>b:first-child,.prob>strong:first-child{display:inline-flex;align-items:center;color:var(--accent2);
-  background:var(--accent-soft);border-radius:6px;padding:.04em .62em;margin-right:.5em;
-  font-family:var(--serif);font-size:.95em;font-weight:700;letter-spacing:.02em}
-.prob .src{margin-left:.35em}
-
-/* ---------- 英语题型 ---------- */
-.q{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;color:var(--ink);background:var(--bg2);
-  border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--r-sm);
-  padding:.65rem .95rem;margin:1rem 0 .45rem;line-height:1.9}
-.q>b{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;
-  background:var(--amber);color:#fff;border-radius:7px;font-size:.82em;flex-shrink:0;margin-top:.2em}
-.opts{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-md);
-  padding:.6rem 1rem .7rem;margin:.45rem 0 1.05rem;line-height:2.2;box-shadow:var(--shadow-sm)}
-.opts .opt-lb{display:inline-block;color:var(--amber);font-weight:800;font-size:.76rem;letter-spacing:.04em;
-  background:var(--amber-soft);border-radius:6px;padding:.08em .65em;margin-right:.6em}
-.opts .opt{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;
-  background:var(--amber-soft);color:var(--amber);border-radius:6px;font-weight:800;font-size:.8em;
-  margin:.12em .4em .12em 0}
-.loc{margin:1.15rem 0 1.3rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);
-  border-radius:var(--r-md);padding:.85rem 1.1rem .95rem;box-shadow:var(--shadow-sm)}
-.loc .loc-tag{display:inline-block;background:var(--accent2);color:#fff;font-size:.66rem;font-weight:700;
-  letter-spacing:.12em;padding:.16em 1em;border-radius:20px;margin-bottom:.55rem}
-.loc .loc-text{line-height:2.05;font-size:1.02em;color:var(--ink)}
-.kw{color:var(--red);font-weight:800;border-bottom:2px solid rgba(220,38,38,.45);padding:0 .05em;
-  background:var(--red-soft);border-radius:3px}
-.alt{margin:.6rem 0;padding:.5rem .95rem;background:var(--amber-soft);border-left:4px solid var(--amber);
-  border-radius:0 var(--r-sm) var(--r-sm) 0;color:var(--ink);line-height:2;font-size:.95em}
-.vn{margin:.6rem 0;padding:.5rem .95rem;background:var(--bg2);border:1px solid var(--line2);
-  border-radius:var(--r-sm);color:var(--ink2);font-size:.93em;line-height:2}
-.vn b{color:var(--accent2)}
-.ref-lab{display:inline-flex;align-items:center;color:var(--accent2);background:var(--accent-soft);
-  font-size:.76rem;font-weight:700;padding:.12em .75em;border-radius:20px;margin:.4rem .5rem .3rem 0}
-
-/* ---------- 词汇卡片 ---------- */
-.w{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
-  border-radius:var(--r-md);padding:.55rem .95rem;margin:.6rem 0;line-height:1.95;box-shadow:var(--shadow-sm)}
-.w .wl b{color:var(--ink);font-size:1.05em;font-weight:800}
-.w .wl .ipa{color:var(--ink3);font-size:.92em;margin:0 .3em}
-.w .wl .pos{color:var(--violet);font-weight:700;font-size:.84em;margin-right:.25em}
-.w .wl2{font-size:.94em;color:var(--ink2);background:var(--bg2);border-left:2px solid var(--amber);
-  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:.16rem .8rem;margin-top:.32rem;line-height:1.95}
-.w .wl2 .mk{margin-left:.35em}
-
-/* ---------- 折叠 ---------- */
-main details{margin:1rem 0 .3rem;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
-main details>summary{cursor:pointer;padding:.35rem 0;font-weight:600;color:var(--ink2);list-style:none;
-  display:flex;align-items:center;gap:.5rem;transition:color .15s;font-size:.95rem}
-main details>summary::-webkit-details-marker{display:none}
-main details>summary::before{content:"▸";font-size:.7rem;color:var(--ink3);display:inline-block;transition:transform .2s ease}
-main details[open]>summary::before{transform:rotate(90deg)}
-main details>summary:hover{color:var(--accent2);background:none}
-main details[open]>summary{color:var(--accent2);background:none;border-bottom:none;margin-bottom:.55rem}
-main details .step{margin:.35rem 0 .55rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
-  line-height:2.05;font-size:.97em;color:var(--ink)}
-main details .step .why{display:block;color:var(--ink2);font-size:.89em;line-height:1.95;
-  margin:.3rem 0 .35rem;padding:.05rem 0 .05rem .9rem;border-left:1px dashed var(--line);
-  background:none;border-radius:0}
-main details .step .why b{color:var(--ink);font-weight:600}
-main details .sum{margin:.45rem 0 .7rem;padding:.05rem 0 .1rem 1.05rem;border-left:2px solid var(--line2);
-  font-size:.92em;line-height:1.95;color:var(--ink2);background:none}
-main details .sum.hot{color:var(--green);border-left-color:rgba(34,197,94,.4)}
-main details .sum.skip{color:var(--ink3)}
-main details .sum b{font-weight:700}
-@supports (interpolate-size: allow-keywords){
-  :root{interpolate-size:allow-keywords}
-  main details::details-content{block-size:0;overflow:hidden;transition:block-size .22s ease,content-visibility .22s allow-discrete}
-  main details[open]::details-content{block-size:auto}
-}
-
-/* ---------- KaTeX ---------- */
-.katex{color:var(--ink);font-size:1.06em}
-.katex-display{margin:1.15rem 0;padding:.45rem 0;overflow-x:auto;overflow-y:hidden}
-
-/* ---------- 翻页 ---------- */
-.pager{display:flex;gap:1rem;margin-top:3.6rem;padding-top:1.25rem;border-top:1px solid var(--line)}
-.pager a{flex:1;display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--r-md);padding:.85rem 1.05rem;color:var(--ink);box-shadow:var(--shadow-sm);
-  transition:all .16s;text-decoration:none}
-.pager a:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);text-decoration:none}
-.pager a.next{flex-direction:row-reverse;text-align:right}
-.pager .pg-ic{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:10px;
-  background:var(--accent-soft);color:var(--accent2);font-size:1rem;flex-shrink:0}
-.pager .pg-t{min-width:0}
-.pager small{display:block;color:var(--ink3);font-size:.72rem;letter-spacing:.08em;margin-bottom:.18rem}
-.pager b{font-family:var(--serif);font-size:1.04rem;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pager span:empty{flex:1}
-
-/* ---------- 首页 ---------- */
-.hero{padding:3.2rem 0 1.6rem;text-align:center}
-.hero h1{font-family:var(--serif);font-size:2.6rem;margin:0 0 .5rem;letter-spacing:.05em;color:var(--ink)}
-.hero p{color:var(--ink2);margin:0 0 1.3rem;font-size:.98rem}
-.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1.7rem}
-.stat{display:inline-flex;align-items:baseline;gap:.45rem;background:var(--surface);border:1px solid var(--line);
-  border-radius:20px;padding:.42rem 1.05rem;font-size:.84rem;color:var(--ink2);box-shadow:var(--shadow-sm)}
-.stat b{color:var(--accent2);font-size:1.08rem;font-weight:800}
-#homeq{display:block;width:min(540px,94vw);margin:0 auto 1rem;padding:.78rem 1.15rem;border:1px solid var(--line);
-  border-radius:12px;background:var(--surface);color:var(--ink);font-size:.95rem;box-shadow:var(--shadow-sm);outline:none}
-#homeq::placeholder{color:var(--ink3)}
-#homeq:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin:0 auto 1.4rem}
-.tabs button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);
-  border-radius:20px;padding:.4rem 1.05rem;font-size:.84rem;cursor:pointer;transition:all .15s}
-.tabs button:hover{border-color:var(--accent);color:var(--accent2)}
-.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
-.subject-h{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.5rem;margin:2.7rem 0 .55rem;
-  padding-bottom:.5rem;border-bottom:2px solid var(--ink);color:var(--ink)}
-.subject-h::before{content:"";width:6px;height:1.3em;background:var(--accent);border-radius:3px;flex-shrink:0}
-.subject-h .cnt{font-family:var(--sans);font-size:.76rem;color:var(--ink3);font-weight:400}
-.grp-h{font-family:var(--serif);font-size:1.06rem;margin:1.55rem 0 .5rem;color:var(--ink);display:flex;align-items:center;gap:.55rem}
-.grp-h::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
-.grp-h .cnt{font-family:var(--sans);font-size:.7rem;color:var(--ink3);font-weight:400}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.9rem;margin:0 0 1.1rem}
-.board-card{position:relative;display:block;background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--r-md);padding:1rem 1.1rem;color:var(--ink);box-shadow:var(--shadow-sm);transition:all .16s;overflow:hidden}
-.board-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
-  opacity:0;transition:opacity .16s}
-.board-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow);text-decoration:none}
-.board-card:hover::before{opacity:1}
-.board-card b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.3rem;color:var(--ink)}
-.board-card span{font-size:.75rem;color:var(--ink3)}
-.board-card.ex{border-style:dashed}
-.board-card.vis::after{content:"✓ 已读";position:absolute;top:.75rem;right:.9rem;font-size:.64rem;color:var(--green);
-  background:var(--green-soft);border-radius:20px;padding:.14em .75em;font-weight:700}
-#recent .cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
-
-/* ---------- 回到顶部 / 汉堡 ---------- */
-#topbtn{position:fixed;right:1.5rem;bottom:1.5rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);
-  background:var(--surface);color:var(--accent2);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);
-  opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s;z-index:90}
-#topbtn.show{opacity:1;visibility:visible;transform:none}
-#topbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
-/* ---------- 侧栏收起(2026-08-09): 折叠态 = 8px 边缘热区零内容; 桌面悬停滑出(JS 控制,
-   移出 1.2s 后自动收回); ☰ 顶栏按钮展开并钉住; 触屏 ☰ 弹浮层 + 遮罩 ---------- */
-#navpin{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
-  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
-  cursor:pointer;flex-shrink:0}
-#navpin:hover{border-color:var(--accent);color:var(--accent2)}
-#navpin[aria-pressed="true"]{color:var(--accent2);border-color:var(--accent);background:var(--accent-soft)}
-#navclose{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;
-  border:1px solid var(--line);background:var(--surface);color:var(--ink3);border-radius:8px;
-  cursor:pointer;flex-shrink:0}
-#navclose:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
-#navscrim{position:fixed;inset:0;z-index:190;background:rgba(15,18,23,.45);
-  opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s}
-@media (min-width:921px){
-  /* 折叠态: 8px 热区(sticky 占位保持正文宽度), 内容全隐藏(鼠标移入 / ☰ / 键盘聚焦展开) */
-  html[data-nav="collapsed"] .layout > nav{width:8px;overflow:hidden;padding:0;background:transparent}
-  html[data-nav="collapsed"] .layout > nav .brand,
-  html[data-nav="collapsed"] .layout > nav #navq,
-  html[data-nav="collapsed"] .layout > nav a.subj,
-  html[data-nav="collapsed"] .layout > nav .navbody,
-  html[data-nav="collapsed"] .layout > nav #navpin{display:none}
-  /* 展开态 = 浮层覆盖在正文上方(用户要求: 侧栏伸缩时正文不重排);
-     折叠态 8px 占位保持不变 → main 宽度恒定; ☰ 被浮层覆盖, 展开时隐藏(收起靠图钉/移出) */
-  html[data-nav]:not([data-nav="collapsed"]) .layout > nav{position:fixed;left:0;top:0;height:100vh;
-    z-index:180;box-shadow:8px 0 28px rgba(0,0,0,.18)}
-  html[data-nav]:not([data-nav="collapsed"]) #navbtn{display:none}
-  /* 触屏(平板): ☰ 展开为浮层 + 遮罩, 点遮罩/链接收回; 无钉住 */
-  html[data-touch][data-nav="open"] #navscrim{opacity:1;visibility:visible}
-  html[data-touch] #navpin{display:none}
-}
-@media(max-width:920px){#navpin{display:none}}
-
-/* ---------- 窄屏 ---------- */
-@media(max-width:920px){
-  .layout > nav{position:fixed;left:0;top:0;height:100vh;width:288px;z-index:90;transform:translateX(-105%);
-    transition:transform .24s ease;box-shadow:6px 0 24px rgba(0,0,0,.18)}
-  .layout > nav.show{transform:none}
-  main{padding:0 1.15rem 4rem}
-  .pager{flex-direction:column}
-  .pager a{justify-content:flex-start}
-  .pager a.next{justify-content:flex-end}
-  .hero{padding-top:2.6rem}
-}
-
-/* ---------- 打印 ---------- */
-@media print{
-  nav,#tbtools,#navbtn,#topbtn,.pager{display:none!important}
-  body{background:#fff;background-image:none}
-  main{max-width:none;padding:0}
-  .article{padding-top:0}
-  .hero{padding:0 0 1rem;text-align:left}
-  .subject-h{margin-top:1.2rem}
-  a{color:inherit}
-  .prob,.w,.loc,.q,.opts,main details,main table,main pre{break-inside:avoid}
-  main details{border-color:#ddd;box-shadow:none}
-}
-@page{margin:14mm}
-@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
-</style></head><body>
-<div class="layout"><nav><div class="brand"><span class="logo">线</span><span class="bt"><b>线代救命</b><small>BILIBILI · 没咋了</small></span></div>
+<script>try{var d=document.documentElement;
+d.dataset.style=localStorage.getItem('xnStyle')||'minimal';
+var _t=localStorage.getItem('xnTheme');
+d.dataset.theme=(_t==='light'||_t==='dark')?_t:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+d.dataset.nav=matchMedia('(hover: none), (max-width: 920px)').matches?'hidden':(localStorage.getItem('xnNavDock')==='0'?'hidden':'docked');
+}catch(e){}</script><link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../katex/katex.min.css"></head><body>
+<header id="topbar"><button id="navbtn" class="tbtn" type="button" aria-label="目录" title="目录"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 4h11M2.5 8h11M2.5 12h11"/></svg></button><div class="crumbline"><a href="../知识笔记首页.html">首页</a><span class="sep">/</span><b>线代救命 · 成册 · 行列式与矩阵_例题</b></div><div id="tbtools" role="toolbar"><button id="styleBtn" class="tbtn" type="button" title="界面风格" aria-label="界面风格"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="5.6"/><path d="M8 2.4a5.6 5.6 0 0 1 0 11.2z" fill="currentColor" stroke="none"/></svg></button><button id="themeBtn" class="tbtn" type="button" title="切换深色模式" aria-label="切换深色模式"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 9.7A5.6 5.6 0 1 1 6.3 2.6a4.5 4.5 0 0 0 7.1 7.1z"/></svg></button><button id="printBtn" class="tbtn" type="button" title="打印 / 导出 PDF" aria-label="打印 / 导出 PDF"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6V2.6h7V6"/><path d="M4.5 11.5h-2v-5h11v5h-2"/><path d="M4.6 9.6h6.8v3.8H4.6z"/></svg></button></div></header>
+<div class="layout"><nav><div class="brand"><span class="logo">线</span><span class="bt"><b>线代救命</b><small>BILIBILI · 没咋了</small></span><button id="navclose" type="button" title="收起目录" aria-label="收起目录"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button></div>
 <a class="subj" href="线代救命_首页.html">⌂ 封面/目录</a>
 <a class="b" href="01_行列式与矩阵.html">行列式与矩阵</a>
 <a class="c on" href="01_行列式与矩阵_例题.html">▸ 行列式与矩阵_例题</a>
@@ -425,7 +22,9 @@ main details .sum b{font-weight:700}
 <a class="b" href="05_矩阵相似.html">矩阵相似</a>
 <a class="c" href="05_矩阵相似_例题.html">▸ 矩阵相似_例题</a>
 <a class="b" href="06_二次型.html">二次型</a>
-<a class="c" href="06_二次型_例题.html">▸ 二次型_例题</a></nav><main><div class="article"><blockquote>
+<a class="c" href="06_二次型_例题.html">▸ 二次型_例题</a></nav>
+<div id="navscrim" aria-hidden="true"></div>
+<main><div class="article"><blockquote>
 <p>覆盖: 讲义 1.1-1.3, 例 1.1-1.22 全量 | 视频#1 | 手稿 P5-P16
 手稿/讲义 OCR 乱码处按视频讲解重建并标<span class="fill">【AI补全】</span>; 解法以视频讲解为准。
 ⬅ 返回 <a href="01_行列式与矩阵.html">理论笔记</a></p>
@@ -479,7 +78,9 @@ main details .sum b{font-weight:700}
 
 <hr />
 <h2 id="方法四范德蒙行列式">方法四: 范德蒙行列式</h2>
-<p id="例15" class="prob"><b>例 1.5</b> 设 $f(x) = \begin{vmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \\ x &amp; 2 &amp; -1 &amp; 1 \\ x^2 &amp; 4 &amp; 1 &amp; 1 \\ x^3 &amp; 8 &amp; -1 &amp; 1 \end{vmatrix}$, 则曲线 $y = f(x)$ 的拐点个数为(　)。(A) 0 (B) 1 (C) 2 (D) 3 <span class="src">【来源: 视频#1、讲义1.1】</span></p>
+<p id="例15" class="prob"><b>例 1.5</b> 设 $f(x) = \begin{vmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \\ x &amp; 2 &amp; -1 &amp; 1 \\ x^2 &amp; 4 &amp; 1 &amp; 1 \\ x^3 &amp; 8 &amp; -1 &amp; 1 \end{vmatrix}$, 则曲线 $y = f(x)$ 的拐点个数为(　)。 <span class="src">【来源: 视频#1、讲义1.1】</span></p>
+<div class="opts"><div class="op"><span class="opt">A.</span> 0</div><div class="op"><span class="opt">B.</span> 1</div><div class="op"><span class="opt">C.</span> 2</div><div class="op"><span class="opt">D.</span> 3</div></div>
+
 <details><summary>解答过程</summary>
 <div class="step">① 转置(行列式值不变): $f(x) = \begin{vmatrix} 1 &amp; x &amp; x^2 &amp; x^3 \\ 1 &amp; 2 &amp; 4 &amp; 8 \\ 1 &amp; -1 &amp; 1 &amp; -1 \\ 1 &amp; 1 &amp; 1 &amp; 1 \end{vmatrix}$。<span class="why">原来次数"横着"升高, 转置后每列是 $(1, x_i, x_i^2, x_i^3)^{\mathrm{T}}$ 的形式——标准范德蒙, 主体是第二行 $x, 2, -1, 1$。<b>考点</b>: 范德蒙的两种摆放, 转置是化标准形的开关。</span></div>
 <div class="step">② 范德蒙"挨个打巴掌": 主体排成一条线 $(x, 2, -1, 1)$, 右边的每个数都去"欺负"左边的每个数, 差乘起来: $f(x) = (2-x)(-1-x)(1-x) \cdot (-1-2)(1-2)(1-(-1))$。<span class="why">三个含 $x$ 的差: $2$ 打 $x$、$-1$ 打 $x$、$1$ 打 $x$; 三个常数差: $-1$ 打 $2$、$1$ 打 $2$、$1$ 打 $-1$。老师: "挨个打一巴掌, x 受不了跑了。"<b>记忆</b>: 永远是(右 − 左), 别反。</span></div>
@@ -606,7 +207,8 @@ main details .sum b{font-weight:700}
 <hr />
 <h2 id="方法十正交矩阵性质">方法十: 正交矩阵性质</h2>
 <p id="例117" class="prob"><b>例 1.17</b> 已知 n 阶实矩阵 $A$, $B$ 均为正交矩阵, 则以下结论不正确的是(　). <span class="src">【来源: 视频#1、讲义1.3】</span></p>
-<p>(A) $A^{\mathrm{T}}B$ 是正交矩阵　(B) $AB^{-1}$ 是正交矩阵　(C) $-A^{*}B$ 是正交矩阵　(D) $A^{-1} + B^{-1}$ 是正交矩阵</p>
+<div class="opts"><div class="op"><span class="opt">A.</span> $A^{\mathrm{T}}B$ 是正交矩阵</div><div class="op"><span class="opt">B.</span> $AB^{-1}$ 是正交矩阵</div><div class="op"><span class="opt">C.</span> $-A^{*}B$ 是正交矩阵</div><div class="op"><span class="opt">D.</span> $A^{-1} + B^{-1}$ 是正交矩阵</div></div>
+
 <details><summary>解答过程</summary>
 <div class="step">① 用性质: 正交矩阵的转置、逆、伴随、添负号仍是正交矩阵; 两个同阶正交矩阵之积仍是正交矩阵。<span class="why">这五条是正交矩阵的"封闭性", 理论页已列。<b>考点</b>: 乘积方向无所谓——$(AB)^{\mathrm{T}}(AB) = B^{\mathrm{T}}A^{\mathrm{T}}AB = E$ 用穿脱原则可证。</span></div>
 <div class="step">② (A) $A^{\mathrm{T}}$ 正交 × B 正交 → 正交 ✓。(B) $B^{-1}$ 正交 → $AB^{-1}$ 正交 ✓。(C) $A^{*}$ 正交, $-A^{*}$ 正交 → 再乘 B 正交 ✓。<span class="why">逐项分解成"已知正交的块相乘", 每块都是性质里的情形。</span></div>
@@ -628,7 +230,8 @@ main details .sum b{font-weight:700}
 <hr />
 <h2 id="方法十一抽象求逆无中生有">方法十一: 抽象求逆 — 无中生有</h2>
 <p id="例119" class="prob"><b>例 1.19</b> 设 $|A| = 1$, $|B| = 2$, $|A+B| = 2$(A, B 为同阶方阵), 则行列式 $|(A^{-1} + B^{-1})^{-1}| =$ (　). <span class="src">【来源: 视频#1、讲义1.3】</span></p>
-<p>(A) 1　(B) 2　(C) $\dfrac12$　(D) $-1$</p>
+<div class="opts"><div class="op"><span class="opt">A.</span> 1</div><div class="op"><span class="opt">B.</span> 2</div><div class="op"><span class="opt">C.</span> $\dfrac12$</div><div class="op"><span class="opt">D.</span> $-1$</div></div>
+
 <details><summary>解答过程</summary>
 <div class="step">① $|(A^{-1} + B^{-1})^{-1}| = \dfrac{1}{|A^{-1} + B^{-1}|}$。<span class="why">逆的行列式 = 行列式的倒数, 把括号整体当成一个矩阵看。</span></div>
 <div class="step">② 无中生有: 两头添 E, $A^{-1} + B^{-1} = B^{-1}(B + A)A^{-1}$。<span class="why">左边有个 $B^{-1}$, E 就拆成 $B^{-1}B$(拆完 E 仍在左边); 右边有个 $A^{-1}$, E 拆成 $AA^{-1}$(拆完 E 仍在右边)——形式保持一致, 目的是凑出矩阵乘法的形式, 把 $B^{-1}$ 和 $A^{-1}$ 分别提到两头。验证: $B^{-1}BA^{-1} + B^{-1}AA^{-1} = A^{-1} + B^{-1}$ ✓。老师: "无中生有, 这类题型都这么做。"</span></div>
@@ -659,7 +262,8 @@ main details .sum b{font-weight:700}
 <hr />
 <h2 id="方法十三boldsymbolalphaboldsymbolalphamathrmT结构平方处理">方法十三: $\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 结构 — 平方处理</h2>
 <p id="例122" class="prob"><b>例 1.22</b> 设 $\boldsymbol{\alpha}$ 为 3 维单位列向量, $E$ 为 3 阶单位矩阵, 则(　). <span class="src">【来源: 视频#1、讲义1.3】</span></p>
-<p>(A) $E - \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆　(B) $E + \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆　(C) $E + 2\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆　(D) $E - 2\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆</p>
+<div class="opts"><div class="op"><span class="opt">A.</span> $E - \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆</div><div class="op"><span class="opt">B.</span> $E + \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆</div><div class="op"><span class="opt">C.</span> $E + 2\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆</div><div class="op"><span class="opt">D.</span> $E - 2\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 不可逆</div></div>
+
 <details><summary>解答过程</summary>
 <div class="step">① 见到 $\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$ 结构 → 平方处理: $(\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}})^2 = \boldsymbol{\alpha}(\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\alpha})\boldsymbol{\alpha}^{\mathrm{T}} = \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$($\boldsymbol{\alpha}^{\mathrm{T}}\boldsymbol{\alpha} = 1$, 单位向量)。<span class="why">老师: "碰到阿尔法阿尔法 t 这种类似的结构, 平方处理是一个比较常用的手段, 平方处理是常用的。"内积为 1 使平方回到自身。</span></div>
 <div class="step">② 记 $A = E - \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}}$: $A^2 = E - 2\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}} + (\boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}})^2 = E - \boldsymbol{\alpha}\boldsymbol{\alpha}^{\mathrm{T}} = A$。<span class="why">A 幂等($A^2 = A$), 则 $A(E - A) = O$。</span></div>
@@ -673,7 +277,8 @@ main details .sum b{font-weight:700}
 <hr />
 <blockquote>
 <p>全量收录完毕: 例 1.1-1.22 共 22 题(例 1.3、1.4、1.13、1.15 含多问/多法)。第 2 讲(矩阵的秩与分块矩阵)见下一章。</p>
-</blockquote><div class="pager"><a href="01_行列式与矩阵.html"><small>← 上一篇</small><b>行列式与矩阵</b></a><a class="next" href="02_矩阵的秩与分块矩阵.html"><small>下一篇 →</small><b>矩阵的秩与分块矩阵</b></a></div></div></main></div>
+</blockquote><div class="pager"><a href="01_行列式与矩阵.html"><small>← 上一篇</small><b>行列式与矩阵</b></a><a class="next" href="02_矩阵的秩与分块矩阵.html"><small>下一篇 →</small><b>矩阵的秩与分块矩阵</b></a></div></div></main>
+<button id="topbtn" class="tbtn" type="button" aria-label="回到顶部" title="回到顶部"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></button></div>
 
 <script src="../katex/katex.min.js"></script>
 <script src="../katex/contrib/auto-render.min.js"></script>
@@ -683,4 +288,5 @@ document.addEventListener("DOMContentLoaded",function(){
     {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
   ],throwOnError:false});}catch(e){}
 });
-</script></body></html>
+</script>
+<script src="../assets/app.js" defer></script></body></html>
